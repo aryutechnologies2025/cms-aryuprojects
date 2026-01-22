@@ -1,0 +1,23 @@
+uuid: 4045b536-6347-415a-b52d-0fbe03364f9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_page_link
+    - paragraphs.paragraphs_type.industry_page_links
+  module:
+    - link
+id: paragraph.industry_page_links.field_page_link
+field_name: field_page_link
+entity_type: paragraph
+bundle: industry_page_links
+label: 'Page Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

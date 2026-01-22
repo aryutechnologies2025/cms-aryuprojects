@@ -1,0 +1,6 @@
+settings:
+    version: 1.x
+    js:
+        js/settings.js: {}
+    dependencies:
+        - core/jquery

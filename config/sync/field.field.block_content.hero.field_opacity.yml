@@ -1,0 +1,25 @@
+uuid: a31d44b2-3c3a-41ee-a13d-c2a265796856
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_opacity
+id: block_content.hero.field_opacity
+field_name: field_opacity
+entity_type: block_content
+bundle: hero
+label: 'Overlay Opacity'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 85
+default_value_callback: ''
+settings:
+  min: 0
+  max: 100
+  prefix: ''
+  suffix: '%'
+field_type: integer

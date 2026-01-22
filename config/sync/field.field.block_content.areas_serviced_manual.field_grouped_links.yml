@@ -1,0 +1,67 @@
+uuid: a3f8f358-04da-477b-bb1a-1dc8cb366fde
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_manual
+    - field.storage.block_content.field_grouped_links
+    - paragraphs.paragraphs_type.grouped_links
+  module:
+    - entity_reference_revisions
+id: block_content.areas_serviced_manual.field_grouped_links
+field_name: field_grouped_links
+entity_type: block_content
+bundle: areas_serviced_manual
+label: 'Grouped Links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      grouped_links: grouped_links
+    negate: 0
+    target_bundles_drag_drop:
+      attribute:
+        weight: 14
+        enabled: false
+      basic_content:
+        weight: 15
+        enabled: false
+      brand:
+        weight: 16
+        enabled: false
+      ctm_target_number:
+        weight: 17
+        enabled: false
+      grouped_links:
+        weight: 18
+        enabled: true
+      identifications:
+        weight: 19
+        enabled: false
+      iframe:
+        weight: 20
+        enabled: false
+      link_box:
+        weight: 21
+        enabled: false
+      media_with_categories:
+        weight: 22
+        enabled: false
+      media_with_categories_images:
+        weight: 23
+        enabled: false
+      media_with_categories_img_vid:
+        weight: 24
+        enabled: false
+      media_with_categories_remote_vid:
+        weight: 25
+        enabled: false
+      social_media:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions

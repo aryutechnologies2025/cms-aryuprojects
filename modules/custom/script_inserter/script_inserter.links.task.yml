@@ -1,0 +1,18 @@
+entity.script.view:
+    title: View
+    route_name: entity.script.canonical
+    base_route: entity.script.canonical
+entity.script.edit_form:
+    title: Edit
+    route_name: entity.script.edit_form
+    base_route: entity.script.canonical
+entity.script.delete_form:
+    title: Delete
+    route_name: entity.script.delete_form
+    base_route: entity.script.canonical
+    weight: 10
+#entity.script.collection:
+#    title: Script
+#    route_name: entity.script.collection
+#    base_route: system.admin_content
+#    weight: 10

@@ -1,0 +1,82 @@
+$sf-concern-color: palette(black); // Concern Toggle text color
+$sf-concern-bgcolor: palette(white); // Concern Toggle background color
+$sf-concern-border: 0px; // Concern Toggle border width
+$sf-concern-border-color: palette(primary); // Concern Toggle border color
+$sf-concern-icon-color: palette(primary); // Concern Toggle icon color
+$sf-concern-on-color: palette(white); // Concern Toggle On text color
+$sf-concern-on-bgcolor: palette(primary); // Concern Toggle On background color
+$sf-concern-on-check-color: palette(secondary); // Concern Toggle On checkmark color
+
+.solution-finder-concerns {
+  li.concern-list-item {
+    height: 45px + ($sf-concern-border * 2);
+    border: $sf-concern-border solid $sf-concern-border-color;
+    background-color: $sf-concern-bgcolor;
+
+    .node--type-concern,
+    .node--type-issue {
+      .field--name-title-text {
+        color: $sf-concern-color;
+      }
+      .field--name-field-icon-concern,
+      .field--name-field-icon-issue {
+        img,
+        svg {
+          path {
+            fill: $sf-concern-icon-color;
+          }
+        }
+      }
+    }
+
+    &:hover,
+    &.checked {
+      border-color: $sf-concern-border-color;
+      background-color: $sf-concern-on-bgcolor;
+
+      .node--type-concern,
+      .node--type-issue {
+        .field--name-title-text {
+          color: $sf-concern-on-color;
+        }
+  
+        .field--name-field-icon-concern,
+        .field--name-field-icon-issue {
+          img,
+          svg {
+            background-color: $sf-concern-bgcolor;
+  
+            path {
+              fill: $sf-concern-icon-color;
+            }
+          }
+  
+          &::after {
+            color: $sf-concern-on-check-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// More Options button
+.more-options-button {
+  color: palette(white);
+  background-color: palette(secondary);
+
+  &:hover {
+    color: palette(white);
+    background-color: palette(primary);
+  }
+}
+
+.submit-button {
+  color: palette(white);
+  background-color: palette(primary);
+
+  &:hover {
+    color: palette(white);
+    background-color: palette(secondary);
+  }
+}

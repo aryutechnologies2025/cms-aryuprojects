@@ -1,0 +1,30 @@
+uuid: 94e76044-58b6-44f8-8926-cf167bee8296
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.service_text
+    - field.storage.block_content.field_heading
+  module:
+    - tag_text_field
+id: block_content.service_text.field_heading
+field_name: field_heading
+entity_type: block_content
+bundle: service_text
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  defaultTag: div
+  tagList: |-
+    h1|H1
+    h2|H2
+    h3|H3
+    h4|H4
+    h5|H5
+    h6|H6
+    div|Div
+field_type: html_tag_text_field_type

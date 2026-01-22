@@ -1,0 +1,11 @@
+uuid: a722db34-e1e5-4d93-97e2-ab7ec2bbcdef
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.standard_responsive
+label: 'Standard Responsive'
+description: ''
+targetEntityType: media
+cache: true

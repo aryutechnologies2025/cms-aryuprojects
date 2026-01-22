@@ -1,0 +1,7 @@
+name: Sprowt Subsite
+type: module
+description: Provides subsite related functionality
+package: Coalmarch
+core_version_requirement: ^9 || ^10
+dependencies:
+    - sprowt_settings:sprowt_settings

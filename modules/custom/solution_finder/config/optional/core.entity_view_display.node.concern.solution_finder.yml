@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.solution_finder
+    - field.field.node.concern.body
+    - field.field.node.concern.field_call_out
+    - field.field.node.concern.field_concern_steps
+    - field.field.node.concern.field_exclude
+    - field.field.node.concern.field_exclude_from_solution_find
+    - field.field.node.concern.field_icon_concern
+    - field.field.node.concern.field_intro
+    - field.field.node.concern.field_issues
+    - field.field.node.concern.field_services
+    - field.field.node.concern.field_treatment
+    - field.field.node.concern.layout_builder__layout
+    - node.type.concern
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+_core:
+  default_config_hash: a_2j4mv5k90w0wd8kMX1cIABfMtug-fHOkQl_kIWVnE
+id: node.concern.solution_finder
+targetEntityType: node
+bundle: concern
+mode: solution_finder
+content:
+  field_icon_concern:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  show_title:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_call_out: true
+  field_concern_steps: true
+  field_exclude: true
+  field_exclude_from_solution_find: true
+  field_intro: true
+  field_issues: true
+  field_services: true
+  field_treatment: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

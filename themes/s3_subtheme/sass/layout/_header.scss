@@ -1,0 +1,124 @@
+$header-utility-bgcolor: palette(dark); // Header ratings/utility-nav background color
+$header-utility-color: palette(white); // Header ratings/utility-nav text color
+$header-main-bgcolor: palette(white); // Header logo/cta background color
+$header-main-color: $base-font-color; // Header logo/cta background color
+$header-nav-bgcolor: palette(primary); // Header primary-nav background color
+
+$header-ratings-bgcolor-mobile: palette(primary, dark); // Mobile header ratings background color
+
+// Header 1 Region : Ratings and Utility Menu Blocks
+.region-header1,
+.region-header-layout #header-1 {
+  height: auto;
+  min-height: 0;
+  max-height: 100%;
+  color: $header-utility-color;
+  // background-color: $header-utility-bgcolor;
+
+  @include breakpoint($max-small) {
+    .block-aggregate-reviews-block {
+      background-color: $header-ratings-bgcolor-mobile;
+    }
+  }
+
+  // @include breakpoint($small) {
+  //   height: $header-utility-height;
+  //   min-height: $header-utility-height;
+  //   max-height: $header-utility-height;
+  // }
+}
+
+.region-header-layout #header-1-nofrills,
+.region-header-laytou [id*="block-headerlayoutsimplified"] {
+  @include breakpoint($max-small) {
+    color: $header-utility-color;
+    background-color: $header-utility-bgcolor;
+  }
+}
+
+// Header 3 Region : Site Logo, Header Brands and CTM Blocks
+.region-header3,
+.region-header-layout #header-3 {
+  height: $header-main-height-mobile;
+  max-height: $header-main-height-mobile;
+  min-height: $header-main-height-mobile;
+  color: $header-main-color;
+  background-color: $header-main-bgcolor;
+
+  @include breakpoint($small) {
+    height: $header-main-height;
+    max-height: $header-main-height;
+    min-height: $header-main-height;
+  }
+
+  @include breakpoint($large) {
+    .region-blocks-wrap {
+      min-height: 135px;
+    }
+  }
+}
+
+// Header 4 Region : Main Navigation
+
+.region-header-layout #header-4-nofrills,
+.region-header-layout [id*="block-headerlayoutsimplified"] {
+  background-color: $header-main-bgcolor;
+  border-bottom: 3px solid palette(primary);
+}
+
+.block-system-branding-block,
+.block-subsite-logo-block {
+  .site-logo {
+    width: $logo-width-mobile;
+    max-width: $logo-width-mobile;
+    
+    img {
+      max-height: $logo-height-mobile;
+
+      @include breakpoint($max-small) {
+        width: auto;
+      }
+    }
+
+    img {
+      max-height: $logo-height-mobile;
+    }
+
+    @include breakpoint($small) {
+      width: $logo-width-tablet;
+      max-width: $logo-width-tablet;
+
+      img {
+        max-height: inherit;
+      }
+    }
+
+    @include breakpoint($large) {
+      width: $logo-width;
+      max-width: $logo-width;
+    }
+  }
+}
+
+// Mobile Heading
+header.page-header {
+  &.nav-up {
+    top: $header-nav-height-mobile - $header-height-mobile;
+
+    .gin--horizontal-toolbar & {
+      top: $header-nav-height-mobile - $header-height-mobile +
+        $admin-bar-height-mobile;
+    }
+    @include breakpoint($small) {
+      position: static;
+    }
+  }
+}
+
+main {
+  margin-top: $header-height-mobile;
+
+  @include breakpoint($small) {
+    margin-top: 0;
+  }
+}

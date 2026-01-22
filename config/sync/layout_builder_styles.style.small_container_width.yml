@@ -1,0 +1,12 @@
+uuid: 4809e2d4-f14f-4f77-a7d5-623bd0a6886a
+langcode: en
+status: true
+dependencies: {  }
+id: small_container_width
+label: 'Small Container Width'
+classes: sm-width
+type: section
+group: layout
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -23

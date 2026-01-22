@@ -1,0 +1,22 @@
+uuid: 202a0c94-1129-4b8c-a6f7-3f9bcc1d79e9
+langcode: en
+status: true
+dependencies: {  }
+id: block_white
+label: White
+classes: bg-white
+type: component
+group: bgcolor
+block_restrictions:
+  - 'inline_block:areas_serviced'
+  - 'inline_block:call_out'
+  - 'inline_block:concerns'
+  - 'inline_block:issues'
+  - 'inline_block:modal_block'
+  - 'inline_block:testimonials'
+  - 'inline_block:servicebot'
+  - 'inline_block:services'
+  - 'inline_block:special_offers'
+  - 'inline_block:webform'
+layout_restrictions: {  }
+weight: 15

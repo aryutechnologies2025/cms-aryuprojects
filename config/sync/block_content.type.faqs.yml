@@ -1,0 +1,8 @@
+uuid: 08b1ee88-e7c0-41c7-a8c0-45eb79594fec
+langcode: en
+status: true
+dependencies: {  }
+id: faqs
+label: FAQs
+revision: false
+description: 'Frequently Asked Questions block'

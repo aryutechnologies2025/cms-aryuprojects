@@ -1,0 +1,19 @@
+uuid: fb7b941f-e359-4710-8c3a-d2069b189bcf
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.star_rating
+    - field.storage.block_content.field_label
+id: block_content.star_rating.field_label
+field_name: field_label
+entity_type: block_content
+bundle: star_rating
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

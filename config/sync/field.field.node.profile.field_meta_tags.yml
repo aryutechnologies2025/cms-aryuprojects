@@ -1,0 +1,21 @@
+uuid: 94471a12-270a-47f1-a7cd-49d2e3447657
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meta_tags
+    - node.type.profile
+  module:
+    - metatag
+id: node.profile.field_meta_tags
+field_name: field_meta_tags
+entity_type: node
+bundle: profile
+label: 'Meta Tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

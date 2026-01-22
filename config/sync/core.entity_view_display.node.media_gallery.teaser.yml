@@ -1,0 +1,42 @@
+uuid: 9d6b3c73-6ff2-44a1-9929-ecfd239324f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.media_gallery.body
+    - field.field.node.media_gallery.field_gallery_thumbnail_hero
+    - field.field.node.media_gallery.field_media
+    - field.field.node.media_gallery.field_media_documents
+    - field.field.node.media_gallery.field_media_gallery
+    - field.field.node.media_gallery.field_media_img_vid
+    - field.field.node.media_gallery.field_media_remote_vid
+    - field.field.node.media_gallery.field_subsite_multiple
+    - field.field.node.media_gallery.field_type
+    - field.field.node.media_gallery.layout_builder__layout
+    - node.type.media_gallery
+  module:
+    - user
+id: node.media_gallery.teaser
+targetEntityType: node
+bundle: media_gallery
+mode: teaser
+content:
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_gallery_thumbnail_hero: true
+  field_media: true
+  field_media_documents: true
+  field_media_gallery: true
+  field_media_img_vid: true
+  field_media_remote_vid: true
+  field_subsite_multiple: true
+  field_type: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

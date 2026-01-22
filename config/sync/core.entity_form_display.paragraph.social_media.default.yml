@@ -1,0 +1,32 @@
+uuid: 8c70933c-712f-428a-8f4c-ec589e18d03f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media.field_link
+    - field.field.paragraph.social_media.field_platform
+    - paragraphs.paragraphs_type.social_media
+  module:
+    - link
+id: paragraph.social_media.default
+targetEntityType: paragraph
+bundle: social_media
+mode: default
+content:
+  field_link:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_platform:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

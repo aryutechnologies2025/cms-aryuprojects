@@ -1,0 +1,30 @@
+////
+/// Utility class styles
+/// @group Base
+////
+
+// Selective breakpoint hide classes
+.hide {
+  display: none !important;
+}
+
+// Screen Reader Text - https://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/
+%sr-text {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.sr-text,
+.screen-reader-text {
+  @extend %sr-text;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  word-wrap: normal;
+}

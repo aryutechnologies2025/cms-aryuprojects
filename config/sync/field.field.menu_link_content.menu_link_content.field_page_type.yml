@@ -1,0 +1,22 @@
+uuid: 52db7276-50a6-4c80-a83b-e31a359fc6bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_page_type
+  module:
+    - menu_link_content
+    - options
+    - menu_item_fields
+id: menu_link_content.menu_link_content.field_page_type
+field_name: field_page_type
+entity_type: menu_link_content
+bundle: menu_link_content
+label: 'Page type'
+description: "The type of basic page this will link to. usually associated with main items in the main menu (home page, about page, etc). This is primarily used for the installer.\r\n\r\nOnly applicable to the main menu"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

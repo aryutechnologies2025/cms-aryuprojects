@@ -1,0 +1,11 @@
+uuid: 4bba6d99-13e3-4998-8959-6ada17399bf3
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.teaser_850x300
+label: 'Teaser (850x300)'
+description: ''
+targetEntityType: media
+cache: true

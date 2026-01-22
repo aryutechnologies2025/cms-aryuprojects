@@ -1,0 +1,10 @@
+field.widget.settings.html_tag_text_field_widget:
+  type: mapping
+  label: 'Html tag text field widget widget settings'
+  mapping:
+    size:
+      type: integer
+      label: 'Size'
+    placeholder:
+      type: textfield
+      label: 'Placeholder'

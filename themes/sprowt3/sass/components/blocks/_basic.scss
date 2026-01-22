@@ -1,0 +1,79 @@
+.layout__region {
+  .block-inline-blockbasic,
+  .block--type-basic,
+  .block-inline-blockbasic-inline-image,
+  .block--tyle-basic-inline-image {
+    padding: $margin;
+
+    @include breakpoint($medium) {
+      padding: ($margin * 1.5) $margin $margin;
+    }
+
+    &:only-child {
+      @include breakpoint($medium) {
+        padding: ($margin * 1.5) $margin;
+      }
+    }
+
+    .basic-wrap {
+      z-index: 1; //prevent fade overlap
+
+      > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .basic-wrap--inline {
+      @include breakpoint($medium) {
+      }
+    }
+
+    .basic-text-wrap {
+      .field--name-field-image {
+        margin-bottom: 3px;
+      }
+
+      &.image-align-left {
+        .field--name-field-image {
+          @include breakpoint($small) {
+            float: left;
+            max-width: 50%;
+            margin-right: 20px;
+          }
+        }
+      }
+      &.image-align-right {
+        .field--name-field-image {
+          @include breakpoint($small) {
+            float: right;
+            max-width: 50%;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.layout.full-width:not(.layout--onecol) {
+  .block-inline-blockbasic {
+    @include breakpoint($medium) {
+      @include flexbox;
+      align-items: center;
+      max-width: calc(#{$container} / 2);
+    }
+  }
+}
+
+// .layout.sm-width:not(.layout--onecol) {
+//   .layout__region--first {
+//     .block-inline-blockbasic {
+//       padding-left: 0;
+//     }
+//   }
+//   .layout__region--second {
+//     .block-inline-blockbasic {
+//       padding-right: 0;
+//     }
+//   }
+// }

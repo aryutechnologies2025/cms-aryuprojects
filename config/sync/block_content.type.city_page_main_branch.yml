@@ -1,0 +1,8 @@
+uuid: 403e72fd-5c94-4a6e-bb5a-56449b9a5233
+langcode: en
+status: true
+dependencies: {  }
+id: city_page_main_branch
+label: 'Dynamic Address'
+revision: false
+description: 'Displays the location address associated with the current page.'

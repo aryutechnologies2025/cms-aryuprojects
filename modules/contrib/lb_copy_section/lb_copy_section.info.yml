@@ -1,0 +1,11 @@
+name: 'Copy Layout Builder section'
+type: module
+description: 'Provides functionality to copy and paste layout builder sections within or between pages.'
+core_version_requirement: ^9.2 || ^10
+dependencies:
+  - drupal:layout_builder
+
+# Information added by Drupal.org packaging script on 2024-03-06
+version: '1.0.0'
+project: 'lb_copy_section'
+datestamp: 1709738580

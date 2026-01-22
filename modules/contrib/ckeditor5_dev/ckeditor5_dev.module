@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Implements hooks for the CKEditor 5 Dev tools module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ckeditor5_dev_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.ckeditor5_dev':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The CKEditor 5 Dev tools module attaches <code>CKEditor5Inspector</code> to any instances of CKEditor 5 on the page. For more information, see the <a href=":doc_url">online documentation for the CKEditor 5 Dev tools module</a>.', [':doc_url' => 'https://www.drupal.org/docs/contributed-modules/ckeditor-5/development-tools']) . '</p>';
+      $output .= '<p>' . t('This module should <em>not be enabled</em> in production!') . '</p>';
+      $output .= '<h3>' . t('Usage') . '</h3>';
+      $output .= '<p>' . t('After enabling the module, navigate to a page where CKEditor 5 is active, the inspector will appear in a pane at the bottom of your browser.') . '</p>';
+      $output .= '<p>' . t('For more information about <code>CKEditor5Inspector</code>, see the <a href=":documentation">documentation</a>.', [':documentation' => 'https://ckeditor.com/docs/ckeditor5/latest/framework/guides/development-tools.html']) . '</p>';
+      $output .= '<p>' . t('Additionally, the CKEditor 5 instance is added to <code>window</code> by its <code>id</code> so that you may easily access properties and methods') . '</p>';
+
+      return $output;
+  }
+
+}
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function ckeditor5_dev_library_info_alter(&$libraries, $extension) {
+  if ($extension === 'ckeditor5' && isset($libraries['internal.drupal.ckeditor5'])) {
+    $libraries['internal.drupal.ckeditor5']['dependencies'][] = 'ckeditor5_dev/ckeditor5_dev';
+  }
+  // @todo Remove when Drupal 9.4 is no longer supported.
+  // @see https://www.drupal.org/project/drupal/issues/3307186
+  if ($extension === 'ckeditor5' && isset($libraries['drupal.ckeditor5'])) {
+    $libraries['drupal.ckeditor5']['dependencies'][] = 'ckeditor5_dev/ckeditor5_dev';
+  }
+}

@@ -1,0 +1,22 @@
+.node--type-issue {
+  > .node__content {
+    > .layout:nth-child(2) {
+      padding-top: 40px;
+      padding-bottom: 20px;
+
+      .block-inline-blockbasic {
+        padding: 30px;
+      }
+    }
+  }
+
+  // Token View Mode
+  &.node--view-mode-token {
+    @extend %tokenview;
+  }
+
+  // Secondary Token View Mode
+  &.node--view-mode-secondary-token {
+    @extend %secondarytokenview;
+  }
+}

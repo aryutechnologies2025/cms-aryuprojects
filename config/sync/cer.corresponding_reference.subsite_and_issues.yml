@@ -1,0 +1,14 @@
+uuid: ae949029-db59-4131-bf0c-cd5eff555377
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_issues
+label: 'Subsite and Issues'
+enabled: true
+first_field: field_subsite_multiple
+second_field: field_issues
+add_direction: append
+bundles:
+  node:
+    - issue
+    - subsite

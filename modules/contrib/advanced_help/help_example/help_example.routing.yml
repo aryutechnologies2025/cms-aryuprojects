@@ -1,0 +1,7 @@
+help_example.example:
+  path: '/help-example'
+  defaults:
+    _title: 'Example help'
+    _controller: '\Drupal\help_example\Controller\HelpExampleController'
+  requirements:
+    _permission: 'access content'

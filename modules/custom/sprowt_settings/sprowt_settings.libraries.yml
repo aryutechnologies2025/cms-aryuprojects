@@ -1,0 +1,47 @@
+settings_form:
+    js:
+        js/settings_form.js: {}
+    dependencies:
+        - core/jquery
+        - sprowt_settings/sprowt_object
+        - core/once
+        - core/drupal.dialog.ajax
+        - core/ajax
+        - core/drupal.vertical-tabs
+
+sprowt_object:
+    js:
+        js/sprowt_object.js: {}
+    dependencies:
+        - core/jquery
+
+tooltip:
+    js:
+        js/tooltip.js: { }
+    dependencies:
+        - sprowt_settings/tippy
+
+tippy:
+    js:
+        https://unpkg.com/@popperjs/core@2: { external: true }
+        https://unpkg.com/tippy.js@6: { external: true }
+
+schedule_element:
+    js:
+        js/schedule_element.js: {}
+    css:
+        theme:
+            css/schedule_element.css: {}
+    dependencies:
+        - core/jquery
+        - core/once
+        - sprowt_settings/sprowt_object
+        - template_field/field
+
+conditional_token_form:
+    js:
+        js/conditional_token_form.js: {}
+    dependencies:
+        - core/jquery
+        - core/once
+        - core/drupal

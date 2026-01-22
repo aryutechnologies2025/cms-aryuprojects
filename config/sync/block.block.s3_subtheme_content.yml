@@ -1,0 +1,22 @@
+uuid: 81ad5b0e-699d-4df6-b738-7477572e9077
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - s3_subtheme
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: s3_subtheme_content
+theme: s3_subtheme
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,49 @@
+uuid: c28554ad-a8cd-478d-83f6-c9d7613ba0ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quick_media_embed
+    - field.storage.block_content.field_media
+    - paragraphs.paragraphs_type.media_with_categories
+  module:
+    - entity_reference_revisions
+id: block_content.quick_media_embed.field_media
+field_name: field_media
+entity_type: block_content
+bundle: quick_media_embed
+label: Media
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      media_with_categories: media_with_categories
+    negate: 0
+    target_bundles_drag_drop:
+      basic_content:
+        weight: 8
+        enabled: false
+      brand:
+        weight: 9
+        enabled: false
+      ctm_target_number:
+        weight: 10
+        enabled: false
+      identifications:
+        weight: 11
+        enabled: false
+      link_box:
+        weight: 12
+        enabled: false
+      media_with_categories:
+        weight: 13
+        enabled: true
+      social_media:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

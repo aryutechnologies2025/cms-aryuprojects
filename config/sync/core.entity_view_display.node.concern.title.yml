@@ -1,0 +1,55 @@
+uuid: dbe68b40-15d3-4dc2-959f-355f9286624d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.title
+    - field.field.node.concern.body
+    - field.field.node.concern.field_exclude
+    - field.field.node.concern.field_exclude_from_solution_find
+    - field.field.node.concern.field_icon_concern
+    - field.field.node.concern.field_industry
+    - field.field.node.concern.field_issues
+    - field.field.node.concern.field_meta_description
+    - field.field.node.concern.field_meta_tags
+    - field.field.node.concern.field_package_level
+    - field.field.node.concern.field_services
+    - field.field.node.concern.field_subsite
+    - field.field.node.concern.field_subsite_multiple
+    - field.field.node.concern.field_summary
+    - field.field.node.concern.layout_builder__layout
+    - node.type.concern
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.concern.title
+targetEntityType: node
+bundle: concern
+mode: title
+content:
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_exclude: true
+  field_exclude_from_solution_find: true
+  field_icon_concern: true
+  field_industry: true
+  field_issues: true
+  field_meta_description: true
+  field_meta_tags: true
+  field_package_level: true
+  field_services: true
+  field_subsite: true
+  field_subsite_multiple: true
+  field_summary: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

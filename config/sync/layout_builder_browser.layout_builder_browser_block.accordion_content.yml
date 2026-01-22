@@ -1,0 +1,11 @@
+uuid: 5e238679-7af5-47a1-8aee-85bdca02def4
+langcode: en
+status: true
+dependencies: {  }
+id: accordion_content
+block_id: 'inline_block:accordion_content'
+category: custom_blocks
+label: 'Accordion Content'
+image_path: ''
+image_alt: ''
+weight: -100

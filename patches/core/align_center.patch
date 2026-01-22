@@ -1,0 +1,58 @@
+diff --git a/core/profiles/demo_umami/themes/umami/css/base.css b/core/profiles/demo_umami/themes/umami/css/base.css
+index eac142c1c..7c506a4ea 100644
+--- a/core/profiles/demo_umami/themes/umami/css/base.css
++++ b/core/profiles/demo_umami/themes/umami/css/base.css
+@@ -214,6 +214,12 @@ img {
+   height: auto;
+ }
+ 
++.align-center .field--type-image img {
++  display: block;
++  margin-right: auto;
++  margin-left: auto;
++}
++
+ /**
+  * Prevent regression due to fieldset styling that was removed in normalize.css
+  * 6.0.0.
+diff --git a/core/themes/claro/css/base/elements.css b/core/themes/claro/css/base/elements.css
+index b9d5cb4fe..75fb7ddcc 100644
+--- a/core/themes/claro/css/base/elements.css
++++ b/core/themes/claro/css/base/elements.css
+@@ -263,6 +263,16 @@ img {
+   height: auto;
+ }
+ 
++.align-center .field--type-image img {
++  display: block;
++  margin-right: auto;
++  margin-left: auto;
++}
++
++.align-center .media-library-item__name {
++  text-align: center;
++}
++
+ /**
+  * Default focus styles for focused elements.
+  *
+diff --git a/core/themes/claro/css/base/elements.pcss.css b/core/themes/claro/css/base/elements.pcss.css
+index 55bdf36cb..071b0f5d9 100644
+--- a/core/themes/claro/css/base/elements.pcss.css
++++ b/core/themes/claro/css/base/elements.pcss.css
+@@ -215,7 +215,15 @@ img {
+   max-width: 100%;
+   height: auto;
+ }
++.align-center .field--type-image img {
++  display: block;
++  margin-right: auto;
++  margin-left: auto;
++}
+ 
++.align-center .media-library-item__name {
++  text-align: center;
++}
+ /**
+  * Default focus styles for focused elements.
+  *

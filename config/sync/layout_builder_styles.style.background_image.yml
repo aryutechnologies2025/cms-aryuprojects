@@ -1,0 +1,13 @@
+uuid: 552ae74e-0cb1-4d29-9d64-6cf8e28ec58c
+langcode: en
+status: true
+dependencies: {  }
+id: background_image
+label: 'Background Image'
+classes: background-image
+type: component
+group: default
+block_restrictions:
+  - 'inline_block:image'
+layout_restrictions: {  }
+weight: -2

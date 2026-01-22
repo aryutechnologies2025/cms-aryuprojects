@@ -1,0 +1,11 @@
+uuid: 549e558f-95fb-45a9-998f-51ff0d000f52
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.concern
+id: node.concern
+target_entity_type_id: node
+target_bundle: concern
+default_langcode: site_default
+language_alterable: false

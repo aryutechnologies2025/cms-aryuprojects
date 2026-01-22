@@ -1,0 +1,29 @@
+uuid: 45f06cf2-243b-4c1b-83b4-2985a170a3ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_blog
+    - media.type.media_image
+    - node.type.blog
+id: node.blog.field_image_blog
+field_name: field_image_blog
+entity_type: node
+bundle: blog
+label: Image
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

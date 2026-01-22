@@ -1,0 +1,29 @@
+uuid: 779fad98-4702-40af-a432-ae40769a1987
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.blog_list
+    - field.storage.block_content.field_category_filter
+    - taxonomy.vocabulary.categories
+id: block_content.blog_list.field_category_filter
+field_name: field_category_filter
+entity_type: block_content
+bundle: blog_list
+label: 'Category Filter'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      categories: categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

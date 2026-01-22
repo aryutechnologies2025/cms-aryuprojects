@@ -1,0 +1,25 @@
+uuid: 74c1e2fe-1117-4607-8b38-7c25f2e22028
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:ctm_contact:7f4f8b13-79cb-405f-b6ae-0b47e2bc9d24'
+  module:
+    - block_content
+  theme:
+    - s3_subtheme
+id: s3_subtheme_ctmcontact
+theme: s3_subtheme
+region: disabled
+weight: -7
+provider: null
+plugin: 'block_content:7f4f8b13-79cb-405f-b6ae-0b47e2bc9d24'
+settings:
+  id: 'block_content:7f4f8b13-79cb-405f-b6ae-0b47e2bc9d24'
+  label: 'CTM Contact'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,12 @@
+uuid: cb5a8160-c65c-4e4f-9783-5914c7757fe9
+langcode: en
+status: true
+dependencies: {  }
+id: white
+label: White
+classes: bg-white
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -11

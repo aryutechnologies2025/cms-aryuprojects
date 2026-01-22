@@ -1,0 +1,11 @@
+uuid: f1ab2aaa-66c9-42d8-a510-bfd88d6db081
+langcode: en
+status: true
+dependencies: {  }
+id: servicebot_header
+block_id: 'inline_block:servicebot_header'
+category: header_footer
+label: 'Servicebot (Header)'
+image_path: ''
+image_alt: ''
+weight: -100

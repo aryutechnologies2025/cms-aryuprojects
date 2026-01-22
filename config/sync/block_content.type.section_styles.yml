@@ -1,0 +1,8 @@
+uuid: f26e1e04-b7ae-460d-b964-4f38517f4b4c
+langcode: en
+status: true
+dependencies: {  }
+id: section_styles
+label: 'Section Styles'
+revision: false
+description: 'Add background image and elements to section.'

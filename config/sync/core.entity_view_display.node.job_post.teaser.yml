@@ -1,0 +1,87 @@
+uuid: 8fc7fe4a-c5bb-433b-97e9-8659e8816a33
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.job_post.body
+    - field.field.node.job_post.field_add_expiration
+    - field.field.node.job_post.field_employment_type
+    - field.field.node.job_post.field_expiration_date
+    - field.field.node.job_post.field_job_application_link
+    - field.field.node.job_post.field_job_category
+    - field.field.node.job_post.field_job_description_link
+    - field.field.node.job_post.field_job_posting_date
+    - field.field.node.job_post.field_location
+    - field.field.node.job_post.field_meta_description
+    - field.field.node.job_post.field_meta_tags
+    - field.field.node.job_post.field_salary_currency
+    - field.field.node.job_post.field_salary_range_from
+    - field.field.node.job_post.field_salary_range_to
+    - field.field.node.job_post.field_salary_range_unit
+    - node.type.job_post
+  module:
+    - datetime
+    - link
+    - user
+id: node.job_post.teaser
+targetEntityType: node
+bundle: job_post
+mode: teaser
+content:
+  field_job_application_link:
+    type: link
+    label: visually_hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_job_category:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_job_posting_date:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: short
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_location:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_add_expiration: true
+  field_employment_type: true
+  field_expiration_date: true
+  field_job_description_link: true
+  field_meta_description: true
+  field_meta_tags: true
+  field_salary_currency: true
+  field_salary_range_from: true
+  field_salary_range_to: true
+  field_salary_range_unit: true
+  langcode: true
+  links: true

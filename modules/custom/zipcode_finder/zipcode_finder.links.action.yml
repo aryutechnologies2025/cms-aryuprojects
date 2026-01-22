@@ -1,0 +1,5 @@
+zipcode_finder.add_form:
+    title: 'Add zipcode finder'
+    route_name: entity.zipcode_finder.add_form
+    appears_on:
+        - entity.zipcode_finder.collection

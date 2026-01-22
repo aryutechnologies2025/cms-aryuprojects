@@ -1,0 +1,25 @@
+uuid: bcc2c273-030b-4b8d-939b-4bd987e6bcae
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:webform:2bc7d39d-6f5f-464e-9022-71a3f83c64b9'
+  module:
+    - block_content
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_webformcalloutglobal
+theme: woodlawnandlandscaping
+region: disabled
+weight: -8
+provider: null
+plugin: 'block_content:2bc7d39d-6f5f-464e-9022-71a3f83c64b9'
+settings:
+  id: 'block_content:2bc7d39d-6f5f-464e-9022-71a3f83c64b9'
+  label: 'Webform Call Out (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

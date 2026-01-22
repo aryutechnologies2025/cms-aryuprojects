@@ -1,0 +1,29 @@
+uuid: bf83d3d1-642a-4bc4-94a5-c32087765481
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_icon_issue
+    - media.type.media_image
+    - node.type.issue
+id: node.issue.field_icon_issue
+field_name: field_icon_issue
+entity_type: node
+bundle: issue
+label: Icon
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

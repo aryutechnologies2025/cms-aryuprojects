@@ -1,0 +1,10 @@
+{
+  "name": "drupal/revision_log_default",
+  "type": "drupal-module",
+  "description": "Provides sensible defaults for revision logs, if none are given.",
+  "homepage": "http://drupal.org/project/revision_log_default",
+  "license": "GPL-2.0+",
+  "require": {
+    "drupal/core": "^8.7 || ^9 || ^10 || ^11"
+  }
+}

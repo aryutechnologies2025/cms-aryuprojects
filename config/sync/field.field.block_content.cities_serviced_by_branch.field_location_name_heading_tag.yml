@@ -1,0 +1,23 @@
+uuid: 94b71c5e-4b02-4c2b-afc8-8f948446b63f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cities_serviced_by_branch
+    - field.storage.block_content.field_location_name_heading_tag
+  module:
+    - options
+id: block_content.cities_serviced_by_branch.field_location_name_heading_tag
+field_name: field_location_name_heading_tag
+entity_type: block_content
+bundle: cities_serviced_by_branch
+label: 'Location Name Heading Tag'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: h2
+default_value_callback: ''
+settings: {  }
+field_type: list_string

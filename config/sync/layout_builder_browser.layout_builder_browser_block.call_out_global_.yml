@@ -1,0 +1,11 @@
+uuid: 7192ce22-3312-40e4-a703-0b31008e7e14
+langcode: en
+status: true
+dependencies: {  }
+id: call_out_global_
+block_id: 'block_content:9f7cf4e1-5742-41c6-8414-14dd5c5bdc18'
+category: re_usable_blocks
+label: 'Call Out (global)'
+image_path: ''
+image_alt: ''
+weight: -96

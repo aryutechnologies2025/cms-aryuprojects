@@ -1,0 +1,8 @@
+uuid: b1b84555-27a7-4feb-b9fa-d90371db7313
+langcode: en
+status: true
+dependencies: {  }
+id: cities_serviced_by_branch
+label: 'Areas Serviced (Locations Page)'
+revision: false
+description: 'List of City Pages grouped by Industry with option to filter by the Industry of the current page.'

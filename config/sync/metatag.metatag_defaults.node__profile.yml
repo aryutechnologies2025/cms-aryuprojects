@@ -1,0 +1,8 @@
+uuid: 5b3bff41-9970-462a-9aa3-d046fe59b867
+langcode: en
+status: true
+dependencies: {  }
+id: node__profile
+label: 'Content: Profile'
+tags:
+  robots: 'noindex, nofollow, noydir'

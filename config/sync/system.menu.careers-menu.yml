@@ -1,0 +1,8 @@
+uuid: 05be874f-df9a-4e3a-a7ce-ca3a62d168ca
+langcode: en
+status: true
+dependencies: {  }
+id: careers-menu
+label: 'Careers Menu'
+description: ''
+locked: false

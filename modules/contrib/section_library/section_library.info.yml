@@ -1,0 +1,16 @@
+name: 'Section Library'
+description: 'Create reusable templates for single or multiple sections at the layout builder.'
+type: module
+core_version_requirement: ^10.3 || ^11
+package: 'Layout Builder'
+configure: section_library.admin_index
+dependencies:
+  - drupal:image
+  - drupal:layout_builder
+  - drupal:options
+  - drupal:views
+
+# Information added by Drupal.org packaging script on 2025-04-03
+version: '2.0.1'
+project: 'section_library'
+datestamp: 1743690914

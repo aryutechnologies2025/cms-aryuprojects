@@ -1,0 +1,21 @@
+.node--type-testimonial {
+  //Teaser
+  &.node--view-mode-teaser {
+    .node__content {
+      background-color: palette(white);
+      border-color: palette(grey, lit);
+      border-radius: $base-border-radius;
+
+      &::before {
+        color: palette(primary);
+        background-color: palette(white);
+      }
+
+      .stars {
+        span::before {
+          color: palette(primary);
+        }
+      }
+    }
+  }
+}

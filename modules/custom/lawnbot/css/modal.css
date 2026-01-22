@@ -1,0 +1,31 @@
+.lawnbot-modal-modal-blocker {
+    z-index: 9999;
+}
+
+#instantquote-modal {
+    position: relative;
+}
+
+.lawnbot-modal-modal {
+    height: 95vh;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+}
+
+.lawnbot-modal-modal iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-bottom: 30px;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    border: none;
+}
+
+@media only screen and (min-width: 720px) {
+    .lawnbot-modal-modal {
+        max-width: 90%;
+    }
+}

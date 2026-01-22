@@ -1,0 +1,12 @@
+uuid: d88589a0-732c-427b-9630-6e760d08483f
+langcode: en
+status: true
+dependencies: {  }
+id: section_custom_3
+label: 'Custom Dark'
+classes: bg-custom-dark
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -4

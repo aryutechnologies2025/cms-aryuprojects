@@ -1,0 +1,8 @@
+uuid: 6db93e0b-e3f9-4563-a0be-41a79e58726f
+langcode: en
+status: true
+dependencies: {  }
+id: areas_serviced_by_location_city
+label: 'Areas Serviced by Location (City Page)'
+revision: false
+description: 'List of City Pages also tagged with the Location that the current City Page is tagged with.'

@@ -1,0 +1,12 @@
+uuid: 0b94ddf1-19a5-4b29-8b36-ad0ca4fdf3d1
+langcode: en
+status: true
+dependencies: {  }
+id: tertiary_color
+label: 'Tertiary Color'
+classes: bg-tertiary
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -12

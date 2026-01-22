@@ -1,0 +1,23 @@
+uuid: 97eeaf78-00cb-4e93-90ff-eb003aebeab8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.star_rating
+    - field.storage.block_content.field_rating
+id: block_content.star_rating.field_rating
+field_name: field_rating
+entity_type: block_content
+bundle: star_rating
+label: Rating
+description: 'out of 5'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 5.0
+  prefix: ''
+  suffix: ''
+field_type: decimal

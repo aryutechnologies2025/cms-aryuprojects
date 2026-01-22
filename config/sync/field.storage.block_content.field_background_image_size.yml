@@ -1,0 +1,31 @@
+uuid: a7463c92-2db2-4af6-bec0-f660ca85c3eb
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - field_permissions
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: block_content.field_background_image_size
+field_name: field_background_image_size
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: normal
+      label: 'Normal (1600x520)'
+    -
+      value: large
+      label: 'Large (2200x780)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

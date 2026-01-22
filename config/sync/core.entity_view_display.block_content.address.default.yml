@@ -1,0 +1,23 @@
+uuid: 4bd27f95-f621-4dba-8cd2-15c619f53ee9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.address
+    - field.field.block_content.address.field_branch_address
+id: block_content.address.default
+targetEntityType: block_content
+bundle: address
+mode: default
+content:
+  field_branch_address:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,27 @@
+{
+  "name": "drupal/advanced_help",
+  "description": "Provide extended help and documentation.",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Gisle Hannemyr",
+      "homepage": "https://www.drupal.org/u/gisle",
+      "role": "Owner"
+    },
+    {
+      "name": "David Valdez (gnuget)",
+      "homepage": "https://www.drupal.org/u/gnuget",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/advanced_help",
+    "source": "https://git.drupalcode.org/project/advanced_help"
+  },
+  "require": {
+    "drupal/core": "^8.8 || ^9 || ^10",
+    "michelf/php-markdown": "^1.9"
+  }
+}

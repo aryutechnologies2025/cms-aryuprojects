@@ -1,0 +1,56 @@
+.star-ratings-wrap {
+  .rating-inner-wrap {
+    @include flexbox;
+    align-items: center;
+    flex-wrap: wrap;
+
+    #block-headerlayoutnofrills &,
+    [id*="block-headerlayoutsimplified"] & {
+      justify-content: center;
+    }
+  }
+
+  .rating-heading {
+    font-size: 1.4rem;
+    line-height: 1;
+
+    .prelabel {
+      display: none;
+    }
+  }
+
+  .stars {
+    @include flexbox;
+    margin: 0 6px;
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1;
+    .star,
+    .icon-star,
+    .icon-star-half {
+      padding-left: 2px;
+      display: block;
+    }
+  }
+
+  .field--name-field-label,
+  .field--name-field-label-tag {
+    //display: none;
+    font-size: 1.4rem;
+    font-style: italic;
+  }
+
+  @include breakpoint($small) {
+    .rating-heading {
+      font-size: inherit;
+    }
+    .stars {
+      font-size: 1.8rem;
+    }
+    .field--name-field-label,
+    .field--name-field-label-tag {
+      //display: block;
+      font-size: inherit;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+uuid: 48db12ee-a883-480b-aa7b-45ea88335fcc
+langcode: en
+status: true
+dependencies: {  }
+id: solution__solution
+label: 'Solution: Solution'
+tags:
+  robots: 'noindex, nofollow, noydir'

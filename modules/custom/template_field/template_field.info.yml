@@ -1,0 +1,7 @@
+name: Template field
+type: module
+description: Provides a form render element for rendering a template field that takes multiple objects and spits out multiple objects
+package: Coalmarch
+core_version_requirement: ^9 || ^10
+dependencies:
+  - sprowt_settings:sprowt_settings

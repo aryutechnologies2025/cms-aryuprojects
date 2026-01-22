@@ -1,0 +1,16 @@
+<?php
+
+
+/**
+ * Implements hook_install().
+ */
+function sprowt_careers_install($is_syncing)
+{
+    if(\Drupal::moduleHandler()->moduleExists('content_import_export')
+        && \Drupal::moduleHandler()->moduleExists('sprowt_content')
+    ) {
+//        $importer = \Drupal::service('content_import_export.importer');
+//        $file = __DIR__ . '/content/block_content.json';
+//        $importer->importFromFile($file);
+    }
+}

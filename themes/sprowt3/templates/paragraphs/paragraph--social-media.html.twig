@@ -1,0 +1,17 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+{% block paragraph %}
+  <div{{attributes.addClass(classes)}}>
+    {% block content %}
+      <a href="{{ content.field_link.0['#url'] }}" aria-label="{{ content.field_platform.0 }}" target="{{ content.field_link.0['#url'].external ? '_blank' : '_self' }}" class="social-icon">
+        <span class="icon-{{ content.field_platform.0 }}"></span>
+      </a>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

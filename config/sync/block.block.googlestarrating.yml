@@ -1,0 +1,25 @@
+uuid: 2cf26a5e-cbdc-466b-bd67-8967cb73ec56
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:star_rating:6b6199ee-9953-4e55-bcec-6f980d1a53b0'
+  module:
+    - block_content
+  theme:
+    - sprowt3
+id: googlestarrating
+theme: sprowt3
+region: header1
+weight: -8
+provider: null
+plugin: 'block_content:6b6199ee-9953-4e55-bcec-6f980d1a53b0'
+settings:
+  id: 'block_content:6b6199ee-9953-4e55-bcec-6f980d1a53b0'
+  label: 'Google Star Rating'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

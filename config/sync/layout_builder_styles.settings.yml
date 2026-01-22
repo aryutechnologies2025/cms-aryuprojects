@@ -1,0 +1,3 @@
+multiselect: single
+form_type: checkboxes
+groups: "layout|Layout\r\norder|Column Ordering (for mobile)\r\nalignment|Alignment\r\nbgcolor|Background Color\r\nbgstyle|Background Style"

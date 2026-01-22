@@ -1,0 +1,25 @@
+uuid: ff2b4c34-2f63-4f09-9674-e6a5f9a942fc
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:webform:c5135cd6-02af-42b4-b4a5-03f89600dad3'
+  module:
+    - block_content
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_webformfreeestimatesubsitesmainsiteglobal
+theme: woodlawnandlandscaping
+region: disabled
+weight: 0
+provider: null
+plugin: 'block_content:c5135cd6-02af-42b4-b4a5-03f89600dad3'
+settings:
+  id: 'block_content:c5135cd6-02af-42b4-b4a5-03f89600dad3'
+  label: 'Webform - Free Estimate | Subsites main site (global)'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

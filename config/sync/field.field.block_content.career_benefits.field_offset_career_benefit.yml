@@ -1,0 +1,25 @@
+uuid: 6a75022a-7762-4b54-a995-923f2c7c5c8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.career_benefits
+    - field.storage.block_content.field_offset_career_benefit
+id: block_content.career_benefits.field_offset_career_benefit
+field_name: field_offset_career_benefit
+entity_type: block_content
+bundle: career_benefits
+label: Offset
+description: 'Skips the first few Career Benefits from the ordered list.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: 5
+  prefix: ''
+  suffix: ''
+field_type: integer

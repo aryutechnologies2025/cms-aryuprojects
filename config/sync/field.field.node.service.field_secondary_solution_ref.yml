@@ -1,0 +1,33 @@
+uuid: 42efb0fc-4475-4773-a102-f59a98162579
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_secondary_solution_ref
+    - node.type.service
+    - node.type.solution_page_package_alt
+    - node.type.solution_page_package_service
+    - node.type.solution_page_services
+id: node.service.field_secondary_solution_ref
+field_name: field_secondary_solution_ref
+entity_type: node
+bundle: service
+label: 'Secondary Solution'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      solution_page_package_alt: solution_page_package_alt
+      solution_page_package_service: solution_page_package_service
+      solution_page_services: solution_page_services
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: solution_page_package_alt
+field_type: entity_reference

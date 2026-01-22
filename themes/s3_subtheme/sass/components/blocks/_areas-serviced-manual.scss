@@ -1,0 +1,81 @@
+[class*="block-inline-blockareas-serviced-manual"] {
+  .field--name-field-grouped-links {
+    .field--name-field-city-link a {
+      // @extend %underline-link;
+    }
+
+    .field--name-field-city-link > .field__item {
+      &::before {
+        color: palette(secondary);
+      }
+
+      .path-frontpage & {
+        &::before {
+          color: palette(secondary);
+        }
+      }
+    }
+  }
+}
+
+.layout__region {
+  [class*="block-inline-blockareas-serviced-manual"] {
+    .accordioned {
+      .group-wrapper {
+          border-color: palette(gray, lightest);
+      }
+    }
+    .field--name-field-group-heading {
+      &::after {
+        color: palette(white);
+        background-color: palette(secondary);
+      }
+
+      &.active {
+        &::after {
+          color: palette(white);
+          background-color: palette(primary);
+        }
+      }
+    }
+  }
+
+  .bg-primary & {
+    [class*="block-inline-blockareas-serviced-manual"] {
+      .field--name-field-group-heading {
+        color: palette(white);
+        &::after {
+          color: palette(white);
+          background-color: palette(secondary);
+        }
+        &.active {
+          &::after {
+            color: palette(secondary);
+            background-color: palette(white);
+          }
+        }
+      }
+    }
+  }
+
+  .bg-secondary & {
+    [class*="block-inline-blockareas-serviced-homepage"] {
+      .field--name-field-group-heading {
+        &::after {
+          color: palette(white);
+          background-color: palette(primary);
+        }
+        &.active {
+          &::after {
+            color: palette(primary);
+            background-color: palette(white);
+          }
+        }
+      }
+
+      .field__item {
+        border-color: palette(white);
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function userback_uninstall($is_syncing)
+{
+    \Drupal::configFactory()->getEditable('userback.settings')->delete();
+}

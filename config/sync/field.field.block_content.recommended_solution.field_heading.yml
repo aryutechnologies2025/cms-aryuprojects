@@ -1,0 +1,30 @@
+uuid: 09ea1b4a-98e4-4c9b-b158-7b0ca4d8b8e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.recommended_solution
+    - field.storage.block_content.field_heading
+  module:
+    - tag_text_field
+id: block_content.recommended_solution.field_heading
+field_name: field_heading
+entity_type: block_content
+bundle: recommended_solution
+label: 'Heading Override'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  defaultTag: div
+  tagList: |-
+    h1|H1
+    h2|H2
+    h3|H3
+    h4|H4
+    h5|H5
+    h6|H6
+    div|Div
+field_type: html_tag_text_field_type

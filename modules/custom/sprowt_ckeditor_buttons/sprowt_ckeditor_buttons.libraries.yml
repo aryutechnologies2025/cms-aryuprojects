@@ -1,0 +1,16 @@
+# This adds the plugin JavaScript to the page.
+# cSpell:ignore simplebox demobox
+
+sprowtButton:
+  js:
+    js/build/sprowtButton.js: { preprocess: false, minified: true }
+  dependencies:
+    - core/ckeditor5
+    - ckeditor5/internal.drupal.ckeditor5.htmlEngine
+
+# Loaded in the text format configuration form to provide styling for the icon
+# used in toolbar config.
+admin.sprowtButton:
+  css:
+    theme:
+      css/sprowtButton.admin.css: { }

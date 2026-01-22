@@ -1,0 +1,40 @@
+uuid: a1e0489d-de42-444c-bd78-33523cf910f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - field_permissions
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: block_content.field_hero_style
+field_name: field_hero_style
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: overlay
+      label: Overlay
+    -
+      value: gradient
+      label: Gradient
+    -
+      value: diagonal
+      label: Diagonal
+    -
+      value: round
+      label: Round
+    -
+      value: round-edge
+      label: 'Round Edge'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

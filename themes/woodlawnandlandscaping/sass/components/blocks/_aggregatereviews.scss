@@ -1,0 +1,26 @@
+$star-color: palette(secondary); // Default Reviews Block star color
+$header-star-color: $star-color; // Header Reviews Block star color
+$header-star-color-mobile: palette(white); // Mobile Header Reviews Block star color
+
+.block-aggregate-reviews-block {
+  .star-ratings-wrap {
+    .stars {
+      .star,
+      .icon-star,
+      .icon-star-half {
+        color: $star-color;
+
+        // Header Reviews Block
+        .region-header1 &,
+        .region-header-layout #header-1 & {
+          color: $header-star-color;
+
+          // Mobile Header Reviews Block
+          @include breakpoint($max-small) {
+            color: $header-star-color-mobile;
+          }
+        }
+      }
+    }
+  }
+}

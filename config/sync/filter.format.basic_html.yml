@@ -1,0 +1,177 @@
+uuid: d41b3ceb-3976-4acc-9372-418402e269de
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.body_400x400
+    - core.entity_view_mode.media.body_wide_850x400
+    - core.entity_view_mode.media.brand_450x300_
+    - core.entity_view_mode.media.icon_200x200_
+    - core.entity_view_mode.media.side_650x430
+    - core.entity_view_mode.media.teaser_600x300_
+  module:
+    - blazy
+    - editor
+    - entity_embed
+    - media
+    - slick
+    - token_filter
+_core:
+  default_config_hash: P8ddpAIKtawJDi5SzOwCzVnnNYqONewSTJ6Xn0dW_aQ
+name: 'Basic HTML'
+format: basic_html
+weight: 0
+filters:
+  blazy_filter:
+    id: blazy_filter
+    provider: blazy
+    status: false
+    weight: -37
+    settings:
+      media_switch: ''
+      hybrid_style: ''
+      box_style: ''
+      box_media_style: ''
+      box_caption: ''
+      filter_tags:
+        img: img
+        iframe: iframe
+      use_data_uri: '0'
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: -43
+    settings: {  }
+  entity_embed:
+    id: entity_embed
+    provider: entity_embed
+    status: true
+    weight: -41
+    settings: {  }
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: true
+    weight: -46
+    settings: {  }
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: -40
+    settings: {  }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: true
+    weight: -45
+    settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -50
+    settings:
+      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right text-align-justify"> <h2 id class="text-align-left text-align-center text-align-right text-align-justify"> <h3 id class="text-align-left text-align-center text-align-right text-align-justify"> <h4 id class="text-align-left text-align-center text-align-right text-align-justify"> <h5 id class="text-align-left text-align-center text-align-right text-align-justify"> <h6 id class="text-align-left text-align-center text-align-right text-align-justify"> <cite> <dl> <dt> <dd> <span class> <img title src alt data-entity-type data-entity-uuid data-align data-caption width height class> <div id class> <blockquote cite> <ul type> <ol type start> <drupal-media title data-entity-type data-entity-uuid alt data-view-mode data-caption data-align> <a type hreflang name target href title class id rel data-entity-type data-entity-uuid data-entity-substitution> <strong> <em> <u> <sup> <li> <drupal-entity alt title data-align data-caption data-entity-embed-display data-entity-embed-display-settings data-view-mode data-entity-uuid data-langcode data-embed-button="node" data-entity-type="node">'
+      filter_html_help: false
+      filter_html_nofollow: false
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: -39
+    settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: -35
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: -44
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: -42
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: -49
+    settings:
+      filter_url_length: 72
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: -42
+    settings:
+      default_view_mode: default
+      allowed_view_modes:
+        body_400x400: body_400x400
+        body_wide_850x400: body_wide_850x400
+        brand_450x300_: brand_450x300_
+        icon_200x200_: icon_200x200_
+        side_650x430: side_650x430
+        teaser_600x300_: teaser_600x300_
+      allowed_media_types:
+        media_image: media_image
+  slick_filter:
+    id: slick_filter
+    provider: slick
+    status: false
+    weight: -36
+    settings:
+      caption:
+        alt: '0'
+        title: '0'
+      optionset: default
+      layout: ''
+      admin_uri: '/admin/config/content/formats/manage/basic_html?destination=/admin/config/content/formats%3Fcheck_logged_in%3D1&ajax_form=1&_wrapper_format=drupal_ajax'
+      background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_media_style: ''
+      loading: ''
+      responsive_image_style: ''
+      box_style: ''
+      image_style: ''
+      media_switch: ''
+      ratio: ''
+      thumbnail_style: ''
+      grid: ''
+      grid_medium: ''
+      grid_small: ''
+      style: ''
+      skin: ''
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      optionset_thumbnail: ''
+      skin_thumbnail: ''
+      thumbnail_caption: ''
+      thumbnail_effect: ''
+      thumbnail_position: ''
+      override: false
+      preserve_keys: false
+      visible_items: null
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: true
+    weight: -47
+    settings:
+      replace_empty: true

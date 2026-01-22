@@ -1,0 +1,13 @@
+uuid: 963136db-f897-4e03-9671-f63103e7414c
+langcode: en
+status: true
+dependencies: {  }
+id: fade
+label: Fade
+classes: fade
+type: component
+group: default
+block_restrictions:
+  - 'inline_block:image'
+layout_restrictions: {  }
+weight: -1

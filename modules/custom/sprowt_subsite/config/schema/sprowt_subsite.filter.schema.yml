@@ -1,0 +1,39 @@
+# Schema for the views filter plugins.
+
+views.filter.sprowt_subsite_views_filter:
+    type: views_filter
+    label: 'IN operator'
+    mapping:
+        operator:
+            type: string
+            label: 'Operator'
+        value:
+            type: sequence
+            label: 'Values'
+            sequence:
+                type: string
+                label: 'Value'
+        expose:
+            type: mapping
+            label: 'Expose'
+            mapping:
+                reduce:
+                    type: boolean
+                    label: 'Reduce'
+        reduce_duplicates:
+            type: boolean
+            label: 'Reduce duplicate'
+        group_info:
+            mapping:
+                group_items:
+                    sequence:
+                        type: views.filter.group_item.in_operator
+                        label: 'Group item'
+
+
+views.filter_value.sprowt_subsite_views_filter:
+    type: sequence
+    label: 'Values'
+    sequence:
+        type: string
+        label: 'Value'

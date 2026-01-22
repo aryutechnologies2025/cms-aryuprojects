@@ -1,0 +1,63 @@
+uuid: 942c9702-d4cd-4adc-b11b-4ef2827db392
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.diff
+    - field.field.node.city_page.field_city_tax
+    - field.field.node.city_page.field_gmb_account
+    - field.field.node.city_page.field_industry
+    - field.field.node.city_page.field_landing_page_ref
+    - field.field.node.city_page.field_main_branch
+    - field.field.node.city_page.field_meta_description
+    - field.field.node.city_page.field_meta_tags
+    - field.field.node.city_page.field_package_level
+    - field.field.node.city_page.field_ref_benefits
+    - field.field.node.city_page.field_services
+    - field.field.node.city_page.field_services_additional
+    - field.field.node.city_page.field_special_offers
+    - field.field.node.city_page.field_standalone_landing_page
+    - field.field.node.city_page.field_subsite
+    - field.field.node.city_page.field_used_for_lists_only
+    - field.field.node.city_page.layout_builder__layout
+    - node.type.city_page
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.city_page.diff
+targetEntityType: node
+bundle: city_page
+mode: diff
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_city_tax: true
+  field_gmb_account: true
+  field_industry: true
+  field_landing_page_ref: true
+  field_main_branch: true
+  field_meta_description: true
+  field_meta_tags: true
+  field_package_level: true
+  field_ref_benefits: true
+  field_services: true
+  field_services_additional: true
+  field_special_offers: true
+  field_standalone_landing_page: true
+  field_subsite: true
+  field_used_for_lists_only: true
+  langcode: true
+  layout_builder__layout: true

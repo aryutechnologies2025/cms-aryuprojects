@@ -1,0 +1,14 @@
+uuid: 0de2da89-650e-4a11-a2b2-f6346320b54e
+langcode: en
+status: true
+dependencies: {  }
+id: additional_service_and_city
+label: 'Additional Service and City'
+enabled: true
+first_field: field_additional_service_cities
+second_field: field_services_additional
+add_direction: append
+bundles:
+  node:
+    - city_page
+    - service

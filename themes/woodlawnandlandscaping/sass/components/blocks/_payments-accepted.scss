@@ -1,0 +1,14 @@
+.layout__region {
+    .block-inline-blockpayments-accepted {
+        .field--name-field-label {
+            color: palette(primary);
+        }
+    }
+
+    footer & {
+        .field--name-field-label {
+          color: palette(white);
+        }
+      }
+}
+  

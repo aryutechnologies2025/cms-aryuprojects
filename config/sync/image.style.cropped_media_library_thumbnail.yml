@@ -1,0 +1,15 @@
+uuid: 6d7dc2eb-7fc8-454b-9c80-c0fd0780ea01
+langcode: en
+status: true
+dependencies: {  }
+name: cropped_media_library_thumbnail
+label: 'Cropped Media Library Thumbnail'
+effects:
+  68e47202-0830-4664-b105-09cdef3f1948:
+    uuid: 68e47202-0830-4664-b105-09cdef3f1948
+    id: image_scale
+    weight: 1
+    data:
+      width: 600
+      height: 600
+      upscale: false

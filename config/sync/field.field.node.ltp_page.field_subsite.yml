@@ -1,0 +1,23 @@
+uuid: 063e97e5-3870-4dee-8fe3-75dfddd60624
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subsite
+    - node.type.ltp_page
+  module:
+    - sprowt_subsite
+id: node.ltp_page.field_subsite
+field_name: field_subsite
+entity_type: node
+bundle: ltp_page
+label: Subsite
+description: 'Main or Subsite this content belongs to.'
+required: false
+translatable: true
+default_value:
+  -
+    target: _main
+default_value_callback: ''
+settings: {  }
+field_type: sprowt_subsite_reference

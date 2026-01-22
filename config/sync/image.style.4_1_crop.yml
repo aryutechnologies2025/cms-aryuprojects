@@ -1,0 +1,7 @@
+uuid: c5500f02-9328-4ffb-9ed9-32383d5305a2
+langcode: en
+status: true
+dependencies: {  }
+name: 4_1_crop
+label: '4:1 Crop'
+effects: {  }

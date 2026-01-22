@@ -1,0 +1,69 @@
+uuid: ee4a2b1d-4e28-48cd-8529-e056c8a72d22
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.services_no_link
+    - field.field.block_content.services_no_link.field_heading
+    - field.field.block_content.services_no_link.field_label_tag
+    - field.field.block_content.services_no_link.field_subheading_tag
+  module:
+    - hide_revision_field
+    - tag_text_field
+id: block_content.services_no_link.default
+targetEntityType: block_content
+bundle: services_no_link
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_widget
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_label_tag:
+    type: html_tag_text_field_widget
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_subheading_tag:
+    type: html_tag_text_field_widget
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 4
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  revision_log:
+    type: hide_revision_field_log_widget
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+      show: true
+      default: ''
+      permission_based: false
+      allow_user_settings: true
+    third_party_settings: {  }
+hidden: {  }

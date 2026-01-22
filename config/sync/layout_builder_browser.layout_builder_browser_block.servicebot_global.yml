@@ -1,0 +1,11 @@
+uuid: 1b91dfea-58a3-42e7-83b1-6e1730a516b9
+langcode: en
+status: true
+dependencies: {  }
+id: servicebot_global
+block_id: 'block_content:236089ba-9901-4c86-ab09-2ae300d6f786'
+category: re_usable_blocks
+label: 'Servicebot (global)'
+image_path: ''
+image_alt: ''
+weight: -100

@@ -1,0 +1,26 @@
+uuid: c06f7475-f6f8-4603-b092-4d1206e3fffe
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.webform_default
+  module:
+    - filter
+    - media
+    - system
+    - toolbar
+    - webform
+id: client_webform
+label: 'Webform Submission'
+weight: -6
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content'
+  - 'access toolbar'
+  - 'access webform overview'
+  - 'access webform submission user'
+  - 'use text format webform_default'
+  - 'view any webform submission'
+  - 'view media'
+  - 'view the administration theme'

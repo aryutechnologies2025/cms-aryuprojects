@@ -1,0 +1,31 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+/**
+ * @file
+ * Copy Layout Builder section module file.
+ */
+
+/**
+ * Implements hook_help().
+ */
+
+function lb_copy_section_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.lb_copy_section':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module allows you to copy selected layout builder sections and paste them within the same page or on a different page.
+      Content and configuration is duplicated so new instances are created for the content.') . '</p>';
+      $output .= '<h3>' . t('Features.') .'</h3>';
+      $output .= '<ul>'.'<li>'.t('Sections can be stored (copied) inside Drupal private tempstore and then inserted (pasted) anywhere you would otherwise be able to create a section.').'</li>';
+      $output .= '<li>'.t('Allows for very quick content creation in situations where you need repeated section configuration or content.').'</li>'.'</ul>';
+      return $output;
+  }
+}
+/**
+ * Implements hook_element_info_alter().
+ */
+function lb_copy_section_element_info_alter(array &$types) {
+  $types['layout_builder']['#pre_render'][] = '\Drupal\lb_copy_section\CopySectionRender::preRender';
+}

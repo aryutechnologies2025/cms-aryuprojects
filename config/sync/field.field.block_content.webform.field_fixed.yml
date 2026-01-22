@@ -1,0 +1,23 @@
+uuid: 12a4cefc-c6e1-48d2-910c-8f89f1a428b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.webform
+    - field.storage.block_content.field_fixed
+id: block_content.webform.field_fixed
+field_name: field_fixed
+entity_type: block_content
+bundle: webform
+label: 'Layout Fixed'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'on'
+  off_label: 'off'
+field_type: boolean

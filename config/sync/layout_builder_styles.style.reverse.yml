@@ -1,0 +1,15 @@
+uuid: 7e3dd2a8-f140-4813-b1e1-810c008d9ae3
+langcode: en
+status: true
+dependencies: {  }
+id: reverse
+label: Reverse
+classes: order-reverse
+type: section
+group: order
+block_restrictions: {  }
+layout_restrictions:
+  - layout_twocol_section
+  - layout_threecol_section
+  - layout_fourcol_section
+weight: 3

@@ -1,0 +1,51 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<div class="article-wrapper">
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% if content.field_button[0]['#url'] is not empty %}
+    {% if content.field_button[0]['#url'].options.attributes is not empty %}
+      {% set view_all_attributes = create_attribute(content.field_button[0]['#url'].options.attributes) %}
+    {% else %}
+      {% set view_all_attributes = create_attribute() %}
+    {% endif %}
+    <a href="{{ content.field_button[0]['#url'] }}" alt="{{ content.field_button_text[0]|render|striptags }}" {{view_all_attributes.addClass(['special-offer-link ' ~ content.field_featured.0|render|striptags])}}>
+  {% else %}
+    <div class="special-offer-link {{ content.field_featured.0|render }}">
+  {% endif %}
+      <article{{attributes.addClass(classes, content.field_featured.0|render).removeAttribute('role')}}>
+        <div{{content_attributes.addClass('node__content')}}>
+          <div class="sp-content-wrap">
+            <div class="sp-content">
+              {{ content|without('field_featured','field_special_offer_featured_ico','field_button','field_button_text') }}
+              {% if content.field_button_text.0 is not empty %}
+                <div class="field--name-field-button">
+                  <span>{{ content.field_button_text.0 }}</span>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+            {% set logo = sprowt_get_setting('special_offer_logo_reverse') %}
+            {% set logo_url = false %}
+            {% if logo is not empty %}
+              {% set logo_url = file_url(logo.uri.value) %}
+              <div class="special-offer-logo-side"><img src="{{ logo_url }}" alt="{{ company_name }}" /></div>
+            {% endif %}
+        </div>
+      </article>
+  {% if content.field_button[0]['#url'] is not empty %}
+    </a>
+  {% else %}
+    </div>
+  {% endif %}
+</div>

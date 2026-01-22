@@ -1,0 +1,21 @@
+uuid: f1a06a09-b673-4086-9108-d7cc9990060b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.modal_block
+    - field.storage.block_content.field_cookie
+id: block_content.modal_block.field_cookie
+field_name: field_cookie
+entity_type: block_content
+bundle: modal_block
+label: Cookie
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

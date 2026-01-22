@@ -1,0 +1,248 @@
+uuid: f7b69cb6-d8f7-4b4c-8616-e710890812d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.concern.body
+    - field.field.node.concern.field_exclude
+    - field.field.node.concern.field_exclude_from_solution_find
+    - field.field.node.concern.field_icon_concern
+    - field.field.node.concern.field_industry
+    - field.field.node.concern.field_issues
+    - field.field.node.concern.field_meta_description
+    - field.field.node.concern.field_meta_tags
+    - field.field.node.concern.field_package_level
+    - field.field.node.concern.field_services
+    - field.field.node.concern.field_subsite
+    - field.field.node.concern.field_subsite_multiple
+    - field.field.node.concern.field_summary
+    - field.field.node.concern.layout_builder__layout
+    - node.type.concern
+  module:
+    - field_group
+    - hide_revision_field
+    - media_library
+    - metatag
+    - path
+    - sprowt_subsite
+    - text
+third_party_settings:
+  field_group:
+    group_connected_content:
+      children:
+        - field_services
+        - field_issues
+      label: 'Connected Content'
+      region: content
+      parent_name: ''
+      weight: 13
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+        weight: -8
+    group_configuration:
+      children:
+        - field_subsite
+        - field_subsite_multiple
+        - path
+        - url_redirects
+        - field_meta_tags
+      label: Configuration
+      region: content
+      parent_name: ''
+      weight: 12
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
+        weight: -9
+    group_package_level:
+      children:
+        - field_package_level
+      label: 'Package Level'
+      region: content
+      parent_name: ''
+      weight: 16
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+        weight: 0
+id: node.concern.default
+targetEntityType: node
+bundle: concern
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 8
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  content_library_include:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_exclude:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_exclude_from_solution_find:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_icon_concern:
+    type: media_library_widget
+    weight: 11
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_industry:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_issues:
+    type: options_select
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_meta_description:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 22
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_package_level:
+    type: options_buttons
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_services:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_subsite:
+    type: sprowt_subsite_reference_selector
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_subsite_multiple:
+    type: sprowt_subsite_reference_selector
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_summary:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  revision_log:
+    type: hide_revision_field_log_widget
+    weight: 18
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+      show: true
+      default: ''
+      permission_based: false
+      allow_user_settings: true
+      hide_revision: false
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  layout_builder__layout: true
+  sticky: true
+  uid: true

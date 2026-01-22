@@ -1,0 +1,23 @@
+uuid: 0c92e9e9-0847-4f9a-b3cf-8e7600905e07
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.before_after_image_slider
+    - field.storage.block_content.field_before_color
+  module:
+    - options
+id: block_content.before_after_image_slider.field_before_color
+field_name: field_before_color
+entity_type: block_content
+bundle: before_after_image_slider
+label: 'Before Color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: primary
+default_value_callback: ''
+settings: {  }
+field_type: list_string

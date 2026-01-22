@@ -1,0 +1,11 @@
+uuid: c4874c91-709d-4a44-aaac-1f6bb87fa28c
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.icon_200x200_
+label: 'Icon (200x200)'
+description: ''
+targetEntityType: media
+cache: true

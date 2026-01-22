@@ -1,0 +1,25 @@
+uuid: da5446ae-235c-4777-900f-8b899b1a061e
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:brands:ecc746d0-6506-43bb-9b55-c762acb794c4'
+  module:
+    - block_content
+  theme:
+    - sprowt3
+id: headerbrands
+theme: sprowt3
+region: header1
+weight: -7
+provider: null
+plugin: 'block_content:ecc746d0-6506-43bb-9b55-c762acb794c4'
+settings:
+  id: 'block_content:ecc746d0-6506-43bb-9b55-c762acb794c4'
+  label: 'Header Brands'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

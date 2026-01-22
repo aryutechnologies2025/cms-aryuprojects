@@ -1,0 +1,13 @@
+uuid: 63c73511-530b-46dd-8091-888ccac5d017
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_media_gallery
+id: block_content.hero_media_gallery.default
+targetEntityType: block_content
+bundle: hero_media_gallery
+mode: default
+content: {  }
+hidden:
+  langcode: true

@@ -1,0 +1,29 @@
+uuid: e1b4ab36-9210-4de4-983a-a5acb4f1f769
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.benefits
+    - field.storage.block_content.field_benefit_overrides
+    - node.type.benefit
+id: block_content.benefits.field_benefit_overrides
+field_name: field_benefit_overrides
+entity_type: block_content
+bundle: benefits
+label: 'Benefit Overrides'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      benefit: benefit
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

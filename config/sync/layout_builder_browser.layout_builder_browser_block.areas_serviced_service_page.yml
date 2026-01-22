@@ -1,0 +1,16 @@
+uuid: e9b9ab4d-efbb-40b8-b6b8-376a62b2012a
+langcode: en
+status: true
+dependencies:
+  module:
+    - sprowt_admin_override
+third_party_settings:
+  sprowt_admin_override:
+    description: "<p>List of City Pages and LTP Pages tagged with the current Service Page and options to group by Industry, Location or Region Taxonomy.<br>If 'Show Additional Service Cities' is selected the list will be filtered by cities tagged with the 'Additional Services - No Follow Link' field.&nbsp;</p>"
+id: areas_serviced_service_page
+block_id: 'inline_block:areas_serviced_service_page'
+category: custom_blocks
+label: 'Areas Serviced (Service Page)'
+image_path: ''
+image_alt: ''
+weight: -96

@@ -1,0 +1,8 @@
+name: Inline Block Content
+type: module
+description: This uses content_import_export to save content or export content in inline blocks (in layout builder)
+package: Coalmarch
+core_version_requirement: ^9 || ^10
+dependencies:
+    - core:layout_builder
+    - content_import_export:content_import_export

@@ -1,0 +1,11 @@
+entity.chat_code.overview:
+    title: Chat codes
+    parent: system.admin_structure
+    description: 'List of chat codes'
+    route_name: entity.chat_code.collection
+
+entity.chat_code.add_form:
+    title: Add chat code
+    parent: entity.chat_code.overview
+    description: 'Add a chat code'
+    route_name: entity.chat_code.add_form

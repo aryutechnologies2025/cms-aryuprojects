@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Sprowt Installer theme.
+ */
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ */
+function sprowt_installer_preprocess_html(&$variables)
+{
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for page.html.twig.
+ */
+function sprowt_installer_preprocess_page(&$variables)
+{
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function sprowt_installer_preprocess_node(&$variables)
+{
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_installer_preprocess_maintenance_page(&$variables)
+{
+  $code = file_get_contents(__DIR__ . '/images/sprowt-icon.svg');
+  $variables['sprowt_icon'] = \Drupal\Core\Render\Markup::create($code);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_installer_preprocess_install_page(&$variables)
+{
+  $code = file_get_contents(__DIR__ . '/images/sprowt-icon.svg');
+  $variables['sprowt_icon'] = \Drupal\Core\Render\Markup::create($code);
+}

@@ -1,0 +1,24 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'max-col-' ~ content.field_max_columns[0]['#markup'],
+    (content.field_accordion.0['#markup'] == '1' ? 'accordioned' )
+  ]
+%}
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {{ content|without('field_link','field_group_by','field_max_columns','field_accordion') }}
+
+  {% block content %}
+    {% set groupedBy = 'block_group_' ~ (content.field_group_by.0['#markup'] == '' ? 'none' : content.field_group_by.0['#markup']) %}
+    {{ drupal_view((subsite == '_main' ? 'areas_serviced_homepage' : 'areas_serviced_homepage_subsite'), groupedBy) }}
+  {% endblock %}
+
+  <div>{{ content.field_link }}</div>
+</div>

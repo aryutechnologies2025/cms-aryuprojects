@@ -1,0 +1,11 @@
+uuid: af34ee46-2993-4cd8-96bf-209f88c2c144
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.profiles
+id: block_content.profiles
+target_entity_type_id: block_content
+target_bundle: profiles
+default_langcode: site_default
+language_alterable: false

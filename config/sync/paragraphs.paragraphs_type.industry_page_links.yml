@@ -1,0 +1,10 @@
+uuid: 0b81fd72-6c74-42b5-9f56-3d06629e01cd
+langcode: en
+status: true
+dependencies: {  }
+id: industry_page_links
+label: 'Page Links by Industry'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

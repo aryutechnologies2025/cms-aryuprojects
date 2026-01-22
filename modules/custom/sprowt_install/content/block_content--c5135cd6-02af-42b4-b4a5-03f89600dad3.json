@@ -1,0 +1,127 @@
+{
+    "_entities": {
+        "c5135cd6-02af-42b4-b4a5-03f89600dad3::6773": {
+            "_exportInfo": {
+                "key": "c5135cd6-02af-42b4-b4a5-03f89600dad3::6773",
+                "entity_type": "block_content",
+                "bundle": "webform",
+                "entity_id": "1900",
+                "uuid": "c5135cd6-02af-42b4-b4a5-03f89600dad3",
+                "isDefaultRevision": true,
+                "revisionId": "6773",
+                "label": "Webform - Free Estimate | Subsites main site (global)"
+            },
+            "id": [
+                {
+                    "value": 1900
+                }
+            ],
+            "uuid": [
+                {
+                    "value": "c5135cd6-02af-42b4-b4a5-03f89600dad3"
+                }
+            ],
+            "revision_id": [
+                {
+                    "value": 6773
+                }
+            ],
+            "langcode": [
+                {
+                    "value": "en"
+                }
+            ],
+            "type": [
+                {
+                    "target_id": "webform",
+                    "target_type": "block_content_type",
+                    "target_uuid": "29125c5a-9c4e-4db6-aa56-521da46fc801"
+                }
+            ],
+            "revision_created": [
+                {
+                    "value": "2023-11-14T20:41:54+00:00",
+                    "format": "Y-m-d\\TH:i:sP"
+                }
+            ],
+            "revision_user": [
+                {
+                    "target_id": 37,
+                    "target_type": "user",
+                    "target_uuid": "3dc082e2-b055-42ac-8446-27e197dab810",
+                    "url": "\/users\/wmcmilliancoalmarchcom",
+                    "_export": "3dc082e2-b055-42ac-8446-27e197dab810"
+                }
+            ],
+            "revision_log": [
+                {
+                    "value": "Created new Webform"
+                }
+            ],
+            "status": [
+                {
+                    "value": true
+                }
+            ],
+            "info": [
+                {
+                    "value": "Webform - Free Estimate | Subsites main site (global)"
+                }
+            ],
+            "changed": [
+                {
+                    "value": "2023-11-14T20:42:08+00:00",
+                    "format": "Y-m-d\\TH:i:sP"
+                }
+            ],
+            "reusable": [
+                {
+                    "value": true
+                }
+            ],
+            "default_langcode": [
+                {
+                    "value": true
+                }
+            ],
+            "revision_translation_affected": [
+                {
+                    "value": true
+                }
+            ],
+            "metatag": {
+                "value": {
+                    "canonical_url": "http:\/\/sprowt3.test\/admin\/content-import-export\/export\/block_content\/1900",
+                    "title": "Export | Sprowt 3"
+                }
+            },
+            "field_fixed": [
+                {
+                    "value": false
+                }
+            ],
+            "field_heading": [
+                {
+                    "value": "Get a Free Estimate",
+                    "tag": "div"
+                }
+            ],
+            "field_label_tag": [],
+            "field_subheading_tag": [],
+            "field_text": [],
+            "field_webform": [
+                {
+                    "target_id": "free_estimate_subsite_main_site",
+                    "default_data": "",
+                    "status": "open",
+                    "open": null,
+                    "close": null,
+                    "target_type": "webform",
+                    "target_uuid": "3d2d9829-9500-40b2-8d7a-d737ff60a81a",
+                    "url": "\/webform\/free_estimate_subsite_main_site"
+                }
+            ]
+        }
+    },
+    "_content": []
+}

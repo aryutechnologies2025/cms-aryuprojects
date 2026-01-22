@@ -1,0 +1,59 @@
+sprowt_settings.sprowt_settings:
+    path: '/admin/config/sprowt/sprowt-settings'
+    defaults:
+        _title: 'Sprowt Settings'
+        _form: 'Drupal\sprowt_settings\Form\SprowtSettingsForm'
+    requirements:
+        _permission: 'administer site configuration'
+
+sprowt_settings.sprowt_settings_add_industries:
+    path: '/admin/config/sprowt/sprowt-settings-add-industries'
+    defaults:
+        _title: 'Sprowt Settings Add Industries'
+        _form: 'Drupal\sprowt_settings\Form\SprowtSettingsBulkAddIndustriesForm'
+    requirements:
+        _permission: 'administer site configuration'
+
+sprowt_settings.admin_config_sprowt:
+    path: '/admin/config/sprowt'
+    defaults:
+        _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+        _title: 'Sprowt'
+    requirements:
+        _permission: 'access administration pages'
+
+sprowt_settings.install_file:
+    path: '/admin/config/sprowt/install-file'
+    defaults:
+        _form: 'Drupal\sprowt_settings\Form\SprowtSettingsInstallFileForm'
+        _title: 'Sprowt Install File'
+    requirements:
+        _permission: 'administer site configuration'
+
+sprowt_settings.schedule_text:
+    path: '/sprowt/schedule-text'
+    defaults:
+        _controller: '\Drupal\sprowt_settings\Controller\SprowtSettingsController::scheduleText'
+        _title: 'Sprowt Schedule Text'
+    requirements:
+        _permission: 'access content'
+
+sprowt_settings.conditional_token:
+    path: '/sprowt-settings/conditional-token'
+    defaults:
+        _title: 'Conditional Token'
+        _form: 'Drupal\sprowt_settings\Form\ConditionalTokenForm'
+    requirements:
+        _permission: 'access administration pages'
+    options:
+        _admin_route: TRUE
+
+sprowt_settings.conditional_token_delete:
+    path: '/sprowt-settings/conditional-token-delete/{key}'
+    defaults:
+        _title: 'Delete conditional token'
+        _form: 'Drupal\sprowt_settings\Form\ConditionalTokenDeleteForm'
+    requirements:
+        _permission: 'access administration pages'
+    options:
+        _admin_route: TRUE

@@ -1,0 +1,25 @@
+uuid: 4f2e6b85-c73e-4336-9403-b771596acc74
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:copyright:98191c51-8535-47e2-afd0-865671757635'
+  module:
+    - block_content
+  theme:
+    - s3_subtheme
+id: s3_subtheme_copyright
+theme: s3_subtheme
+region: disabled
+weight: -3
+provider: null
+plugin: 'block_content:98191c51-8535-47e2-afd0-865671757635'
+settings:
+  id: 'block_content:98191c51-8535-47e2-afd0-865671757635'
+  label: Copyright
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

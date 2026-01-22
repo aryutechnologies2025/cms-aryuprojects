@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Views Contextual Limit module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function views_contextual_limit_views_data_alter(array &$data)
+{
+    $data['views']['limit'] = [
+        'title' => t('Limit'),
+        'help' => t('Limit view by contextual argument.'),
+        'argument' => [
+            'id' => 'limit',
+        ],
+    ];
+}

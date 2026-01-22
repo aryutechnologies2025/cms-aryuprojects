@@ -1,0 +1,42 @@
+field.widget.settings.sprowt_path_widget:
+    type: mapping
+    label: SprowtPathWidget settings
+    mapping:
+        in_sidebar:
+            type: boolean
+            label: In Sidebar By Itself
+node.type.*.third_party.sprowt_admin_override:
+    type: mapping
+    label: 'Additional Node type settings'
+    mapping:
+        external_node_type:
+            type: boolean
+            label: 'Is external node type'
+
+field.widget.settings.sprowt_admin_override_text_area_with_a_formatted_summary:
+    type: mapping
+    label: Text area with a formatted summary widget settings
+    mapping:
+        rows:
+            type: integer
+            label: 'Rows'
+        summary_rows:
+            type: integer
+            label: 'Number of summary rows'
+        placeholder:
+            type: text
+            label: 'Placeholder'
+        show_summary:
+            type: boolean
+            label: 'Always show summary'
+        use_editor:
+            type: boolean
+            label: 'Use HTML editor in the summary.'
+
+layout_builder_browser.layout_builder_browser_block.*.third_party.sprowt_admin_override:
+    type: mapping
+    label: 'Additional Layout Builder Browser Block settings'
+    mapping:
+        description:
+            type: string
+            label: 'Description'

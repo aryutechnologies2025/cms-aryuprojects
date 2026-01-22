@@ -1,0 +1,14 @@
+uuid: 72c8160b-828e-42eb-8d79-0ea712529265
+langcode: en
+status: true
+dependencies: {  }
+id: gradient_light
+label: 'Gradient Light'
+classes: gradient-light
+type: component
+group: bgstyle
+block_restrictions:
+  - 'inline_block:call_out'
+  - 'inline_block:hero'
+layout_restrictions: {  }
+weight: 10

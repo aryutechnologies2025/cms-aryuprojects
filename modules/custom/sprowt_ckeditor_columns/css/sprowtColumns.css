@@ -1,0 +1,13 @@
+.ck .two-column {
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.1); }
+
+.ck .two-column ul,
+.ck .two-column ol {
+  display: flex;
+  flex-wrap: wrap; }
+
+.ck .two-column ul li,
+.ck .two-column ol li {
+  flex: 1 1 45%;
+  padding-right: 5%; }

@@ -1,0 +1,3 @@
+administer servicebot configuration:
+    title: 'Administer ServiceBot configuration'
+    restrict access: true

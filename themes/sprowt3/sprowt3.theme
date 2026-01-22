@@ -1,0 +1,1005 @@
+<?php
+
+ /**
+ * Use this file to override Drupal's default HTML output
+ *
+ * Preprocess Hooks
+ * Utility Functions
+ *
+ */
+
+use Drupal\block_content\Entity\BlockContent;
+use Drupal\Component\Serialization\Yaml;
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Database\Database;
+use Drupal\Core\Render\Markup;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\node\Entity\Node;
+use Drupal\views\Plugin\views\query\Sql;
+
+//*********************************************
+// Preprocess Hooks
+//*********************************************
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function sprowt3_preprocess_html(&$variables) {
+  // Add node id to the body class.
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof Node) {
+    $variables['attributes']['class'][] = 'page-node-' . $node->id();
+    $variables['attributes']['class'][] = 'page-node-type-' . $node->bundle();
+    if ($node->hasField('field_subsite')) {
+      $variables['attributes']['class'][] = 'subsite-' . $node->field_subsite->target;
+    }
+    if ($node->hasField('field_page_type')) {
+      $variables['attributes']['class'][] = 'page-type-' . $node->field_page_type->value;
+    }
+    if ($node->hasField('field_career_page_type')) {
+      $variables['attributes']['class'][] = 'page-type-' . $node->field_career_page_type->value;
+    }
+  }
+  else {
+    if(!empty($node)) {
+      $variables['attributes']['class'][] = 'page-node-' . $node;
+    }
+  }
+
+  $variables['backtotop'] = '';
+
+  /** @var \Drupal\sprowt_settings\SprowtSettings $sprowtSettings */
+  $sprowtSettings = \Drupal::service('sprowt_settings.manager');
+  $jumpToTop = $sprowtSettings->getSetting('jump_button');
+  if(!empty($jumpToTop)) {
+    $variables['backtotop'] = [
+      '#type' => 'markup',
+      '#markup' => Markup::create('<button id="backtotop" type="button"></button>')
+    ];
+  }
+
+}
+
+/**
+* Implements hook_theme_suggestions_HOOK_alter().
+*
+* Target custom block templates
+*/
+function sprowt3_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  // Provide suggestion for block templates by custom block type.
+  if (!empty($variables['elements']['content']['#block_content'])) {
+    $block = $variables['elements']['content']['#block_content'];
+    // Add `block--BLOCK-TYPE.html.twig`.
+    $suggestions[] = 'block__' . $block->bundle();
+    if(!empty($variables["elements"]["#id"])) {
+      $suggestions[] = 'block__' . $block->bundle() . '__' . $variables["elements"]["#id"];
+    }
+    if(!empty($variables["elements"]["#attributes"]["id"])) {
+      $id = str_replace('-', '_', $variables["elements"]["#attributes"]["id"]);
+    }
+    if(!empty($id)) {
+      $suggestions[] = 'block__' . $block->bundle() . '__' . $id;
+    }
+    $view_mode = $variables['elements']['#configuration']['view_mode'];
+    if (!empty($view_mode)) {
+      // Add `block--BLOCK-TYPE--VIEW-MODE.html.twig`.
+      $suggestions[] = 'block__' . $block->bundle() . '__' . $view_mode;
+      if(!empty($variables["elements"]["#id"])) {
+        $suggestions[] = 'block__' . $block->bundle() . '__' . $view_mode . '__' . $variables["elements"]["#id"];
+      }
+      if(!empty($id)) {
+        $suggestions[] = 'block__' . $block->bundle() . '__' . $view_mode . '__' . $id;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ *  Post Type classes for pages
+ */
+function sprowt3_theme_suggestions_page_alter(&$suggestions, $vars, $hook) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $content_title = preg_replace('@[^a-z0-9-]+@','-', strtolower($node->label()));
+    $suggestions[] = 'page__'.$content_type;
+    $suggestions[] = 'page__'.$content_title;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_container_alter().
+ */
+function sprowt3_theme_suggestions_container_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+
+  if (isset($element['#type']) && $element['#type'] == 'view') {
+    $suggestions[] = 'container__' . $element['#name'];
+    $suggestions[] = 'container__' . $element['#name'] . '__' . $element['#display_id'];
+  }
+
+  if (isset($element['#type']) && $element['#type'] == 'container' && isset($element['children']['#type'])) {
+    $suggestions[] = 'container__' . $element['children']['#type'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for block.html.twig.
+ */
+function sprowt3_preprocess_block(&$variables) {
+  $node = \Drupal::request()->attributes->get('node');
+  if($node instanceof Node) {
+    $variables['node'] = $node;
+    $variables['nid'] = $node->id();
+    $variables['content_type'] = $node->bundle();
+    $variables['node_title'] = $node->getTitle();
+    if ($node->hasField('field_main_branch')) {
+      $variables['main_location'] = $node->get('field_main_branch')->getString();
+    }
+    if ($node->hasField('field_subsite')) {
+      $variables['subsite'] = $node->field_subsite->target;
+    }
+    if ($node->hasField('field_page_type')) {
+      $variables['page_type'] = $node->field_page_type->value;
+    }
+    if ($node->hasField('field_author')) {
+      $variables['authorId'] = $node->get('field_author')->getString();
+    }
+  }
+  // adding custom attribute class for block
+  if ($variables['elements']['#base_plugin_id'] == 'block_content') {
+    $blockType = strtr($variables['content']['#block_content']->bundle(), '_', '-');
+    $variables['attributes']['class'][] = 'block--type-' . $blockType;
+  }
+  $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  if ($variables['elements']['#base_plugin_id'] == 'menu_block') {
+    sprowt3_preprocess_menu_block($variables);
+  }
+  if ($variables['elements']['#base_plugin_id'] == 'subsite_menu_block') {
+    sprowt3_preprocess_menu_block($variables);
+  }
+}
+
+function sprowt3_preprocess_block__social_media(&$variables)
+{
+  $block = $variables["elements"]["content"]["#block_content"] ?? null;
+  if(empty($block)) {
+    return;
+  }
+  $useSubsiteLinks = sprowt_get_field_value($block, 'field_use_subsite_links');
+  if(!empty($useSubsiteLinks)) {
+    $subsite = sprowt_subsite_get_subsite();
+    if(!empty($subsite) && $subsite instanceof Node) {
+      $itemList = $subsite->get('field_social_media');
+      $changed = false;
+      /** @var \Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay $entityViewDisplay */
+      $entityViewDisplay = \Drupal::service('entity_type.manager')
+        ->getStorage('entity_view_display')
+        ->load('block_content.social_media.' . $variables["content"]["#view_mode"]);
+      if(empty($entityViewDisplay)) {
+        $entityViewDisplay = \Drupal::service('entity_type.manager')
+          ->getStorage('entity_view_display')
+          ->load('block_content.social_media.default');
+      }
+      if(!empty($entityViewDisplay)) {
+        $settings = $entityViewDisplay->getComponent('field_social_media');
+      }
+      else {
+        $settings = [
+          'label' => 'hidden'
+        ];
+      }
+      if (!$itemList->isEmpty()) {
+        $variables['content']['field_social_media'] = $itemList->view($settings);
+        $changed = true;
+      }
+      else {
+        $mainBlock = \Drupal::entityTypeManager()->getStorage('block_content')->loadByProperties([
+          'uuid' => '7e5f53fa-561e-4ef8-9ba7-778f95cb1cce'
+        ]);
+        if (!empty($mainBlock)) {
+          $mainBlock = array_shift($mainBlock);
+          $variables['content']['field_social_media'] = $mainBlock->field_social_media->view($settings);
+          $changed = true;
+        }
+      }
+      $disable = sprowt_get_field_value($subsite, 'field_disable_social_media');
+      if(!empty($disable)) {
+          $changed = false;
+      }
+      if (empty($changed)) {
+        unset($variables['content']['field_social_media']);
+      }
+    }
+  }
+}
+
+function sprowt3_preprocess_block__modal_block(&$variables) {
+  $variables['field_block_ref_entity'] = null;
+  $variables['field_block_ref_plugin_id'] = null;
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables["elements"]["content"]["#block_content"];
+  $variables['field_block_ref_entity'] = $block->field_block_ref->entity;
+  if($variables['field_block_ref_entity'] instanceof BlockContent) {
+    $variables['field_block_ref_plugin_id'] = 'block_content:' . $variables['field_block_ref_entity']->uuid();
+  }
+}
+
+function sprowt3_preprocess_block__breadcrumbs(&$variables) {
+  $node = \Drupal::request()->attributes->get('node');
+  $variables['node_title'] = null;
+  if($node instanceof Node) {
+    $variables['node_title'] = $node->getTitle();
+  }
+}
+
+function sprowt3_preprocess_block__body(&$variables) {
+  $node = \Drupal::request()->attributes->get('node');
+  $variables['body_full'] = null;
+  $variables['body_teaser'] = null;
+  if($node instanceof Node) {
+    if ($node->hasField('field_primary_package_sp')) {
+      $variables['field_primary_package_sp'] = $node->get('field_primary_package_sp')->getString();
+    }
+    if ($node->hasField('field_primary_service_lp')) {
+      $variables['field_primary_service_lp'] = $node->get('field_primary_service_lp')->getString();
+    }
+    try {
+      $body = $node->get('body');
+    }
+    catch (InvalidArgumentException $e) {
+      if(strpos($e->getMessage(), 'Field body is unknown') === false) {
+        throw $e;
+      }
+      $body = null;
+    }
+    if(isset($body)) {
+      $variables['body_full'] = $node->get('body')->value;
+      $variables['body_teaser'] = $node->get('body')->summary;
+    }
+  }
+}
+
+function sprowt3_preprocess_block__recommended_solution(&$variables) {
+  $node = \Drupal::request()->attributes->get('node');
+  if($node instanceof Node) {
+    $variables['primary_package_id'] = $node->get('field_primary_package_sp')->getString();
+    $variables['secondary_package_id'] = $node->get('field_secondary_package_sp')->getString();
+    $variables['primary_service_id'] = $node->get('field_primary_service_lp')->getString();
+    $variables['service_ids'] = $node->get('field_services_lp')->getString();
+  }
+  $request = \Drupal::request();
+  $query = $request->query->all() ?? [];
+  $variables['concern_ids'] = $query['c'] ?? [];
+}
+
+function sprowt3_preprocess_block__hero_blog_post(&$variables) {
+  $node = \Drupal::request()->attributes->get('node');
+  if($node instanceof Node) {
+    $variables['author'] = $node->get('field_author')->getString();
+    $media = $node->get('field_image_blog')->entity;
+    if ($media && $media->hasField('field_media_image')) {
+      $file = $media->get('field_media_image')->entity;
+      if ($file) {
+        $variables['image_blog_url'] = $file->getFileUri();
+        $alt = $media->get('field_media_image')->first()->get('alt')->getValue();
+        $variables['image_blog_alt'] = $alt ? $alt : '';
+      }
+    }
+  }
+}
+
+function sprowt3_preprocess_block__ctm_header_block(&$variables) {
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables["elements"]["content"]["#block_content"];
+  /** @var \Drupal\Core\Field\EntityReferenceFieldItemList $paragraphItemList */
+  $paragraphItemList = $block->get('field_ctm_target_numbers');
+  $count = $paragraphItemList->count();
+  $variables['attributes']['class'][] = 'phone-number-count-' . $count;
+
+  $entity_type = 'block_content';
+  $bundle = 'ctm_header_block';
+
+  $subsite = sprowt_subsite_get_subsite();
+  if(!empty($subsite) && $subsite instanceof Node) {
+    //override numbers with subsite numbers
+    $itemList = $subsite->get('field_ctm_numbers');
+    if (!$itemList->isEmpty()) {
+      $entityViewDisplay = \Drupal::service('entity_type.manager')
+        ->getStorage('entity_view_display')
+        ->load('block_content.ctm_header_block.' . $variables["content"]["#view_mode"]);
+      if(empty($entityViewDisplay)) {
+        $entityViewDisplay = \Drupal::service('entity_type.manager')
+          ->getStorage('entity_view_display')
+          ->load('block_content.ctm_header_block.default');
+      }
+      if(!empty($entityViewDisplay)) {
+        $settings = $entityViewDisplay->getComponent('field_ctm_target_numbers');
+      }
+      else {
+        $settings = [
+          'label' => 'hidden'
+        ];
+      }
+      $variables['content']['field_ctm_target_numbers'] = $itemList->view($settings);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt3_preprocess_block__system_branding_block(&$variables)
+{
+  $imageAttributes = new \Drupal\Core\Template\Attribute();
+  $width = theme_get_setting('logo.width');
+  if(!empty($width)) {
+    $imageAttributes->setAttribute('width', $width);
+  }
+  $variables['imageAttributes'] = $imageAttributes;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt3_preprocess_block__custom_branding_block(&$variables)
+{
+  /** @var \Drupal\block_content\Entity\BlockContent $block */
+  $block = $variables["content"]["#block_content"];
+  $linkItem = $block->get('field_image_link')->first();
+  $variables['logo_url'] = '/';
+  if(!empty($linkItem)) {
+    $variables['logo_url'] = $linkItem->getUrl()->toString();
+  }
+  $variables['logo_alt'] = $block->field_logo_alt->value ?? '';
+  $image = $block->get('field_custom_branding_logo')->first();
+  $useLogo = isset($block->field_use_logo->value) ? (int) $block->field_use_logo->value : false;
+  $useReverse = isset($block->field_use_reverse_logo->value) ? (int) $block->field_use_reverse_logo->value : false;
+
+  if(!empty($image)) {
+    $file = $image->entity;
+    $variables['logo_src'] = $file->createFileUrl();
+  }
+  else {
+    /** @var \Drupal\sprowt_settings\SprowtSettings $sprowtSettings */
+    $sprowtSettings = \Drupal::service('sprowt_settings.manager');
+    if(!empty($useLogo)) {
+      $logo = $sprowtSettings->getThemeSetting('logo');
+    }
+    else if(!empty($useReverse)) {
+      $logo = $sprowtSettings->getThemeSetting('logo_reverse');
+    }
+
+    if(!empty($logo)) {
+      $variables['logo_src'] = $logo;
+    }
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function sprowt3_preprocess_node(&$variables) {
+  $variables['company_name'] = \Drupal::config('system.site')->get('name');
+  $node = \Drupal::request()->attributes->get('node');
+  if($node instanceof Node) {
+    $variables['#cache']['max-age'] = 0;
+    $variables['nid'] = $node->id();
+    $variables['content_type'] = $node->bundle();
+    $variables['node_title'] = $node->getTitle();
+    if ($node->hasField('field_industry')) {
+      $variables['industry'] = sprowt_get_field_value($node, 'field_industry');
+    }
+  }
+  $processNode = $variables["elements"]["#node"];
+  if($processNode instanceof Node) {
+    $contentType = $processNode->bundle();
+    if($contentType == 'subsite') {
+      $subsiteNid = $processNode->id();
+      $subsite = \Drupal\node\Entity\Node::load($subsiteNid);
+      $subsiteService = \Drupal::service('sprowt_subsite.service');
+      $homepage = $subsiteService->getSubsiteHomePageFromSubsite($subsite);
+      if(!empty($homepage)) {
+        $variables['homepage_url'] = $homepage->toUrl()->toString();
+      }
+    }
+    if($contentType == 'testimonial') {
+      _sprowt3_preprocess_reviews($variables);
+    }
+    if($contentType == 'blog') {
+      $variables['authorId'] = sprowt_get_field_value($processNode, 'field_author');
+    }
+    if($contentType == 'job_post') {
+      $applicationUrlTxt = sprowt_get_field_value($processNode, 'field_job_application_link');
+      if(strpos($applicationUrlTxt, '/') === 0
+        && strpos($applicationUrlTxt, '//') !== 0
+      ) {
+        $applicationUrlTxt = 'internal:' . $applicationUrlTxt;
+      }
+      $applicationUrl = \Drupal\Core\Url::fromUri($applicationUrlTxt);
+      $applicationLink = [
+        '#type' => 'link',
+        '#url' => $applicationUrl,
+        '#title' => t('Apply Now'),
+        '#attributes' => [
+          'class' => ['apply-button', 'button'],
+          'target' => !empty($applicationUrl->isExternal()) ? '_blank' : '_self'
+        ]
+      ];
+      $variables['content']['apply_button'] = $applicationLink;
+      if($variables['view_mode'] == 'full' && $processNode->isPublished()) {
+        $variables['content']['structured_data'] = _sprowt3_get_job_structured_data($processNode);
+      }
+      if($variables['view_mode'] == 'teaser') {
+        $title = $processNode->label();
+        $descriptionUrl = sprowt_get_field_value($processNode, 'field_job_description_link');
+        if(empty($descriptionUrl)) {
+          $descriptionUrl = $processNode->toUrl();
+        }
+        else {
+          $descriptionUrl = \Drupal\Core\Url::fromUri($descriptionUrl);
+        }
+
+        $external = $descriptionUrl->isExternal();
+
+        $titleLink = [
+          '#type' => 'link',
+          '#url' => $descriptionUrl,
+          '#title' => $title,
+          '#attributes' => [
+            'class' => ['linked-title'],
+            'target' => !empty($external) ? '_blank' : '_self'
+          ]
+        ];
+
+        $variables['content']['job_title'] = $titleLink;
+      }
+    }
+  }
+
+  // Set link to ltp page if on service page
+  // Enabled but cache issue (Internal Page Cache module) still exists
+  if ($variables['node']->getType() === 'city_page') {
+    if ($variables['view_mode'] == 'title') {
+      $variables['#cache']['max-age'] = 0;
+      $variables['linktourl'] = [
+        '#type' => 'value',
+        '#value' => $variables['node']->toUrl(),
+        '#cache' => ['max-age' => 0,],
+      ];
+    }
+  }
+
+  if ($variables['node']->getType() === 'ltp_page') {
+    if ($variables['view_mode'] == 'title') {
+      $variables['#cache']['max-age'] = 0;
+      $variables['linktourl'] = [
+        '#type' => 'value',
+        '#value' => $variables['node']->toUrl(),
+        '#cache' => ['max-age' => 0,],
+      ];
+    }
+  }
+
+  if ($variables['node']->getType() === 'branch') {
+    if ($variables['view_mode'] == 'title') {
+      $variables['#cache']['max-age'] = 0;
+      $variables['linktourl'] = [
+        '#type' => 'value',
+        '#value' => $variables['node']->toUrl(),
+        '#cache' => ['max-age' => 0,],
+      ];
+    }
+  }
+
+}
+
+function _sprowt3_get_job_structured_data(Node $node) {
+  /** @var \Drupal\sprowt_settings\SprowtSettings $sprowtSettings */
+  $sprowtSettings = \Drupal::service('sprowt_settings.manager');
+  $script = [
+    '#type' => 'html_tag',
+    '#tag' => 'script',
+    '#attributes' => [
+      'id' => 'structured-data',
+      'type' => 'application/ld+json'
+    ]
+  ];
+
+  $data = [
+    '@context' => 'https://schema.org/',
+    '@type' => 'JobPosting',
+    'title' => $node->label(),
+    'description' => $node->body->value,
+    'datePosted' => sprowt_get_field_value($node, 'field_job_posting_date'),
+    'employmentType' => $node->field_employment_type->value ?? 'FULL_TIME',
+    'identifier' => [
+      '@type' => 'PropertyValue',
+      'name' => $sprowtSettings->getSetting('company_name'),
+      'value' => $node->uuid()
+    ]
+  ];
+
+  $addExpiration = sprowt_get_field_value($node, 'field_add_expiration');
+  $expiration = sprowt_get_field_value($node, 'field_expiration_date');
+  if(!empty($addExpiration)) {
+    $data['validThrough'] = $expiration;
+  }
+
+  $organization = [
+    '@type' => 'Organization',
+    'name' => $sprowtSettings->getSetting('company_name'),
+    'sameAs' => \Drupal\Core\Url::fromRoute('<front>', [], [
+      'absolute' => true
+    ])->toString()
+  ];
+  $data['hiringOrganization'] = $organization;
+
+  $location = $node->field_location->referencedEntities();
+  if(!empty($location)) {
+    /** @var Node $location */
+    $location = array_shift($location);
+    $jobLocation = [
+      '@type' => 'Place',
+      'address' => [
+        '@type' => 'PostalAddress',
+        'streetAddress' => $location->field_street->value,
+        'addressLocality' => $location->field_city->value,
+        'addressRegion' => $location->field_state->value,
+        'postalCode' => $location->field_zip->value,
+        'addressCountry' => 'US'
+      ]
+    ];
+    $data['jobLocation'] = $jobLocation;
+  }
+
+  $salaryFrom = $node->field_salary_range_from->value;
+  if(!empty($salaryFrom)) {
+    $salaryTo = $node->field_salary_range_to->value;
+    $salaryUnit = $node->field_salary_range_unit->value;
+    $salaryCurrency = $node->field_salary_currency->value;
+    $baseSalary = [
+      '@type' => 'MonetaryAmount',
+      'currency' => $salaryCurrency,
+      'value' => [
+        '@type' => 'QuantitativeValue',
+        'unitText' => $salaryUnit
+      ]
+    ];
+    if($salaryFrom == $salaryTo) {
+      $baseSalary['value']['value'] = $salaryFrom;
+    }
+    else {
+      $baseSalary['value']['minValue'] = $salaryFrom;
+      $baseSalary['value']['maxValue'] = $salaryTo;
+    }
+    $data['baseSalary'] = $baseSalary;
+  }
+
+  $script['#value'] = json_encode($data, JSON_PRETTY_PRINT);
+
+  return $script;
+}
+
+
+function _sprowt3_preprocess_reviews(&$variables) {
+  $processNode = $variables["elements"]["#node"];
+  $variables['external_url'] = null;
+  $externalUrl = $processNode->get('field_external_url')->first();
+  if(!empty($externalUrl)) {
+    $value = $externalUrl->getValue();
+    if(!empty($value['uri'])) {
+      $url = \Drupal\Core\Url::fromUri($value['uri'], $value['options']);
+      $variables['external_url'] = $url->toString();
+    }
+  }
+  $stars = [];
+  $ratingItemList = $processNode->get('field_rating');
+  $rating = 5;
+  if(!$ratingItemList->isEmpty()) {
+    $rating = $ratingItemList->first()->getValue();
+    $rating = (float) $rating['value'] ?? null;
+
+    if(!empty($rating)) {
+      for($i = 0; $i <= 4; ++$i) {
+        $starValue = $rating - $i;
+        if($starValue >= 1) {
+          $stars[] = 'star';
+        }
+        elseif ($starValue <= 0) {
+          //skip
+          //$stars[] = 'star-empty';
+        }
+        else {
+          $stars[] = 'star-half';
+        }
+      }
+    }
+  }
+  if(empty($stars)) {
+    for($i = 0; $i <= 4; ++$i) {
+      $stars[] = 'star';
+    }
+  }
+  if(floor($rating) == $rating) {
+    $rating = (int) $rating;
+  }
+  $variables['stars'] = $stars;
+  $variables['rating'] = $rating;
+
+}
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function sprowt3_page_attachments_alter(array &$attachments)
+{
+  $links = sprowt3_fetch_preload_assets();
+  if(!empty($links)) {
+    if(empty($attachments['#attached']['html_head'])) {
+      $attachments['#attached']['html_head'] = [];
+    }
+    $attachments['#attached']['html_head'] = array_merge($attachments['#attached']['html_head'], $links);
+  }
+}
+
+function sprowt3_fetch_preload_assets() {
+  $file = __DIR__ . '/preload.yml';
+  $return = [];
+  if(file_exists($file)) {
+    $yaml = file_get_contents($file);
+    $def = Yaml::decode($yaml);
+    foreach($def['assets'] as $as => $links) {
+      foreach($links as $name => $attrs) {
+        $attrs = array_merge([
+          'rel' => 'preload',
+          'as' => $as
+        ], $attrs);
+
+        $href = $attrs['href'] ?? null;
+        if(!empty($href) && strpos($href, '/') !== 0) {
+          $attrs['href'] = '/' . \Drupal::service('extension.path.resolver')->getPath('theme', 'sprowt3') . '/' . $href;
+        }
+
+        $return[] = [
+          [
+            '#tag' => 'link',
+            '#attributes' => $attrs
+          ],
+          $name
+        ];
+      }
+    }
+
+    return $return;
+  }
+}
+
+
+/**
+ * Implements template_preprocess_menu().
+ */
+function sprowt3_preprocess_menu(&$variables) {
+  _sprowt3_preprocess_menu_items($variables['items']);
+  sprowt3_menu_style($variables);
+}
+
+function sprowt3_preprocess_menu_block(&$variables) {
+  if ($variables['elements']['#base_plugin_id'] == 'subsite_menu_block') {
+    $menuField = $variables["configuration"]["menu_field"];
+    if($menuField != 'field_main_menu') {
+      return;
+    }
+    $menuName = 'main';
+  }
+  else {
+    $menuName = $variables["derivative_plugin_id"];
+  }
+  if($menuName != 'main') {
+    $subsite = sprowt_subsite_get_subsite();
+    if(empty($subsite)) {
+      return;
+    }
+    $mainMenuName = sprowt_subsite_get_main_menu_name_from_subsite_menu_name($menuName, $subsite);
+    if($mainMenuName != 'main') {
+      return;
+    }
+  }
+  $menuStyle = sprowt_settings_get_setting('menu_style');
+  if(empty($menuStyle)) {
+    return;
+  }
+  $variables['attributes']['class'][] = 'menu-style-' . $menuStyle;
+}
+
+function sprowt3_menu_style(&$variables) {
+  if($variables['menu_name'] != 'main') {
+    $subsite = sprowt_subsite_get_subsite();
+    if(empty($subsite)) {
+      return;
+    }
+    $mainMenuName = sprowt_subsite_get_main_menu_name_from_subsite_menu_name($variables['menu_name'], $subsite);
+    if($mainMenuName != 'main') {
+      return;
+    }
+  }
+  $menuStyle = sprowt_settings_get_setting('menu_style');
+  if(empty($menuStyle)) {
+    return;
+  }
+  $variables['attributes']['class'][] = 'menu-style-' . $menuStyle;
+  $libraryFiles = [
+    'sprowt3' => __DIR__ . '/sprowt3.libraries.yml',
+  ];
+  /** @var \Drupal\Core\Theme\ActiveTheme $activeTheme */
+  $activeTheme = \Drupal::service('theme.manager')->getActiveTheme();
+  if($activeTheme->getName() != 'sprowt3') {
+    $path = $activeTheme->getPath();
+    $libraryFiles[$activeTheme->getName()] = $path . '/'.$activeTheme->getName().'.libraries.yml';
+  }
+  foreach($libraryFiles as $theme => $file) {
+    $libraries = Yaml::decode(file_get_contents($file));
+    if(!empty($libraries['menu-style-' . $menuStyle])) {
+      $variables['#attached']['library'][] = "$theme/menu-style-" . $menuStyle;
+    }
+  }
+}
+
+function _sprowt3_preprocess_menu_items(&$items) {
+
+  foreach ($items as &$item) {
+    /** @var \Drupal\Core\Menu\MenuLinkDefault $menu_link */
+    $menu_link = isset($item['original_link']) ? $item['original_link'] : NULL;
+    $options = !empty($menu_link) ? $menu_link->getOptions() : NULL;
+    if(!empty($item['below'])) {
+      _sprowt3_preprocess_menu_items($item['below']);
+    }
+
+
+
+    if($menu_link instanceof \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent) {
+      $pluginId = $menu_link->getPluginId();
+      $uuid = str_replace('menu_link_content:', '', $pluginId);
+      $menuLinkContent = \Drupal::entityTypeManager()->getStorage('menu_link_content')->loadByProperties([
+        'uuid' => $uuid
+      ]);
+      if(!empty($menuLinkContent)) {
+        /** @var \Drupal\menu_link_content\Entity\MenuLinkContent $menuLinkContent */
+        $menuLinkContent = array_shift($menuLinkContent);
+        if($menuLinkContent->hasField('field_list_item_classes')) {
+          $listItemClasses = $menuLinkContent->field_list_item_classes->value;
+          if (!empty($listItemClasses)) {
+            $classes = $item['attributes']['class'] ?? [];
+            foreach (preg_split('#\s#', $listItemClasses) as $class) {
+              $classes[] = $class;
+            }
+            $item['attributes']['class'] = $classes;
+          }
+        }
+      }
+    }
+
+    $item['link_attributes'] = new \Drupal\Core\Template\Attribute();
+
+    // Apply container attributes on <li> element.
+    if (!empty($options) && !empty($options['attributes'])) {
+      foreach($options['attributes'] as $key => $val) {
+        $item['link_attributes']->setAttribute($key, $val);
+      }
+    }
+
+    $tokenData = [];
+    if($menu_link instanceof \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent) {
+      $menu_link_content = $menu_link->getEntity();
+      $tokenData['menu_link_content'] = $menu_link_content;
+      $url = $menu_link_content->getUrlObject();
+      if($url instanceof \Drupal\Core\Url && $url->isRouted()) {
+        $routeName = $url->getRouteName();
+        $routeParams = $url->getRouteParameters();
+        $matches = [];
+        if(preg_match('#entity\.([^\.]+)\.canonical#', $routeName, $matches)) {
+          if(isset($matches[1]) && isset($routeParams[$matches[1]])) {
+            $tokenData[$matches[1]] = \Drupal::entityTypeManager()->getStorage($matches[1])->load($routeParams[$matches[1]]);
+          }
+        }
+      }
+    }
+    if(!isset($tokenData['node'])) {
+      $node = \Drupal::routeMatch()->getParameter('node');
+      if ($node instanceof Node) {
+        $tokenData['node'] = $node;
+      }
+    }
+    if(!empty($item['title'])) {
+      $item['title'] = Markup::create(\Drupal::token()->replace($item['title'], $tokenData));
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt3_preprocess_views_view(&$variables)
+{
+  $currentUser = \Drupal::currentUser();
+  $loggedIn = !$currentUser->isAnonymous();
+  if(!empty($loggedIn)) {
+//    /** @var \Drupal\views\ViewExecutable $view */
+//    $view = $variables['view'];
+//    $query_string = $view->build_info['query'];
+//    // Only the sql default class has a method getArguments.
+//    $quoted = [];
+//
+//    if ($view->query instanceof Sql) {
+//      $quoted = $query_string->getArguments();
+//      $connection = Database::getConnection();
+//      foreach ($quoted as $key => $val) {
+//        if (is_array($val)) {
+//          $quoted[$key] = implode(', ', array_map([$connection, 'quote'], $val));
+//        } else {
+//          $quoted[$key] = $connection->quote($val);
+//        }
+//      }
+//    }
+//
+//    $sqlStr = strtr($query_string, $quoted);
+//    if(empty($variables['title_prefix'])) {
+//      $variables['title_prefix'] = [];
+//    }
+//    if(!is_array($variables['title_prefix'])) {
+//      $variables['title_prefix'] = [$variables['title_prefix']];
+//    }
+//    $variables['title_prefix']['sql_string'] = [
+//      '#type' => 'markup',
+//      '#markup' => \Drupal\Core\Render\Markup::create('<!-- START SQL:' . "\n\n" . $sqlStr . "\n\n" . 'END SQL -->')
+//    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt3_preprocess_paragraph(&$variables)
+{
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  if($paragraph->bundle() == 'ctm_target_number') {
+    $label = sprowt_get_field_value($paragraph, 'field_label');
+    $number = sprowt_get_field_value($paragraph, 'field_phone_number');
+    $noSwap = sprowt_get_field_value($paragraph, 'field_no_swap');
+    $variables['text'] = !empty($label) ? $label : $number;
+    $variables['phone_number'] = $number;
+    $variables['no_swap'] = $noSwap;
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt3_preprocess_field(&$variables)
+{
+  $fieldType = $variables["field_type"];
+  $fieldName = $variables["field_name"];
+  if($fieldType == 'iframe') {
+    _sprowt3_preprocess_iframe_field($variables);
+  }
+  if($fieldType == 'image') {
+    /** @var \Drupal\file\Plugin\Field\FieldType\FileFieldItemList $list */
+    $list = $variables["element"]["#items"];
+    /** @var \Drupal\file\Entity\File $file */
+    foreach($list->referencedEntities() as $delta => $file) {
+      $mimeType = $file->getMimeType();
+      if(strpos($mimeType, 'svg') !== false) {
+        $markup = !empty($variables['items'][$delta]['content']['#markup']) ? (string) $variables['items'][$delta]['content']['#markup'] : null;
+        if(!empty($markup)) {
+          $newMarkup = _sprowt3_process_svg_markup($markup);
+          $variables['items'][$delta]['content']['#markup'] = \Drupal\Core\Render\Markup::create($newMarkup);
+        }
+      }
+    }
+  }
+  if($fieldName == 'field_crumb') {
+    foreach($variables['items'] as $delta => $item) {
+      //fix html entity issues
+      $item['content']['#title'] = Markup::create($item['content']['#title'] ?? '');
+      $variables['items'][$delta] = $item;
+    }
+  }
+}
+
+function _sprowt3_process_svg_markup($markup) {
+  $changed = false;
+  $dom = new \DOMDocument();
+  $partialStart = '<!DOCTYPE html><html><body>';
+  $partialEnd = '</body></html>';
+  $html = $partialStart . $markup . $partialEnd;
+  $dom->loadHTML($html, LIBXML_NOERROR | LIBXML_NOWARNING);
+  /** @var \libXMLError $error */
+  libxml_clear_errors();
+  libxml_use_internal_errors(false);
+
+  $removeIdsRecursively = function(&$elementList) use(&$removeIdsRecursively){
+    $itemLength = $elementList->length;
+    for($i = 0; $i < $itemLength; ++$i) {
+      $elementNode = $elementList->item($i);
+      if($elementNode instanceof DOMElement) {
+        if ($elementNode->hasAttribute('id')) {
+          $elementNode->removeAttribute('id');
+        }
+        if ($elementNode->childNodes->length > 0) {
+          $removeIdsRecursively($elementNode->childNodes);
+        }
+      }
+    }
+  };
+
+  $removeIdsRecursively($dom->childNodes);
+  /** @var DOMElement $svg */
+  $svg = $dom->getElementsByTagName('svg')->item(0);
+
+  $return = $dom->saveHTML();
+  $elements = [
+    '<!DOCTYPE html>',
+    '<html>',
+    '<body>',
+    '</html>',
+    '</body>'
+  ];
+  foreach ($elements as $element) {
+    $return = trim(str_replace($element, '', $return));
+  }
+  return $return;
+}
+
+function _sprowt3_preprocess_iframe_field(&$variables) {
+  $parent = $variables["element"]["#object"];
+  if($parent instanceof \Drupal\paragraphs\Entity\Paragraph) {
+    if($parent->bundle() == 'iframe') {
+      /** @var \Drupal\entity_reference_revisions\EntityReferenceRevisionsFieldItemList $additionalAttributes */
+      $additionalAttributes = $parent->get('field_additional_attributes');
+      $item = &$variables["items"][0]["content"];
+      $itemAttributes = $item['#attributes'] ?? null;
+      if(!$itemAttributes instanceof \Drupal\Core\Template\Attribute) {
+        $itemAttributes = new \Drupal\Core\Template\Attribute();
+        if(isset($item['#attributes']) && is_array($item['#attributes'])) {
+          foreach($item['#attributes'] as $aName => $aVal) {
+            $itemAttributes->setAttribute($aName, $aVal);
+          }
+        }
+      }
+      if(!$additionalAttributes->isEmpty()) {
+        /** @var \Drupal\paragraphs\Entity\Paragraph $attributePara */
+        foreach($additionalAttributes->referencedEntities() as $attributePara) {
+          $name = $attributePara->field_attribute_name->value;
+          $value = $attributePara->field_attribute_value->value;
+          if(!empty($name) && !empty($value)) {
+            $name = trim(preg_replace('#[\s\(\)"]+#', '-', strtolower($name)), '-');
+            if($name == 'class') {
+              $classes = explode(' ', $value);
+              foreach($classes as $class) {
+                $class  = trim($class);
+                if(!empty($class)) {
+                  $class = \Drupal\Component\Utility\Html::getClass($class);
+                  $itemAttributes->addClass($class);
+                }
+              }
+            }
+            else {
+              $itemAttributes->setAttribute($name, $value);
+            }
+          }
+        }
+      }
+      $item['#attributes'] = $itemAttributes;
+    }
+  }
+}
+
+//*********************************************
+// Utility Functions
+//*********************************************

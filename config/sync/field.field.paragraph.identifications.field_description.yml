@@ -1,0 +1,29 @@
+uuid: 9c4d8e76-5983-47d3-9a9b-2703779f1fc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.identifications
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    restricted_html: '0'
+    full_html: '0'
+    plain_text: '0'
+id: paragraph.identifications.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: identifications
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

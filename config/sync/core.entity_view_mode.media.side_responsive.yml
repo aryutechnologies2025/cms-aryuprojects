@@ -1,0 +1,11 @@
+uuid: b8a6f634-d213-48d0-8568-5096855e1e88
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.side_responsive
+label: 'Side Responsive'
+description: ''
+targetEntityType: media
+cache: true

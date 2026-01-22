@@ -1,0 +1,11 @@
+uuid: 0fc0bb12-e49a-49ff-91c4-69540e90a238
+langcode: en
+status: true
+dependencies: {  }
+id: benefits
+block_id: 'inline_block:benefits'
+category: custom_blocks
+label: Benefits
+image_path: ''
+image_alt: ''
+weight: -81

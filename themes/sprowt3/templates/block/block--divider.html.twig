@@ -1,0 +1,26 @@
+{% set divider_style = content.field_divider_style[0]['#markup'] %}
+{% set bg_color = content.field_divider_bg_color[0]['#markup'] %}
+{% set accent_color = content.field_accent_color[0]['#markup'] %}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'svg-accent-' ~ accent_color,
+    'svg-bg-' ~ bg_color,
+    'divider-style-' ~ divider_style
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="svg-divider">
+      {{ source('/themes/sprowt3/assets/dividers/section_dividers_' ~ divider_style ~ '_150px.svg') }}
+    </div>
+  {% endblock %}
+</div>

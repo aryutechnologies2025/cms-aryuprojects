@@ -1,0 +1,34 @@
+// Page bottom brands block
+.layout-content-bottom .block--type-brands {
+    padding: 35px;
+    
+    .field--name-field-brands {
+        align-items: center;
+    }
+
+    [class*="paragraph--id--"] {
+
+        img {
+            max-height: 125px;
+            width: auto;
+        }
+
+        @include breakpoint($xsmall) {
+            img {
+                max-height: 54px;
+            }
+        }
+
+        @include breakpoint($small) {
+            img {
+                max-height: 48px;
+            }
+        }
+
+        @include breakpoint($medium) {
+            img {
+                max-height: 100px;
+            }
+        }
+    }
+}

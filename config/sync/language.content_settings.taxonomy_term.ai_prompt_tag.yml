@@ -1,0 +1,11 @@
+uuid: 36253232-18db-4738-bb18-5d9e04012ae6
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ai_prompt_tag
+id: taxonomy_term.ai_prompt_tag
+target_entity_type_id: taxonomy_term
+target_bundle: ai_prompt_tag
+default_langcode: site_default
+language_alterable: false

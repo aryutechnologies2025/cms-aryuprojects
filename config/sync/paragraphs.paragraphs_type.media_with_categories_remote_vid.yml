@@ -1,0 +1,10 @@
+uuid: 8a673adc-3666-4326-a252-10a640b53fe3
+langcode: en
+status: true
+dependencies: {  }
+id: media_with_categories_remote_vid
+label: 'Media with Categories - Remote Videos'
+icon_uuid: null
+icon_default: null
+description: 'Organize a group of videos with a category/label.'
+behavior_plugins: {  }

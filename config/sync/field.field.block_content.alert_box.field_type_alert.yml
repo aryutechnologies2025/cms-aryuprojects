@@ -1,0 +1,21 @@
+uuid: a588a61b-83f4-49bd-91c3-9932cf0de65a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.alert_box
+    - field.storage.block_content.field_type_alert
+  module:
+    - options
+id: block_content.alert_box.field_type_alert
+field_name: field_type_alert
+entity_type: block_content
+bundle: alert_box
+label: Type
+description: 'By choosing the message type, it indicates the color used for the bar at the top of the page.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

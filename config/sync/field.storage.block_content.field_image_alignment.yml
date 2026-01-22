@@ -1,0 +1,27 @@
+uuid: 06af7104-8213-4958-9346-c4a1815348e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_image_alignment
+field_name: field_image_alignment
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: left
+      label: 'Left Side'
+    -
+      value: right
+      label: 'Right Side'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

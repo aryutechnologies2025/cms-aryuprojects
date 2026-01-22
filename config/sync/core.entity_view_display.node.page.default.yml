@@ -1,0 +1,214 @@
+uuid: 88f1f6ef-dba1-4d30-bab3-d34249049b78
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.field_industry
+    - field.field.node.page.field_meta_description
+    - field.field.node.page.field_meta_tags
+    - field.field.node.page.field_package_level
+    - field.field.node.page.field_page_type
+    - field.field.node.page.field_subsite
+    - field.field.node.page.field_url_title
+    - field.field.node.page.layout_builder__layout
+    - node.type.page
+  module:
+    - layout_builder
+    - metatag
+    - options
+    - sprowt_subsite
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_builder_blank
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+        components:
+          -
+            uuid: 87038df1-7e32-4bad-99d7-dcf840e3efe6
+            region: null
+            configuration:
+              id: 'field_block:node:page:field_meta_tags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: metatag_empty_formatter
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          -
+            uuid: 2fc7d99d-46a8-4834-b691-fbabd073ef52
+            region: null
+            configuration:
+              id: 'field_block:node:page:field_industry'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          -
+            uuid: 9e6cc87b-22c6-4971-9b96-4bbc3cbbb814
+            region: null
+            configuration:
+              id: 'field_block:node:page:field_page_type'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          -
+            uuid: d0cc6d13-729f-48b3-ad09-19966673a7e9
+            region: null
+            configuration:
+              id: 'field_block:node:page:field_package_level'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          -
+            uuid: 7b272551-8e30-4fe2-9a47-6bb3a8efe179
+            region: null
+            configuration:
+              id: 'field_block:node:page:field_subsite'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: sprowt_subsite_reference_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: false
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          -
+            uuid: 3192d34b-1a3c-43bb-8c6f-974cf200ce33
+            region: null
+            configuration:
+              id: 'field_block:node:page:field_url_title'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          -
+            uuid: cf34f027-8862-48f4-baa4-4b4e28c24851
+            region: null
+            configuration:
+              id: 'field_block:node:page:field_meta_description'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+        third_party_settings: {  }
+_core:
+  default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  field_industry:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: null
+  field_meta_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 107
+    region: null
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: null
+  field_package_level:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: null
+  field_page_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: null
+  field_subsite:
+    type: sprowt_subsite_reference_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 105
+    region: null
+  field_url_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: null
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  layout_builder__layout: true

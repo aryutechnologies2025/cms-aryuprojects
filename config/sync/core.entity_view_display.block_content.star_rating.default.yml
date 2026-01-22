@@ -1,0 +1,30 @@
+uuid: f63421a3-a5e1-41bd-b8b1-c816e66a2a07
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.star_rating
+    - field.field.block_content.star_rating.field_label
+    - field.field.block_content.star_rating.field_rating
+id: block_content.star_rating.default
+targetEntityType: block_content
+bundle: star_rating
+mode: default
+content:
+  field_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_rating:
+    type: number_unformatted
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

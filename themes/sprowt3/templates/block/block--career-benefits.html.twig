@@ -1,0 +1,39 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    content.field_display_career_benefit[0]['#markup'],
+    'center-align',
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="basic-wrap">
+      {{ content|without('field_count_career_benefit','field_career_benefit_overrides','field_display_career_benefit','field_offset_career_benefit','field_link') }}
+
+      {% if content.field_career_benefit_overrides|render %}
+        <div class="view-career-benefits view-count-{{ content.field_count_career_benefit.0['#markup'] }}">
+          <div class="view-content">
+            {% for key, item in content.field_career_benefit_overrides %}
+              {% if key|first != '#' %}
+                <div class="views-row">
+                  {{ drupal_entity('node', item['#plain_text'], content.field_display_career_benefit.0['#markup']) }}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        {{ drupal_view('career_benefits', 'block_compact_offset' ~ content.field_offset_career_benefit.0['#markup'], content.field_display_career_benefit.0['#markup'], content.field_count_career_benefit.0['#markup']) }}
+      {% endif %}
+
+      {{ content.field_link }}
+    </div>
+  {% endblock %}
+</div>

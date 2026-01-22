@@ -1,0 +1,11 @@
+uuid: eae139d4-1692-4a3a-a0a9-551944f41d4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.image_organization
+id: taxonomy_term.image_organization
+target_entity_type_id: taxonomy_term
+target_bundle: image_organization
+default_langcode: site_default
+language_alterable: false

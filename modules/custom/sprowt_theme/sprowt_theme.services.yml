@@ -1,0 +1,16 @@
+services:
+    sprowt_theme.service:
+        class: Drupal\sprowt_theme\SprowtThemeService
+        arguments:
+            - '@sprowt_settings.manager'
+
+    logger.channel.sprowt_theme:
+        parent: logger.channel_base
+        arguments: [ 'sprowt_theme' ]
+
+
+    sprowt_theme.event_subscriber:
+        class: Drupal\sprowt_theme\EventSubscriber\SprowtThemeSubscriber
+        arguments: [ '@sprowt_theme.service' ]
+        tags:
+            - { name: event_subscriber }

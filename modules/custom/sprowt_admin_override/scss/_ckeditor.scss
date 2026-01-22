@@ -1,0 +1,312 @@
+// This overrides the gin ckeditor styling as they aren't loading with Drupal 9
+// The file can be removed if the theme fixes this issue.
+// I suspect it has something to do with the ckeditor.css being renamed to editor.css by the new CKEditor
+
+:root {
+  --xcolorGinButtonShadow: #00000033;
+  --xcolorGinButtonText: #fff;
+  --xcolorGinFocus: rgba(0, 125, 250, .6);
+  --xcolorGinFocusBorder: rgba(0, 0, 0, .2);
+  --xcolorGinFocusNeutralRGB: rgba(0, 0, 0, .4);
+  --xcolorGinDisabled: #bbb;
+  --xcolorGinDisabledText: #8d8d8d;
+  --xcolorGinWarning: #d8b234;
+  --xcolorGinWarningLight: #efcf64;
+  --xcolorGinWarningBackground: #605328;
+  --xcolorGinWarningLightBackground: rgba(226, 151, 0, .08);
+  --xcolorGinDanger: #cc3d3d;
+  --xcolorGinDangerLightest: #fdd9d9;
+  --xcolorGinDangerLight: #f39b9d;
+  --xcolorGinDangerBackground: #583333;
+  --xcolorGinDangerLightBackground: rgba(222, 117, 96, .1);
+  --xcolorGinGreen: #058260;
+  --xcolorGinGreenLight: #32cea4;
+  --xcolorGinGreenLightest: #adebdb;
+  --xcolorGinGreenBackground: #145242;
+  --xcolorGinGreenLightBackground: rgba(72, 171, 123, .1);
+  --xcolorGinInfo: #082538;
+  --xcolorGinInfoLight: #589ac5;
+  --xcolorGinInfoBackground: #122b3c;
+  --xcolorGinInputBackground: #fff;
+  --xcolorGinLayerBackground: #fff;
+  --xcolorGinLayer2Background: #edeff5;
+  --xcolorGinLayer3Background: #fff;
+  --xcolorGinLayer4Background: #e2e5ec;
+  --xcolorGinSecondaryBackground: var(--xcolorGinLayerBackground);
+  --xcolorGinContextual: var(--xcolorGinText);
+  --xcolorGinContextualText: #eee;
+  --xcolorGinBorder: #d4d4d8;
+  --xcolorGinSecondaryBorder: rgba(0, 0, 0, .08);
+  --xcolorGinLayerBorder: rgba(0, 0, 0, .08);
+  --xcolorGinLayer2Border: #d4d4d8;
+  --xcolorGinTableBorder: rgba(0, 0, 0, .15);
+  --xcolorGinTabsBorder: rgba(0, 0, 0, .2);
+  --xcolorGinFormElementBorder: #8e929c;
+  --xginFont: Ginter, Inter, "Helvetica Neue", BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+  --xginFontSizeSmall: small;
+  --xcolorGinTitle: #222330;
+  --xcolorGinText: #222330;
+  --xcolorGinTextLight: #545560;
+  --xcolorGinTableHeader: #eeeff3;
+  --xcolorGinSwitch: #26a769;
+  --xcolorGinSwitchShadow: rgba(38, 167, 105, .3);
+  --xcolorGinIcons: #414247;
+  --xcolorGinPatternFallback: var(--xcolorGinLayer2Background);
+  --xcolorGinPattern: var(--xcolorGinBorder);
+  --xginSizePatternSquare: .5rem;
+  --xginStickyHeight: 72px;
+  --xcolorGinStickyBg: #c8cdd8;
+  --xginToolbarWidthCollapsed: 66px;
+  --xginToolbarWidth: 240px;
+  --xginSidebarWidth: 320px;
+  --xginSidebarOffset: var(--xginSidebarWidth);
+  --xginShadowLevel1: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%);
+  --xginShadowLevel2: 0 1px 2px rgb(20 45 82 / 2%), 0 3px 4px rgb(20 45 82 / 3%), 0 5px 8px rgb(20 45 82 / 4%), 0 20px 24px rgb(20 45 82 / 12%);
+  --xginEasing: cubic-bezier(.19, 1, .22, 1);
+  --xginTransition: .15s var(--xginEasing);
+  --xginTransitionFast: .3s var(--xginEasing);
+  --xginSpacingTiny: .25rem;
+  --xginSpacingXsmall: .5rem;
+  --xginSpacingSmall: .75rem;
+  --xginSpacingDefault: 1rem;
+  --xginSpacingMedium: 1.5rem;
+  --xginSpacingLarge: 2rem;
+  --xginSpacingXlarge: 3rem;
+  --xginSpacingXxlarge: 4rem;
+  --xginBorderTiny: .125rem;
+  --xginBorderXSmall: .25rem;
+  --xginBorderSmall: .375rem;
+  --xginBorderDefault: .5rem;
+  --xginBorderMedium: .75rem;
+  --xginBorderLarge: 1rem;
+  --xiconGinSecondaryToolbar: 17px;
+  --xiconGinToolbar: 17px;
+  --xiconGinSidebarToggle: 21px;
+}
+
+.gin--dark-mode {
+    --xcolorGinButtonShadow: rgba(#111, .9);
+    --xcolorGinButtonText: #111;
+    --xcolorGinFocus: rgb(81, 168, 255);
+    --xcolorGinFocusNeutralRGB: rgba(255, 255, 255, .8);
+    --xcolorGinFocusBorder: rgba(0, 0, 0, .8);
+    --xcolorGinDisabled: #555;
+    --xcolorGinDisabledText: #1b1b1d;
+    --xcolorGinWarning: #dec15f;
+    --xcolorGinWarningLightBackground: rgba(222, 193, 95, .1);
+    --xcolorGinDanger: #ce6060;
+    --xcolorGinDangerLightest: #483439;
+    --xcolorGinGreen: #32cea4;
+    --xcolorGinInfo: #559bca;
+    --xcolorGinInputBackground: var(--xcolorGinLayer2Background);
+    --xcolorGinAppBackground: #1b1b1d;
+    --xcolorGinLayerBackground: #2a2a2d;
+    --xcolorGinLayer2Background: #3b3b3f;
+    --xcolorGinLayer3Background: #47474c;
+    --xcolorGinLayer4Background: #19191b;
+    --xcolorGinSecondaryBackground: var(--xcolorGinAppBackground);
+    --xcolorGinContextual: var(--xcolorGinLayer3Background);
+    --xcolorGinBorder: #43454a;
+    --xcolorGinSecondaryBorder: rgba(255, 255, 255, .075);
+    --xcolorGinLayerBorder: rgba(0, 0, 0, .05);
+    --xcolorGinLayer2Border: #76777b;
+    --xcolorGinTableBorder: #43454a;
+    --xcolorGinTabsBorder: rgba(255, 255, 255, .12);
+    --xcolorGinFormElementBorder: var(--xcolorGinLayer2Border);
+    --xcolorGinTitle: #fff;
+    --xcolorGinText: #d2d3d3;
+    --xcolorGinTextLight: #9e9fa0;
+    --xcolorGinTableHeader: #1b1b1d;
+    --xcolorGinSwitch: var(--xcolorGinPrimary);
+    --xcolorGinSwitchShadow: var(--xcolorGinPrimaryLight);
+    --xginShadowLevel1: 0 1px 2px rgb(0 0 0 / 2%), 0 3px 4px rgb(0 0 0 / 3%), 0 5px 8px rgb(0 0 0 / 4%);
+    --xginShadowLevel2: 0 1px 2px rgb(0 0 0 / 2%), 0 3px 4px rgb(0 0 0 / 3%), 0 5px 8px rgb(0 0 0 / 4%), 0 20px 24px rgb(0 0 0 / 12%);
+    --xcolorGinIcons: #888;
+    --xcolorGinPatternFallback: var(--xcolorGinLayer2Background);
+    --xcolorGinPattern: var(--xcolorGinBorder);
+    --xcolorGinStickyBg: var(--xcolorGinLayer4Background);
+}
+
+.gin--dark-mode .cke.cke .cke_inner,
+.gin--dark-mode .cke.cke .cke_wysiwyg_frame,
+.gin--dark-mode .cke.cke .cke_wysiwyg_div {
+  background: var(--xcolorGinLayer2Background);
+}
+
+.cke.cke.cke_chrome {
+  width: 100% !important;
+  border-color: var(--xcolorGinFormElementBorder);
+  border-radius: var(--xginBorderDefault);
+}
+
+.cke.cke .cke_inner {
+  border-radius: var(--xginBorderDefault);
+}
+
+.cke.cke .cke_top {
+  background: var(--xcolorGinLayerBackground);
+  border-bottom: 1px solid var(--xcolorGinBorder);
+  border-radius: calc(var(--xginBorderDefault) - 1px) calc(var(--xginBorderDefault) - 1px) 0 0;
+}
+
+.gin--dark-mode .cke.cke .cke_top {
+  background: var(--xcolorGinLayer2Background);
+}
+
+.cke.cke .cke_bottom {
+  background: var(--xcolorGinLayer3Background);
+  border-radius: 0 0 calc(var(--xginBorderDefault) - 1px) calc(var(--xginBorderDefault) - 1px);
+}
+
+.cke.cke .cke_contents {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.cke.cke .cke_path_empty:only-child::after {
+  background: transparent;
+}
+
+[dir="ltr"] .cke.cke .cke_combo::after {
+  border-right: 1px solid var(--xcolorGinBorder);
+}
+
+[dir="rtl"] .cke.cke .cke_combo::after {
+  border-left: 1px solid var(--xcolorGinBorder);
+}
+
+.cke.cke .cke_combo_text {
+  color: var(--xcolorGinText);
+}
+
+.cke.cke .cke_combo_on a.cke_combo_button,
+.cke.cke .cke_combo_off a.cke_combo_button:hover,
+.cke.cke .cke_combo_off a.cke_combo_button:focus,
+.cke.cke .cke_combo_off a.cke_combo_button:active {
+  background: var(--xcolorGinAppBackground);
+  border: 1px solid var(--xcolorGinLayer2Background);
+}
+
+.cke.cke a.cke_path_item,
+.cke.cke span.cke_path_empty {
+  color: var(--xcolorGinTextLight);
+}
+
+.cke.cke a.cke_button {
+  border-radius: 3px;
+}
+
+.cke.cke a.cke_button_on {
+  background: none;
+}
+
+.cke.cke a.cke_button_off:hover, .cke.cke a.cke_button_off:focus, .cke.cke a.cke_button_off:active {
+  background: var(--xcolorGinItemHover);
+  border: 1px solid var(--xcolorGinLayer2Border);
+}
+
+.gin--dark-mode .cke.cke .cke_button span {
+  filter: invert(1);
+}
+
+.cke.cke.cke_panel {
+  background-color: var(--xcolorGinAppBackground);
+  border: 0 none;
+}
+
+.cke.cke_chrome.cke_focus {
+  border-color: transparent;
+}
+
+.cke.cke_chrome:hover,
+.cke:hover .cke_contents,
+.cke:hover .cke_top,
+.cke:hover .cke_bottom {
+  border-color: var(--xcolorGinText);
+}
+
+.gin--dark-mode .cke.cke_chrome:hover,
+.gin--dark-mode .cke:hover .cke_contents,
+.gin--dark-mode .cke:hover .cke_top,
+.gin--dark-mode .cke:hover .cke_bottom {
+  border-color: var(--xcolorGinLayer2Border);
+}
+
+.cke:hover .cke_top, .gin--dark-mode .cke:hover .cke_top {
+  border-bottom-color: var(--xcolorGinBorder);
+}
+
+.cke.cke_chrome.cke_focus:hover,
+.cke.cke_focus .cke_contents,
+.cke.cke_focus .cke_top,
+.cke.cke_focus .cke_bottom,
+.error + .cke.cke_chrome.cke_focus:hover,
+.error + .cke.cke_focus .cke_contents,
+.error + .cke.cke_focus .cke_top,
+.error + .cke.cke_focus .cke_bottom {
+  border-color: var(--xcolorGinText);
+}
+
+.cke_top,
+.cke.cke_chrome.cke_focus:hover .cke_top,
+.cke.cke_focus .cke_top,
+.error + .cke.cke_focus .cke_top,
+.error + .cke.cke_chrome.cke_focus:hover .cke_top {
+  border-bottom: 1px solid var(--xcolorGinBorder);
+}
+
+.cke textarea.cke_source {
+  padding: .75rem .5rem;
+  color: var(--xcolorGinText);
+  background-color: transparent;
+}
+
+body .cke_notification_info {
+  opacity: 1;
+  padding: .5rem;
+  background: var(--xcolorGinLayer4Background);
+  border: 0 none;
+  border-radius: var(--xginBorderDefault);
+  box-shadow: var(--xginShadowLevel1);
+}
+
+body .cke_notification_info .cke_notification_message {
+  color: var(--xcolorGinText);
+}
+
+body .cke_notification_info .cke_notification_close {
+  top: 4px;
+  background: var(--xcolorGinText);
+  -webkit-mask-image: url("../../media/sprite.svg#close-view");
+          mask-image: url("../../media/sprite.svg#close-view");
+  -webkit-mask-position: center center;
+          mask-position: center center;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: 12px 12px;
+          mask-size: 12px 12px;
+}
+
+[dir="ltr"] body .cke_notification_info .cke_notification_close {
+  right: 4px;
+}
+
+[dir="rtl"] body .cke_notification_info .cke_notification_close {
+  left: 4px;
+}
+
+.filter-tips {
+  color: var(--xcolorGinTextLight);
+}
+
+//ckeditor5
+
+.ck.ck-editor__main {
+  --ck-color-editable-blur-selection: transparent;
+  --ck-color-widget-editable-focus-background: transparent;
+}
+
+
+.ck-editor__editable_inline {
+  min-height: 400px;
+}

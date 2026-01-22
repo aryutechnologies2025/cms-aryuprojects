@@ -1,0 +1,29 @@
+uuid: 8930437e-30e9-4bd9-8705-dbaed0bb21a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced
+    - field.storage.block_content.field_region_filter
+    - taxonomy.vocabulary.region
+id: block_content.areas_serviced.field_region_filter
+field_name: field_region_filter
+entity_type: block_content
+bundle: areas_serviced
+label: 'Region Filter'
+description: 'Filter results by location regions'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      region: region
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

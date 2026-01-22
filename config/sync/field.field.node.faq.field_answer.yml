@@ -1,0 +1,22 @@
+uuid: cadfa157-ed54-4f8a-b2f2-09095327a87d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_answer
+    - node.type.faq
+  module:
+    - text
+id: node.faq.field_answer
+field_name: field_answer
+entity_type: node
+bundle: faq
+label: Answer
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

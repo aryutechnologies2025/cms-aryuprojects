@@ -1,0 +1,722 @@
+
+$lightcolors: secondary, tertiary, white, light, grey;
+$darkcolors: black, dark, primary;
+
+.node--type-package {
+  // Teaser
+  &.node--view-mode-teaser,
+  &.node--view-mode-quaternary-teaser,
+  &.node--view-mode-quinary-teaser,
+  &[class*="node--view-mode-alt"] {
+    max-width: 550px;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.1);
+    transition: all $duration;
+    text-align: center;
+
+    @include breakpoint($small) {
+      height: calc(100% - 32px);
+      margin-top: 32px;
+
+      .layout--twocol-section & {
+        margin-top: 0;
+      }
+    }
+
+    .node__content {
+      position: relative;
+      @include flexbox;
+      flex-direction: column;
+      max-width: 550px;
+      height: 100%;
+      padding-bottom: $margin/1.5;
+      margin: 0 auto;
+
+      .package-link {
+        @include flexbox;
+        flex-direction: column;
+        height: 100%;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .featured-tag {
+        position: absolute;
+        @include flexbox;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        width: 100%;
+        height: 32px;
+        margin-top: -32px;
+        font-weight: 700;
+      }
+
+      .field--name-title {
+        padding: 15px 20px 65px 20px;
+        font-weight: 700;
+        font-size: 2.2rem;
+        //background-color: var(--color-primary);
+      }
+
+      [class*="field--name-field-image"] {
+        display: none;
+      }
+      [class*="field--name-field-icon"] {
+        @include flexbox;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 130px;
+        min-width: 130px;
+        margin: -50px auto 5px;
+        transition: all $duration;
+      }
+
+      .package-copy {
+        @include flexbox;
+        flex-direction: column;
+        height: 100%;
+        margin: 12px 20px 0 20px;
+      }
+      .price-prefix {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .field--name-field-starting-price {
+        display: inline-block;
+        margin-bottom: 10px;
+        font-size: 4.2rem;
+        font-weight: 900;
+        line-height: 1.1;
+
+        @include breakpoint($large) {
+          font-size: 6.4rem;
+        }
+
+        &::before {
+          content: "$";
+        }
+      }
+      .field--name-field-price-suffix {
+        display: inline-block;
+        font-size: 2.2rem;
+        font-weight: 600;
+      }
+      .__body {
+        @extend %p;
+
+        p {
+          color: $base-font-color;
+        }
+      }
+
+      .cta-link {
+        margin-top: auto;
+      }
+
+      .field--name-field-initial-fee {
+        margin-top: 10px;
+        color: palette(red);
+        font-style: italic;
+      }
+    }
+
+    // No icon
+    &.icon-no {
+      .node__content {
+        .field--name-title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+        }
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+
+      [class*="field--name-field-icon"] {
+        transform: scale(1.1);
+
+        svg {
+          path {
+            fill: var(--color-primary);
+          }
+        }
+      }
+
+      .cta-link {
+        span {
+          background-color: var(--color-primary-dark);
+        }
+      }
+    }
+  }
+
+  // Teaser
+  &.node--view-mode-teaser {
+
+    @each $color in $lightcolors {
+      &.package-color-#{$color} {
+        .node__content {
+          .field--name-title {
+            background-color: palette($color);
+            color: $base-font-color;
+          }
+        }
+      }
+    }
+
+    @each $color in $darkcolors {
+      &.package-color-#{$color} {
+        .node__content {
+          .field--name-title {
+            background-color: palette($color);
+            color: palette(white);
+          }
+        }
+      }
+    }
+  }
+
+  // Secondary Teaser
+  &.node--view-mode-secondary-teaser {
+    max-width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.1);
+    transition: all $duration;
+
+    .node__content {
+      max-width: 900px;
+      margin: 0 auto;
+
+      .package-link {
+        @include flexbox;
+        flex-direction: column;
+        color: inherit;
+        text-decoration: none;
+
+        @include breakpoint($smedium) {
+          flex-direction: row;
+        }
+      }
+
+      .field--name-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+      }
+
+      [class*="field--name-field-image"] {
+        display: none;
+      }
+      [class*="field--name-field-icon"] {
+        @include flexbox;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-width: 130px;
+        margin: 0 auto;
+        padding: 30px;
+        transition: all $duration;
+
+        @include breakpoint($smedium) {
+          width: 180px;
+        }
+        @include breakpoint($large) {
+          width: 250px;
+        }
+      }
+
+      .package-copy {
+        @include flexbox;
+        flex-direction: column;
+        height: 100%;
+        padding: 30px;
+
+        @include breakpoint($large) {
+          padding: 30px 60px;
+        }
+      }
+      .price-prefix {
+        display: inline-block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .field--name-field-starting-price {
+        display: inline-block;
+        margin-bottom: 10px;
+        font-size: 3rem;
+        font-weight: 900;
+        line-height: 1.1;
+
+        @include breakpoint($large) {
+          font-size: 4rem;
+        }
+
+        &::before {
+          content: "$";
+        }
+      }
+      .field--name-field-price-suffix {
+        display: inline-block;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      .cta-link {
+        margin-top: auto;
+      }
+
+      .field--name-field-initial-fee {
+        margin-top: 10px;
+        color: palette(red);
+        font-style: italic;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+
+      [class*="field--name-field-icon"] {
+        transform: scale(1.1);
+
+        svg {
+          path {
+            fill: var(--color-primary);
+          }
+        }
+      }
+
+      .cta-link {
+        span {
+          background-color: var(--color-primary-dark);
+        }
+      }
+    }
+  }
+
+  // Tertiary Teaser
+  &.node--view-mode-tertiary-teaser {
+    .node__content {
+      @include flexbox;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      [class*="field--name-field-icon"] {
+        width: 110px;
+        min-width: 110px;
+        margin-right: 30px;
+        margin-bottom: 15px;
+
+        svg {
+          width: 100%;
+        }
+      }
+
+      .package-copy {
+        flex: 1 0 calc(100% - 140px);
+      }
+
+      .field--name-field-caption {
+        margin-bottom: 0;
+        font-weight: 700;
+        font-size: 2.2rem;
+        line-height: 1.375;
+      }
+
+      .field--name-field-description {
+        //flex: 1 0 100%;
+        margin-top: 20px;
+        line-height: $base-line-height;
+      }
+
+      .price-prefix {
+        display: inline-block;
+        margin-top: 15px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .field--name-field-starting-price {
+        display: inline-block;
+        margin-bottom: 10px;
+        font-size: 2.2rem;
+        font-weight: 900;
+        line-height: 1.1;
+
+        &::before {
+          content: "$";
+        }
+      }
+
+      .field--name-field-price-suffix {
+        display: inline-block;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      @include breakpoint($xsmall) {
+        flex-direction: inherit;
+      }
+    }
+  }
+
+  // Quinary Teaser
+  &.node--view-mode-quinary-teaser {
+    .node__content {
+      .field--name-field-starting-price {
+        font-size: 3.8rem;
+
+        @include breakpoint($large) {
+          font-size: 4.8rem;
+        }
+      }
+
+      .field--name-field-initial-fee {
+        margin-top: -10px;
+      }
+
+      .package-features {
+        margin-top: 15px;
+      }
+
+      .package-features-label {
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+
+      .field--name-field-features-package,
+      .field--name-field-detailed-features-packages {
+        width: calc(100% - 30px);
+        margin-left: 30px;
+        margin-bottom: 5px;
+        text-align: left;
+
+        .field__item {
+          margin: 10px 0;
+          @include icon-before(circle-check, 17px) {
+            display: inline-block;
+            margin-top: -3px;
+            margin-left: -20px;
+          }
+
+          &::before {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+
+  //Alt view modes (Teasers with Features)
+  &[class*="node--view-mode-alt"] {
+    text-align: left;
+
+    .block-inline-blockpackages.collapse-features & {
+      @include breakpoint($small) {
+        height: initial;
+      }
+    }
+
+    @each $color in $lightcolors {
+      &.package-color-#{$color} {
+        .node__content {
+          .package-icon-price-wrap {
+            background-color: palette($color);
+          }
+        }
+      }
+    }
+
+    @each $color in $darkcolors {
+      &.package-color-#{$color} {
+        .node__content {
+          .package-icon-price-wrap {
+            background-color: palette($color);
+
+            .price-prefix,
+            .field--name-field-starting-price,
+            .field--name-field-price-suffix,
+            .field--name-field-initial-fee {
+              color: palette(white);
+            }
+          }
+        }
+      }
+    }
+
+    .node__content {
+      > a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .package-icon-price-wrap {
+        @include flexbox;
+        padding: 20px;
+        border-bottom: 2px solid var(--color-dark);
+        background-color: palette(grey, lit);
+      }
+      .package-link {
+        height: initial;
+      }
+      .featured-tag {
+        left: 15px;
+        width: calc(100% - 30px);
+        margin-top: -35px;
+        color: palette(white);
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        background-color: palette(black);
+      }
+      [class*="field--name-field-icon"] {
+        width: 120px;
+        min-width: 120px;
+        margin: 0 6px 0 0;
+
+        @include breakpoint($smedium) {
+          width: 90px;
+          min-width: 90px;
+        }
+      }
+      .price-prefix {
+        font-size: 1.3rem;
+      }
+      .field--name-field-starting-price {
+        margin-bottom: 0px;
+        font-size: 4.2rem;
+        letter-spacing: -1px;
+
+        .view-count-5 & {
+          @include breakpoint($large) {
+            font-size: 3.1rem;
+          }
+        }
+      }
+      .field--name-field-price-suffix {
+        font-size: 2.4rem;
+        font-weight: 700;
+        .view-count-5 & {
+          @include breakpoint($large) {
+            font-size: 1.6rem;
+          }
+        }
+      }
+      .field--name-field-initial-fee {
+        margin-top: 2px;
+        color: palette(black);
+        font-size: 1.3rem;
+      }
+      .package-copy {
+        height: initial;
+        margin: 20px;
+      }
+      .field--name-title {
+        margin-bottom: 5px;
+        padding: 0;
+        font-size: 2rem;
+      }
+      .cta-link {
+        margin-top: auto;
+
+        span {
+          //fallback button styles
+          display: inline-block;
+          margin-bottom: 10px;
+          padding: 12px 32px;
+          text-align: center;
+          color: palette(white);
+          background-color: palette(black);
+        }
+      }
+      .package-features {
+        margin: 0 20px;
+        padding-top: 20px;
+        border-top: 1px solid palette(grey, lightest);
+
+        .see-details {
+          display: none;
+          margin-bottom: 0;
+          font-size: 1.5rem;
+          font-weight: 600px;
+          cursor: pointer;
+          transition: margin-bottom $duration;
+
+          @include icon-before(chevron-right, 15px) {
+            width: 15px;
+            margin-right: 2px;
+          }
+        }
+
+        .feature-lists {
+          transition: opacity $duration;
+        }
+
+        .block-inline-blockpackages.collapse-features & {
+          margin-top: auto;
+          
+          .see-details {
+            display: block;
+          }
+          .feature-lists {
+            display: none;
+            opacity: 0;
+          }
+          &.open {
+            .see-details {
+              margin-bottom: 20px;
+              @include icon-before(chevron-down, 15px) {
+                width: 15px;
+                margin-right: 4px;
+                margin-left: -4px;
+                color: var(--color-primary);
+              }
+            }
+            .feature-lists {
+              opacity: 1;
+            }
+          }
+        }
+        .feature-label {
+          margin-bottom: 8px;
+          text-align: center;
+          text-transform: uppercase;
+          font-size: 1.6rem;
+          font-weight: 700;
+        }
+        ul {
+          margin-bottom: 20px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          li {
+            margin-bottom: 10px;
+            margin-left: 24px;
+            line-height: 1.25;
+          }
+          &.package-includes-list li {
+            @include icon-before(circle-check, 17px) {
+              display: inline-block;
+              margin-top: -3px;
+              margin-left: -24px;
+              color: var(--color-primary);
+            }
+          }
+          &.package-excludes-list li {
+            @include icon-before(circle-check, 17px, palette(grey, lighter)) {
+              display: inline-block;
+              margin-top: -3px;
+              margin-left: -24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //Alt view modes (Teasers with Features with price)
+  &.node--view-mode-alta,
+  &.node--view-mode-altb {
+    .node__content {
+      .package-price {
+        flex: 1;
+        margin-top: 5px;
+        text-align: center;
+      }
+      .price {
+        @include flexbox;
+        justify-content: center;
+        align-items: flex-end;
+      }
+    }
+  }
+
+  //Alt view modes (Teasers with Features no price)
+  &.node--view-mode-altc,
+  &.node--view-mode-altd {
+    .node__content {
+      .package-icon-price-wrap {
+        justify-content: center;
+        padding-top: 15px;
+
+        [class*="field--name-field-icon"] {
+          margin-bottom: -40px;
+          width: 120px;
+          min-width: 120px;
+  
+          @include breakpoint($smedium) {
+            width: 120px;
+            min-width: 120px;
+          }
+        }
+      }
+      .package-copy {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &.featured-1 {
+    margin-top: 32px;
+  }
+
+  &[class*="node--view-mode-"].spotlight-1 {
+    .node__content,
+    .package-icon-price-wrap {
+      background-color: palette(black);
+
+      .price-prefix,
+      .field--name-field-starting-price,
+      .field--name-field-price-suffix,
+      .field--name-field-initial-fee,
+      .__body *,
+      .field--name-title,
+      .feature-label,
+      .feature-lists ul li {
+        color: palette(white);
+      }
+    }
+  }
+}
+
+.field--name-field-primary-package-sp,
+.field--name-field-primary-service-lp,
+.field--name-field-secondary-service-lp {
+  padding: 20px 10px;
+
+  #package-information & {
+    padding: 0;
+  }
+}
+
+.block-package
+  + .block-secondary-package
+  .field--name-field-secondary-package-sp,
+.block-package + .block-primary-service .field--name-field-primary-service-lp,
+.block-secondary-package
+  + .block-primary-service
+  .field--name-field-primary-service-lp {
+  padding: 0px 10px 20px;
+
+  #package-information & {
+    padding: 0;
+  }
+}
+
+.layout__region > .block-package + .block-secondary-package,
+.layout__region > .block-package + .block-primary-service,
+.layout__region > .block-secondary-package + .block-primary-service {
+  padding: 0 30px 30px 30px;
+}

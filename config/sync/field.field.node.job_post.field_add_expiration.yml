@@ -1,0 +1,23 @@
+uuid: b5a1f546-a2ef-4a7f-8eec-35d4b15e2ade
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_add_expiration
+    - node.type.job_post
+id: node.job_post.field_add_expiration
+field_name: field_add_expiration
+entity_type: node
+bundle: job_post
+label: 'Add Expiration'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

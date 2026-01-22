@@ -1,0 +1,25 @@
+uuid: 8ec2f1e7-d797-4bd8-970b-dbb84e4c1a6b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:social_media:7e5f53fa-561e-4ef8-9ba7-778f95cb1cce'
+  module:
+    - block_content
+  theme:
+    - s3_subtheme
+id: s3_subtheme_socialmediafooterlinks_2
+theme: s3_subtheme
+region: disabled
+weight: 1
+provider: null
+plugin: 'block_content:7e5f53fa-561e-4ef8-9ba7-778f95cb1cce'
+settings:
+  id: 'block_content:7e5f53fa-561e-4ef8-9ba7-778f95cb1cce'
+  label: 'Social Media Footer Links'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,36 @@
+uuid: a7eb6bc6-a80a-40c9-94b4-f6ef9a2445ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grouped_links.field_city_link
+    - field.field.paragraph.grouped_links.field_group_heading
+    - paragraphs.paragraphs_type.grouped_links
+  module:
+    - link
+    - tag_text_field
+id: paragraph.grouped_links.default
+targetEntityType: paragraph
+bundle: grouped_links
+mode: default
+content:
+  field_city_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_group_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

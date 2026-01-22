@@ -1,0 +1,11 @@
+uuid: 96173d61-afe3-400f-af1b-75c68b46ea3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.schema
+id: block_content.schema
+target_entity_type_id: block_content
+target_bundle: schema
+default_langcode: site_default
+language_alterable: false

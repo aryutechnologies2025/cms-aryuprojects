@@ -1,0 +1,11 @@
+uuid: 63ec092d-2d9d-4ccf-bf5d-a53557abc22f
+langcode: en
+status: true
+dependencies: {  }
+id: our_guarantee_global_
+block_id: 'block_content:f8444489-3a7b-4fa6-b469-114ce01c0ddf'
+category: re_usable_blocks
+label: 'Our Guarantee (global)'
+image_path: ''
+image_alt: ''
+weight: -90

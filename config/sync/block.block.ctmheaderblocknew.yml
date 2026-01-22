@@ -1,0 +1,45 @@
+uuid: 534e03d0-0fb4-4ee9-b3d5-949a0e6424f1
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:ctm_header_block:ad5568f9-8cfa-4dfb-9439-73dfb361aeac'
+  module:
+    - block_content
+    - node
+    - sprowt_subsite
+  theme:
+    - s3_subtheme
+id: ctmheaderblocknew
+theme: s3_subtheme
+region: header_mobile_menu
+weight: -23
+provider: null
+plugin: 'block_content:ad5568f9-8cfa-4dfb-9439-73dfb361aeac'
+settings:
+  id: 'block_content:ad5568f9-8cfa-4dfb-9439-73dfb361aeac'
+  label: 'CTM Header Block (New)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_page: career_page
+      job_post: job_post
+      standalone_landing_page: standalone_landing_page
+  sprowt_subsite_condition:
+    id: sprowt_subsite_condition
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    use: true
+    value:
+      _main: _main
+    hasNoFields: show

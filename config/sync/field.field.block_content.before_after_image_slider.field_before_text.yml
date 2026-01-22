@@ -1,0 +1,21 @@
+uuid: 4a1445c5-dabb-465e-9750-2197f6b93895
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.before_after_image_slider
+    - field.storage.block_content.field_before_text
+id: block_content.before_after_image_slider.field_before_text
+field_name: field_before_text
+entity_type: block_content
+bundle: before_after_image_slider
+label: 'Before Text'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: BEFORE
+default_value_callback: ''
+settings: {  }
+field_type: string

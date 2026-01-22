@@ -1,0 +1,31 @@
+.media-library-item__preview .field.field__item.field--name-thumbnail img {
+  height: auto;
+  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+  left: 50% !important;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  object-fit: contain;
+}
+
+.media-library-item--grid {
+  &::before {
+    background: #2a2a2d;
+  }
+  .media-library-item__attributes {
+    position: relative;
+  }
+  &.is-hover {
+    &:before {
+      //border-color: white;
+    }
+    .media-library-item__preview {
+      border-color: transparent;
+    }
+  }
+}
+
+.media-library-item.checked .media-library-item__preview {
+  border-color: transparent;
+}

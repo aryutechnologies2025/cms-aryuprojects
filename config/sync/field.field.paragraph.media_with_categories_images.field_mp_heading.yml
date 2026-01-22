@@ -1,0 +1,30 @@
+uuid: 66d91cc5-abaa-4f98-8525-a390252d1ac5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mp_heading
+    - paragraphs.paragraphs_type.media_with_categories_images
+  module:
+    - tag_text_field
+id: paragraph.media_with_categories_images.field_mp_heading
+field_name: field_mp_heading
+entity_type: paragraph
+bundle: media_with_categories_images
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  defaultTag: div
+  tagList: |-
+    h1|H1
+    h2|H2
+    h3|H3
+    h4|H4
+    h5|H5
+    h6|H6
+    div|Div
+field_type: html_tag_text_field_type

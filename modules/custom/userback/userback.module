@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Userback module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+
+/**
+ * Implements hook_theme().
+ */
+function userback_theme($existing, $type, $theme, $path)
+{
+    return [
+        'userback_script' => [
+            'path' => $path . '/templates',
+            'template' => 'userback-script',
+            'render element' => 'children',
+            'variables' => [
+                'access_token' => null,
+                'enabled' => false
+            ]
+        ]
+    ];
+}
+
+/**
+ * Implements hook_page_bottom().
+ */
+function userback_page_bottom(array &$page_bottom)
+{
+    $config = \Drupal::configFactory()->get('userback.settings');
+    $variables = [
+        'enabled' => $config->get('enabled') ?? false,
+        'access_token' => $config->get('access_token') ?? ''
+    ];
+    $environments = $config->get('environments') ?? [];
+    $userAccess = \Drupal::currentUser()->hasPermission('use userback');
+    $onEnvironment = true;
+    if (isset($_SERVER['SPROWTHQ_ENVIRONMENT'])) {
+        $onEnvironment = in_array($_SERVER['SPROWTHQ_ENVIRONMENT'], $environments);
+    }
+    if(!empty($variables['enabled'])
+        && $userAccess
+        && $onEnvironment
+    ) {
+        $render = [
+            '#theme' => 'userback_script',
+            '#weight' => 100
+        ];
+        foreach($variables as $key => $value) {
+            $render['#' . $key] = $value;
+        }
+        $page_bottom['userback'] = $render;
+    }
+
+}

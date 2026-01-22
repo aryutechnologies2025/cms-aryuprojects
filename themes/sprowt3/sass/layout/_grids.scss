@@ -1,0 +1,249 @@
+%grid-col-4 {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  > .field__item {
+    width: 100%;
+    margin-bottom: $gutter;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint($small) {
+      width: calc(50% - #{$gutter}/ 2);
+      margin-right: $gutter/2;
+      margin-left: $gutter/2;
+
+      &:first-child,
+      &:nth-child(3) {
+        margin-left: 0;
+      }
+      &:last-child,
+      &:nth-child(2) {
+        margin-right: 0;
+      }
+
+      &:last-child,
+      &:nth-child(3) {
+        margin-bottom: 0;
+      }
+    }
+
+    @include breakpoint($large) {
+      flex: 1;
+      flex-wrap: no-wrap;
+      margin-bottom: 0;
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        margin-right: $gutter/2;
+        margin-left: $gutter/2;
+      }
+    }
+  }
+}
+
+// Copy columning
+.two-column {
+  > ul,
+  > ol {
+    margin-bottom: 20px;
+  }
+
+  @include breakpoint($small) {
+    margin-left: 1.5em;
+    > ul,
+    > ol {
+      @include flexbox;
+      flex-wrap: wrap;
+      margin-left: -10px;
+      margin-right: -10px;
+
+      > li {
+        flex: 1 1 50%;
+        padding-left: 0px;
+        padding-right: 45px;
+        margin-left: 0;
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+}
+
+.three-column {
+  > ul,
+  > ol {
+    margin-bottom: 20px;
+  }
+
+  @include breakpoint($small) {
+    margin-left: 1.5em;
+    > ul,
+    > ol {
+      @include flexbox;
+      flex-wrap: wrap;
+      margin-left: -10px;
+      margin-right: -10px;
+
+      > li {
+        flex: 1 1 33.3%;
+        padding-left: 10px;
+        padding-right: 35px;
+        margin-left: 0;
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+}
+
+%max-col-1 {
+  width: calc(100% - 15px);
+
+  .layout--twocol-section & {
+    width: calc(100% - 15px);
+  }
+}
+
+%max-col-2 {
+  width: calc(100% - 15px);
+
+  @include breakpoint($xxsmall) {
+    width: calc(50% - 15px);
+  }
+
+  .layout--twocol-section & {
+    @include breakpoint($xxsmall) {
+      width: calc(50% - 15px);
+    }
+  }
+}
+
+%max-col-3 {
+  width: calc(100% - 15px);
+
+  @include breakpoint($xxsmall) {
+    width: calc(50% - 15px);
+  }
+  @include breakpoint($small) {
+    width: calc(33.3% - 15px);
+  }
+
+  .layout--twocol-section & {
+    width: calc(100% - 15px);
+
+    @include breakpoint($xxsmall) {
+      width: calc(50% - 15px);
+    }
+    @include breakpoint($small) {
+      width: calc(33.3% - 15px);
+    }
+    @include breakpoint($medium) {
+      width: calc(50% - 15px);
+    }
+    @include breakpoint($large) {
+      width: calc(33.3% - 15px);
+    }
+  }
+}
+
+%max-col-4 {
+  width: calc(100% - 15px);
+
+  @include breakpoint($xxsmall) {
+    width: calc(50% - 15px);
+  }
+  @include breakpoint($small) {
+    width: calc(33.3% - 15px);
+  }
+  @include breakpoint($smedium) {
+    width: calc(25% - 15px);
+  }
+
+  .layout--twocol-section & {
+    width: calc(100% - 15px);
+
+    @include breakpoint($xxsmall) {
+      width: calc(50% - 15px);
+    }
+    @include breakpoint($small) {
+      width: calc(25% - 15px);
+    }
+    @include breakpoint($medium) {
+      width: calc(50% - 15px);
+    }
+    @include breakpoint($large) {
+      width: calc(25% - 15px);
+    }
+  }
+}
+
+%max-col-5 {
+  width: calc(100% - 15px);
+
+  @include breakpoint($xxsmall) {
+    width: calc(50% - 15px);
+  }
+  @include breakpoint($small) {
+    width: calc(33.3% - 15px);
+  }
+  @include breakpoint($smedium) {
+    width: calc(25% - 15px);
+  }
+  @include breakpoint($medium) {
+    width: calc(20% - 15px);
+  }
+
+  .layout--twocol-section & {
+    width: calc(100% - 15px);
+
+    @include breakpoint($xxsmall) {
+      width: calc(33.3% - 15px);
+    }
+    @include breakpoint($small) {
+      width: calc(20% - 15px);
+    }
+    @include breakpoint($medium) {
+      width: calc(33.3% - 15px);
+    }
+    @include breakpoint($large) {
+      width: calc(20% - 15px);
+    }
+  }
+}
+
+%max-col-6 {
+  width: calc(100% - 15px);
+
+  @include breakpoint($xxsmall) {
+    width: calc(50% - 15px);
+  }
+  @include breakpoint($small) {
+    width: calc(33.3% - 15px);
+  }
+  @include breakpoint($medium) {
+    width: calc(25% - 15px);
+  }
+  @include breakpoint($large) {
+    width: calc(16.6% - 15px);
+  }
+
+  .layout--twocol-section & {
+    width: calc(100% - 15px);
+
+    @include breakpoint($xxsmall) {
+      width: calc(33.3% - 15px);
+    }
+    @include breakpoint($small) {
+      width: calc(16.6% - 15px);
+    }
+    @include breakpoint($medium) {
+      width: calc(33.3% - 15px);
+    }
+    @include breakpoint($large) {
+      width: calc(16.6% - 15px);
+    }
+  }
+}

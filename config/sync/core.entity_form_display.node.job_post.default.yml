@@ -1,0 +1,390 @@
+uuid: 9a815919-3b35-453e-8ee4-419b1fa74245
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.job_post.body
+    - field.field.node.job_post.field_add_expiration
+    - field.field.node.job_post.field_employment_type
+    - field.field.node.job_post.field_expiration_date
+    - field.field.node.job_post.field_job_application_link
+    - field.field.node.job_post.field_job_category
+    - field.field.node.job_post.field_job_description_link
+    - field.field.node.job_post.field_job_posting_date
+    - field.field.node.job_post.field_location
+    - field.field.node.job_post.field_meta_description
+    - field.field.node.job_post.field_meta_tags
+    - field.field.node.job_post.field_salary_currency
+    - field.field.node.job_post.field_salary_range_from
+    - field.field.node.job_post.field_salary_range_to
+    - field.field.node.job_post.field_salary_range_unit
+    - node.type.job_post
+  module:
+    - conditional_fields
+    - datetime
+    - field_group
+    - hide_revision_field
+    - metatag
+    - path
+    - sprowt_admin_override
+    - text
+third_party_settings:
+  field_group:
+    group_configurations:
+      children:
+        - path
+        - url_redirects
+        - field_meta_tags
+      label: Configurations
+      region: content
+      parent_name: ''
+      weight: 17
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+        weight: 0
+    group_salary:
+      children:
+        - field_salary_range_from
+        - field_salary_range_to
+        - field_salary_range_unit
+        - field_salary_currency
+      label: Salary
+      region: content
+      parent_name: ''
+      weight: 13
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_job_title:
+      children:
+        - title
+      label: 'Job Title'
+      region: content
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: "<ul>\r\n<li>Must be the title of the job only.</li>\r\n<li>Don't include job codes, addresses, dates, salaries, or company names.</li>\r\n<li>Don't overuse special characters such as ! and *. <br>e.g. \"*** WAREHOUSE HIRING NOW!! ON A BUS ROUTE!! ***\"</li>\r\n</ul>"
+        required_fields: true
+id: node.job_post.default
+targetEntityType: node
+bundle: job_post
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 7
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  content_library_include:
+    type: boolean_checkbox
+    weight: 14
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_add_expiration:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_employment_type:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_expiration_date:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        ae65bc04-e008-4213-9fa5-1a9c79245a5d:
+          entity_type: node
+          bundle: job_post
+          dependee: field_add_expiration
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+        56944910-104f-4b08-b800-44a1cbbb10a4:
+          entity_type: node
+          bundle: job_post
+          dependee: field_add_expiration
+          settings:
+            state: empty
+            reset: false
+            condition: '!checked'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: empty
+            effect_options:
+              empty:
+                value: ''
+                reset: 1
+            selector: ''
+        08c629da-36f6-422e-b004-a6dcd5c38947:
+          entity_type: node
+          bundle: job_post
+          dependee: field_add_expiration
+          settings:
+            state: required
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_job_application_link:
+    type: link_with_description
+    weight: 11
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_job_category:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_job_description_link:
+    type: link_with_description
+    weight: 10
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_job_posting_date:
+    type: datetime_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_location:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_meta_description:
+    type: string_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 6
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_salary_currency:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        be2ac7f5-ef41-4d64-a394-6a20f39d4f4a:
+          entity_type: node
+          bundle: job_post
+          dependee: field_salary_range_from
+          settings:
+            state: required
+            reset: false
+            condition: '!empty'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: ''
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_salary_range_from:
+    type: number
+    weight: 11
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        a1e39d3d-740c-4a8c-b30a-3f7150344915:
+          entity_type: node
+          bundle: job_post
+          dependee: field_salary_range_to
+          settings:
+            state: required
+            reset: false
+            condition: '!empty'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: ''
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_salary_range_to:
+    type: number
+    weight: 12
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        46f88749-1691-4549-8b8a-643ad558799e:
+          entity_type: node
+          bundle: job_post
+          dependee: field_salary_range_from
+          settings:
+            state: required
+            reset: false
+            condition: '!empty'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: ''
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_salary_range_unit:
+    type: options_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        b90c8754-3fdb-4559-8c58-06591478b12d:
+          entity_type: node
+          bundle: job_post
+          dependee: field_salary_range_from
+          settings:
+            state: required
+            reset: false
+            condition: '!empty'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: ''
+            effect: show
+            effect_options: {  }
+            selector: ''
+  path:
+    type: path
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  revision_log:
+    type: hide_revision_field_log_widget
+    weight: 16
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+      show: true
+      default: ''
+      permission_based: false
+      allow_user_settings: true
+      hide_revision: false
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  sticky: true
+  uid: true

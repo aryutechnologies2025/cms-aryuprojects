@@ -1,0 +1,174 @@
+.layout__region {
+  .block-inline-blockimage,
+  .block--type-image {
+    padding: ($margin * 1.5) $margin;
+    pointer-events: none;
+
+    @include breakpoint($xsmall) {
+      padding: ($margin * 1.5);
+    }
+
+    &.mobile-image {
+      .field--name-field-image {
+        display: none;
+      }
+
+      @include breakpoint($small) {
+        .field--name-field-image {
+          display: block;
+        }
+        .field--name-field-image-mobile {
+          display: none;
+        }
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+
+    &.background-image {
+      .image-bg {
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-size: cover;
+      }
+    }
+
+    .page-node-type-career-page &.background-image {
+      padding: 0;
+    }
+  }
+
+  &.layout__region--first,
+  &.layout__region--second,
+  &.layout__region--third {
+    .block-inline-blockimage,
+    .block--type-image {
+      &.fade,
+      &.slant,
+      &.vertical-center-align {
+        min-height: 100%;
+      }
+    }
+  }
+}
+
+.layout.full-width {
+  &:not(:first-child) {
+    overflow: hidden;
+  }
+
+  .layout__region {
+    .block-inline-blockimage {
+      @include flexbox;
+      align-items: center;
+      padding: 0;
+
+      [class*="field--name-field-image"] {
+        width: 100%;
+        height: 100%;
+      }
+
+      @include breakpoint($medium) {
+        //min-height: 300px;
+      }
+    }
+  }
+
+  //Fading Image Block into other block on two-column
+
+  @include breakpoint($medium) {
+    .layout__region--first,
+    .layout__region--second {
+      .block-inline-blockimage {
+        &.fade,
+        &.slant {
+          .media--type-media-image {
+            min-height: calc(100% - 30px);
+          }
+          [class*="field--name-field-image"] {
+            position: relative;
+            transform: scale(1.15);
+
+            img {
+              position: absolute;
+              top: 0;
+              min-width: 100%;
+              min-height: 100%;
+              max-height: 100%;
+              width: auto;
+              height: auto;
+              object-fit: cover;
+            }
+          }
+        }
+        &.fade {
+          [class*="field--name-field-image"] {
+            mask-image: linear-gradient(to right, transparent 0%, black 25%);
+            -webkit-mask-image: linear-gradient(
+              to right,
+              transparent 0%,
+              black 25%
+            );
+          }
+        }
+      }
+    }
+    .layout__region--first {
+      .block-inline-blockimage {
+        &.fade,
+        &.slant {
+          [class*="field--name-field-image"] {
+            transform-origin: 0% 0%;
+
+            img {
+              left: 0;
+            }
+          }
+        }
+        &.fade {
+          [class*="field--name-field-image"] {
+            mask-image: linear-gradient(to left, transparent 0%, black 25%);
+            -webkit-mask-image: linear-gradient(
+              to left,
+              transparent 0%,
+              black 25%
+            );
+          }
+        }
+        &.slant {
+          clip-path: polygon(70px 0%, 100% 0, 100% 100%, 0 100%);
+        }
+      }
+    }
+    .layout__region--second {
+      .block-inline-blockimage {
+        &.fade,
+        &.slant {
+          [class*="field--name-field-image"] {
+            transform-origin: 100% 0%;
+
+            img {
+              right: 0;
+            }
+          }
+        }
+        &.fade {
+          [class*="field--name-field-image"] {
+            mask-image: linear-gradient(to right, transparent 0%, black 25%);
+            -webkit-mask-image: linear-gradient(
+              to right,
+              transparent 0%,
+              black 25%
+            );
+          }
+        }
+        &.slant {
+          clip-path: polygon(70px 0%, 100% 0, 100% 100%, 0 100%);
+        }
+      }
+    }
+  }
+}

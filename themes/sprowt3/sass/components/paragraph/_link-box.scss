@@ -1,0 +1,43 @@
+.paragraph--type--link-box {
+  max-width: 485px;
+  height: 100%;
+  margin: 0 auto;
+
+  .box-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .field--name-field-image {
+    max-width: 485px;
+  }
+
+  .box-copy {
+    @include flexbox;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: $margin;
+    transition: background-color $duration;
+
+    .field--name-field-heading {
+      padding: 0 $margin;
+      margin: 20px 0 15px;
+      @extend %h4;
+      font-weight: 700;
+    }
+    .field--name-field-description {
+      padding: 0 $margin;
+      line-height: 1.6;
+    }
+    .button {
+      margin: 20px auto 0;
+    }
+    .field--name-field-social-media {
+      margin: 15px auto 2px;
+    }
+
+    @include breakpoint($small) {
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+uuid: dbac1afd-c9da-473a-b967-83b85f94b6f8
+langcode: en
+status: true
+dependencies: {  }
+name: 'Job Categories'
+vid: job_categories
+description: 'Categories used for job postings'
+weight: 0
+new_revision: false

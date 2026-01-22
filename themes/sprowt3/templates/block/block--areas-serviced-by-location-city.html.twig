@@ -1,0 +1,23 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'max-col-' ~ content.field_max_columns[0]['#markup']
+  ]
+%}
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  
+  {{ content|without('field_max_columns') }}
+  {# <div class="location-title h3">{{ drupal_field('title', 'node', main_location) }}</div> #}
+
+  {% block content %}
+    {{ drupal_view('areas_serviced_by_location_city_page', 'block_group_none') }}
+  {% endblock %}
+
+  <div>{{ content.field_link }}</div>
+</div>

@@ -1,0 +1,14 @@
+uuid: cc20a728-9879-42af-8a8c-156d244e7fed
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ai_context_tags
+id: taxonomy_vocabulary_ai_context_tags
+entity_type_id: taxonomy_vocabulary
+entity_id: ai_context_tags
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

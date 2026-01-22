@@ -1,0 +1,21 @@
+uuid: e3b92f55-f430-4655-a22a-3d18f046756e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_do_not_show_hours
+    - node.type.branch
+id: node.branch.field_do_not_show_hours
+field_name: field_do_not_show_hours
+entity_type: node
+bundle: branch
+label: 'Do not show Hours in footer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

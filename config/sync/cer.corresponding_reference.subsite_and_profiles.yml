@@ -1,0 +1,14 @@
+uuid: 0a91d3ff-a702-4ec7-bfc1-1007b306c07f
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_profiles
+label: 'Subsite and Profiles'
+enabled: true
+first_field: field_subsite_multiple
+second_field: field_profiles
+add_direction: append
+bundles:
+  node:
+    - profile
+    - subsite

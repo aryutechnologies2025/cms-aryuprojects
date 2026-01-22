@@ -1,0 +1,23 @@
+uuid: a29d21a6-5b14-496c-8696-2a9d4bfb592e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_city_link
+    - paragraphs.paragraphs_type.grouped_links
+  module:
+    - link
+id: paragraph.grouped_links.field_city_link
+field_name: field_city_link
+entity_type: paragraph
+bundle: grouped_links
+label: 'City Links'
+description: 'If your link text is vague (e.g. "View More" or "Check it out!"), please add a thorough description of the link destination to ensure the site is ADA compliant.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

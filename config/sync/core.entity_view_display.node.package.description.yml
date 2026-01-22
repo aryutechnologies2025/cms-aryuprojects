@@ -1,0 +1,83 @@
+uuid: dc1e760a-09a2-4a2d-8b7d-e45805bc0e41
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.description
+    - field.field.node.package.body
+    - field.field.node.package.field_button
+    - field.field.node.package.field_button_text
+    - field.field.node.package.field_caption
+    - field.field.node.package.field_description
+    - field.field.node.package.field_detailed_features_packages
+    - field.field.node.package.field_excluded_detailed_feature
+    - field.field.node.package.field_excluded_features_package
+    - field.field.node.package.field_featured
+    - field.field.node.package.field_features_package
+    - field.field.node.package.field_icon_package
+    - field.field.node.package.field_industry
+    - field.field.node.package.field_initial_fee
+    - field.field.node.package.field_package_color
+    - field.field.node.package.field_package_level
+    - field.field.node.package.field_price_suffix
+    - field.field.node.package.field_secondary_solution_ref
+    - field.field.node.package.field_services
+    - field.field.node.package.field_solution_ref
+    - field.field.node.package.field_spotlight
+    - field.field.node.package.field_starting_price
+    - field.field.node.package.field_subsite_multiple
+    - node.type.package
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.package.description
+targetEntityType: node
+bundle: package
+mode: description
+content:
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_services:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  body: true
+  field_button: true
+  field_button_text: true
+  field_caption: true
+  field_detailed_features_packages: true
+  field_excluded_detailed_feature: true
+  field_excluded_features_package: true
+  field_featured: true
+  field_features_package: true
+  field_icon_package: true
+  field_industry: true
+  field_initial_fee: true
+  field_package_color: true
+  field_package_level: true
+  field_price_suffix: true
+  field_secondary_solution_ref: true
+  field_solution_ref: true
+  field_spotlight: true
+  field_starting_price: true
+  field_subsite_multiple: true
+  langcode: true
+  show_title: true

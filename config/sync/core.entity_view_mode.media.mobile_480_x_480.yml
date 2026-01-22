@@ -1,0 +1,11 @@
+uuid: b648352b-0405-4428-aaa7-b785da50251d
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.mobile_480_x_480
+label: 'Mobile (480 x 480)'
+description: ''
+targetEntityType: media
+cache: true

@@ -1,0 +1,11 @@
+uuid: f04f7c42-8d51-4c2a-81b3-cc39f2ad67db
+langcode: en
+status: true
+dependencies: {  }
+id: custom_branding_block
+block_id: 'inline_block:custom_branding_block'
+category: header_footer
+label: 'Custom Branding Block'
+image_path: ''
+image_alt: ''
+weight: -96

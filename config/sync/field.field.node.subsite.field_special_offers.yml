@@ -1,0 +1,29 @@
+uuid: d49bba20-7be0-49b2-b736-9ba06a3fb585
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_special_offers
+    - node.type.special_offer
+    - node.type.subsite
+id: node.subsite.field_special_offers
+field_name: field_special_offers
+entity_type: node
+bundle: subsite
+label: 'Special Offer(s)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      special_offer: special_offer
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

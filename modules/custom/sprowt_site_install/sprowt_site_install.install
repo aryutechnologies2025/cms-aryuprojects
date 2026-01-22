@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * IMPORTANT!
+ * DO NOT ADD ANYTHING HERE
+ *
+ * This file is meant to read a site specific install file for running site specific db update scripts
+ *
+ */
+
+$sprowt_site_install = [
+    'app_root' => \Drupal::root(),
+    'site_path' => \Drupal::service('kernel')->getSitePath()
+];
+
+if (file_exists($sprowt_site_install['app_root'] . '/' . $sprowt_site_install['site_path'] . '/sprowt_site_install.install')) {
+    require_once $sprowt_site_install['app_root'] . '/' . $sprowt_site_install['site_path'] . '/sprowt_site_install.install';
+}

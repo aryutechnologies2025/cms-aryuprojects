@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the HTML Title module.
+ */
+
+/**
+ * Rename html_title.setting config to html_title.settings.
+ */
+function html_title_update_8001() {
+  if (\Drupal::configFactory()->getEditable('html_title.settings')->isNew()) {
+    \Drupal::configFactory()->rename('html_title.setting', 'html_title.settings');
+  }
+}

@@ -1,0 +1,84 @@
+.node--type-benefit,
+.node--type-career-benefit {
+  //Teaser
+  &.node--view-mode-teaser,
+  &.node--view-mode-secondary-teaser {
+    .node__meta {
+      display: none;
+    }
+    .node__content {
+      @include flexbox;
+      max-width: 585px;
+      margin: 0 auto;
+
+      [class*="field--name-field-icon"] {
+        min-width: 94px;
+        width: 94px;
+        margin-right: 15px;
+
+        svg {
+          display: block;
+          width: 94px;
+          height: 94px;
+        }
+      }
+      .field--name-title-text {
+        @extend %h4;
+        margin-bottom: 6px;
+      }
+
+      fieldset {
+        legend {
+          display: none;
+        }
+      }
+
+      .fieldset-wrapper {
+        flex-direction: column;
+      }
+    }
+
+    .block-inline-blockhero & {
+      .node__content {
+        [class*="field--name-field-icon"] {
+          min-width: 64px;
+          width: 64px;
+
+          svg {
+            width: 64px;
+            height: 64px;
+          }
+        }
+      }
+    }
+  }
+
+  //Token
+  &.node--view-mode-token {
+    margin-right: $margin;
+    text-align: left;
+
+    .node__content {
+      @include flexbox;
+      flex-direction: row;
+      align-items: center;
+
+      [class*="field--name-field-icon"] {
+        width: 80px;
+        max-width: 80px;
+        margin-right: 12px;
+
+        svg {
+          width: 80px;
+          max-width: 80px;
+        }
+      }
+
+      .field--name-title-text {
+        font-size: 1.8rem;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+    }
+  }
+}

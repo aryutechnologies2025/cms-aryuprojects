@@ -1,0 +1,33 @@
+{#
+/**
+* @file
+* Default theme implementation to display a block.
+*
+* @see template_preprocess_block()
+*
+* @ingroup themeable
+*/
+#}
+
+{% if block.configuration.show_schema == 'true' %}
+	{% if reviews > 0 %}
+		<script type='application/ld+json'>
+		{ "@context": "http://schema.org","@type": "Product","name": "{{ site_name }}","aggregateRating":  {  "@type": "AggregateRating",  "ratingValue": "{{ rating }}", "ratingCount": "{{ reviews }}" }}
+		</script>
+	{% endif %}
+{% else %}
+	<div{{ attributes.addClass(classes) }}>
+		<div class="rating-inner-wrap">
+		    <span class="rating-heading">{{ rating }} <span class="postlabel">Star Rating</span></span>
+		    <div class="stars">
+	            {% if external_url is not empty %}
+	                <a class="external-url" aria-label="Star rating external link" href="{{ external_url }}" target="_blank"></a>
+	            {% endif %}
+		        {% for star in stars %}
+		            <i class="star icon-{{ star }}"></i>
+		        {% endfor %}
+		    </div>
+		    <div class="field--name-field-label">{{ text }}</div>
+		</div>
+	</div>
+{% endif %}

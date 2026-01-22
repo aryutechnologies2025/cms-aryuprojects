@@ -1,0 +1,20 @@
+.cookie-banner {
+  transition: transform .5s ease-in-out;
+  transform: translateY(0%);
+  padding: 20px 30px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 222;
+  background: white;
+  &.accepted {
+    transform: translateY(100%);
+  }
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+  }
+}

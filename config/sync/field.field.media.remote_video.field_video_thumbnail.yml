@@ -1,0 +1,29 @@
+uuid: 53a0aef5-2cde-4c89-97e5-43ca7ba5c85f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_video_thumbnail
+    - media.type.media_image
+    - media.type.remote_video
+id: media.remote_video.field_video_thumbnail
+field_name: field_video_thumbnail
+entity_type: media
+bundle: remote_video
+label: 'Video Thumbnail'
+description: 'Representative Image for video'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

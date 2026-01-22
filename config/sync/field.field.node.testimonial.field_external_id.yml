@@ -1,0 +1,19 @@
+uuid: e98159be-94fb-47b8-b37c-158117d5e171
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_external_id
+    - node.type.testimonial
+id: node.testimonial.field_external_id
+field_name: field_external_id
+entity_type: node
+bundle: testimonial
+label: 'External Id'
+description: 'If the review was imported this is the ID the external source uses to ID it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

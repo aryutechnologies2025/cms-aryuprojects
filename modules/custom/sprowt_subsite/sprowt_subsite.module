@@ -1,0 +1,1125 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Sprowt Subsite module.
+ */
+
+use Drupal\Core\Entity\ContentEntityTypeInterface;
+use Drupal\Core\Entity\EntityFieldManager;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
+use Drupal\sprowt_subsite\Plugin\Block\SubsiteMenuBlock;
+use Drupal\sprowt_subsite\Plugin\DataType\SubsiteSettingsProperty;
+use Drupal\sprowt_subsite\SettingsManager;
+use Drupal\system\Entity\Menu;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\Plugin\ViewsHandlerManager;
+use Drupal\views\ViewExecutable;
+
+
+function _sprowt_subsite_test() {
+    require_once __DIR__ . '/sprowt_subsite.deploy.php';
+    sprowt_subsite_deploy_10001();
+}
+
+function sprowt_subsite_get_subsite($node = null) {
+    if(empty($node)) {
+        return SettingsManager::getCurrentNodeSubsite();
+    }
+    return SettingsManager::getSubsiteFromNode($node);
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function sprowt_subsite_theme($existing, $type, $theme, $path)
+{
+    return [
+        'subsite_logo' => [
+            'variables' => [
+                'subsite_url' => null,
+                'imageAttributes' => null,
+                'linkAttributes' => null,
+                'site_logo' => null
+            ]
+        ]
+    ];
+}
+
+/**
+ * Implements hook_entity_operation_alter().
+ */
+function sprowt_subsite_entity_operation_alter(array &$operations, \Drupal\Core\Entity\EntityInterface $entity)
+{
+    if($entity instanceof Node && $entity->bundle() == 'subsite') {
+        $url = Url::fromRoute('sprowt_subsite.subsite_settings', [
+            'node' => $entity->id(),
+        ]);
+        $operations['subsite_settings'] = [
+            'title' => 'Subsite settings',
+            'url' => $url,
+            'weight' => 100
+        ];
+    }
+}
+
+
+/**
+ * Implements hook_token_info_alter().
+ */
+function sprowt_subsite_token_info_alter(&$data)
+{
+    $data['tokens']['sprowt']['subsite_home_url'] = [
+        'name' => 'Subsite homepage url',
+        'description' => 'Relative url for the current node\'s subsite homepage url. If not on a subsite, returns and empty string.'
+    ];
+
+    $data['tokens']['sprowt']['subsite_page_url:?'] = [
+        'name' => 'Subsite basic page url',
+        'description' => 'A basic url attached to the current subsite. Replace the "?" with the machine name for the page type.'
+    ];
+
+    $data['tokens']['sprowt']['subsite_page:?'] = [
+        'name' => 'Subsite basic page node',
+        'description' => 'A basic page node attached to this node\'s subsite. Replace the "?" with the machine name for the page type.',
+        'type' => 'node'
+    ];
+}
+
+/**
+ * Implements hook_tokens_alter().
+ */
+function sprowt_subsite_tokens_alter(array &$replacements, array $context, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata)
+{
+    $routeMatch = \Drupal::routeMatch();
+    if($routeMatch->getRouteName() == 'entity.node.canonical') {
+        $node = $routeMatch->getParameter('node');
+        if(!empty($node) && !$node instanceof Node) {
+            $node = Node::load($node);
+        }
+    }
+
+    if(empty($node) && !empty($context["data"]["webform_submission"])) {
+        /** @var \Drupal\webform\Entity\WebformSubmission $submission */
+        $submission = $context["data"]["webform_submission"];
+        $sourceEntity = $submission->getSourceEntity();
+        if($sourceEntity instanceof Node) {
+            $node = $sourceEntity;
+        }
+        else {
+            $sourceUrl = $submission->getSourceUrl();
+            $route = $sourceUrl->getRouteName();
+            if(!empty($route) && $route == 'entity.node.canonical') {
+                $params = $sourceUrl->getRouteParameters();
+                $nid = $params['node'];
+                $node = Node::load($nid);
+            }
+        }
+    }
+
+    if($context['type'] == 'sprowt' && !empty($node) && $node instanceof Node) {
+        /** @var \Drupal\sprowt_settings\SprowtSettings $sprowtSettings */
+        $sprowtSettings = \Drupal::service('sprowt_settings.manager');
+        /** @var SettingsManager $subsiteSettings */
+        $subsiteSettings = \Drupal::service('sprowt_subsite.settings_manager');
+        foreach($context['tokens'] as $name => $original) {
+            \Drupal::service('module_handler')->alter('sprowt_token_name', $name);
+            $arguments = [];
+            if(strpos($name, ':') !== false) {
+                $arguments = explode(':', $name);
+                $name = array_shift($arguments);
+                $arguments = array_filter(array_values($arguments));
+                if(!empty($arguments)) {
+                    $arguments = array_map(function($arg) {
+                        return trim($arg);
+                    }, $arguments);
+                }
+            }
+            if($name == 'skip') {
+                continue;
+            }
+            if($name == 'aggregate_reviews') {
+                continue;
+            }
+            if($name == 'company_phone' || $name == 'contact_phone') {
+                if(empty($arguments)) {
+                    $arguments[] = 'phone';
+                }
+            }
+            if($name == 'subsite_home_url') {
+                if(empty($node)) {
+                    $replacements[$original] = '';
+                }
+                else {
+                    /** @var \Drupal\sprowt_subsite\SubsiteService $subsiteService */
+                    $subsiteService = \Drupal::service('sprowt_subsite.service');
+                    $subsiteHome = $subsiteService->getSubsiteHomePageFromNode($node);
+                    if(empty($subsiteHome)) {
+                        $replacements[$original] = '';
+                    }
+                    else {
+                        $replacements[$original] = $subsiteHome->toUrl()->toString();
+                    }
+                }
+                continue;
+            }
+
+            if($name == 'subsite_page_url') {
+                $pageType = $arguments[0] ?? 'home';
+                if($pageType == '?') {
+                    $pageType = 'home';
+                }
+                if(empty($node)) {
+                    $replacements[$original] = '';
+                }
+                else {
+                    /** @var \Drupal\sprowt_subsite\SubsiteService $subsiteService */
+                    $subsiteService = \Drupal::service('sprowt_subsite.service');
+                    $pages = $subsiteService->getSubsiteNodesByPageType($pageType);
+                    if(empty($pages)) {
+                        $replacements[$original] = '';
+                    }
+                    else {
+                        $page = array_shift($pages);
+                        $replacements[$original] = $page->toUrl()->toString();
+                    }
+                }
+                continue;
+            }
+            if($name == 'subsite_page') {
+                $pageType = $arguments[0] ?? 'home';
+                if(empty($node)) {
+                    $replacements[$original] = '';
+                }
+                else {
+                    /** @var \Drupal\sprowt_subsite\SubsiteService $subsiteService */
+                    $subsiteService = \Drupal::service('sprowt_subsite.service');
+                    $pages = $subsiteService->getSubsiteNodesByPageType($pageType);
+                    if(empty($pages)) {
+                        $replacements[$original] = '';
+                    }
+                    else {
+                        $page = array_shift($pages);
+                        $newTokenArgs = $arguments;
+                        if(!empty($newTokenArgs)) {
+                            array_shift($newTokenArgs);
+                        }
+                        else {
+                            $newTokenArgs = ['title'];
+                        }
+                        $newToken = 'node:' . implode(':', $newTokenArgs);
+                        $newToken = "[$newToken]";
+                        $newTokenData = $context['data'] ?? [];
+                        $newTokenData['node'] = $page;
+                        $options = $context['options'];
+                        $rep = \Drupal::token()->replace($newToken, $newTokenData, $options, $bubbleable_metadata);
+                        $replacements[$original] = $rep;
+                    }
+                }
+                continue;
+            }
+
+            $replacement = $subsiteSettings->getSetting($node, $name);
+            if($name == 'phone_button') {
+                $machine = array_shift($arguments);
+                $modifier = null;
+                if(!empty($arguments)) {
+                    $modifier = array_shift($arguments);
+                }
+                if($machine == 'default') {
+                    $def = [
+                        'phone' => 'company_phone',
+                        'value' => 'number_only'
+                    ];
+                }
+                else {
+                    $def = $subsiteSettings->getSetting($node, $machine);
+                }
+                if(!empty($def)) {
+                    if($def['phone'] == 'company_phone') {
+                        $phone = $subsiteSettings->getSetting($node, 'company_phone');
+                    }
+                    else if($def['phone'] == 'contact_phone') {
+                        $phone = $subsiteSettings->getSetting($node, 'contact_phone');
+                    }
+                    else {
+                        $phone = $def['phone'];
+                    }
+                    if($def['value'] == 'number_only') {
+                        $value = $sprowtSettings->formatPhone($phone);
+                    }
+                    else {
+                        $value = $def['value'];
+                    }
+                }
+                if(strpos($value, '[') !== false) {
+                    $value = \Drupal::token()->replace($value);
+                }
+                if(!empty($value) && !empty($phone)) {
+                    switch ($modifier) {
+                        case 'no-swap':
+                            $html = "<a href=\"tel:$phone\" class=\"button ctm-no-swap\">$value</a>";
+                            break;
+                        case 'no-swap-inner':
+                            $html = "<a href=\"tel:$phone\" class=\"button\"><span class=\"ctm-no-swap\">$value</span></a>";
+                            break;
+                        case 'link-only':
+                            $html = "<a href=\"tel:$phone\">$value</a>";
+                            break;
+                        case 'link-only-no-swap':
+                            $html = "<a href=\"tel:$phone\" class=\"ctm-no-swap\">$value</a>";
+                            break;
+                        case 'link-only-no-swap-inner':
+                            $html = "<a href=\"tel:$phone\"><span class=\"ctm-no-swap\">$value</span></a>";
+                            break;
+                        default:
+                            $html = "<a href=\"tel:$phone\" class=\"button\">$value</a>";
+                            break;
+                    }
+                }
+                if(!empty($html)) {
+                    $replacements[$original] = Markup::create($html);
+                }
+                else {
+                    $replacements[$original] = '';
+                }
+            }
+            else if ($name == 'main_nav_url') {
+                $pageType = $arguments[0] ?? '<none>';
+                /** @var \Drupal\sprowt_subsite\SubsiteService $subsiteService */
+                $subsiteService = \Drupal::service('sprowt_subsite.service');
+                $menuName = $subsiteService->getSubsiteMenuName('main', $node);
+                $links = \Drupal::entityTypeManager()->getStorage('menu_link_content')->loadByProperties([
+                    'menu_name' => $menuName,
+                    'field_page_type' => $pageType
+                ]);
+                if(!empty($links)) {
+                    /** @var MenuLinkContent $link */
+                    $link = array_shift($links);
+                    $url = $link->getUrlObject();
+                    $replacements[$original] = $url->toString();
+                }
+                else {
+                    $replacements[$original] = '#';
+                }
+            }
+            else if(!empty($replacement) && in_array($name, $sprowtSettings->imageSettingsKeys())) {
+                /** @var File $file */
+                $file = $replacement;
+                $absolute = false;
+                $style = $arguments[0] ?? null;
+                $html = false;
+                if($style == 'absolute') {
+                    $style = $arguments[1] ?? null;
+                    $absolute = true;
+                }
+                if($style == 'img') {
+                    $html = true;
+                    $style = $arguments[1] ?? null;
+                }
+                if(!empty($style)) {
+                    /** @var ImageStyle $style */
+                    $style = ImageStyle::load($style);
+                }
+                if(empty($style)) {
+                    $url = $file->createFileUrl(!$absolute);
+                }
+                else {
+                    $url = $style->buildUrl($file->getFileUri());
+                    if(!$absolute) {
+                        $url = \Drupal::service('file_url_generator')->transformRelative($url);
+                    }
+                }
+                if(!empty($html)) {
+                    $replacements[$original]  = Markup::create('<img src="'.$url.'">');
+                }
+                else {
+                    $replacements[$original] = $url;
+                }
+            }
+            else if($name == 'company_type') {
+                $replacements[$original] = $sprowtSettings->getIndustry();
+            }
+            else if($name == 'main_branch') {
+                $viewMode = $arguments[0] ?? 'teaser';
+                $node = $sprowtSettings->getSetting('main_branch');
+                if($node instanceof Node) {
+                    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+                    $build = $view_builder->view($node, $viewMode);
+                    $replacements[$original] = Markup::create(\Drupal::service('renderer')->render($build));
+                }
+                else {
+                    $replacements[$original] = '';
+                }
+            }
+            else if(!empty($replacement) && !empty($arguments[0]) && $arguments[0] == 'phone') {
+                $format = null;
+                if(!empty($arguments[1])) {
+                    $format = $arguments[1];
+                }
+                $replacements[$original] = Markup::create($sprowtSettings->formatPhone($replacement, $format));
+            }
+            else if(isset($replacement)) {
+                if(is_string($replacement) && !empty($replacement)) {
+                    $replacements[$original] = Markup::create($replacement);
+                }
+                else {
+                    $replacements[$original] = $replacement;
+                }
+            }
+            else {
+                $replacements[$original] = '';
+            }
+        }
+        return $replacements;
+    }
+}
+
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function sprowt_subsite_views_data_alter(array &$data)
+{
+    //alter subsite field filters
+    /** @var EntityFieldManager $entity_field_manager */
+    $entity_field_manager = \Drupal::service('entity_field.manager');
+    $entity_type_manager = \Drupal::entityTypeManager();
+    $map = $entity_field_manager->getFieldMapByFieldType('sprowt_subsite_reference');
+
+    foreach($map as $entityType => $fieldMap) {
+        foreach($fieldMap as $fieldName => $def) {
+            $entityField = $entityType . "__" . $fieldName;
+            $entityRevision = $entityType . '_revision' . '__' . $fieldName;
+
+            $target_entity_type = $entity_type_manager->getDefinition('node');
+            $entity_type = $entity_type_manager->getDefinition($entityType);
+            $target_base_table = $target_entity_type->getDataTable() ?: $target_entity_type->getBaseTable();
+
+            $args = [
+                '@label' => $target_entity_type->getLabel(),
+                '@field_name' => $fieldName,
+                '@entity' => $entity_type->getLabel()
+            ];
+            if(!empty($data[$entityField])) {
+                $data[$entityField][$fieldName . "_target"]["filter"]["id"] = 'sprowt_subsite_views_filter';
+                $data[$entityField][$fieldName . "_target"]['relationship'] = [
+                    'title' => t('@label referenced from @field_name', $args),
+                    'label' => t('@field_name: @label', $args),
+                    'group' => $entity_type->getLabel(),
+                    'help' => t('Appears in: @bundles.', ['@bundles' => implode(', ', $def['bundles'])]),
+                    'id' => 'standard',
+                    'base' => $target_base_table,
+                    'entity type' => 'node',
+                    'base field' => $target_entity_type->getKey('id'),
+                    'relationship field' => $fieldName . '_target_id',
+                ];
+
+
+                $pseudo_field_name = 'reverse__' . $entityType . '__' . $fieldName;
+                $data[$target_base_table][$pseudo_field_name]['relationship'] = [
+                    'title' => t('@entity using @field_name', $args),
+                    'label' => t('@field_name', ['@field_name' => $fieldName]),
+                    'group' => $target_entity_type->getLabel(),
+                    'help' => t('Relate each @entity with a @field_name set to the @label.', $args),
+                    'id' => 'entity_reverse',
+                    'base' => $entity_type->getDataTable() ?: $entity_type->getBaseTable(),
+                    'entity_type' => $entityType,
+                    'base field' => $entity_type->getKey('id'),
+                    'field_name' => $fieldName,
+                    'field table' => $entityType . '__' . $fieldName,
+                    'field field' => $fieldName . '_target_id',
+                    'join_extra' => [
+                        [
+                            'field' => 'deleted',
+                            'value' => 0,
+                            'numeric' => TRUE,
+                        ],
+                    ],
+                ];
+            }
+            if(!empty($data[$entityRevision])) {
+                $data[$entityRevision][$fieldName . "_target"]["filter"]["id"] = 'sprowt_subsite_views_filter';
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function sprowt_subsite_entity_type_alter(array &$entity_types)
+{
+    $cerType = $entity_types["corresponding_reference"];
+    if($cerType instanceof \Drupal\Core\Config\Entity\ConfigEntityType) {
+        //set to this entity class to deal with subsite reference fields
+        $cerType->setClass(\Drupal\sprowt_subsite\Entity\CorrespondingReference::class);
+        $handlers = $cerType->getHandlerClasses();
+        $form = $handlers['form'] ?? [];
+        $form['add'] = \Drupal\sprowt_subsite\Form\CorrespondingReferenceForm::class;
+        $form['edit'] = \Drupal\sprowt_subsite\Form\CorrespondingReferenceForm::class;
+        $cerType->setHandlerClass('form', $form);
+    }
+
+    $menuType = $entity_types['menu'];
+    if($menuType instanceof \Drupal\Core\Config\Entity\ConfigEntityType) {
+        $menuType->setHandlerClass('list_builder', \Drupal\sprowt_subsite\MenuListBuilder::class);
+    }
+}
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_subsite_form_node_subsite_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $menuFields = [
+        'field_main_menu',
+        'field_utility_menu',
+        'field_footer_menu',
+        'field_mobile_utility_menu',
+        'field_mobile_footer_utility_menu'
+    ];
+    foreach($menuFields as $menuField) {
+        $widget = &$form[$menuField]['widget'];
+        if(!empty($widget['#default_value'])) {
+            $val = $widget['#default_value'];
+            if(is_array($val)) {
+                $val = array_pop($val);
+            }
+            $editUrl = Url::fromRoute('entity.menu.edit_form', [
+                'menu' => $val
+            ]);
+            $link = [
+                '#type' => 'link',
+                '#title' => 'Edit this menu',
+                '#url' => $editUrl,
+                '#attributes' => [
+                    'target' => '_blank'
+                ]
+            ];
+            $wrap = [
+                '#type' => 'html_tag',
+                '#tag' => 'div',
+                '#attributes' => [
+                    'class' => ['edit-link']
+                ],
+                'link' => $link
+            ];
+            $widget['#field_suffix'] = $wrap;
+        }
+    }
+
+    foreach($form as $formKey => &$fieldArray) {
+        $nodeWidget = null;
+        if(strpos($formKey, 'field_') === 0
+            && !in_array($formKey, $menuFields)
+        ) {
+            if(!empty($fieldArray['widget'])) {
+                $nodeWidget = $fieldArray['widget'];
+            }
+        }
+
+        $value = null;
+        if(!empty($nodeWidget)
+            && !empty($nodeWidget['#key_column'])
+            && $nodeWidget['#key_column'] == 'target_id'
+            && !empty($nodeWidget['#entity_type'])
+            && $nodeWidget['#entity_type'] == 'node'
+        ) {
+            $value = !empty($nodeWidget['#value']) ? $nodeWidget['#value'] : $nodeWidget['#default_value'] ?? [];
+        }
+        if(!empty($value) && !empty($nodeWidget)) {
+            $options = $nodeWidget['#options'] ?? [];
+            $description = [];
+            if(!empty($nodeWidget['#description'])) {
+                if(is_array($nodeWidget['#description'])) {
+                    $description['original'] = $nodeWidget['#description'];
+                }
+                else {
+                    $description['original'] = [
+                        '#type' => 'markup',
+                        '#markup' => Markup::create('<p>' . (string) $nodeWidget['#description'] . '</p>')
+                    ];
+                }
+            }
+            if(count($value) > 1) {
+                $wrap = [
+                    '#type' => 'html_tag',
+                    '#tag' => 'ul'
+                ];
+                foreach($value as $nid) {
+                    $link = [
+                        '#type' => 'link',
+                        '#title' => 'Edit ' . $options[$nid] ?? 'node',
+                        '#url' => Url::fromUserInput('/node/' . $nid . '/edit'),
+                        '#attributes' => [
+                            'target' => '_blank'
+                        ]
+                    ];
+                    $li = [
+                        '#type' => 'html_tag',
+                        '#tag' => 'li',
+                        'link' => $link
+                    ];
+                    $wrap['edit-' . $nid] = $li;
+                }
+            }
+            else {
+                $nid = $value[0];
+                $wrap = [
+                    '#type' => 'link',
+                    '#title' => 'Edit ' . $options[$nid] ?? 'node',
+                    '#url' => Url::fromUserInput('/node/' . $nid . '/edit'),
+                    '#attributes' => [
+                        'target' => '_blank'
+                    ]
+                ];
+            }
+            $description['editLinksWrap'] = [
+                '#type' => 'html_tag',
+                '#tag' => 'p',
+                'editLinks' => $wrap
+            ];
+            $fieldArray['widget']['#description'] = $description;
+        }
+    }
+
+}
+
+/**
+ * Implements hook_pathauto_pattern_alter().
+ */
+function sprowt_subsite_pathauto_pattern_alter(\Drupal\pathauto\PathautoPatternInterface $pattern, array $context)
+{
+    /** @var \Drupal\sprowt_subsite\SubsiteService $service */
+    $service = \Drupal::service('sprowt_subsite.service');
+    $service->pathAutoPatternAlter($pattern, $context);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_subsite_preprocess_node(&$variables)
+{
+    /** @var Node $node */
+    $node = $variables['node'] ?? null;
+    if(empty($node)) {
+        return;
+    }
+    /** @var \Drupal\sprowt_subsite\SubsiteService $service */
+    $service = \Drupal::service('sprowt_subsite.service');
+    if($node->bundle() == 'special_offer') {
+        //could not figure out how to defeat caching so I have to do this with JS
+        $forms = [];
+        $subsites = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+            'type' => 'subsite'
+        ]);
+        /** @var \Drupal\sprowt_subsite\SubsiteService $subsiteService */
+        $subsiteService = \Drupal::service('sprowt_subsite.service');
+        foreach($subsites as $subsite) {
+            $formNodes = $subsiteService->getSubsiteNodesByPageType('special_offer_form', $subsite);
+            if(!empty($formNodes)) {
+                $formNode = array_shift($formNodes);
+                $forms[$subsite->id()] = $formNode->toUrl()->toString();
+            }
+        }
+        if(!empty($forms)) {
+            $variables['#attached']['drupalSettings']['subsiteSpecialOfferMap'] = $forms;
+            $variables['#attached']['library'][] = 'sprowt_subsite/special_offers';
+        }
+    }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_subsite_preprocess_block(&$variables)
+{
+    $pluginId = $variables["base_plugin_id"];
+    if($pluginId == 'subsite_menu_block') {
+        $fieldInfo = SubsiteMenuBlock::$menuFields[$variables["elements"]["#configuration"]["menu_field"] ?? '<none>'] ?? null;
+        if(!empty($fieldInfo)) {
+            $sourceMenu = $fieldInfo['main'];
+        }
+        else {
+            $sourceMenu = 'no-source';
+        }
+        $variables['source_menu'] = $sourceMenu;
+        $sourceMenuClass = \Drupal\Component\Utility\Html::getClass($sourceMenu);
+        $variables['attributes']['class'][] = 'source-menu--' . $sourceMenuClass;
+    }
+    if($pluginId == 'sprowt_subsite_logo_block' || $pluginId == 'sprowt_subsite_logo_reverse_block') {
+        $variables['attributes']['class'][] = 'subsite-logo-block';
+        $variables['attributes']['class'][] = 'block-site-branding';
+    }
+    if(!empty($variables['content']['#theme']) && $variables['content']['#theme'] == 'subsite_logo') {
+        $themeVars = [
+            'subsite_url',
+            'imageAttributes',
+            'linkAttributes',
+            'site_logo'
+        ];
+        foreach($themeVars as $key) {
+            $variables[$key] = $variables['content']['#' . $key] ?? '';
+        }
+    }
+
+    if($variables["elements"]["#base_plugin_id"] == 'block_content') {
+        /** @var \Drupal\block_content\Entity\BlockContent $blockContent */
+        $blockContent = $variables["elements"]["content"]["#block_content"];
+        $noCacheTypes = [
+            'webform',
+            'footer',
+            'header',
+            'special_offers'
+        ];
+        if(in_array($blockContent->bundle(), $noCacheTypes)) {
+            $variables["elements"]["#cache"]["max-age"] = 0;
+        }
+        if($blockContent->bundle() == 'special_offers') {
+
+        }
+    }
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function sprowt_subsite_menu_links_discovered_alter(&$links)
+{
+    foreach ($links as $linkId => &$link) {
+        if(!empty($link['parent']) && $link['parent'] == 'entity.menu.collection') {
+            if($link['route_name'] != 'entity.menu.add_form') {
+                $link['enabled'] = 0; //disable individual edit links in toolbar flyout
+            }
+        }
+    }
+}
+
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function sprowt_subsite_views_query_alter(ViewExecutable $view, QueryPluginBase $query)
+{
+    /** @var \Drupal\views\Plugin\views\query\Sql $query */
+    if($view->id() == 'content' && $view->current_display == 'page_1') {
+        $orderBy = $query->orderby ?? [];
+        $foundKey = null;
+        foreach($orderBy as $key => $order) {
+            if($order['field'] == 'node__field_subsite.field_subsite_target') {
+                $foundKey = $key;
+            }
+        }
+        if(isset($foundKey)) {
+            $found = $orderBy[$foundKey];
+            unset($orderBy[$foundKey]);
+            $query->orderby = array_values($orderBy);
+        }
+        if(!empty($found)) {
+            /** @var ViewsHandlerManager $joinManager */
+            $joinManager = \Drupal::service('plugin.manager.views.join');
+            $rightFormula = \Drupal::database()->select('node__field_subsite', 'field');
+            $rightFormula->addField('field', 'entity_id', 'entity_id');
+            $rightFormula->addExpression("IF(field.field_subsite_target = '_main', 'Main site', field_node_field_data.title)", 'subsite');
+            $rightFormula->leftJoin('node', 'field_node', 'field.field_subsite_target = field_node.uuid');
+            $rightFormula->leftJoin('node_field_data', 'field_node_field_data', 'field_node.nid = field_node_field_data.nid');
+            $union = \Drupal::database()->select('node__field_subsite_multiple', 'field_multi');
+            $union->addField('field_multi', 'entity_id', 'entity_id');
+            $union->addExpression("GROUP_CONCAT(DISTINCT IF(field_multi.field_subsite_multiple_target = '_main', 'Main site', field_multi_node_field_data.title) SEPARATOR ', ')", 'subsite');
+            $union->leftJoin('node', 'field_multi_node', 'field_multi_node.uuid = field_multi.field_subsite_multiple_target');
+            $union->leftJoin('node_field_data', 'field_multi_node_field_data', 'field_multi_node_field_data.nid = field_multi_node.nid');
+            $union->groupBy('field_multi.entity_id');
+            $rightFormula->union($union, 'DISTINCT');
+            $alias = 'subsite_titles';
+            $newJoin = $joinManager->createInstance('standard', [
+                'table formula' => $rightFormula,
+                'field' => 'entity_id',
+                'left_field' => 'nid',
+                'left_table' => 'node_field_data'
+            ]);
+            $query->addRelationship($alias, $newJoin, $view->storage->get('base_table'));
+            $query->addOrderBy('subsite_titles', 'subsite', $found['direction']);
+        }
+    }
+}
+
+
+function sprowt_subsite_theme_suggestions_block(array $variables) {
+    $suggestions = [];
+
+    // Check if this is a menu_block block.
+    if (isset($variables['elements']['#base_plugin_id']) && $variables['elements']['#base_plugin_id'] == 'subsite_menu_block') {
+        $config = isset($variables['elements']['#configuration']) ? $variables['elements']['#configuration'] : [];
+
+        // Context module (and perhaps others?) adds 'region' into the config.
+        if (!empty($config['region'])) {
+            $suggestions[] = 'block__subsite_menu_block__region_' . $config['region'];
+        }
+
+        // Add our custom theme suggestion.
+        if (!empty($config['suggestion'])) {
+            $suggestions[] = 'block__subsite_menu_block__' . $config['suggestion'];
+        }
+
+        // Context module adds block 'uuid' into the config.
+        if (!empty($config['uuid'])) {
+            $suggestions[] = 'block__subsite_menu_block__' . strtr($config['uuid'], '-', '_');
+        }
+    }
+
+    return $suggestions;
+}
+
+/**
+ * Implements hook_webform_element_ELEMENT_TYPE_alter().
+ */
+function sprowt_subsite_webform_element_webform_entity_select_alter(array &$element, \Drupal\Core\Form\FormStateInterface $form_state, array $context)
+{
+    if(!empty(!empty($element["#selection_settings"]["view"]["view_name"]))) {
+        if ($element["#selection_settings"]["view"]["view_name"] == 'special_offers') {
+            $routeMatch = \Drupal::routeMatch();
+            if ($routeMatch->getRouteName() == 'entity.node.canonical') {
+                $node = $routeMatch->getParameter('node');
+                if (!empty($node) && !$node instanceof Node) {
+                    $node = Node::load($node);
+                }
+            }
+
+            if (empty($node) && !empty($element["#webform_submission"])) {
+                /** @var \Drupal\webform\Entity\WebformSubmission $submission */
+                $submission = $element["#webform_submission"];
+                $sourceEntity = $submission->getSourceEntity();
+                if ($sourceEntity instanceof Node) {
+                    $node = $sourceEntity;
+                } else {
+                    $sourceUrl = $submission->getSourceUrl();
+                    $route = $sourceUrl->getRouteName();
+                    if (!empty($route) && $route == 'entity.node.canonical') {
+                        $params = $sourceUrl->getRouteParameters();
+                        $nid = $params['node'];
+                        $node = Node::load($nid);
+                    }
+                }
+            }
+
+            if (!empty($node)) {
+                $subsite = SettingsManager::getSubsiteFromNode($node);
+                /** @var \Drupal\sprowt_subsite\SubsiteService $service */
+                $service = \Drupal::service('sprowt_subsite.service');
+                if (!empty($subsite)) {
+                    $offers = $service->getSubsiteNodes($subsite, [
+                        'bundles' => ['special_offer']
+                    ]);
+                    $options = [];
+                    foreach ($offers as $offer) {
+                        $options[$offer->id()] = $offer->label();
+                    }
+                    asort($options);
+                    $element['#options'] = $options;
+                    $request = \Drupal::request();
+                    $offer = $request->query->get($element["#webform_key"]);
+                    if (!empty($offer) && in_array($offer, array_keys($options))) {
+                        //set default value based off of request param
+                        $element['#default_value'] = $offer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_webform_options_WEBFORM_OPTIONS_ID_alter().
+ */
+function sprowt_subsite_webform_options_subsites_alter(array &$options, array &$element)
+{
+    $subsites = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+        'type' => 'subsite',
+        'status' => 1
+    ]);
+    $options = [];
+    /** @var Node $subsite */
+    foreach($subsites as $subsite) {
+        $displayLabel = sprowt_get_field_value($subsite, 'field_list_display_title');
+        if(empty($displayLabel)) {
+            $displayLabel = $subsite->label();
+        }
+        if(!in_array($displayLabel, $options)) {
+            $options[] = $displayLabel;
+        }
+    }
+    natcasesort($options);
+}
+
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function sprowt_subsite_theme_registry_alter(&$theme_registry) {
+    // Add $subsite_menu_block_configuration as a variable to the 'menu' theme hook. Set
+    // its default value to be an empty array.
+    $theme_registry['menu']['variables']['subsite_menu_block_configuration'] = [];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function sprowt_subsite_theme_suggestions_menu(array $variables)
+{
+    $suggestions = [];
+
+    // The MenuBlock plugin's build() method populates this variable.
+    if (!empty($variables['subsite_menu_block_configuration'])) {
+        $suggestions[] = 'subsite_menu';
+        $config = $variables['subsite_menu_block_configuration'];
+        $menu_name = strtr($variables['menu_name'], '-', '_');
+
+        $suggestions[] = 'menu__' . $menu_name;
+        if (!empty($config['suggestion']) && $config['suggestion'] !== $menu_name) {
+            $suggestions[] = 'menu__' . $config['suggestion'];
+        }
+        if(!empty($config["original_menu_name"])) {
+            $originalMenuName = strtr($config["original_menu_name"], '-', '_');
+            $suggestions[] = 'menu__' . $originalMenuName . '__subsite';
+        }
+    }
+
+    return $suggestions;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_subsite_preprocess_menu(&$variables)
+{
+    if(!empty($variables["subsite_menu_block_configuration"])) {
+        $config = $variables['subsite_menu_block_configuration'];
+        $attributes = $variables['attributes'] ?? [];
+        $attributes['data-menu-id'] = $variables["menu_name"];
+        if(!empty($config["original_menu_name"])) {
+            $originalMenuName = $config["original_menu_name"];
+            $attributes['data-source-menu-id'] = $originalMenuName;
+        }
+        $variables['attributes'] = $attributes;
+    }
+}
+
+function sprowt_subsite_get_main_menu_name_from_subsite_menu_name($menuName, $node = null) {
+    $subsite = sprowt_subsite_get_subsite($node);
+    if(empty($subsite)) {
+        return $menuName;
+    }
+    $map = SubsiteMenuBlock::$menuFields;
+    foreach($map as $field => $menuInfo) {
+        $fieldMenuName = sprowt_get_field_value($subsite, $field);
+        if($fieldMenuName == $menuName) {
+            return $menuInfo['main'];
+        }
+    }
+    return $menuName;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_subsite_preprocess_html(&$variables)
+{
+    $routeMatch = \Drupal::routeMatch();
+    $node = $routeMatch->getParameter('node');
+    if(!empty($node)) {
+        if(!$node instanceof Node) {
+            $node = Node::load($node);
+        }
+    }
+
+    if(!empty($node)) {
+        $subsite = sprowt_subsite_get_subsite($node);
+        if(!empty($subsite)) {
+            $variables['attributes']['data-subsite-nid'] = $subsite->id();
+        }
+    }
+
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function sprowt_subsite_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    /** @var \Drupal\Core\Routing\AdminContext $admin_context */
+    $admin_context = \Drupal::service('router.admin_context');
+    if(!$admin_context->isAdminRoute()) {
+        $subsite = sprowt_subsite_get_subsite();
+        if(!empty($subsite)) {
+            $form_state->set('is_subsite', true);
+            $form_state->set('subsite_info', [
+                'uuid' => $subsite->uuid(),
+                'id' => $subsite->id(),
+                'label' => $subsite->label()
+            ]);
+        }
+    }
+}
+
+function _sprowt_subsite_content_export() {
+    $subsite = Node::load(46);
+
+
+    /** @var \Drupal\content_import_export\Exporter $exporter */
+    $exporter = \Drupal::service('content_import_export.exporter');
+
+    $exportConfigs = [
+        [
+            'entity' => $subsite
+        ]
+    ];
+    $refFields = [
+        'field_basic_page',
+        'field_benefit',
+        'field_blog_post',
+        'field_services',
+        'field_city_ref',
+        'field_concerns',
+        'field_issues',
+        'field_landing_page_ref',
+        'field_branch',
+        'field_packages',
+        'field_profiles',
+        'field_solution_ref',
+        'field_special_offers',
+        'field_standalone_landing_page'
+    ];
+    //make sure all referenced entities have unique uuids
+    foreach ($refFields as $refField) {
+        /** @var \Drupal\Core\Field\EntityReferenceFieldItemList $list */
+        $list = $subsite->get($refField);
+        $entities = $list->referencedEntities();
+        foreach($entities as $entity) {
+            $entityType = $entity->getEntityTypeId();
+            if($entityType == 'node'
+                && ($entity->bundle() == 'concern' || $entity->bundle() == 'issue')
+            ) {
+                //skip concerns and issues
+                continue;
+            }
+            $uuidKey = \Drupal::entityTypeManager()->getDefinition($entityType)->getKey('uuid');
+            $entity->set($uuidKey, \Drupal::service('uuid')->generate());
+            $entity->save();
+        }
+    }
+    $subsite = Node::load(46);
+    $exportConfigs = [
+        [
+            'entity' => $subsite
+        ]
+    ];
+
+    $menuLinks = \Drupal::entityTypeManager()->getStorage('menu_link_content')->loadByProperties([
+        'menu_name' => 'main-navigation-subsite-full'
+    ]);
+
+    foreach($menuLinks as $menuLink) {
+        $exportConfigs[] = [
+            'entity' => $menuLink
+        ];
+    }
+
+    $export = $exporter->export($exportConfigs);
+    $file = __DIR__ . '/content/subsite-full-export.json';
+    file_put_contents($file, json_encode($export, JSON_PRETTY_PRINT));
+}
+
+
+function sprowt_subsite_get_main_menu_machine_name($node = null)
+{
+    if(!($node instanceof Node)) {
+        return 'main';
+    }
+
+
+    $subsite = sprowt_subsite_get_subsite($node);
+    if ($subsite instanceof Node) {
+        $subsiteMenu = $subsite->get('field_main_menu')->target_id;
+        if(!empty($subsiteMenu)) {
+            return $subsiteMenu;
+        }
+    }
+
+    return 'main';
+}
+
+/**
+ * limit available menus in ui to subsite's main menu
+ * see menu_ui_form_node_form_alter()
+ */
+function sprowt_subsite_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+    $node = $form_state->getFormObject()->getEntity();
+    $subsite = sprowt_subsite_get_subsite($node);
+    if ($subsite instanceof Node) {
+        /** @var \Drupal\Core\Menu\MenuParentFormSelectorInterface $menu_parent_selector */
+        $menu_parent_selector = \Drupal::service('menu.parent_form_selector');
+        $mainMenu = sprowt_subsite_get_main_menu_machine_name($node);
+        $available_menu_ids = [$mainMenu];
+        $defaults = menu_ui_get_menu_link_defaults($node);
+
+        if ($defaults['id']) {
+            if(!in_array($defaults['menu_name'], $available_menu_ids)) {
+                $available_menu_ids[] = $defaults['menu_name'];
+            }
+            $default = $defaults['menu_name'] . ':' . $defaults['parent'];
+        }
+        else {
+            $default = $mainMenu . ':';
+        }
+        $menus = Menu::loadMultiple($available_menu_ids);
+        $available_menus = [];
+        foreach ($menus as $menu) {
+            $available_menus[$menu->id()] = $menu->label();
+        }
+        //limit menu options to subsite main menu
+        $parent_element = $menu_parent_selector->parentSelectElement($default, $defaults['id'], $available_menus);
+        $form['menu']['link']['menu_parent'] = $parent_element;
+        $form['menu']['link']['menu_parent']['#title'] = t('Parent link');
+        $form['menu']['link']['menu_parent']['#attributes']['class'][] = 'menu-parent-select';
+    }
+
+}
+
+function sprowt_subsite_get_subsite_options() {
+    $baseOptions = [
+        '_main' => 'Main site'
+    ];
+    $options = [];
+    $subsitesFromDb = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+        'type' => 'subsite'
+    ]);
+    $subsites = [];
+    foreach($subsitesFromDb as $subsite) {
+        $subsites[$subsite->uuid()] = $subsite;
+    }
+    /** @var Node $subsite */
+    foreach($subsites as $subsite) {
+        $label = $subsite->label();
+        $key = array_search($label, $options);
+        if($key !== false) {
+            $otherSubsite = $subsites[$key];
+            $options[$key] = $otherSubsite->label() . " [{$otherSubsite->id()}]";
+            $label .= " [{$subsite->id()}]";
+        }
+        $options[$subsite->uuid()] = $label;
+    }
+    asort($options);
+    $options = array_merge($baseOptions, $options);
+    return $options;
+}

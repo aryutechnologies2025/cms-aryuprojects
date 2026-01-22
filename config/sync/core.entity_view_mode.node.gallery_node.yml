@@ -1,0 +1,11 @@
+uuid: c21dbf25-cc54-48ca-8b86-f0f1452ad682
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.gallery_node
+label: 'Gallery Node'
+description: ''
+targetEntityType: node
+cache: true

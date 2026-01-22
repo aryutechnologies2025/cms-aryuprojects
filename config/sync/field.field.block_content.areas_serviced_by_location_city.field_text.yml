@@ -1,0 +1,28 @@
+uuid: 74d705ce-5b27-4492-941a-9f28b7df3ea2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_by_location_city
+    - field.storage.block_content.field_text
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.plain_text
+  module:
+    - text
+id: block_content.areas_serviced_by_location_city.field_text
+field_name: field_text
+entity_type: block_content
+bundle: areas_serviced_by_location_city
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
+    - plain_text
+field_type: text_long

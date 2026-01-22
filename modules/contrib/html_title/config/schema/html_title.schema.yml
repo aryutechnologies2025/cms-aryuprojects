@@ -1,0 +1,9 @@
+html_title.settings:
+  type: config_object
+  label: 'HTML Title settings'
+  mapping:
+    allow_html_tags:
+      type: string
+
+field.formatter.settings.html_title:
+  type: field.formatter.settings.string

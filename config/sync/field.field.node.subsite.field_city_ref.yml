@@ -1,0 +1,29 @@
+uuid: 624f9bb7-20f7-4854-8ad5-9317ba4a6ae0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city_ref
+    - node.type.city_page
+    - node.type.subsite
+id: node.subsite.field_city_ref
+field_name: field_city_ref
+entity_type: node
+bundle: subsite
+label: 'City Page(s)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      city_page: city_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

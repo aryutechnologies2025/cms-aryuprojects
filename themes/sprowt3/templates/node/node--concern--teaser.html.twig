@@ -1,0 +1,34 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div{{content_attributes.addClass('node__content')}}>
+      <a href="{{ url }}">
+        {{ content.field_icon_concern }}
+      </a>
+      <div class="concern-copy-wrap">
+        <div class="concern-copy">
+          <a class="title-link" href="{{ url }}">{{ label }}</a>
+          {{ content|without('field_icon_concern') }}
+          <a href="{{ url }}">
+            <div class="learn-more">
+              <span>Learn More</span>
+            </div>
+          </a>
+        </div>
+      </div>
+  </div>
+
+</article>

@@ -1,0 +1,15 @@
+.view-package-features {
+  .item-list {
+    ul {
+      li {
+        &::before {
+          color: palette(primary);
+
+          .bg-primary & {
+            color: palette(white);
+          }
+        }
+      }
+    }
+  }
+}

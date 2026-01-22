@@ -1,0 +1,26 @@
+services:
+    sprowt_subsite.settings_manager:
+        class: Drupal\sprowt_subsite\SettingsManager
+        arguments:
+            - '@database'
+            - '@sprowt_settings.manager'
+
+    sprowt_subsite.layout_builder_event_subscriber:
+        class: Drupal\sprowt_subsite\EventSubscriber\SprowtSubsiteLayoutBuilderSubscriber
+        tags:
+            - { name: event_subscriber }
+
+    sprowt_subsite.service:
+        class: Drupal\sprowt_subsite\SubsiteService
+        arguments:
+            - '@sprowt_subsite.settings_manager'
+
+    sprowt_subsite.event_subscriber:
+        class: Drupal\sprowt_subsite\EventSubscriber\SprowtSubsiteSubscriber
+        tags:
+            - { name: event_subscriber }
+
+    sprowt_subsite.config_overrides:
+        class: Drupal\sprowt_subsite\Config\ConfigOverrides
+        tags:
+          - {name: config.factory.override, priority: 5}

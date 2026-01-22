@@ -1,0 +1,29 @@
+uuid: de534add-62ee-49df-9a1b-cdf3ac8e9ef5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_region_pages
+    - node.type.branch
+    - node.type.region_page
+id: node.branch.field_region_pages
+field_name: field_region_pages
+entity_type: node
+bundle: branch
+label: 'Region Pages'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      region_page: region_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

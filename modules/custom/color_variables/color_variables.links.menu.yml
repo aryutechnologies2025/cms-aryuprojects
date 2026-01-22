@@ -1,0 +1,5 @@
+entity.color_variable_item.collection:
+    title: Color Variables
+    description: List of theme color variables
+    route_name: entity.color_variable_item.collection
+    parent: system.themes_page

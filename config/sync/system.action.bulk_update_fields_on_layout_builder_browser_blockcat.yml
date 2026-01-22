@@ -1,0 +1,11 @@
+uuid: 3b4ac560-749f-40c8-9a6e-cddcd87eb083
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_layout_builder_browser_blockcat
+label: 'Bulk Update Layout builder browser block category Fields'
+type: layout_builder_browser_blockcat
+plugin: bulk_update_fields_action_base
+configuration: {  }

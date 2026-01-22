@@ -1,0 +1,11 @@
+uuid: 2a31bb57-8cd1-49b1-b067-7e0fb5b3bd30
+langcode: en
+status: true
+dependencies: {  }
+id: issues_sidebar_global_
+block_id: 'block_content:9c6f6ab1-dfb2-449b-ad05-eb86c9c4ecec'
+category: re_usable_blocks
+label: 'Issues Sidebar (global)'
+image_path: ''
+image_alt: ''
+weight: -91

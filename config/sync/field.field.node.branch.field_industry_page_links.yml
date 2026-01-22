@@ -1,0 +1,70 @@
+uuid: 09cbe5b3-2892-46eb-b15b-f58ebc7f0b2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_industry_page_links
+    - node.type.branch
+    - paragraphs.paragraphs_type.industry_page_links
+  module:
+    - entity_reference_revisions
+id: node.branch.field_industry_page_links
+field_name: field_industry_page_links
+entity_type: node
+bundle: branch
+label: 'Industry Page Links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      industry_page_links: industry_page_links
+    negate: 0
+    target_bundles_drag_drop:
+      attribute:
+        weight: 15
+        enabled: false
+      basic_content:
+        weight: 16
+        enabled: false
+      brand:
+        weight: 17
+        enabled: false
+      ctm_target_number:
+        weight: 18
+        enabled: false
+      grouped_links:
+        weight: 19
+        enabled: false
+      identifications:
+        weight: 20
+        enabled: false
+      iframe:
+        weight: 21
+        enabled: false
+      industry_page_links:
+        weight: 22
+        enabled: true
+      link_box:
+        weight: 23
+        enabled: false
+      media_with_categories:
+        weight: 24
+        enabled: false
+      media_with_categories_images:
+        weight: 25
+        enabled: false
+      media_with_categories_img_vid:
+        weight: 26
+        enabled: false
+      media_with_categories_remote_vid:
+        weight: 27
+        enabled: false
+      social_media:
+        weight: 28
+        enabled: false
+field_type: entity_reference_revisions

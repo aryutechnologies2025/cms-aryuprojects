@@ -1,0 +1,58 @@
+uuid: 5090d5be-ad49-43e6-aba6-6f80b1cef4ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_img_vid
+    - node.type.media_gallery
+    - paragraphs.paragraphs_type.media_with_categories_img_vid
+  module:
+    - entity_reference_revisions
+id: node.media_gallery.field_media_img_vid
+field_name: field_media_img_vid
+entity_type: node
+bundle: media_gallery
+label: Media
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      media_with_categories_img_vid: media_with_categories_img_vid
+    negate: 0
+    target_bundles_drag_drop:
+      basic_content:
+        weight: 11
+        enabled: false
+      brand:
+        weight: 12
+        enabled: false
+      ctm_target_number:
+        weight: 13
+        enabled: false
+      identifications:
+        weight: 14
+        enabled: false
+      link_box:
+        weight: 15
+        enabled: false
+      media_with_categories:
+        weight: 16
+        enabled: false
+      media_with_categories_images:
+        weight: 17
+        enabled: false
+      media_with_categories_img_vid:
+        weight: 18
+        enabled: true
+      media_with_categories_remote_vid:
+        weight: 19
+        enabled: false
+      social_media:
+        weight: 20
+        enabled: false
+field_type: entity_reference_revisions

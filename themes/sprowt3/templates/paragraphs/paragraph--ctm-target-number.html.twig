@@ -1,0 +1,20 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'paragraph--id--' ~ paragraph.id(),
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    no_swap ? 'ctm-no-swap'
+  ]
+%}
+{% block paragraph %}
+  <a class="ctm-target-number-link {% if no_swap %}ctm-no-swap{% endif %}" href="tel:{{ phone_number }}">
+    <div{{attributes.addClass(classes)}}>
+      {% block content %}
+        {{ content | without('field_label', 'field_phone_number') }}
+      {% endblock %}
+      <div class="field field--name-field-phone-number field--type-telephone">{{ text }}</div>
+    </div>
+  </a>
+{% endblock paragraph %}

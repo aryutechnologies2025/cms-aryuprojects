@@ -1,0 +1,35 @@
+uuid: ac11c2bc-5234-4745-b441-6c5d63741a47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_solution_ref
+    - node.type.solution_page_package_alt
+    - node.type.solution_page_package_service
+    - node.type.solution_page_packages
+    - node.type.solution_page_services
+    - node.type.subsite
+id: node.subsite.field_solution_ref
+field_name: field_solution_ref
+entity_type: node
+bundle: subsite
+label: Solution(s)
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      solution_page_package_alt: solution_page_package_alt
+      solution_page_packages: solution_page_packages
+      solution_page_package_service: solution_page_package_service
+      solution_page_services: solution_page_services
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: solution_page_package_alt
+field_type: entity_reference

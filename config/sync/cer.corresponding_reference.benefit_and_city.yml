@@ -1,0 +1,14 @@
+uuid: 8e177ec4-9a90-471c-9a00-446220c076f3
+langcode: en
+status: true
+dependencies: {  }
+id: benefit_and_city
+label: 'Benefit and City'
+enabled: true
+first_field: field_ref_benefits
+second_field: field_ref_city
+add_direction: null
+bundles:
+  node:
+    - benefit
+    - city_page

@@ -1,0 +1,299 @@
+.node--type-concern {
+  > .node__content {
+    > .layout:nth-child(2) {
+      padding-top: 40px;
+      padding-bottom: 20px;
+
+      .block-inline-blockbasic {
+        padding: 30px;
+      }
+    }
+  }
+
+  // Teaser View (Learning Center Concerns List)
+  &.node--view-mode-teaser {
+    max-width: 930px;
+    margin: 0 auto;
+
+    .concern-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .node__content {
+      @include flexbox;
+      flex-direction: column;
+      padding-top: 10px;
+      padding-bottom: 20px;
+      text-align: left;
+      transition: background-color $duration;
+
+      @include breakpoint($small) {
+        margin: 0 auto;
+      }
+
+      .concern-link {
+        @include flexbox;
+      }
+
+      [class*="field--name-field-icon"] {
+        @include flexbox;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100px;
+        min-width: 100px;
+        height: 100px;
+        padding: 25px;
+        margin: 25px 25px 0 0;
+        border-radius: 50%;
+        transition: all $duration;
+
+        a {
+          display: flex;
+        }
+
+        svg {
+          display: block;
+          width: 55px;
+          height: 55px;
+
+          path {
+            transition: fill $duration;
+          }
+        }
+      }
+      .concern-body {
+        @include flexbox;
+        flex-direction: column;
+      }
+      .title-link {
+        color: inherit;
+        text-decoration: none;
+
+        > .field--name-title,
+        > .field--name-title-text {
+          display: block;
+          margin: 20px 0 8px;
+          @extend %h3;
+          font-weight: 700;
+        }
+      }
+      .field--name-field-summary {
+        margin-bottom: 20px;
+      }
+      .learn-more {
+        margin-top: 20px;
+      }
+
+      .field--name-field-issues {
+        @include flexbox;
+        flex-wrap: wrap;
+
+        .field__item {
+          width: 215px;
+          margin: 0 10px 10px 15px;
+
+          @include icon-before(chevron-right) {
+            font-size: 1.4rem;
+            margin-left: -15px;
+          }
+
+          .node__content {
+            display: inline-block;
+          }
+        }
+      }
+
+      &:hover {
+        [class*="field--name-field-icon"] {
+          transform: scale(1.05);
+        }
+      }
+    }
+    @include breakpoint($xsmall) {
+      .node__content {
+        flex-direction: row;
+      }
+    }
+    @include breakpoint($small) {
+      .node__content {
+        [class*="field--name-field-icon"] {
+          width: 125px;
+          min-width: 125px;
+          height: 125px;
+          padding: 35px;
+          margin: 25px 30px 20px 0;
+
+          svg {
+            width: 65px;
+            height: 65px;
+          }
+        }
+      }
+    }
+    @include breakpoint($medium) {
+      .node__content {
+        [class*="field--name-field-icon"] {
+          width: 175px;
+          min-width: 175px;
+          height: 175px;
+          padding: 35px;
+
+          svg {
+            width: 90px;
+            height: 90px;
+          }
+        }
+        .concern-copy-wrap {
+          @include flexbox;
+          justify-content: space-between;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // Token View Mode
+  &.node--view-mode-token {
+    @extend %tokenview;
+  }
+
+  // Secondary Token View Mode
+  &.node--view-mode-secondary-token {
+    @extend %secondarytokenview;
+  }
+
+  // Modal
+  &.node--view-mode-modal {
+    .concern-link {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+      color: inherit;
+      text-decoration: none;
+
+      .field--name-field-icon-concern {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+        border-radius: 50%;
+        background-color: palette(black);
+
+        svg {
+          width: 100%;
+          padding: 6px;
+          path {
+            fill: palette(white);
+          }
+        }
+      }
+      .field--name-title {
+        display: inline-block;
+        font-weight: 600;
+      }
+    }
+    .concern-modal {
+      display: none;
+    }
+  }
+}
+
+.featherlight.popup {
+  .featherlight-close-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 10px 10px 10px 12px;
+    margin-top: 5px;
+    margin-right: 5px;
+    line-height: 1;
+    font-size: 2.0rem;
+    border-radius: 50%;
+    background-color: palette(white);
+  }
+  .featherlight-content {
+    margin: 0;
+    padding: 0;
+  }
+
+  .concern-modal {
+    max-width: 800px;
+
+    .concern-modal-header {
+      padding: 30px 30px 75px 30px;
+      background-color: whitesmoke;
+      text-align: center;
+    }
+    .field--name-field-label {
+      &::after {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    .concern-title {
+      font-size: 2.4rem;
+      font-weight: 600;
+    }
+    .field--name-field-icon-concern {
+      width: 120px;
+      height: 120px;
+      margin: -60px auto 0;
+      padding: 15px;
+      border-radius: 50%;
+      background-color: palette(black);
+
+      svg {
+        width: 100%;
+        padding: 6px;
+        path {
+          fill: palette(white);
+        }
+      }
+    }
+    .__body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 12%;
+    }
+  }
+
+  .featherlight-content {
+    overflow: initial;
+  }
+
+  .featherlight-previous {
+    left: 0;
+    right: initial;
+  }
+  .featherlight-next {
+    left: initial;
+    right: 0;
+  }
+
+  .featherlight-previous,
+  .featherlight-next {
+    top: initial;
+    bottom: -30px;
+    height: 50px;
+    width: 50%;
+    background-color: palette(grey);
+
+    span {
+      display: inline-block;
+      font-size: 1.8rem;
+    }
+
+    &:hover {
+      background-color: palette(black);
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .featherlight-next span,
+    .featherlight-previous span {
+      margin-top: -40px;
+    }
+  }
+}

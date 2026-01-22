@@ -1,0 +1,37 @@
+uuid: a13e29b0-8d2a-4e16-89df-07df236928eb
+langcode: en
+status: true
+dependencies: {  }
+id: gallery
+name: gallery
+weight: -6
+label: Gallery
+group: ''
+skin: classic
+breakpoints: 2
+optimized: true
+options:
+  options__active_tab: edit-options-responsives
+  settings:
+    mobileFirst: true
+    prevArrow: ''
+    nextArrow: ''
+    lazyLoad: ondemand
+    slidesToShow: 3
+    speed: 250
+  responsives:
+    responsive:
+      -
+        breakpoint: 1023
+        unslick: false
+        settings:
+          slidesToShow: 2
+          speed: 250
+      -
+        breakpoint: 1
+        unslick: false
+        settings:
+          dots: true
+          draggable: false
+          speed: 250
+          waitForAnimate: false

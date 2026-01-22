@@ -1,0 +1,207 @@
+<?php
+
+/**
+ * @file
+ * HTML Title module to enable limited HTML tags in title.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_help().
+ */
+function html_title_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the html_title module.
+    case 'help.page.html_title':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Drupal node titles are restrictive and do not support italicized
+      text or superscript text (e.g., Book titles, trademark symbols). The HTML Title module
+      allows a limited set of HTML markup (em, sub, sup, b, i, strong, cite, code, bdi, wbr)
+      to be used in node titles. It filters all other markup from titles to prevent XSS
+      vulnerabilities or irrational nesting (e.g., links within links).
+
+      NOTE: few markup options are enabled by default. Desired markup must be enabled in the
+      settings before it will be active.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function html_title_views_data_alter(&$data) {
+  $data['node_field_data']['title']['field']['id'] = 'node_html_title';
+}
+
+/**
+ * Implements hook_views_plugins_field_alter().
+ */
+function html_title_views_plugins_field_alter(&$definitions) {
+  if (isset($definitions['node_html_title'])) {
+    // Update the provider to node so when this module is uninstalled, the
+    // view is not removed and still works.
+    $definitions['node_html_title']['provider'] = 'node';
+  }
+}
+
+/**
+ * Implements hook_preprocess_page_title().
+ */
+function html_title_preprocess_page_title(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if (!empty($node) && $node instanceof NodeInterface) {
+    $title = \Drupal::service('html_title.filter')->decodeToMarkup($node->label());
+    if (\Drupal::routeMatch()->getRouteName() === 'entity.node.edit_form') {
+      $title = t('<em>Edit @type</em> @title', [
+        '@type' => node_get_type_label($node),
+        '@title' => \Drupal::service('html_title.filter')->decodeToMarkup($node->label()),
+      ]);
+    }
+
+    $variables['title'] = $title;
+  }
+}
+
+/**
+ * Implements hook_preprocess_search_result().
+ */
+function html_title_preprocess_search_result(&$variables) {
+  if (isset($variables['result']['node']) && $variables['result']['node'] instanceof NodeInterface) {
+    $variables['title'] = \Drupal::service('html_title.filter')->decodeToMarkup($variables['title']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function html_title_preprocess_breadcrumb(&$vars) {
+  foreach ($vars['breadcrumb'] as $key => $link) {
+    $vars['breadcrumb'][$key]['text'] = \Drupal::service('html_title.filter')
+      ->decodeToMarkup($link['text']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function html_title_preprocess_views_view_row_rss(&$variables) {
+  $variables['title'] = strip_tags($variables['title']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function html_title_preprocess_field__node__title(&$vars) {
+  if ($vars && !empty($vars['field_name']) && $vars['field_name'] === 'title' && $vars['entity_type'] === 'node') {
+    if (is_array($vars['items']) && !empty($vars['items'])) {
+      foreach ($vars['items'] as $key => $value) {
+        if (isset($vars['items'][$key]['content']['#context']['value'])) {
+          $item_text = $vars['items'][$key]['content']['#context']['value'];
+          $vars['items'][$key]['content']['#context']['value'] = \Drupal::service('html_title.filter')->decodeToMarkup($item_text);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function html_title_theme_registry_alter(&$theme_registry) {
+  if (isset($theme_registry['breadcrumb'])) {
+    $hooks = $theme_registry['breadcrumb']['preprocess functions'];
+    if (($pos = array_search('html_title_preprocess_breadcrumb', $hooks)) !== FALSE) {
+      unset($hooks[$pos]);
+    }
+    $hooks[] = 'html_title_preprocess_breadcrumb';
+
+    $theme_registry['breadcrumb']['preprocess functions'] = array_values($hooks);
+  }
+  // The Gin administration theme also implements hook_preprocess_page_title
+  // and will result in markup here. This forces our hook to override it.
+  if (isset($theme_registry['page_title'])) {
+    $hooks = $theme_registry['page_title']['preprocess functions'];
+    if (($pos = array_search('html_title_preprocess_page_title', $hooks)) !== FALSE) {
+      unset($hooks[$pos]);
+    }
+    $hooks[] = 'html_title_preprocess_page_title';
+
+    $theme_registry['page_title']['preprocess functions'] = array_values($hooks);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function html_title_node_view(array &$build, EntityInterface $node, EntityViewDisplayInterface $display, $view_mode) {
+  if (isset($build['title'][0]['#context']['value'])) {
+    $build['title'][0]['#context']['value'] = \Drupal::service('html_title.filter')->decodeToMarkup($build['title']);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function html_title_form_node_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  $form['actions']['submit']['#submit'][] = '_html_title_form_node_form_submit_replace_node_confirmation_message';
+}
+
+/**
+ * Replace the node confirmation message.
+ *
+ * This function loops over all status messages and replaces the default node
+ * confirmation message with our own message that renders the HTML in the node
+ * title.
+ *
+ * @param array $form
+ *   The form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ */
+function _html_title_form_node_form_submit_replace_node_confirmation_message(array &$form, FormStateInterface $form_state) {
+  $messenger = \Drupal::messenger();
+  /** @var \Drupal\html_title\HtmlTitleFilter $html_title_filter_service */
+  $html_title_filter_service = \Drupal::service('html_title.filter');
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $form_state->getFormObject()->getEntity();
+
+  // Retrieve all status messages.
+  $status_messages = $messenger->messagesByType('status');
+  $t_args = [
+    '@type' => node_get_type_label($node),
+    '%title' => $node->toLink()->toString(),
+  ];
+  $overridden_t_args = [
+    '@type' => node_get_type_label($node),
+    '%title' => Link::fromTextAndUrl($html_title_filter_service->decodeToMarkup($node->label()), $node->toUrl())->toString(),
+  ];
+
+  // Loop over all status messages, check if the status messages contains the
+  // node created/updated confirmation message and replace it with our custom
+  // message. The new message shows the rendered HTML.
+  foreach ($status_messages as $key => $status_message) {
+    if ((string) $status_message === t('@type %title has been created.', $t_args)->render()) {
+      $status_messages[$key] = t('@type %title has been created.', $overridden_t_args);
+    }
+    elseif ((string) $status_message === t('@type %title has been updated.', $t_args)->render()) {
+      $status_messages[$key] = t('@type %title has been updated.', $overridden_t_args);
+    }
+  }
+
+  // Delete all status messages and re-add them so the overridden message will
+  // be shown.
+  $messenger->deleteByType('status');
+  foreach ($status_messages as $status_message) {
+    $messenger->addStatus($status_message);
+  }
+}

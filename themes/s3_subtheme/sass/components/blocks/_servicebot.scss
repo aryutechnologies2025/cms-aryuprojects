@@ -1,0 +1,195 @@
+.layout__region,
+header.page-header {
+  [class*="block-inline-blockservicebot"],
+  [class*="block--type-servicebot"] {
+
+    .servicebot-wrap svg.why-wait-arrow path {
+      fill: palette(black);
+    }
+    .field--name-field-icon {
+      svg {
+        path {
+          fill: palette(white);
+        }
+      }
+    }
+    .why-wait-text {
+      color: palette(primary);
+    }
+    .field--name-field-title,
+    .field-name-field-single-link,
+    .field-name-field-single-link::after {
+      color: palette(white);
+    }
+    .field-name-field-single-link {
+      background-color: palette(black);
+    }
+
+    // &.bg-primary {
+    //   .field-name-field-single-link {
+    //     background-color: palette(primary, dark);
+    //   }
+    // }
+
+    &.block-color-black {
+      .why-wait-text {
+        color: palette(black);
+      }
+      .inner-box {
+        background-color: palette(black);
+      }
+    }
+    &.block-color-dark {
+      .why-wait-text {
+        color: palette(dark);
+      }
+      .inner-box {
+        background-color: palette(dark);
+      }
+    }
+    &.block-color-light {
+      .why-wait-text {
+        color: palette(light);
+      }
+      .inner-box {
+        background-color: palette(light);
+      }
+    }
+    &.block-color-white {
+      .why-wait-text {
+        color: palette(white);
+      }
+      .inner-box {
+        background-color: palette(white);
+      }
+    }
+    &.block-color-primary {
+      .why-wait-text {
+        color: palette(primary);
+      }
+      .inner-box {
+        background-color: palette(primary);
+      }
+    }
+    &.block-color-primary-dark {
+      .why-wait-text {
+        color: palette(primary, dark);
+      }
+      .inner-box {
+        background-color: palette(primary, dark);
+      }
+    }
+    &.block-color-primary-light {
+      .why-wait-text {
+        color: palette(primary, light);
+      }
+      .inner-box {
+        background-color: palette(primary, light);
+      }
+    }
+    &.block-color-secondary {
+      .why-wait-text {
+        color: palette(secondary);
+      }
+      .inner-box {
+        background-color: palette(secondary);
+      }
+    }
+
+    &.button-color-black {
+      .servicebot-wrap svg.why-wait-arrow path {
+        fill: palette(black);
+      }
+      .field-name-field-single-link {
+        background-color: palette(black);
+      }
+    }
+    &.button-color-dark {
+      .servicebot-wrap svg.why-wait-arrow path {
+        fill: palette(dark);
+      }
+      .field-name-field-single-link {
+        background-color: palette(dark);
+      }
+    }
+    &.button-color-light {
+      .servicebot-wrap svg.why-wait-arrow path {
+        fill: palette(light);
+      }
+      .field--name-field-title,
+      .field-name-field-single-link,
+      .field-name-field-single-link::after {
+        color: palette(black);
+      }
+      .field-name-field-single-link {
+        background-color: palette(light);
+      }
+    }
+    &.button-color-white {
+      .servicebot-wrap svg.why-wait-arrow path {
+        fill: palette(white);
+      }
+      .field--name-field-title,
+      .field-name-field-single-link,
+      .field-name-field-single-link::after {
+        color: palette(black);
+      }
+      .field-name-field-single-link {
+        background-color: palette(white);
+      }
+    }
+    &.button-color-primary {
+      .servicebot-wrap svg.why-wait-arrow path {
+        fill: palette(primary);
+      }
+      .field-name-field-single-link {
+        background-color: palette(primary);
+      }
+    }
+    &.button-color-primary-dark {
+      .servicebot-wrap svg.why-wait-arrow path {
+        fill: palette(primary, dark);
+      }
+      .field-name-field-single-link {
+        background-color: palette(primary, dark);
+      }
+    }
+    &.button-color-primary-light {
+      .servicebot-wrap svg.why-wait-arrow path {
+        fill: palette(primary, light);
+      }
+      .field-name-field-single-link {
+        background-color: palette(primary, light);
+      }
+    }
+    &.button-color-secondary {
+      .servicebot-wrap svg.why-wait-arrow path {
+        fill: palette(secondary);
+      }
+      .field--name-field-title,
+      .field-name-field-single-link,
+      .field-name-field-single-link::after {
+        color: palette(white);
+      }
+      .field-name-field-single-link {
+        background-color: palette(secondary);
+      }
+    }
+  }
+
+  .block-inline-blockservicebot-header[class*="block-color-"] {
+    .field-name-field-single-link {
+      background-color: transparent !important;
+    }
+  }
+}
+
+header.page-header {
+  [class*="block-inline-blockservicebot"],
+  [class*="block--type-servicebot"] {
+
+    .field-name-field-single-link {
+      background-color: transparent;
+    }
+  }
+}

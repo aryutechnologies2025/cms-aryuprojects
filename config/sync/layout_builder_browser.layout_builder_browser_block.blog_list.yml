@@ -1,0 +1,11 @@
+uuid: 26d6993a-09ea-49f1-a407-f7f7463d2d6b
+langcode: en
+status: true
+dependencies: {  }
+id: blog_list
+block_id: 'inline_block:blog_list'
+category: custom_blocks
+label: 'Blog List'
+image_path: ''
+image_alt: ''
+weight: -80

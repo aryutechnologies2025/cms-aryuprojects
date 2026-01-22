@@ -1,0 +1,11 @@
+uuid: b1d687a8-a03f-473b-83be-740026211aab
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.side_650x430
+label: 'Side (650x430)'
+description: ''
+targetEntityType: media
+cache: true

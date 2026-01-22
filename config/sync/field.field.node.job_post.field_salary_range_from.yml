@@ -1,0 +1,23 @@
+uuid: 476bfa8b-bc18-4f93-b4ed-8b6e38691ca3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_salary_range_from
+    - node.type.job_post
+id: node.job_post.field_salary_range_from
+field_name: field_salary_range_from
+entity_type: node
+bundle: job_post
+label: 'Salary Range From'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

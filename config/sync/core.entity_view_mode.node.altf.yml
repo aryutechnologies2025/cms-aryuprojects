@@ -1,0 +1,11 @@
+uuid: c7da5315-0978-4d14-8b17-2dbe1152c187
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.altf
+label: 'Alt F'
+description: ''
+targetEntityType: node
+cache: true

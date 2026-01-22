@@ -1,0 +1,19 @@
+<?php
+
+use Drupal\Core\Serialization\Yaml;
+
+
+/**
+ * Fix bug
+ */
+function sprowt_views_update_9001()
+{
+    $file = DRUPAL_ROOT . '/config/sync/views.view.branches.yml';
+    $yml = file_get_contents($file);
+    $data = Yaml::decode($yml);
+    $config = \Drupal::configFactory()->getEditable('views.view.branches');
+    $display = $config->get('display.block_token');
+    $display['display_options'] = $data["display"]["block_token"]["display_options"];
+    $config->set('display.block_token', $display);
+    $config->save();
+}

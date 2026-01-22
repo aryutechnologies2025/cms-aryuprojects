@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function anchor_list_block_install($is_syncing)
+{
+    module_set_weight('anchor_list_block', 5);
+}
+
+/**
+ * Update module weight
+ */
+function anchor_list_block_update_8001(&$sandbox)
+{
+    module_set_weight('anchor_list_block', 5);
+}

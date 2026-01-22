@@ -1,0 +1,29 @@
+uuid: e2912e24-cc48-4791-942b-020257677d8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.special_offers
+    - field.storage.block_content.field_special_offer_overrides
+    - node.type.special_offer
+id: block_content.special_offers.field_special_offer_overrides
+field_name: field_special_offer_overrides
+entity_type: block_content
+bundle: special_offers
+label: 'Special Offer Overrides'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      special_offer: special_offer
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: b28ac224-141a-423e-b1f3-6298df8c6670
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot_header
+    - field.storage.block_content.field_rounded
+id: block_content.servicebot_header.field_rounded
+field_name: field_rounded
+entity_type: block_content
+bundle: servicebot_header
+label: 'Rounded corners'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

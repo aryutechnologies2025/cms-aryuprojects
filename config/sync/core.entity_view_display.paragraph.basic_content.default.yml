@@ -1,0 +1,31 @@
+uuid: fb22b48e-b216-445c-9e7c-acfec90b1965
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.basic_content.field_content
+    - field.field.paragraph.basic_content.field_heading
+    - paragraphs.paragraphs_type.basic_content
+  module:
+    - text
+id: paragraph.basic_content.default
+targetEntityType: paragraph
+bundle: basic_content
+mode: default
+content:
+  field_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

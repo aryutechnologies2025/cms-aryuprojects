@@ -1,0 +1,23 @@
+uuid: 2e71d234-777e-4ca0-ab9d-542dc232490e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_homepage
+    - field.storage.block_content.field_max_columns
+  module:
+    - options
+id: block_content.areas_serviced_homepage.field_max_columns
+field_name: field_max_columns
+entity_type: block_content
+bundle: areas_serviced_homepage
+label: 'Max Columns'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 3
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

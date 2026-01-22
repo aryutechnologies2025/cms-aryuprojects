@@ -1,0 +1,44 @@
+.layout__region {
+  .block-inline-blocklink-boxes,
+  .block--type-link-boxes {
+    max-width: $container;
+    height: min-content;
+    margin: 0 auto;
+
+    .link-boxes-wrap {
+      text-align: center;
+    }
+  }
+}
+
+.field--name-field-link-boxes {
+  @include flexbox();
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: -$gutter;
+
+  > .field__item {
+    width: 100%;
+    margin-left: $gutter;
+    margin-bottom: $margin;
+  }
+
+  .boxes-count-2 & {
+    > .field__item {
+      @include breakpoint($small) {
+        width: calc(50% - #{$gutter});
+        max-width: 550px;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .boxes-count-3 & {
+    > .field__item {
+      @include breakpoint($smedium) {
+        width: calc(33.3333% - #{$gutter});
+        max-width: 550px;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+uuid: f9414bfe-29fd-4c14-8098-150794420a78
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: side_mobile_900x450
+label: 'Side Mobile (900x450)'
+effects:
+  f1f34557-6701-4812-a23a-b5bbe3434b9f:
+    uuid: f1f34557-6701-4812-a23a-b5bbe3434b9f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 900
+      height: 450
+      crop_type: focal_point

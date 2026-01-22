@@ -1,0 +1,10 @@
+layout_builder_ids.settings:
+  type: config_object
+  label: "Layout Builder IDs settings"
+  mapping:
+    block_id:
+      type: integer
+      label: "Whether to add an ID field to the block configuration form in layout builder"
+    section_id:
+      type: integer
+      label: "Whether to add an ID field to the section configuration form in layout builder"

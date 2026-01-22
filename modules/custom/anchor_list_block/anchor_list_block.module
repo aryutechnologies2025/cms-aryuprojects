@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Contains anchor_list_block.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function anchor_list_block_help($route_name, RouteMatchInterface $route_match)
+{
+    switch ($route_name) {
+        // Main module help for the anchor_list_block module.
+        case 'help.page.anchor_list_block':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('Creates a block type for anchor lists on layout builder') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function anchor_list_block_theme()
+{
+    return [
+        'anchor_list_block' => [
+            'variables' => [
+                'heading' => '',
+                'heading_tag' => 'h2',
+                'links' => [],
+                'list_attributes' => null,
+                'attributes' => null,
+                'heading_attributes' => null
+            ],
+            'render element' => 'children',
+        ],
+    ];
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function anchor_list_block_element_info_alter(array &$info)
+{
+    if(isset($info['layout_builder'])) {
+        $info['layout_builder']['#pre_render'][] = [\Drupal\anchor_list_block\Plugin\Block\AnchorListBlock::class, 'layoutBuilderPreRender'];
+    }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function anchor_list_block_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    //moved to event subscriber hook because the layout_builder_id module is stupid
+    if($form_id == 'layout_builder_configure_section') {
+        $form["layout_settings"]["label"]['#required'] = true;
+        if(!empty($form["layout_settings"]["layout_builder_id"])) {
+            $form["layout_settings"]["layout_builder_id"]['#required'] = true;
+            /** @var \Drupal\Core\StringTranslation\TranslatableMarkup $description */
+            $description = $form["layout_settings"]["layout_builder_id"]['#description'];
+            $string = $description->getUntranslatedString();
+            $form["layout_settings"]["layout_builder_id"]['#description'] = t(str_replace('an optional', 'a required', $string));
+        }
+    }
+}

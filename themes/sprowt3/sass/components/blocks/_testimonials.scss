@@ -1,0 +1,50 @@
+.layout__region {
+  .block-inline-blocktestimonials,
+  .block--type-testimonials {
+    height: min-content;
+    padding: $margin $margin $margin/3;
+
+    @include breakpoint($smedium) {
+      padding: $margin;
+    }
+  }
+}
+
+.testimonials-wrap {
+  text-align: center;
+
+  .field--name-field-label::after,
+  .field--name-field-label-tag::after {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .field--name-field-subheading,
+  .field--name-field-subheading-tag {
+    //font-weight: 600;
+  }
+}
+
+//Teaser View
+.view-testimonials,
+.view-testimonials-subsite {
+  @extend %viewcolumns;
+  margin-left: -20px;
+  margin-right: -20px;
+
+  .view-content {
+    @include breakpoint($max-smedium) {
+      margin-left: 0 !important;
+    }
+  }
+  
+  .views-row {
+    width: calc(100% + 100px);
+    margin-left: 30px !important;
+    margin-right: 30px;
+  }
+
+  & + .glide__arrows {
+    display: none; //TODO: resolve display
+  }
+}

@@ -1,0 +1,13 @@
+uuid: 60016d3a-403c-4267-9a1e-f3f7ac2a1602
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.solution_finder
+id: block_content.solution_finder.default
+targetEntityType: block_content
+bundle: solution_finder
+mode: default
+content: {  }
+hidden:
+  langcode: true

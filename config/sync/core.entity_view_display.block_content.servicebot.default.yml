@@ -1,0 +1,117 @@
+uuid: 4afe8fda-ce2a-4340-97f8-c8ca1fc7bce0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot
+    - field.field.block_content.servicebot.field_accent_color
+    - field.field.block_content.servicebot.field_arrow
+    - field.field.block_content.servicebot.field_icon
+    - field.field.block_content.servicebot.field_new_window
+    - field.field.block_content.servicebot.field_overlay_color
+    - field.field.block_content.servicebot.field_rounded
+    - field.field.block_content.servicebot.field_single_link
+    - field.field.block_content.servicebot.field_title
+    - field.field.block_content.servicebot.field_why_wait
+    - field.field.block_content.servicebot.field_why_wait_text
+  module:
+    - link
+    - options
+id: block_content.servicebot.default
+targetEntityType: block_content
+bundle: servicebot
+mode: default
+content:
+  field_accent_color:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_arrow:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: vector
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_new_window:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_overlay_color:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_rounded:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_single_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_why_wait:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_why_wait_text:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  langcode: true

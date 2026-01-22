@@ -1,0 +1,14 @@
+diff --git a/core/lib/Drupal/Component/Datetime/DateTimePlus.php b/core/lib/Drupal/Component/Datetime/DateTimePlus.php
+index 952b6cb6dc..9dc769f4bc 100644
+--- a/core/lib/Drupal/Component/Datetime/DateTimePlus.php
++++ b/core/lib/Drupal/Component/Datetime/DateTimePlus.php
+@@ -306,6 +306,9 @@ public function __construct($time = 'now', $timezone = NULL, $settings = []) {
+       }
+ 
+       if (empty($this->errors)) {
++        if(!isset($prepared_time)) {
++          $prepared_time = 'now';
++        }
+         $this->dateTimeObject = new \DateTime($prepared_time, $prepared_timezone);
+       }
+     }

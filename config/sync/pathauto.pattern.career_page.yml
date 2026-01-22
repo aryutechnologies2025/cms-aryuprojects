@@ -1,0 +1,22 @@
+uuid: 5aaad692-af40-4c6e-8542-1acfde85caf3
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: career_page
+label: 'Career Page'
+type: 'canonical_entities:node'
+pattern: '[sprowt:careers_url_prefix]/[node:title]'
+selection_criteria:
+  e7223967-398a-4b7a-bb72-36f208456e3f:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e7223967-398a-4b7a-bb72-36f208456e3f
+    context_mapping:
+      node: node
+    bundles:
+      career_page: career_page
+selection_logic: and
+weight: -4
+relationships: {  }

@@ -1,0 +1,10 @@
+uuid: fc6e5204-f2c3-4441-83b6-68976d4df5e0
+langcode: en
+status: true
+dependencies: {  }
+id: link_box
+label: 'Link Box'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

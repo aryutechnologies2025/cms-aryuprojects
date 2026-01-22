@@ -1,0 +1,24 @@
+uuid: b0dee5e7-9130-4739-a9ab-c41ec42a41fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.package
+  module:
+    - text
+id: node.package.body
+field_name: body
+entity_type: node
+bundle: package
+label: Body
+description: 'Summary text used in package teasers. Full body text is used in Alt Solution Pages.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

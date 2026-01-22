@@ -1,0 +1,8 @@
+uuid: 8af0d6c1-431b-43c7-8b95-7fcad8da7435
+langcode: en
+status: true
+dependencies: {  }
+id: divider
+label: 'Section Divider'
+revision: false
+description: ''

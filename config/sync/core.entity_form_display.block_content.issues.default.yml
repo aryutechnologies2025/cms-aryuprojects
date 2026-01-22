@@ -1,0 +1,33 @@
+uuid: cc121b1c-8de3-4c14-aeac-93a6f0ebeb2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.issues
+    - field.field.block_content.issues.field_heading
+  module:
+    - tag_text_field
+id: block_content.issues.default
+targetEntityType: block_content
+bundle: issues
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_widget
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  revision_log: true

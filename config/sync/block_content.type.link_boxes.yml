@@ -1,0 +1,8 @@
+uuid: 5a52fd68-d41a-4313-a815-dfed4ec97a85
+langcode: en
+status: true
+dependencies: {  }
+id: link_boxes
+label: 'Link Boxes'
+revision: false
+description: ''

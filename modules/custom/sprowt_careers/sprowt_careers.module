@@ -1,0 +1,204 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Sprowt Careers module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
+
+
+function _sprowt_careers_test() {
+    /** @var Drupal\pathauto\PathautoGenerator $pathautoGenerator */
+    $pathautoGenerator = \Drupal::service('pathauto.generator');
+    $node = Node::load(223);
+
+    $pathautoGenerator->updateEntityAlias($node, 'update', [
+        'force' => true
+    ]);
+}
+
+/**
+ * Implements hook_sprowt_token_name_alter().
+ */
+function sprowt_careers_sprowt_token_name_alter(&$name)
+{
+    $stop = true;
+    if($name == 'careers_url_prefix'
+        || strpos($name, 'careers_page_url') === 0
+    ) {
+        //skip replacement by sprowt_settings if the name is one of the careers ones
+        $name = 'skip';
+    }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function sprowt_careers_token_info()
+{
+    $types = [];
+    $tokens = [];
+    $tokens['sprowt']['careers_url_prefix'] = [
+        'name' => t('Careers url prefix'),
+        'description' => t('The prefix for career pages. Uses the url alias for the careers homepage.')
+    ];
+    $tokens['sprowt']['careers_page_url'] = [
+        'name' => t('Careers page url alias by type'),
+        'description' => t("Basically an alias of [sprowt:careers_page_url:home] because 'home' is the default type."),
+        'dynamic' => true
+    ];
+    $tokens['sprowt']['careers_page_url:?'] = [
+        'name' => t('Careers page url alias by type'),
+        'description' => t("The url alias for a specific type of career page. This is specified by the type argument which should be set to the <a href='/admin/structure/types/manage/career_page/fields/node.career_page.field_career_page_type/storage' target='_blank'>value provided by the page type field</a> (defaults to 'home'). If there's more than one node of that type, it'll use the last updated node."),
+        'dynamic' => true
+    ];
+    return [
+        'types' => $types,
+        'tokens' => $tokens
+    ];
+}
+
+function sprowt_careers_get_homepage() {
+    return sprowt_careers_get_page('home');
+}
+
+function sprowt_careers_get_page($type) {
+    try {
+        /** @var \Drupal\node\NodeStorage $storage */
+        $storage = \Drupal::entityTypeManager()->getStorage('node');
+    }
+    catch (\Exception $e) {
+        //node plugin doesn't exist yet. Site probably not installed yet
+        return null;
+    }
+    try {
+        $nodes = $storage->loadByProperties([
+            'type' => 'career_page',
+            'field_career_page_type' => $type
+        ]);
+    }
+    catch (\Exception $e) {
+        //field configs probably not installed yet. Sit eprobably hasn't been installed yet
+        return null;
+    }
+    if(!empty($nodes)) {
+        if(count($nodes) > 1) {
+            /** @var Node $anode
+             * @var Node $bnode
+             */
+            uasort($nodes, function ($anode, $bnode) {
+                $aVal = $anode->get('changed')->value;
+                $bVal = $anode->get('changed')->value;
+                if($aVal == $bVal) {
+                    return 0;
+                }
+                return $aVal < $bVal ? -1 : 1;
+            });
+        }
+        return array_shift($nodes);
+    }
+    return null;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function sprowt_careers_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata)
+{
+    $replacements = [];
+    if($type == 'sprowt') {
+        foreach($tokens as $name => $original) {
+            $arguments = [];
+            if(strpos($name, ':') !== false) {
+                $arguments = explode(':', $name);
+                $name = array_shift($arguments);
+                $arguments = array_filter(array_values($arguments));
+                if(!empty($arguments)) {
+                    $arguments = array_map(function($arg) {
+                        return trim($arg);
+                    }, $arguments);
+                }
+            }
+            if($name != 'careers_url_prefix'
+                && strpos($name, 'careers_page_url') === false
+            ) {
+                continue;
+            }
+            if($name == 'careers_url_prefix') {
+                $name = 'careers_page_url';
+                $arguments = [
+                    'home'
+                ];
+            }
+            if($name == 'careers_page_url') {
+                if(empty($arguments)) {
+                    $type = 'home';
+                }
+                else {
+                    $type = array_shift($arguments);
+                }
+                /** @var Node $node */
+                $node = $data['node'] ?? null;
+                if (!$node instanceof Node) {
+                    continue;
+                }
+
+                if ($node->hasField('field_career_page_type')
+                    && !empty($node->field_career_page_type)
+                    && $node->field_career_page_type->value == $type
+                ) {
+                    $replacements[$original] = '';
+                    continue;
+                }
+                $page = sprowt_careers_get_page($type);
+                if (!$page instanceof Node) {
+                    $replacements[$original] = '';
+                    continue;
+                }
+                $pagePath = $page->toUrl()->toString();
+                if (strpos($pagePath, '/node/') === 0) {
+                    /** @var \Drupal\path_alias\AliasManager $aliasManager */
+                    $aliasManager = \Drupal::service('path_alias.manager');
+                    $pagePath = $aliasManager->getAliasByPath($pagePath);
+                }
+                $replacements[$original] = $pagePath;
+            }
+        }
+    }
+    return $replacements;
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function sprowt_careers_entity_type_alter(array &$entity_types)
+{
+    // Add validation constraint to the node entity
+    $entity_types['node']->addConstraint('UniqueCareerHomePageConstraint');
+}
+
+/**
+ * Implements hook_sprowt_content_template_info_alter().
+ */
+function sprowt_careers_sprowt_content_template_info_alter(&$templateInfo, $nodeArray, $exportInfo)
+{
+    if($exportInfo['bundle'] == 'career_page') {
+        $pageType = $nodeArray["field_career_page_type"][0]["value"] ?? null;
+        $templateInfo['pageType'] = $pageType;
+    }
+}
+
+/**
+ * @param array $templateInfo
+ * @param Node $node
+ * @return void
+ */
+function sprowt_careers_sprowt_content_template_info_node_alter(&$templateInfo, $node) {
+    $bundle = $node->bundle();
+    if($bundle == 'career_page') {
+        $pageType = $node->field_career_page_type->value ?? null;
+        $templateInfo['pageType'] = $pageType;
+    }
+}

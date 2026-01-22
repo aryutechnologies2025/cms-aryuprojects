@@ -1,0 +1,55 @@
+uuid: f16c4369-7084-4d2e-a259-ea239fab7b8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.package_comparison
+    - field.field.block_content.package_comparison.field_features
+    - field.field.block_content.package_comparison.field_heading
+    - field.field.block_content.package_comparison.field_label_tag
+    - field.field.block_content.package_comparison.field_packages
+    - field.field.block_content.package_comparison.field_subheading_tag
+  module:
+    - tag_text_field
+id: block_content.package_comparison.default
+targetEntityType: block_content
+bundle: package_comparison
+mode: default
+content:
+  field_features:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_packages:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true

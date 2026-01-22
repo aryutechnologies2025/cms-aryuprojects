@@ -1,0 +1,13 @@
+uuid: 6e5c8703-eaf8-43c1-9d44-e21821e0328a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: URMdnlU3cezOMJfmOCXnB7_gwzlCmJfDdZoOp3IjK58
+id: node.solution_finder
+label: 'Solution Finder'
+description: ''
+targetEntityType: node
+cache: true

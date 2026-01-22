@@ -1,0 +1,11 @@
+uuid: 1cfea4fe-990f-4a76-a0ea-b22c37a9ce43
+langcode: en
+status: true
+dependencies: {  }
+id: city_page_service_blurb
+block_id: 'inline_block:city_page_service_blurb'
+category: custom_blocks
+label: 'City Page Service Blurb'
+image_path: ''
+image_alt: ''
+weight: -72

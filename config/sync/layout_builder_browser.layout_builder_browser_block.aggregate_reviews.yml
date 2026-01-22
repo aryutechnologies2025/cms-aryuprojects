@@ -1,0 +1,11 @@
+uuid: 48b37c08-a691-4b7b-ae10-19482bd7eb56
+langcode: en
+status: true
+dependencies: {  }
+id: aggregate_reviews
+block_id: aggregate_reviews_block
+category: header_footer
+label: 'Aggregate Reviews Block'
+image_path: ''
+image_alt: ''
+weight: -100

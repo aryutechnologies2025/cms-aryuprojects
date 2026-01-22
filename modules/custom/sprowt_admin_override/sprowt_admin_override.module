@@ -1,0 +1,1299 @@
+<?php
+
+/**
+ * @file
+ * Contains sprowt_admin_override.module.
+ */
+
+use Drupal\Component\Serialization\Json;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Asset\AttachedAssetsInterface;
+use Drupal\Core\Entity\EntityBase;
+use Drupal\Core\Extension\ModuleHandler;
+use Drupal\Core\Field\EntityReferenceFieldItemList;
+use Drupal\Core\Form\FormState;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Render\Element\VerticalTabs;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Url;
+use Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay;
+use Drupal\layout_builder\Plugin\SectionStorage\OverridesSectionStorage;
+use Drupal\layout_builder_browser\Entity\LayoutBuilderBrowserBlock;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeTypeInterface;
+use Drupal\redirect\Entity\Redirect;
+use Drupal\sprowt_admin_override\Plugin\Action\DemoteNode;
+use Drupal\sprowt_admin_override\Plugin\Action\NodePublishAction;
+use Drupal\sprowt_admin_override\Plugin\Action\NodeUnpublishAction;
+use Drupal\sprowt_admin_override\Plugin\Action\PromoteNode;
+use Drupal\sprowt_admin_override\Plugin\Action\StickyNode;
+use Drupal\sprowt_admin_override\Plugin\Action\UnstickyNode;
+use Drupal\sprowt_admin_override\Form\LayoutBuilderBrowserForm;
+use Drupal\sprowt_admin_override\OverrideService;
+use Drupal\sprowt_admin_override\Plugin\metatag\Tag\DescriptionOverride;
+
+
+function _sprowt_admin_override_test()
+{
+    _sprowt_admin_override_token_csv();
+}
+
+function _sprowt_admin_override_token_csv() {
+    $token_tree = \Drupal::service('token.tree_builder')->buildAllRenderable([
+        'click_insert' => false,
+        'show_restricted' => false,
+        'show_nested' => false,
+    ]);
+
+    $tree = $token_tree['#token_tree'];
+    ksort($tree);
+    $filteredTree = [];
+    foreach ($tree as $key => $info) {
+        if(empty($info['nested'])) {
+            $filteredTree[$key] = $info;
+        }
+    }
+
+    $headers = [
+        'raw token' => 'Token',
+        'type' => 'Type',
+        'name' => 'Name',
+        'description' => 'Description',
+    ];
+
+    $rows = [];
+    foreach ($filteredTree as $key => $info) {
+        $tokenType = !empty($info['name']) ? (string) $info['name'] : '';
+        foreach($info['tokens'] as $tokenName => $tokenInfo) {
+            $row = [];
+            $row[] = $tokenName;
+            $row[] = $tokenType;
+            $row[] = !empty($tokenInfo['name']) ? (string) $tokenInfo['name'] : '';
+            $row[] = !empty($tokenInfo['description']) ? (string) $tokenInfo['description'] : '';
+            $rows[] = $row;
+        }
+    }
+
+    $csv = array_merge([array_values($headers)], $rows);
+    $csvFile = DRUPAL_ROOT . '/tokens.csv';
+    file_put_contents($csvFile, '');
+    $fp = fopen($csvFile, 'w');
+    foreach ($csv as $fields) {
+        fputcsv($fp, $fields);
+    }
+}
+
+/**
+ * Implements hook_help().
+ */
+function sprowt_admin_override_help($route_name, RouteMatchInterface $route_match)
+{
+    switch ($route_name) {
+        // Main module help for the sprowt_admin_override module.
+        case 'help.page.sprowt_admin_override':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('Overrides js and css in the admin theme') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function sprowt_admin_override_page_attachments(array &$attachments)
+{
+    $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
+    if ($active_theme->getName() == 'gin') {
+        $attachments['#attached']['library'][] = 'sprowt_admin_override/admin_override_js';
+        $attachments['#attached']['library'][] = 'sprowt_admin_override/admin_override_css';
+        $attachments['#attached']['library'][] = 'sprowt_admin_override/description_toggle';
+    } else {
+        $attachments['#attached']['library'][] = 'sprowt_admin_override/front_override_css';
+    }
+
+    $sprowtIcon = file_get_contents(__DIR__ . '/images/sprowt-icon.svg');
+    $sprowtIconUrl = 'url("data:image/svg+xml,' . rawurlencode($sprowtIcon) . '")';
+    $sprowtStyles = "
+        .system-status-general-info__item-icon::before,
+        .toolbar .toolbar-bar .toolbar-icon.toolbar-icon-sprowt-settings-admin-config-sprowt::before {
+          -webkit-mask-image: $sprowtIconUrl;
+          mask-image: $sprowtIconUrl;
+        }
+    ";
+
+    $attachments['#attached']['html_head'][] = [
+        [
+            '#tag' => 'style',
+            '#value' => $sprowtStyles
+        ],
+        'sprowtAdminIcon'
+    ];
+
+//    $routeMatch = \Drupal::routeMatch();
+//    $routeName = $routeMatch->getRouteName();
+//    if($routeName == 'layout_builder.overrides.node.view') {
+//        $attachments['#attached']['library'][] = 'core/drupal.tabledrag';
+//        $attachments['#attached']['library'][] = 'core/drupal.dialog.off_canvas';
+//    }
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function sprowt_admin_override_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets)
+{
+    $getPath = function ($type, $name) {
+        return \Drupal::service('extension.path.resolver')->getPath($type, $name);
+    };
+    //a bug causes the theme css to ALWAYS be last:
+    // https://drupal.stackexchange.com/questions/278774/theme-css-libraries-always-loaded-after-module-libraries
+    $ginKey = $getPath('theme', 'gin') . '/dist/css/gin.css';
+    $overrideKey = $getPath('module', 'sprowt_admin_override') . '/css/override.css';
+    if (isset($css[$ginKey]) && isset($css[$overrideKey])) {
+        $weight = $css[$ginKey]['weight'];
+        //gin sets the group to 200!!
+        $css[$overrideKey]['group'] = 300;
+        $css[$overrideKey]['weight'] = $weight + 1;
+    }
+}
+
+/**
+ * Implements hook_js_alter().
+ */
+function sprowt_admin_override_js_alter(&$javascript, AttachedAssetsInterface $assets)
+{
+    if (isset($javascript['modules/custom/sprowt_admin_override/js/override.js'])) {
+        $javascript['modules/custom/sprowt_admin_override/js/override.js']['group'] = 300;
+    }
+}
+
+/**
+ * Implements hook_toolbar().
+ */
+function sprowt_admin_override_toolbar()
+{
+    $items['sprowt_admin_override'] = [
+        '#attached' => [
+            'library' => [
+                'sprowt_admin_override/toolbar_override'
+            ]
+        ]
+    ];
+    return $items;
+}
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_layout_builder_browser_block_listing_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $form['categories']['#attributes']['id'] = 'layout-builder-browser-blocks';
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $form['#attached']['library'][] = 'sprowt_admin_override/theme_settings_form';
+}
+
+
+/**
+ * Implements hook_field_widget_single_element_form_alter().
+ */
+function sprowt_admin_override_field_widget_single_element_form_alter(array &$element, \Drupal\Core\Form\FormStateInterface $form_state, array $context)
+{
+    /** @var \Drupal\Core\Field\BaseFieldDefinition $field_definition */
+    $field_definition = $context['items']
+        ->getFieldDefinition();
+
+    if ($field_definition->getName() == 'revision_log') {
+        $form_id = $form_state->getFormObject()->getFormId();
+        $branchForms = [
+            'node_branch_edit_form',
+            'node_branch_form',
+            'node_branch_add_form'
+        ];
+        if (in_array($form_id, $branchForms)
+            && isset($element['value'])
+            && $element["value"]["#type"] == 'textarea'
+        ) {
+            //change revision log description on branch content type
+            $element['#description'] = t('Briefly describe the changes you have made and why you made them (i.e. office location moved, client, changed hours, etc).');
+            $element["value"]['#description'] = $element['#description'];
+        }
+    }
+
+    $stop = true;
+}
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_block_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $blockId = $form["id"]["#default_value"] ?? null;
+    if (!empty($blockId)) {
+        $blockPlugin = \Drupal\block\Entity\Block::load($blockId);
+    }
+    $stop = true;
+    if (!empty($blockPlugin)) {
+        $settings = $blockPlugin->get('settings') ?? [];
+        $provider = $settings['provider'] ?? null;
+        if ($provider == 'block_content') {
+            $id = $settings['id'];
+            $idParts = explode(':', $id);
+            $uuid = array_pop($idParts);
+            $block = \Drupal::entityTypeManager()->getStorage('block_content')->loadByProperties([
+                'uuid' => $uuid
+            ]);
+            if (!empty($block)) {
+                /** @var \Drupal\block_content\Entity\BlockContent $block */
+                $block = array_shift($block);
+                $form['actions']['edit'] = [
+                    '#type' => 'link',
+                    '#title' => 'Edit block',
+                    '#url' => $block->toUrl('edit-form'),
+                    '#attributes' => [
+                        'class' => ['button', 'edit']
+                    ],
+                    '#weight' => 2
+                ];
+                $form['actions']['submit']['#weight'] = 1;
+                $form['actions']['cancel']['#weight'] = 3;
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_layout_builder_update_block_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $routeMatch = \Drupal::routeMatch();
+    $parameters = $routeMatch->getParameters();
+    /** @var \Drupal\layout_builder\Plugin\SectionStorage\OverridesSectionStorage $sectionStorage */
+    $sectionStorage = $parameters->get('section_storage');
+    $component = $sectionStorage->getSection($parameters->get('delta'))->getComponent($parameters->get('uuid'));
+    $configuration = $component->get('configuration');
+    $id = $configuration['id'] ?? null;
+    if (!empty($id) && strpos($id, 'block_content:') === 0) {
+        $uuid = str_replace('block_content:', '', $id);
+        $block = \Drupal::entityTypeManager()->getStorage('block_content')->loadByProperties([
+            'uuid' => $uuid
+        ]);
+        if (!empty($block)) {
+            /** @var \Drupal\block_content\Entity\BlockContent $block */
+            $block = array_shift($block);
+            if (empty($form['actions'])) {
+                $form['actions'] = [
+                    '#type' => 'actions'
+                ];
+            }
+            $form['actions']['edit'] = [
+                '#type' => 'link',
+                '#title' => 'Edit block',
+                '#url' => $block->toUrl('edit-form'),
+                '#attributes' => [
+                    'target' => '_blank',
+                    'class' => ['button', 'action-link', 'action-link--primary']
+                ]
+            ];
+        }
+    }
+}
+
+/**
+ * Implements hook_contextual_links_alter().
+ */
+function sprowt_admin_override_contextual_links_alter(array &$links, $group, array $route_parameters)
+{
+    if ($group == 'block_content') {
+        $links["block_content.block_edit"]["title"] = "Edit block";
+    }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_admin_override_preprocess_node(&$variables)
+{
+    if (!empty($variables["content"]["_layout_builder"])) {
+        _sprowt_admin_override_add_contextual_links_to_block_arrays($variables["content"]["_layout_builder"], '_layout_builder', 'node', $variables['node'], $variables['view_mode']);
+    }
+}
+
+function _sprowt_admin_override_add_contextual_links_to_block_arrays(&$variables, $key, $entityType, $entity, $viewMode = 'default')
+{
+    if (!is_array($variables)) {
+        return;
+    }
+    if (isset($variables['#theme'])
+        && $variables['#theme'] == 'block'
+        && !empty($variables['#plugin_id'])
+        && strpos($variables['#plugin_id'], 'inline_block:') === 0
+    ) {
+        if (empty($variables['#contextual_links'])) {
+            $variables['#contextual_links'] = [
+                'sprowt_admin_override_layout_builder' => [
+                    'route_parameters' => [
+                        'entityType' => $entityType,
+                        'entityId' => $entity->id(),
+                        'viewMode' => $viewMode,
+                        'componentUuid' => $key
+                    ]
+                ]
+            ];
+        }
+    } else {
+        foreach ($variables as $k => &$variable) {
+            _sprowt_admin_override_add_contextual_links_to_block_arrays($variable, $k, $entityType, $entity, $viewMode);
+        }
+    }
+}
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_media_library_add_form_upload_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    /** @var \Drupal\media_library\MediaLibraryState $mediaLibraryState */
+    $mediaLibraryState = $form_state->get('media_library_state');
+    $allowedTypeIds = $mediaLibraryState->getAllowedTypeIds();
+    if (in_array('media_image', $allowedTypeIds)) {
+        $description = (string)$form["container"]["upload"]["#description"];
+        $form["container"]["upload"]["#description"] = \Drupal\Core\Render\Markup::create(
+            '<p>This field excepts multiple formats, but, unless absolutely necessary, DO NOT USE png or jpeg/jpg (use webp instead).</p>'
+            . $description
+        );
+    }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function sprowt_admin_override_form_media_library_add_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    //dropzonejs changed the id for the upload form. So add the hooks back to it
+    //see https://www.drupal.org/project/focal_point/issues/3344369
+    /** @var ModuleHandler $moduleHandler */
+    $moduleHandler = \Drupal::service('module_handler');
+    $moduleHandler->alter('form_media_library_add_form_upload', $form, $form_state, $form_id);
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function sprowt_admin_override_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    // Filter the right form.
+    if (strpos($form_id, 'views_form_') !== FALSE) {
+        // Check whether the view is draggable.
+        $view = $form_state->getBuildInfo()['args'][0];
+        if (isset($view->field['draggableviews'])) {
+            return _sprowt_admin_override_draggable_views_form_alter($form, $form_state, $form_id);
+        }
+    }
+
+    if ($form_id == 'views_exposed_form') {
+        /** @var \Drupal\views\ViewExecutable $view */
+        $view = $form_state->get('view');
+        if ($view->id() == 'content' && $view->current_display == 'page_1') {
+            //content admin page
+            _sprowt_admin_override_content_admin_view_form($form, $form_state, $form_id);
+        }
+    }
+
+    $formObj = $form_state->getFormObject();
+    if (!empty($formObj) && $formObj instanceof \Drupal\Core\Entity\EntityForm) {
+        $entity = $formObj->getEntity();
+        if ($entity instanceof EntityBase && !empty($_GET['show_uuid'])) {
+            $uuid = $entity->uuid();
+            $form['sprowt_admin_override_uuid'] = [
+                '#type' => 'textfield',
+                '#title' => 'UUID',
+                '#value' => $uuid,
+                '#attributes' => [
+                    'readonly' => 'readonly'
+                ],
+                '#weight' => -50
+            ];
+        }
+    }
+
+    if(preg_match('#_layout_builder_form$#', $form_id)) {
+        _sprowt_admin_override_layout_builder_form_alter($form, $form_state, $form_id);
+    }
+
+}
+
+function _sprowt_admin_override_layout_builder_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+    $form['actions']['messagesNotify'] = [
+        '#type' => 'html_tag',
+        '#tag' => 'div',
+        '#attributes' => [
+            'class' => ['messages-notify']
+        ],
+        '#weight' => 24
+    ];
+    $actions = $form['actions'];
+
+    $routeMatch = \Drupal::routeMatch();
+
+    $submit = $actions['submit'];
+    $submit['#value'] = 'Save and edit layout';
+    $submit['#submit'][] = '_sprowt_admin_override_redirect_back_to_layout_builder';
+    $submit['#route'] = [
+        'routeName' => $routeMatch->getRouteName(),
+        'routeParameters' => $routeMatch->getRawParameters()->all()
+    ];
+
+    $form['actions']['save_and_edit'] = $submit;
+    $form['actions']['move_sections']['#weight'] = 9;
+
+    $form['#attached']['library'][] = 'sprowt_admin_override/layout_builder_form';
+
+    if(!empty($form['revision_information'])) {
+        $form['revision_information']['#weight'] = -10;
+        unset($form['revision_information']['#group']);
+    }
+}
+
+function _sprowt_admin_override_redirect_back_to_layout_builder(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+    $trigger = $form_state->getTriggeringElement();
+
+    if(!empty($trigger['#route'])) {
+        //redirect back to the layout builder
+        $form_state->setRedirectUrl(Url::fromRoute($trigger['#route']['routeName'], $trigger['#route']['routeParameters']));
+    }
+}
+
+function _sprowt_admin_override_content_admin_view_form(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $request = \Drupal::request();
+    $subsiteVal = $request->query->get('subsite') ?? 'All';
+    if (empty($form['field_subsite_target'])) {
+        return; //don't do anything if the view is wrong
+    }
+
+    $form['subsite'] = [
+        '#type' => 'select',
+        '#title' => 'Subsite',
+        '#options' => $form['field_subsite_target']['#options'],
+        '#default_value' => $subsiteVal,
+        '#attributes' => [
+            'class' => ['fake-subsite-select']
+        ]
+    ];
+
+    $subsiteFields = [
+        'field_subsite_target',
+        'field_subsite_multiple_target'
+    ];
+    foreach ($subsiteFields as $subsiteField) {
+        $form[$subsiteField]['#value'] = $subsiteVal;
+        $form[$subsiteField]['#access'] = false;
+    }
+
+    $form["field_subsite_target"]['#default_value'] = $subsiteVal;
+    $form["field_subsite_multiple_target"]['#default_value'] = $subsiteVal;
+    $form['#attached']['library'][] = 'sprowt_admin_override/content_admin';
+}
+
+function _sprowt_admin_override_draggable_views_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $view = $form_state->getBuildInfo()['args'][0];
+    $viewId = $view->id();
+    if (\Drupal::currentUser()->hasPermission('access draggableviews')
+        && $viewId == 'content_sorting'
+    ) {
+        $form['#attached']['library'][] = 'sprowt_admin_override/content_sorting';
+        // Create draggableviews save order button.
+        $form['actions']['rearrange'] = [
+            '#value' => t('Rearrange alphabetically'),
+            '#type' => 'html_tag',
+            '#tag' => 'button',
+            '#attributes' => [
+                'class' => ['button', 'rearrange-button'],
+                'type' => 'button'
+            ]
+        ];
+    }
+}
+
+
+/**
+ * modify user permissions filter
+ *
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_user_admin_permissions_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $request_object = \Drupal::request();
+    $form['sprowt_filter'] = [
+        '#type' => 'search',
+        '#title' => t('Filter by description'),
+        '#title_display' => 'invisible',
+        '#size' => 30,
+        '#placeholder' => t('Filter by description'),
+        '#attributes' => [
+            'class' => ['table-sprowt-filter-text'],
+            'data-table' => '#permissions',
+            'autocomplete' => 'off',
+        ],
+        '#weight' => -1000,
+    ];
+    if (!empty($request_object->query->get('sprowt_filter'))) {
+        $form['sprowt_filter']['#default_value'] = $request_object->query->get('sprowt_filter');
+    }
+    $form['#attached']['library'][] = 'sprowt_admin_override/user_permissions';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_recaptcha_admin_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $url = \Drupal::state()->get('sprowt.recaptcha_key_url');
+    if (!empty($url)) {
+        $markup = '<p>View recaptcha enterprise key <a href="' . $url . '" target="_blank">here</a></p>';
+        $form['general']['recaptcha_ent_url'] = [
+            '#type' => 'html_tag',
+            '#tag' => 'div',
+            '#attributes' => [
+                'class' => ['messages', 'messages--warning']
+            ],
+            '#weight' => -99,
+            'content' => [
+                '#type' => 'html_tag',
+                '#tag' => 'div',
+                '#attributes' => [
+                    'class' => ['messages__content']
+                ],
+                '#value' => \Drupal\Core\Render\Markup::create($markup)
+            ]
+        ];
+    }
+
+}
+
+
+function sprowt_get_filtered_menus($criteria = [])
+{
+    $storage = \Drupal::entityTypeManager()->getStorage('menu');
+    $adminMenus = [
+        'admin',
+        'tools',
+        'account'
+    ];
+    if (!empty($criteria['admin'])) {
+        return $storage->loadByProperties([
+            'id' => $adminMenus
+        ]);
+    }
+    if (!empty($criteria['referenced_node'])) {
+        $field_type = 'entity_reference';
+        /** @var \Drupal\Core\Entity\EntityFieldManager $entityFieldManager */
+        $entityFieldManager = \Drupal::service('entity_field.manager');
+        $field_map = $entityFieldManager->getFieldMapByFieldType($field_type);
+        $nodeFields = $field_map['node'] ?? [];
+        $definitions = $entityFieldManager->getFieldStorageDefinitions('node');
+        $fields = [];
+        foreach (array_keys($nodeFields) as $fieldName) {
+            /** @var \Drupal\field\Entity\FieldStorageConfig $definition */
+            $definition = $definitions[$fieldName] ?? null;
+            if (empty($definition)) {
+                continue;
+            }
+            $entityType = $definition->getSetting('target_type') ?? null;
+            if (empty($entityType) || $entityType != 'menu') {
+                continue;
+            }
+
+            $fields[] = $fieldName;
+        }
+
+        $selectSql = [];
+        foreach ($fields as $fieldName) {
+            $valueColumn = $fieldName . '_target_id';
+            $selectSql[] = "SELECT entity_id, {$valueColumn} as 'menu' FROM node__{$fieldName}";
+        }
+        $sql = implode("\nUNION\n", $selectSql);
+        $rows = \Drupal::database()->query($sql)->fetchAll(\PDO::FETCH_ASSOC);
+        if ($criteria['referenced_node'] == '<none>') {
+            $allMenus = $storage->loadMultiple() ?? [];
+            $foundMenus = [];
+            foreach ($rows as $row) {
+                if (!in_array($row['menu'], $foundMenus)) {
+                    $foundMenus[] = $row['menu'];
+                }
+            }
+            return array_filter($allMenus, function ($menu) use ($foundMenus, $adminMenus) {
+                return !in_array($menu->id(), $foundMenus) && !in_array($menu->id(), $adminMenus);
+            });
+        }
+        $foundMenus = [];
+        foreach ($rows as $row) {
+            if (!in_array($row['menu'], $foundMenus)) {
+                if (!is_array($criteria['referenced_node'])) {
+                    $criteria['referenced_node'] = [$criteria['referenced_node']];
+                }
+                if (in_array($row['entity_id'], $criteria['referenced_node'])) {
+                    $foundMenus[] = $row['menu'];
+                }
+            }
+        }
+        return $storage->loadByProperties([
+            'id' => $foundMenus
+        ]);
+    }
+
+    return $storage->loadMultiple();
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function sprowt_admin_override_element_info_alter(array &$info)
+{
+    //$info['tel']['#process'][] = '_sprowt_admin_override_process_tel';
+    $info['layout_builder']['#pre_render'][] = [\Drupal\sprowt_admin_override\Element\LayoutBuilder::class, 'alterLayoutBuilderSections'];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_admin_override_preprocess_environment_indicator(&$variables)
+{
+    if (empty($variables["element"]["#description"])) {
+        $variables['description'] = ' on ' . gethostname();
+        $variables["element"]["#description"] = $variables['description'];
+    }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function sprowt_admin_override_theme_registry_alter(&$theme_registry)
+{
+    $path = \Drupal::service('extension.path.resolver')->getPath('module', 'sprowt_admin_override');
+    $theme_registry['status_report_general_info']['path'] = $path . '/templates';
+    $tokenTreeThemDef = $theme_registry['table__token_tree'] ?? [];
+    $tokenTreeThemDef['path'] = $path . '/templates';
+    $tokenTreeThemDef['template'] = 'table--token-tree';
+    $theme_registry['table__token_tree'] = $tokenTreeThemDef;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_admin_override_preprocess_status_report_general_info(&$variables)
+{
+    $sprowtVersion = \Drupal\sprowt_admin_override\Git::getCurrentBranch(DRUPAL_ROOT);
+    $variables['sprowt_version'] = $sprowtVersion;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_redirect_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $config = \Drupal::config('redirect.settings');
+    if ($config->get('route_normalizer_enabled', true)) {
+        $form['#validate'][] = '_sprowt_admin_override_form_redirect_form_validate';
+    }
+}
+
+function _sprowt_admin_override_form_redirect_form_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state)
+{
+    /** @var \Drupal\redirect\Form\RedirectForm $formObj */
+    $formObj = $form_state->getFormObject();
+    $entity = $formObj->getEntity();
+    $source = $form_state->getValue(['redirect_source', 0]);
+    $source['path'] = rtrim($source['path']);
+    $parsed_url = UrlHelper::parse(trim($source['path']));
+    $parsed_url['path'] = rtrim($parsed_url['path'], '/'); //remove trailing slash
+    $path = isset($parsed_url['path']) ? $parsed_url['path'] : NULL;
+    $query = isset($parsed_url['query']) ? $parsed_url['query'] : NULL;
+    $hash = Redirect::generateHash($path, $query, $form_state->getValue('language')[0]['value']);
+    // Search for duplicate.
+    $redirects = \Drupal::entityTypeManager()
+        ->getStorage('redirect')
+        ->loadByProperties(['hash' => $hash]);
+
+    if (!empty($redirects)) {
+        $redirect = array_shift($redirects);
+        if ($entity->isNew() || $redirect->id() != $entity->id()) {
+            $form_state->setErrorByName('redirect_source', t('The source path %source is already being redirected. Do you want to <a href="@edit-page">edit the existing redirect</a>?',
+                [
+                    '%source' => $source['path'],
+                    '@edit-page' => $redirect->toUrl('edit-form')->toString()]));
+        }
+    }
+}
+
+function sprowt_admin_override_content_import_export_export_alter(&$array, &$entity, $context) {
+    $exportInfo = $array['_exportInfo'];
+    /** @var \Drupal\simple_sitemap\Manager\Generator $simpleSiteMap */
+    $simpleSiteMap = \Drupal::service('simple_sitemap.generator');
+    try {
+        $sitemapSettings = $simpleSiteMap->setSitemaps()->entityManager()->getEntityInstanceSettings(
+            $exportInfo['entity_type'],
+            $exportInfo['entity_id']
+        );
+    }
+    catch (\Exception $e) {
+        $sitemapSettings = false;
+    }
+    if(!empty($sitemapSettings)) {
+        $array['_simpleSitemap'] = $sitemapSettings;
+    }
+}
+
+function sprowt_admin_override_content_import_export_before_deserialize_alter(&$importArray, &$alterContext, &$updateLater)
+{
+    if(!empty($importArray['_simpleSitemap'])) {
+        $updateLater['_simpleSitemap'] = $importArray['_simpleSitemap'];
+        unset($importArray['_simpleSitemap']);
+    }
+}
+
+function sprowt_admin_override_content_import_export_resolve_update_later_alter(&$values, &$continue, $context)
+{
+    $entity = $context['entity'];
+    $fieldName = $context['fieldName'];
+    if($fieldName == '_simpleSitemap') {
+        $continue = false;
+        /** @var \Drupal\simple_sitemap\Manager\Generator $simpleSiteMap */
+        $simpleSiteMap = \Drupal::service('simple_sitemap.generator');
+        /** @var \Drupal\simple_sitemap\Manager\EntityManager $entityManager */
+        $entityManager = $simpleSiteMap->setSitemaps()->entityManager();
+        foreach($values as $variant => $siteMapSettings) {
+            $entityManager->setSitemaps($variant)->setEntityInstanceSettings(
+                $entity->getEntityTypeId(),
+                $entity->id(),
+                $siteMapSettings
+            );
+        }
+    }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_admin_override_preprocess_table__token_tree(&$variables)
+{
+    $formBuilder = \Drupal::formBuilder();
+
+    $filterForm = $formBuilder->getForm(\Drupal\sprowt_admin_override\Form\TokenTreeFilterForm::class, $variables['rows'] ?? []);
+
+    $variables['filters'] = $filterForm;
+    $variables['#attached']['library'][] = 'sprowt_admin_override/token_filter';
+
+}
+
+
+function sprowt_admin_override_token_help_override() {
+    $output = '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('The <a href=":project">Token</a> module provides a user interface for the site token system. It also adds some additional tokens that are used extensively during site development. Tokens are specially formatted chunks of text that serve as placeholders for a dynamically generated value. For more information, covering both the token system and the additional tools provided by the Token module, see the <a href=":online">online documentation</a>.', [':online' => 'https://www.drupal.org/documentation/modules/token', ':project' => 'https://www.drupal.org/project/token']) . '</p>';
+    $output .= '<h3>' . t('Uses') . '</h3>';
+    $output .= '<p>' . t('Your website uses a shared token system for exposing and using placeholder tokens and their appropriate replacement values. This allows for any module to provide placeholder tokens for strings without having to reinvent the wheel. It also ensures consistency in the syntax used for tokens, making the system as a whole easier for end users to use.') . '</p>';
+
+    $output .= '<p>' . t('The list of the currently available tokens on this site are shown below.') . '</p>';
+
+    $token_tree = \Drupal::service('token.tree_builder')->buildAllRenderable([
+        'click_insert' => FALSE,
+        'show_restricted' => TRUE,
+        'show_nested' => FALSE,
+    ]);
+
+    $build = [];
+    $build['header'] = [
+        '#type' => 'markup',
+        '#markup' => Markup::create($output)
+    ];
+
+    $build['tree'] = $token_tree;
+
+    return $build;
+
+}
+
+function sprowt_admin_override_preprocess_token_tree_link(&$variables) {
+
+    $dialogOptions = json_decode( $variables['options']['attributes']['data-dialog-options'], true);
+
+    $variables['options']['attributes']['data-dialog-type'] = 'modal';
+    unset($dialogOptions['position']);
+    $dialogOptions['width'] = '80%';
+    $dialogOptions['height'] = 650;
+
+
+    $variables['options']['attributes']['data-dialog-options'] = json_encode($dialogOptions);
+
+    //original options:
+//    $variables['options']['attributes'] += [
+//        'data-dialog-type' => 'dialog',
+//        'data-dialog-options' => json_encode([
+//            'dialogClass' => 'token-tree-dialog',
+//            'width' => 600,
+//            'height' => 400,
+//            'position' => ['my' => 'right bottom', 'at' => 'right-10 bottom-10'],
+//            'draggable' => TRUE,
+//            'autoResize' => FALSE,
+//        ]),
+//    ];
+
+
+    $variables['link'] = Link::createFromRoute($variables['text'], 'token.tree', [], $variables['options'])->toRenderable();
+    $variables['url'] = new Url('token.tree', [], $variables['options']);
+    $variables['attributes'] = $variables['options']['attributes'];
+}
+
+/**
+ * Implements hook_tokens_alter().
+ */
+function sprowt_admin_override_tokens_alter(array &$replacements, array $context, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata)
+{
+    if($context['type'] == 'node') {
+        if(empty($context['data']['node'])) {
+            //provide node if missing from context
+            $routeMatch = \Drupal::routeMatch();
+            if($routeMatch->getRouteName() == 'entity.node.canonical') {
+                $node = $routeMatch->getParameter('node');
+                if(!empty($node) && !$node instanceof Node) {
+                    $node = Node::load($node);
+                }
+            }
+            else {
+                //handle node as a route parameter for routes other than canonical
+                $node = $routeMatch->getParameter('node');
+                if(!empty($node) && !$node instanceof Node) {
+                    $node = Node::load($node);
+                }
+
+
+                if(empty($node)) {
+                    //handle custom layout builder form
+                    $entityType = $routeMatch->getParameter('entityType');
+                    if (!empty($entityType) && $entityType == 'node') {
+                        $entityId = $routeMatch->getParameter('entityId');
+                        if(!empty($entityId)) {
+                            $node = Node::load($entityId);
+                        }
+                    }
+                }
+
+                if(empty($node)) {
+                    //handle layout builder form
+                    $sectionStorage = $routeMatch->getParameter('section_storage');
+                    if($sectionStorage instanceof OverridesSectionStorage) {
+                        try {
+                            $entity = $sectionStorage->getContextValue('entity');
+                        }
+                        catch (\Exception $e) {
+                            $entity = null;
+                        }
+                        if (!empty($entity) && $entity instanceof Node) {
+                            $node = $entity;
+                        }
+                    }
+                }
+            }
+
+            if(empty($node) && !empty($context["data"]["webform_submission"])) {
+                //handle webform submissions
+                /** @var \Drupal\webform\Entity\WebformSubmission $submission */
+                $submission = $context["data"]["webform_submission"];
+                $sourceEntity = $submission->getSourceEntity();
+                if($sourceEntity instanceof Node) {
+                    $node = $sourceEntity;
+                }
+                else {
+                    $sourceUrl = $submission->getSourceUrl();
+                    $route = $sourceUrl->getRouteName();
+                    if(!empty($route) && $route == 'entity.node.canonical') {
+                        $params = $sourceUrl->getRouteParameters();
+                        $nid = $params['node'];
+                        $node = Node::load($nid);
+                    }
+                }
+            }
+            if($node instanceof Node) {
+                $context['data']['node'] = $node;
+                foreach($context['tokens'] as $name => $original) {
+                    if(empty($replacements[$original])) {
+                        $replacements[$original] = \Drupal::token()->replacePlain($original, $context['data'], $context['options'], $bubbleable_metadata);
+                    }
+                }
+            }
+        }
+
+        $tokenizeTokens = [
+            '[node:field_url_title:value]',
+            '[node:field_url_title]'
+        ];
+
+        foreach($tokenizeTokens as $tokenizedToken) {
+            if (in_array($tokenizedToken, $context['tokens']) && !empty($replacements[$tokenizedToken])) {
+                $replacements[$tokenizedToken] = \Drupal::token()->replacePlain($replacements[$tokenizedToken], $context['data'], $context['options'], $bubbleable_metadata);
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_node_type_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    /** @var \Drupal\node\Entity\NodeType $node_type */
+    $node_type = $form_state->getFormObject()->getEntity();
+    $isExternal = $node_type->getThirdPartySetting('sprowt_admin_override', 'external_node_type', false);
+
+    $form['external_node_type'] = [
+        '#type' => 'checkbox',
+        '#title' => t('This is an external node type'),
+        '#description' => t('This node acts as a user facing page.'),
+        '#default_value' => $isExternal,
+        '#weight' => 5
+    ];
+
+    $form["submission"]['title_help'] = [
+        '#type' => 'textarea',
+        '#title' => t('Help text for the title field'),
+        '#description' => t('This text will appear below the title field on the node edit form.'),
+        '#weight' => 0
+    ];
+
+    foreach($form["submission"] as $key => $array) {
+        if(is_array($array) && isset($array['#type'])) {
+            if($key == 'title_label') {
+                $form["submission"][$key]['#weight'] = 0;
+            }
+            else {
+                $form["submission"][$key]['#weight'] = 1;
+            }
+        }
+    }
+
+
+    //set weights so the checkbox appears above the vertical tabs
+    $form['name']['#weight'] = 0;
+    $form['type']['#weight'] = 0;
+    $form['description']['#weight'] = 10;
+    $form['additional_settings']['#weight'] = 100;
+
+    $form['#entity_builders'][] = 'sprowt_admin_override_form_node_type_edit_form_builder';
+}
+
+function sprowt_admin_override_form_node_type_edit_form_builder($entity_type, NodeTypeInterface $type, &$form, FormStateInterface $form_state)
+{
+    $type->setThirdPartySetting('sprowt_admin_override', 'external_node_type', $form_state->getValue('external_node_type'));
+    $type->setThirdPartySetting('sprowt_admin_override', 'title_help', $form_state->getValue('title_help'));
+}
+
+function sprowt_admin_override_get_external_node_types()
+{
+    $nodeTypes = NodeType::loadMultiple();
+    $externalNodeTypes = [];
+    /** @var \Drupal\node\Entity\NodeType $node_type */
+    foreach ($nodeTypes as $node_type) {
+        $isExternal = $node_type->getThirdPartySetting('sprowt_admin_override', 'external_node_type', false);
+        if($isExternal) {
+            $externalNodeTypes[$node_type->id()] = $node_type;
+        }
+    }
+    return $externalNodeTypes;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_node_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    if(!empty($form['menu']['link']['title'])) {
+        \Drupal\sprowt_admin_override\Form\MetatagDashboardForm::addTokenTreeToElement($form['menu']['link']['title'], [
+            'node', 'menu_link_content'
+        ]);
+    }
+    /** @var \Drupal\Core\Entity\Entity\EntityFormDisplay $formDisplay */
+    $formDisplay = $form_state->get('form_display');
+    $bundle = $formDisplay->getTargetBundle();
+    $contentType = \Drupal::entityTypeManager()->getStorage('node_type')->load($bundle);
+    $thirdPartySettings = $contentType->getThirdPartySettings('sprowt_admin_override');
+    if(!empty($thirdPartySettings['title_help'])) {
+        $form["title"]["widget"][0]["value"]["#description"] = Markup::create($thirdPartySettings['title_help']);
+    }
+
+
+    if(isset($form["menu"])) {
+        $form["menu"]['#title'] = t('Main menu settings');
+        $form["menu"]["enabled"]['#title'] = t('Provide a link in the main menu');
+        $titleDescription = $form["menu"]["link"]["title"]["#description"];
+        if($titleDescription instanceof TranslatableMarkup) {
+            $args = $titleDescription->getArguments();
+            $form["menu"]["link"]["title"]["#description"] = t("Title used in the Main Menu.<br>" . (string) $titleDescription, $args);
+        }
+        $form["menu"]["link"]["menu_parent"]['#description'] = t('The parent menu item that this page is nested under.');
+    }
+
+    if(isset($form["promote"]["widget"]["value"])) {
+        $form["promote"]["widget"]["value"]['#title'] = t('Promoted to homepage');
+        $form["promote"]["widget"]["value"]['#description'] = t('Toggling this on will push this content to the applicable spots on the homepage.');
+    }
+
+    if(isset($form["field_meta_tags"]["widget"][0]["advanced"])) {
+        $form["field_meta_tags"]["widget"][0]["advanced"]["#title"] = t('Advanced tags');
+    }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_menu_link_content_menu_link_content_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    if(!empty($form["title"]["widget"][0]["value"])) {
+        \Drupal\sprowt_admin_override\Form\MetatagDashboardForm::addTokenTreeToElement($form["title"]["widget"][0]["value"], [
+            'node', 'menu_link_content'
+        ]);
+    }
+}
+
+/**
+ * Implements hook_layout_builder_browser_alter().
+ */
+function sprowt_admin_override_layout_builder_browser_alter(array &$build, array $context)
+{
+    /** @var \Drupal\Core\Form\FormBuilder $formBuilder */
+    $formBuilder = \Drupal::formBuilder();
+    $formState = new FormState();
+    $args = [
+        'section_storage' => $context['section_storage'],
+        'delta' => $context['delta'],
+        'region' => $context['region'],
+    ];
+    $buildInfo = $formState->getBuildInfo();
+    $buildInfo['args'] = $args;
+    $formState->setBuildInfo($buildInfo);
+    $build = $formBuilder->buildForm(LayoutBuilderBrowserForm::class, $formState);
+}
+
+function sprowt_admin_override_form_layout_builder_browser_block_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    /** @var LayoutBuilderBrowserBlock $entity */
+    $entity = $form_state->getFormObject()->getEntity();
+    $description = $entity->getThirdPartySetting('sprowt_admin_override', 'description', '');
+    $form['description'] = [
+        '#type' => 'text_format',
+        '#title' => 'Description',
+        '#default_value' => $description,
+    ];
+    $form['#entity_builders'][] = 'sprowt_admin_layout_builder_browser_block_edit_form_builder';
+
+}
+
+function sprowt_admin_override_form_layout_builder_browser_block_add_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    /** @var LayoutBuilderBrowserBlock $entity */
+    $entity = $form_state->getFormObject()->getEntity();
+    $description = $entity->getThirdPartySetting('sprowt_admin_override', 'description', '');
+    $form['description'] = [
+        '#type' => 'text_format',
+        '#title' => 'Description',
+        '#default_value' => $description,
+    ];
+    $form['#entity_builders'][] = 'sprowt_admin_layout_builder_browser_block_edit_form_builder';
+
+}
+
+function sprowt_admin_layout_builder_browser_block_edit_form_builder($entity_type, LayoutBuilderBrowserBlock $entity, &$form, FormStateInterface $form_state)
+{
+    $description = $form_state->getValue('description');
+    if(is_array($description)) {
+        $description = $description['value'];
+    }
+    if(!empty($description)) {
+        $entity->setThirdPartySetting('sprowt_admin_override', 'description', $description);
+    }
+    else {
+        $entity->unsetThirdPartySetting('sprowt_admin_override', 'description');
+    }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_layout_builder_configure_section_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $stop = true;
+
+    $form["layout_settings"]["label"]['#description'] = t('The label on the backend that identifies that section in layout builder');
+
+    $form['#attached']['library'][] = 'sprowt_admin_override/layout_builder';
+}
+
+function sprowt_admin_override_action_info_alter(&$actions) {
+    foreach(glob(__DIR__.'/src/Plugin/Action/*.php') as $filename) {
+        require_once $filename;
+    }
+    //override action classes to add revision to nodes before the action is executed
+    $actions["entity:publish_action:node"]["class"] = NodePublishAction::class;
+    $actions["entity:unpublish_action:node"]["class"] = NodeUnpublishAction::class;
+    $actions["node_promote_action"]['class'] = PromoteNode::class;
+    $actions["node_unpromote_action"]['class'] = DemoteNode::class;
+    $actions["node_make_sticky_action"]['class'] = StickyNode::class;
+    $actions["node_make_unsticky_action"]['class'] = UnstickyNode::class;
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function sprowt_admin_override_menu_links_discovered_alter(&$links)
+{
+    $stop = true;
+    $vocabLinkWeight = [];
+    foreach($links as &$link) {
+        $parent = $link['parent'] ?? '';
+        if(strpos($parent, 'admin_toolbar_tools.extra_links:entity.taxonomy_vocabulary.overview_form.') === 0) {
+            if(!isset($link['weight'])) {
+                if(!isset($vocabLinkWeight[$parent])) {
+                    $vocabLinkWeight[$parent] = 0;
+                }
+                $link['weight'] = $vocabLinkWeight[$parent];
+                ++$vocabLinkWeight[$parent];
+            }
+        }
+    }
+}
+
+/**
+ * for entity_reference_autocomplete_tags widget type
+ * Implements hook_field_widget_single_element_WIDGET_TYPE_form_alter().
+ */
+function sprowt_admin_override_field_widget_single_element_entity_reference_autocomplete_tags_form_alter(array &$element, \Drupal\Core\Form\FormStateInterface $form_state, array $context)
+{
+    /** @var \Drupal\Core\Field\Plugin\Field\FieldWidget\EntityReferenceAutocompleteTagsWidget $widget */
+    $widget = $context['widget'];
+
+    /** @var EntityReferenceFieldItemList $items */
+    $items = $context['items'];
+    $fieldDefinition = $items->getFieldDefinition();
+    $targetType = $fieldDefinition->getSetting('target_type');
+    $typeDefinition = \Drupal::entityTypeManager()->getDefinition($targetType);
+
+
+    $field = &$element["target_id"];
+    $description = !empty($field["#description"]) ? (string) $field["#description"] : '';
+    $preDescription = "<p>Add a comma sperated list of {$typeDefinition->getPluralLabel()}, Allows for adding new {$typeDefinition->getPluralLabel()} by adding just a {$typeDefinition->getSingularLabel()} label. If you want to use commas in your {$typeDefinition->getSingularLabel()} label, surround the whole label in double quotes (\"\")</p>";
+    $field["#description"] = Markup::create($preDescription . $description);
+}
+
+
+function sprowt_admin_override_metatag_tags_alter(&$tags)
+{
+    $tags["description"]['class'] = DescriptionOverride::class;
+}
+
+/**
+ * Implements hook_metatags_alter().
+ */
+function sprowt_admin_override_metatags_alter(array &$metatags, array &$context)
+{
+    $node = $context['entity'] ?? null;
+    if($node instanceof Node) {
+        if($node->hasField('field_meta_description')) {
+            $description = $node->get('field_meta_description')->value;
+            if(!empty($description)) {
+                $metatags['description'] = $description;
+            }
+        }
+    }
+}
+
+
+/**
+ * Implements /admin/content form alter.
+ */
+function sprowt_admin_override_form_views_form_content_page_1_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    if(isset($form["header"]["node_bulk_form"]["action"]["#options"])) {
+        //sort actions alphabetically
+        $actionOptions = $form["header"]["node_bulk_form"]["action"]["#options"];
+        asort($actionOptions);
+        $form["header"]["node_bulk_form"]["action"]["#options"] = $actionOptions;
+    }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_webform_results_export_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $form["export"]["format"]["exporter"]["#options"]["delimited"] = 'CSV (Delimited text)';
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_admin_override_form_webform_submission_filter_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $routeMatch = \Drupal::routeMatch();
+    $webform = $routeMatch->getParameter('webform');
+    if(empty($webform)) {
+        $form["filter"]['csv_export'] = [
+            '#type' => 'submit',
+            '#value' => 'Export to CSV',
+            '#submit' => ['_sprowt_admin_override_form_webform_submission_filter_form_csv'],
+            '#weight' => 100
+        ];
+    }
+    else {
+        $form["filter"]['csv_export'] = [
+            '#type' => 'link',
+            '#title' => 'Export to CSV',
+            '#url' => $webform->toUrl('results-export'),
+            '#attributes' => [
+                'class' => ['button']
+            ],
+            '#weight' => 100
+        ];
+    }
+}
+
+function _sprowt_admin_override_form_webform_submission_filter_form_csv(&$form, \Drupal\Core\Form\FormStateInterface $form_state)
+{
+
+    $routeMatch = \Drupal::routeMatch();
+    $query = [
+        'search' => trim($form_state->getValue('search') ?? ''),
+        'state' => trim($form_state->getValue('state') ?? ''),
+        'entity' => trim($form_state->getValue('entity') ?? ''),
+        'spam' => trim($form_state->getValue('spam') ?? ''),
+    ];
+    $query = array_filter($query);
+    if (!empty($query['entity']) && preg_match('#\(([^)]+)\)#', $query['entity'], $match)) {
+        $query['entity'] = $match[1];
+    }
+    $redirect = Url::fromRoute($routeMatch->getRouteName(), $routeMatch->getRawParameters()->all(), [
+        'query' => $query,
+    ])->toString();
+    $query['destination'] = $redirect;
+
+    $form_state->setRedirect('sprowt_admin_override.webform_submissions.download_csv', [], [
+        'query' => $query,
+    ]);
+}

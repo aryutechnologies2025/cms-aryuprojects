@@ -1,0 +1,13 @@
+uuid: 88c87797-d079-4b21-927b-dfd735f1170a
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+_core:
+  default_config_hash: xB4sPOqkV1adZIi8FMiT57uPb7CE4Jne5JZWp_DULpk
+id: bulk_update_fields_on_zipcode_finder
+label: 'Bulk Update Zipcode finder Fields'
+type: zipcode_finder
+plugin: bulk_update_fields_action_base
+configuration: {  }

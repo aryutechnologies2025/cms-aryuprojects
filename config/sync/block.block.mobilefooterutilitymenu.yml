@@ -1,0 +1,31 @@
+uuid: 5f17895f-bfab-4dfd-b7cd-8840210b275c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.mobile-footer-utility-menu
+  module:
+    - menu_block
+  theme:
+    - s3_subtheme
+id: mobilefooterutilitymenu
+theme: s3_subtheme
+region: disabled
+weight: 0
+provider: null
+plugin: 'menu_block:mobile-footer-utility-menu'
+settings:
+  id: 'menu_block:mobile-footer-utility-menu'
+  label: 'Mobile Footer Utility Menu'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 0
+  expand_all_items: false
+  parent: 'mobile-footer-utility-menu:'
+  suggestion: mobile_footer_utility_menu
+visibility: {  }

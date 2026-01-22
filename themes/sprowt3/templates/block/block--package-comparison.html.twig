@@ -1,0 +1,100 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class
+  ]
+%}
+
+{# If Package View is empty, don't display block #}
+{# {% set package_view = drupal_view_result('packages', 'block_teaser_all')|length %}
+{% set package_fallback_view = drupal_view_result('packages', 'block_teaser_lp')|length %}
+{% set package_fallback_sol_view = drupal_view_result('packages', 'block_teaser_solution')|length %}
+{% if (package_view > 0) or (package_fallback_view > 0) or (package_fallback_sol_view > 0) %} #}
+
+    <div{{attributes.addClass(classes)}}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    {% block content %}
+      <div class="packages-wrap">
+        {{ content|without('') }}
+
+        {# PACKAGE IDS: {{ content.field_packages }} #}
+
+        {% set pids = content.field_packages[0]['#plain_text'] %}
+
+        {% for key, item in content.field_packages %}
+          {% if key|first != '#' %}
+            {% set pitem = item %}
+              <h1 class="item-{{ key + 1 }}">{{ pitem[0] }}</h1>
+            {{ drupal_entity('node', 399, 'teaser')  }}
+          {% endif %}
+        {% endfor %}
+
+        <div class="package-comparison center">
+          <div class="package-comparison-heading">
+            <h2>Looking for a package that fits your needs?</h2>
+            <p>We have comprehensive pest control packages that will give you the peace of mind to know you're taken care of.</p>
+          </div>
+          <div class="package-comparison-table">
+            <table>
+
+              <thead>
+                <tr>
+                  <th class="tl tl2"></th>
+                  <th class="empty"></th>
+                  <th class="recommended">Your Recommended Plan</th>
+                  <th class="empty"></th>
+                </tr>
+                <tr>
+                  <th class="tl">Select the package that best suits your needs.</th>
+                  <th class="compare-heading">Home Shield Classic</th>
+                  <th class="compare-heading">Home Shield Plus</th>
+                  <th class="compare-heading">Home Shield Plus Plus</th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th class="price-info">
+                    <div class="price">$36/per month</div>
+                    <div class="fine-print">*Initial Fee Applies</div>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td></td>
+                  <td colspan="3">Quarterly Pest Control</td>
+                </tr>
+                <tr class="compare-row">
+                  <td>Quarterly Pest Control</td>
+                  <td><span class="notick"></span></td>
+                  <td><span class="tick">✔</span></td>
+                  <td><span class="tick">✔</span></td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td colspan="3">Quarterly Pest Control</td>
+                </tr>
+                <tr class="compare-row">
+                  <td>Quarterly Pest Control</td>
+                  <td><span class="notick"></span></td>
+                  <td><span class="tick">✔</span></td>
+                  <td><span class="tick">✔</span></td>
+                </tr>
+
+              </tbody>
+            </table>
+          <div>
+        </div>
+
+      </div>
+    {% endblock %}
+  </div>
+
+{# {% endif %} #}

@@ -1,0 +1,40 @@
+uuid: da200fec-99d4-4fc9-b46e-b4c957617c3e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - field_permissions
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: block_content.field_display_special_offer
+field_name: field_display_special_offer
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: teaser
+      label: Teaser
+    -
+      value: secondary_teaser
+      label: 'Teaser (no body)'
+    -
+      value: tertiary_teaser
+      label: 'Tertiary Teaser (deprecated)'
+    -
+      value: quaternary_teaser
+      label: 'Horizontal Teaser'
+    -
+      value: token
+      label: 'Small Teaser'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

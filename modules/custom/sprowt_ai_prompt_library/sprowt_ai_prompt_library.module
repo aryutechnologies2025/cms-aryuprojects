@@ -1,0 +1,440 @@
+<?php
+
+use Drupal\Component\Utility\NestedArray;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Utility\Token;
+use Drupal\sprowt_ai\AiService;
+use Drupal\sprowt_ai\Plugin\Field\FieldType\PromptItem;
+use Drupal\sprowt_ai_prompt_library\AiPromptLibraryService;
+use Drupal\sprowt_ai_prompt_library\Entity\Prompt;
+
+/**
+ * @file
+ * Primary module hooks for Sprowt AI prompt library module.
+ */
+
+
+function _sprowt_ai_prompt_library_test() {
+    $generate = function ($number) {
+        $range = range(1, $number);
+        $chunks = array_chunk($range, 20);
+        foreach($chunks as $chunk) {
+            $num = count($chunk);
+            $labelText = file_get_contents('https://loripsum.net/api/' . $num . '/short/plaintext');
+            $labels = explode("\n", $labelText);
+            $labels = array_filter($labels);
+            $descriptionText = file_get_contents('https://loripsum.net/api/' . $num . '/medium/plaintext');
+            $descriptions = explode("\n", $descriptionText);
+            $descriptions = array_filter($descriptions);
+            $promptText = file_get_contents('https://loripsum.net/api/' . $num . '/medium/plaintext');
+            $prompts = explode("\n", $promptText);
+            $prompts = array_filter($prompts);
+            foreach ($labels as $key => $label) {
+                if (strlen($label) > 60) {
+                    $label = substr($label, 0, 60);
+                }
+                $prompt = Prompt::create();
+                $prompt->set('label', $label);
+                $prompt->set('description', $descriptions[$key]);
+                $prompt->set('prompt', $prompts[$key]);
+                $prompt->save();
+            }
+        }
+
+    };
+    $generate(30);
+
+//    //delete all prompts
+//    $prompts = Prompt::loadMultiple();
+//    foreach ($prompts as $prompt) {
+//        $prompt->delete();
+//    }
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function sprowt_ai_prompt_library_menu_links_discovered_alter(&$links)
+{
+    //copy config links to sprowt_settings menu
+    $moduleLinkFile = __DIR__ . '/sprowt_ai_prompt_library.links.menu.yml';
+    $moduleLinks = \Drupal\Core\Serialization\Yaml::decode(file_get_contents($moduleLinkFile));
+    $routeNames = array_keys($moduleLinks);
+    foreach ($routeNames as $routeName) {
+        $providedDef = $links[$routeName] ??  null;
+        if(empty($providedDef)) {
+            continue;
+        }
+        $newRouteName = $routeName .  '.sprowt_settings';
+        $newParent = $providedDef['parent'] . '.sprowt_settings';
+        if(empty($links[$newParent])) {
+            continue;
+        }
+        $providedDef['parent'] = $newParent;
+        $links[$newRouteName] = $providedDef;
+    }
+
+    if(!empty($links['sprowt_ai.settings.sprowt_settings'])) {
+        $links['sprowt_ai.settings.sprowt_settings']['route_name'] = 'entity.ai_prompt.collection';
+    }
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function sprowt_ai_prompt_library_element_info_alter(array &$info)
+{
+    $info['claude_prompt']['#process'][] = '_sprowt_ai_prompt_library_process_prompt_element';
+}
+
+function _sprowt_ai_prompt_library_process_prompt_element(&$element, FormStateInterface $formState, &$form)
+{
+    $options = json_decode($element['options']['#value'], true);
+
+
+    if(!empty($element['#expanded'])) {
+        $element['prompt_library'] = [
+            '#type' => 'link',
+            '#title' => 'Prompt library',
+            '#url' => Url::fromRoute('sprowt_ai_prompt_library.prompt_library')->setOption('query', ['element_id' => $options['id']]),
+            '#attributes' => [
+                'class' => ['button', 'prompt-library-button'],
+            ],
+            '#ajax' => [
+                'dialogType' => 'modal',
+                'dialog' => [
+                    'height' => 900,
+                    'width' => 800,
+                    'classes' => [
+                        'ui-dialog' => 'ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons prompt-library-dialog'
+                    ],
+                    'resizable' => true,
+                    'draggable' => true,
+                    'autoResize' => false
+                ],
+            ],
+            '#weight' => 15
+        ];
+    }
+
+    return $element;
+}
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_ai_prompt_library_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    /** @var \Drupal\views\ViewExecutable $view */
+    $view = $form_state->get('view');
+    $viewId = $view->id();
+    $displayId = $view->current_display;
+    if($viewId == 'ai_prompts' && $displayId == 'page_1') {
+        _sprowt_ai_exposed_tags_field($form, 'tags_target_id', Prompt::$vocab);
+    }
+
+}
+
+function sprowt_ai_prompt_library_extract_entities_from_prompt($promptText, $foundEntities) {
+    /** @var Token $tokenService */
+    $tokenService = \Drupal::service('token');
+    $foundTokens = $tokenService->scan($promptText);
+    $entities = [];
+
+    /** @var AiPromptLibraryService $service */
+    $service = \Drupal::service('sprowt_ai_prompt_library.service');
+    foreach($foundTokens as $type => $tokens) {
+        if ($type == 'sprowt_ai') {
+            foreach ($tokens as $tokenName => $token) {
+                $args = [];
+                if (strpos($tokenName, ':') !== false) {
+                    $args = explode(':', $tokenName);
+                    $tokenName = array_shift($args);
+                }
+                switch ($tokenName) {
+                    case 'prompt':
+                        $source = $args[0] ?? null;
+                        $uuid = $args[1] ?? null;
+                        if($source == 'http' || $source == 'https') {
+                            $source = $source . ':' . $uuid;
+                            $uuid = $args[2] ?? null;
+                        }
+                        $prompt = null;
+                        if (!empty($source) && !empty($uuid)) {
+                            $prompt = $service->loadPrompt($source, $uuid);
+                        }
+                        if ($prompt instanceof Prompt) {
+                            if (!isset($entities['ai_prompt'])) {
+                                $entities['ai_prompt'] = [];
+                            }
+                            $entities['ai_prompt'][$prompt->uuid()] = $prompt;
+                        }
+                        break;
+                }
+            }
+        }
+    }
+    return $entities;
+}
+
+/**
+ * Implements hook_token_info_alter().
+ */
+function sprowt_ai_prompt_library_token_info_alter(&$data)
+{
+    $data['tokens']['sprowt_ai']['prompt:[source]:[uuid]'] = [
+        'name' => 'Prompt library prompt',
+        'description' => 'The prompt text from a prompt library prompt.'
+    ];
+}
+
+/**
+ * Implements hook_tokens_alter().
+ */
+/**
+ * Implements hook_tokens().
+ */
+function sprowt_ai_prompt_library_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata)
+{
+    $replacements = [];
+    if ($type == 'sprowt_ai') {
+        $tokenService = \Drupal::token();
+        /** @var AiPromptLibraryService $service */
+        $service = \Drupal::service('sprowt_ai_prompt_library.service');
+        foreach ($tokens as $tokenName => $token) {
+            $args = [];
+            if (strpos($tokenName, ':') !== false) {
+                $args = explode(':', $tokenName);
+                $tokenName = array_shift($args);
+                switch ($tokenName) {
+                    case 'prompt':
+                        $source = $args[0] ?? null;
+                        $uuid = $args[1] ?? null;
+                        if($source == 'http' || $source == 'https') {
+                            $source = $source . ':' . $uuid;
+                            $uuid = $args[2] ?? null;
+                        }
+                        $prompt = null;
+                        if (!empty($source) && !empty($uuid)) {
+                            $prompt = $service->loadPrompt($source, $uuid);
+                        }
+                        if ($prompt instanceof Prompt) {
+                            $promptText = $prompt->prompt->value;
+                            if(!empty($promptText)) {
+                                $promptText = $tokenService->replace($promptText, $data, $options, $bubbleable_metadata);
+                                $replacements[$token] = $promptText;
+                            }
+                            else {
+                                $replacements[$token] = '';
+                            }
+                        }
+                        else {
+                            $replacements[$token] = '';
+                        }
+                        break;
+                }
+            }
+        }
+    }
+
+    return $replacements;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_ai_prompt_library_preprocess_page_title(&$variables)
+{
+    $routeMatch = \Drupal::routeMatch();
+    if($routeMatch->getRouteName() == 'sprowt_ai_prompt_library.import_from_library') {
+        $entityTypeId = $routeMatch->getParameter('entityType');
+        $entityType = \Drupal::entityTypeManager()->getDefinition($entityTypeId);
+        $collectionLabel = $entityType->getCollectionLabel();
+        $collectionLabel = strtolower($collectionLabel);
+        $title = "Import {$collectionLabel} from source";
+        $variables['title'] = $title;
+    }
+}
+
+
+/**
+ * Implements hook_menu_local_actions_alter().
+ */
+function sprowt_ai_prompt_library_menu_local_actions_alter(&$local_actions)
+{
+    $entityTypeIds = [
+        'ai_prompt',
+        'sprowt_ai_context',
+        'sprowt_ai_example'
+    ];
+
+    foreach($entityTypeIds as $entityTypeId) {
+        $entityType = \Drupal::entityTypeManager()->getDefinition($entityTypeId);
+        $entityLabel = $entityType->getCollectionLabel();
+        $entityLabel = strtolower($entityLabel);
+        $collectionRoute = 'entity.' . $entityTypeId . '.collection';
+        $local_actions[$entityTypeId . '.import_from_library'] = [
+            'title' => "Import {$entityLabel} from source",
+            'route_name' => 'sprowt_ai_prompt_library.import_from_library',
+            'route_parameters' => [
+                'entityType' => $entityTypeId
+            ],
+            'appears_on' => [
+                $collectionRoute
+            ]
+        ] + [
+
+                'id' => $entityTypeId . '.import_from_library',
+                'weight' => NULL,
+                'options' => [],
+                'class' => 'Drupal\Core\Menu\LocalActionDefault',
+            ];
+    }
+}
+
+/**
+ * Implements hook_content_import_export_field_instance_export_alter().
+ */
+function sprowt_ai_prompt_library_content_import_export_field_instance_export_alter(&$array, $entity, $context)
+{
+    if(!empty($context['contentLibraryRequest'])) {
+        //We might not want to do this for now
+        //_sprowt_ai_prompt_library_content_library_request_export_alter($array, $entity, $context);
+    }
+}
+
+//function _sprowt_ai_prompt_library_content_library_request_export_alter(&$array, $entity, $context)
+//{
+//
+//    $fieldDefinition = $context['fieldDefinition'];
+//    $instance = $context['instance'];
+//    $fieldName = $context['fieldId'];
+//    /** @var \Drupal\content_import_export\Exporter $exporter */
+//    $exporter = $context['exporter'];
+//    /** @var AiPromptLibraryService $service */
+//    $service = \Drupal::service('sprowt_ai_prompt_library.service');
+//    /** @var AiService $aiService */
+//    $aiService = \Drupal::service('sprowt_ai.service');
+//
+//
+//    if($instance instanceof PromptItem) {
+//        foreach ($array[$fieldName] as $delta => $value) {
+//            $promptText = $value['value'] ?? '';
+//            if(strpos($promptText, '[sprowt_ai:prompt:local:') !== false) {
+//                $value['value'] = $service->deLocalizePrompt($promptText);
+//                $array[$fieldName][$delta] = $value;
+//                $entities = $aiService->extractEntitiesFromPromptText($value['value']);
+//                if (!empty($entities)) {
+//                    $configs = [];
+//                    foreach ($entities as $entityType => $entityArray) {
+//                        foreach ($entityArray as $entity) {
+//                            if($entity instanceof \Drupal\sprowt_ai_prompt_library\Entity\Prompt) {
+//                                $connectedEntities = $entity->getConnectedEntities();
+//                                if (!empty($connectedEntiies)) {
+//                                    foreach ($connectedEntities as $connectedEntity) {
+//                                        $configs[] = [
+//                                            'entity' => $connectedEntity
+//                                        ];
+//                                    }
+//                                }
+//                                continue;
+//                            }
+//                            $configs[] = [
+//                                'entity' => $entity
+//                            ];
+//                        }
+//                    }
+//                    if(!empty($configs)) {
+//                        $return = $exporter->addToExportedContent($configs);
+//                        if(empty($array[$fieldName][$delta]['_attachedEntities'])) {
+//                            $array[$fieldName][$delta]['_attachedEntities'] = [];
+//                        }
+//                        $array[$fieldName][$delta]['_attachedEntities'] = array_merge($array[$fieldName][$delta]['_attachedEntities'], $return);
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    if(!empty($array['_fieldPrompts'])) {
+//        foreach($array['_fieldPrompts'] as $fieldName => $values) {
+//            foreach ($values as $delta => $value) {
+//                $promptText = $value['prompt'] ?? '';
+//                if(strpos($promptText, '[sprowt_ai:prompt:local:') !== false) {
+//                    $value['prompt'] = $service->deLocalizePrompt($promptText);
+//                    $array['_fieldPrompts'][$fieldName][$delta] = $value;
+//                    $entities = $aiService->extractEntitiesFromPromptText($value['prompt']);
+//                    if (!empty($entities)) {
+//                        $configs = [];
+//                        foreach ($entities as $entityType => $entityArray) {
+//                            foreach ($entityArray as $entity) {
+//                                if($entity instanceof \Drupal\sprowt_ai_prompt_library\Entity\Prompt) {
+//                                    $connectedEntities = $entity->getConnectedEntities();
+//                                    if (!empty($connectedEntiies)) {
+//                                        foreach ($connectedEntities as $connectedEntity) {
+//                                            $configs[] = [
+//                                                'entity' => $connectedEntity
+//                                            ];
+//                                        }
+//                                    }
+//                                    continue;
+//                                }
+//                                $configs[] = [
+//                                    'entity' => $entity
+//                                ];
+//                            }
+//                        }
+//                        if(!empty($configs)) {
+//                            $return = $exporter->addToExportedContent($configs);
+//                            if(empty($array['_fieldPrompts'][$fieldName][$delta]['_attachedEntities'])) {
+//                                $array['_fieldPrompts'][$fieldName][$delta]['_attachedEntities'] = [];
+//                            }
+//                            $array['_fieldPrompts'][$fieldName][$delta]['_attachedEntities'] = array_merge($array['_fieldPrompts'][$fieldName][$delta]['_attachedEntities'], $return);
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+
+/**
+ * Implements hook_entity_operation().
+ */
+function sprowt_ai_prompt_library_entity_operation(\Drupal\Core\Entity\EntityInterface $entity)
+{
+    $operations = [];
+    if($entity instanceof \Drupal\sprowt_ai_prompt_library\Entity\Prompt) {
+        $operations['clone'] = [
+            'title' => 'Clone',
+            'url' => Url::fromRoute('sprowt_ai_prompt_library.prompt_clone', ['prompt' => $entity->id()]),
+            'weight' => 10
+        ];
+    }
+
+    return $operations;
+}
+
+function sprowt_ai_prompt_library_preprocess_views_view_field(&$variables)
+{
+    $view = $variables['view'];
+    $display = $view->getDisplay();
+    $displayId = $view->current_display;
+    $field = $variables['field'];
+    $fieldName = null;
+    /** @var \Drupal\views\ResultRow $row */
+    $row = $variables['row'];
+    if($field instanceof \Drupal\views\Plugin\views\field\EntityField) {
+        $fieldName = $field->field;
+    }
+    if($displayId == 'page_1'
+        && ($view->id() == 'ai_prompts')
+        && $fieldName == 'tags_target_id'
+    ) {
+        $entity = $row->_entity;
+        $output = (string) $variables['output'];
+        $variables['output'] = \Drupal\sprowt_ai\Form\EditTagsAjaxForm::tagListOutput($output, $entity);
+    }
+}

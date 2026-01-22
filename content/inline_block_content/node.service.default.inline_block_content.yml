@@ -1,0 +1,585 @@
+_entities:
+  '7e4d1c72-32eb-4faf-8433-92058030dea0::4019':
+    _exportInfo:
+      key: '7e4d1c72-32eb-4faf-8433-92058030dea0::4019'
+      entity_type: block_content
+      bundle: hero
+      entity_id: '486'
+      uuid: 7e4d1c72-32eb-4faf-8433-92058030dea0
+      isDefaultRevision: true
+      revisionId: '4019'
+      label: Masthead
+    id:
+      -
+        value: 486
+    uuid:
+      -
+        value: 7e4d1c72-32eb-4faf-8433-92058030dea0
+    revision_id:
+      -
+        value: 4019
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: hero
+        target_type: block_content_type
+        target_uuid: a98f3b16-87f8-4fd2-beb6-a6522ab80a47
+    revision_created:
+      -
+        value: '2021-05-11T15:53:10+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Hero'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Masthead
+    changed:
+      -
+        value: '2021-05-11T15:53:10+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_benefits:
+      -
+        value: true
+    field_heading:
+      -
+        value: 'Service Heading'
+        tag: div
+    field_image_bg_hero: {  }
+    field_industry: {  }
+    field_label: {  }
+    field_link: {  }
+    field_opacity:
+      -
+        value: 85
+    field_subheading:
+      -
+        value: 'A short call to action headline to inform users'
+    field_text: {  }
+  '11c763c0-3b9f-4f51-9abf-ee52237976a9::4020':
+    _exportInfo:
+      key: '11c763c0-3b9f-4f51-9abf-ee52237976a9::4020'
+      entity_type: block_content
+      bundle: basic
+      entity_id: '485'
+      uuid: 11c763c0-3b9f-4f51-9abf-ee52237976a9
+      isDefaultRevision: true
+      revisionId: '4020'
+      label: 'Service Intro'
+    id:
+      -
+        value: 485
+    uuid:
+      -
+        value: 11c763c0-3b9f-4f51-9abf-ee52237976a9
+    revision_id:
+      -
+        value: 4020
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: basic
+        target_type: block_content_type
+        target_uuid: 34ebec69-1449-469a-9ec4-be32f1e9c367
+    revision_created:
+      -
+        value: '2021-05-11T15:22:57+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Basic'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: 'Service Intro'
+    changed:
+      -
+        value: '2021-05-11T15:22:57+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading:
+      -
+        value: 'Description and Title of Service'
+        tag: h1
+    field_industry: {  }
+    field_label: {  }
+    field_link: {  }
+    field_subheading: {  }
+    field_text:
+      -
+        value: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales ante tortor, in aliquet dui eleifend vel. Nullam in lectus pretium urna vulputate efficitur vel vitae tellus. Fusce viverra, libero in faucibus consectetur, magna ante lacinia metus, vel iaculis tellus dolor in dolor. Aenean lacinia, mi in dignissim faucibus, nibh eros rutrum enim, in malesuada lorem risus ut turpis.</p>\r\n\r\n<p>Pellentesque sit amet magna ac nibh bibendum vehicula. Suspendisse potenti. Aliquam erat volutpat. Phasellus vitae luctus mi. Proin malesuada porta aliquet.</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales ante tortor, in aliquet dui eleifend vel. Nullam in lectus pretium urna vulputate efficitur vel vitae tellus. Fusce viverra, libero in faucibus consectetur, magna ante lacinia metus, vel iaculis tellus dolor in dolor. Aenean lacinia, mi in dignissim faucibus, nibh eros rutrum enim, in malesuada lorem risus ut turpis.</p>
+          <p>Pellentesque sit amet magna ac nibh bibendum vehicula. Suspendisse potenti. Aliquam erat volutpat. Phasellus vitae luctus mi. Proin malesuada porta aliquet.</p>
+  '259a7c61-c20b-4f82-93f7-8f2b34afe758::4021':
+    _exportInfo:
+      key: '259a7c61-c20b-4f82-93f7-8f2b34afe758::4021'
+      entity_type: block_content
+      bundle: special_offers
+      entity_id: '471'
+      uuid: 259a7c61-c20b-4f82-93f7-8f2b34afe758
+      isDefaultRevision: true
+      revisionId: '4021'
+      label: 'Special Offer'
+    id:
+      -
+        value: 471
+    uuid:
+      -
+        value: 259a7c61-c20b-4f82-93f7-8f2b34afe758
+    revision_id:
+      -
+        value: 4021
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: special_offers
+        target_type: block_content_type
+        target_uuid: 74334d11-eec8-417a-8f62-9565f8f956b1
+    revision_created:
+      -
+        value: '2021-05-05T14:53:49+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Special Offers'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: 'Special Offer'
+    changed:
+      -
+        value: '2021-05-05T14:53:49+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_count_special_offer:
+      -
+        value: '1'
+    field_display_special_offer:
+      -
+        value: tertiary_teaser
+    field_heading: {  }
+    field_label: {  }
+    field_subheading: {  }
+    field_text: {  }
+  'c67bf684-306e-4d00-81a7-61820d2689cb::4022':
+    _exportInfo:
+      key: 'c67bf684-306e-4d00-81a7-61820d2689cb::4022'
+      entity_type: block_content
+      bundle: packages
+      entity_id: '481'
+      uuid: c67bf684-306e-4d00-81a7-61820d2689cb
+      isDefaultRevision: true
+      revisionId: '4022'
+      label: Packages
+    id:
+      -
+        value: 481
+    uuid:
+      -
+        value: c67bf684-306e-4d00-81a7-61820d2689cb
+    revision_id:
+      -
+        value: 4022
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: packages
+        target_type: block_content_type
+        target_uuid: 16924bfe-a7dd-470e-b941-b6fcd427ae1f
+    revision_created:
+      -
+        value: '2021-05-11T14:56:50+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Packages'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Packages
+    changed:
+      -
+        value: '2021-05-11T14:56:50+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading: {  }
+    field_industry: {  }
+    field_label: {  }
+    field_subheading: {  }
+  'ad77b06b-8ff8-4676-90e6-5bac385e620e::4023':
+    _exportInfo:
+      key: 'ad77b06b-8ff8-4676-90e6-5bac385e620e::4023'
+      entity_type: block_content
+      bundle: basic
+      entity_id: '482'
+      uuid: ad77b06b-8ff8-4676-90e6-5bac385e620e
+      isDefaultRevision: true
+      revisionId: '4023'
+      label: 'About this Service'
+    id:
+      -
+        value: 482
+    uuid:
+      -
+        value: ad77b06b-8ff8-4676-90e6-5bac385e620e
+    revision_id:
+      -
+        value: 4023
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: basic
+        target_type: block_content_type
+        target_uuid: 34ebec69-1449-469a-9ec4-be32f1e9c367
+    revision_created:
+      -
+        value: '2021-05-11T15:05:58+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Basic'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: 'About this Service'
+    changed:
+      -
+        value: '2021-05-11T15:05:58+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading:
+      -
+        value: 'About this Service'
+        tag: h2
+    field_industry: {  }
+    field_label: {  }
+    field_link: {  }
+    field_subheading: {  }
+    field_text:
+      -
+        value: "<p>Donec rutrum faucibus nisi. Vivamus luctus, eros in ullamcorper blandit, erat risus convallis tortor, ac aliquet turpis massa in felis. Phasellus at nunc et neque aliquam aliquet sed ut ante. Donec dapibus non nulla id suscipit. Etiam vitae ullamcorper augue, in viverra urna. Sed mollis, magna vitae tempus vulputate, nisl turpis luctus est, euismod ullamcorper libero elit et neque. Sed sit amet tincidunt magna. Praesent accumsan augue vel vestibulum pulvinar.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In consequat magna sed risus condimentum, vel gravida nunc laoreet. Nullam consequat tortor diam, eu finibus sem lacinia eu. Proin congue velit vel consequat laoreet.</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>Donec rutrum faucibus nisi. Vivamus luctus, eros in ullamcorper blandit, erat risus convallis tortor, ac aliquet turpis massa in felis. Phasellus at nunc et neque aliquam aliquet sed ut ante. Donec dapibus non nulla id suscipit. Etiam vitae ullamcorper augue, in viverra urna. Sed mollis, magna vitae tempus vulputate, nisl turpis luctus est, euismod ullamcorper libero elit et neque. Sed sit amet tincidunt magna. Praesent accumsan augue vel vestibulum pulvinar.</p>
+          <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In consequat magna sed risus condimentum, vel gravida nunc laoreet. Nullam consequat tortor diam, eu finibus sem lacinia eu. Proin congue velit vel consequat laoreet.</p>
+  '80c7ca0a-16b6-4175-8a63-61e2b13e0ed6::4024':
+    _exportInfo:
+      key: '80c7ca0a-16b6-4175-8a63-61e2b13e0ed6::4024'
+      entity_type: block_content
+      bundle: concerns
+      entity_id: '483'
+      uuid: 80c7ca0a-16b6-4175-8a63-61e2b13e0ed6
+      isDefaultRevision: true
+      revisionId: '4024'
+      label: 'What''s included in this service'
+    id:
+      -
+        value: 483
+    uuid:
+      -
+        value: 80c7ca0a-16b6-4175-8a63-61e2b13e0ed6
+    revision_id:
+      -
+        value: 4024
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: concerns
+        target_type: block_content_type
+        target_uuid: 67f480bc-4985-42c1-bd61-a3b648dd4f52
+    revision_created:
+      -
+        value: '2021-05-11T15:09:48+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Concerns'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: 'What''s included in this service'
+    changed:
+      -
+        value: '2021-05-11T15:10:05+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading:
+      -
+        value: 'What''s included in this service'
+        tag: div
+    field_industry: {  }
+    field_label: {  }
+    field_subheading: {  }
+  '3f214d1b-0d04-4df5-a43a-3fdcc0736300::260':
+    _exportInfo:
+      key: '3f214d1b-0d04-4df5-a43a-3fdcc0736300::260'
+      entity_type: block_content
+      bundle: services
+      entity_id: '213'
+      uuid: 3f214d1b-0d04-4df5-a43a-3fdcc0736300
+      isDefaultRevision: false
+      revisionId: '260'
+      label: 'Other Services'
+    id:
+      -
+        value: 213
+    uuid:
+      -
+        value: 3f214d1b-0d04-4df5-a43a-3fdcc0736300
+    revision_id:
+      -
+        value: 260
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: services
+        target_type: block_content_type
+        target_uuid: 9fdba7c1-04cd-4b95-a00b-bacec4d0183a
+    revision_created:
+      -
+        value: '2021-03-05T16:28:03+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user:
+      -
+        target_id: 2
+        target_type: user
+        target_uuid: fa2ce9a7-66a3-49ec-b53c-45a981be84ab
+        url: /user/2
+        _export: fa2ce9a7-66a3-49ec-b53c-45a981be84ab
+    revision_log:
+      -
+        value: 'Created new Services'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: 'Other Services'
+    changed:
+      -
+        value: '2021-08-25T13:09:11+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_count_service:
+      -
+        value: all
+    field_display_service:
+      -
+        value: token
+    field_heading: {  }
+    field_industry: {  }
+    field_label:
+      -
+        value: 'Other Services'
+    field_subheading: {  }
+  '1e8181c2-2baf-4988-8dfa-bce1cddfb1bb::4026':
+    _exportInfo:
+      key: '1e8181c2-2baf-4988-8dfa-bce1cddfb1bb::4026'
+      entity_type: block_content
+      bundle: faqs
+      entity_id: '484'
+      uuid: 1e8181c2-2baf-4988-8dfa-bce1cddfb1bb
+      isDefaultRevision: true
+      revisionId: '4026'
+      label: FAQs
+    id:
+      -
+        value: 484
+    uuid:
+      -
+        value: 1e8181c2-2baf-4988-8dfa-bce1cddfb1bb
+    revision_id:
+      -
+        value: 4026
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: faqs
+        target_type: block_content_type
+        target_uuid: 08b1ee88-e7c0-41c7-a8c0-45eb79594fec
+    revision_created:
+      -
+        value: '2021-05-11T15:11:48+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new FAQs'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: FAQs
+    changed:
+      -
+        value: '2021-05-11T15:11:48+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading:
+      -
+        value: 'Common Questions Customers Ask Our Pros'
+        tag: h2
+    field_industry: {  }
+    field_label: {  }
+    field_subheading: {  }
+    field_text: {  }
+_content: {  }

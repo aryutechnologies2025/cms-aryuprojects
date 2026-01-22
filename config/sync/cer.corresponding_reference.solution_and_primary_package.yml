@@ -1,0 +1,16 @@
+uuid: 0d52cb5f-88ef-444c-9652-ab61d79547ef
+langcode: en
+status: true
+dependencies: {  }
+id: solution_and_primary_package
+label: 'Solution and Primary Package'
+enabled: true
+first_field: field_primary_package_sp
+second_field: field_solution_ref
+add_direction: append
+bundles:
+  node:
+    - package
+    - solution_page_package_alt
+    - solution_page_package_service
+    - solution_page_packages

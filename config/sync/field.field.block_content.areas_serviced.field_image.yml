@@ -1,0 +1,29 @@
+uuid: 28746387-da15-4c19-ab00-fbfad7fefa88
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced
+    - field.storage.block_content.field_image
+    - media.type.media_image
+id: block_content.areas_serviced.field_image
+field_name: field_image
+entity_type: block_content
+bundle: areas_serviced
+label: Image
+description: 'Optional map image'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

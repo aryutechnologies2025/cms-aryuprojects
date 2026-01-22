@@ -1,0 +1,59 @@
+uuid: ef2914f3-3a21-440e-a37d-25670e1f7170
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - menu_link_content
+    - options
+    - menu_item_fields
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: menu_link_content.field_page_type
+field_name: field_page_type
+entity_type: menu_link_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: home
+      label: 'Home page'
+    -
+      value: about
+      label: 'About page'
+    -
+      value: meet_the_team
+      label: 'Meet the team page'
+    -
+      value: blog
+      label: 'Blog overview page'
+    -
+      value: services
+      label: 'Services overview page'
+    -
+      value: locations
+      label: 'Locations overview page'
+    -
+      value: special_offers
+      label: 'Special offer overview page'
+    -
+      value: contact_us
+      label: 'Contact us page'
+    -
+      value: free_quote
+      label: 'Free quote page'
+    -
+      value: refer_friend
+      label: 'Refer a friend page'
+    -
+      value: special_offer_form
+      label: 'Special offer form'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

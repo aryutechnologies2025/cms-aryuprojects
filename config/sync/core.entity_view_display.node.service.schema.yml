@@ -1,0 +1,209 @@
+uuid: f0706aae-a857-4f3a-bda7-d3da2cbec8f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.schema
+    - field.field.node.service.body
+    - field.field.node.service.field_additional_service_cities
+    - field.field.node.service.field_benefit
+    - field.field.node.service.field_disable_link
+    - field.field.node.service.field_icon_service
+    - field.field.node.service.field_image_service
+    - field.field.node.service.field_industry
+    - field.field.node.service.field_landing_page_ref
+    - field.field.node.service.field_ltp_ref
+    - field.field.node.service.field_meta_description
+    - field.field.node.service.field_meta_tags
+    - field.field.node.service.field_package_level
+    - field.field.node.service.field_packages
+    - field.field.node.service.field_ref_faqs
+    - field.field.node.service.field_ref_issue
+    - field.field.node.service.field_secondary_solution_ref
+    - field.field.node.service.field_sector
+    - field.field.node.service.field_service_cities
+    - field.field.node.service.field_solution_heading
+    - field.field.node.service.field_solution_ref
+    - field.field.node.service.field_special_offers
+    - field.field.node.service.field_standalone_landing_page
+    - field.field.node.service.field_subsite
+    - field.field.node.service.layout_builder__layout
+    - node.type.service
+  module:
+    - layout_builder
+    - metatag
+    - options
+    - sprowt_subsite
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.service.schema
+targetEntityType: node
+bundle: service
+mode: schema
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_benefit:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_disable_link:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_industry:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_landing_page_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_ltp_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 116
+    region: content
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_package_level:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 115
+    region: content
+  field_packages:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_ref_faqs:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_ref_issue:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_secondary_solution_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_sector:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_service_cities:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_solution_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_special_offers:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_standalone_landing_page:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 118
+    region: content
+  field_subsite:
+    type: sprowt_subsite_reference_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 117
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_additional_service_cities: true
+  field_icon_service: true
+  field_image_service: true
+  field_meta_description: true
+  field_solution_ref: true
+  langcode: true
+  layout_builder__layout: true

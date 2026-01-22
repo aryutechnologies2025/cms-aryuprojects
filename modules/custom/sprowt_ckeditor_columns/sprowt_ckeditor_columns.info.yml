@@ -1,0 +1,7 @@
+name: Sprowt CKEditor Columns
+type: module
+description: This plugin adds columns feature to the editor.
+core_version_requirement: ^9 || ^10
+package: CKEditor
+dependencies:
+  - drupal:ckeditor5

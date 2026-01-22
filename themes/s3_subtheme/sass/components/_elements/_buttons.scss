@@ -1,0 +1,284 @@
+// Button styles
+$_button-color: palette(white);
+$_button-radius: 0;
+$_button-background-color: palette(secondary);
+$_button-background-color-hover: palette(primary);
+
+$_button-padding-top-bottom: 12px;
+$_button-padding-right-left: 32px;
+
+.button,
+%button {
+  appearance: none;
+  position: relative;
+  display: inline-block;
+  min-width: 140px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: $_button-padding-top-bottom $_button-padding-right-left;
+  text-align: center;
+  color: $_button-color;
+  font-family: $base-font-family;
+  font-size: 1.6rem;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  border: 0;
+  border-radius: $_button-radius;
+  background-color: $_button-background-color;
+  vertical-align: baseline;
+  transition: background-color $duration, padding $duration;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  overflow: hidden;
+  z-index: 0;
+
+  @include breakpoint($small) {
+    padding: $_button-padding-top-bottom $_button-padding-right-left;
+    //white-space: nowrap;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $_button-background-color-hover;
+  }
+
+  &.active {
+  }
+
+  &:disabled {
+    background-color: $color-disabled;
+  }
+
+  &.small {
+    padding-top: ($_button-padding-top-bottom / 2);
+    padding-bottom: ($_button-padding-top-bottom / 2);
+    font-size: 1.4rem;
+  }
+
+  &.large {
+    padding-top: ($_button-padding-top-bottom * 1.5);
+    padding-bottom: ($_button-padding-top-bottom * 1.5);
+    font-size: 1.8px;
+    //line-height: 3.8rem;
+    height: auto;
+  }
+
+  &.button--outlined,
+  &.outlined {
+    padding-top: $_button-padding-top-bottom - 2px;
+    padding-bottom: $_button-padding-top-bottom - 2px;
+    color: $_button-background-color;
+    border: 2px solid $_button-background-color;
+    background: transparent;
+    box-shadow: none;
+
+    &:hover {
+      color: $_button-color;
+      background-color: $_button-background-color;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+
+    &.small {
+      padding-top: ($_button-padding-top-bottom / 2) - 2px;
+      padding-bottom: ($_button-padding-top-bottom / 2) - 2px;
+    }
+
+    &.large {
+      padding-top: ($_button-padding-top-bottom * 1.5) -2px;
+      padding-bottom: ($_button-padding-top-bottom * 1.5) -2px;
+    }
+  }
+
+  &.highlight::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.65);
+    background-color: rgba(255, 255, 255, 0.27);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: $_button-background-color;
+    }
+  }
+
+  //Button Colors
+  .bg-dark &,
+  .bg-black & {
+    color: $_button-color;
+    background-color: $_button-background-color;
+
+    &:hover {
+      color: palette(primary);
+      background-color: palette(white);
+    }
+  }
+
+  .bg-primary &,
+  .bg-tertiary & {
+    color: $_button-color;
+    background-color: $_button-background-color;
+
+    &:hover {
+      color: palette(primary);
+      background-color: palette(white);
+    }
+
+    &.button--outlined,
+    &.outlined {
+      color: $_button-color;
+      border: 2px solid $_button-color;
+
+      &:hover {
+        color: $_button-background-color;
+        background-color: $_button-color;
+      }
+    }
+  }
+
+  .bg-secondary & {
+    color: palette(white);
+    background-color: palette(primary);
+
+    &:hover {
+      color: palette(secondary);
+      background-color: palette(white);
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+////// Custom Button Options. Uncomment Beneath Description to Select //////
+///////////////////////////////////////////////////////////////////////////
+
+.button,
+%button {
+
+  // fill background color in on hover
+  // @include fill($_button-color, $_button-background-color);
+
+  // unfill background color on hover
+  // @include unfill($_button-color, $_button-background-color);
+
+  // background color is offset and becomes inset on hover
+  // @include offset($_button-color, $_button-background-color);
+
+  // background color is inset and becomes offset on hover
+  // @include inset($_button-color, $_button-background-color);
+
+  // semi-rounded corners 
+  // @include semi-rounded($_button-color, $_button-background-color);
+
+  // rounded corners 
+  // @include rounded($_button-color, $_button-background-color);
+
+  // rounded with points 
+  // @include rounded-points($_button-color, $_button-background-color);
+
+  // slanted sides 
+  // @include slanted($_button-color, $_button-background-color);
+
+  // diagonal that slides in on hover
+  // @include diagonal($_button-color, $_button-background-color);
+  
+}
+
+/////////////////////////////////////////
+////// End Custom Button Options. //////
+///////////////////////////////////////
+
+
+.button-arrow {
+  @include icon-after(arrow-right, 16px, palette(primary));
+
+  a {
+    color: palette(black);
+    //font-weight: 600;
+    text-decoration: none;
+  }
+
+  &::after {
+    transition: margin $duration;
+  }
+  &:hover {
+    &::after {
+      margin-left: 12px;
+    }
+  }
+}
+
+.field--name-field-cta a {
+  min-width: 260px;
+}
+
+.field--name-field-link a,
+.field--name-field-button a,
+.field--name-field-button > span,
+.field--name-field-view-all a {
+  @extend %button;
+}
+
+%underline-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    margin-top: -2px;
+    background-color: palette(secondary);
+    transition: width $duration;
+  }
+
+  .bg-primary &,
+  .bg-tertiary &,
+  .bg-black &,
+  .bg-dark & {
+    &::after {
+      background-color: palette(secondary);
+    }
+  }
+  
+  .bg-secondary & {
+    &::after {
+      background-color: palette(white);
+    }
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+%underline-link-reverse {
+  @extend %underline-link;
+
+  &::after {
+    width: 100%;
+  }
+
+  &:hover {
+    &::after {
+      width: 0%;
+    }
+  }
+}

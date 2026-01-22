@@ -1,0 +1,5 @@
+name: 'Sprowt Settings'
+type: module
+description: 'Contains settings and extra sprowt functionality'
+core_version_requirement: ^9 || ^10
+package: 'Coalmarch'

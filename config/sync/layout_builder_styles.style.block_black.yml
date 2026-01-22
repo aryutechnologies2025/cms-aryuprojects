@@ -1,0 +1,20 @@
+uuid: af0d0778-5131-469d-8087-9b3b7afc4f47
+langcode: en
+status: true
+dependencies: {  }
+id: block_black
+label: Black
+classes: bg-black
+type: component
+group: bgcolor
+block_restrictions:
+  - 'inline_block:call_out'
+  - 'inline_block:concerns'
+  - 'inline_block:issues'
+  - 'inline_block:modal_block'
+  - 'inline_block:servicebot'
+  - 'inline_block:services'
+  - 'inline_block:special_offers'
+  - 'inline_block:webform'
+layout_restrictions: {  }
+weight: 18

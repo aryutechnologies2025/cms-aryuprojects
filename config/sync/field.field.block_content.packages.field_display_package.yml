@@ -1,0 +1,23 @@
+uuid: f4f4f777-6e4c-43b3-84a2-4dcadcdb321b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.packages
+    - field.storage.block_content.field_display_package
+  module:
+    - options
+id: block_content.packages.field_display_package
+field_name: field_display_package
+entity_type: block_content
+bundle: packages
+label: Display
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: teaser
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,29 @@
+uuid: 12154cc4-cf46-46a3-a61a-4b936a6f9eab
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced
+    - field.storage.block_content.field_industry
+    - taxonomy.vocabulary.industry
+id: block_content.areas_serviced.field_industry
+field_name: field_industry
+entity_type: block_content
+bundle: areas_serviced
+label: 'Industry Override'
+description: 'Choose only to filter by Industry or Region, but not both.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      industry: industry
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

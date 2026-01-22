@@ -1,0 +1,11 @@
+uuid: 616e86f2-d79a-4e8b-b179-34085c6aa387
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.concerns_list
+id: block_content.concerns_list
+target_entity_type_id: block_content
+target_bundle: concerns_list
+default_langcode: site_default
+language_alterable: false

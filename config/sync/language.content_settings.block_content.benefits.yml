@@ -1,0 +1,11 @@
+uuid: 6bde17d4-2470-437c-92d1-2544eddea513
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.benefits
+id: block_content.benefits
+target_entity_type_id: block_content
+target_bundle: benefits
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,11 @@
+uuid: b52929f9-1fb9-4560-9696-5947c3e714c9
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_reverse_logo_block
+block_id: sprowt_subsite_logo_reverse_block
+category: header_footer
+label: 'Subsite reverse logo block'
+image_path: ''
+image_alt: ''
+weight: -89

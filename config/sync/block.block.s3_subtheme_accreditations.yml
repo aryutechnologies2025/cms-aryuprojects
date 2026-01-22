@@ -1,0 +1,35 @@
+uuid: 68ed3cc8-57a3-4553-b9ba-de0fc418d350
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:brands:d347d783-31c7-46ee-840b-5e54cc30fb34'
+  module:
+    - block_content
+    - node
+  theme:
+    - s3_subtheme
+id: s3_subtheme_accreditations
+theme: s3_subtheme
+region: content_bottom
+weight: -16
+provider: null
+plugin: 'block_content:d347d783-31c7-46ee-840b-5e54cc30fb34'
+settings:
+  id: 'block_content:d347d783-31c7-46ee-840b-5e54cc30fb34'
+  label: Affiliations
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      city_page: city_page
+      page: page
+      service: service

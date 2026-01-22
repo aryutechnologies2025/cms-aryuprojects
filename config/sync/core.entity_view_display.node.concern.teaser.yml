@@ -1,0 +1,68 @@
+uuid: 392a53a6-fec0-4a79-9797-3463373d17af
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.concern.body
+    - field.field.node.concern.field_exclude
+    - field.field.node.concern.field_exclude_from_solution_find
+    - field.field.node.concern.field_icon_concern
+    - field.field.node.concern.field_industry
+    - field.field.node.concern.field_issues
+    - field.field.node.concern.field_meta_description
+    - field.field.node.concern.field_meta_tags
+    - field.field.node.concern.field_package_level
+    - field.field.node.concern.field_services
+    - field.field.node.concern.field_subsite
+    - field.field.node.concern.field_subsite_multiple
+    - field.field.node.concern.field_summary
+    - field.field.node.concern.layout_builder__layout
+    - node.type.concern
+  module:
+    - text
+    - user
+id: node.concern.teaser
+targetEntityType: node
+bundle: concern
+mode: teaser
+content:
+  field_icon_concern:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: vector
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_issues:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_summary:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  body: true
+  field_exclude: true
+  field_exclude_from_solution_find: true
+  field_industry: true
+  field_meta_description: true
+  field_meta_tags: true
+  field_package_level: true
+  field_services: true
+  field_subsite: true
+  field_subsite_multiple: true
+  langcode: true
+  layout_builder__layout: true
+  links: true
+  show_title: true

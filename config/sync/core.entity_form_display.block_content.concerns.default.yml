@@ -1,0 +1,51 @@
+uuid: 64ed1b1f-a0dc-4fca-abf1-a1fd840644cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.concerns
+    - field.field.block_content.concerns.field_heading
+    - field.field.block_content.concerns.field_label_tag
+    - field.field.block_content.concerns.field_subheading_tag
+  module:
+    - tag_text_field
+id: block_content.concerns.default
+targetEntityType: block_content
+bundle: concerns
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_widget
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_label_tag:
+    type: html_tag_text_field_widget
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_subheading_tag:
+    type: html_tag_text_field_widget
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  revision_log: true

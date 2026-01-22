@@ -1,0 +1,7 @@
+name: Config Single Sync
+type: module
+description: Allow for syncing individual configs
+package: Coalmarch
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:config

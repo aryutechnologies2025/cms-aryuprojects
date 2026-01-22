@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * User View Mode : Teaser
+ */
+#}
+
+<div{{attributes.addClass('profile-teaser')}}>
+  {% if content %}
+    {% set altimage = content.field_profile_image_alt[0] %}
+    <style>
+      .profile-teaser-image-{{user.id}}{
+        background-image: url({{ altimage|render|striptags|trim }});
+      }
+    </style>
+    <a class="profile-path" href="{{ path('entity.user.canonical', {'user': user.id}) }}">
+      <div class="profile-teaser-image profile-teaser-image-{{ user.id }}">
+        {{ content.field_profile_image }}
+      </div>
+      {{- content|without('field_profile_image','field_profile_image_alt') -}}
+    </a>
+  {% endif %}
+</div>

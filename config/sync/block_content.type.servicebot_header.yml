@@ -1,0 +1,8 @@
+uuid: f7779769-f2f3-4b70-9c09-9c4729db984b
+langcode: en
+status: true
+dependencies: {  }
+id: servicebot_header
+label: 'Servicebot (Header)'
+revision: false
+description: 'Button block for the header that links to Servicebot or other service'

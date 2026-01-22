@@ -1,0 +1,13 @@
+uuid: f53d71d4-55fa-4a9b-9ca2-5dc50b50eba1
+langcode: en
+status: true
+dependencies: {  }
+id: slant_crop
+label: 'Slant Crop'
+classes: slant
+type: component
+group: default
+block_restrictions:
+  - 'inline_block:image'
+layout_restrictions: {  }
+weight: 0

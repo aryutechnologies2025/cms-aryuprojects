@@ -1,0 +1,30 @@
+uuid: 060aad22-1806-4c04-808e-0afd63829995
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_type_alert
+field_name: field_type_alert
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: warning
+      label: Warning
+    -
+      value: general_message
+      label: 'General Message'
+    -
+      value: offer
+      label: 'Special Offer/Promotion'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,30 @@
+uuid: 517443df-66db-4ce4-a95b-4476af242743
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.brands
+    - field.storage.block_content.field_label_tag
+  module:
+    - tag_text_field
+id: block_content.brands.field_label_tag
+field_name: field_label_tag
+entity_type: block_content
+bundle: brands
+label: Label
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  defaultTag: div
+  tagList: |-
+    h1|H1
+    h2|H2
+    h3|H3
+    h4|H4
+    h5|H5
+    h6|H6
+    div|Div
+field_type: html_tag_text_field_type

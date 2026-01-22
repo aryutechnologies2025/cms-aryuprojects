@@ -1,0 +1,23 @@
+uuid: b0369b9d-1f2c-4591-8840-b7a63aafd0dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.before_after_image_slider
+    - field.storage.block_content.field_after_color
+  module:
+    - options
+id: block_content.before_after_image_slider.field_after_color
+field_name: field_after_color
+entity_type: block_content
+bundle: before_after_image_slider
+label: 'After Color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: secondary
+default_value_callback: ''
+settings: {  }
+field_type: list_string

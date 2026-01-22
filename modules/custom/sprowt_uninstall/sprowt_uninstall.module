@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Sprowt Uninstall module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+
+function _sprowt_uninstall_test() {
+    /** @var \Drupal\sprowt_uninstall\SprowtUninstallService $service */
+    $service = \Drupal::service('sprowt_uninstall.service');
+    $service->removeIntegrations();
+}

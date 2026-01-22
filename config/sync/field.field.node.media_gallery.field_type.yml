@@ -1,0 +1,21 @@
+uuid: a17f3c01-a86b-474a-9833-85970cb18782
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type
+    - node.type.media_gallery
+  module:
+    - options
+id: node.media_gallery.field_type
+field_name: field_type
+entity_type: node
+bundle: media_gallery
+label: Type
+description: 'Select the type of media this gallery will contain. YOU MUST choose one to upload media.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

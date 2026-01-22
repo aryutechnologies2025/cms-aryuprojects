@@ -1,0 +1,14 @@
+uuid: 7bc8628b-6a7f-4dfb-b671-91e749b37242
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.special_offer
+id: node_type_special_offer
+entity_type_id: node_type
+entity_id: special_offer
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

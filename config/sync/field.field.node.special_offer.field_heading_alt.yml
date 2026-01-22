@@ -1,0 +1,19 @@
+uuid: 232d051b-c567-4dba-8ff0-b92f0681e457
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_heading_alt
+    - node.type.special_offer
+id: node.special_offer.field_heading_alt
+field_name: field_heading_alt
+entity_type: node
+bundle: special_offer
+label: 'Mobile Headline'
+description: 'Heading used when a one line heading is needed.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

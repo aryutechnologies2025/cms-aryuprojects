@@ -1,0 +1,31 @@
+uuid: 4b368311-7be6-49f7-b479-450c09251ecd
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - sprowt3
+id: mainnavigation_service_areas
+theme: sprowt3
+region: disabled
+weight: 0
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Main navigation : Service Areas'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 1
+  expand_all_items: false
+  parent: 'main:menu_link_content:e9ab5432-003d-4368-80a1-0c454538494d'
+  suggestion: main
+visibility: {  }

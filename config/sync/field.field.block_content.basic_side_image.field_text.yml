@@ -1,0 +1,22 @@
+uuid: e1d014f1-e11f-4976-83c3-f31036253e0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic_side_image
+    - field.storage.block_content.field_text
+  module:
+    - text
+id: block_content.basic_side_image.field_text
+field_name: field_text
+entity_type: block_content
+bundle: basic_side_image
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

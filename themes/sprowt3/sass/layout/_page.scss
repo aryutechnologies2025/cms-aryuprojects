@@ -1,0 +1,111 @@
+.region-content {
+}
+
+// Admin Links overrides
+// Kyle Adding things here, fix and move if you are angry. It will more than likely just be good CSS as my sass is gone.
+// Styles updated by Matthan 02-16-21
+
+body.gin--horizontal-toolbar {
+  //padding-top: 39px !important;
+  padding-top: 82px !important;
+  .admin_links {
+    .region-admin-links {
+      top: 39px;
+    }
+  }
+  @include breakpoint(976px) {
+    padding-top: 96px !important;
+    .admin_links {
+      .region-admin-links {
+        top: 54px;
+      }
+    }
+  }
+}
+
+body.gin--classic-toolbar.toolbar-horizontal {
+  //padding-top: 39px !important;
+  padding-top: 82px !important;
+
+  @include breakpoint(976px) {
+    padding-top: 82px !important;
+    &.toolbar-tray-open {
+      padding-top: 122px !important;
+      .admin_links {
+        .region-admin-links {
+          top: 79px;
+        }
+      }
+    }
+  }
+}
+
+.admin_links {
+  display: none;
+  .region-admin-links {
+    display: none; //hide by default. Js will show if region is not empty
+    position: fixed;
+    top: 39px;
+    width: 100%;
+    height: 43px;
+    padding: 0;
+    font-size: 13px;
+    font-family: Inter, -apple-system, “Segoe UI”, Roboto, Oxygen-Sans, Ubuntu,
+      Cantarell, “Helvetica Neue”, sans-serif;
+    background-color: black;
+    z-index: 101;
+    //@include breakpoint(976px) {
+    //  body.toolbar-horizontal & {
+    //    top: 53px;
+    //  }
+    //}
+    &.show {
+      display: block;
+    }
+  }
+  nav.tabs {
+    height: 43px;
+    margin-left: calc(min(5vw, 48px));
+    margin-right: calc(min(5vw, 48px));
+  }
+  ul.tabs {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: auto;
+    margin: 0;
+    li {
+      flex: 0 0 auto;
+      display: block;
+      margin: 0;
+      a {
+        padding: 10px 1.3333em;
+        color: #fff;
+        &:hover {
+          color: #f2ce7e;
+          background-color: #2a2a2d;
+        }
+        &:active,
+        &:focus,
+        &.is-active {
+          color: #f2ce7e;
+          background-color: #3f3a33;
+        }
+      }
+      &.justify-right {
+        margin-left: auto;
+        +.justify-right {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+.contextual {
+  z-index: 100;
+}
+
+.user-logged-in .admin_links {
+  display: block;
+}

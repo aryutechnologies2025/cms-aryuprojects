@@ -1,0 +1,18 @@
+uuid: 05ae93fc-41a0-4754-af17-63f7f92d8c70
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Region Page'
+type: region_page
+description: 'Similar to a City Page, with greater flexibility by manually selecting linked content via the blocks.'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

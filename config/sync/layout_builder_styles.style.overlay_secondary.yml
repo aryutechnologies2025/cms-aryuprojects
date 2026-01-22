@@ -1,0 +1,14 @@
+uuid: 30de833e-023b-4400-a62e-0cf84f506361
+langcode: en
+status: true
+dependencies: {  }
+id: overlay_secondary
+label: 'Overlay White'
+classes: overlay-white
+type: component
+group: bgstyle
+block_restrictions:
+  - 'inline_block:call_out'
+  - 'inline_block:hero'
+layout_restrictions: {  }
+weight: 7

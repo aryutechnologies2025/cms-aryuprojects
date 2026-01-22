@@ -1,0 +1,631 @@
+header.page-header {
+  z-index: 10;
+}
+
+.region-header1 {
+  height: $header-utility-height-mobile;
+  min-height: $header-utility-height-mobile;
+  max-height: $header-utility-height-mobile;
+
+  .region-blocks-wrap {
+    @extend %container;
+    padding: 0;
+    @include flexbox;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  @include breakpoint($small) {
+    height: $header-utility-height;
+    min-height: $header-utility-height;
+    max-height: $header-utility-height;
+    .region-blocks-wrap {
+      padding: 0 $margin;
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+.region-header3,
+.region-header-layout #header-3 {
+  position: relative;
+  height: $header-main-height-mobile;
+  max-height: $header-main-height-mobile;
+  min-height: $header-main-height-mobile;
+  @include flexbox;
+  align-items: center;
+  min-height: 72px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+
+  .region-blocks-wrap {
+    @extend %container;
+    @include flexbox;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @include breakpoint($small) {
+    height: $header-main-height;
+    max-height: $header-main-height;
+    min-height: $header-main-height;
+    min-height: 92px;
+    box-shadow: none;
+  }
+
+  @include breakpoint($large) {
+    .region-blocks-wrap {
+      min-height: 135px;
+    }
+  }
+
+  .block-system-branding-block,
+  .block-subsite-logo-block,
+  .block-ctm-contact {
+    width: auto;
+  }
+
+  .block--type-brands {
+    display: none;
+    margin-left: auto;
+
+    .field--name-field-brands {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .brand img {
+      max-height: 90px;
+      width: auto;
+    }
+
+    @include breakpoint($medium) {
+      display: block;
+    }
+  }
+}
+
+#header-1 {
+  position: static !important;
+}
+
+#header-4 {
+  z-index: auto !important;
+}
+
+// Header Layout Region
+.region-header-layout {
+
+  .layout__region {
+    flex-flow: row;
+    align-items: center;
+
+    .block {
+      padding: 0;
+    }
+  }
+
+  #header-1 {
+    .layout__region {
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    @include breakpoint($small) {
+      height: $header-utility-height;
+      min-height: $header-utility-height;
+      max-height: $header-utility-height;
+      .layout__region {
+        flex-wrap: nowrap;
+        padding: 0 30px;
+      }
+    }
+  }
+
+  #header-2,
+  #header-3 {
+    .layout__region {
+      padding: 0 30px;
+    }
+  }
+}
+
+.block-system-branding-block,
+.block-subsite-logo-block,
+.block-inline-blockcustom-branding-block {
+  padding: 15px 0;
+
+  @include breakpoint($large) {
+    padding: 30px 0;
+  }
+
+  .site-logo {
+    position: relative;
+    display: block;
+    max-width: 210px;
+    margin-top: 0;
+    margin-right: 20px;
+    transition: transform $duration;
+    transform: scale(1.001);
+    z-index: 10;
+
+    @include breakpoint($xsmall) {
+      max-width: 260px;
+    }
+
+    @include breakpoint($large) {
+      max-width: 300px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+header.page-header {
+  position: fixed;
+  top: 0;
+  transition: top 0.2s ease-in-out;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none; //override
+  transition: filter $duration;
+
+  .toolbar-horizontal & {
+    top: 96px;
+  }
+
+  .toolbar-vertical & {
+    top: 82px;
+  }
+
+  @include breakpoint($small) {
+    position: relative;
+    top: inherit;
+
+    .toolbar-horizontal &,
+    .toolbar-vertical & {
+      top: inherit;
+    }
+  }
+
+  &.nav-up {
+    top: $header-nav-height-mobile - $header-height-mobile;
+
+    @include breakpoint($small) {
+      top: 0;
+    }
+
+    .gin--horizontal-toolbar & {
+      top: $header-nav-height-mobile - $header-height-mobile +
+        $admin-bar-height-mobile;
+
+      @include breakpoint($small) {
+        top: 0;
+      }
+    }
+  }
+}
+
+main {
+  margin-top: $header-height-mobile;
+  transition: filter $duration;
+
+  @include breakpoint($small) {
+    margin-top: 0 !important;
+  }
+}
+
+#toolbar-bar {
+  position: fixed;
+}
+
+// Header Layout: No Frills
+
+$logo-width-nofrills: 280px; // Width of logo in Header Layout: No Frills
+
+.block--type-header.block-block-content75fef345-db5b-4e94-b9c3-7e129d23000b,
+#block-headerlayoutnofrills,
+[id*="block-headerlayoutsimplified"] {
+  background-color: palette(white);
+
+  .block-aggregate-reviews-block {
+    font-size: 1.5rem;
+  }
+
+  #header-1-nofrills,
+  [id*="header-1-simplified"] & {
+    @extend .region-header1;
+
+    @include breakpoint($max-small) {
+      .layout__region {
+        flex-direction: column;
+      }
+    }
+    @include breakpoint($small) {
+      .layout__region {
+        justify-content: flex-end;
+        margin-left: $logo-width-nofrills - 60px;
+
+        > .block {
+          width: auto;
+          margin-right: 20px;
+
+          &:not(:last-child) {
+            margin-right: 15px;
+          }
+        }
+
+        [class*="menu--utility-menu"] > ul.menu > li,
+        .source-menu--utility-menu > ul.menu > li {
+          margin: 0;
+        }
+      }
+    }
+    @include breakpoint($smedium) {
+      .layout__region {
+        margin-left: $logo-width-nofrills - 20px;
+
+        [class*="menu--utility-menu"] > ul.menu > li,
+        .source-menu--utility-menu > ul.menu > li {
+          margin: 0 5px;
+        }
+      }
+    }
+    @include breakpoint($medium) {
+      .layout__region {
+        margin-left: $logo-width-nofrills;
+      }
+    }
+  }
+  #header-3-nofrills,
+  [id*="header-3-simplified"] & {
+    @include breakpoint($max-small) {
+      display: flex;
+      justify-content: center;
+      min-height: $header-main-height-mobile;
+      padding: 0 20px;
+    }
+    @include breakpoint($small) {
+      z-index: 10;
+
+      .block-site-branding {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        width: $logo-width-nofrills - 80px;
+        height: $header-utility-height + $header-nav-height;
+        margin-top: -$header-utility-height;
+        margin-left: 20px;
+
+        .site-logo {
+          max-width: 100%;
+        }
+      }
+    }
+    @include breakpoint($smedium) {
+      .block-site-branding {
+        width: $logo-width-nofrills - 40px;
+      }
+    }
+    @include breakpoint($medium) {
+      .block-site-branding {
+        width: $logo-width-nofrills;
+      }
+    }
+  }
+  #header-4-nofrills,
+  [id*="header-4-simplified"] & {
+    @include breakpoint($small) {
+      .layout__region {
+        margin-left: $logo-width-nofrills - 80px;
+
+        nav.menu--main > ul.menu,
+        nav.source-menu--main > ul.menu {
+          justify-content: flex-end;
+
+          > li {
+            padding: 10px 4px;
+            text-transform: none;
+          }
+        }
+      }
+    }
+
+    @include breakpoint($smedium) {
+      .layout__region {
+        margin-left: $logo-width-nofrills - 40px;
+
+        nav.menu--main > ul.menu,
+        nav.source-menu--main > ul.menu {
+          > li {
+            padding: 10px 7px;
+          }
+        }
+      }
+    }
+
+    @include breakpoint($medium) {
+      .layout__region {
+        margin-left: $logo-width-nofrills;
+
+        nav.menu--main > ul.menu,
+        nav.source-menu--main > ul.menu {
+          > li {
+            padding: 10px 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// ********************************************************* //
+/////////////////////// zip finder only ///////////////////////
+// ********************************************************* //
+
+// main site header A if using zipcode finder
+.block-s3-subtheme-header-layout,
+.block-headerlayoutazipcodefinder {
+  @include breakpoint($small) {
+    #header-1 .layout__region {
+      padding: 10px 30px;
+      > .block {
+        width: auto;
+      }
+    }
+    .menu--utility-zip-finder {
+      max-width: 250px;
+    }
+    .block-aggregate-reviews-block {
+      max-width: 130px;
+      margin: 2px auto -2px !important;
+      .rating-inner-wrap {
+        justify-content: center;
+      }
+      .star-ratings-wrap .stars {
+        margin-top: 5px;
+      }
+      .field--name-field-label {
+        margin: 0;
+      }
+    }
+    nav[class*=utility-menu] {
+      .menu-item a {
+        padding: 12px 15px;
+      }
+    }
+  }
+
+  @include breakpoint(950px) {
+    .layout__region {
+      .block-aggregate-reviews-block {
+        max-width: 100%;
+        margin: 0 !important;
+        .rating-inner-wrap {
+          justify-content: flex-start;
+        }
+        .star-ratings-wrap .stars {
+          margin-top: 0;
+        }
+        .field--name-field-label {
+          margin: 0 0 0 5px;
+        }
+      }
+    }
+  }
+
+  @include breakpoint($medium) {
+    #header-1 .layout__region {
+      padding: 0 30px;
+    }
+    .menu--utility-zip-finder {
+      max-width: 100%;
+    }
+    .block-aggregate-reviews-block {
+      max-width: 200px;
+    }
+    nav[class*=utility-menu] {
+      .menu-item a {
+        padding: 12px 22px;
+      }
+    }
+  }
+
+  @include breakpoint(1100px) {
+    nav[class*=utility-menu] {
+      .menu-item a {
+        padding: 12px 32px;
+      }
+    }
+  }
+}
+
+
+// simplified / no frills main site header if using zip code finder
+.block-headerlayoutsimplifiedzipcodefinder {
+  background-color: palette(white);
+
+  .block-aggregatereviewsblock,
+  .block-aggregate-reviews-block {
+    font-size: 1.5rem;
+  }
+
+  #header-1-nofrills,
+  [id*="header-1-simplified"] & {
+    @extend .region-header1;
+
+    @include breakpoint($max-small) {
+      .layout__region {
+        flex-direction: column;
+      }
+    }
+    @include breakpoint($small) {
+      height: auto;
+      max-height: 100%;
+      min-height: 0;
+      .layout__region {
+        justify-content: flex-end;
+        padding: 10px 30px;
+        margin-left: 0;
+
+        > .block {
+          width: auto;
+        }
+
+        [class*="menu--utility-menu"] > ul.menu > li {
+          margin: 0;
+        }
+      }
+      .menu--utility-zip-finder {
+        max-width: 250px;
+      }
+      nav[class*=utility-menu] {
+        .menu-item a {
+          padding: 12px 15px;
+        }
+      }
+    }
+
+    @include breakpoint($smedium) {
+      .block-aggregatereviewsblock,
+      .block-aggregate-reviews-block {
+        max-width: 130px; 
+        .star-ratings-wrap .stars {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    @include breakpoint(950px) {
+      .layout__region {
+        .block-aggregatereviewsblock,
+        .block-aggregate-reviews-block {
+          //margin: 0 !important;
+          max-width: 100%;
+          .star-ratings-wrap .stars {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    @include breakpoint($medium) {
+      .layout__region {
+        padding: 0 30px;
+        .menu--utility-zip-finder {
+          max-width: 100%;
+        }
+        .block-aggregatereviewsblock,
+        .block-aggregate-reviews-block {
+          //margin-right: 0 !important;
+        }
+        [class*="menu--utility-menu"] > ul.menu > li {
+          margin: 0 5px;
+        }
+        nav[class*=utility-menu] {
+          .menu-item a {
+            padding: 12px 22px;
+          }
+        }
+      }
+    }
+
+    @include breakpoint(1100px) {
+      nav[class*=utility-menu] {
+        .menu-item a {
+          padding: 12px 32px;
+        }
+      }
+    }
+  }
+
+
+
+
+  #header-3-nofrills,
+  [id*="header-3-simplified"] & {
+    @include breakpoint($max-small) {
+      display: flex;
+      justify-content: center;
+      min-height: $header-main-height-mobile;
+      padding: 0 20px;
+    }
+    @include breakpoint($small) {
+      z-index: 10;
+
+      .block-site-branding {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        width: $logo-width-nofrills - 80px;
+        height: auto;
+        margin-top: 0;
+        margin-left: 20px;
+
+        .site-logo {
+          max-width: 100%;
+        }
+      }
+      &.behind {
+        z-index: 0;
+      }
+    }
+    @include breakpoint($smedium) {
+      .block-site-branding {
+        width: $logo-width-nofrills - 40px;
+      }
+    }
+    @include breakpoint($medium) {
+      .block-site-branding {
+        width: $logo-width-nofrills;
+      }
+    }
+  }
+
+  #header-4-nofrills,
+  [id*="header-4-simplified"] & {
+    @include breakpoint($small) {
+      &.layout {
+        z-index: 0;
+      }
+      .layout__region {
+        margin-left: $logo-width-nofrills - 80px;
+
+        nav.menu--main > ul.menu {
+          justify-content: flex-end;
+
+          > li {
+            padding: 10px 4px;
+            text-transform: none;
+          }
+        }
+      }
+    }
+
+    @include breakpoint($smedium) {
+      .layout__region {
+        margin-left: $logo-width-nofrills;
+
+        nav.menu--main > ul.menu {
+          > li {
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+// ********************************************************* //
+///////////////////// end zip finder only /////////////////////
+// ********************************************************* //

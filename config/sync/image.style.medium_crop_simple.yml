@@ -1,0 +1,20 @@
+uuid: d8751817-15c7-4250-82e0-e7baa95c3618
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.crop_free_ratio
+  module:
+    - crop
+_core:
+  default_config_hash: IuB0XSW62F3PlEQ5VBk1T3UcIrbKDJNQddQTIlp6t94
+name: medium_crop_simple
+label: 'Medium with crop simple'
+effects:
+  f9bb44b6-168d-4398-861d-29561791e34b:
+    uuid: f9bb44b6-168d-4398-861d-29561791e34b
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: crop_free_ratio
+      automatic_crop_provider: null

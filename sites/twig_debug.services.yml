@@ -1,0 +1,6 @@
+# Twig debug services file
+#
+# This should be loaded programatically
+parameters:
+  twig.config:
+    debug: true

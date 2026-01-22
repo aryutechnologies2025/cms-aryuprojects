@@ -1,0 +1,11 @@
+uuid: 55fe04fc-7dc9-413c-9f16-cd61500ed1c3
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.body_wide_850x400
+label: 'Body Wide (850x400)'
+description: ''
+targetEntityType: media
+cache: true

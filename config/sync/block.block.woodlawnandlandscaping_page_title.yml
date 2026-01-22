@@ -1,0 +1,20 @@
+uuid: 8dfaae62-a263-4674-b8ac-99a1f7b819f8
+langcode: en
+status: false
+dependencies:
+  theme:
+    - woodlawnandlandscaping
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: woodlawnandlandscaping_page_title
+theme: woodlawnandlandscaping
+region: content
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

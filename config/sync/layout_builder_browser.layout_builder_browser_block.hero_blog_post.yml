@@ -1,0 +1,11 @@
+uuid: 6b28352a-0c34-4802-a3f4-b4864df55a20
+langcode: en
+status: true
+dependencies: {  }
+id: hero_blog_post
+block_id: 'inline_block:hero_blog_post'
+category: custom_blocks
+label: 'Hero - Blog Post'
+image_path: ''
+image_alt: ''
+weight: null

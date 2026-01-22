@@ -1,0 +1,25 @@
+uuid: e8408c13-4010-4bc0-b242-b0a33538af34
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:issues:9c6f6ab1-dfb2-449b-ad05-eb86c9c4ecec'
+  module:
+    - block_content
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_issuessidebarglobal
+theme: woodlawnandlandscaping
+region: disabled
+weight: -13
+provider: null
+plugin: 'block_content:9c6f6ab1-dfb2-449b-ad05-eb86c9c4ecec'
+settings:
+  id: 'block_content:9c6f6ab1-dfb2-449b-ad05-eb86c9c4ecec'
+  label: 'Issues Sidebar (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

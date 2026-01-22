@@ -1,0 +1,20 @@
+uuid: 66bc3498-3c15-463c-8111-7f80755590b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.webform_default
+  module:
+    - file
+    - filter
+    - shortcut
+id: content_editor
+label: 'Content Editor'
+weight: -2
+is_admin: null
+permissions:
+  - 'access shortcuts'
+  - 'delete own files'
+  - 'use text format basic_html'
+  - 'use text format webform_default'

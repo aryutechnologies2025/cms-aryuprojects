@@ -1,0 +1,13 @@
+global-styling:
+  css:
+    theme:
+      css/style.css: {}
+  dependencies:
+    - sprowt3/global-styling
+global-scripts:
+  js:
+    js/build/scripts.js: {}
+  dependencies:
+    - core/jquery
+    - core/once
+    - sprowt3/global-scripts

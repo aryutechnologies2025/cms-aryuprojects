@@ -1,0 +1,60 @@
+<?php
+
+use Drupal\Core\Entity\EntityTypeInterface;
+
+/**
+ * Implements hook_schema().
+ */
+function inline_block_content_schema()
+{
+    $schema['inline_block_content_usage'] = [
+        'description' => 'Track where a block_content entity is used.',
+        'fields' => [
+            'id' => [
+                'description' => 'Primary key',
+                'type' => 'serial',
+                'not null' => TRUE,
+            ],
+            'block_content_id' => [
+                'description' => 'The block_content entity ID.',
+                'type' => 'int',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+            ],
+            'layout_entity_type' => [
+                'description' => 'The entity type of the parent entity.',
+                'type' => 'varchar_ascii',
+                'length' => EntityTypeInterface::ID_MAX_LENGTH,
+                'not null' => FALSE,
+                'default' => '',
+            ],
+            'layout_entity_id' => [
+                'description' => 'The ID of the parent entity.',
+                'type' => 'varchar_ascii',
+                'length' => 128,
+                'not null' => FALSE,
+                'default' => 0,
+            ],
+        ],
+        'primary key' => ['id'],
+        'indexes' => [
+            'type_id' => ['layout_entity_type', 'layout_entity_id'],
+        ],
+    ];
+    return $schema;
+}
+
+/**
+ * Create new usage table
+ */
+function inline_block_content_update_9001(&$sandbox)
+{
+    $database = \Drupal::database();
+    $schema = $database->schema();
+    $tables = inline_block_content_schema();
+    foreach($tables as $table => $tableSchema) {
+        if(!$schema->tableExists($table)) {
+            $schema->createTable($table, $tableSchema);
+        }
+    }
+}

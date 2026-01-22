@@ -1,0 +1,108 @@
+<?php
+
+/**
+ * @file
+ * Section Library install file.
+ */
+
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Restricted permission on Section Library View.
+ */
+function section_library_update_9001() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('views.view.section_library');
+  $config_name = 'display.default.display_options.access.options.perm';
+  if ($config->get($config_name) === 'access content') {
+    $config->set($config_name, 'view section library templates');
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Update the template image field to be of type image.
+ */
+function section_library_update_9002() {
+  // Install new module dependencies.
+  \Drupal::service('module_installer')->install(['image']);
+  \Drupal::service('module_installer')->install(['views']);
+
+  $database = \Drupal::database();
+  $transaction = $database->startTransaction();
+
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $entity_type = 'section_library_template';
+  $field_name = 'image';
+  $column_name = 'image__target_id';
+
+  $storage = $entity_type_manager->getStorage($entity_type);
+  $entity_definition = $entity_type_manager->getDefinition($entity_type);
+  // Sometimes the primary key isn't 'id'. e.g. 'eid' or 'item_id'.
+  $id_key = $entity_definition->getKey('id');
+  // If there is no data table defined then use the base table.
+  $table_name = $storage->getDataTable() ?: $storage->getBaseTable();
+  $definition_manager = \Drupal::entityDefinitionUpdateManager();
+
+  // Store the existing values.
+  $image_values = $database->select($table_name)
+    ->fields($table_name, [$id_key, $column_name])
+    ->execute()
+    ->fetchAllKeyed();
+
+  // Clear out the values.
+  $database->update($table_name)
+    ->fields([$column_name => NULL, 'image__display' => NULL, 'image__description' => NULL])
+    ->execute();
+
+  // Uninstall the field.
+  $field_storage_definition = $definition_manager->getFieldStorageDefinition($field_name, $entity_type);
+  $definition_manager->uninstallFieldStorageDefinition($field_storage_definition);
+
+  // Create a new image field definition.
+  $new_image_field = BaseFieldDefinition::create($field_name)
+    ->setLabel(t('Image'))
+    ->setDescription(t('The section image.'))
+    ->setSettings([
+      'uri_scheme' => 'public',
+      'file_directory' => 'section_library',
+      'file_extensions' => 'gif png jpg jpeg',
+    ])
+    ->setDisplayOptions('view', [
+      'label' => 'hidden',
+      'type' => 'image',
+      'weight' => -3,
+    ])
+    ->setDisplayOptions('form', [
+      'type' => 'image_image',
+      'weight' => -1,
+    ])
+    ->setDisplayConfigurable('form', TRUE)
+    ->setDisplayConfigurable('view', TRUE);
+
+  // Install the new definition.
+  $definition_manager->installFieldStorageDefinition($field_name, $entity_type, $entity_type, $new_image_field);
+
+  // Restore the values.
+  foreach ($image_values as $id => $value) {
+    $database->update($table_name)
+      ->fields([$column_name => $value])
+      ->condition($id_key, $id)
+      ->execute();
+  }
+
+  // Commit transaction.
+  unset($transaction);
+}
+
+/**
+ * Add default settings for template type labels.
+ */
+function section_library_update_9003() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('section_library.settings');
+  $config->set('langcode', 'en');
+  $config->set('section_label', 'Section');
+  $config->set('template_label', 'Template');
+  $config->save(TRUE);
+}

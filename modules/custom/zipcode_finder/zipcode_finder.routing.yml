@@ -1,0 +1,7 @@
+zipcode_finder.redirect:
+    path: '/zipcode-finder/redirect'
+    defaults:
+        _title: 'Zipcode finder redirect'
+        _controller: '\Drupal\zipcode_finder\Controller\ZipcodeFinderController::redirect'
+    requirements:
+        _permission: 'access content'

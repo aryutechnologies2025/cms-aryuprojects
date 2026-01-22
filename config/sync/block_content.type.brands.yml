@@ -1,0 +1,8 @@
+uuid: 986930e6-c8cc-483b-a932-4f54d22fe265
+langcode: en
+status: true
+dependencies: {  }
+id: brands
+label: Brands
+revision: false
+description: ''

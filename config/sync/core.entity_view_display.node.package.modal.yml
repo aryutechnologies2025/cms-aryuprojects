@@ -1,0 +1,116 @@
+uuid: 7ba43e0a-3b07-4502-afb6-6cfe6352cbfa
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.modal
+    - field.field.node.package.body
+    - field.field.node.package.field_button
+    - field.field.node.package.field_button_text
+    - field.field.node.package.field_caption
+    - field.field.node.package.field_description
+    - field.field.node.package.field_detailed_features_packages
+    - field.field.node.package.field_excluded_detailed_feature
+    - field.field.node.package.field_excluded_features_package
+    - field.field.node.package.field_featured
+    - field.field.node.package.field_features_package
+    - field.field.node.package.field_icon_package
+    - field.field.node.package.field_industry
+    - field.field.node.package.field_initial_fee
+    - field.field.node.package.field_package_color
+    - field.field.node.package.field_package_level
+    - field.field.node.package.field_price_suffix
+    - field.field.node.package.field_secondary_solution_ref
+    - field.field.node.package.field_services
+    - field.field.node.package.field_solution_ref
+    - field.field.node.package.field_spotlight
+    - field.field.node.package.field_starting_price
+    - field.field.node.package.field_subsite_multiple
+    - node.type.package
+  module:
+    - layout_builder
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.package.modal
+targetEntityType: node
+bundle: package
+mode: modal
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_featured:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_icon_package:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: vector
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_solution_ref:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_starting_price:
+    type: number_decimal
+    label: hidden
+    settings:
+      thousand_separator: ','
+      decimal_separator: .
+      scale: 0
+      prefix_suffix: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_button: true
+  field_button_text: true
+  field_caption: true
+  field_description: true
+  field_detailed_features_packages: true
+  field_excluded_detailed_feature: true
+  field_excluded_features_package: true
+  field_features_package: true
+  field_industry: true
+  field_initial_fee: true
+  field_package_color: true
+  field_package_level: true
+  field_price_suffix: true
+  field_secondary_solution_ref: true
+  field_services: true
+  field_spotlight: true
+  field_subsite_multiple: true
+  langcode: true

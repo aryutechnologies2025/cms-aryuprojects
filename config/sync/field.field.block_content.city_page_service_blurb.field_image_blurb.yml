@@ -1,0 +1,28 @@
+uuid: 9f344c5b-95e5-4808-b010-4efd5ac17cea
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.city_page_service_blurb
+    - field.storage.block_content.field_image_blurb
+    - media.type.media_image
+id: block_content.city_page_service_blurb.field_image_blurb
+field_name: field_image_blurb
+entity_type: block_content
+bundle: city_page_service_blurb
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

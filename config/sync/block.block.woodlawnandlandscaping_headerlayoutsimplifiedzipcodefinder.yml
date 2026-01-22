@@ -1,0 +1,45 @@
+uuid: 1fbd8742-d2e8-4ee7-93e6-9823cdda44cc
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:header:71e766c6-7d77-4ae8-9446-eea23efd6e3c'
+  module:
+    - block_content
+    - node
+    - sprowt_subsite
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_headerlayoutsimplifiedzipcodefinder
+theme: woodlawnandlandscaping
+region: header_layout
+weight: 0
+provider: null
+plugin: 'block_content:71e766c6-7d77-4ae8-9446-eea23efd6e3c'
+settings:
+  id: 'block_content:71e766c6-7d77-4ae8-9446-eea23efd6e3c'
+  label: "Header Layout: Simplified (Zip Code Finder)\t"
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  sprowt_subsite_condition:
+    id: sprowt_subsite_condition
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    use: true
+    value:
+      _main: _main
+    hasNoFields: show
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_page: career_page
+      job_post: job_post
+      standalone_landing_page: standalone_landing_page

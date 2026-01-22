@@ -1,0 +1,25 @@
+uuid: 6dbf9a50-52af-4ae6-98bd-c1abc88d996b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: solution_pages
+label: 'Solution Pages'
+type: 'canonical_entities:node'
+pattern: '/solution/[node:title]'
+selection_criteria:
+  06782c57-ba69-4da2-ac5f-fa51029c2361:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 06782c57-ba69-4da2-ac5f-fa51029c2361
+    context_mapping:
+      node: node
+    bundles:
+      solution_page_packages: solution_page_packages
+      solution_page_package_alt: solution_page_package_alt
+      solution_page_package_service: solution_page_package_service
+      solution_page_services: solution_page_services
+selection_logic: and
+weight: 1
+relationships: {  }

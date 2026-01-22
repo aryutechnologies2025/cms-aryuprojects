@@ -1,0 +1,11 @@
+uuid: db7826e6-b3ce-4e19-b8bc-3e9eae14f9cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_simple_sitemap
+label: 'Bulk Update Sitemap Fields'
+type: simple_sitemap
+plugin: bulk_update_fields_action_base
+configuration: {  }

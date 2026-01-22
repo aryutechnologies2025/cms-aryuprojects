@@ -1,0 +1,21 @@
+uuid: d800bfd4-d770-423b-bf67-93d7d68d0eb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_builder__layout
+    - node.type.concern
+  module:
+    - layout_builder
+id: node.concern.layout_builder__layout
+field_name: layout_builder__layout
+entity_type: node
+bundle: concern
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_section

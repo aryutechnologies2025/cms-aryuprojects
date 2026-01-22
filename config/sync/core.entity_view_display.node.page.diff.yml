@@ -1,0 +1,49 @@
+uuid: d4b6854d-d377-4467-b283-1ea5d1230210
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.diff
+    - field.field.node.page.field_industry
+    - field.field.node.page.field_meta_description
+    - field.field.node.page.field_meta_tags
+    - field.field.node.page.field_package_level
+    - field.field.node.page.field_page_type
+    - field.field.node.page.field_subsite
+    - field.field.node.page.field_url_title
+    - field.field.node.page.layout_builder__layout
+    - node.type.page
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+_core:
+  default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
+id: node.page.diff
+targetEntityType: node
+bundle: page
+mode: diff
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_industry: true
+  field_meta_description: true
+  field_meta_tags: true
+  field_package_level: true
+  field_page_type: true
+  field_subsite: true
+  field_url_title: true
+  langcode: true
+  layout_builder__layout: true

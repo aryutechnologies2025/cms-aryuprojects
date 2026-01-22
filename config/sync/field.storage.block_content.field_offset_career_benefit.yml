@@ -1,0 +1,24 @@
+uuid: a7e112eb-dbcd-45a3-aaa3-7fbaf64f5acd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - field_permissions
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: block_content.field_offset_career_benefit
+field_name: field_offset_career_benefit
+entity_type: block_content
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,45 @@
+.form-element.claude-prompt-textarea.form-textarea {
+  min-height: 450px;
+}
+
+.claude-prompt .highlight-wrap {
+  position: relative;
+}
+
+.claude-prompt .highlight-wrap .form-textarea {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.claude-prompt .highlight-markup {
+  background-color: var(--gin-bg-input);
+  border: 1px solid transparent;
+  border-color: transparent !important;
+  border-radius: var(--gin-border-m);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: transparent;
+  line-height: var(--input-line-height);
+  padding: calc(var(--input-padding-vertical) - 1px) var(--input-padding-horizontal);
+  font-size: var(--input-font-size);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: auto;
+}
+
+.claude-prompt .highlight-markup mark {
+  color: transparent;
+  background-color: transparent;
+}
+
+.claude-prompt .highlight-markup mark.hover {
+  background-color: var(--gin-bg-layer);
+}
+
+.claude-prompt .claude-attached-entities a .uuid {
+  font-size: .7rem;
+}

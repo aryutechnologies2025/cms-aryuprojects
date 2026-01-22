@@ -1,0 +1,81 @@
+uuid: 6d4f0d9c-9a97-43a8-89d0-17df51bb4c4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic_side_image
+    - field.field.block_content.basic_side_image.field_alignment
+    - field.field.block_content.basic_side_image.field_heading
+    - field.field.block_content.basic_side_image.field_image
+    - field.field.block_content.basic_side_image.field_label_tag
+    - field.field.block_content.basic_side_image.field_link
+    - field.field.block_content.basic_side_image.field_subheading_tag
+    - field.field.block_content.basic_side_image.field_text
+  module:
+    - link
+    - options
+    - tag_text_field
+    - text
+id: block_content.basic_side_image.default
+targetEntityType: block_content
+bundle: basic_side_image
+mode: default
+content:
+  field_alignment:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: side_responsive_alt
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true

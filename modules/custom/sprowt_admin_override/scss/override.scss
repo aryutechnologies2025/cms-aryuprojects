@@ -1,0 +1,192 @@
+.we-mega-menu-backend {
+  @import "bootstrap";
+}
+@import "select2";
+@import "media_library";
+@import "layout_builder";
+@import "gin_toolbar";
+@import "megamenu";
+@import "ckeditor";
+@import "theme_settings_form";
+@import "off_canvas_tabledrag";
+
+.fieldset {
+  color: var(--colorGinText);
+}
+
+.views-ui-dialog .ui-widget-content.ui-dialog-content {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.views-preview-wrapper {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 550px) {
+  .media-library-item--grid {
+    width: 33.3%;
+  }
+}
+.media-library-widget-modal .media-library-item--grid,
+.media-library-selection .media-library-item--grid {
+  @media screen and (min-width: 45em) {
+    width: 33.3%;
+  }
+  @media screen and (min-width: 60em) {
+    width: 25%;
+  }
+  @media screen and (min-width: 77em) {
+    width: 20%;
+  }
+}
+
+textarea.cke_source {
+  color: white !important;
+}
+
+.devel-dumper .details-wrapper {
+  white-space: pre-wrap;
+}
+
+@media screen and (min-width: 48em) {
+  .system-status-general-info__item:nth-of-type(5) {
+    margin-inline-start: 2%;
+  }
+}
+
+.ui-dialog.ui-resizable {
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh !important;
+  max-width: 95vw !important;
+  .ui-widget-content.ui-dialog-content {
+    flex: 1 1 auto;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box;
+    max-height: 100% !important;
+  }
+  .ui-resizable-handle {
+    width: 30px;
+    height: 30px;
+    //background-image: url('../images/resize-icon.svg');
+    //background-size: 18px 18px;
+    //background-repeat: no-repeat;
+    //background-position: center;
+    cursor: se-resize;
+    right: 0;
+    bottom: 0;
+  }
+  .ui-resizable-n {
+    cursor: n-resize;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+  }
+  .ui-resizable-e {
+    cursor: e-resize;
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .ui-resizable-s {
+    cursor: s-resize;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .ui-resizable-w {
+    cursor: w-resize;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .ui-resizable-sw {
+    right: auto;
+    left: 0;
+    cursor: sw-resize;
+  }
+  .ui-resizable-ne {
+    cursor: ne-resize;
+    bottom: auto;
+    top: 0;
+  }
+  .ui-resizable-nw {
+    cursor: nw-resize;
+    bottom: auto;
+    right: auto;
+    left: 0;
+    top: 0;
+  }
+}
+
+.ui-dialog.ui-draggable {
+  .ui-dialog-titlebar {
+    cursor: grab;
+  }
+  &.ui-draggable-dragging {
+    .ui-dialog-titlebar {
+      cursor: grabbing;
+    }
+  }
+}
+
+.ui-dialog .ui-widget-content.ui-dialog-content {
+  max-height: 80vh !important;
+}
+
+.help-icon {
+  .gin-tooltip {
+    white-space: wrap;
+    max-width: 80%;
+  }
+}
+@media only screen and (min-width: 720px) {
+  .help-icon {
+    .gin-tooltip {
+      max-width: 600px;
+    }
+  }
+}
+
+table.diff tr .diff-context
+{
+  background-color: transparent;
+}
+
+.ui-widget {
+  button,
+  .project__action_button,
+  .dropbutton__item:first-of-type > *,
+  .dropbutton__toggle {
+    font-size: var(--gin-font-size-s);
+    @media only screen and (min-width: 1300px) {
+      font-size: var(--gin-font-size);
+    }
+  }
+
+  .button,
+  .button:not(:focus),
+  .form-actions .button,
+  .project__action_button,
+  .action-link--icon-trash.action-link {
+    font-size: var(--gin-font-size-s);
+  }
+
+  .button.button--small {
+    font-size: var(--gin-font-size-xxs);
+  }
+
+  .button.button--extrasmall {
+    font-size: var(--gin-font-size-xxs);
+  }
+
+  .action-link.action-link--extrasmall {
+    font-size: var(--gin-font-size-xxs);
+  }
+}

@@ -1,0 +1,6 @@
+services:
+    sprowt_base_install.event_subscriber:
+        class: Drupal\sprowt_base_install\EventSubscriber\SprowtBaseInstallSubscriber
+        arguments: [ '@messenger' ]
+        tags:
+            - { name: event_subscriber }

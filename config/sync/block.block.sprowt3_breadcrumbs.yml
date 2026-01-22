@@ -1,0 +1,22 @@
+uuid: 79667493-4e1d-4478-a3b6-f01f4e71461c
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - sprowt3
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: sprowt3_breadcrumbs
+theme: sprowt3
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

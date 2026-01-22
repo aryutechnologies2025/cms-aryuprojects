@@ -1,0 +1,14 @@
+uuid: 8f234be0-018a-42e8-ac6c-438d5fcaa659
+langcode: en
+status: true
+dependencies: {  }
+id: media_image
+label: Image
+description: 'Upload a single image (jpg, jpeg, png, svg).'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

@@ -1,0 +1,50 @@
+.menu--careers-utility {
+  padding: 10px 20px 10px !important;
+  background-color: palette(black);
+  > ul.menu {
+    > li {
+      text-align: center;
+      
+      a {
+        color: palette(white);
+        text-decoration: none;
+        font-weight: 700;
+        @include icon-before(chevron-circle-left);
+
+        &:before {
+          color: palette(black);
+          margin-right: 0;
+          margin-left: 2px;
+          transition: transform $duration;
+        }
+
+        &:hover {
+          &:before {
+            transform: translateX(-3px);
+          }
+        }
+      }
+    }
+  }
+  @include breakpoint($small) {
+    padding: 10px 0 !important;
+    width: auto;
+    margin-right: auto;
+    background-color: initial;
+    ul.menu {
+      li {
+        text-align: left;
+        a {
+          color: palette(black);
+        }
+      }
+    }
+  }
+  @include breakpoint($medium) {
+    ul.menu {
+      li {
+        text-align: left;
+      }
+    }
+  }
+}

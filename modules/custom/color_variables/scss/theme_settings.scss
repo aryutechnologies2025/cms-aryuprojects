@@ -1,0 +1,40 @@
+.color-fieldset {
+  > .fieldset-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    .form-item-variablename {
+      width: 200px;
+    }
+    margin-top: -15px;
+    margin-left: -15px;
+    > * {
+      margin-top: 15px;
+      margin-left: 15px;
+    }
+  }
+  .variable-value-wrap {
+    display: flex;
+    .form-item-variablevalue {
+      width: 150px;
+    }
+    margin-top: 0;
+    margin-left: 0;
+    > * {
+      margin-top: 15px;
+      margin-left: 15px;
+    }
+  }
+
+  .remove-color-value {
+    align-self: flex-start;
+    margin-top: 40px;
+  }
+}
+
+.inherited-color {
+  display: flex;
+  align-items: flex-end;
+  .color-variable-override-color {
+    margin-bottom: 15px;
+  }
+}

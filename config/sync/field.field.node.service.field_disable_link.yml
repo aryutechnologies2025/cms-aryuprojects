@@ -1,0 +1,23 @@
+uuid: 640d9b45-17d4-4771-8757-f98120308d56
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_disable_link
+    - node.type.service
+id: node.service.field_disable_link
+field_name: field_disable_link
+entity_type: node
+bundle: service
+label: 'Disable Link'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

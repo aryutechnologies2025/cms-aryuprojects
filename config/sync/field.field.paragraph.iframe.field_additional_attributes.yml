@@ -1,0 +1,64 @@
+uuid: ae5cc69e-5523-4010-8ad7-52f658e860e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_additional_attributes
+    - paragraphs.paragraphs_type.attribute
+    - paragraphs.paragraphs_type.iframe
+  module:
+    - entity_reference_revisions
+id: paragraph.iframe.field_additional_attributes
+field_name: field_additional_attributes
+entity_type: paragraph
+bundle: iframe
+label: 'Additional Attributes'
+description: 'Any additional attributes on the iframe'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      attribute: attribute
+    negate: 0
+    target_bundles_drag_drop:
+      attribute:
+        weight: 13
+        enabled: true
+      basic_content:
+        weight: 14
+        enabled: false
+      brand:
+        weight: 15
+        enabled: false
+      ctm_target_number:
+        weight: 16
+        enabled: false
+      identifications:
+        weight: 17
+        enabled: false
+      iframe:
+        weight: 18
+        enabled: false
+      link_box:
+        weight: 19
+        enabled: false
+      media_with_categories:
+        weight: 20
+        enabled: false
+      media_with_categories_images:
+        weight: 21
+        enabled: false
+      media_with_categories_img_vid:
+        weight: 22
+        enabled: false
+      media_with_categories_remote_vid:
+        weight: 23
+        enabled: false
+      social_media:
+        weight: 24
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,28 @@
+uuid: 80a65cab-6e12-41c3-ae72-83d54cc52c17
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_services
+    - node.type.city_page
+    - node.type.service
+id: node.city_page.field_services
+field_name: field_services
+entity_type: node
+bundle: city_page
+label: 'Services this City Offers'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      service: service
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

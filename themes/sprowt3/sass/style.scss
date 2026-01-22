@@ -1,0 +1,28 @@
+// Organization and Naming Convensions should follow Drupal's SMACSS-style categorization
+// Read more about SMACSS categorization for Drupal Themes: https://www.drupal.org/node/1887922
+
+// Import external Sass libraries
+@import "../node_modules/breakpoint-sass/stylesheets/breakpoint";
+
+// VARIABLES / MIXINS: Global variables and patterns.
+@import "variables/**/*";
+@import "mixins/**/*";
+
+// BASE: HTML element styling
+@import "base/**/*";
+
+// LAYOUT: Macro arrangement of a web page, including any grid systems.
+@import "layout/**/*";
+
+// COMPONENTS: Discrete, reusable UI elements
+@import "components/**/*";
+
+// THEME: purely visual styling (“look-and-feel”) for a component.
+//@import "theme/_theme.scss";
+
+// ADMIN: layout builder and admin override styles
+//@import "admin/**/*";
+
+body {
+  opacity: 1 !important;
+}

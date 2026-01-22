@@ -1,0 +1,17 @@
+uuid: 659af43e-906d-48e0-95aa-41a05ee690d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: teaser_b
+label: 'Teaser B (420 x 550)'
+effects:
+  d8ca0289-e39e-4454-a62c-db1521a0606d:
+    uuid: d8ca0289-e39e-4454-a62c-db1521a0606d
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 420
+      height: 550
+      crop_type: focal_point

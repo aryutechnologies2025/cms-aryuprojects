@@ -1,0 +1,476 @@
+[class*="view-areas-serviced"] {
+  //Title (list view)
+  &[class*="view-display-id-block_city_specific"],
+  &.view-display-id-block_teaser_nofilter,
+  &[class*="view-display-id-block_areas_serviced_branch"],
+  &[class*="view-display-id-block_footer_address_multiple"],
+  &.view-display-id-block_override,
+  &.view-display-id-block_region,
+  &[class*="view-display-id-block_group"] {
+    .view-content {
+      .node__content a {
+        @extend %underline-link-reverse;
+      }
+
+      .field--name-title-text {
+        &::before {
+          color: var(--color-secondary);
+        }
+
+        // .path-frontpage & {
+        //   &::before {
+        //     color: var(--color-secondary);
+        //   }
+        // }
+      }
+    }
+  }
+
+  [class*="block-inline-blockareas-serviced"].center-align & {
+    &.view-display-id-block_title_all {
+      .view-content {
+        .field-content a {
+          &::before {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+}
+
+.layout__region {
+  [class*="block-inline-blockareas-serviced"],
+  [class*="block--type-areas-serviced"],
+  .block-inline-blockcities-serviced-by-branch,
+  .block--type-cities-serviced-by-branch {
+    width: 100%;
+    height: min-content;
+    padding: 20px $margin;
+
+    @include breakpoint($xsmall) {
+      padding: 20px ($margin * 1.5);
+    }
+
+    &[class*="bg-"] {
+      padding: $margin ($margin * 1.5);
+      margin: ($margin * 1.5) $margin;
+    }
+
+    .field--name-field-text {
+      margin-bottom: 20px;
+    }
+
+    .field--name-field-filter-by-industry {
+      display: none;
+    }
+
+    .field--name-field-subheading-tag.address-override {
+      font-size: 1.6rem;
+      font-weight: 400;
+
+      .field--name-field-phone {
+        margin-top: 5px;
+      }
+    }
+
+    .location-title {
+      margin-bottom: 10px;
+      font-size: 2.1rem;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.block-inline-blockareas-serviced-manual {
+  .field--name-field-grouped-links {
+    //margin-top: 30px;
+
+    .field--name-field-group-heading {
+      @extend %h4;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.layout.full-width {
+  [class*="block-inline-blockareas-serviced"] {
+    max-width: calc(#{$container} / 2);
+  }
+}
+
+.views-element-container > [class*="view-areas-serviced"] {
+  //Title (list view)
+  &[class*="view-display-id-block_city_specific"],
+  &.view-display-id-block_teaser_nofilter,
+  &[class*="view-display-id-block_areas_serviced_branch"],
+  &[class*="view-display-id-block_footer_address_multiple"],
+  &.view-display-id-block_override,
+  &.view-display-id-block_region,
+  &[class*="view-display-id-block_group"] {
+    margin-top: 20px;
+    margin-right: -15px;
+
+    .view-content {
+      @include flexbox;
+      flex-wrap: wrap;
+      > h3,
+      .group-title {
+        //Grouping title
+        width: 100%;
+        flex: 100%;
+        text-transform: uppercase;
+        &:not(:first-child) {
+          margin-top: 18px;
+        }
+      }
+      .views-row {
+        width: calc(100% - 15px);
+        margin-right: 15px;
+        margin-bottom: 15px;
+        padding-left: 20px;
+        text-align: left;
+
+        @include breakpoint($xxsmall) {
+          width: calc(50% - 15px);
+        }
+        @include breakpoint($small) {
+          width: calc(33.3% - 15px);
+        }
+        @include breakpoint($medium) {
+          width: calc(50% - 15px);
+        }
+        @include breakpoint($large) {
+          width: calc(33.3% - 15px);
+        }
+
+        .layout--twocol-section & {
+          @include breakpoint($xxsmall) {
+            width: calc(50% - 15px);
+          }
+          @include breakpoint($small) {
+            width: calc(33.3% - 15px);
+          }
+          @include breakpoint($medium) {
+            width: calc(50% - 15px);
+          }
+        }
+      }
+
+      .group-wrapper {
+        .group-items {
+          margin-bottom: 10px;
+        }
+      }
+
+      .field--name-title-text {
+        font-weight: 600;
+        @include icon-before(map-marker) {
+          font-size: 1.9rem;
+          line-height: 1;
+          margin-right: 5px;
+          margin-left: -19px;
+          color: var(--color-secondary);
+        }
+
+        [class*="bg-secondary"] & {
+          &::before {
+            color: palette(black);
+          }
+        }
+        [class*="bg-primary"] & {
+          &::before {
+            color: palette(white);
+          }
+        }
+
+        .path-frontpage & {
+          @include icon-before(chevron-right) {
+            //font-size: 1.2rem;
+            //line-height: 1;
+            //margin-right: 5px;
+            //margin-left: -13px;
+            color: var(--color-secondary);
+          }
+        }
+      }
+
+      .bg-zebra &,
+      .bg-white &,
+      .bg-light & {
+        .field--name-title-text {
+          &::before {
+            color: palette(black);
+          }
+        }
+      }
+    }
+
+    .max-col-1 & .view-content .views-row {
+      @extend %max-col-1;
+    }
+    .max-col-2 & .view-content .views-row {
+      @extend %max-col-2;
+    }
+    .max-col-3 & .view-content .views-row {
+      @extend %max-col-3;
+    }
+    .max-col-4 & .view-content .views-row {
+      @extend %max-col-4;
+    }
+    .max-col-5 & .view-content .views-row {
+      @extend %max-col-5;
+    }
+    .max-col-6 & .view-content .views-row {
+      @extend %max-col-6;
+    }
+  }
+
+  .field-region-filter {
+    display: none;
+  }
+
+  // Cities Serviced by Branch and filtered by Industry
+  &.view-display-id-block_areas_serviced_branch_filter {
+    .view-content > h3 {
+      display: none;
+    }
+  }
+
+  [class*="block-inline-blockareas-serviced"].center-align & {
+    &.view-display-id-block_title_all {
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+
+      .view-content {
+        justify-content: space-between;
+        .views-row {
+          width: calc(50% - 30px);
+          margin-bottom: 15px;
+          text-align: left;
+        }
+
+        .field-content a {
+          font-size: 1.8rem;
+          font-weight: normal;
+          @include icon-before(marker, 18px);
+        }
+      }
+    }
+  }
+
+  // Footer Address - Multiple Block
+  &[class*="view-display-id-block_footer_address_multiple"] {
+    .view-content {
+      justify-content: center;
+
+      .views-row {
+        width: calc(100% - 15px);
+
+        @include breakpoint($xsmall) {
+          width: auto;
+        }
+        @include breakpoint($small) {
+          width: auto;
+        }
+        @include breakpoint($medium) {
+          width: auto;
+        }
+        @include breakpoint($large) {
+          width: auto;
+        }
+
+        .layout--twocol-section & {
+          @include breakpoint($xsmall) {
+            width: auto;
+          }
+          @include breakpoint($small) {
+            width: auto;
+          }
+          @include breakpoint($medium) {
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+[class*="block-inline-blockareas-serviced-manual"] {
+  .field--name-field-grouped-links {
+    margin-top: 20px;
+    margin-right: -15px;
+
+    .paragraph--type--grouped-links {
+      @include flexbox;
+      flex-wrap: wrap;
+    }
+
+    .field--name-field-group-heading {
+      //Grouping title
+      width: 100%;
+      flex: 100%;
+      &:not(:first-child) {
+        margin-top: 18px;
+      }
+    }
+
+    .field--name-field-city-link {
+      @include flexbox;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-bottom: 10px;
+
+      a {
+        @extend %underline-link-reverse;
+      }
+
+      > .field__item {
+        width: calc(100% - 15px);
+        margin-right: 15px;
+        margin-bottom: 15px;
+        padding-left: 20px;
+        font-weight: 600;
+        text-align: left;
+
+        @include breakpoint($xxsmall) {
+          width: calc(50% - 15px);
+        }
+        @include breakpoint($small) {
+          width: calc(33.3% - 15px);
+        }
+        @include breakpoint($medium) {
+          width: calc(50% - 15px);
+        }
+        @include breakpoint($large) {
+          width: calc(33.3% - 15px);
+        }
+
+        // .layout--twocol-section & {
+        //   @include breakpoint($xsmall) {
+        //     width: calc(50% - 15px);
+        //   }
+        //   @include breakpoint($small) {
+        //     width: calc(33.3% - 15px);
+        //   }
+        //   @include breakpoint($medium) {
+        //     width: calc(50% - 15px);
+        //   }
+        // }
+
+        @include icon-before(map-marker) {
+          font-size: 1.9rem;
+          line-height: 1;
+          margin-right: 5px;
+          margin-left: -19px;
+        }
+
+        // .path-frontpage & {
+        //   @include icon-before(chevron-right) {
+        //     font-size: 1.2rem;
+        //     line-height: 1;
+        //     margin-right: 5px;
+        //     margin-left: -13px;
+        //   }
+        // }
+      }
+    }
+
+    .max-col-1 & .field--name-field-city-link .field__item {
+      @extend %max-col-1;
+    }
+    .max-col-2 & .field--name-field-city-link .field__item {
+      @extend %max-col-2;
+    }
+    .max-col-3 & .field--name-field-city-link .field__item {
+      @extend %max-col-3;
+    }
+    .max-col-4 & .field--name-field-city-link .field__item {
+      @extend %max-col-4;
+    }
+    .max-col-5 & .field--name-field-city-link .field__item {
+      @extend %max-col-5;
+    }
+    .max-col-6 & .field--name-field-city-link .field__item {
+      @extend %max-col-6;
+    }
+  }
+
+  &.accordioned {
+    .field--name-field-grouped-links {
+      .field--name-field-city-link {
+        > .field__item {
+          display: inline-block;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+[class*="block-inline-blockcities-serviced-by-branch"].accordioned,
+[class*="block-inline-blockareas-serviced"].accordioned {
+  .group-title,
+  .field--name-field-group-heading {
+    position: relative;
+    // max-width: calc(100% - 40px);
+    padding-right: 40px;
+    cursor: pointer;
+
+    @include icon-after(plus, 16px) {
+      position: absolute;
+      top: -5px;
+      right: 0;
+      @include flexbox;
+      justify-content: center;
+      align-items: center;
+      height: 26px;
+      width: 26px;
+      padding-top: 2px;
+      color: palette(white);
+      background-color: palette(black);
+      border-radius: 50%;
+      transition: color $duration, background-color $duration;
+    }
+
+    &.active {
+      @include icon-after(minus, 18px) {
+        color: palette(white);
+      }
+
+      &:after {
+        display: flex;
+        color: palette(white);
+      }
+    }
+  }
+
+  .view-content {
+    .group-wrapper:not(:first-child) {
+      .group-items {
+        display: none;
+      }
+    }
+    .group-wrapper:not(:last-child) {
+      margin-bottom: 25px;
+      //padding-bottom: 15px;
+      border-bottom: 1px solid var(--color-light);
+    }
+  }
+
+  .field--name-field-grouped-links {
+    > .field__item:not(:first-child) {
+      .field--name-field-city-link {
+        display: none;
+      }
+    }
+  }
+  .field--name-field-grouped-links {
+    > .field__item:not(:last-child) {
+      margin-bottom: 25px;
+      //padding-bottom: 15px;
+      border-bottom: 1px solid var(--color-light);
+    }
+  }
+}

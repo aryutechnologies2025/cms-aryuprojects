@@ -1,0 +1,11 @@
+uuid: c0519542-3662-430c-b2a6-1b5e9df572d6
+langcode: en
+status: true
+dependencies: {  }
+id: site_branding_subsite
+block_id: system_branding_block
+category: header_footer
+label: 'Site Branding'
+image_path: ''
+image_alt: ''
+weight: -95

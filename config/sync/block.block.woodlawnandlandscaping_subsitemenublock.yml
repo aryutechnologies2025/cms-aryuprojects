@@ -1,0 +1,34 @@
+uuid: 9c15a37b-7e8b-4293-9115-fdbd5053f186
+langcode: en
+status: true
+dependencies:
+  module:
+    - sprowt_subsite
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_subsitemenublock
+theme: woodlawnandlandscaping
+region: header_mobile_menu
+weight: -18
+provider: null
+plugin: subsite_menu_block
+settings:
+  id: subsite_menu_block
+  label: 'Subsite menu block'
+  label_display: '0'
+  provider: sprowt_subsite
+  level: 1
+  depth: 0
+  expand_all_items: true
+  menu_field: field_main_menu
+  suggestion: main
+visibility:
+  sprowt_subsite_condition:
+    id: sprowt_subsite_condition
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    use: true
+    value:
+      _main: _main
+    hasNoFields: hide

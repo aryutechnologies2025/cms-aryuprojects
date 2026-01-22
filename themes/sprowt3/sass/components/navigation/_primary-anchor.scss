@@ -1,0 +1,42 @@
+// Standalone Landing Page faux main header navigation
+#standalone-landing-page-menu {
+  .layout__region {
+    .block-anchor-list-block,
+    .block--type-anchor-list-block {
+      padding: 10px $margin;
+
+      .anchor-link-list-wrap {
+        @include flexbox;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+      }
+
+      ul.anchor-list-block-list {
+        margin: 0;
+
+        li.anchor-list-block-list-item {
+
+          .anchor-list-block-link {
+            text-transform: uppercase;
+            font-size: 1.8rem;
+
+            &::before {
+              content: none;
+            }
+
+            &::after {
+              content: none;
+            }
+          }
+
+          &:hover {
+            .anchor-list-block-link {
+              color: var(--color-light);
+            }
+          }
+        }
+      }
+    }
+  }
+}

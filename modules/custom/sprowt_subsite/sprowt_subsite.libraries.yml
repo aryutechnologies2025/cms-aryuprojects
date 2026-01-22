@@ -1,0 +1,24 @@
+condition:
+    version: 1.x
+    js:
+        js/condition.js: { }
+    dependencies:
+        - core/jquery
+        - sprowt_admin_override/admin_override_js
+        - core/once
+
+menu_list:
+    version: 1.x
+    css:
+        theme:
+            css/menu_list_filter.css: { }
+    dependencies:
+        - claro/views
+
+special_offers:
+    version: 1.x
+    js:
+        js/special_offers.js: { }
+    dependencies:
+        - core/once
+        - core/drupalSettings

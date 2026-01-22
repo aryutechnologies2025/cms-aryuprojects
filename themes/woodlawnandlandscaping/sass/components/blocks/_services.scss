@@ -1,0 +1,55 @@
+.layout__region {
+  .block-inline-blockservices,
+  .block--type-services {
+    .more-link,
+    .field--name-field-view-all {
+      a {
+        @extend %button;
+      }
+    }
+    .path-frontpage & {
+      .field--name-field-heading,
+      h2.field--name-field-heading,
+      h3.field--name-field-heading {
+        margin: 0 0 3rem;
+      }
+    }
+  }
+}
+
+//Teaser View
+.view-services {
+  &.view-display-id-block_secondary_teaser_1,
+  &.view-display-id-block_secondary_teaser_2,
+  &.view-display-id-block_secondary_teaser_3,
+  &.view-display-id-block_secondary_teaser_4,
+  &.view-display-id-block_secondary_teaser_5,
+  &.view-display-id-block_secondary_teaser_6,
+  &.view-display-id-block_secondary_teaser_all {
+    > .view-content {
+      > .views-row {
+        border-color: palette(grey, lit);
+      }
+    }
+  }
+}
+
+//Title View
+.view-services[class*="block_title"],
+.view-services-by-sector[class*="block_title"] {
+  background-color: palette(light);
+
+  .view-content {
+    .views-row:not(:last-child) {
+      border-bottom: 2px solid palette(grey, lit);
+    }
+  }
+}
+
+.layout__region .block-residential-services,
+.layout__region .block-commercial-services {
+  .services-wrap {
+    margin: 0;
+    padding: 30px;
+  }
+}

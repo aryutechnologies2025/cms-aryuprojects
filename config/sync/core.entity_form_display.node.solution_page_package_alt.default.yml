@@ -1,0 +1,228 @@
+uuid: d5fd7ce3-4893-40cd-adad-1eff4c73a2d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.solution_page_package_alt.field_industry
+    - field.field.node.solution_page_package_alt.field_meta_description
+    - field.field.node.solution_page_package_alt.field_meta_tags
+    - field.field.node.solution_page_package_alt.field_package_level
+    - field.field.node.solution_page_package_alt.field_primary_package_sp
+    - field.field.node.solution_page_package_alt.field_primary_service_lp
+    - field.field.node.solution_page_package_alt.field_secondary_package_sp
+    - field.field.node.solution_page_package_alt.field_services_lp
+    - field.field.node.solution_page_package_alt.field_subsite
+    - field.field.node.solution_page_package_alt.layout_builder__layout
+    - node.type.solution_page_package_alt
+  module:
+    - field_group
+    - hide_revision_field
+    - metatag
+    - path
+    - sprowt_subsite
+third_party_settings:
+  field_group:
+    group_connected_content:
+      children:
+        - field_primary_package_sp
+        - field_secondary_package_sp
+        - field_primary_service_lp
+        - field_services_lp
+      label: 'Connected Content'
+      region: content
+      parent_name: ''
+      weight: 8
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: 'Select content that goes with this Solution Page. This field works two ways, so it will auto-select this option on the corresponding Content.'
+        required_fields: true
+        weight: -8
+    group_package_level:
+      children:
+        - field_package_level
+      label: 'Package Level'
+      region: content
+      parent_name: ''
+      weight: 19
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+        weight: 0
+    group_configuration:
+      children:
+        - field_subsite
+      label: Configuration
+      region: content
+      parent_name: ''
+      weight: 7
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
+        weight: -9
+id: node.solution_page_package_alt.default
+targetEntityType: node
+bundle: solution_page_package_alt
+mode: default
+content:
+  content_library_include:
+    type: boolean_checkbox
+    weight: 17
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_industry:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_meta_description:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 18
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_package_level:
+    type: options_buttons
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_primary_package_sp:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_primary_service_lp:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_secondary_package_sp:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_services_lp:
+    type: options_select
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_subsite:
+    type: sprowt_subsite_reference_selector
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 9
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  revision_log:
+    type: hide_revision_field_log_widget
+    weight: 16
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+      show: true
+      default: ''
+      permission_based: false
+      allow_user_settings: true
+      hide_revision: false
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  layout_builder__layout: true

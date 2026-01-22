@@ -1,0 +1,29 @@
+.node--type-benefit {
+  //Teaser
+  &.node--view-mode-teaser {
+    .node__content {
+      [class*="field--name-field-icon"] {
+        svg {
+          path,
+          polygon {
+            fill: palette(primary);
+          }
+        }
+      }
+    }
+  }
+
+  //Token
+  &.node--view-mode-token {
+    .node__content {
+      [class*="field--name-field-icon"] {
+        svg {
+          path,
+          polygon {
+            fill: palette(primary);
+          }
+        }
+      }
+    }
+  }
+}

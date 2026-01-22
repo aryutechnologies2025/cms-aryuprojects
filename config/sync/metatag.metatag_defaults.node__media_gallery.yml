@@ -1,0 +1,9 @@
+uuid: 159b4f21-6e47-467d-8e3e-766e3a060aae
+langcode: en
+status: true
+dependencies: {  }
+id: node__media_gallery
+label: 'Content: Media Gallery'
+tags:
+  description: 'See the transformation! Browse [sprowt:company_name]’s gallery of stunning landscaping projects and get inspired for your own outdoor space.'
+  title: 'Our Gallery | [sprowt:company_name]'

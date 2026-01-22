@@ -1,0 +1,8 @@
+uuid: 823d2d3f-46f2-4f43-bb94-526d9306402e
+langcode: en
+status: true
+dependencies: {  }
+id: before_after_image_slider
+label: 'Before/After Image Slider'
+revision: false
+description: ''

@@ -1,0 +1,31 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'display-teaser',
+    'slick-count-' ~ content.field_count_testimonial.0['#markup']
+  ]
+%}
+
+{# If Special Offer View is empty, don't display block #}
+{% set reviews_view = 'block_compact_nofilter' %}
+{% set reviews_view_result = drupal_view_result('testimonials', reviews_view)|length %}
+{% if (reviews_view_result > 0) %}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+    <div class="testimonials-wrap">
+      {{ content|without('field_filter','field_count_testimonial','field_display_testimonial') }}
+
+      {{ drupal_view((subsite == '_main' ? 'testimonials' : 'testimonials_subsite'), 'block_compact', content.field_count_testimonial.0['#markup']) }}
+    </div>
+  {% endblock %}
+</div>
+
+{% endif %}

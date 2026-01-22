@@ -1,0 +1,11 @@
+uuid: 5ba93dc4-e40b-4ce1-897f-be3d47bc3605
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_taxonomy_term
+label: 'Bulk Update Taxonomy term Fields'
+type: taxonomy_term
+plugin: bulk_update_fields_action_base
+configuration: {  }

@@ -1,0 +1,364 @@
+$nav-link-color: palette(white); // Desktop Menu first level link color
+$nav-link-active-color: palette(secondary); // Desktop Menu caret color
+$nav-link-hover-color: $nav-link-active-color; // Desktop Menu caret color
+$nav-caret-color: palette(white); // Desktop Menu caret color
+
+$nav-lower-level-bgcolor: palette(white); // Desktop Menu lower level background color
+$nav-lower-level-link-color: palette(black); // Desktop Menu lower level link color
+$nav-lower-level-link-hover-color: palette(white); // Desktop Menu lower level link hover color
+$nav-lower-level-hover-bgcolor: palette(primary); // Desktop Menu lower level link hover background color
+$nav-lower-level-caret-color: $nav-caret-color; // Desktop Menu lower level caret color
+
+$mobile-nav-bgcolor: palette(white); // Mobile Menu background color
+$mobile-nav-link-color: palette(primary); // Mobile Menu link color
+$mobile-nav-link-hover-color: palette(primary, dark); // Mobile Menu link hover color
+$mobile-nav-link-active-color: $mobile-nav-link-hover-color; // Mobile Menu link active color
+$mobile-nav-caret-color: $nav-caret-color; // Mobile Menu caret color
+
+$mobile-nav-lower-level-bgcolor: rgba(palette(black), 0.03); // Mobile Menu lower level background color
+$mobile-nav-lower-level-link-color: palette(black); // Mobile Menu lower level link color
+$mobile-nav-lower-level-link-hover-color: palette(primary); // Mobile Menu lower level link hover color
+$mobile-nav-lower-level-link-active-color: $mobile-nav-lower-level-link-color; // Mobile Menu lower level link active color
+$mobile-nav-lower-level-caret-color: palette(dark); // Mobile Menu lower level caret color
+
+$menu-toggle-button-text-color: palette(black); // Menu Toggle Button text color
+$menu-toggle-button-bar-color: palette(primary); // Menu Toggle Button hamburger bars color
+$menu-toggle-close-button-bgcolor: palette(primary); // Menu Toggle Close Button background color
+
+// Mobile Menu
+@include breakpoint($max-small) {
+  .we-mobile-megamenu-active {
+    background-color: $mobile-nav-bgcolor;
+  }
+
+  .navbar-toggle {
+    color: $menu-toggle-button-text-color;
+
+    .icon-bar {
+      background-color: $menu-toggle-button-bar-color;
+    }
+  }
+
+  .btn-close {
+    &::before {
+      color: palette(white);
+      background-color: $menu-toggle-close-button-bgcolor;
+    }
+  }
+}
+
+header.page-header,
+.region-header4,
+.region-header-layout #header-4 {
+
+  nav.menu--main,
+  nav.source-menu--main,
+  nav.main {
+    // DON'T SET BACKAGROUND COLOR HERE
+    // set background color on .region-header4 (components/layout/_header.scss)
+
+    // Mobile Menu Menu colors
+    ul.menu,
+    ul.we-mega-menu-ul {
+
+      // first level
+      >li {
+        >a {
+          color: $mobile-nav-link-color;
+
+          &:hover {
+            color: $mobile-nav-link-hover-color;
+          }
+        }
+
+        &.active,
+        &.menu-item--active-trail,
+        &.active-trail,
+        &.open {
+          >a {
+            color: $mobile-nav-link-active-color;
+          }
+        }
+
+        &.dropdown-menu {
+
+          >a,
+          >span {
+            &::after {
+              color: $mobile-nav-caret-color;
+            }
+          }
+        }
+      }
+
+      // lower levels
+      li.dropdown-menu,
+      .we-mega-menu-submenu {
+
+        >ul.menu,
+        ul.subul {
+          padding-right: 8px;
+          background-color: $mobile-nav-lower-level-bgcolor;
+
+          >li {
+            a {
+              color: $mobile-nav-lower-level-link-color;
+
+              &:hover {
+                color: $mobile-nav-lower-level-link-hover-color;
+              }
+            }
+
+            &.active,
+            &.menu-item--active-trail,
+            &.active-trail,
+            &.open {
+              >a {
+                color: $mobile-nav-lower-level-link-active-color;
+              }
+            }
+
+            &.dropdown-menu {
+
+              >a,
+              >span {
+                &::after {
+                  color: $mobile-nav-lower-level-caret-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Desktop Main Menu colors
+    @include breakpoint($small) {
+
+      ul.menu,
+      ul.we-mega-menu-ul {
+        li li li {
+          margin-right: 0px;
+        }
+
+        // first level
+        >li {
+          a {
+            color: $nav-link-color;
+
+            &:hover {
+              color: white;
+            }
+          }
+
+          &.active,
+          &.menu-item--active-trail,
+          &.active-trail,
+          &.open {
+            >a {
+              color: white;
+            }
+
+            background-color:palette(primary, dark);
+          }
+
+          &.dropdown-menu {
+
+            >a,
+            >span {
+              &::after {
+                color: $nav-caret-color;
+              }
+            }
+          }
+
+          &:hover {
+            background-color: palette(primary, dark);
+          }
+        }
+
+        // lower levels
+        li.dropdown-menu,
+        .we-mega-menu-submenu {
+          // min-width: 200px; // override width of lower levels
+
+          >ul.menu,
+          ul.subul {
+            padding-right: 0;
+            background-color: $nav-lower-level-bgcolor;
+            box-shadow: 0px 7px 6px rgba(0, 0, 0, 0.1);
+
+            >li {
+              >a {
+                color: $nav-lower-level-link-color;
+
+                &::after {
+                  color: $nav-lower-level-caret-color;
+                }
+              }
+
+              &:hover {
+                background-color: palette(primary, dark);
+
+                >a {
+                  color: white;
+
+                  &::after {
+                    color: $nav-lower-level-link-hover-color;
+                  }
+                }
+
+                &.active,
+                &.menu-item--active-trail,
+                &.active-trail,
+                &.open {
+                  >a {
+                    color: white;
+                  }
+
+                  background-color:palette(primary, dark);
+                }
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Header Layout: No Frills overrides
+.region-header-layout #header-4-nofrills {
+
+  nav.menu--main,
+  nav.source-menu--main,
+  nav.main {
+
+    // Desktop Main Menu colors
+    @include breakpoint($small) {
+
+      >ul.menu,
+      >ul.we-mega-menu-ul {
+
+        // first level
+        >li {
+          >a {
+            color: $base-font-color;
+
+            &:hover {
+              color: palette(secondary);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.mobile-header-menu {
+  .mobile-menu-close {
+    &::after {
+      color: palette(primary);
+    }
+  }
+
+  .block--type-ctm-header-block {
+    background-color: palette(primary);
+
+    .paragraph--type--ctm-target-number {
+      background-color: rgba(palette(white), 0.15);
+
+      &::before {
+        color: palette(primary);
+      }
+    }
+  }
+
+  nav.menu--main,
+  nav.source-menu--main {
+    >ul.menu {
+      li.menu-item--expanded {
+        >a {
+          &::after {
+            color: palette(primary);
+          }
+        }
+      }
+
+      >li.menu-item--expanded {
+        >a {
+          &::after {
+            //background-color: palette(light);
+            background-color: rgb(243, 246, 246);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Standalone Landing Page faux main header navigation
+#standalone-landing-page-menu {
+  .layout__region {
+
+    .block-anchor-list-block,
+    .block--type-anchor-list-block {
+      ul.anchor-list-block-list {
+        li.anchor-list-block-list-item {
+          &:hover {
+            .anchor-list-block-link {
+              color: palette(secondary);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Primary icons
+//TODO: pull from external file
+// $li-icons: additional_services, aeration, ant, aphid, bare_spot, bat, bed_bug,
+//   bee, bird, brown_spot, cockroach, cricket, dead_spot, disease_control,
+//   disease_control_alt, earwig, fertilizer, fire_ant, flea, fly, grasshopper,
+//   grub, lawn_care, lawn_care_alt, leaf, mole, mosquito, moth, mowing, plant,
+//   roach, rodent, scorpion, seeding, silverfish, snake, sod, spider, sprinkler,
+//   squirrel, termite, tick, tree, tree_alt, vole, wasp, weed, wildlife;
+
+// @each $li-icon in $li-icons {
+//   .navbar-we-mega-menu.navbar ul > li.we-mega-menu-li[data-icon="#{$li-icon}"] {
+//     position: relative;
+//     padding-right: 35px;
+//     &::before {
+//       content: "";
+//       mask: url(../assets/icons/sprowt-3-icons-master_#{$li-icon}.svg)
+//         no-repeat
+//         50%
+//         50%;
+//       mask-size: cover;
+//       position: absolute;
+//       top: 8px;
+//       right: 10px;
+//       width: 25px;
+//       height: 25px;
+//       background-color: palette(white);
+//       transition: background-color $duration;
+//     }
+
+//     @include breakpoint($small) {
+//       padding-right: inherit;
+//       padding-left: 30px;
+//       &::before {
+//         right: inherit;
+//         left: 10px;
+//         background-color: palette(primary);
+//       }
+//       &:hover {
+//         &::before {
+//           background-color: palette(white);
+//         }
+//       }
+//     }
+//   }
+// }

@@ -1,0 +1,12 @@
+uuid: 19b18d2c-05fc-4b27-8006-9e51d3562303
+langcode: en
+status: true
+dependencies: {  }
+id: dark
+label: Dark
+classes: bg-dark
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -9

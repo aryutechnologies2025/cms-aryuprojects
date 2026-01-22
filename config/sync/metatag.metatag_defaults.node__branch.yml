@@ -1,0 +1,8 @@
+uuid: 4c1179c2-ab99-4afc-bbea-a7f7baf63fed
+langcode: en
+status: true
+dependencies: {  }
+id: node__branch
+label: 'Content: Location'
+tags:
+  robots: 'noindex, nofollow, noydir'

@@ -1,0 +1,21 @@
+uuid: cacff492-40f4-4f77-9295-687f0e4c7a31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_package_level
+    - node.type.service
+  module:
+    - options
+id: node.service.field_package_level
+field_name: field_package_level
+entity_type: node
+bundle: service
+label: 'Package Level'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

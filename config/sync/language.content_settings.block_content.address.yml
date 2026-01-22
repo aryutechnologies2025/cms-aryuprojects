@@ -1,0 +1,11 @@
+uuid: db684a28-bb80-4f56-afb2-932ea9a6b3e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.address
+id: block_content.address
+target_entity_type_id: block_content
+target_bundle: address
+default_langcode: site_default
+language_alterable: false

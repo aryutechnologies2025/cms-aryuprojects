@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Sprowt Views module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+use Drupal\views\ViewExecutable;
+
+
+function _sprowt_views_test() {
+    require_once __DIR__ . '/sprowt_views.install';
+    sprowt_views_update_9001();
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function sprowt_views_views_data_alter(array &$data)
+{
+//    $data['views']['sprowt_views_dynamic_limit'] = [
+//        'title' => t('Dynamic limit'),
+//        'help' => t('Use this to provide a dynamic limit to the view'),
+//        'argument' => [
+//            'id' => 'sprowt_views_dynamic_limit'
+//        ]
+//    ];
+
+    $data['node']['sprowt_views_dynamic_view_mode'] = [
+        'title' => t('Dynamic view mode'),
+        'help' => t('Set the view mode for this view dynamically. Only works with "Content" views, not field views.'),
+        'argument' => [
+            'id' => 'sprowt_views_dynamic_view_mode'
+        ]
+    ];
+}
+
+
+///**
+// * Implements hook_views_pre_render().
+// */
+//function sprowt_views_views_pre_render(ViewExecutable $view)
+//{
+//    $rowPlugin = &$view->rowPlugin;
+//    if($rowPlugin instanceof \Drupal\views\Plugin\views\row\EntityRow) {
+//        $options = &$rowPlugin->options;
+//        $options['view_mode'] = 'teaser';
+//    }
+//}
+//
+//function sprowt_views_preprocess_views_view_field(&$variables) {
+//    $stop = true;
+//}

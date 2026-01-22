@@ -1,0 +1,11 @@
+uuid: 237e56a7-455a-490e-8595-fefe55824476
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.special_offer
+id: node.special_offer
+target_entity_type_id: node
+target_bundle: special_offer
+default_langcode: site_default
+language_alterable: false

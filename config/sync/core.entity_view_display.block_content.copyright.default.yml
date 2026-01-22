@@ -1,0 +1,13 @@
+uuid: 0313e9c6-0350-4915-af9f-d6f278c4b818
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.copyright
+id: block_content.copyright.default
+targetEntityType: block_content
+bundle: copyright
+mode: default
+content: {  }
+hidden:
+  langcode: true

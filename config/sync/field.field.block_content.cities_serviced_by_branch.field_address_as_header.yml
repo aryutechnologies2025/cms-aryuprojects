@@ -1,0 +1,21 @@
+uuid: 3dae9fa1-452a-4f19-9900-66f152e983e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cities_serviced_by_branch
+    - field.storage.block_content.field_address_as_header
+id: block_content.cities_serviced_by_branch.field_address_as_header
+field_name: field_address_as_header
+entity_type: block_content
+bundle: cities_serviced_by_branch
+label: 'Use Location Name and Address as Heading'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

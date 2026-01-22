@@ -1,0 +1,24 @@
+uuid: 3ee0913e-a8cf-4176-9753-dc0501580d03
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.zip_code_finder
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.zip_code_finder.body
+field_name: body
+entity_type: block_content
+bundle: zip_code_finder
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

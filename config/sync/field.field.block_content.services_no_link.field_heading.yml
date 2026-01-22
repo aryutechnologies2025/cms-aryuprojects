@@ -1,0 +1,33 @@
+uuid: a345970e-a7db-40d9-896c-0407ac24f6d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.services_no_link
+    - field.storage.block_content.field_heading
+  module:
+    - tag_text_field
+id: block_content.services_no_link.field_heading
+field_name: field_heading
+entity_type: block_content
+bundle: services_no_link
+label: Heading
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Additional Services'
+    tag: div
+default_value_callback: ''
+settings:
+  defaultTag: div
+  tagList: |-
+    h1|H1
+    h2|H2
+    h3|H3
+    h4|H4
+    h5|H5
+    h6|H6
+    div|Div
+field_type: html_tag_text_field_type

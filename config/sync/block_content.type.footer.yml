@@ -1,0 +1,8 @@
+uuid: 6e992a82-4246-460a-9aba-79fb2d7c35d2
+langcode: en
+status: true
+dependencies: {  }
+id: footer
+label: Footer
+revision: false
+description: 'Footer Layout'

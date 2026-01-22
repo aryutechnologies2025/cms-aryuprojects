@@ -1,0 +1,11 @@
+$svgcolors: "primary", "secondary";
+
+svg {
+  path {
+    @each $color in $svgcolors {
+      &.#{$color} {
+        fill: palette(#{$color});
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+uuid: 061db29f-6894-4302-9882-665c0fceff31
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.secondary_token
+label: 'Secondary Token'
+description: ''
+targetEntityType: node
+cache: true

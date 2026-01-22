@@ -1,0 +1,60 @@
+sprowt_admin_override.layout_block_update:
+    path: '/sprowt-admin-override/layout-builder/update/block/{entityType}/{entityId}/{viewMode}/{componentUuid}'
+    defaults:
+        _title: 'Layout block update'
+        _form: 'Drupal\sprowt_admin_override\Form\LayoutBlockUpdate'
+    requirements:
+        _permission: 'administer content types'
+    options:
+        _admin_route: TRUE
+
+sprowt_admin_override.metatag_dashboard:
+    path: '/admin/config/sprowt/metatag-dashboard'
+    defaults:
+        _title: 'Metatag Dashboard'
+        _form: 'Drupal\sprowt_admin_override\Form\MetatagDashboardForm'
+    requirements:
+        _permission: 'administer meta tags'
+
+sprowt_admin_override.layout_builder_browser.add_block:
+    path: '/admin/sprowt/choose/block/{section_storage_type}/{section_storage}/{delta}/{region}'
+    defaults:
+        _title: 'Choose a block'
+        _form: 'Drupal\sprowt_admin_override\Form\LayoutBuilderBrowserForm'
+    requirements:
+        _layout_builder_access: 'view'
+    options:
+        _admin_route: TRUE
+        parameters:
+            section_storage:
+                layout_builder_tempstore: TRUE
+
+entity.taxonomy_term.bulk_add_form:
+    path: '/admin/structure/taxonomy/manage/{taxonomy_vocabulary}/bulk-add'
+    defaults:
+        _form: 'Drupal\sprowt_admin_override\Form\TaxonomyBulkAddForm'
+        _title: 'Bulk add terms'
+    requirements:
+        _entity_create_access: 'taxonomy_term:{taxonomy_vocabulary}'
+    options:
+        parameters:
+            taxonomy_vocabulary:
+                type: entity:taxonomy_vocabulary
+
+sprowt_admin_override.webform_submissions.download_csv:
+    path: '/admin/structure/webform/submissions/download-csv'
+    defaults:
+        _title: 'Download CSV'
+        _controller: 'Drupal\sprowt_admin_override\Controller\SprowtAdminOverrideController::webformSubmissionsDownloadCsv'
+    requirements:
+        _custom_access: '\Drupal\webform\Access\WebformAccountAccess:checkSubmissionAccess'
+
+sprowt_admin_override.metatag_bulk_action:
+    path: '/sprowt/metatag-bulk-action'
+    defaults:
+        _title: 'Metatag Bulk Update'
+        _form: 'Drupal\sprowt_admin_override\Form\MetatagBulkActionForm'
+    requirements:
+        _permission: 'administer meta tags'
+    options:
+        _admin_route: TRUE

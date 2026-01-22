@@ -1,0 +1,14 @@
+uuid: 51234305-34bb-4d20-9d99-51da588796f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.project_coordinator
+  module:
+    - user
+id: user_remove_role_action.project_coordinator
+label: 'Remove the Project Coordinator role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: project_coordinator

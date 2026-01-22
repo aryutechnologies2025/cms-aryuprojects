@@ -1,0 +1,22 @@
+uuid: 2a5b13b1-416c-4738-8d02-77d8b1102857
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+  sprowt_admin_override:
+    external_node_type: false
+    title_help: 'The Title may be used and rendered on the website depending on the location of the content type.'
+name: Package
+type: package
+description: 'Packages are associated with a <em>service</em>.'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

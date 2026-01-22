@@ -1,0 +1,11 @@
+uuid: 1145dde9-f535-4f0f-bdfd-b257d2a67637
+langcode: en
+status: true
+dependencies: {  }
+id: basic_w_inline_image
+block_id: 'inline_block:basic_inline_image'
+category: custom_blocks
+label: 'Basic w/ Inline Image'
+image_path: ''
+image_alt: ''
+weight: -82

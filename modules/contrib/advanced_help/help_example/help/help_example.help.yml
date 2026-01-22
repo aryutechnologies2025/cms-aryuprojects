@@ -1,0 +1,26 @@
+advanced help settings:
+  css: example.css
+  name: Advanced Help Examples
+
+about-example:
+  title: About the help examples
+  file: about-example
+  weight: -10
+
+lorem:
+  title: Lorem ipsum
+  line break: true
+  weight: -9
+
+etiam:
+  title: Etiam ultrices
+  weight: -8
+
+image-examples:
+  title: Image examples
+  file: images
+  weight: -7
+
+about-php:
+  title: About PHP
+  weight: -6

@@ -1,0 +1,11 @@
+uuid: 12dab9a5-a11f-4ce7-a7e4-f68110550239
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.side_responsive_alt
+label: 'Side Responsive Alt'
+description: ''
+targetEntityType: media
+cache: true

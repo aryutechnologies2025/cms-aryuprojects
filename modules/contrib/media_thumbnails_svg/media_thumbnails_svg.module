@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * @file
+ * Generate custom thumbnails for svg media entities.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function media_thumbnails_svg_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.media_thumbnails_svg':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Media Thumbnails SVG module generates thumbnails for svg media entities.') . '</p>';
+      return $output;
+  }
+  return NULL;
+}
+
+/**
+ * Returns if the Graphics Magick binary exists.
+ */
+function _media_thumbnails_svg_has_graphics_magick() {
+  return _media_thumbnails_svg_check_binary_exists('gm') && strpos(shell_exec('gm'), 'GraphicsMagick') !== FALSE;
+}
+
+/**
+ * Returns if the Image Magick binary exists.
+ */
+function _media_thumbnails_svg_has_image_magick() {
+  return (_media_thumbnails_svg_check_binary_exists('convert') && strpos(shell_exec('convert'), 'ImageMagick') !== FALSE)
+    || (_media_thumbnails_svg_check_binary_exists('magick') && strpos(shell_exec('magick --version'), 'ImageMagick 7') !== FALSE);
+}
+
+/**
+ * Returns whether a binary exists.
+ *
+ * @param string $binary
+ *   The binary to check for.
+ *
+ * @return bool
+ *   Whether the binary exists.
+ */
+function _media_thumbnails_svg_check_binary_exists($binary) {
+  if (defined('PHP_WINDOWS_VERSION_BUILD')) {
+    $which = 'where';
+    $dev_null = 'NUL';
+  }
+  else {
+    // https://stackoverflow.com/a/677212
+    $which = 'command -v';
+    $dev_null = '/dev/null';
+  }
+
+  // Swallow up any stderr if the 'which' binary doesn't exist.
+  $result = shell_exec(
+    sprintf(
+      '%s %s 2> %s',
+      escapeshellcmd($which),
+      escapeshellarg($binary),
+      escapeshellarg($dev_null)
+    )
+  );
+
+  if ($result) {
+    $result = trim($result);
+  }
+
+  return $result && is_executable($result);
+}

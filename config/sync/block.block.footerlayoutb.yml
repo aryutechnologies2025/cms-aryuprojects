@@ -1,0 +1,45 @@
+uuid: 4c815b55-b748-4cff-adad-1ba5d4677831
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:footer:d00bbcdc-8c92-4ba8-853d-247abf53da9d'
+  module:
+    - block_content
+    - node
+    - sprowt_subsite
+  theme:
+    - s3_subtheme
+id: footerlayoutb
+theme: s3_subtheme
+region: footer_layout
+weight: 0
+provider: null
+plugin: 'block_content:d00bbcdc-8c92-4ba8-853d-247abf53da9d'
+settings:
+  id: 'block_content:d00bbcdc-8c92-4ba8-853d-247abf53da9d'
+  label: 'Footer Layout B'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_page: career_page
+      job_post: job_post
+      standalone_landing_page: standalone_landing_page
+  sprowt_subsite_condition:
+    id: sprowt_subsite_condition
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    use: true
+    value:
+      _main: _main
+    hasNoFields: show

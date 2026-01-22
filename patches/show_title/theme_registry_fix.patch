@@ -1,0 +1,35 @@
+diff --git a/show_title.module b/show_title.module
+index 9830b43..6631728 100644
+--- a/show_title.module
++++ b/show_title.module
+@@ -201,11 +201,24 @@ function show_title_theme_registry_alter(&$theme_registry) {
+       $base_theme = $active_theme->getExtension()->base_theme;
+     }
+
+-    // Set the branding block template.
+-    $module_path = drupal_get_path('module', 'show_title');
+-    $theme_registry['node']['path'] = implode(
+-      '/',
+-      [$module_path, 'templates', $base_theme]
+-    );
++
++    $theme_registry['node']['path'] = _show_title_get_base_theme_node_template($base_theme);
++  }
++}
++
++function _show_title_get_base_theme_node_template($themeName) {
++  $module_path = \Drupal::service('extension.list.module')->getPath('show_title');
++  $templatePath = implode('/',
++    [$module_path, 'templates', $themeName]
++  );
++  if(!is_dir($templatePath)) {
++    $theme = \Drupal::service('theme_handler')->getTheme($themeName);
++    if(!empty($theme->base_theme)) {
++      return _show_title_get_base_theme_node_template($theme->base_theme);
++    }
++    else {
++      return _show_title_get_base_theme_node_template('stable');
++    }
+   }
++  return $templatePath;
+ }

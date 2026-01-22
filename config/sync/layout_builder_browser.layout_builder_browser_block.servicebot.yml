@@ -1,0 +1,11 @@
+uuid: 62a5e398-7588-4d84-8f6e-1e933d423362
+langcode: en
+status: true
+dependencies: {  }
+id: servicebot
+block_id: 'inline_block:servicebot'
+category: custom_blocks
+label: Servicebot
+image_path: ''
+image_alt: ''
+weight: -93

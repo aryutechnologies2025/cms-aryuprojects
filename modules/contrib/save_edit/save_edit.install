@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Save & Edit module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function save_edit_install() {
+  // If the admin theme is Gin, display Save & Edit button as a Primary Action
+  $config_factory = \Drupal::configFactory();
+  $theme_config = $config_factory->getEditable('system.theme');
+  $theme_is_gin = $theme_config->get('admin') == 'gin' || (!$theme_config->get('admin') && $theme_config->get('default') == 'gin');
+  if ($theme_is_gin) {
+    $module_config = $config_factory->getEditable('save_edit.settings');
+    $module_config->set('gin_primary', 1)->save();
+  }
+}
+
+/**
+ * Remove dropbutton configuration
+ */
+function save_edit_update_8101() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('save_edit.settings');
+  $config->clear('dropbutton')->save();
+}
+
+/**
+ * Add new option to automatically add/rm content types to config
+ */
+function save_edit_update_8102() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('save_edit.settings');
+  if (!$config->get('enable_node_types_automatically')) {
+    $config->set('enable_node_types_automatically', 0)->save();
+  }
+}
+
+/**
+ * Add option for primary actions in Gin theme
+ */
+function save_edit_update_8103() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('save_edit.settings');
+  if (!$config->get('gin_primary')) {
+    $config->set('gin_primary', 0)->save();
+  }
+}

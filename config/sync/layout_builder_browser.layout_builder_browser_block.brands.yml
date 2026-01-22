@@ -1,0 +1,11 @@
+uuid: 4e4125e5-8e5a-4e01-8a3f-8d8baa592a8f
+langcode: en
+status: true
+dependencies: {  }
+id: brands
+block_id: 'inline_block:brands'
+category: custom_blocks
+label: Brands
+image_path: ''
+image_alt: ''
+weight: -78

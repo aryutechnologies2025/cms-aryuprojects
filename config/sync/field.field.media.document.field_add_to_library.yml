@@ -1,0 +1,23 @@
+uuid: 8e3e7929-cd76-419e-a9fc-65a05b9c6777
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_add_to_library
+    - media.type.document
+id: media.document.field_add_to_library
+field_name: field_add_to_library
+entity_type: media
+bundle: document
+label: 'Add to Library'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

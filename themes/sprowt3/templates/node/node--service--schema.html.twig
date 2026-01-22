@@ -1,0 +1,24 @@
+<script type="application/ld+json">
+{
+  "@context": {
+    "@vocab": "https://schema.org/"
+  },
+  "@type": [
+    "Service"
+  ],
+  "name": "{{ node_title }}",
+  "url": "{{ url('<current>') }}",
+  "description": "{{ content.body|render|striptags }}",
+  {% if content.field_industry[0] is not empty %}
+  "category": [
+    "{{ content.field_industry[0]|render|striptags|replace({'  ':''}) }}"
+  ],
+  {% endif %}
+  "areaServed": "{% for key, item in node.field_service_cities %}{% if key|first != '#' %}{{ item.entity.label }}{% if loop.last == false  %}, {% endif %}{% endif %}{% endfor %}",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "{{ company_name }}",
+    "url": "{{ url('<front>') }}"
+  }
+}
+</script>

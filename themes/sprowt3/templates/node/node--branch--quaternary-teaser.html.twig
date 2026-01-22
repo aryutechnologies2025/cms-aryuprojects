@@ -1,0 +1,47 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  <div{{content_attributes.addClass('node__content')}}>
+      <div class="node__content">
+        <fieldset class="js-form-item form-item js-form-wrapper form-wrapper">
+          <legend>
+            <span class="fieldset-legend">Address</span>
+          </legend>
+          <div class="fieldset-wrapper">
+            {{ content.field_street }}
+            {% apply spaceless %}
+              {{ content.field_city }}
+              {{ content.field_state }}
+              {{ content.field_zip }}
+            {% endapply %}
+            {% if content.field_phone[0] is not empty %}
+            <div class="field field--name-field-phone field--type-telephone field--label-hidden field__item">
+              {{ content.field_phone[0] }}
+            </div>
+            {% endif %}
+          </div>
+        </fieldset>
+        <fieldset class="js-form-item form-item js-form-wrapper form-wrapper">
+          <legend>
+            <span class="fieldset-legend">Hours</span>
+          </legend>
+          <div class="fieldset-wrapper">
+            {{ content.field_hours }}
+          </div>
+      </fieldset>
+    </div>
+  </div>
+
+</article>

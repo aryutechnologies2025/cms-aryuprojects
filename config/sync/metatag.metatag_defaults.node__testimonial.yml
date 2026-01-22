@@ -1,0 +1,8 @@
+uuid: 2fd132a0-d343-49ca-ab59-7cfd28bb9735
+langcode: en
+status: true
+dependencies: {  }
+id: node__testimonial
+label: 'Content: Review'
+tags:
+  robots: 'noindex, nofollow, noydir'

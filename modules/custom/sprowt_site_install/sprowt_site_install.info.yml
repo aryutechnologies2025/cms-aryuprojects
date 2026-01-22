@@ -1,0 +1,5 @@
+name: Sprowt Site Install
+type: module
+description: Module for running site specific install hooks
+package: Coalmarch
+core_version_requirement: ^9 || ^10

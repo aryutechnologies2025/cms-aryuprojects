@@ -1,0 +1,11 @@
+uuid: 823e149d-c3dd-4c09-af3b-3cb74f7b9bf8
+langcode: en
+status: true
+dependencies: {  }
+id: section_divider
+block_id: 'inline_block:divider'
+category: custom_blocks
+label: 'Section Divider'
+image_path: ''
+image_alt: ''
+weight: -50

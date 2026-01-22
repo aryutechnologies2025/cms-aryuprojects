@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - image
+    - section_library
+id: section_library_template.section_library_template.default
+targetEntityType: section_library_template
+bundle: section_library_template
+mode: default
+content:
+  image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  user_id: true

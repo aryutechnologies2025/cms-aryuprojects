@@ -1,0 +1,29 @@
+uuid: aef4b43a-165f-409f-8564-28cf46d0f46f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.blog_list
+    - field.storage.block_content.field_industry
+    - taxonomy.vocabulary.industry
+id: block_content.blog_list.field_industry
+field_name: field_industry
+entity_type: block_content
+bundle: blog_list
+label: 'Industry Filter'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      industry: industry
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

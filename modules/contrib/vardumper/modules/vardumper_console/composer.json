@@ -1,0 +1,11 @@
+{
+  "name": "drupal/vardumper_console",
+  "type": "drupal-module",
+  "description": "Variable dumper console.",
+  "homepage": "https://www.drupal.org/project/vardumper",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">= 5.3.10",
+    "drupal/core": "^9.0 || ^10.0"
+  }
+}

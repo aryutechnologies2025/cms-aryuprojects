@@ -1,0 +1,17 @@
+uuid: 38bffc12-8776-4794-89b8-fd87e430d4cc
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: media_gallery_individual_thumb
+label: 'Media Gallery Individual Thumb'
+effects:
+  85efa00a-d3f8-4729-a509-0d08ea84c1f4:
+    uuid: 85efa00a-d3f8-4729-a509-0d08ea84c1f4
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 352
+      height: 240
+      crop_type: focal_point

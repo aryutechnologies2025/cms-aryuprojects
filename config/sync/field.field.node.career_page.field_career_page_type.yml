@@ -1,0 +1,21 @@
+uuid: 729abd75-90de-4c72-9156-3495b88045f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_career_page_type
+    - node.type.career_page
+  module:
+    - options
+id: node.career_page.field_career_page_type
+field_name: field_career_page_type
+entity_type: node
+bundle: career_page
+label: 'Page Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

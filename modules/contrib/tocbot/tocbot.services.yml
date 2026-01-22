@@ -1,0 +1,4 @@
+services:
+  Drupal\tocbot\Hook\TocbotHooks:
+    class: Drupal\tocbot\Hook\TocbotHooks
+    autowire: true

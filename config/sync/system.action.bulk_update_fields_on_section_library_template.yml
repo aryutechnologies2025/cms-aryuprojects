@@ -1,0 +1,11 @@
+uuid: e3328e80-b4dc-4625-a79e-264269b03541
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_section_library_template
+label: 'Bulk Update Section library template Fields'
+type: section_library_template
+plugin: bulk_update_fields_action_base
+configuration: {  }

@@ -1,0 +1,1087 @@
+<?php
+/**
+ * @file
+ * Contains sprowt_settings.module.
+ */
+
+use Drupal\Core\Extension\Exception\UnknownExtensionException;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Url;
+use Drupal\layout_builder\InlineBlockUsage;
+use Drupal\node\Entity\Node;
+use Drupal\simple_sitemap\Entity\SimpleSitemapInterface;
+
+function _sprowt_settings_test() {
+    require_once __DIR__ . '/sprowt_settings.deploy.php';
+    sprowt_settings_deploy_100001();
+}
+
+function _sprowt_settings_set_to_default() {
+    $config = \Drupal::configFactory()->getEditable('sprowt_settings.settings');
+    $data = \Drupal\sprowt_settings\Form\SprowtSettingsForm::defaultSettings();
+    $config->setData($data);
+    $config->save();
+}
+
+function sprowt_settings_get_setting($key, $default = null, $alterContext = []) {
+    /** @var \Drupal\sprowt_settings\SprowtSettings $service */
+    $service = \Drupal::service('sprowt_settings.manager');
+    return $service->getSetting($key, $default, $alterContext);
+}
+
+/**
+ * Implements hook_link_alter().
+ * SEE https://www.drupal.org/project/drupal/issues/3032456
+ */
+function sprowt_settings_link_alter(&$variables) {
+    /** @var Drupal\Core\Url $url */
+    $url = $variables['url'];
+    if (!$url->isRouted()) {
+        return;
+    }
+    if ($url->getRouteName() !== 'layout_builder.choose_block') {
+        return;
+    }
+    if (in_array('use-ajax', $variables['options']['attributes']['class'])) {
+        $data_dialog_options = Json::encode([
+            'width' => "80%",
+            'height' => "auto",
+            'target' => 'layout-builder-modal',
+            'autoResize' => TRUE,
+            'modal' => TRUE,
+        ]);
+        $variables['options']['attributes']['data-dialog-options'] = $data_dialog_options;
+        $variables['options']['attributes']['data-dialog-type'] = 'dialog';
+        unset($variables['options']['attributes']['data-dialog-renderer']);
+    }
+}
+
+/**
+ * Implements hook_help().
+ */
+function sprowt_settings_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the sprowt_settings module.
+    case 'help.page.sprowt_settings':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Contains settings and extra sprowt functionality') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_field_widget_multivalue_form_alter().
+ */
+function sprowt_settings_field_widget_multivalue_form_alter(array &$elements, \Drupal\Core\Form\FormStateInterface $form_state, array $context) {
+//    $field_definition = $context['items']
+//        ->getFieldDefinition();
+//    /**
+//     * @var $storageDef \Drupal\field\Entity\FieldStorageConfig
+//     */
+//    $storageDef = $field_definition->getFieldStorageDefinition();
+//    $cardinality = $storageDef->getCardinality();
+//    if($cardinality == FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED) {
+//        //remove extra empty item from unlimited fields
+//        if(isset($elements['#max_delta'])) {
+//            $max = $elements['#max_delta'];
+//            unset($elements[$max]);
+//            if (!empty($max)) {
+//                $elements['#max_delta'] = $max - 1;
+//            }
+//            else {
+//                if (!empty($elements['add_more'])) {
+//                    $elements['add_more']['#value'] = t('Add an item');
+//                }
+//            }
+//        }
+//    }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ * @var \Drupal\node\Entity\Node $entity
+ */
+function sprowt_settings_node_presave(Drupal\Core\Entity\EntityInterface $entity)
+{
+    if($entity->bundle() == 'city_page') {
+        $entity = \Drupal::service('sprowt_settings.manager')->cityPageListOnlyPreSave($entity, $entity->original ?? null);
+    }
+    return $entity;
+}
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_settings_form_node_city_page_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    // Add submission handler.
+    if (isset($form['actions']['submit']['#submit'])) {
+        foreach (array_keys($form['actions']) as $action) {
+            if ($action !== 'preview'
+                && isset($form['actions'][$action]['#type'])
+                && $form['actions'][$action]['#type'] === 'submit') {
+                $form['actions'][$action]['#submit'][] = '_sprowt_settings_city_page_sitemap_settings_fix_submit';
+            }
+        }
+    }
+    // Fix for account page rendering other submit handlers not usable.
+    else {
+        $form['#submit'][] = '_sprowt_settings_city_page_sitemap_settings_fix_submit';
+    }
+}
+
+function _sprowt_settings_city_page_sitemap_settings_fix_submit(&$form, \Drupal\Core\Form\FormStateInterface &$formState) {
+    $nid = $formState->get('nid');
+    $node = Node::load($nid);
+    \Drupal::service('sprowt_settings.manager')->cityPageListOnlyPostSave($node);
+}
+
+/**
+ * ensure city pages marked as noindex do not end up in the sitemap
+ * Implements hook_simple_sitemap_links_alter().
+ */
+function sprowt_settings_simple_sitemap_links_alter(array &$links, SimpleSitemapInterface $sitemap)
+{
+    $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
+    $logger = \Drupal::logger('sprowt_settings');
+    //put this in try/catch so the sitemap is still generated
+    try {
+        $listOnlyNodes = $nodeStorage->loadByProperties([
+            'type' => 'city_page',
+            'field_used_for_lists_only' => '1'
+        ]);
+    }
+    catch (\Exception $e) {
+        $logger->error('Trouble with sprowt settings simple sitemap integration: ' . $e->getMessage(), [
+            'exception' => $e
+        ]);
+        $listOnlyNodes = [];
+    }
+    /** @var \Drupal\simple_sitemap\Manager\Generator $simpleSiteMap */
+    $simpleSiteMap = \Drupal::service('simple_sitemap.generator');
+
+    foreach($links as $key => $link) {
+        if(!empty($link['meta']['entity_info'])) {
+            if($link['meta']['entity_info']['entity_type'] == 'node') {
+                //put this in try/catch so the sitemap is still generated
+                try {
+                    $nid = $link['meta']['entity_info']['id'];
+                    if (!empty($listOnlyNodes[$nid])) {
+                        /** @var Node $node */
+                        $node = $listOnlyNodes[$nid];
+                        $sitemapSettings = $simpleSiteMap->setSitemaps()->entityManager()->getEntityInstanceSettings(
+                            'node',
+                            $node->id()
+                        );
+                        $sitemapSettings['index'] = false;
+                        $simpleSiteMap->setSitemaps()->entityManager()->setEntityInstanceSettings(
+                            'node',
+                            $node->id(),
+                            $sitemapSettings
+                        );
+                        unset($links[$key]);
+                    }
+                }
+                catch (\Exception $e) {
+                    $logger->error('Trouble with sprowt settings simple sitemap integration: ' . $e->getMessage(), [
+                        'exception' => $e
+                    ]);
+                }
+            }
+        }
+    }
+}
+
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function sprowt_settings_menu_local_tasks_alter(&$data, $route_name, \Drupal\Core\Cache\RefinableCacheableDependencyInterface &$cacheability)
+{
+    if(!empty($data["tabs"][0]["entity.node.edit_form"])) {
+        $data["tabs"][0]["entity.node.edit_form"]["#link"]["title"] = 'Configure';
+    }
+
+    $routeName = $route_name;
+    if((strpos($routeName, 'entity.node.') === 0
+            || $routeName == 'layout_builder.overrides.node.view')
+        && (isset($data["tabs"][0]) && is_array($data["tabs"][0]))
+    ) {
+        $tabs = &$data["tabs"][0];
+        $left = [
+            'entity.node.canonical' => -4,
+            'layout_builder.overrides.node.view' => -3,
+            'entity.node.edit_form' => -2,
+            'entity.node.clone_form' => -1
+        ];
+
+        $right = [
+            'entity.node.devel_load' => 99,
+            'entity.node.version_history' => 100,
+            'entity.node.delete_form' => 102
+        ];
+
+        foreach($tabs as &$tab) {
+            $link = $tab['#link'];
+            /** @var \Drupal\Core\Url $url */
+            $url = $link['url'];
+            $route = $url->getRouteName();
+            $className = 'local-task--';
+            $className .= trim(preg_replace('/[^a-z0-9-]+/', '-', strtolower($link['title'])), '-');
+            if(empty($tab['#attributes'])) {
+                $tab['#attributes'] = [];
+            }
+            $classes = empty($tab['#attributes']['class']) ? [] : $tab['#attributes']['class'];
+            $classes[] = $className;
+            $tab['#weight'] = 0;
+            if(in_array($route, array_keys($left))) {
+                $tab['#weight'] = $left[$route];
+                $classes[] = 'justify-left';
+            }
+            if(in_array($route, array_keys($right))) {
+                $tab['#weight'] = $right[$route];
+                $classes[] = 'justify-right';
+            }
+            $tab['#attributes']['class'] = $classes;
+        }
+    }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function sprowt_settings_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $routeMatch = \Drupal::routeMatch();
+    $routeName = $routeMatch->getRouteName();
+    if($routeName == 'node.add' && preg_match('/^node_(.*)_form$/', $form_id)) {
+        // Add submission handler.
+        if (isset($form['actions']['submit']['#submit'])) {
+            foreach (array_keys($form['actions']) as $action) {
+                if ($action !== 'preview'
+                    && isset($form['actions'][$action]['#type'])
+                    && $form['actions'][$action]['#type'] === 'submit') {
+                    $form['actions'][$action]['#submit'][] = '_sprowt_settings_redirect_new_node';
+                }
+            }
+        }
+        // Fix for account page rendering other submit handlers not usable.
+        else {
+            $form['#submit'][] = '_sprowt_settings_redirect_new_node';
+        }
+    }
+
+    if($form_id == 'layout_builder_update_block' || $form_id == 'layout_builder_add_block') {
+        $form["settings"]["admin_label"]["#title"] = t('Block Type');
+        $form["settings"]["admin_label"]['#description'] = t('*Admin only');
+        $form["settings"]["label_display"]['#access'] = false;
+
+        $form["settings"]["label"]["#title"] = t('Admin Label');
+        $form["settings"]["label"]['#description'] = t('The label used for this block in the layout builder admin view.');
+    }
+}
+
+function _sprowt_settings_redirect_new_node(&$form, \Drupal\Core\Form\FormStateInterface &$formState) {
+    $nid = $formState->get('nid');
+    $node = Node::load($nid);
+
+    $defaultDisplay= \Drupal::service('entity_type.manager')
+        ->getStorage('entity_view_display')
+        ->load(implode('.', [
+            'node',
+            $node->bundle(),
+            'default'
+        ]));
+
+    $lbEnabled = false;
+    if($defaultDisplay instanceof  \Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay) {
+        $lbEnabled = $defaultDisplay->getThirdPartySetting('layout_builder', 'allow_custom');
+    }
+    if($lbEnabled) {
+        $formState->setRedirect('layout_builder.overrides.node.view', [
+            'node' => $nid
+        ]);
+    }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function sprowt_settings_token_info()
+{
+    $type = [
+        'name' => 'Sprowt',
+        'description' => 'Tokens defined in Sprowt settings. Add ":phone" to the token to use phone formatting (you can also add a custom phone pattern e.g.: "[sprowt:company_phone:phone:$1$2$3]")'
+    ];
+
+    $tokens = \Drupal::service('sprowt_settings.manager')->tokenInfo();
+    return [
+        'types' => [
+            'sprowt' => $type
+        ],
+        'tokens' => [
+            'sprowt' => $tokens
+        ]
+    ];
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function sprowt_settings_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata)
+{
+    if($type == 'sprowt') {
+        return \Drupal::service('sprowt_settings.manager')->tokenReplace($tokens, $data, $options, $bubbleable_metadata);
+    }
+    return [];
+}
+
+function _sprowt_settings_tokenReplaceFields(&$element, $field_type, $tokenData = []) {
+    if (!empty($element["#type"]) && $element["#type"] == 'inline_template') {
+        foreach ($element["#context"] as $key => &$text) {
+            if (is_string($text)) {
+                $text = Markup::create(\Drupal::token()->replace($text, $tokenData));
+            }
+        }
+    }
+    else if (!empty($element['#type']) && $element['#type'] == 'processed_text') {
+        $element["#text"] = Markup::create(\Drupal::token()->replace($element["#text"], $tokenData));
+    }
+    else if ($field_type == 'link' || (!empty($element['#type']) && $element['#type'] == 'link')) {
+        /** @var \Drupal\Core\Url $url */
+        $url = $element["#url"];
+        $options = $url->getOptions();
+        $changedOptions = false;
+        if(!$url->isRouted()) {
+            $uri = $url->getUri();
+            $uriDecoded = urldecode($uri);
+            if (strpos($uriDecoded, '[sprowt') !== false) {
+                if (strpos($uriDecoded, 'phone_button') !== false) {
+                    $matches = [];
+                    preg_match('#.*(\[sprowt[^\]]+\])#', $uriDecoded, $matches);
+                    $token = $matches[1];
+                    $element = [
+                        '#type' => 'markup',
+                        '#markup' => Markup::create(\Drupal::token()->replace($token, $tokenData))
+                    ];
+                    return $element;
+                }
+                else {
+                    $uri = \Drupal::token()->replace($uriDecoded, $tokenData);
+                    $newUrl = Url::fromUri($uri);
+                    $newUrl->setOptions($url->getOptions());
+                    $element['#url'] = $newUrl;
+                    $url = $newUrl;
+                    $options = $newUrl->getOptions();
+                }
+            }
+        }
+        if (!empty($options['query'])) {
+            $newQuery = [];
+            foreach ($options['query'] as $key => $value) {
+                if (strpos($key, '[') !== false) {
+                    $key = \Drupal::token()->replace($key, $tokenData);
+                }
+                if (strpos($value, '[') !== false) {
+                    $value = \Drupal::token()->replace($value, $tokenData);
+                }
+                $newQuery[$key] = $value;
+            }
+            $options['query'] = $newQuery;
+            $changedOptions = true;
+        }
+        if ($changedOptions) {
+            $url->setOptions($options);
+            if (!empty($element['#options'])) {
+                $element['#options'] = $options;
+            }
+            $element["#url"] = $url;
+        }
+        if(!empty($element['#title']) && strpos($element['#title'], '[') !== false) {
+            $element['#title'] = \Drupal::token()->replace($element['#title'], $tokenData);
+        }
+    }
+    return $element;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_settings_preprocess_field(&$variables)
+{
+    $tokenData = [];
+    $parent = $variables["element"]["#object"] ?? null;
+    if ($parent instanceof \Drupal\Core\Entity\ContentEntityBase) {
+        $tokenData[$parent->getEntityTypeId()] = $parent;
+    }
+
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if($node instanceof Node && !isset($tokenData['node'])) {
+        $tokenData['node'] = $node;
+    }
+
+    if($parent instanceof \Drupal\block_content\Entity\BlockContent) {
+        /** @var InlineBlockUsage $inlineBlockUsage */
+        $inlineBlockUsage = \Drupal::service('inline_block.usage');
+        $usage = $inlineBlockUsage->getUsage($parent->id());
+        if(!empty($usage) && !empty($usage->layout_entity_type)) {
+            $entity = \Drupal::entityTypeManager()->getStorage($usage->layout_entity_type)->load($usage->layout_entity_id);
+            if(!empty($entity)) {
+                if(!isset($tokenData[$entity->getEntityTypeId()])) {
+                    $tokenData[$entity->getEntityTypeId()] = $entity;
+                }
+            }
+            if($usage->layout_entity_type == 'entity_view_display') {
+                $layoutId = $usage->layout_entity_id;
+                $parts = explode('.', $layoutId);
+                $entityTypeId = $parts[0];
+                if(!isset($tokenData[$entityTypeId])) {
+                    $tokenEntity = \Drupal::routeMatch()->getParameter($entityTypeId);
+                    if ($tokenEntity instanceof \Drupal\Core\Entity\ContentEntityBase) {
+                        $tokenData[$entityTypeId] = $tokenEntity;
+                    }
+                }
+            }
+        }
+    }
+
+    foreach ($variables["items"] as &$item) {
+        _sprowt_settings_tokenReplaceFields($item["content"], $variables["element"]["#field_type"], $tokenData);
+    }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_settings_preprocess_block(&$variables)
+{
+    if($variables["base_plugin_id"] == 'block_content') {
+        foreach($variables['content'] as $key => &$element) {
+            if(is_array($element)) {
+                if (!empty($element['#theme'])) {
+                    if (empty($element['#post_render'])) {
+                        $element['#post_render'] = [];
+                    }
+                    $element['#post_render'][] = \Drupal\sprowt_settings\SprowtSettings::class . '::fieldPostRender';
+                }
+                if(strpos($key, 'field_') !== false) {
+                    foreach ($element as $elementKey => &$subElement) {
+                        if (is_array($subElement)) {
+                            if (is_numeric($elementKey)) {
+                                if (empty($subElement['#post_render'])) {
+                                    $subElement['#post_render'] = [];
+                                }
+                                $subElement['#post_render'][] = \Drupal\sprowt_settings\SprowtSettings::class . '::fieldPostRender';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_settings_preprocess_menu(&$variables)
+{
+    foreach($variables['items'] as $itemKey => &$item) {
+        if(strpos($itemKey, 'menu_link_content:') === 0) {
+            /** @var \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent $linkPlugin */
+            $linkPlugin = $item['original_link'];
+            /** @var \Drupal\menu_link_content\Entity\MenuLinkContent $link */
+            $link = $linkPlugin->getEntity();
+            //re-initialize the url object for token replacement
+            $item['url'] = $link->getUrlObject();
+        }
+    }
+
+    if($variables['menu_name'] != 'admin') {
+        $tokenData = [];
+        $routeMatch = \Drupal::routeMatch();
+        $node = $routeMatch->getParameter('node');
+        if(!empty($node)) {
+            if($node instanceof Node) {
+                $tokenData['node'] = $node;
+            }
+            else {
+                $node = Node::load($node);
+                if($node instanceof Node) {
+                    $tokenData['node'] = $node;
+                }
+            }
+        }
+        foreach($variables['items'] as $itemKey => &$item) {
+            if(isset($item['original_link']) && $item['original_link'] instanceof \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent) {
+                /** @var \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent $plugin */
+                $plugin = $item['original_link'];
+                $definition = $plugin->getPluginDefinition();
+                if(!empty($definition['title']) && strpos($definition['title'], '[') !== false) {
+                    $newTitle = \Drupal::token()->replace($definition['title'], $tokenData);
+                    $item['title'] = $newTitle;
+                }
+                if(!empty($definition['url']) && strpos($definition['url'], '[') !== false) {
+                    /** @var Url $currentUrl */
+                    $currentUrl = $item['url'];
+                    $newUrlStr = \Drupal::token()->replace($definition['url'], $tokenData);
+                    $newUrl = Url::fromUri($newUrlStr, $currentUrl->getOptions());
+                    $item['url'] = $newUrl;
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_settings_preprocess_node(&$variables) {
+    $node = $variables["node"];
+    $tokenData = [
+        'node' => $node
+    ];
+    foreach($variables['content'] as $key => &$itemArray) {
+        if(strpos($key, 'field_') === 0) {
+            if (!empty($itemArray['#items'])) {
+                foreach ($itemArray['#items'] as $delta => $fieldType) {
+                    $item = &$itemArray[$delta];
+                    _sprowt_settings_tokenReplaceFields($item, $fieldType, $tokenData);
+                }
+            }
+        }
+    }
+    if (empty($variables['content']['#post_render'])) {
+        $variables['content']['#post_render'] = [];
+    }
+    $variables['content']['#post_render'][] = \Drupal\sprowt_settings\SprowtSettings::class . '::fieldPostRender';
+}
+
+function _sprowt_settings_add_token_description(&$form, FieldItemListInterface $list) {
+    $textTypes = [
+        'textfield',
+        'textarea',
+        'text_format',
+        'email',
+        'url',
+        'password',
+        'password_confirm',
+        'search',
+        'tel',
+        'token'
+    ];
+
+    $extractTokenTypesFromEntity = function($entity, $tokenTypes = []) {
+        if($entity instanceof \Drupal\Core\Entity\ContentEntityBase) {
+            $tokenTypes[] = $entity->getEntityTypeId();
+        }
+        if($entity instanceof \Drupal\block_content\Entity\BlockContent) {
+            /** @var InlineBlockUsage $inlineBlockUsageManager */
+            $inlineBlockUsageManager = \Drupal::service('inline_block.usage');
+            $usage = $inlineBlockUsageManager->getUsage($entity->id());
+            if(!empty($usage) && !empty($usage->layout_entity_type)) {
+                $tokenTypes[] = $usage->layout_entity_type;
+                if($usage->layout_entity_type == 'entity_view_display') {
+                    $layoutId = $usage->layout_entity_id;
+                    $parts = explode('.', $layoutId);
+                    $tokenTypes[] = $parts[0];
+                }
+            }
+        }
+        return $tokenTypes;
+    };
+
+    foreach($form as $key => &$element) {
+        if($key == '#type') {
+            if(in_array($element, $textTypes)) {
+                $parent = $list->getParent();
+                $tokenTypes = [];
+                if($parent instanceof \Drupal\Core\Entity\Plugin\DataType\EntityAdapter) {
+                    $entity = $parent->getEntity();
+                    $tokenTypes = $extractTokenTypesFromEntity($entity, $tokenTypes);
+                    if($entity instanceof \Drupal\paragraphs\Entity\Paragraph) {
+                        $parentEntity = $entity->getParentEntity();
+                        $tokenTypes = $extractTokenTypesFromEntity($parentEntity, $tokenTypes);
+                    }
+                }
+                $token_tree = [
+                    '#theme' => 'token_tree_link',
+                    '#token_types' => $tokenTypes,
+                ];
+                $rendered_token_tree = \Drupal::service('renderer')->render($token_tree);
+                if(empty($form['#description'])) {
+                    $form['#description'] = '';
+                }
+                if(is_array($form['#description'])) {
+                    $renderedDescription = \Drupal::service('renderer')->renderPlain($form['#description']);
+                }
+                else {
+                    $renderedDescription = (string) $form['#description'];
+                }
+                if(strpos($renderedDescription, '<div class="token_wrap">') === false) {
+                    $markup = \Drupal\Core\Render\Markup::create('<div class="token_wrap">' . t('This field supports tokens. @browse_tokens_link', [
+                            '@browse_tokens_link' => $rendered_token_tree,
+                        ]) . '</div>');
+                    if(is_array($form['#description'])) {
+                        if(!empty($form['#description']['#items'])) {
+                            $form['#description'] = $renderedDescription . $markup;
+                        }
+                    }
+                    else {
+                        $form['#description'] .= $markup;
+                    }
+                }
+                $form['#element_validate'][] = 'token_element_validate';
+            }
+        }
+        else {
+            if (is_array($element)) {
+                _sprowt_settings_add_token_description($element, $list);
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_field_widget_single_element_form_alter().
+ */
+function sprowt_settings_field_widget_single_element_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context)
+{
+    /** @var \Drupal\Core\Field\FieldItemListInterface $list */
+    $list = $context['items'];
+    $field_name = $list->getName();
+    if(strpos($field_name, 'field_') === 0) {
+        _sprowt_settings_add_token_description($element, $list);
+    }
+}
+
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function sprowt_settings_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state)
+{
+    \Drupal::service('sprowt_settings.manager')->themeSettingsAlter($form, $form_state);
+}
+
+
+function sprowt_theme_get_setting($key, $theme = null) {
+    return \Drupal::service('sprowt_settings.manager')->getThemeSetting($key, $theme);
+}
+
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function sprowt_settings_page_attachments_alter(array &$attachments)
+{
+    $touchIcon = sprowt_theme_get_setting('touch_icon');
+    if(!empty($touchIcon)) {
+        $attachments['#attached']['html_head'][] = [[
+            '#tag' => 'link',
+            '#attributes' => [
+                'rel' => 'apple-touch-icon',
+                'href' => $touchIcon
+            ]
+        ], 'sprowt_touch_icon'];
+    }
+}
+
+/**
+ * Reroute all emails not on live environment, unless set not to
+ * Implements hook_mail_alter().
+ */
+function sprowt_settings_mail_alter(&$message)
+{
+    /** @var \Drupal\sprowt_settings\SprowtSettings $sprowtSettings */
+    $sprowtSettings = \Drupal::service('sprowt_settings.manager');
+    $setting = $sprowtSettings->getSetting('mail_reroute', 'default');
+    switch($setting) {
+        case 'reroute':
+            $reroute = true;
+            break;
+        case 'pass':
+            $reroute = false;
+            break;
+        default:
+            if(isset($_SERVER['SPROWTHQ_ENVIRONMENT']) && $_SERVER['SPROWTHQ_ENVIRONMENT'] == 'live') {
+                $reroute = false;
+            }
+            else {
+                $reroute = true;
+            }
+    }
+    if($message['id'] == 'mailgun_test_form_email' || $message['id'] == 'smtp_smtp-test') {
+        //always let test emails through
+        return;
+    }
+
+    if(!$reroute) {
+        return;
+    }
+
+    $siteName = \Drupal::config('system.site')->get('name');
+    $suffix = "\nRerouted Email From $siteName to {$message['to']}";
+    $aboveSuffix = "";
+    for($i = 0; $i <= strlen($suffix); ++$i) {
+        $aboveSuffix .= "*";
+    }
+    $message['body'][] = "\n\n$aboveSuffix\n\n";
+    $message['body'][] = $suffix;
+    $email = $_SERVER['SPROWTHQ_REROUTE_EMAIL'] ?? null;
+    if(empty($email)) {
+        $email = $sprowtSettings->getSetting('mail_reroute_email');
+    }
+    if(!empty($email)) {
+        $message['to'] = $email;
+        if(!empty($message["headers"]["Cc"])) {
+            $message['body'][] = "\nOriginal CC: {$message["headers"]["Cc"]}";
+            unset($message["headers"]["Cc"]);
+        }
+        if(!empty($message["headers"]["Bcc"])) {
+            $message['body'][] = "\nOriginal BCC: {$message["headers"]["Bcc"]}";
+            unset($message["headers"]["Bcc"]);
+        }
+    }
+    else {
+        $message['send'] = false;
+    }
+}
+
+
+function _sprowt_get_field_item_value(?FieldItemInterface $item) {
+    if(empty($item)) {
+        return null;
+    }
+
+    $value = $item->getValue();
+    if(!isset($value)) {
+        return null;
+    }
+
+    if($item instanceof \Drupal\Core\Field\Plugin\Field\FieldType\BooleanItem) {
+        $int = (int) $value['value'];
+        return !empty($int);
+    }
+
+    if($item instanceof \Drupal\link\Plugin\Field\FieldType\LinkItem) {
+        if(empty($item->get('uri')->getValue())) {
+            $url = Url::fromUserInput('#');
+        }
+        else {
+            $url = $item->getUrl();
+        }
+        return $url->toString();
+    }
+
+    if($item instanceof \Drupal\file\Plugin\Field\FieldType\FileItem) {
+        $file = $item->getEntity();
+        return $file->toUrl()->toString();
+    }
+
+    if($item instanceof \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem) {
+        return $value['target_id'];
+    }
+
+    if($item instanceof \Drupal\sprowt_subsite\Plugin\Field\FieldType\SubsiteReferenceItem) {
+        return $value['target'];
+    }
+
+    if(array_key_exists('value', $value)) {
+        return $value['value'];
+    }
+
+    return $value;
+}
+
+function sprowt_get_field_value(\Drupal\Core\Entity\EntityBase $entity, $fieldName) {
+    if($entity instanceof \Drupal\Core\Config\Entity\ConfigEntityBase) {
+        return $entity->get($fieldName);
+    }
+
+    $entityTypeId = $entity->getEntityTypeId();
+    $storageConfig = \Drupal\field\Entity\FieldStorageConfig::loadByName($entityTypeId, $fieldName);
+
+
+    /** @var FieldItemListInterface $itemList */
+    $itemList = $entity->get($fieldName);
+    if(empty($storageConfig) || $storageConfig->getCardinality() === 1) {
+        if($itemList->isEmpty()) {
+            return null;
+        }
+        return _sprowt_get_field_item_value($itemList->first());
+    }
+
+    $return = [];
+    foreach($itemList as $item) {
+        $val = _sprowt_get_field_item_value($item);
+        if(isset($val)) {
+            $return[] = $val;
+        }
+    }
+    if(empty($return)) {
+        return null;
+    }
+
+    return $return;
+}
+
+/**
+ * Implements hook_js_alter().
+ */
+function sprowt_settings_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface $assets)
+{
+    _sprowt_settings_advagg_cdn($javascript);
+}
+
+/**
+ * advagg_cdn no longer exists. This replaces it.
+ */
+function _sprowt_settings_advagg_cdn(&$javascript) {
+    $cdn = 'google';
+    $jqueryVersion = '3.6.0';
+    $jqueryUiVersion = '1.12.1';
+    $min = '.min';
+    // If AdvAgg in development mode don't serve minified JS.
+    if (\Drupal::config('advagg.settings')->get('cache_level') < 0) {
+        $min = '';
+    }
+
+
+    $targets = [];
+    $path = 'jquery/' . $jqueryVersion . '/jquery' . $min . '.js';
+    $targets['core/assets/vendor/jquery/jquery.min.js'] = [
+        'google' => 'https://ajax.googleapis.com/ajax/libs/' . $path,
+        'microsoft' => 'https://ajax.aspnetcdn.com/ajax/jQuery/jquery-' . $jqueryVersion . $min . '.js',
+        'type' => 'external',
+        'require' => 'window.jQuery',
+    ];
+
+    $path = $jqueryUiVersion . '/jquery-ui' . $min . '.js';
+    $targets += [
+        'core/assets/vendor/jquery.ui/ui/core-min.js' => [
+            'require' => 'window.jQuery.ui',
+            'type' => 'external',
+            'google' => 'https://ajax.googleapis.com/ajax/libs/jqueryui/' . $path,
+            'microsoft' => 'https://ajax.aspnetcdn.com/ajax/jquery.ui/' . $path,
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-blind-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-bounce-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-clip-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-drop-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-explode-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-fade-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-fold-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-highlight-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-puff-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-pulsate-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-scale-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-shake-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-size-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-slide-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/effect-transfer-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/accordion-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/autocomplete-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/button-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/datepicker-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/dialog-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/draggable-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/droppable-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/menu-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/mouse-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/position-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/progressbar-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/resizable-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/selectable-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/selectmenu-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/slider-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/sortable-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/spinner-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/tabs-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/tooltip-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+        'core/assets/vendor/jquery.ui/ui/widget-min.js' => [
+            'unset' => TRUE,
+            'require' => 'window.jQuery.ui',
+        ],
+    ];
+
+
+    foreach ($targets as $name => $values) {
+        if (isset($javascript[$name])) {
+            if (isset($values['unset'])) {
+                unset($javascript[$name]);
+            }
+            elseif (isset($values[$cdn])) {
+                $javascript[$name]['data'] = $values[$cdn];
+                $javascript[$name]['type'] = $values['type'];
+            }
+
+            // Ensure full jQuery.ui is loaded if required since it is merged on CDN.
+            if ($values['require'] == 'window.jQuery.ui' && !isset($javascript['core/assets/vendor/jquery.ui/ui/core-min.js'])) {
+                $javascript['core/assets/vendor/jquery.ui/ui/core-min.js'] = [
+                    'minified' => TRUE,
+                    'weight' => -19.5,
+                    'group' => -100,
+                    'type' => 'external',
+                    'scope' => 'footer',
+                    'browsers' => [],
+                    'data' => $targets['core/assets/vendor/jquery.ui/ui/core-min.js'][$cdn],
+                ];
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_bulk_update_fields_process_field_alter().
+ * @param mixed $value
+ * @param FieldDefinitionInterface $field_definition
+ */
+function sprowt_settings_bulk_update_fields_process_field_alter(&$value, $field_definition)
+{
+    $fieldType = $field_definition->getType();
+    if($fieldType == 'metatag') {
+        $formDisplayId = implode('.', [
+            $field_definition->getTargetEntityTypeId(),
+            $field_definition->getTargetBundle(),
+            'default'
+        ]);
+        /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $formDisplay */
+        $formDisplay = \Drupal::entityTypeManager()->getStorage('entity_form_display')
+            ->load($formDisplayId);
+
+        $fakeForm = [];
+        $fakeFormState = new \Drupal\Core\Form\FormState();
+        $widget = $formDisplay->getRenderer($field_definition->getName());
+        $values = $widget->massageFormValues([$value], $fakeForm, $fakeFormState);
+        $value = array_shift($values);
+    }
+}
+
+/**
+ * Implements hook_needs_description_toggle_alter().
+ */
+function sprowt_settings_needs_description_toggle_alter(&$needs)
+{
+    $currentRoute = \Drupal::routeMatch()->getRouteName();
+    if($currentRoute == 'sprowt_settings.sprowt_settings') {
+        $needs = true;
+    }
+}

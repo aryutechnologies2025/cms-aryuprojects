@@ -1,0 +1,5 @@
+name: Sprowt Theme
+type: module
+description: Provides theme related functionality to the site
+package: Coalmarch
+core_version_requirement: ^9 || ^10

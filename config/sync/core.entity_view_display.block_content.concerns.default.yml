@@ -1,0 +1,39 @@
+uuid: fabf1b88-ea03-4d8a-bce8-1fd6af948a5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.concerns
+    - field.field.block_content.concerns.field_heading
+    - field.field.block_content.concerns.field_label_tag
+    - field.field.block_content.concerns.field_subheading_tag
+  module:
+    - tag_text_field
+id: block_content.concerns.default
+targetEntityType: block_content
+bundle: concerns
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true

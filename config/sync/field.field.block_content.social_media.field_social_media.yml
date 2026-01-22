@@ -1,0 +1,37 @@
+uuid: aea604ad-491f-439f-bb46-9a2edb869cbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_media
+    - field.storage.block_content.field_social_media
+    - paragraphs.paragraphs_type.social_media
+  module:
+    - entity_reference_revisions
+id: block_content.social_media.field_social_media
+field_name: field_social_media
+entity_type: block_content
+bundle: social_media
+label: 'Social Media'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      social_media: social_media
+    negate: 0
+    target_bundles_drag_drop:
+      brand:
+        weight: 4
+        enabled: false
+      faqs:
+        weight: 5
+        enabled: false
+      social_media:
+        weight: 6
+        enabled: true
+field_type: entity_reference_revisions

@@ -1,0 +1,11 @@
+uuid: 5ecfbd7c-724c-4ffd-b749-bbdf9d147dcb
+langcode: en
+status: true
+dependencies: {  }
+id: footer_logo
+block_id: 'inline_block:footer_logo'
+category: header_footer
+label: 'Footer Logo'
+image_path: ''
+image_alt: ''
+weight: -73

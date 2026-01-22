@@ -1,0 +1,22 @@
+uuid: d992ab5a-af29-4404-a703-e0851cba257f
+langcode: en
+status: true
+dependencies: {  }
+id: block_tertiary_color
+label: 'Tertiary Color'
+classes: bg-tertiary
+type: component
+group: bgcolor
+block_restrictions:
+  - 'inline_block:areas_serviced'
+  - 'inline_block:call_out'
+  - 'inline_block:concerns'
+  - 'inline_block:issues'
+  - 'inline_block:modal_block'
+  - 'inline_block:testimonials'
+  - 'inline_block:servicebot'
+  - 'inline_block:services'
+  - 'inline_block:special_offers'
+  - 'inline_block:webform'
+layout_restrictions: {  }
+weight: 14

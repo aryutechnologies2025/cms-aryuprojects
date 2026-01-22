@@ -1,0 +1,23 @@
+uuid: 4a8c92b0-640f-4105-942c-5a653acfdc60
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.career_benefits
+    - field.storage.block_content.field_count_career_benefit
+  module:
+    - options
+id: block_content.career_benefits.field_count_career_benefit
+field_name: field_count_career_benefit
+entity_type: block_content
+bundle: career_benefits
+label: Count
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: '3'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

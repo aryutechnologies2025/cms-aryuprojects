@@ -1,0 +1,15 @@
+uuid: 02ae9736-7ed1-4f60-aaf0-a9ba4e9a1cc1
+langcode: en
+status: true
+dependencies: {  }
+name: max_1060x600
+label: 'Max 1060x600'
+effects:
+  4686240c-fbba-4e81-9d32-9119e90c767e:
+    uuid: 4686240c-fbba-4e81-9d32-9119e90c767e
+    id: image_scale
+    weight: 1
+    data:
+      width: 1060
+      height: 600
+      upscale: false

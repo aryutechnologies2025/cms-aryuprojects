@@ -1,0 +1,29 @@
+uuid: d9c94e81-a416-4507-89bb-ff40723e062d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_icon_concern
+    - media.type.media_image
+    - node.type.concern
+id: node.concern.field_icon_concern
+field_name: field_icon_concern
+entity_type: node
+bundle: concern
+label: Icon
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

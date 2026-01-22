@@ -1,0 +1,20 @@
+uuid: 85b74281-eae2-4446-938e-436d48250e1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+id: block_content.footer.default
+targetEntityType: block_content
+bundle: footer
+mode: default
+content: {  }
+hidden:
+  langcode: true
+  layout_builder__layout: true

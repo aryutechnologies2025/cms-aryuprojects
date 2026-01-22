@@ -1,0 +1,23 @@
+uuid: 1c0f07a7-96fa-4458-96bd-bca360283264
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.section_styles
+    - field.storage.block_content.field_bg_position
+  module:
+    - options
+id: block_content.section_styles.field_bg_position
+field_name: field_bg_position
+entity_type: block_content
+bundle: section_styles
+label: 'Background Position'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: center
+default_value_callback: ''
+settings: {  }
+field_type: list_string

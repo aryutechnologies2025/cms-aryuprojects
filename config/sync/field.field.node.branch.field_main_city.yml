@@ -1,0 +1,31 @@
+uuid: bfca8c5b-d208-4258-93e9-d6d7db102d85
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_city
+    - node.type.branch
+    - node.type.city_page
+    - node.type.region_page
+id: node.branch.field_main_city
+field_name: field_main_city
+entity_type: node
+bundle: branch
+label: Cities
+description: 'This tags the location to a city for displaying location information such as Address and Hours on a City Page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      city_page: city_page
+      region_page: region_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: city_page
+field_type: entity_reference

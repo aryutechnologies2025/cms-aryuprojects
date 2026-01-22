@@ -1,0 +1,61 @@
+uuid: 7d85f24b-6a60-46a2-bb2b-82617b8d58d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.brands
+    - field.field.block_content.brands.field_brands
+    - field.field.block_content.brands.field_heading
+    - field.field.block_content.brands.field_label_tag
+    - field.field.block_content.brands.field_slider
+    - field.field.block_content.brands.field_subheading_tag
+  module:
+    - entity_reference_revisions
+    - tag_text_field
+id: block_content.brands.default
+targetEntityType: block_content
+bundle: brands
+mode: default
+content:
+  field_brands:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_slider:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true

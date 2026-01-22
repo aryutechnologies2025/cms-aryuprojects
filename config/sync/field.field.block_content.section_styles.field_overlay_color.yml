@@ -1,0 +1,21 @@
+uuid: aa28b7c7-421f-4dde-8f73-272cabac7e52
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.section_styles
+    - field.storage.block_content.field_overlay_color
+  module:
+    - options
+id: block_content.section_styles.field_overlay_color
+field_name: field_overlay_color
+entity_type: block_content
+bundle: section_styles
+label: 'Overlay Color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

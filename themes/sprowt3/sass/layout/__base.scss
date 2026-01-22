@@ -1,0 +1,74 @@
+html {
+  background-color: $viewport-background-color;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  margin: 0;
+}
+
+.container,
+%container {
+  position: relative;
+  margin: 0 auto;
+  padding: 0 ($margin / 2);
+  width: 100%;
+  max-width: $container;
+
+  @include breakpoint($small) {
+    padding: 0 $margin;
+  }
+}
+.container-sm,
+%container-sm {
+  @extend %container;
+  max-width: $container-sm;
+}
+.container-lg,
+%container-lg {
+  @extend %container;
+  max-width: $container-lg;
+}
+.container-xl,
+%container-xl {
+  @extend %container;
+  max-width: $container-xl;
+}
+.container-full,
+%container-full {
+  @extend %container;
+  max-width: 100%;
+  width: 100%;
+}
+
+// Layout Helpers
+#header,
+#footer,
+.mission,
+.breadcrumb,
+.node {
+  clear: both;
+  background-color: inherit; //override we_megamenu
+}
+
+.layout-container {
+  @include flexbox;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+
+  body.toolbar-horizontal & {
+    min-height: calc(100vh - 96px);
+  }
+}

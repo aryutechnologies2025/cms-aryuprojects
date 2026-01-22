@@ -1,0 +1,41 @@
+uuid: 3a75337f-1a77-44e3-b696-15942c2cacc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ctm_target_number.field_heading
+    - field.field.paragraph.ctm_target_number.field_label
+    - field.field.paragraph.ctm_target_number.field_no_swap
+    - field.field.paragraph.ctm_target_number.field_phone_number
+    - paragraphs.paragraphs_type.ctm_target_number
+id: paragraph.ctm_target_number.default
+targetEntityType: paragraph
+bundle: ctm_target_number
+mode: default
+content:
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_phone_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_no_swap: true

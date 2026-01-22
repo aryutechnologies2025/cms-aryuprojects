@@ -1,0 +1,33 @@
+uuid: 7b90b6f5-ffbd-4a8c-b1d3-1604e0667382
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.mobile-footer-utility-menu
+  module:
+    - menu_block
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_mobilefooterutilitymenu
+theme: woodlawnandlandscaping
+region: disabled
+weight: 0
+provider: null
+plugin: 'menu_block:mobile-footer-utility-menu'
+settings:
+  id: 'menu_block:mobile-footer-utility-menu'
+  label: 'Mobile Footer Utility Menu'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 0
+  expand_all_items: false
+  parent: 'mobile-footer-utility-menu:'
+  render_parent: false
+  suggestion: mobile_footer_utility_menu
+  hide_on_nonactive: false
+visibility: {  }

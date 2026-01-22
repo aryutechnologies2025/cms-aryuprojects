@@ -1,0 +1,49 @@
+////
+/// Media styles
+/// @group Base
+////
+
+figure {
+  margin: 0;
+}
+
+img,
+picture {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+.media--type-media-image {
+
+  &.align-left {
+    margin-right: 20px;
+  }
+
+  &.align-right {
+    margin-left: 20px;
+  }
+
+  &.align-left,
+  &.align-right {
+    margin-bottom: 20px;
+
+    @include breakpoint($max-smedium) {
+      float: none;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  &.align-center {
+    float: none;
+    .field--type-image img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .media-library-item__name {
+      text-align: center;
+    }
+  }
+}

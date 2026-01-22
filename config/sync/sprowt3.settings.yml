@@ -1,0 +1,24 @@
+logo_reverse:
+  use_default: 1
+  path: ''
+  width: ''
+touch_icon:
+  use_default: 1
+  path: ''
+logo:
+  width: ''
+  use_default: 1
+features:
+  node_user_picture: 0
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: 1
+favicon:
+  use_default: 1
+variableName: ''
+variableValue: ''
+colorPicker: '#000000'
+colorVariables: {  }
+inheritedColor: '#000000'
+inheritedColors: '{}'
+sassVariablesTextArea: '$color_test: var(--test);'

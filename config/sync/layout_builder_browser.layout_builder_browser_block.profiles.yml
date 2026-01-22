@@ -1,0 +1,11 @@
+uuid: f045c72f-935d-400f-9e42-4519f94841ba
+langcode: en
+status: true
+dependencies: {  }
+id: profiles
+block_id: 'inline_block:profiles'
+category: custom_blocks
+label: Profiles
+image_path: ''
+image_alt: ''
+weight: -55

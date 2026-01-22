@@ -1,0 +1,8 @@
+uuid: 74334d11-eec8-417a-8f62-9565f8f956b1
+langcode: en
+status: true
+dependencies: {  }
+id: special_offers
+label: 'Special Offers'
+revision: false
+description: ''

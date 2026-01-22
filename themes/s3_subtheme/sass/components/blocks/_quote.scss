@@ -1,0 +1,19 @@
+.layout__region {
+  .block-inline-blockquote,
+  .block--type-quote  {
+
+    .field--name-field-text {
+      &:before {
+        color: palette(secondary);
+      }
+    }
+
+    .bg-secondary & {
+      .field--name-field-text {
+        &:before {
+          color: palette(primary);
+        }
+      }
+    }
+  }
+}

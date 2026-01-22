@@ -1,0 +1,11 @@
+uuid: ef072694-cd50-4aa5-b59a-93bd27499c28
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_environment_indicator
+label: 'Bulk Update Environment Switcher Fields'
+type: environment_indicator
+plugin: bulk_update_fields_action_base
+configuration: {  }

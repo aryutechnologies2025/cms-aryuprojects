@@ -1,0 +1,23 @@
+uuid: 0bc1874c-73f2-4f61-b3b8-31434908fa85
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_hero_style
+  module:
+    - options
+id: block_content.hero.field_hero_style
+field_name: field_hero_style
+entity_type: block_content
+bundle: hero
+label: 'Hero Style'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: overlay
+default_value_callback: ''
+settings: {  }
+field_type: list_string

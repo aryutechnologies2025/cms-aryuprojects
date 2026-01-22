@@ -1,0 +1,21 @@
+{% set phoneHtml %}
+  {{ content.field_phone[0] }}
+{% endset %}
+<script type="application/ld+json" class="ctm-no-swap">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{ company_name }}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "{{ content.field_city[0]|render|striptags }}",
+    "addressRegion": "{{ content.field_state[0]|render|striptags }}",
+    "streetAddress": "{% apply spaceless %}{{ content.field_street|render|striptags }}{% endapply %}"
+  },
+  {% if (sprowt_get_setting('price_range') is not empty) %}
+    "priceRange": "{{ sprowt_get_setting('price_range') }}",
+  {% endif %}
+  "openingHours": "{{ content.field_hours|render|striptags }}"{% if content.field_phone[0] is not empty %},
+  "telephone": "{{ phoneHtml|striptags|trim }}"{% endif %}
+}
+</script>

@@ -1,0 +1,35 @@
+uuid: 932eaad9-7b5e-4991-9718-ede9c3a6285b
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:header:f8869f56-9d5c-4330-ae9f-0ade36f31167'
+  module:
+    - block_content
+    - sprowt_subsite
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_headerlayoutsimplifiedsubsite
+theme: woodlawnandlandscaping
+region: header_layout
+weight: 0
+provider: null
+plugin: 'block_content:f8869f56-9d5c-4330-ae9f-0ade36f31167'
+settings:
+  id: 'block_content:f8869f56-9d5c-4330-ae9f-0ade36f31167'
+  label: 'Header Layout: Simplified (Subsite)'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  sprowt_subsite_condition:
+    id: sprowt_subsite_condition
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    use: true
+    value:
+      _main: _main
+    hasNoFields: hide

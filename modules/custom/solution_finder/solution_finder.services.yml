@@ -1,0 +1,4 @@
+services:
+    solution_finder.service:
+        class: Drupal\solution_finder\SolutionFinderService
+        arguments: [ '@entity_type.manager' ]

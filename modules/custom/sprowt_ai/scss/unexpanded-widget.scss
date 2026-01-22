@@ -1,0 +1,36 @@
+.unexpanded-prompt-dialog {
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  > .ui-resizable-handle {
+    position: absolute;
+  }
+  &:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .9;
+    background: var(--gin-bg-layer2);
+    z-index: 1;
+  }
+}
+
+.form-element.unexpanded-prompt-text {
+  cursor: not-allowed;
+  color: var(--gin-color-disabled);
+  background-color: var(--gin-color-disabled-bg) !important;
+  border-color: var(--gin-color-disabled-border);
+  box-shadow: none;
+  &:hover {
+    cursor: not-allowed;
+    color: var(--gin-color-disabled);
+    background-color: var(--gin-color-disabled-bg) !important;
+    border-color: var(--gin-color-disabled-border);
+    box-shadow: none;
+  }
+}

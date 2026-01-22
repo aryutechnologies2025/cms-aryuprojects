@@ -1,0 +1,11 @@
+uuid: b41b5375-6e26-417e-8c38-3e0e277ab3f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ai_example_tags
+id: taxonomy_term.ai_example_tags
+target_entity_type_id: taxonomy_term
+target_bundle: ai_example_tags
+default_langcode: site_default
+language_alterable: false

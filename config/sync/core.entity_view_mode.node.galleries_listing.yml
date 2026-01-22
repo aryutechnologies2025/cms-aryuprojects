@@ -1,0 +1,11 @@
+uuid: 6694a8f0-b6ac-4257-8e57-ade967020ab8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.galleries_listing
+label: 'Galleries Listing'
+description: ''
+targetEntityType: node
+cache: true

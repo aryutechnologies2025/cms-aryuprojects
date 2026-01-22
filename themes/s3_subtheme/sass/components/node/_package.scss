@@ -1,0 +1,146 @@
+.node--type-package {
+  // Teaser
+  &.node--view-mode-teaser,
+  &.node--view-mode-quaternary-teaser,
+  &.node--view-mode-quinary-teaser,
+  &[class*="node--view-mode-alt"] {
+    .node__content {
+      background-color: palette(white);
+
+      .featured-tag {
+        color: palette(white);
+        background-color: palette(black);
+      }
+
+      .field--name-title {
+        color: palette(white);
+        background-color: palette(primary);
+      }
+
+      .field--name-field-initial-fee {
+        color: palette(red);
+      }
+
+      .cta-link span {
+        @extend %button;
+      }
+    }
+
+    &:hover {
+      [class*="field--name-field-icon"] {
+        svg {
+          path {
+            fill: palette(primary);
+          }
+        }
+      }
+      .cta-link {
+        span {
+          background-color: palette(primary, dark);
+        }
+      }
+    }
+  }
+
+  // Secondary Teaser
+  &.node--view-mode-secondary-teaser {
+    .node__content {
+      background-color: palette(white);
+
+      [class*="field--name-field-icon"] {
+        background-color: palette(grey, lit);
+      }
+
+      .field--name-field-initial-fee {
+        color: palette(red);
+      }
+    }
+
+    &:hover {
+      [class*="field--name-field-icon"] {
+        svg {
+          path {
+            fill: palette(primary);
+          }
+        }
+      }
+      .cta-link {
+        span {
+          background-color: palette(primary, dark);
+        }
+      }
+    }
+  }
+
+  // Quinary Teaser (Solution Page - Concern Highlight)
+  &.node--view-mode-quinary-teaser {
+    .node__content {
+      .field--name-title {
+        color: palette(white);
+        background-color: palette(black);
+      }
+
+      .field--name-field-initial-fee {
+        color: $base-font-color;
+      }
+
+      .package-features {
+      }
+
+      .package-features-label {
+      }
+
+      .field--name-field-features-package,
+      .field--name-field-detailed-features-packages {
+        .field__item {
+          &::before {
+            color: palette(primary);
+          }
+        }
+      }
+    }
+  }
+
+  //Alt View modes
+  &[class*="node--view-mode-alt"] {
+    .node__content {
+      .featured-tag {
+        color: palette(white);
+        background-color: palette(black);
+      }
+      .field--name-field-initial-fee {
+        color: $base-font-color;
+      }
+      .field--name-title {
+        color: palette(black);
+        background-color: transparent;
+      }
+      .cta-link span {
+        @extend %button;
+      }
+      .package-features {
+        border-top-color: palette(grey, light);
+
+        .see-details::before {
+          color: palette(primary);
+        }
+
+        .block-inline-blockpackages.collapse-features & {
+          &.open {
+            .see-details::before {
+              color: palette(primary);
+            }
+          }
+        }
+        ul {
+          &.package-includes-list li::before {
+            color: palette(primary);
+          }
+          &.package-excludes-list li::before {
+            color: palette(grey, lighter);
+          }
+        }
+      }
+    }
+  }
+}

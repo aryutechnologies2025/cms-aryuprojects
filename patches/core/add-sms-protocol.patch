@@ -1,0 +1,12 @@
+diff --git a/core/core.services.yml b/core/core.services.yml
+index e3c1e094a..f2741291c 100644
+--- a/core/core.services.yml
++++ b/core/core.services.yml
+@@ -47,6 +47,7 @@ parameters:
+     - sftp
+     - webcal
+     - rtsp
++    - sms
+   cors.config:
+     enabled: false
+     allowedHeaders: []

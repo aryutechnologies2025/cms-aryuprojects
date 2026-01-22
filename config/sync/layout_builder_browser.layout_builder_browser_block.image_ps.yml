@@ -1,0 +1,11 @@
+uuid: b2e4b23e-e9ef-4dc2-965e-dc0c111850d2
+langcode: en
+status: true
+dependencies: {  }
+id: image_ps
+block_id: 'inline_block:image'
+category: custom_blocks
+label: Image
+image_path: ''
+image_alt: ''
+weight: -66

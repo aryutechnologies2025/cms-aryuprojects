@@ -1,0 +1,23 @@
+uuid: 77de0d24-dfed-4f58-8482-ed7eff340ef3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.profiles
+    - field.storage.block_content.field_paged
+id: block_content.profiles.field_paged
+field_name: field_paged
+entity_type: block_content
+bundle: profiles
+label: Paged
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

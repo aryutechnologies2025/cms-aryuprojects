@@ -1,0 +1,42 @@
+// Careers Header
+$header-career-utility-height-mobile: 45px;
+$header-career-main-height-mobile: 72px;
+$header-career-height-mobile: $header-career-main-height-mobile + $header-career-utility-height-mobile;
+
+.page-node-type-job-post,
+.page-node-type-career-page {
+  .region-header-layout {
+    border-color: palette(secondary);
+
+    // #header-1 {
+    //   height: $header-career-utility-height-mobile;
+    //   min-height: $header-career-utility-height-mobile;
+    //   max-height: $header-career-utility-height-mobile;
+    //   //background-color: palette(light);
+    // }
+
+    #header-4 {
+      //background-color: palette(white);
+
+      @include breakpoint($max-small) {
+        height: $header-career-main-height-mobile;
+        max-height: $header-career-main-height-mobile;
+        min-height: $header-career-main-height-mobile;
+      }
+    }
+  }
+
+  // CTM Contact block
+  .block--type-ctm-contact {
+    .ctm-contact-wrap {
+      .field--name-field-phone-number {
+        a {
+          color: palette(secondary);
+          &:hover {
+              color: palette(black);
+          }
+        }
+      }
+    }
+  }
+}

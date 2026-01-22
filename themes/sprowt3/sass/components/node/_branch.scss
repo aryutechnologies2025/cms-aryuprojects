@@ -1,0 +1,149 @@
+.node--type-branch {
+  // Teaser / Secondary Teaser
+  &.node--view-mode-teaser,
+  &.node--view-mode-secondary-teaser,
+  &.node--view-mode-altb,
+  &.node--view-mode-tertiary-teaser,
+  &.node--view-mode-quaternary-teaser,
+  &.node--view-mode-quinary-teaser {
+    .node__content {
+      @include flexbox;
+      flex-wrap: no-wrap;
+      flex-direction: column;
+
+      @include breakpoint($xsmall) {
+        flex-direction: row;
+      }
+
+      > fieldset {
+        //flex: 1;
+        text-align: center;
+        margin-bottom: 10px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        legend {
+          width: 100%;
+        }
+
+        > .fieldset-wrapper {
+          /** remove white space **/
+          font-size: 0;
+          > * {
+            font-size: 1.5rem;
+          }
+        }
+
+        @include breakpoint($xsmall) {
+          margin-right: $margin;
+          text-align: left;
+        }
+      }
+
+      .fieldset-legend {
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .fieldset-wrapper {
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1.75;
+
+        > a {
+          color: inherit;
+        }
+      }
+
+      .field--name-title-text {
+        &::after {
+          content: ":";
+        }
+      }
+
+      .field--name-field-street {
+        width: 100%;
+      }
+      .field--name-field-city {
+        display: inline-block;
+        width: inherit;
+        &::after {
+          content: ",";
+          margin-right: 4px;
+        }
+      }
+      a > .field--name-field-city,
+      .field--name-field-city a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .field--name-field-state {
+        display: inline-block;
+        margin-right: 4px;
+      }
+      .field--name-field-zip {
+        display: inline-block;
+      }
+      .field--name-field-phone {
+        width: 100%;
+        &::before {
+          content: "Tel:";
+          font-weight: 700;
+          margin-right: 4px;
+        }
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+      .field--name-field-hours {
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  &.node--view-mode-token {
+    .node__content {
+      .field--name-title-text {
+        width: 100%;
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+      .field--name-field-street {
+        width: 100%;
+      }
+      .field--name-field-city {
+        display: inline-block;
+        width: inherit;
+        &::after {
+          content: ",";
+          margin-right: 2px;
+        }
+      }
+      .field--name-field-state {
+        display: inline-block;
+        margin-right: 4px;
+      }
+      .field--name-field-zip {
+        display: inline-block;
+      }
+      .field--name-field-phone {
+        width: 100%;
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .node__content {
+    > .field {
+      display: inline-block;
+    }
+  }
+}

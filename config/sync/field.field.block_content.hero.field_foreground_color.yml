@@ -1,0 +1,23 @@
+uuid: 1482f09a-ca07-464e-805f-d6e04c30101c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_foreground_color
+  module:
+    - options
+id: block_content.hero.field_foreground_color
+field_name: field_foreground_color
+entity_type: block_content
+bundle: hero
+label: 'Foreground Color'
+description: "Color used for Round-Edge style. Set to color of next section's background."
+required: false
+translatable: false
+default_value:
+  -
+    value: white
+default_value_callback: ''
+settings: {  }
+field_type: list_string

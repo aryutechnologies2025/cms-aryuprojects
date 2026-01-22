@@ -1,0 +1,12 @@
+// Google Rating Block on page region
+.region-content {
+  .block.block-google-star-rating,
+  .block.block-aggregate-reviews-block {
+    border-color: palette(gray, lightest);
+
+    .field--name-field-label,
+    .field--name-field-label-tag {
+      color: palette(white);
+    }
+  }
+}

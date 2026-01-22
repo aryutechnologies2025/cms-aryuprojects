@@ -1,0 +1,109 @@
+admin_override_js:
+    js:
+        js/override.js: {}
+    dependencies:
+        - core/drupal.dialog
+        - select2_all/drupal.select2
+        - gin/gin
+        - core/once
+        - sprowt_settings/sprowt_object
+        - gin/gin_messages
+
+admin_override_css:
+    css:
+        theme:
+            css/override.css: { group: 100, weight: 250 }
+    dependencies:
+        - gin/gin
+
+layout_builder_browser_form:
+    js:
+        js/layout_builder_browser_filter.js: { }
+        js/layout_builder_browser.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+        - sprowt_admin_override/tippy
+
+description_toggle:
+    js:
+        js/description_toggle.js: { }
+    dependencies:
+        - core/jquery
+        - gin/gin_description_toggle
+        - gin/tooltip
+
+front_override_css:
+    css:
+        theme:
+            css/front_override.css: {}
+
+toolbar_override:
+    js:
+        js/toolbar_override.js: { }
+    dependencies:
+        - core/jquery
+        - core/drupalSettings
+
+theme_settings_form:
+    js:
+        js/theme_settings_form.js: { }
+    dependencies:
+        - core/jquery
+
+content_sorting:
+    js:
+        js/content_sorting.js: { }
+    dependencies:
+        - core/jquery
+        - draggableviews/draggableviews
+
+user_permissions:
+    css:
+        theme:
+            css/user_permissions.css: { }
+    js:
+        js/user_permissions.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+
+content_admin:
+    css:
+        theme:
+            css/content_admin.css: { }
+    js:
+        js/content_admin.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+
+token_filter:
+    css:
+        theme:
+            css/token_filter.css: { }
+    js:
+        js/token_filter.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+
+metatag_dashboard:
+    css:
+        theme:
+            css/metatag_dashboard.css: { }
+    js:
+        js/metatag_dashboard.js: { }
+
+tippy:
+    version: 6.x
+    js:
+        https://unpkg.com/@popperjs/core@2: { external: true }
+        https://unpkg.com/tippy.js@6: { external: true }
+
+layout_builder:
+    js:
+        js/layout_builder.js: { }
+    dependencies:
+        - core/jquery
+        - core/once

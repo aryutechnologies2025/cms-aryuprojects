@@ -1,0 +1,105 @@
+uuid: 10cc0ce4-cc94-400c-9c58-4dda1a35dc2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.gallery
+    - field.field.block_content.gallery.field_heading
+    - field.field.block_content.gallery.field_images
+    - field.field.block_content.gallery.field_label_tag
+    - field.field.block_content.gallery.field_subheading_tag
+  module:
+    - slick
+    - tag_text_field
+id: block_content.gallery.default
+targetEntityType: block_content
+bundle: gallery
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_images:
+    type: slick_media
+    label: hidden
+    settings:
+      caption:
+        field_add_to_library: '0'
+        field_image_organization: '0'
+      optionset: gallery
+      class: ''
+      image: ''
+      link: ''
+      overlay: ''
+      title: ''
+      vanilla: true
+      layout: ''
+      view_mode: gallery_900x600
+      cache: 0
+      background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_media_style: ''
+      responsive_image_style: ''
+      use_theme_field: false
+      box_style: ''
+      image_style: ''
+      media_switch: ''
+      ratio: ''
+      thumbnail_style: ''
+      grid: null
+      grid_medium: null
+      grid_small: null
+      style: ''
+      current_view_mode: default
+      fx: ''
+      grid_header: ''
+      icon: ''
+      id: ''
+      sizes: ''
+      _uri: ''
+      breakpoints: {  }
+      skin: classic
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      thumbnail: ''
+      optionset_thumbnail: ''
+      skin_thumbnail: ''
+      thumbnail_caption: ''
+      thumbnail_effect: ''
+      thumbnail_position: ''
+      override: false
+      skin_arrows: ''
+      skin_dots: ''
+      preserve_keys: false
+      visible_items: null
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,11 @@
+.menu--careers-utility {
+  > ul.menu {
+    > li {
+      a {
+        &:before {
+          color: palette(secondary);
+        }
+      }
+    }
+  }
+}

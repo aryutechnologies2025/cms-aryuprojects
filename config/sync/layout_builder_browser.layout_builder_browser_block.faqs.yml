@@ -1,0 +1,11 @@
+uuid: 5663151b-03f6-4bf5-abeb-3e2553e32fcb
+langcode: en
+status: true
+dependencies: {  }
+id: faqs
+block_id: 'inline_block:faqs'
+category: custom_blocks
+label: FAQs
+image_path: ''
+image_alt: ''
+weight: -70

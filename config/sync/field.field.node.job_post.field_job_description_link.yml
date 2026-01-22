@@ -1,0 +1,23 @@
+uuid: 90ead292-5353-4561-baf0-94cf6743cafd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_description_link
+    - node.type.job_post
+  module:
+    - link
+id: node.job_post.field_job_description_link
+field_name: field_job_description_link
+entity_type: node
+bundle: job_post
+label: 'Description Link'
+description: 'This is only relevant if the job is listed offsite. By default the description link is the job posting on the site.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

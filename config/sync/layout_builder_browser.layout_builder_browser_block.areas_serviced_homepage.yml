@@ -1,0 +1,16 @@
+uuid: 67159260-1714-445f-96d7-9914813c0bd8
+langcode: en
+status: true
+dependencies:
+  module:
+    - sprowt_admin_override
+third_party_settings:
+  sprowt_admin_override:
+    description: '<p>Lists all City Pages tagged with "Promote to Homepage"</p>'
+id: areas_serviced_homepage
+block_id: 'inline_block:areas_serviced_homepage'
+category: custom_blocks
+label: 'Areas Serviced (Homepage)'
+image_path: ''
+image_alt: ''
+weight: -98

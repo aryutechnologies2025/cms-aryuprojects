@@ -1,0 +1,105 @@
+uuid: 5f00765a-1f9c-4882-9dee-788dc23a44a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_service_page
+    - field.field.block_content.areas_serviced_service_page.field_accordion
+    - field.field.block_content.areas_serviced_service_page.field_additional_services
+    - field.field.block_content.areas_serviced_service_page.field_group_by
+    - field.field.block_content.areas_serviced_service_page.field_heading
+    - field.field.block_content.areas_serviced_service_page.field_label_tag
+    - field.field.block_content.areas_serviced_service_page.field_link
+    - field.field.block_content.areas_serviced_service_page.field_max_columns
+    - field.field.block_content.areas_serviced_service_page.field_subheading_tag
+    - field.field.block_content.areas_serviced_service_page.field_text
+  module:
+    - allowed_formats
+    - sprowt_admin_override
+    - tag_text_field
+    - text
+id: block_content.areas_serviced_service_page.default
+targetEntityType: block_content
+bundle: areas_serviced_service_page
+mode: default
+content:
+  field_accordion:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_additional_services:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_group_by:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading:
+    type: html_tag_text_field_widget
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_label_tag:
+    type: html_tag_text_field_widget
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_link:
+    type: link_with_description
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_max_columns:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_subheading_tag:
+    type: html_tag_text_field_widget
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  revision_log: true

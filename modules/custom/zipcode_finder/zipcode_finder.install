@@ -1,0 +1,85 @@
+<?php
+
+use Drupal\zipcode_finder\Entity\ZipcodeFinderLog;
+use Drupal\zipcode_finder\ZipcodeFinderService;
+
+/**
+ * Implements hook_schema().
+ */
+function zipcode_finder_schema()
+{
+//    $schema = [];
+//    $schema['zipcode_log'] = [
+//        'description' => 'Logged zipcode submissions',
+//        'fields' => [
+//            'zipcode' => [
+//                'description' => 'zipcode logged',
+//                'type' => 'varchar',
+//                'length' => 255,
+//                'not null' => true
+//            ],
+//            'count' => [
+//                'description' => 'current count of submissions for this code',
+//                'type' => 'int',
+//                'size' => 'big',
+//                'not null' => true
+//            ],
+//            'created' => [
+//                'description' => 'unix timestamp when the code was first submitted',
+//                'type' => 'int',
+//                'not null' => true,
+//            ],
+//            'updated' => [
+//                'description' => 'unix timestamp when the code was last submitted',
+//                'type' => 'int',
+//                'not null' => true,
+//            ]
+//        ],
+//        'primary key' => ['zipcode']
+//    ];
+//
+//    return $schema;
+}
+
+/**
+ * Create database tables
+ */
+function zipcode_finder_update_9001(&$sandbox)
+{
+//    $databaseSchema = \Drupal::database()->schema();
+//    $schema = zipcode_finder_schema();
+//    foreach($schema as $tableName => $definition) {
+//        if(!$databaseSchema->tableExists($tableName)) {
+//            $databaseSchema->createTable($tableName, $definition);
+//        }
+//    }
+}
+
+/**
+ * Fix zipcode finder log
+ */
+function zipcode_finder_update_9002()
+{
+    $logs = \Drupal\zipcode_finder\Entity\ZipcodeFinderLog::loadMultiple();
+    $map = [];
+    foreach($logs as $log) {
+        $zip = $log->getZipcode();
+        $zip = ZipcodeFinderService::normalizeZipcode($zip);
+        $count = (int) $log->getCount();
+        if(isset($map[$zip])) {
+            $map[$zip] += $count;
+        }
+        else {
+            $map[$zip] = $count;
+        }
+        $log->delete();
+    }
+    foreach($map as $zip => $count) {
+        $logItem = ZipcodeFinderLog::create([
+            'zipcode' => $zip,
+        ]);
+        $logItem->set('count', $count);
+        $logItem->save();
+    }
+
+}

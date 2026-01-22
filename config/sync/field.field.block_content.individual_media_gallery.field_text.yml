@@ -1,0 +1,35 @@
+uuid: b0fabd6c-cba4-4d4e-97ef-da3ff6c9c07e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.individual_media_gallery
+    - field.storage.block_content.field_text
+    - filter.format.basic_html
+    - filter.format.code
+    - filter.format.full_html
+    - filter.format.plain_text
+    - filter.format.restricted_html
+  module:
+    - text
+id: block_content.individual_media_gallery.field_text
+field_name: field_text
+entity_type: block_content
+bundle: individual_media_gallery
+label: Text
+description: 'This brings in the description from the gallery page, it can be removed and replaced with custom text.'
+required: false
+translatable: true
+default_value:
+  -
+    value: "<p>[block_content:field_gallery:entity:body]</p>\r\n"
+    format: basic_html
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - code
+    - restricted_html
+    - full_html
+    - plain_text
+field_type: text_long

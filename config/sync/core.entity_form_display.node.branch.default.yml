@@ -1,0 +1,323 @@
+uuid: d6f40a6f-d038-4567-b9c6-9ca65bfcf397
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.branch.field_add_to_footer
+    - field.field.node.branch.field_city
+    - field.field.node.branch.field_do_not_show_address
+    - field.field.node.branch.field_do_not_show_hours
+    - field.field.node.branch.field_do_not_show_phone
+    - field.field.node.branch.field_hours
+    - field.field.node.branch.field_industry_page_links
+    - field.field.node.branch.field_is_main_branch
+    - field.field.node.branch.field_ltp_ref
+    - field.field.node.branch.field_main_city
+    - field.field.node.branch.field_phone
+    - field.field.node.branch.field_region
+    - field.field.node.branch.field_region_pages
+    - field.field.node.branch.field_state
+    - field.field.node.branch.field_street
+    - field.field.node.branch.field_subsite
+    - field.field.node.branch.field_zip
+    - node.type.branch
+  module:
+    - field_group
+    - hide_revision_field
+    - paragraphs
+    - path
+    - sprowt_subsite
+    - telephone
+third_party_settings:
+  field_group:
+    group__connected_content:
+      children:
+        - field_main_city
+        - field_region_pages
+      label: 'Connected Content'
+      region: content
+      parent_name: ''
+      weight: 9
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+        weight: -10
+    group_configurations:
+      children:
+        - path
+        - url_redirects
+        - created
+      label: Configurations
+      region: content
+      parent_name: ''
+      weight: 11
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+        weight: 0
+    group_city_links:
+      children:
+        - field_industry_page_links
+      label: 'Location Landing Pages'
+      region: content
+      parent_name: ''
+      weight: 23
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: "Links used on City Page's Location block address."
+        required_fields: true
+id: node.branch.default
+targetEntityType: node
+bundle: branch
+mode: default
+content:
+  content_library_include:
+    type: boolean_checkbox
+    weight: 17
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_add_to_footer:
+    type: boolean_checkbox
+    weight: 18
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_city:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_do_not_show_address:
+    type: boolean_checkbox
+    weight: 21
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      conditional_fields:
+        0b746ce5-01f9-4293-9a19-5531cc9986b0:
+          entity_type: node
+          bundle: branch
+          dependee: field_add_to_footer
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_do_not_show_hours:
+    type: boolean_checkbox
+    weight: 20
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      conditional_fields:
+        258c8419-847b-4bfd-9e25-890cd92f8f82:
+          entity_type: node
+          bundle: branch
+          dependee: field_add_to_footer
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_do_not_show_phone:
+    type: boolean_checkbox
+    weight: 19
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      conditional_fields:
+        fb3e289f-0f60-4bdc-94e1-e82b647de973:
+          entity_type: node
+          bundle: branch
+          dependee: field_add_to_footer
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_hours:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_industry_page_links:
+    type: entity_reference_paragraphs
+    weight: 28
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: industry_page_links
+    third_party_settings: {  }
+  field_is_main_branch:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_main_city:
+    type: options_select
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_phone:
+    type: telephone_default
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_region:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_region_pages:
+    type: options_select
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_state:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_street:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_subsite:
+    type: sprowt_subsite_reference_selector
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_zip:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  revision_log:
+    type: hide_revision_field_log_widget
+    weight: 12
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+      show: true
+      default: ''
+      permission_based: false
+      allow_user_settings: true
+      hide_revision: false
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 13
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_ltp_ref: true
+  sticky: true
+  uid: true

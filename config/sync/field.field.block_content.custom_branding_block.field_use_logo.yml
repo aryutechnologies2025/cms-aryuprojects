@@ -1,0 +1,23 @@
+uuid: ee2bd5ee-1296-42c9-9a7b-e4c6dd4b0aa2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.custom_branding_block
+    - field.storage.block_content.field_use_logo
+id: block_content.custom_branding_block.field_use_logo
+field_name: field_use_logo
+entity_type: block_content
+bundle: custom_branding_block
+label: 'Use Logo'
+description: 'Use the active theme logo'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

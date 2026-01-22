@@ -1,0 +1,228 @@
+// Form styles
+$_form-background-color: palette(white, pure);
+$_form-box-shadow-focus: 0px 3px 3px rgba(0, 0, 0, 0.1);
+$input-height: 40px;
+
+fieldset {
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.form-composite legend,
+legend {
+  margin-bottom: 2px;
+  padding: 0;
+  font-weight: normal;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 1px;
+  font-size: 1.4rem;
+  font-weight: normal;
+
+  @include breakpoint($medium) {
+    font-size: 1.5rem;
+  }
+}
+
+input,
+select,
+textarea {
+  display: block;
+}
+
+input:not([type="submit"]) {
+  height: $input-height;
+}
+
+.form-radios,
+.form-checkboxes {
+  margin-bottom: $xsmall-spacing;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  height: auto;
+  margin-bottom: 3px;
+  margin-right: 4px;
+}
+
+textarea {
+  max-height: $input-height * 3;
+  height: auto;
+}
+
+[type="color"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+.form-type-select .select2,
+input:not([type]),
+.form-textarea-wrapper textarea {
+  appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px 18px;
+  border: none;
+  //border: $base-border;
+  border-radius: $base-border-radius;
+  margin-bottom: $xsmall-spacing;
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+  background-color: $_form-background-color;
+  transition: border-color $base-duration $base-ease;
+  -webkit-appearance: none;
+
+  &:hover {
+    border-color: shade($_form-background-color, 20%);
+  }
+
+  &:focus {
+    // border-color: ;
+    // box-shadow: $_form-box-shadow-focus;
+    // outline: none;
+  }
+
+  &:disabled {
+    background-color: shade($_form-background-color, 5%);
+    cursor: not-allowed;
+
+    &:hover {
+      border: $base-border;
+    }
+  }
+
+  &::placeholder {
+    color: $base-font-color;
+  }
+}
+
+.form-type-select .select2 {
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  display: inline;
+  margin-right: $xsmall-spacing / 2;
+}
+
+[type="file"] {
+  margin-bottom: $xsmall-spacing;
+  width: 100%;
+}
+
+select {
+  display: inline-block;
+  margin-top: 1px;
+  margin-bottom: .6em;
+  max-width: 100%;
+  width: 100%;
+  height: $input-height;
+  padding: 0 35px 0 15px;
+  border: none;
+  border-radius: $base-border-radius;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23555555'><polygon points='0,0 100,0 50,50'/></svg>")
+    no-repeat;
+  background-size: 12px;
+  background-position: calc(100% - 15px) 18px;
+  background-repeat: no-repeat;
+  background-color: $_form-background-color;
+}
+.select2 {
+  max-width: 100%;
+
+  .select2-selection--single {
+    border: none;
+    border-radius: $base-border-radius;
+    height: $input-height;
+    padding: 4px;
+
+    .select2-selection__arrow {
+      width: 30px;
+      height: 35px;
+      position: absolute;
+      top: 0px;
+      right: 0;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23555555'><polygon points='0,0 100,0 50,50'/></svg>")
+        no-repeat;
+      background-size: 12px;
+      background-position: calc(100% - 15px) 18px;
+      background-repeat: no-repeat;
+      b {
+        display: none;
+      }
+    }
+  }
+}
+
+// [type="checkbox"],
+// [type="radio"],
+// [type="file"],
+// select {
+//   &:focus {
+//     outline: $focus-outline;
+//     outline-offset: $focus-outline-offset;
+//   }
+// }
+
+// Required to override normalize.css, which defines this as 'content-box'
+// Required as of Bourbon 5, since the otu put of $all-text-inputs has reduced in specificity from Bourbon 4
+input[type="search"] {
+  box-sizing: border-box;
+}
+
+.form-checkboxes,
+.form-radios {
+  width: 100%;
+}
+
+// [type="checkbox"],
+// [type="radio"] {
+//   height: 26px;
+//   vertical-align: middle;
+
+//   & + label {
+//     display: inline-block;
+//     width: calc(100% - 30px);
+//   }
+// }
+
+.form-item {
+  margin: 15px 0;
+  text-align: left;
+
+  @include breakpoint($large) {
+    margin: 25px 0;
+  }
+}
+
+#captcha {
+  display: none;
+}
+
+//Privacy Policy
+.form-item-privacy {
+  font-size: 1.3rem;
+}

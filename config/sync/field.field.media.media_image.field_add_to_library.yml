@@ -1,0 +1,23 @@
+uuid: 7b4fc9d0-c307-4436-b02d-7c96179b4be5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_add_to_library
+    - media.type.media_image
+id: media.media_image.field_add_to_library
+field_name: field_add_to_library
+entity_type: media
+bundle: media_image
+label: 'Add to Library'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

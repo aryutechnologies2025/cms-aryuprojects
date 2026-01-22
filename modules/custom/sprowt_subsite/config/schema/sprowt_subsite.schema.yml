@@ -1,0 +1,27 @@
+condition.plugin.sprowt_subsite_condition:
+    type: condition.plugin
+    label: 'Subsite condition'
+    mapping:
+        fields:
+            type: mapping
+            label: Subsite Fields
+        hasNoField:
+            type: string
+            label: If the node has none of these fields
+
+block.settings.subsite_menu_block:
+    type: block_settings
+    label: 'Subsite menu block block'
+    mapping:
+        level:
+            type: integer
+            label: 'Starting level'
+        depth:
+            type: integer
+            label: 'Maximum number of levels'
+        expand_all_items:
+            type: boolean
+            label: 'Expand all items'
+        menu_field:
+            type: string
+            label: 'Subsite menu type'

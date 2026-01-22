@@ -1,0 +1,38 @@
+layout_twocol_header_column:
+  label: 'Two Columns with Header'
+  category: 'Custom layouts'
+  path: layouts/twocol_header_section
+  template: layout--twocol-header-section
+  library: custom_layout_builder/twocol_header_section
+  class: '\Drupal\custom_layout_builder\Plugin\Layout\TwoColumnHeaderLayout'
+  default_region: header
+  icon_map:
+    - [header]
+    - [first, second]
+  regions:
+    header:
+      label: Header
+    first:
+      label: First
+    second:
+      label: Second
+layout_threecol_header_col:
+  label: 'Three Columns with Header'
+  category: 'Custom layouts'
+  path: layouts/threecol_header_section
+  template: layout--threecol-header-section
+  library: custom_layout_builder/threecol_header_section
+  class: '\Drupal\custom_layout_builder\Plugin\Layout\ThreeColumnHeaderLayout'
+  default_region: header
+  icon_map:
+    - [header]
+    - [first, second, third]
+  regions:
+    header:
+      label: Header
+    first:
+      label: First
+    second:
+      label: Second
+    third:
+      label: Third

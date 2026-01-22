@@ -1,0 +1,14 @@
+uuid: 7da2924c-6931-4d9c-9875-3fb6d08d2928
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ai_example_tags
+id: taxonomy_vocabulary_ai_example_tags
+entity_type_id: taxonomy_vocabulary
+entity_id: ai_example_tags
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

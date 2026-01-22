@@ -1,0 +1,12 @@
+uuid: 0804a735-d10e-4850-aa1b-283b9c7ba219
+langcode: en
+status: true
+dependencies: {  }
+id: secondary_dark_color
+label: 'Secondary Dark Color'
+classes: bg-secondary-dark
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -13

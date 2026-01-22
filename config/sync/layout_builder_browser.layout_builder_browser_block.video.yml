@@ -1,0 +1,11 @@
+uuid: 6826d137-7d52-446b-9366-bea4f69d2176
+langcode: en
+status: false
+dependencies: {  }
+id: video
+block_id: 'field_block:media:video:field_media_video_file'
+category: custom_blocks
+label: Video
+image_path: ''
+image_alt: ''
+weight: -40

@@ -1,0 +1,8 @@
+uuid: 2896c294-2043-4a59-ad1e-d571d7e7f06b
+langcode: en
+status: true
+dependencies: {  }
+id: node__subsite
+label: 'Content: Subsite'
+tags:
+  robots: 'noindex, nofollow, noydir'

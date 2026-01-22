@@ -1,0 +1,45 @@
+sprowt_ai.settings:
+    title: Sprowt AI Settings
+    description: Sprowt AI Settings
+    route_name: sprowt_ai.settings
+    parent: system.admin_config_services
+    weight: 10
+
+entity.sprowt_ai_example.collection:
+    title: 'Examples'
+    description: 'List of examples.'
+    route_name: entity.sprowt_ai_example.collection
+    parent: sprowt_ai.settings
+    weight: 1
+
+sprowt_ai_example.add_form:
+    title: 'Add example'
+    route_name: entity.sprowt_ai_example.add_form
+    parent: entity.sprowt_ai_example.collection
+    weight: 2
+
+entity.ai_system.overview:
+    title: AI System users
+    parent: sprowt_ai.settings
+    description: 'List of ai systems to extend site functionality.'
+    route_name: entity.ai_system.collection
+    weight: 3
+
+entity.ai_system.add_form:
+    route_name: 'entity.ai_system.add_form'
+    title: 'Add ai system user'
+    parent: entity.ai_system.overview
+    weight: 4
+
+entity.sprowt_ai_context.collection:
+    title: 'Contexts'
+    description: 'List of contexts.'
+    route_name: entity.sprowt_ai_context.collection
+    parent: sprowt_ai.settings
+    weight: 5
+
+entity.sprowt_ai_context.add_form:
+    route_name: 'entity.sprowt_ai_context.add_form'
+    title: 'Add context'
+    parent: entity.sprowt_ai_context.collection
+    weight: 6

@@ -1,0 +1,8 @@
+uuid: fd0c2757-f96e-4802-bf0f-4c5d2857d989
+langcode: en
+status: true
+dependencies: {  }
+id: modal_block
+label: 'Pop-up Block'
+revision: false
+description: null

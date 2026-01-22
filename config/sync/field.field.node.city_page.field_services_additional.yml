@@ -1,0 +1,29 @@
+uuid: b149ef08-805c-4ab1-a3e2-dd518b2510ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_services_additional
+    - node.type.city_page
+    - node.type.service
+id: node.city_page.field_services_additional
+field_name: field_services_additional
+entity_type: node
+bundle: city_page
+label: 'Additional Services - No Follow Link'
+description: "Additional services to list on page but with no link using the 'Additional Services - No Link' block."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      service: service
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

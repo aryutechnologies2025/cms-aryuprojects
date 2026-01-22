@@ -1,0 +1,47 @@
+uuid: 54e0ca49-df00-4a99-9bc7-fc8e35234acb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.schema
+    - field.field.node.region_page.field_industry
+    - field.field.node.region_page.field_main_branch
+    - field.field.node.region_page.field_meta_description
+    - field.field.node.region_page.field_meta_tags
+    - field.field.node.region_page.field_region
+    - field.field.node.region_page.field_subsite
+    - field.field.node.region_page.layout_builder__layout
+    - node.type.region_page
+  module:
+    - metatag
+    - user
+id: node.region_page.schema
+targetEntityType: node
+bundle: region_page
+mode: schema
+content:
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_industry: true
+  field_main_branch: true
+  field_meta_description: true
+  field_region: true
+  field_subsite: true
+  langcode: true
+  layout_builder__layout: true

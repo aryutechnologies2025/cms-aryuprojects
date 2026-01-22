@@ -1,0 +1,9 @@
+uuid: b3956f88-d372-4db8-b3ae-abc208531a39
+langcode: en
+status: true
+dependencies: {  }
+name: 'AI Example Tags'
+vid: ai_example_tags
+description: null
+weight: 0
+new_revision: false

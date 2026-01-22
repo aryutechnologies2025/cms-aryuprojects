@@ -1,0 +1,24 @@
+uuid: 0d4341a2-9d2b-4389-bbb8-6008e5c7265c
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - node
+    - system
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_footer_menu
+field_name: field_footer_menu
+entity_type: node
+type: entity_reference
+settings:
+  target_type: menu
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

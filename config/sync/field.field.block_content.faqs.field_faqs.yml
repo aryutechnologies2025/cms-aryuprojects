@@ -1,0 +1,29 @@
+uuid: 9b340101-a01e-4666-abb7-571d48868d13
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faqs
+    - field.storage.block_content.field_faqs
+    - node.type.faq
+id: block_content.faqs.field_faqs
+field_name: field_faqs
+entity_type: block_content
+bundle: faqs
+label: 'FAQ Overrides'
+description: 'Manually select what FAQs to be displayed on this block.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      faq: faq
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

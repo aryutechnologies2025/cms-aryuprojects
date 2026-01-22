@@ -1,0 +1,8 @@
+uuid: 0ff4b712-c9f6-435d-83f1-60f1d6e3335a
+langcode: en
+status: true
+dependencies: {  }
+id: recommended_solution
+label: 'Recommended Solution'
+revision: false
+description: 'Introduction block for Concern Highlighted Solution Pages.'

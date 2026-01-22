@@ -1,0 +1,33 @@
+uuid: 5b69fd6f-3ddc-434c-93a2-d7d309be6862
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.breadcrumbs
+    - field.field.block_content.breadcrumbs.field_crumb
+  module:
+    - sprowt_admin_override
+id: block_content.breadcrumbs.default
+targetEntityType: block_content
+bundle: breadcrumbs
+mode: default
+content:
+  field_crumb:
+    type: link_with_description
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  revision_log: true

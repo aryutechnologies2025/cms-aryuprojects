@@ -1,0 +1,27 @@
+uuid: d1ad8dda-83b5-4791-b684-5b4c0dfdd17e
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.crop_4_3
+  module:
+    - crop
+_core:
+  default_config_hash: NiSMDuaZFzy8WZ-HiMGsrhg-oWz3OttbTD7vW_MJl0c
+name: medium_4_3
+label: 'Medium - (300 x 330) with crop 4:3'
+effects:
+  d02cea5d-7435-49e1-9103-3d673ecf8734:
+    uuid: d02cea5d-7435-49e1-9103-3d673ecf8734
+    id: image_resize
+    weight: 4
+    data:
+      width: 300
+      height: 330
+  e051acef-d8a1-4983-a700-a70eb0856971:
+    uuid: e051acef-d8a1-4983-a700-a70eb0856971
+    id: crop_crop
+    weight: 3
+    data:
+      crop_type: crop_4_3
+      automatic_crop_provider: null

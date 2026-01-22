@@ -1,0 +1,17 @@
+uuid: d156d9d1-c53e-47d0-a96f-c41d3b00bd93
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: teaser_850x300
+label: 'Teaser (850x300)'
+effects:
+  94cedce3-d3a0-43a5-ba17-42217aa82302:
+    uuid: 94cedce3-d3a0-43a5-ba17-42217aa82302
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 850
+      height: 300
+      crop_type: focal_point

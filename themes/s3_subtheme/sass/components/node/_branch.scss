@@ -1,0 +1,19 @@
+.node--type-branch {
+  // Teaser / Secondary Teaser
+  &.node--view-mode-teaser,
+  &.node--view-mode-secondary-teaser,
+  &.node--view-mode-altb,
+  &.node--view-mode-quaternary-teaser {
+    .node__content {
+      .field--name-field-phone {
+        a {
+          font-weight: 500;
+          transition: .3s;
+          &:hover {
+            color: palette(secondary);
+          }
+        }
+      }
+    }
+  }
+}

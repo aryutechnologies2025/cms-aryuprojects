@@ -1,0 +1,37 @@
+langcode: en
+_core:
+  default_config_hash: nNcqzC75Ga_iQShU0PBJRKk48eiw1ArP7A3xAL5Lveg
+button_value: 'Save & Edit'
+button_weight: '-1'
+gin_primary: false
+unpublish: false
+unpublish_new_only: false
+hide_default_save: false
+enable_node_types_automatically: false
+node_types:
+  benefit: '0'
+  branch: '0'
+  career_benefit: '0'
+  concern: '0'
+  faq: '0'
+  issue: '0'
+  package: '0'
+  region_page: '0'
+  special_offer: '0'
+  subsite: '0'
+  testimonial: '0'
+  standalone_landing_page: '0'
+  solution_page_services: '0'
+  solution_page_packages: '0'
+  solution_page_package_service: '0'
+  solution_page_package_alt: '0'
+  service: '0'
+  profile: '0'
+  page: '0'
+  media_gallery: '0'
+  ltp_page: '0'
+  landing_page: '0'
+  job_post: '0'
+  city_page: '0'
+  career_page: '0'
+  blog: '0'

@@ -1,0 +1,5 @@
+services:
+    zipcode_finder.service:
+        class: Drupal\zipcode_finder\ZipcodeFinderService
+        arguments:
+         - '@database'

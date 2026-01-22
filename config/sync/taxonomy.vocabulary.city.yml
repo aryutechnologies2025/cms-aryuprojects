@@ -1,0 +1,9 @@
+uuid: 6a195e03-9b6c-41db-b751-49dc44ba0062
+langcode: en
+status: true
+dependencies: {  }
+name: City
+vid: city
+description: 'City Taxonomy to connect content by locality'
+weight: 0
+new_revision: false

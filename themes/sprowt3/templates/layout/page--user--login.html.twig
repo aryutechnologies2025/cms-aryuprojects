@@ -1,0 +1,58 @@
+<div class="layout-container">
+
+  {% if page.admin_links %}
+    <div class="admin_links">
+      {{ page.admin_links }}
+    </div>
+  {% endif %}
+
+  {% if page.header_mobile_menu %}
+    {{ page.header_mobile_menu }}
+  {% endif %}
+
+  <header class="page-header" role="banner">
+    {{ page.header1 }}
+    {{ page.header2 }}
+    {{ page.header3 }}
+    {{ page.header4 }}
+    {{ page.header_layout }}
+  </header>
+
+  {% if page.highlighted %}
+    {% block highlighted %}
+      <div class="page-highlight">
+        <div class="message-modal">
+          {{ page.highlighted }}
+        </div>
+      </div>
+    {% endblock %}
+  {% endif %}
+
+  {{ page.help }}
+
+  <main role="main">
+    <a id="main-content" tabindex="-1"></a>
+    {# link is in html.html.twig #}
+
+    {% block content %}
+      <div class="layout-content">
+        {{ page.content }}
+        <div class="password-reset"><a href="/user/password">Password Reset</a></div>
+      </div>
+    {% endblock %}
+
+    {% if page.content_bottom %}
+      <div class="layout-content-bottom">
+        {{ page.content_bottom }}
+      </div>
+    {% endif %}
+  </main>
+
+  <footer class="page-footer" role="contentinfo">
+    {{ page.footer }}
+    {{ page.footer_bottom }}
+    {{ page.footer_layout }}
+  </footer>
+  
+</div>
+{# /.layout-container #}

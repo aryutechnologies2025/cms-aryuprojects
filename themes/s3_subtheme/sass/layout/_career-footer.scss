@@ -1,0 +1,17 @@
+.region-footer,
+.region-footer-layout [id*='footer-top'] {
+  nav.menu--careers-menu {
+    @include flexbox;
+    align-items: center;
+    justify-content: center;
+
+    > ul.menu {
+      > li {
+        a {
+          color: palette(white);
+          @extend %underline-link;
+        }
+      }
+    }
+  }
+}

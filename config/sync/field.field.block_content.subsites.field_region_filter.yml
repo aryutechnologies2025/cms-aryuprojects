@@ -1,0 +1,29 @@
+uuid: 542334a8-81db-4366-b555-6c2ff8137a7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.subsites
+    - field.storage.block_content.field_region_filter
+    - taxonomy.vocabulary.region
+id: block_content.subsites.field_region_filter
+field_name: field_region_filter
+entity_type: block_content
+bundle: subsites
+label: 'Region Filter'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      region: region
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

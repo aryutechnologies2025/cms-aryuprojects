@@ -1,0 +1,63 @@
+.page-node-type-job-post,
+.page-node-type-career-page {
+  .region-header-layout {
+    border-bottom: 8px solid var(--color-light);
+    #header-1 {
+      display: flex;
+      height: auto;
+      min-height: 0;
+      max-height: 100%;
+      @include breakpoint($medium) {
+        .layout__region {
+          padding: 0 20px;
+        }
+      }
+      @include breakpoint(1375px) {
+        .layout__region {
+          padding: 0;
+        }
+      }
+    }
+    
+    #header-4 {
+      display: flex;
+      padding: 0 30px;
+      pointer-events: auto;
+
+      @include breakpoint($max-small) {
+        height: $header-career-main-height-mobile;
+        max-height: $header-career-main-height-mobile;
+        min-height: $header-career-main-height-mobile;
+      }
+
+      @include breakpoint($small) {
+        padding: 20px 15px 5px;
+        .layout__region {
+          flex-direction: column;
+        }
+      }
+      @include breakpoint($medium) {
+        padding: 0 15px;
+        .layout__region {
+          flex-direction: row;
+        }
+      }
+    }
+
+    .block-inline-blockcustom-branding-block {
+      width: auto;
+    
+      .site-logo {
+        display: flex;
+      }
+    }
+  }
+
+  main {
+    margin-top: $header-career-height-mobile + 8px; // mobile height plus border size
+
+    @include breakpoint($small) {
+      margin-top: 0;
+    }
+  }
+}

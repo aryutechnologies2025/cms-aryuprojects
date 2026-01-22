@@ -1,0 +1,330 @@
+4-evergreen:
+    environments: [dev, live]
+    activeUrls: [4evergreenlawnservice.com]
+4ecolife:
+    environments: [dev, live]
+    activeUrls: [4ecolife.com]
+a-actionpestcontrol-s3:
+    environments: [dev, live]
+    activeUrls: [www.a-actionpestcontrol.com]
+acpest-s3:
+    environments: [dev, live]
+    activeUrls: [www.acpest.com]
+alamopest:
+    environments: [dev, live]
+    activeUrls: [www.alamopest.com]
+allegro-lawn:
+    environments: [dev, live]
+    activeUrls: [www.allegrolawn.com]
+allgreenok:
+    environments: [dev, live]
+    activeUrls: [www.allgreenok.com]
+alm-s3:
+    environments: [dev, live]
+    activeUrls: [www.fertilizewithalm.com]
+americanturfandtreecare-s3:
+    environments: [dev, live]
+    activeUrls: [www.americanturfandtreecare.com]
+anchorpestmanagement:
+    environments: [dev, live]
+    activeUrls: [anchorpestmanagement.com]
+antipesto-s3:
+    environments: [dev, live]
+    activeUrls: [www.antipesto.com]
+arkadiapest-s3:
+    environments: [dev, live]
+    activeUrls: [www.arkadiapest.com]
+barr:
+    environments: [dev]
+    activeUrls: {  }
+beach-pest-service:
+    environments: [dev, live]
+    activeUrls: [www.beachpestservice.com]
+beebespest:
+    environments: [dev, live]
+    activeUrls: [www.beebespest.com]
+belo-pest-s3:
+    environments: [dev, live]
+    activeUrls: [www.belopestsolutions.com]
+bigtimepestcontrol-s3:
+    environments: [dev, live]
+    activeUrls: [www.bigtimepestcontrol.com]
+bill-clark-pest-control:
+    environments: [dev, live]
+    activeUrls: [www.billclarkbugsperts.com]
+biogreen:
+    environments: [dev, live]
+    activeUrls: [www.biogreenservice.com]
+bug-wiser:
+    environments: [dev, live]
+    activeUrls: [www.bugwiserpest.net]
+bugginoutipm:
+    environments: [dev]
+    activeUrls: {  }
+bugman-s3:
+    environments: [dev, live]
+    activeUrls: [www.thebugman.com]
+bugnarug:
+    environments: [dev, live]
+    activeUrls: [www.bugnarug.com]
+callbarrier:
+    environments: [dev, live]
+    activeUrls: [www.callbarrier.com]
+callpauls-s3:
+    environments: [dev, live]
+    activeUrls: [www.callpauls.com]
+cnein:
+    environments: [dev]
+    activeUrls: {  }
+cnein-express:
+    environments: [dev]
+    activeUrls: {  }
+cnein-starter:
+    environments: [dev]
+    activeUrls: {  }
+connor-pest-pros:
+    environments: [dev, live]
+    activeUrls: [www.connorspestpros.com]
+crown-service:
+    environments: [dev, live]
+    activeUrls: [www.crownserviceal.com]
+customturfinc-s3:
+    environments: [dev, live]
+    activeUrls: [www.customturfinc.com]
+d-bug-s3:
+    environments: [dev, live]
+    activeUrls: [www.dbugpest.com]
+dandiguaranty:
+    environments: [dev, live]
+    activeUrls: [dandiguaranty.com]
+deans-services-s3:
+    environments: [dev, live]
+    activeUrls: [www.deansservices.com]
+delsea:
+    environments: [dev, live]
+    activeUrls: [www.delseapestcontrol.net]
+dynagreen:
+    environments: [dev, live]
+    activeUrls: [4dynagreen.com]
+ecolawn-s3:
+    environments: [dev, live]
+    activeUrls: [www.ecolawn.net]
+ecoservepest-s3:
+    environments: [dev, live]
+    activeUrls: [www.ecoservepest.com]
+elitemoisture:
+    environments: [dev, live]
+    activeUrls: [www.elitemoisture.com]
+envturfmgmt:
+    environments: [dev]
+    activeUrls: {  }
+fennpest-s3:
+    environments: [dev, live]
+    activeUrls: [www.fennpest.com]
+fine-turf:
+    environments: [dev, live]
+    activeUrls: [www.fineturflawncare.com]
+framespestcontrol:
+    environments: [dev]
+    activeUrls: {  }
+frontlinepestcontrol:
+    environments: [dev]
+    activeUrls: {  }
+geckopestcontrol-s3:
+    environments: [dev, live]
+    activeUrls: [www.geckopestcontrol.com]
+getemservices-s3:
+    environments: [dev, live]
+    activeUrls: [www.getemservices.com]
+got-bugs-s3:
+    environments: [dev]
+    activeUrls: {  }
+got-lawn-s3:
+    environments: [dev]
+    activeUrls: {  }
+gpest:
+    environments: [dev, live]
+    activeUrls: [www.gpest.com]
+greenleafpc-s3:
+    environments: [dev, live]
+    activeUrls: [www.greenleafpc.com]
+greenmachinelawncare:
+    environments: [dev, live]
+    activeUrls: [www.greenmachinelawncare.com]
+grosse-ile:
+    environments: [dev, live]
+    activeUrls: [gilawnsprinkler.com]
+guardtechpest:
+    environments: [dev, live]
+    activeUrls: [www.guardtechpest.com]
+harvest-lawn-care:
+    environments: [dev, live]
+    activeUrls: [hlcfert.com]
+herbi-systems-s3:
+    environments: [dev, live]
+    activeUrls: [www.herbi-systems.com]
+holly-test:
+    environments: [dev]
+    activeUrls: {  }
+htppest-s3:
+    environments: [dev, live]
+    activeUrls: [www.htppest.com]
+installer:
+    environments: [dev]
+    activeUrls: {  }
+jamie-test:
+    environments: [dev]
+    activeUrls: {  }
+jess:
+    environments: [dev]
+    activeUrls: {  }
+jointhegreenteam-s3:
+    environments: [dev, live]
+    activeUrls: [www.jointhegreenteam.com]
+justrightlawns-s3:
+    environments: [dev, live]
+    activeUrls: [justrightlawns.com]
+kyle:
+    environments: [dev]
+    activeUrls: {  }
+landartinc:
+    environments: [dev, live]
+    activeUrls: [landartinc.com]
+lawnlab:
+    environments: [dev, live]
+    activeUrls: [www.lawnlab.com]
+legacy-lawn-care:
+    environments: [dev, live]
+    activeUrls: [legacylawncarega.com]
+midwestpest-s3:
+    environments: [dev]
+    activeUrls: {  }
+mitchellpestflorida:
+    environments: [dev, live]
+    activeUrls: [mitchellpestflorida.com]
+mp-test:
+    environments: [dev]
+    activeUrls: {  }
+mylespest-s3:
+    environments: [dev, live]
+    activeUrls: [www.mylespest.com]
+natural-state-s3:
+    environments: [dev, live]
+    activeUrls: [www.naturalstatepestcontrol.com]
+nuleaf:
+    environments: [dev, live]
+    activeUrls: [nuleaflawncare.com]
+okeena:
+    environments: [dev, live]
+    activeUrls: [okeena.com]
+paskepestcontrol:
+    environments: [dev, live]
+    activeUrls: [www.paskepestcontrol.com]
+pei:
+    environments: [dev]
+    activeUrls: {  }
+pei-site:
+    environments: [dev]
+    activeUrls: {  }
+pest-control-technicians-s3:
+    environments: [dev, live]
+    activeUrls: [pctbugfree.com]
+pricetermite:
+    environments: [dev, live]
+    activeUrls: [www.pricetermite.com]
+pro-built:
+    environments: [dev]
+    activeUrls: {  }
+procorepest:
+    environments: [dev, live]
+    activeUrls: [www.procorepest.com]
+profext-s3:
+    environments: [dev, live]
+    activeUrls: [profext.com]
+richpro:
+    environments: [dev, live]
+    activeUrls: [richpropm.com]
+riverpest:
+    environments: [dev]
+    activeUrls: {  }
+roots:
+    environments: [dev, live]
+    activeUrls: [rootsturfandornamental.com]
+round-the-clock:
+    environments: [dev, live]
+    activeUrls: [www.roundtheclockpestcontrol.com]
+rowlandpest:
+    environments: [dev, live]
+    activeUrls: [www.rowlandpest.com]
+royal-greens:
+    environments: [dev, live]
+    activeUrls: [royal-greens.com]
+scottsturfandpestservices:
+    environments: [dev, live]
+    activeUrls: [scottsturfandpestservices.com]
+senate:
+    environments: [live]
+    activeUrls: [www.senatetermitecontrol.com]
+showcase-lawn-care:
+    environments: [dev, live]
+    activeUrls: [lawn.pro]
+soundpest-s3:
+    environments: [dev, live]
+    activeUrls: [www.soundpestcontrol.com]
+sprowt3:
+    environments: [dev, installer, installer-source, test, update]
+    activeUrls: {  }
+sprowt3-source:
+    environments: [dev, live]
+    activeUrls: {  }
+suburbanpest-s3:
+    environments: [dev]
+    activeUrls: {  }
+superiorgreenlawn:
+    environments: [dev]
+    activeUrls: {  }
+tailormade-s3:
+    environments: [dev, live]
+    activeUrls: [www.tailormadelawns.com]
+terminix-triad-s3:
+    environments: [dev, live]
+    activeUrls: [www.terminix-triad.com]
+terminixnola:
+    environments: [dev]
+    activeUrls: {  }
+termio-s3:
+    environments: [dev, live]
+    activeUrls: [www.termiopest.com]
+weedman:
+    environments: [dev, live]
+    activeUrls: [weedmanloudoun.com]
+westernpestcontrol-s3:
+    environments: [dev, live]
+    activeUrls: [www.wpest.com]
+wetlandsirrigationllc:
+    environments: [dev, live]
+    activeUrls: [www.wetlandsirrigationllc.com]
+will:
+    environments: [dev, live]
+    activeUrls: [sprowt.willmcmillian.com]
+wittpm-s3:
+    environments: [dev, live]
+    activeUrls: [www.wittpm.com]
+wolfpackpestcontrolnc:
+    environments: [dev, live]
+    activeUrls: [www.wolfpackpest.com]
+woodspestcontrol:
+    environments: [dev, live]
+    activeUrls: [www.woodspestcontrol.com]
+wyopeakpest:
+    environments: [dev]
+    activeUrls: {  }
+zappest-s3:
+    environments: [dev, live]
+    activeUrls: [www.zappest.com]
+smb1:
+    environments: [dev]
+    activeUrls: {  }
+smb2:
+    environments: [dev]
+    activeUrls: {  }

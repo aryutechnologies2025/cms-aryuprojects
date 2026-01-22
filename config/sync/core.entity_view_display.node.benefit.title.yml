@@ -1,0 +1,43 @@
+uuid: 61d56632-3a69-4879-a26d-379541298fdb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.title
+    - field.field.node.benefit.body
+    - field.field.node.benefit.field_company_wide
+    - field.field.node.benefit.field_icon_benefit
+    - field.field.node.benefit.field_industry
+    - field.field.node.benefit.field_ltp_ref
+    - field.field.node.benefit.field_ref_city
+    - field.field.node.benefit.field_services
+    - field.field.node.benefit.field_subsite_multiple
+    - node.type.benefit
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.benefit.title
+targetEntityType: node
+bundle: benefit
+mode: title
+content:
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_company_wide: true
+  field_icon_benefit: true
+  field_industry: true
+  field_ltp_ref: true
+  field_ref_city: true
+  field_services: true
+  field_subsite_multiple: true
+  langcode: true
+  links: true

@@ -1,0 +1,98 @@
+.page-node-type-career-page,
+.page-node-type-job-post {
+  .region-header4 {
+    nav.menu--careers-menu {
+      > ul.menu {
+        padding: 0;
+      }
+    }
+  }
+
+  // Header4 Menu Block
+  .region-header4,
+  .region-header-layout #header-4 {
+    nav.menu--careers-menu {
+      @include breakpoint($small) {
+        > ul.menu {
+          padding: 0;
+        }
+      }
+      @include breakpoint($medium) {
+        > ul.menu {
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+
+  // Header Careers Main Menu
+  header.page-header nav.menu--careers-menu {
+
+    .navbar-toggle {
+      background: none;
+      border: none;
+      margin-top: 0;
+      padding: 7px 15px;
+
+      .icon-bar {
+        background-color: palette(black);
+      }
+    }
+
+    > ul.menu {
+      > li {
+        > a {
+          font-weight: 700;
+          color: palette(black);
+
+          &::after {
+            color: palette(black);
+          }
+        }
+
+        &:hover {
+          > a {
+            color: palette(black, pure);
+          }
+        }
+
+        &:last-child {
+          background-color: var(--color-dark);
+          transition: $duration;
+          a {
+            color: palette(white);
+          }
+          &:hover {
+            background-color: palette(black);
+          }
+        }
+      }
+    }
+
+    @include breakpoint($small) {
+      > ul.menu {
+        align-items: center;
+        > li {
+          padding: 25px 9px;
+          text-transform: uppercase;
+          &:last-child {
+            margin-left: 15px;
+            padding: 0;
+            a {
+              padding: 16px 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+    // Header Mobile Menu
+  .mobile-header-menu {
+    .mobile-menu-close {
+      @include icon-after(close, 1.6rem) {
+        color: palette(black);
+      }
+    }
+  }
+}

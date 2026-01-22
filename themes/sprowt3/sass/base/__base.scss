@@ -1,0 +1,21 @@
+////
+/// Base styles
+/// @group Base
+////
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  // Font Smoothing Hack
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+.dialog-off-canvas-main-canvas {
+  min-height: 100%;
+}

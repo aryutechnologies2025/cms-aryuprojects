@@ -1,0 +1,8 @@
+uuid: a98f3b16-87f8-4fd2-beb6-a6522ab80a47
+langcode: en
+status: true
+dependencies: {  }
+id: hero
+label: Hero
+revision: false
+description: 'Masthead hero block'

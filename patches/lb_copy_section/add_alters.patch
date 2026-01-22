@@ -1,0 +1,35 @@
+diff --git a/src/Controller/CopySectionController.php b/src/Controller/CopySectionController.php
+index 4ba9fa25e7..5581a84f29 100644
+--- a/src/Controller/CopySectionController.php
++++ b/src/Controller/CopySectionController.php
+@@ -92,6 +92,8 @@ public function copy(SectionStorageInterface $section_storage, $delta) {
+       $layout_settings = $section->getLayoutSettings();
+       $section_label = !empty($layout_settings['label']) ? $layout_settings['label'] : $this->t('Section @section', ['@section' => $delta + 1]);
+
++      \Drupal::moduleHandler()->alter('lb_copy_section_copy', $section);
++
+       // Put the sections and its label in the tempstore for future use.
+       $this->privateTempStore->set('copied_section', $section);
+       $this->privateTempStore->set('copied_section_label', $section_label);
+@@ -130,6 +132,8 @@ public function paste(SectionStorageInterface $section_storage, $delta) {
+       // (thanks to section_library authors).
+       $deep_cloned_section = $this->cloneAndReplaceSectionComponents($cloned_section);
+
++      \Drupal::moduleHandler()->alter('lb_copy_section_paste', $deep_cloned_section, $tempstore_section);
++
+       // Create a new section.
+       $section_storage->insertSection($delta, $deep_cloned_section);
+
+diff --git a/src/DeepCloningTrait.php b/src/DeepCloningTrait.php
+index 8a79257b7e..1282ca5952 100644
+--- a/src/DeepCloningTrait.php
++++ b/src/DeepCloningTrait.php
+@@ -65,6 +65,8 @@ protected function deepCloneSection($section) {
+     // Replace section components with new instances.
+     $deep_cloned_section = $this->cloneAndReplaceSectionComponents($cloned_section);
+
++    \Drupal::moduleHandler()->alter('lb_copy_section_deep_clone', $deep_cloned_section, $section);
++
+     return $deep_cloned_section;
+   }
+

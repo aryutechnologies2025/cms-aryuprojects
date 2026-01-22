@@ -1,0 +1,23 @@
+uuid: 2082a1ed-b421-41bf-9877-ae8b40041826
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subsite
+    - node.type.blog
+  module:
+    - sprowt_subsite
+id: node.blog.field_subsite
+field_name: field_subsite
+entity_type: node
+bundle: blog
+label: Subsite
+description: 'Main or Subsite this content belongs to.'
+required: false
+translatable: true
+default_value:
+  -
+    target: _main
+default_value_callback: ''
+settings: {  }
+field_type: sprowt_subsite_reference

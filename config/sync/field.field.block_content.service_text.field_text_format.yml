@@ -1,0 +1,21 @@
+uuid: 3277d991-ee35-41f3-bf62-660570894d0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.service_text
+    - field.storage.block_content.field_text_format
+  module:
+    - options
+id: block_content.service_text.field_text_format
+field_name: field_text_format
+entity_type: block_content
+bundle: service_text
+label: 'Text Format'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,36 @@
+[class*="view-special-offers"] {
+  // Front Page Great Deal Banner
+  .path-frontpage & .view-content {
+    .views-row:first-child,
+    .slick__slide:first-child {
+      .special-offer-link {
+        &::before {
+          content: "Great Deal";
+          position: absolute;
+          right: -28px;
+          top: 5px;
+          width: 144px;
+          height: 26px;
+          padding-right: 5px;
+          border-style: solid;
+          border-color: transparent;
+          border-bottom-color: palette(primary); // Great Deal Banner Color
+          border-width: 0 15px 26px 48px;
+          transform: rotate(29deg) scale(0.78);
+          font-size: 13px;
+          font-weight: 600;
+          line-height: 1.9;
+          color: white;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        &.featured {
+          &::before {
+            border-bottom-color: palette(secondary); // Great Deal Banner Color
+          }
+        }
+      }
+    }
+  }
+}

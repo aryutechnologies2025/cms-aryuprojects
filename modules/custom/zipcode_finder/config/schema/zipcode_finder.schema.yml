@@ -1,0 +1,13 @@
+field.value.zipcode_finder_zipcode_finder_form:
+    type: mapping
+    label: Default value
+    mapping:
+        placeholder:
+            type: string
+            label: 'Field placeholder text'
+        submit_text:
+            type: string
+            label: 'Submit button text'
+        failure_uri:
+            type: string
+            label: 'Destination when no finder can be matched'

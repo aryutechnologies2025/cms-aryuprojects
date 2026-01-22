@@ -1,0 +1,50 @@
+uuid: 7d73d809-8671-47b2-b6cb-53bd1c52738f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link_boxes
+    - field.field.block_content.link_boxes.field_heading
+    - field.field.block_content.link_boxes.field_label_tag
+    - field.field.block_content.link_boxes.field_link_boxes
+    - field.field.block_content.link_boxes.field_subheading_tag
+  module:
+    - entity_reference_revisions
+    - tag_text_field
+id: block_content.link_boxes.default
+targetEntityType: block_content
+bundle: link_boxes
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_link_boxes:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+    module:
+        - sprowt_ai
+id: sprowt_ai_example_save_action
+label: 'Save examples'
+type: sprowt_ai_example
+plugin: entity:save_action:sprowt_ai_example
+configuration: { }

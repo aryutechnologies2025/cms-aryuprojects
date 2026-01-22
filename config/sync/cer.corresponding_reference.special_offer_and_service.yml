@@ -1,0 +1,14 @@
+uuid: 203abdb5-c8af-4d68-b10e-6ecdd062d30a
+langcode: en
+status: true
+dependencies: {  }
+id: special_offer_and_service
+label: 'Special Offer and Service'
+enabled: true
+first_field: field_services
+second_field: field_special_offers
+add_direction: null
+bundles:
+  node:
+    - service
+    - special_offer

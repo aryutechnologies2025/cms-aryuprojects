@@ -1,0 +1,13 @@
+.view-filters {
+  .form-type-textfield {
+    input {
+      border-color: palette(grey, lighter);
+    }
+  }
+
+  .form-type-select {
+    select {
+      background-color: palette(grey, lit);
+    }
+  }
+}

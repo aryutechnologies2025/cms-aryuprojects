@@ -1,0 +1,84 @@
+uuid: b53c70bf-5e1d-413b-a717-f6e0bb353872
+langcode: en
+status: false
+dependencies:
+  config:
+    - block_content.type.hero
+    - core.entity_view_mode.block_content.full
+    - field.field.block_content.hero.field_background_image_size
+    - field.field.block_content.hero.field_benefits
+    - field.field.block_content.hero.field_display_benefit
+    - field.field.block_content.hero.field_foreground_color
+    - field.field.block_content.hero.field_gradient_opacity
+    - field.field.block_content.hero.field_gradient_range
+    - field.field.block_content.hero.field_heading
+    - field.field.block_content.hero.field_hero_content_width
+    - field.field.block_content.hero.field_hero_style
+    - field.field.block_content.hero.field_image_bg_hero
+    - field.field.block_content.hero.field_image_fg_hero
+    - field.field.block_content.hero.field_image_mobile
+    - field.field.block_content.hero.field_label_tag
+    - field.field.block_content.hero.field_link
+    - field.field.block_content.hero.field_opacity
+    - field.field.block_content.hero.field_overlay_color
+    - field.field.block_content.hero.field_subheading_tag
+    - field.field.block_content.hero.field_text
+  module:
+    - layout_builder
+    - link
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: block_content.hero.full
+targetEntityType: block_content
+bundle: hero
+mode: full
+content:
+  field_benefits:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  field_background_image_size: true
+  field_display_benefit: true
+  field_foreground_color: true
+  field_gradient_opacity: true
+  field_gradient_range: true
+  field_heading: true
+  field_hero_content_width: true
+  field_hero_style: true
+  field_image_bg_hero: true
+  field_image_fg_hero: true
+  field_image_mobile: true
+  field_label_tag: true
+  field_opacity: true
+  field_overlay_color: true
+  field_subheading_tag: true
+  langcode: true

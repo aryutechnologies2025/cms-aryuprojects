@@ -1,0 +1,6 @@
+administer ai_prompt:
+    title: 'Administer prompts'
+    restrict access: true
+
+use sprowt_ai_prompt_library:
+    title: 'Use prompt library'

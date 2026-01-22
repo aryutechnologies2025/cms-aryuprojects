@@ -1,0 +1,97 @@
+<?php
+
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\node\Entity\Node;
+use Drupal\solution_finder\Entity\Solution;
+
+/**
+ * Set solution finder enabled in sprowt settings.
+ */
+function solution_finder_update_9001()
+{
+    /** @var \Drupal\Core\Extension\ModuleHandler $moduleHandler */
+    $moduleHandler = \Drupal::service('module_handler');
+    if(!$moduleHandler->moduleExists('sprowt_settings')) {
+        return;
+    }
+    /** @var \Drupal\sprowt_settings\SprowtSettings $sprowtSettings */
+    $sprowtSettings = \Drupal::service('sprowt_settings.manager');
+    $enabled = true;
+    $siteSettings = \Drupal::config('system.site');
+    $pages = $siteSettings->get('page', []);
+    $homePageUri = $pages['front'] ?? null;
+    // test to see if homepage is missing the solution finder.
+    // if it is, don't enable
+    if(!empty($homePageUri)) {
+        $nid = str_replace('/node/', '', $homePageUri);
+        $home = \Drupal\node\Entity\Node::load($nid);
+        $layout = $home->get('layout_builder__layout');
+        if (!empty($layout)) {
+            /** @var \Drupal\layout_builder\Plugin\Field\FieldType\LayoutSectionItem $item */
+            foreach ($layout as $key => &$item) {
+                /** @var \Drupal\layout_builder\Section $section */
+                $section = $item->section;
+                $settings = $section->getLayoutSettings();
+                if(!empty($settings['layout_builder_id']) && $settings['layout_builder_id'] == 'solution-finder') {
+                    $components = $section->getComponents();
+                    if(empty($components)) {
+                        $enabled = false;
+                    }
+                }
+            }
+        }
+    }
+    $sprowtSettings->setSetting('solution_finder_enabled', $enabled);
+
+}
+
+/**
+ * Install solution entity if it doesn't exist
+ */
+function solution_finder_update_100001()
+{
+    $db = \Drupal::database();
+    if(!$db->schema()->tableExists('solution')) {
+        \Drupal::entityTypeManager()->clearCachedDefinitions();
+        \Drupal::entityDefinitionUpdateManager()
+            ->installEntityType(\Drupal::entityTypeManager()->getDefinition('solution'));
+    }
+    else {
+        return 'Solution entity already exists';
+    }
+}
+
+/**
+ * Add/convert new solution page fields
+ */
+function solution_finder_update_100002()
+{
+    $newFieldDef = BaseFieldDefinition::create('map')
+        ->setLabel(t('Solution Pages'))
+        ->setDescription(t('Array of solution pages mapped to subsites attached to this solution'))
+        ->setDisplayConfigurable('form', false)
+        ->setDisplayConfigurable('view', false)
+        ->setCardinality(1);
+
+    \Drupal::entityDefinitionUpdateManager()
+        ->installFieldStorageDefinition('solution_pages', 'solution', 'solution_finder', $newFieldDef);
+
+
+    $rows = \Drupal::database()->query("SELECT * FROM solution")->fetchAll(\PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        if(!empty($row['solution_page'])) {
+            $newVal = [];
+            $entity = Solution::load($row['id']);
+            $solutionPage = Node::load($row['solution_page']);
+            $subsite = sprowt_subsite_get_subsite($solutionPage);
+            if(empty($subsite)) {
+                $newVal['_main'] = $row['solution_page'];
+            }
+            else {
+                $newVal[$subsite->uuid()] = $row['solution_page'];
+            }
+            $entity->set('solution_pages', $newVal);
+            $entity->save();
+        }
+    }
+}

@@ -1,0 +1,51 @@
+uuid: e56df4d1-643f-4cbc-8bc3-d6c9dba74b08
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.utility-zip-finder
+  module:
+    - menu_block
+    - node
+    - sprowt_subsite
+  theme:
+    - s3_subtheme
+id: utilityzipfinder
+theme: s3_subtheme
+region: header_mobile_menu
+weight: -19
+provider: null
+plugin: 'menu_block:utility-zip-finder'
+settings:
+  id: 'menu_block:utility-zip-finder'
+  label: 'Utility Zip Finder'
+  label_display: visible
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 0
+  expand_all_items: false
+  parent: 'utility-zip-finder:'
+  suggestion: utility_zip_finder
+visibility:
+  sprowt_subsite_condition:
+    id: sprowt_subsite_condition
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    use: true
+    value:
+      _main: _main
+    hasNoFields: show
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_page: career_page
+      job_post: job_post
+      standalone_landing_page: standalone_landing_page

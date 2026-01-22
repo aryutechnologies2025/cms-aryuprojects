@@ -1,0 +1,13 @@
+uuid: a93a925c-12ca-4b1d-997a-592cfe08308d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_learning_center
+id: block_content.hero_learning_center.default
+targetEntityType: block_content
+bundle: hero_learning_center
+mode: default
+content: {  }
+hidden:
+  langcode: true

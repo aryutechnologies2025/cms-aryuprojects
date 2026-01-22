@@ -1,0 +1,18 @@
+.layout__region {
+  .block-inline-blockidentifications,
+  .block--type-identifications {
+    .field--name-field-heading {
+      color: palette(white) !important;
+      background-color: palette(gray);
+    }
+
+    .field--name-field-identifications {
+      .paragraph--type--identifications {
+        .field--name-field-label,
+        .field--name-field-label-tag {
+          background-color: palette(gray, lit);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+.node--type-benefit {
+
+  //Teaser
+  &.node--view-mode-teaser {
+    .node__content {
+      [class*="field--name-field-icon"] {
+        background-color: palette(white);
+        border-radius: 50%;
+        box-shadow: inset 0px 0px 0px 3px palette(primary);
+        border: 3px solid palette(primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 120px;
+        width: 120px;
+        height: 120px;
+
+
+        @include breakpoint($medium) {
+          min-width: 130px;
+          width: 130px;
+          height: 130px;
+        }
+
+        svg {
+          height: 85px;
+          width: 85px;
+
+          path,
+          polygon {
+            fill: palette(primary);
+          }
+        }
+      }
+
+      .fieldset-wrapper {
+        margin-top: 12px;
+      }
+    }
+
+
+    .block-inline-blockhero & {
+      .node__content {
+        [class*="field--name-field-icon"] {
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          min-width: 100px;
+          width: 100px;
+          height: 100px;
+
+
+          @include breakpoint($medium) {
+            min-width: 100px;
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
+    }
+  }
+
+
+  //Token
+  &.node--view-mode-token {
+    .node__content {
+      [class*="field--name-field-icon"] {
+        background-color: palette(white);
+        border-radius: 50%;
+        box-shadow: inset 0px 0px 0px 3px palette(primary);
+        border: 3px solid palette(primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 100px;
+        width: 100px;
+        height: 100px;
+
+        @include breakpoint($medium) {
+          min-width: 100px;
+          width: 100px;
+          height: 100px;
+        }
+
+        svg {
+          height: 75px;
+          width: 75px;
+
+          path,
+          polygon {
+            fill: palette(primary);
+          }
+        }
+      }
+
+      .field--name-title-text {
+        min-width: 135px;
+      }
+    }
+  }
+}

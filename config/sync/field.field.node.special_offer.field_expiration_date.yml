@@ -1,0 +1,24 @@
+uuid: 519ea77a-3a04-4f06-8845-68ca23f9f5f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_expiration_date
+    - node.type.special_offer
+  module:
+    - datetime
+id: node.special_offer.field_expiration_date
+field_name: field_expiration_date
+entity_type: node
+bundle: special_offer
+label: 'Expiration Date'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    default_date_type: relative
+    default_date: 'last day of this month'
+default_value_callback: ''
+settings: {  }
+field_type: datetime

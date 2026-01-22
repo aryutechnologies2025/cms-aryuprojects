@@ -1,0 +1,14 @@
+uuid: c2f424cb-a6a5-423e-8bf1-d3c2fbd9b61e
+langcode: en
+status: true
+dependencies: {  }
+id: overlay_dark
+label: 'Overlay Dark'
+classes: overlay-dark
+type: component
+group: bgstyle
+block_restrictions:
+  - 'inline_block:call_out'
+  - 'inline_block:hero'
+layout_restrictions: {  }
+weight: 5

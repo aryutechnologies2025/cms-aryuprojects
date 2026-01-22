@@ -1,0 +1,28 @@
+uuid: e50731ff-b98d-40a3-bf8c-c5ea56f60766
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.breadcrumbs
+    - field.storage.block_content.field_crumb
+  module:
+    - link
+id: block_content.breadcrumbs.field_crumb
+field_name: field_crumb
+entity_type: block_content
+bundle: breadcrumbs
+label: Crumb
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'internal:/'
+    title: Home
+    options: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 1
+field_type: link

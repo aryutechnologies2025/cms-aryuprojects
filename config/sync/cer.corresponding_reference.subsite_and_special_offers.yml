@@ -1,0 +1,14 @@
+uuid: debf9424-2294-43dd-8f2b-44188ce90d3b
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_special_offers
+label: 'Subsite and Special Offers'
+enabled: true
+first_field: field_subsite_multiple
+second_field: field_special_offers
+add_direction: append
+bundles:
+  node:
+    - special_offer
+    - subsite

@@ -1,0 +1,11 @@
+uuid: 229fab12-6856-449b-87eb-919f5577360c
+langcode: en
+status: true
+dependencies: {  }
+id: header_logo
+block_id: system_branding_block
+category: header_footer
+label: 'Header Logo'
+image_path: ''
+image_alt: ''
+weight: -81

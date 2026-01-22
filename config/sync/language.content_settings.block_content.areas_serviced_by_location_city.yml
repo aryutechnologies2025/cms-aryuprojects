@@ -1,0 +1,11 @@
+uuid: bdd3f187-ea5a-4c10-84d7-b4298fdb2d0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_by_location_city
+id: block_content.areas_serviced_by_location_city
+target_entity_type_id: block_content
+target_bundle: areas_serviced_by_location_city
+default_langcode: site_default
+language_alterable: false

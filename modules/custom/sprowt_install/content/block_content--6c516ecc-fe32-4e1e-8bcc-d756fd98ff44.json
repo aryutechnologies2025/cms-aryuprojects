@@ -1,0 +1,127 @@
+{
+    "_entities": {
+        "6c516ecc-fe32-4e1e-8bcc-d756fd98ff44::6774": {
+            "_exportInfo": {
+                "key": "6c516ecc-fe32-4e1e-8bcc-d756fd98ff44::6774",
+                "entity_type": "block_content",
+                "bundle": "webform",
+                "entity_id": "1901",
+                "uuid": "6c516ecc-fe32-4e1e-8bcc-d756fd98ff44",
+                "isDefaultRevision": true,
+                "revisionId": "6774",
+                "label": "Webform - Contact Us | Subsites main site (global)"
+            },
+            "id": [
+                {
+                    "value": 1901
+                }
+            ],
+            "uuid": [
+                {
+                    "value": "6c516ecc-fe32-4e1e-8bcc-d756fd98ff44"
+                }
+            ],
+            "revision_id": [
+                {
+                    "value": 6774
+                }
+            ],
+            "langcode": [
+                {
+                    "value": "en"
+                }
+            ],
+            "type": [
+                {
+                    "target_id": "webform",
+                    "target_type": "block_content_type",
+                    "target_uuid": "29125c5a-9c4e-4db6-aa56-521da46fc801"
+                }
+            ],
+            "revision_created": [
+                {
+                    "value": "2023-11-14T20:43:12+00:00",
+                    "format": "Y-m-d\\TH:i:sP"
+                }
+            ],
+            "revision_user": [
+                {
+                    "target_id": 37,
+                    "target_type": "user",
+                    "target_uuid": "3dc082e2-b055-42ac-8446-27e197dab810",
+                    "url": "\/users\/wmcmilliancoalmarchcom",
+                    "_export": "3dc082e2-b055-42ac-8446-27e197dab810"
+                }
+            ],
+            "revision_log": [
+                {
+                    "value": "Created new Webform"
+                }
+            ],
+            "status": [
+                {
+                    "value": true
+                }
+            ],
+            "info": [
+                {
+                    "value": "Webform - Contact Us | Subsites main site (global)"
+                }
+            ],
+            "changed": [
+                {
+                    "value": "2023-11-14T20:43:14+00:00",
+                    "format": "Y-m-d\\TH:i:sP"
+                }
+            ],
+            "reusable": [
+                {
+                    "value": true
+                }
+            ],
+            "default_langcode": [
+                {
+                    "value": true
+                }
+            ],
+            "revision_translation_affected": [
+                {
+                    "value": true
+                }
+            ],
+            "metatag": {
+                "value": {
+                    "canonical_url": "http:\/\/sprowt3.test\/admin\/content-import-export\/export\/block_content\/1901",
+                    "title": "Export | Sprowt 3"
+                }
+            },
+            "field_fixed": [
+                {
+                    "value": false
+                }
+            ],
+            "field_heading": [
+                {
+                    "value": "Contact Us",
+                    "tag": "h3"
+                }
+            ],
+            "field_label_tag": [],
+            "field_subheading_tag": [],
+            "field_text": [],
+            "field_webform": [
+                {
+                    "target_id": "contact_us_subsite_main_site",
+                    "default_data": "",
+                    "status": "open",
+                    "open": null,
+                    "close": null,
+                    "target_type": "webform",
+                    "target_uuid": "2fe2b73b-3e31-4e7b-bdbd-146736a88c37",
+                    "url": "\/webform\/contact_us_subsite_main_site"
+                }
+            ]
+        }
+    },
+    "_content": []
+}

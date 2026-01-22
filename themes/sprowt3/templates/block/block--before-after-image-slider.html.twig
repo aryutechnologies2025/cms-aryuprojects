@@ -1,0 +1,58 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'before-color-' ~ content.field_before_color[0]['#markup'],
+    'after-color-' ~ content.field_after_color[0]['#markup']
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="basic-wrap">
+      {{ content|without('field_before_image','field_after_image','field_before_text','field_after_text','field_before_color','field_after_color') }}
+    </div>
+
+    <div class="beforeafter-slider">
+      <div class="beforeafter-container">
+        <div class="image-container">
+          <div class="image-before">
+            <img class="slider-image" src="{{ file_url(content.field_before_image[0]['#media'].field_media_image.entity.uri.value) }}" alt="{{ content.field_before_image[0]['#media'].field_media_image.alt }}" />
+            {% if content.field_before_text[0] is not empty %}
+              <div class="before-text-wrap">
+                <div class="before-text">{{ content.field_before_text }}</div>
+              </div>
+            {% endif %}
+          </div>
+          <div class="image-after">
+            <img class="slider-image" src="{{ file_url(content.field_after_image[0]['#media'].field_media_image.entity.uri.value) }}" alt="{{ content.field_after_image[0]['#media'].field_media_image.alt }}" />
+            {% if content.field_after_text[0] is not empty %}
+              <div class="after-text-wrap">
+                <div class="after-text">{{ content.field_after_text }}</div>
+              </div>
+            {% endif %}
+          </div>
+        </div>        
+        <input class="baslider" type="range" min="0" max="100" value="50" aria-label="Percentage of before photo shown" />
+        <div class="baslider-line" aria-hidden="true"></div>
+        <div class="baslider-button" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 256 256">
+            <rect width="256" height="256" fill="none"></rect>
+            <line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+            <line x1="96" y1="128" x2="16" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+            <polyline points="48 160 16 128 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+            <line x1="160" y1="128" x2="240" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+            <polyline points="208 96 240 128 208 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  {% endblock %}
+</div>
+ 

@@ -1,0 +1,23 @@
+#edit-filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-bottom: -1.5rem;
+  padding-bottom: 1.5rem;
+  border: none;
+}
+
+#edit-filters > .form-item {
+  margin-right: 15px;
+  margin-bottom: 1.5rem;
+}
+
+#edit-filters .form-item--sprowt-filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+table.permissions tbody tr.sprowt-hidden {
+  display: none;
+}

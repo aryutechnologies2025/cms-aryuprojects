@@ -1,0 +1,29 @@
+uuid: f61bb1e3-0a4d-48a0-be30-935756c858cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_image_organization
+    - media.type.media_image
+    - taxonomy.vocabulary.image_organization
+id: media.media_image.field_image_organization
+field_name: field_image_organization
+entity_type: media
+bundle: media_image
+label: 'Image Organization'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      image_organization: image_organization
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

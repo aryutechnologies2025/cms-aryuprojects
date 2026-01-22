@@ -1,0 +1,7 @@
+sprowt_install.reinstall:
+    path: '/admin/sprowt/reinstall'
+    defaults:
+        _title: 'Reinstall'
+        _form: 'Drupal\sprowt_install\Form\ReinstallForm'
+    requirements:
+        _custom_access: 'Drupal\sprowt_install\Form\ReinstallForm::access'

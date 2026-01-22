@@ -1,0 +1,38 @@
+services:
+    # Not going to do this anymore
+#    inline_block_content.config_import_subscriber:
+#        class: Drupal\inline_block_content\EventSubscriber\ConfigImportSubscriber
+#        arguments:
+#            - '@entity_type.manager'
+#            - '@layout_builder.tempstore_repository'
+#            - '@plugin.manager.layout_builder.section_storage'
+#            - '@inline_block_content.manager'
+#            - '@config.manager'
+#            - '@config.storage.sync'
+#        tags:
+#            - { name: event_subscriber }
+
+    inline_block_content.manager:
+        class: Drupal\inline_block_content\InlineBlockContentService
+        arguments:
+         - '@entity_type.manager'
+         - '@content_import_export.exporter'
+         - '@content_import_export.importer'
+         - '@file_system'
+         - '@inline_block.usage'
+
+    inline_block_content.set_inline_block_dependency:
+        class: Drupal\inline_block_content\EventSubscriber\SetInlineBlockDependency
+        arguments:
+            - '@entity_type.manager'
+            - '@database'
+            - '@inline_block.usage'
+            - '@plugin.manager.layout_builder.section_storage'
+        tags:
+            - { name: event_subscriber }
+
+    inline_block_content.usage:
+        class: Drupal\inline_block_content\InlineBlockUsage
+        decorates: 'inline_block.usage'
+        arguments:
+            - '@database'

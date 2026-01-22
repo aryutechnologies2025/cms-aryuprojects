@@ -1,0 +1,42 @@
+uuid: 7335344a-f053-4e06-bf0d-16e06cd1f135
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_payment_types
+field_name: field_payment_types
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: visa
+      label: Visa
+    -
+      value: mastercard
+      label: Mastercard
+    -
+      value: american-express
+      label: 'American Express'
+    -
+      value: discover
+      label: Discover
+    -
+      value: apple-pay
+      label: 'Apple Pay'
+    -
+      value: google-pay
+      label: 'Google Pay'
+    -
+      value: samsung-pay
+      label: 'Samsung Pay'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

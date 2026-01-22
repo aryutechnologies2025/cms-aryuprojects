@@ -1,0 +1,11 @@
+uuid: 76125944-be00-4cdc-87ff-d047948aedcb
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.divider
+id: block_content.divider
+target_entity_type_id: block_content
+target_bundle: divider
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,31 @@
+uuid: 0b6760ca-8350-4fdc-b18e-5de1cb2efa5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - s3_subtheme
+id: s3_subtheme_mainnavigation
+theme: s3_subtheme
+region: disabled
+weight: -4
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 1
+  expand_all_items: false
+  parent: 'main:'
+  suggestion: main
+visibility: {  }

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+    module:
+        - sprowt_ai
+id: sprowt_ai_context_save_action
+label: 'Save contexts'
+type: sprowt_ai_context
+plugin: entity:save_action:sprowt_ai_context
+configuration: { }

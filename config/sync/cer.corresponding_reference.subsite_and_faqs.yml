@@ -1,0 +1,14 @@
+uuid: 8ad28184-e646-46d7-a14b-f344981670e3
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_faqs
+label: 'Subsite and FAQs'
+enabled: true
+first_field: field_subsite_multiple
+second_field: field_faqs
+add_direction: append
+bundles:
+  node:
+    - faq
+    - subsite

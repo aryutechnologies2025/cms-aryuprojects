@@ -1,0 +1,53 @@
+entity_type_groups:
+  node:
+    blog:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+    city_page:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+    landing_page:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+    media_gallery:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+    page:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+    profile:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+    service:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+    solution_page_packages:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+    solution_page_package_service:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+    solution_page_services:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+tag_trim_method: beforeValue
+use_maxlength: true
+tag_trim_maxlength:
+  metatag_maxlength_title: null
+  metatag_maxlength_description: null
+  metatag_maxlength_abstract: null
+  metatag_maxlength_og_site_name: null
+  metatag_maxlength_og_title: null
+  metatag_maxlength_og_description: null
+tag_scroll_max_height: ''
+tag_trim_end: '|.,-:;/+&([{"'''

@@ -1,0 +1,11 @@
+uuid: 86d2e9b7-8b74-4258-b92d-447fb18d6e9b
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_menu_block
+block_id: subsite_menu_block
+category: header_footer
+label: 'Subsite menu block'
+image_path: ''
+image_alt: ''
+weight: -90

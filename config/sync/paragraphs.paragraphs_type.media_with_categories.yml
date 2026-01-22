@@ -1,0 +1,10 @@
+uuid: 73569375-9846-4234-96b4-877d0dc7660d
+langcode: en
+status: true
+dependencies: {  }
+id: media_with_categories
+label: 'Media with Categories - Documents'
+icon_uuid: null
+icon_default: null
+description: 'Organize a group of documents with a category/label.'
+behavior_plugins: {  }

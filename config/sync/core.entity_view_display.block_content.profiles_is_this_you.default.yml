@@ -1,0 +1,45 @@
+uuid: b1e455b7-d627-444d-a061-64d32f6a4f06
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.profiles_is_this_you
+    - field.field.block_content.profiles_is_this_you.field_heading
+    - field.field.block_content.profiles_is_this_you.field_team_members
+    - field.field.block_content.profiles_is_this_you.field_view_all
+  module:
+    - link
+    - tag_text_field
+id: block_content.profiles_is_this_you.default
+targetEntityType: block_content
+bundle: profiles_is_this_you
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_team_members:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_view_all:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,86 @@
+.layout__region {
+  .block-inline-blockidentifications,
+  .block--type-identifications {
+    max-width: 850px;
+    margin: $margin auto;
+
+    .field--name-field-heading {
+      margin-bottom: 0;
+      padding: 30px 15px;
+      text-align: center;
+      font-size: 2.2rem;
+
+      @include breakpoint($medium) {
+        font-size: 2.6rem;
+      }
+    }
+
+    .field--name-field-identifications {
+      .paragraph--type--identifications {
+        @include flexbox;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 8px;
+
+        .field--name-field-label,
+        .field--name-field-label-tag {
+          @include flexbox;
+          align-items: center;
+          width: 100%;
+          margin-bottom: 0;
+          padding: 20px;
+          font-size: 1.6rem;
+          font-weight: 700;
+          text-transform: inherit;
+
+          &::after {
+            content: none;
+          }
+        }
+        .field--name-field-description {
+          @include flexbox;
+          align-items: center;
+          width: 100%;
+          padding: 20px;
+          font-size: 1.6rem;
+          line-height: $base-line-height;
+
+          p {
+            font-size: 1.6rem;
+            line-height: $base-line-height;
+          }
+        }
+
+        @include breakpoint($xsmall) {
+          .field--name-field-label,
+          .field--name-field-label-tag {
+            font-size: 1.8rem;
+          }
+          .field--name-field-description {
+            p {
+              font-size: 1.8rem;
+            }
+          }
+        }
+        @include breakpoint($small) {
+          .field--name-field-label,
+          .field--name-field-label-tag {
+            width: calc(40% - 8px);
+            padding: 30px 20px;
+          }
+          .field--name-field-description {
+            width: 60%;
+            padding: 30px 20px;
+          }
+        }
+      }
+    }
+
+    + .block-inline-blockcall-out {
+      max-width: 790px;
+      &:not(:first-child) {
+        margin-top: -30px;
+      }
+    }
+  }
+}

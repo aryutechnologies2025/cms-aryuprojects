@@ -1,0 +1,14 @@
+diff --git a/show_title.info.yml b/show_title.info.yml
+index 866c518682..be3e8a35c1 100644
+--- a/show_title.info.yml
++++ b/show_title.info.yml
+@@ -2,8 +2,7 @@ name: Show Title
+ type: module
+ description: Create Extrafield Title to replace default Node Title, or Taxonomy Name.
+ package: Fields
+-core: 8.x
+-core_version_requirement: ^8 || ^9
++core_version_requirement: ^9 || ^10
+ dependencies:
+   - drupal:block
+   - drupal:node

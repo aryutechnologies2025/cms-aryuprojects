@@ -1,0 +1,11 @@
+uuid: c5d67f1a-b1c2-4eb5-9de6-13eab3e2095e
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_layout_builder_style
+label: 'Bulk Update Layout builder style Fields'
+type: layout_builder_style
+plugin: bulk_update_fields_action_base
+configuration: {  }

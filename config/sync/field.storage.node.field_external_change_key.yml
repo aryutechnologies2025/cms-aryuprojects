@@ -1,0 +1,21 @@
+uuid: 38476887-7b47-4014-acfe-0ab686eb39fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_external_change_key
+field_name: field_external_change_key
+entity_type: node
+type: string
+settings:
+  max_length: 2000
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,24 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'center-align'
+  ]
+%}
+
+{% if drupal_view_result('package_features', 'block_list') or drupal_view_result('package_features', 'block_list_services') is not empty %}
+
+  <div{{attributes.addClass(classes)}}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    {% block content %}
+        {{ content }}
+        {{ drupal_view('package_features', 'block_list') }}
+    {% endblock %}
+  </div>
+
+{% endif %}

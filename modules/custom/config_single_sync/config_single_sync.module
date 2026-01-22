@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Config Single Sync module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function config_single_sync_form_config_admin_import_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    /** @var \Drupal\config_single_sync\ConfigSingleSyncService $service */
+    $service = \Drupal::service('config_single_sync.service');
+    $service->syncFormAlter($form, $form_state);
+}

@@ -1,0 +1,8 @@
+input.token-tree-filter {
+    width: 100%;
+}
+
+.token-tree tbody tr.filtered-out {
+    display: none;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRva2VuX2ZpbHRlci5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxXQUFXO0FBQ2Y7O0FBRUE7SUFDSSxhQUFhO0FBQ2pCIiwiZmlsZSI6InRva2VuX2ZpbHRlci5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dC50b2tlbi10cmVlLWZpbHRlciB7XG4gICAgd2lkdGg6IDEwMCU7XG59XG5cbi50b2tlbi10cmVlIHRib2R5IHRyLmZpbHRlcmVkLW91dCB7XG4gICAgZGlzcGxheTogbm9uZTtcbn1cbiJdfQ== */

@@ -1,0 +1,14 @@
+uuid: 6ffad517-9a2f-4436-bf39-f66316765f2e
+langcode: en
+status: true
+dependencies: {  }
+id: benefits_and_services
+label: 'Benefits and Services'
+enabled: true
+first_field: field_services
+second_field: field_benefit
+add_direction: null
+bundles:
+  node:
+    - benefit
+    - service

@@ -1,0 +1,4 @@
+integrations_mapper:
+  version: 1.x
+  js:
+    dist/js/main.js: {}

@@ -1,0 +1,19 @@
+uuid: 062edcb4-e314-437a-b4fb-b1e660da2498
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote
+    - field.storage.block_content.field_position_company
+id: block_content.quote.field_position_company
+field_name: field_position_company
+entity_type: block_content
+bundle: quote
+label: Position/Company
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

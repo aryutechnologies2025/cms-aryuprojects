@@ -1,0 +1,58 @@
+{% set picon = content.field_icon_package|render ? 'yes' : 'no' %}
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    node.label|render|lower|replace({' ':'-'}),
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'featured-' ~ node.field_featured.value,
+    'spotlight-' ~ content.field_spotlight[0]['#markup'],
+    'package-color-' ~ content.field_package_color[0]['#markup'],
+    'icon-' ~ picon,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div{{content_attributes.addClass('node__content featured-')}}>
+    {% if content.field_button[0]['#url'] is not empty %}
+      {% if content.field_button[0]['#url'].options.attributes is not empty %}
+        {% set view_all_attributes = create_attribute(content.field_button[0]['#url'].options.attributes) %}
+      {% else %}
+        {% set view_all_attributes = create_attribute() %}
+      {% endif %}
+      <a href="{{ content.field_button[0]['#url'] }}" alt="{{ content.field_button_text[0]|render|striptags }}" {{view_all_attributes.addClass(['package-link'])}}>
+    {% endif %}
+
+    {% if node.field_featured.value %}
+      <div class="featured-tag">Most Popular Package</div>
+    {% endif %}
+      {{ label }}
+      {{ content.field_image_package }}
+      {{ content.field_icon_package }}
+      <div class="package-copy">
+        {% if content.field_starting_price[0] is not empty %}
+          <div class="price-prefix">Starting at</div>
+        {% endif %}
+        <div class="package-content">
+          {{ content|without('show_title','field_image_package','field_icon_package','field_initial_fee','field_featured','field_button_text','field_button','field_package_color','field_spotlight') }}
+        </div>
+        {% if (content.field_button_text[0] is not empty) and (content.field_button[0]['#url'] is not empty) %}
+          <div class="cta-link">
+            <span>{{ content.field_button_text }}</span>
+          </div>
+        {% endif %}
+        {{ content.field_initial_fee }}
+      </div>
+    {% if content.field_button[0]['#url'] is not empty %}
+      </a>
+    {% endif %}
+  </div>
+
+</article>

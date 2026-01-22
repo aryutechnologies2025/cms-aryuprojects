@@ -1,0 +1,5 @@
+script.add_form:
+    route_name: entity.script.add_form
+    title: 'Add script'
+    appears_on:
+        - entity.script.collection

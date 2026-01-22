@@ -1,0 +1,21 @@
+uuid: 2c811773-8ed7-4d40-bdea-14456862d5ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.services
+    - field.storage.block_content.field_count_service
+  module:
+    - options
+id: block_content.services.field_count_service
+field_name: field_count_service
+entity_type: block_content
+bundle: services
+label: Count
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

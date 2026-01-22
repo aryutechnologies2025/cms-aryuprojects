@@ -1,0 +1,34 @@
+uuid: 116fd93d-807d-45ae-af49-895b00a6644d
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:footer:be78cd09-fb74-47bf-b476-e675b5a612ac'
+  module:
+    - block_class
+    - block_content
+    - node
+  theme:
+    - s3_subtheme
+id: s3_subtheme_footerlayoutstandalonelandingpage_2
+theme: s3_subtheme
+region: footer_layout
+weight: 0
+provider: null
+plugin: 'block_content:be78cd09-fb74-47bf-b476-e675b5a612ac'
+settings:
+  id: 'block_content:be78cd09-fb74-47bf-b476-e675b5a612ac'
+  label: 'Footer Layout: Standalone Landing Page'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      standalone_landing_page: standalone_landing_page

@@ -1,0 +1,41 @@
+uuid: a3c3c1db-8750-4dc0-9f01-784ab7c761a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.alert_box
+    - field.field.block_content.alert_box.field_link
+    - field.field.block_content.alert_box.field_sticky_alert
+    - field.field.block_content.alert_box.field_text
+    - field.field.block_content.alert_box.field_type_alert
+  module:
+    - link
+    - text
+id: block_content.alert_box.default
+targetEntityType: block_content
+bundle: alert_box
+mode: default
+content:
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_sticky_alert: true
+  field_type_alert: true
+  langcode: true

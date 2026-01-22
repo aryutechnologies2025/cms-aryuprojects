@@ -1,0 +1,14 @@
+uuid: 9872a69b-444a-4cf4-86ba-4c8c6e5e03f9
+langcode: en
+status: true
+dependencies: {  }
+id: landing_page_and_service
+label: 'Landing Page and Service'
+enabled: true
+first_field: field_landing_page_ref
+second_field: field_services
+add_direction: null
+bundles:
+  node:
+    - landing_page
+    - service

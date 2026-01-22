@@ -1,0 +1,11 @@
+uuid: 82798d3d-a945-4988-a955-b7e636d61056
+langcode: en
+status: true
+dependencies: {  }
+id: locations
+block_id: 'inline_block:branches'
+category: custom_blocks
+label: Locations
+image_path: ''
+image_alt: ''
+weight: -91

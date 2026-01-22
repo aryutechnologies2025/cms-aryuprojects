@@ -1,0 +1,11 @@
+.layout__region {
+  .block-inline-blockissues,
+  .block--type-issues {
+    .issues-wrap {
+      .field--name-title-text,
+      .views-field-title {
+        @extend %underline-link;
+      }
+    }
+  }
+}

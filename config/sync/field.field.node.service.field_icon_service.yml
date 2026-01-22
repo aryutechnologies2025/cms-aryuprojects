@@ -1,0 +1,34 @@
+uuid: 84f6b421-161e-4598-9d73-cba18a73cbec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_icon_service
+    - media.type.media_image
+    - node.type.service
+  content:
+    - 'media:media_image:0531c1c8-77a2-42af-ae56-76ff75905646'
+id: node.service.field_icon_service
+field_name: field_icon_service
+entity_type: node
+bundle: service
+label: Icon
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 0531c1c8-77a2-42af-ae56-76ff75905646
+    weight: 0
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

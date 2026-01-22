@@ -1,0 +1,20 @@
+uuid: 159849fc-bbe3-48f6-8f4f-5e3718f1a010
+langcode: en
+status: true
+dependencies:
+  theme:
+    - sprowt3
+id: tabs
+theme: sprowt3
+region: admin_links
+weight: -10
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

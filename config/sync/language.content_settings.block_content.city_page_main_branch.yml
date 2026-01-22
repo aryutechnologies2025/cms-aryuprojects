@@ -1,0 +1,11 @@
+uuid: d1b75d2a-d656-4487-abc3-d17970f06814
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.city_page_main_branch
+id: block_content.city_page_main_branch
+target_entity_type_id: block_content
+target_bundle: city_page_main_branch
+default_langcode: site_default
+language_alterable: false

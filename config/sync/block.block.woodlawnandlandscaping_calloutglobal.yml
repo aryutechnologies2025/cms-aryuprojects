@@ -1,0 +1,25 @@
+uuid: e81af8f3-c22d-41e7-8101-24cca93dca3e
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:call_out:9f7cf4e1-5742-41c6-8414-14dd5c5bdc18'
+  module:
+    - block_content
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_calloutglobal
+theme: woodlawnandlandscaping
+region: disabled
+weight: -15
+provider: null
+plugin: 'block_content:9f7cf4e1-5742-41c6-8414-14dd5c5bdc18'
+settings:
+  id: 'block_content:9f7cf4e1-5742-41c6-8414-14dd5c5bdc18'
+  label: ' Call Out (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,8 @@
+claude3:
+  api_key: null
+supported_field_types:
+  - text
+  - text_with_summary
+  - text_long
+  - string_long
+  - string

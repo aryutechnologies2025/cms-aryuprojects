@@ -1,0 +1,42 @@
+{% set section_style = content.field_section_style[0]['#markup'] %}
+{% set bg_position = content.field_bg_position[0]['#markup'] %}
+{% set overlay_color = content.field_overlay_color[0]['#markup'] %}
+{% set opacity = content.field_opacity[0]['#markup'] %}
+{% set gradient_range = content.field_gradient_range[0]['#markup'] %}
+{% set gradient_angle = content.field_gradient_angle[0]['#markup'] %}
+{% set bg_image_uri = content.field_bg_section_image[0]['#media'].field_media_image.entity.uri.value %}
+
+{% if section_style == 'bg-repeat' %}
+  {% set bg_image_url = file_url(bg_image_uri) %}
+{% else %}
+  {% if '.svg' in bg_image_uri %}
+    {% set bg_image_url =  file_url(bg_image_uri) %}
+  {% else %}
+    {% set bg_image_url = bg_image_uri|image_style('section_background') %}
+  {% endif %}
+{% endif %}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'opacity-' ~ opacity,
+    'gradient-range-' ~ gradient_range,
+    'gradient-angle-' ~ gradient_angle,
+    'background-position-' ~ bg_position,
+    section_style ~ '-' ~ overlay_color
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {% if content.field_bg_section_image[0]['#media'].field_media_image.entity.uri.value is not empty %}
+      <div class="section-bg-image" style="background-image:url({{ bg_image_url }});"></div>
+    {% endif %}
+  {% endblock %}
+</div>

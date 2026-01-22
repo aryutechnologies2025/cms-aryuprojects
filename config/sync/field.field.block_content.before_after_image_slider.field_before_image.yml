@@ -1,0 +1,29 @@
+uuid: 3ba599fd-13d0-44a5-90a0-6e9237a431f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.before_after_image_slider
+    - field.storage.block_content.field_before_image
+    - media.type.media_image
+id: block_content.before_after_image_slider.field_before_image
+field_name: field_before_image
+entity_type: block_content
+bundle: before_after_image_slider
+label: 'Before Image'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

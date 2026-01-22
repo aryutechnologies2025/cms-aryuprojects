@@ -1,0 +1,8 @@
+uuid: 86d65f8c-92b6-44e2-88db-56b9eebb8bf8
+langcode: en
+status: true
+dependencies: {  }
+id: node__faq
+label: 'Content: FAQ'
+tags:
+  robots: 'noindex, nofollow, noydir'

@@ -1,0 +1,91 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Chat Codes module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+use Drupal\Core\Theme\ActiveTheme;
+
+
+function _chat_codes_test() {
+    $chatCodes = \Drupal::entityTypeManager()->getStorage('chat_code')->loadMultiple();
+    /** @var \Drupal\chat_codes\Entity\ChatCode $chatCode */
+    foreach($chatCodes as $chatCode) {
+        $chatCode->removeVisibilityConfig('current_theme');
+        $chatCode->save();
+    }
+}
+
+/**
+ * Implements hook_page_bottom().
+ */
+function chat_codes_page_bottom(array &$page_bottom)
+{
+    /** @var ActiveTheme $theme */
+    $theme = \Drupal::service('theme.manager')->getActiveTheme();
+    $defaultThemeName = \Drupal::config('system.theme')->get('default');
+    $adminThemeName = \Drupal::config('system.theme')->get('admin');
+    if($theme->getName() == $adminThemeName) {
+        //don't render in admin theme
+        return [];
+    }
+
+    $node = \Drupal::routeMatch()->getParameter('node') ?? null;
+    if(isset($node) && !$node instanceof \Drupal\node\Entity\Node) {
+        $node = \Drupal\node\Entity\Node::load($node);
+    }
+
+    $storage = \Drupal::entityTypeManager()->getStorage('chat_code');
+    $chatCodes = $storage->loadByProperties([
+        'status' => 1
+    ]) ?? [];
+    $build = [];
+    /** @var \Drupal\chat_codes\Entity\ChatCode $chatCode */
+    foreach($chatCodes as $chatCode) {
+        $enabled = $chatCode->isEnabled();
+        $isVisible = $chatCode->isVisible($node);
+        $restrictedByDate = $chatCode->restrictedBySchedules();
+        if($enabled
+            && $isVisible
+            && !$restrictedByDate
+        ) {
+            $render = $chatCode->render();
+            $build['chatCode--' . $chatCode->id()] = $render;
+        }
+    }
+
+    $context = [
+        'activeTheme' => $theme,
+        'activeThemeName' => $theme->getName(),
+        'defaultThemeName' => $defaultThemeName
+    ];
+
+    \Drupal::moduleHandler()->alter('chat_codes', $build, $context);
+
+    if(!empty($build)) {
+        if(!isset($build['#weight'])) {
+            $build['#weight'] = 500;
+        }
+        $page_bottom['chatcodes'] = $build;
+    }
+}
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function chat_codes_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    /** @var \Drupal\views\ViewExecutable $view */
+    $view = $form_state->get('view');
+
+    if($view->id() == 'chat_codes' && $view->current_display == 'overview') {
+        $form["status"]["#options"][1] = 'Enabled';
+        $form["status"]["#options"][0] = 'Disabled';
+    }
+}

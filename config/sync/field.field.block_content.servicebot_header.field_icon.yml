@@ -1,0 +1,29 @@
+uuid: 0d63551a-3cca-4c5b-be3d-dcb0eb7ff1c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot_header
+    - field.storage.block_content.field_icon
+    - media.type.media_image
+id: block_content.servicebot_header.field_icon
+field_name: field_icon
+entity_type: block_content
+bundle: servicebot_header
+label: 'Service Icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

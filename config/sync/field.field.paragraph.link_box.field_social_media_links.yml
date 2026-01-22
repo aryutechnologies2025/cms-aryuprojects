@@ -1,0 +1,23 @@
+uuid: a447b20f-bf3b-45d6-8852-1ccda8d78a1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_social_media_links
+    - paragraphs.paragraphs_type.link_box
+id: paragraph.link_box.field_social_media_links
+field_name: field_social_media_links
+entity_type: paragraph
+bundle: link_box
+label: 'Social Media Links'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

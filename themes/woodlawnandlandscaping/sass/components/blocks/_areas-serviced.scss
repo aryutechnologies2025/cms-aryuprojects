@@ -1,0 +1,95 @@
+[class*="view-areas-serviced"] {
+  //Title (list view)
+  &[class*="view-display-id-block_city_specific"],
+  &.view-display-id-block_teaser_nofilter,
+  &[class*="view-display-id-block_areas_serviced_branch"],
+  &.view-display-id-block_override,
+  &.view-display-id-block_region,
+  &[class*="view-display-id-block_group"] {
+    .view-content {
+      .node__content a {
+        @extend %underline-link;
+      }
+
+      .field--name-title-text {
+        &::before {
+          color: palette(secondary);
+        }
+
+        .path-frontpage & {
+          &::before {
+            color: palette(secondary);
+          }
+        }
+      }
+    }
+  }
+
+  [class*="block-inline-blockareas-serviced"].center-align & {
+    &.view-display-id-block_title_all {
+      .view-content {
+        .field-content a {
+          &::before {
+            color: palette(primary);
+          }
+        }
+      }
+    }
+  }
+}
+
+.layout__region {
+  [class*="block-inline-blockareas-serviced"].accordioned {
+    .group-wrapper {
+        border-color: palette(gray, lightest);
+    }
+    .group-title {
+      &::after {
+        color: palette(white);
+        background-color: palette(secondary);
+      }
+
+      &.active {
+        &::after {
+          color: palette(white);
+          background-color: palette(primary);
+        }
+      }
+    }
+
+    .bg-primary & {
+      .group-title {
+        color: palette(white);
+        &::after {
+          color: palette(white);
+          background-color: palette(secondary);
+        }
+        &.active {
+          &::after {
+            color: palette(secondary);
+            background-color: palette(white);
+          }
+        }
+      }
+    }
+
+    .bg-secondary & {
+      .group-title {
+        &::after {
+          color: palette(white);
+          background-color: palette(primary);
+        }
+        &.active {
+          &::after {
+            color: palette(primary);
+            background-color: palette(white);
+          }
+        }
+      }
+
+      .views-row {
+        border-color: palette(white);
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+uuid: 93ba04ee-a89e-43dd-98db-46562ebc9552
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.concern
+  module:
+    - text
+id: node.concern.body
+field_name: body
+entity_type: node
+bundle: concern
+label: Body
+description: 'Used in concern/issue modal.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

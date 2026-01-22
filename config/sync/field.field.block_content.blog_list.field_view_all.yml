@@ -1,0 +1,29 @@
+uuid: a09267c0-2100-4c57-addd-83af1a024ac1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.blog_list
+    - field.storage.block_content.field_view_all
+  module:
+    - link
+id: block_content.blog_list.field_view_all
+field_name: field_view_all
+entity_type: block_content
+bundle: blog_list
+label: 'View All Link'
+description: 'If your link text is vague (e.g. "View More" or "Check it out!"), please add a thorough description of the link destination to ensure the site is ADA compliant.'
+required: false
+translatable: true
+default_value:
+  -
+    attributes: {  }
+    uri: 'entity:node/170'
+    title: 'View All Blog Posts'
+    options: {  }
+    aria_label: ''
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

@@ -1,0 +1,23 @@
+uuid: 274f570f-41da-490d-b5ad-62c14bbf2d78
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faqs
+    - field.storage.block_content.field_accordion
+id: block_content.faqs.field_accordion
+field_name: field_accordion
+entity_type: block_content
+bundle: faqs
+label: Accordion
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

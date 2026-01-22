@@ -1,0 +1,34 @@
+diff --git a/.htaccess b/.htaccess
+index 9a73a3d3..7ffd9496 100644
+--- a/.htaccess
++++ b/.htaccess
+@@ -120,7 +120,7 @@ AddEncoding gzip svgz
+   #
+   # If your site is running in a VirtualDocumentRoot at http://example.com/,
+   # uncomment the following line:
+-  # RewriteBase /
++  RewriteBase /
+ 
+   # Redirect common PHP files to their new locations.
+   RewriteCond %{REQUEST_URI} ^(.*)?/(install.php) [OR]
+diff --git a/sites/default/default.services.yml b/sites/default/default.services.yml
+old mode 100644
+new mode 100755
+diff --git a/sites/default/default.settings.php b/sites/default/default.settings.php
+old mode 100644
+new mode 100755
+diff --git a/sites/example.settings.local.php b/sites/example.settings.local.php
+index 520cb4ac..4d991b6c 100644
+--- a/sites/example.settings.local.php
++++ b/sites/example.settings.local.php
+@@ -153,3 +153,10 @@
+  * the language or field module.
+  */
+ # $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy'];
++
++/**
++ * Config split settings
++ */
++
++$config['config_split.config_split.dev']['status'] = true;
++$config['config_split.config_split.live']['status'] = false;

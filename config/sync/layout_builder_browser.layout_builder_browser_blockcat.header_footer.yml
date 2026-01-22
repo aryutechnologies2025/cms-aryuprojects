@@ -1,0 +1,10 @@
+uuid: 130e34b3-3316-403c-a262-15835fcf1b80
+langcode: en
+status: true
+dependencies: {  }
+id: header_footer
+label: 'Header / Footer Blocks'
+weight: null
+opened: true
+image_path: null
+image_alt: null

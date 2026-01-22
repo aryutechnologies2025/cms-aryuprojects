@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
+langcode: en
+uuid: 5ccce8e1-3956-4d67-8e41-8e562d33f90c
+name: 'Wood Lawn & Landscape'
+mail: support@woodlawnandlandscaping.com
+slogan: ''
+page:
+  403: /node/6
+  404: /node/8
+  front: /node/11
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: ''

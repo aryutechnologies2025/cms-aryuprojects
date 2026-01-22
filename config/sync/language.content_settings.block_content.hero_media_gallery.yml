@@ -1,0 +1,11 @@
+uuid: bcc3e5ed-914d-4703-96ea-942c25794a1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_media_gallery
+id: block_content.hero_media_gallery
+target_entity_type_id: block_content
+target_bundle: hero_media_gallery
+default_langcode: site_default
+language_alterable: false

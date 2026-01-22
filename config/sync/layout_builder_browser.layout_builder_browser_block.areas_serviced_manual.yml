@@ -1,0 +1,16 @@
+uuid: f4534905-b952-4eb7-b71e-0d1e1a3eb254
+langcode: en
+status: true
+dependencies:
+  module:
+    - sprowt_admin_override
+third_party_settings:
+  sprowt_admin_override:
+    description: '<p>Manually create any number of links (Text and URL) and group them via any defined headings.</p>'
+id: areas_serviced_manual
+block_id: 'inline_block:areas_serviced_manual'
+category: custom_blocks
+label: 'Areas Serviced (Manual)'
+image_path: ''
+image_alt: ''
+weight: -97

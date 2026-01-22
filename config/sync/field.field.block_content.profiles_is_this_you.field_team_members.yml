@@ -1,0 +1,29 @@
+uuid: 1aa41003-b312-481d-9007-dc18923cbd8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.profiles_is_this_you
+    - field.storage.block_content.field_team_members
+    - node.type.profile
+id: block_content.profiles_is_this_you.field_team_members
+field_name: field_team_members
+entity_type: block_content
+bundle: profiles_is_this_you
+label: 'Team Members'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      profile: profile
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

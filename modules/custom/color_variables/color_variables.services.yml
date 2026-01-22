@@ -1,0 +1,7 @@
+services:
+    color_variables.service:
+        class: Drupal\color_variables\ColorVariablesService
+        arguments:
+            - '@theme_handler'
+            - '@module_handler'
+            - '@entity_type.manager'

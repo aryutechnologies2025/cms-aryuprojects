@@ -1,0 +1,24 @@
+.zipcodes-widget-single-element {
+  display: flex;
+  max-width: 215px;
+  align-items: center;
+  padding: 0 20px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  margin-top: 5px;
+  &:first-child {
+    margin-top: 0;
+  }
+  .zipcodes-widget-zip-value {
+    flex: 1;
+    cursor: pointer;
+  }
+  .form-boolean {
+    margin-right: 10px;
+  }
+
+  &.error {
+    border-color: #dc2323;
+  }
+
+}

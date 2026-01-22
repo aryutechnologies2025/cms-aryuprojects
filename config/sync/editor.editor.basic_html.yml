@@ -1,0 +1,99 @@
+uuid: 60ddfefb-7ca3-4f2e-b54a-0dca5386affd
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+  module:
+    - ckeditor5
+format: basic_html
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - bold
+      - underline
+      - italic
+      - superscript
+      - '|'
+      - alignment
+      - indent
+      - outdent
+      - '|'
+      - link
+      - '|'
+      - bulletedList
+      - numberedList
+      - sprowtColumns
+      - '|'
+      - blockQuote
+      - '|'
+      - heading
+      - '|'
+      - sourceEditing
+      - '|'
+      - tokenBrowser
+      - '|'
+      - drupalMedia
+      - showBlocks
+  plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_list:
+      properties:
+        reversed: false
+        startIndex: true
+      multiBlock: true
+    ckeditor5_sourceEditing:
+      allowed_tags:
+        - '<cite>'
+        - '<dl>'
+        - '<dt>'
+        - '<dd>'
+        - '<span class>'
+        - '<img title src alt data-entity-type data-entity-uuid data-align data-caption width height class>'
+        - '<div id class>'
+        - '<blockquote cite>'
+        - '<ul type>'
+        - '<ol type>'
+        - '<h2 id>'
+        - '<h3 id>'
+        - '<h4 id>'
+        - '<h5 id>'
+        - '<h6 id>'
+        - '<drupal-media title>'
+        - '<a type hreflang name target>'
+    editor_advanced_link_link:
+      enabled_attributes:
+        - class
+        - id
+        - rel
+        - target
+        - title
+    linkit_extension:
+      linkit_enabled: true
+      linkit_profile: default
+    media_media:
+      allow_view_mode_override: true
+    token_filter_token_browser:
+      token_types:
+        sprowt: sprowt
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: null
+  max_dimensions:
+    width: null
+    height: null

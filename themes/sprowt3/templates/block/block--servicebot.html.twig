@@ -1,0 +1,51 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'block-color-' ~ content.field_accent_color[0]['#markup'],
+    'button-color-' ~ content.field_overlay_color[0]['#markup'],
+    content.field_why_wait[0]['#markup'] == 1 ? 'why-wait' : '',
+    content.field_rounded[0]['#markup'] == 1 ? 'rounded' : '',
+    content.field_icon[0] is not empty ? 'with-logo' : ''
+  ]
+%}
+
+{{ attach_library('sprowt3/font-caveat') }}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="servicebot-wrap {{ content.field_why_wait[0]['#markup'] == 1 ? 'why-wait' : '' }}">
+      <a class="servicebot-link" href="{{ content.field_single_link[0]['#url'] }}"{% if content.field_new_window[0]['#markup'] == 1 %} target="_blank"{% endif %}></a>
+      {% if content.field_why_wait[0]['#markup'] == 1 %}
+        <div class="why-wait-text">{{ content.field_why_wait_text }}</div>
+      {% endif %}
+      <div class="inner-wrap">
+        <div class="inner-box">
+          {% if (content.field_why_wait[0]['#markup'] == 1) and (content.field_arrow[0]['#markup'] == 0) %}
+            {% if (content.field_icon[0] is not empty) %}
+              <svg class="why-wait-arrow" xmlns="http://www.w3.org/2000/svg" width="38" height="55" version="1.1" viewBox="0 0 44.5 73.9">
+                <path d="M21,73.1c-.8-.9-.8-2.2,0-3.1,0,0,0,0,.1-.1,1.3-1.1,2.7-2,4.2-2.9.8-.5,1.6-.9,2.4-1.3-3.5-1-6.8-2.4-9.9-4.3-3.8-2.3-7.2-5.2-10-8.7-2.7-3.4-4.9-7.2-6.2-11.3C.3,37.4-.2,33.2,0,29c.3-4.1,1.4-8.1,3.3-11.7,1.9-3.6,4.5-6.9,7.6-9.5,3.2-2.7,6.9-4.7,10.8-6C25.9.4,30.2-.1,34.5,0c1.3,0,2.3,1,2.4,2.3,0,1.2-.9,2.2-2.1,2.2,0,0-.1,0-.2,0h0c-3.7,0-7.3.5-10.7,1.8-3.3,1.2-6.4,3-9.1,5.3-2.6,2.3-4.7,5-6.2,8.1-1.5,3.1-2.3,6.4-2.5,9.8-.1,3.5.4,6.9,1.6,10.2,1.2,3.3,3,6.4,5.3,9.1,4.2,5,9.9,8.5,16.2,10.1-2-2-3.9-4.2-5.5-6.6-.7-.9-.5-2.2.4-3,1.1-.8,2.5-.6,3.4.4h0c2.1,2.4,4.5,4.5,7,6.4,1.3,1,2.6,1.9,3.9,2.8,1.3.9,2.7,1.8,4.1,2.8,1,.5,1.7,1.4,2,2.4.4,1.7-.7,3.5-2.4,3.9-.1,0-.2,0-.3,0h0c-1.7.3-3.3.5-4.8.7-1.5.2-3,.6-4.5,1-1.4.4-2.8.9-4.2,1.5-1.4.6-2.7,1.3-4,2.1h0c-1,.6-2.4.4-3.2-.5"/>
+              </svg>
+            {% else %}
+              <svg class="why-wait-arrow" xmlns="http://www.w3.org/2000/svg" width="38" height="55" version="1.1" viewBox="0 0 38 54.4" style="scale: 0.85;">
+                <path d="M16.4,2C6.8,5.9,1.4,17.2,4.8,27.1c3.8,10.9,14.7,15.4,25.7,16.4-1.7-1.6-3.3-3.3-4.7-5.1-1.1-1.1-1-2.4-.2-3,.8-.7,1.9-.6,2.6.1,2.6,2.8,5.3,5.8,8.2,8.4,2.9,2.6,1.8,4.4-.9,5.8-2.8,1.5-6.2,3.4-8.8,4.6-2.1.9-4.4-1.8-1.7-3.4,1.4-.8,3.5-1.9,5-2.8C-4.5,46.3-9.2,7.9,15.7.1c1.9-.6,2.6,1.2.7,1.9"/>
+              </svg>
+            {% endif %}
+          {% endif %}
+          {{ content.field_icon }}
+          <div class="inner-text">
+            {{ content|without('field_icon','field_single_link','field_why_wait','field_why_wait_text','field_accent_color','field_overlay_color','field_new_window','field_rounded','field_arrow') }}
+            <div class="single-link-wrap">
+              <div class="field field-name-field-single-link field__item">{{ content.field_single_link[0]['#title'] }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+</div>

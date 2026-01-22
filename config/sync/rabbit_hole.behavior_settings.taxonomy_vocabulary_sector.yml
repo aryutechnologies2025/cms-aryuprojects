@@ -1,0 +1,14 @@
+uuid: 3075aa20-1111-4734-8c5b-1e0c6e616e45
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.sector
+id: taxonomy_vocabulary_sector
+entity_type_id: taxonomy_vocabulary
+entity_id: sector
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

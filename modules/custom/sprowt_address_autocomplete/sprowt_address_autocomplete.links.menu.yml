@@ -1,0 +1,6 @@
+sprowt_address_autocomplete.settings_form:
+    title: 'Sprowt address autocomplete'
+    description: 'Configure Sprowt address autocomplete.'
+    parent: system.admin_config_services
+    route_name: sprowt_address_autocomplete.settings_form
+    weight: 10

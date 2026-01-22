@@ -1,0 +1,22 @@
+uuid: 5a93d758-60a6-4af8-8f31-ef73a05d85aa
+langcode: en
+status: true
+dependencies: {  }
+id: block_light
+label: Light
+classes: bg-light
+type: component
+group: bgcolor
+block_restrictions:
+  - 'inline_block:areas_serviced'
+  - 'inline_block:call_out'
+  - 'inline_block:concerns'
+  - 'inline_block:issues'
+  - 'inline_block:modal_block'
+  - 'inline_block:testimonials'
+  - 'inline_block:servicebot'
+  - 'inline_block:services'
+  - 'inline_block:special_offers'
+  - 'inline_block:webform'
+layout_restrictions: {  }
+weight: 16

@@ -1,0 +1,4 @@
+administer cookie_banner configuration:
+    title: 'Administer cookie banner configuration'
+    description: 'Administer the cookie banner'
+    restrict access: true

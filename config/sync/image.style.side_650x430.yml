@@ -1,0 +1,17 @@
+uuid: b334d675-a415-4e64-8dd8-1bf7122266ab
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: side_650x430
+label: 'Side (650x430)'
+effects:
+  af6c8499-5dac-490d-a671-df74ba1d80b4:
+    uuid: af6c8499-5dac-490d-a671-df74ba1d80b4
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 650
+      height: 430
+      crop_type: focal_point

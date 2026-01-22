@@ -1,0 +1,42 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    node.label|render|lower|replace({' ':'-'}),
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div{{content_attributes.addClass('node__content')}}>
+      <a class="blog-link" aria-label="{{ label|render|striptags }}" href="{{ url }}" alt="{{ label|render|striptags }}"></a>
+      <div class="blog-wrap">
+        {{ content.field_image_blog }}
+        <div class="blog-copy">
+          {% if (sprowt_get_setting('blog_dates_displayed') == 1) %}
+            <div class="authored-on">{{ node.getCreatedTime|date('F j, Y') }}</div>
+          {% endif %}
+
+          {% if (sprowt_get_setting('blog_global_author') is not empty) %}
+            <div class="field field--name-field-author"><a href="{{ sprowt_get_setting('blog_global_author_link') }}">{{ sprowt_get_setting('blog_global_author') }}</a></div>
+          {% else %}
+            {% if content.field_author|render %}
+              {{ content.field_author }}
+            {% endif %}
+          {% endif %}
+
+          {{ label }}
+          {{ content|without('field_image_blog', 'field_branches', 'field_categories', 'field_industry', 'field_author' ) }}
+          <div class="learn-more button-arrow">Continue Reading</div>
+        </div>
+      </div>
+  </div>
+
+</article>

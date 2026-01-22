@@ -1,0 +1,11 @@
+uuid: ef8a15ec-44e8-4aa1-8f9f-db6bc0bc93cf
+langcode: en
+status: true
+dependencies: {  }
+id: webform_global_
+block_id: 'block_content:ee969304-82cb-41e4-899c-f74bfc2b0ded'
+category: re_usable_blocks
+label: 'Webform - Contact Us (global)'
+image_path: ''
+image_alt: ''
+weight: -86

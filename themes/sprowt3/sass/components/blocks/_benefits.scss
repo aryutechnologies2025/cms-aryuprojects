@@ -1,0 +1,279 @@
+.layout__region {
+  .block-inline-blockbenefits,
+  .block--type-benefits {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: $margin;
+
+    @include breakpoint($medium) {
+      max-width: 100%;
+      margin: inherit;
+      padding: ($margin * 1.5) $margin;
+    }
+
+    &.rows {
+      [class*="view-benefits"] .view-content,
+      .field--name-field-benefit-overrides {
+        flex-direction: column;
+
+        > .views-row,
+        > .field__item {
+          // TODO: eliminate need for important
+          width: 100% !important;
+          max-width: inherit;
+        }
+
+        .node__content {
+          max-width: inherit;
+        }
+      }
+    }
+
+    &.columns {
+      [class*="view-benefits"],
+      .field--name-field-benefit-overrides {
+        .view-content {
+          flex-direction: column;
+
+          @include breakpoint($small) {
+            flex-direction: row;
+          }
+        }
+      }
+
+      .field--name-field-benefit-overrides {
+        .view-content {
+          flex-direction: column;
+
+          @include breakpoint($small) {
+            flex-direction: row;
+          }
+        }
+      }
+    }
+
+    &.columns,
+    &:not(.rows) {
+      [class*="view-benefits"].view-count-2,
+      [class*="view-benefits"].view-count-3 {
+        @include breakpoint($xsmall) {
+          .view-content {
+            .views-row {
+              width: 100%;
+            }
+          }
+        }
+        @include breakpoint($medium) {
+          .view-content {
+            flex-wrap: nowrap;
+            .views-row {
+              max-width: 450px;
+            }
+          }
+        }
+      }
+
+      [class*="view-benefits"].view-count-2 {
+        @include breakpoint($medium) {
+          .view-content {
+            .views-row {
+              max-width: calc(50% - 20px);
+              width: calc(50% - 20px);
+            }
+          }
+        }
+      }
+
+      [class*="view-benefits"].view-count-3 {
+        @include breakpoint($medium) {
+          .view-content {
+            .views-row {
+              max-width: calc(33% - 20px);
+              width: calc(33% - 20px);
+            }
+          }
+        }
+      }
+    }
+
+    &.center-align {
+      // Teaser View
+      [class*="view-benefits"] {
+        .view-content {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+.layout.full-width:not(.layout--onecol) {
+  .block-inline-blockbenefits {
+    @include breakpoint($medium) {
+      @include flexbox;
+      align-items: center;
+      max-width: calc(#{$container} / 2);
+    }
+  }
+}
+
+h4.service-benefits-label {
+  margin: 25px 0 15px;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+// Benefit Override columns
+.field--name-field-benefit-overrides {
+  @include flexbox;
+  justify-content: inherit;
+  flex-wrap: wrap;
+  margin-top: $margin;
+
+  > .field__item {
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @include breakpoint($xsmall) {
+    > .field__item {
+      width: 100%;
+    }
+  }
+
+  @include breakpoint($medium) {
+    flex-wrap: nowrap;
+    > .field__item {
+      max-width: 450px;
+      width: auto;
+    }
+  }
+
+  .layout--twocol-section & {
+    @include breakpoint($smedium) {
+      > .field__item {
+        width: 100%;
+      }
+    }
+    @include breakpoint($medium) {
+      > .field__item {
+        width: calc(50% - 20px);
+      }
+    }
+  }
+}
+
+.block {
+  [class*="view-benefits"] {
+    //@extend %viewcolumns;
+    margin-top: $margin;
+
+    .view-content {
+      @include flexbox;
+      justify-content: inherit;
+      flex-wrap: wrap;
+
+      .views-row {
+        //width: 100%;
+      }
+
+      @include breakpoint($small) {
+        .views-row {
+          margin-right: 20px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
+    // Teaser View
+    &[class*="view-display-id-block_teaser"],
+    &[class*="view-display-id-block_compact"] {
+      .view-content {
+        .views-row {
+          margin-top: 10px;
+          margin-bottom: 10px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    // Title View
+    &[class*="view-display-id-block_title"] {
+      margin-top: 10px;
+
+      .view-content {
+        @include flexbox;
+        justify-content: flex-start;
+      }
+      .node--type-benefit {
+        .node__content {
+          margin: 0;
+          padding: 0;
+
+          .field--name-title-text {
+            font-size: initial;
+            font-weight: normal;
+            margin: 0 15px 5px 10px;
+
+            &::before {
+              content: "•";
+              display: inline-block;
+              margin-right: 5px;
+              margin-left: -10px;
+            }
+          }
+        }
+      }
+    }
+
+    // Token View
+    &[class*="view-display-id-block_token"] {
+      .view-content {
+        //justify-content: center;
+        flex-wrap: wrap;
+
+        .views-row {
+          //width: 100%;
+
+          &:first-child {
+            margin-bottom: 20px;
+          }
+        }
+
+        @include breakpoint($small) {
+          flex-wrap: nowrap;
+
+          .views-row {
+            &:first-child {
+              margin-bottom: 0px;
+            }
+          }
+        }
+        @include breakpoint($medium) {
+          justify-content: inherit;
+        }
+      }
+    }
+  }
+}
+
+// override hero block to display benefits in columns
+@include breakpoint($small) {
+  .block-inline-blockhero {
+    [class*="view-benefits"] {
+      .view-content {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+}

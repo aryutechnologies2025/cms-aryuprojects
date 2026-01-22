@@ -1,0 +1,31 @@
+{#
+/**
+* @file
+* Default theme implementation to display a block.
+*
+* @see template_preprocess_block()
+*
+* @ingroup themeable
+*/
+#}
+{% set classes = [
+    'clear-both',
+] %}
+<div{{ attributes.addClass(classes) }}>
+    {% if heading is not empty %}
+        <div class="heading-wrap">
+            <{{ heading_tag }}{{ heading_attributes }}>{{ heading }}</{{ heading_tag }}>
+        </div>
+    {% endif %}
+    {% if links is not empty %}
+        <div class="list-wrap">
+            <ul{{ list_attributes }}>
+                {% for link in links %}
+                    <li{{ link.list_item_attributes }}>
+                        <a{{ link.link_attributes }}>{{ link.linkText }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>

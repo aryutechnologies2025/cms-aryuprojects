@@ -1,0 +1,24 @@
+uuid: 857ce632-7192-4eee-9c9d-28916f88b619
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-navigation-subsite-full
+      - main
+      - main-navigation-subsite-
+    parent: 'main-navigation-subsite-full:'
+  sprowt_admin_override:
+    external_node_type: true
+    title_help: 'The Title may be used and rendered on the website depending on the location of the content type.'
+name: 'Landing Page'
+type: landing_page
+description: null
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

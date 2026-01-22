@@ -1,0 +1,19 @@
+uuid: 893ff2ab-1123-4ce2-9342-7a42c86c702e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote
+    - field.storage.block_content.field_speaker
+id: block_content.quote.field_speaker
+field_name: field_speaker
+entity_type: block_content
+bundle: quote
+label: Speaker
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

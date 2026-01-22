@@ -1,0 +1,15 @@
+uuid: a8cab8e6-7066-43ac-a146-3a8d66280cd9
+langcode: en
+status: true
+dependencies: {  }
+name: icon_200x200_
+label: 'Icon (200x200)'
+effects:
+  4b13453a-b1aa-49fa-90c4-4445b7015bf3:
+    uuid: 4b13453a-b1aa-49fa-90c4-4445b7015bf3
+    id: image_scale
+    weight: 1
+    data:
+      width: 200
+      height: 200
+      upscale: false

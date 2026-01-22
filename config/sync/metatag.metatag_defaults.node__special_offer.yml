@@ -1,0 +1,8 @@
+uuid: fbb25c51-839c-4627-a201-1bd10cd79cba
+langcode: en
+status: true
+dependencies: {  }
+id: node__special_offer
+label: 'Content: Special Offer'
+tags:
+  robots: 'noindex, nofollow, noydir'

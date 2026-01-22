@@ -1,0 +1,68 @@
+.menu--utility-zip-finder {
+  ul.menu > li > a {
+      color: palette(dark);
+      &::before {
+        color: palette(primary);
+      }
+  }
+}
+
+// header utility zip finder (desktop)
+header.page-header {
+  .block--type-zip-code-finder {
+      background-color: transparent;
+
+      .zip-wrap {
+          background-color: palette(secondary);
+      }
+      &:after { //top notch
+          border-bottom-color: palette(secondary);
+      }
+      .field--name-field-heading {
+          color: palette(white);
+      }
+      .field--type-text-long {
+          p {
+              color: palette(white);
+          }
+      }
+      .divider {
+          color: palette(white);
+          background-color: transparent;
+
+          span {
+              background-color: palette(secondary);
+          }
+      }
+      .field--name-field-zip-code-finder-form {
+          .zipcode-finder-find-zipcode .form-submit {
+              background-color: palette(primary);
+
+              &:hover {
+                  color: palette(primary);
+                  background-color: palette(white);
+              }
+          }
+      }
+
+      .field--name-field-view-all a {
+          @extend %button;
+          color: palette(primary);
+          background-color: palette(white);
+          &:before {
+            background-color: palette(primary);
+          }
+          &:after {
+            background-color: palette(white);
+          }
+          &:hover {
+              color: palette(white);
+              background-color: transparent;
+          }
+      }
+
+      .overlay {
+          background-color: rgba(palette(black), 0.5);
+      }
+  }
+}

@@ -1,0 +1,35 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    node.label|render|lower|replace({' ':'-'}),
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div{{content_attributes.addClass('node__content')}}>
+    {% if content.field_disable_link['#items'].value != '1' %}
+      <a class="service-link" href="{{ url }}" alt="Learn More About {{ label|render|striptags }}">
+    {% endif %}
+        {{ content|without('field_disable_link') }}
+        {% if content.field_disable_link['#items'].value != '1' %}
+          <div class="cta-link">
+            <span>
+              <div class="field field--name-field-button-text field--type-string field--label-hidden field__item">Learn More</div>
+            </span>
+          </div>
+        {% endif %}
+    {% if content.field_disable_link['#items'].value != '1' %}
+      </a>
+    {% endif %}
+  </div>
+
+</article>

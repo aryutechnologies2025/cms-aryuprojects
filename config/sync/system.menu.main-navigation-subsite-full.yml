@@ -1,0 +1,8 @@
+uuid: b19b39a1-fdce-44d3-a5df-545b6911b58e
+langcode: en
+status: true
+dependencies: {  }
+id: main-navigation-subsite-full
+label: 'Main Navigation (Subsite Full)'
+description: ''
+locked: false

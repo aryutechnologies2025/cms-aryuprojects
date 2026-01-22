@@ -1,0 +1,39 @@
+uuid: 51a0bc47-609f-4937-8fee-baaac0513994
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_career_page_type
+field_name: field_career_page_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: home
+      label: 'Career Home Page'
+    -
+      value: about
+      label: 'Our Culture'
+    -
+      value: benefits
+      label: 'Why Work With Us'
+    -
+      value: team
+      label: 'Meet the Team'
+    -
+      value: opportunities
+      label: 'Current Opportunities'
+    -
+      value: generic
+      label: Generic
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

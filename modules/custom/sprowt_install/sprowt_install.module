@@ -1,0 +1,516 @@
+<?php
+
+/**
+ * @file
+ * Contains sprowt_install.module.
+ */
+
+use Drupal\block_content\Entity\BlockContent;
+use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Entity\EntityFieldManager;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\File\MimeType\MimeTypeGuesser;
+use Drupal\Core\Form\FormState;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\inline_block_content\Plugin\Block\InlineBlock;
+use Drupal\layout_builder\Field\LayoutSectionItemList;
+use Drupal\layout_builder\InlineBlockEntityOperations;
+use Drupal\layout_builder\Plugin\SectionStorage\OverridesSectionStorage;
+use Drupal\layout_builder\Section;
+use Drupal\sprowt_install\Plugin\Field\FieldType\LayoutSectionItem;
+
+
+function _sprowt_install_test() {
+    require_once __DIR__ . '/sprowt_install.deploy.php';
+    require_once __DIR__ . '/sprowt_install.install';
+    require_once __DIR__ . '/sprowt_install.post_update.php';
+    $sandbox = [];
+    sprowt_install_post_update_remove_blog_blocks($sandbox);
+}
+
+function _sprowt_install_on_sprowthq() {
+    return is_dir('/var/www/sprowthq-api');
+}
+
+function _sprowt_install_hq_binary() {
+    $binary = '/home/www/sprowthq/bin/hq';
+    if(file_exists($binary)) {
+        return $binary;
+    }
+    return null;
+}
+
+function _sprowt_install_site_env() {
+    if(!empty($_SERVER['SPROWTHQ_SITE_NAME'])) {
+        $site = $_SERVER['SPROWTHQ_SITE_NAME'] ?? '';
+        $env = $_SERVER['SPROWTHQ_ENVIRONMENT'] ?? 'local';
+        return "$site.$env";
+    }
+    return null;
+}
+
+/**
+ * Implements hook_help().
+ */
+function sprowt_install_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the sprowt_install module.
+    case 'help.page.sprowt_install':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A module containing initial installation hooks. Used mostly for an initial site install.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+/**
+ * Implements hook_modules_installed().
+ */
+function sprowt_install_modules_installed($modules, $is_syncing)
+{
+    if(in_array('sprowt_content', $modules)) {
+        _sprowt_content_import_usage_file();
+        _sprowt_content_reset_entity_view_mode_layout_builder_block_revision_ids();
+    }
+
+    if(in_array('inline_block_content', $modules)) {
+        //_inline_block_content_update_view_displays();
+    }
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function sprowt_install_menu_links_discovered_alter(&$links)
+{
+    $user = \Drupal::currentUser();
+    $access = \Drupal\sprowt_install\Form\ReinstallForm::access($user);
+    if($access->isAllowed()) {
+        $links['sprowt_install.reinstall'] = [
+            'title' => 'Reinstall Sprowt',
+            'description' => 'Delete database for reinstall',
+            'parent' => 'sprowt_settings.admin_config_sprowt',
+            'route_name' => 'sprowt_install.reinstall',
+            'weight' => 15
+        ];
+    }
+}
+
+function _sprowt_install_update_view_displays() {
+    /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $manager */
+    $manager = \Drupal::service('entity_type.manager');
+
+    $entities = $manager->getStorage('entity_view_display')->loadMultiple();
+
+    foreach ($entities as $entity) {
+        if($entity instanceof \Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay) {
+            if($entity->isLayoutBuilderEnabled()) {
+                $sections = $entity->getThirdPartySetting('layout_builder', 'sections');
+                $newSections = [];
+                foreach($sections as $section) {
+                    /** @var \Drupal\layout_builder\Section $section */
+                    $sectionArray = $section->toArray();
+                    foreach($sectionArray['components'] as &$component) {
+                        $config = $component['configuration'];
+                        if(!empty($config['content'])) {
+                            unset($config['content']);
+                            $component['configuration'] = $config;
+                        }
+                    }
+                    $newSections[] = \Drupal\layout_builder\Section::fromArray($sectionArray);
+                }
+                $entity->setThirdPartySetting('layout_builder', 'sections', $newSections);
+                $entity->save();
+            }
+        }
+    }
+}
+
+function _sprowt_install_update_layout_builder_nodes() {
+    /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $manager */
+    $manager = \Drupal::service('entity_type.manager');
+
+    $entities = $manager->getStorage('node')->loadMultiple();
+
+    foreach ($entities as $entity) {
+        if($entity->hasField('layout_builder__layout')) {
+            /** @var \Drupal\layout_builder\Field\LayoutSectionItemList $layout */
+            $layout = $entity->get('layout_builder__layout');
+            if (!empty($layout)) {
+                /** @var \Drupal\layout_builder\Plugin\Field\FieldType\LayoutSectionItem $item */
+                foreach ($layout as $key => &$item) {
+                    $val = $item->getValue();
+                    $section = $item->section;
+                    /** @var \Drupal\layout_builder\Section $section */
+                    $sectionArray = $section->toArray();
+                    foreach ($sectionArray['components'] as &$component) {
+                        $config = $component['configuration'];
+                        if (!empty($config['content'])) {
+                            unset($config['content']);
+                            $component['configuration'] = $config;
+                        }
+                    }
+                    $newSection = \Drupal\layout_builder\Section::fromArray($sectionArray);
+                    $item->setValue([
+                        'section' => $newSection
+                    ]);
+                    $layout->set($key, $item);
+                }
+                $entity->set('layout_builder__layout', $layout->getValue());
+                $entity->save();
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_modules_uninstalled().
+ */
+function sprowt_install_modules_uninstalled($modules, $is_syncing)
+{
+    if(in_array('inline_block_content', $modules)) {
+        //_sprowt_install_update_view_displays();
+    }
+
+    drupal_flush_all_caches();
+}
+
+/**
+ * Implements hook_field_info_alter().
+ */
+function sprowt_install_field_info_alter(&$info)
+{
+    $info["layout_section"]['class'] = LayoutSectionItem::class;
+}
+
+/**
+ * Added per this: https://www.drupal.org/project/config_split/issues/2938888
+ */
+function sprowt_install_form_config_split_edit_form_alter(&$form, &$form_state, $form_id) {
+    $form['blacklist_fieldset']['theme']['#access'] = TRUE;
+}
+
+function _sprowt_install_get_all_block_content() {
+    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple();
+    return _sprowt_install_gather_block_content($nodes);
+}
+
+function _sprowt_install_gather_block_content($nodes = [], $global = true) {
+    $blocks = [];
+    $entityTypeManager = \Drupal::entityTypeManager();
+    $blockStorage = $entityTypeManager->getStorage('block_content');
+    $nodeTypes = [];
+    $extractBlocks = function($section) use (&$blocks, $global) {
+        /** @var \Drupal\layout_builder\Section $section */
+        $components = $section->getComponents();
+        /** @var \Drupal\layout_builder\SectionComponent $component */
+        foreach($components as $component) {
+            $plugin = $component->getPlugin();
+            if($plugin instanceof InlineBlock) {
+                $block = $plugin->returnEntity();
+                if ($block instanceof BlockContent) {
+                    $key = $block->uuid() . '::' . $block->getRevisionId();
+                    $blocks[$key] = $block;
+                }
+            }
+            elseif ($plugin instanceof BlockContent) {
+                if($global) {
+                    $key = $plugin->uuid();
+                    $blocks[$key] = $plugin;
+                }
+            }
+        }
+    };
+
+
+    /** @var \Drupal\node\Entity\Node $node */
+    foreach($nodes as $node) {
+        if($node->hasField('layout_builder__layout')) {
+            $type = $node->bundle();
+            if (!in_array($type, $nodeTypes)) {
+                $nodeTypes[] = $type;
+            }
+            /** @var LayoutSectionItemList $list */
+            $list = $node->get('layout_builder__layout');
+            foreach ($list->getSections() as $section) {
+                $extractBlocks($section);
+            }
+        }
+    }
+    $viewDisplays = $entityTypeManager->getStorage('entity_view_display')->loadMultiple();
+    foreach($viewDisplays as $viewDisplay) {
+        if($viewDisplay instanceof \Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay) {
+            $entityType = $viewDisplay->getTargetEntityTypeId();
+            $bundle = $viewDisplay->getTargetBundle();
+            if($entityType == 'node' && $viewDisplay->isLayoutBuilderEnabled()) {
+                if(in_array($bundle, $nodeTypes)) {
+                    $sections = $viewDisplay->getSections();
+                    foreach($sections as $section) {
+                        $extractBlocks($section);
+                    }
+                }
+            }
+        }
+    }
+
+    return $blocks;
+}
+
+function sprowt_install_test()
+{
+    require_once \Drupal::service('extension.path.resolver')->getPath('module', 'pathauto') . '/pathauto.install';
+    pathauto_update_8108();
+}
+
+function _sprowt_install_switch_profile($profile_to_install = 'sprowt') {
+    $profile_to_remove = \Drupal::installProfile();
+
+    // Forces ExtensionDiscovery to rerun for profiles.
+    \Drupal::service('state')->delete('system.profile.files');
+
+    // Set the profile in configuration.
+    $extension_config = \Drupal::service('config.factory')->getEditable('core.extension');
+    $extension_config->set('profile', $profile_to_install)
+        ->save();
+
+    drupal_flush_all_caches();
+
+    // Install profiles are also registered as enabled modules.
+    // Remove the old profile and add in the new one.
+    $extension_config->clear("module.{$profile_to_remove}")
+        ->save();
+    // The install profile is always given a weight of 1000 by the core
+    // extension system.
+    $extension_config->set("module.$profile_to_install", 1000)
+        ->save();
+
+    // Remove the schema value for the old install profile, and set the schema
+    // for the new one. We set the schema version to 8000, in the absence of any
+    // knowledge about it. TODO: add an option for the schema version to set for
+    // the new profile, or better yet, analyse the profile's hook_update_N()
+    // functions to deduce the schema to set.
+    $keyValue = \Drupal::service('keyvalue');
+    $keyValue->get('system.schema')->delete($profile_to_remove);
+    $keyValue->get('system.schema')->set($profile_to_install, 8000);
+
+    // Clear caches again.
+    drupal_flush_all_caches();
+}
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_install_form_update_manager_update_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    //disable submit function
+    $form['#submit'] = [];
+    $form['actions']['#access'] = false;
+    if(!empty($form['projects'])) {
+        $form['projects']['#type'] = 'table';
+        $form['projects']['#rows'] = $form['projects']['#options'];
+    }
+    if(!empty($form['disabled_projects'])) {
+        $form['disabled_projects']['#type'] = 'table';
+        $form['disabled_projects']['#rows'] = $form['projects']['#options'];
+    }
+
+}
+
+function sprowt_install_convert_to_webp($fileUri, $fileMime = null) {
+    /** @var \Drupal\Core\File\FileSystem $fileSystem */
+    $fileSystem = \Drupal::service('file_system');
+    if(strpos($fileUri, '/') === 0) {
+        $filePath = $fileUri;
+    }
+    else if(strpos($fileUri, 'internal://') === 0) {
+        $filePath = str_replace('internal:/', DRUPAL_ROOT, $fileUri);
+    }
+    else {
+        $filePath = $fileSystem->realpath($fileUri);
+    }
+    $validMimes = ['image/png', 'image/jpeg', 'image/tiff'];
+    if(empty($fileMime)) {
+        /** @var MimeTypeGuesser $guesser */
+        $guesser = \Drupal::service('file.mime_type.guesser');
+        $fileMime = $guesser->guessMimeType($filePath);
+    }
+    if(!in_array($fileMime, $validMimes)) {
+        throw new \RuntimeException('Invalid mimetype for converting to webp');
+    }
+    $filename = basename($fileUri);
+    $nameParts = explode('.', $filename);
+    $extension = array_pop($nameParts);
+    $filenameSansExt = implode('.', $nameParts);
+    $newName = $filenameSansExt . '.webp';
+
+    if(strpos($fileUri, '/') === 0
+        || strpos($fileUri, 'internal://') === 0
+    ) {
+        $newUri = 'public://' . $newName;
+    }
+    else {
+        $uriParts = explode('/', $fileUri);
+        array_pop($uriParts);
+        $newUri = implode('/', array_merge($uriParts, [$newName]));
+    }
+
+    $newPath = $fileSystem->realpath($newUri);
+    if(file_exists($newPath)) {
+        unlink($newPath);
+    }
+    $cwebp = \Drupal::state()->get('cwebp.binary');
+    if(empty($cwebp)) {
+        $which = new Symfony\Component\Process\Process(['which', 'cwebp']);
+        $which->run();
+        if(!$which->isSuccessful()) {
+            throw new \Symfony\Component\Process\Exception\ProcessFailedException($which);
+        }
+        $cwebp = trim($which->getOutput());
+        \Drupal::state()->set('cwebp.binary', $cwebp);
+    }
+    if($fileMime == 'image/jpeg') {
+        $cmd = [
+            $cwebp,
+            '-jpeg_like',
+            $filePath,
+            '-o',
+            $newPath
+        ];
+    }
+    else {
+        $cmd = [
+            $cwebp,
+            '-z',
+            '6',
+            '-exact',
+            $filePath,
+            '-o',
+            $newPath
+        ];
+    }
+    $process = new Symfony\Component\Process\Process($cmd);
+    $process->run();
+    if(!$process->isSuccessful()) {
+        throw new \Symfony\Component\Process\Exception\ProcessFailedException($process);
+    }
+
+    if(!file_exists($newPath)) {
+        throw new \RuntimeException('File did not successfully save');
+    }
+
+    return $newUri;
+}
+
+
+function _sprowt_install_populate_inline_block_usage_table() {
+    $database = \Drupal::database();
+    $tableName = 'inline_block_content_usage';
+    $database->truncate($tableName);
+    /** @var \Drupal\inline_block_content\InlineBlockUsage $usage */
+    $usage = \Drupal::service('inline_block.usage');
+
+    $entityTypeManager = \Drupal::entityTypeManager();
+    $viewDisplays = $entityTypeManager->getStorage('entity_view_display')->loadMultiple();
+    foreach($viewDisplays as $viewDisplay) {
+        if($viewDisplay instanceof \Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay
+            && $viewDisplay->isLayoutBuilderEnabled()
+        ) {
+            $sections = $viewDisplay->getSections();
+            /** @var Section $section */
+            foreach($sections as $section) {
+                $components = $section->getComponents();
+                /** @var \Drupal\layout_builder\SectionComponent $component */
+                foreach($components as $component) {
+                    $componentArray = $component->toArray();
+                    $config = $componentArray['configuration'];
+                    if(!empty($config['id'])
+                        && strpos($config['id'], 'inline_block:') === 0
+                        && !empty($config['uuid'])
+                    ) {
+                        $usage->addUsageByBlockUuid($config['uuid'], $viewDisplay);
+                    }
+                }
+            }
+        }
+    }
+
+    /** @var EntityFieldManager $entityFieldManager */
+    $entityFieldManager = \Drupal::service('entity_field.manager');
+    $map = $entityFieldManager->getFieldMapByFieldType('layout_section');
+    foreach ($map as $entityTypeId => $fieldInfo) {
+        _sprowt_install_populate_inline_block_usage_by_entity_type_id($entityTypeId);
+    }
+
+
+//    $definitions = array_filter($entityTypeManager->getDefinitions(), function (EntityTypeInterface $entity_type) {
+//        return $entity_type->entityClassImplements(FieldableEntityInterface::class) && $entity_type->hasHandlerClass('form', 'layout_builder') && $entity_type->hasViewBuilderClass() && $entity_type->hasLinkTemplate('canonical');
+//    });
+//    /** @var EntityTypeInterface $definition */
+//    foreach($definitions as $definition) {
+//        _sprowt_install_populate_inline_block_usage_by_entity_type_id($definition->id());
+//    }
+}
+
+function _sprowt_install_populate_inline_block_usage_by_entity_type_id($entityTypeId) {
+    /** @var \Drupal\inline_block_content\InlineBlockUsage $usage */
+    $usage = \Drupal::service('inline_block.usage');
+    $entityTypeManager = \Drupal::entityTypeManager();
+    $entities = $entityTypeManager->getStorage($entityTypeId)->loadMultiple();
+    /** @var \Drupal\Core\Entity\ContentEntityBase $entity */
+    foreach($entities as $entity) {
+        if(!$entity->hasField(OverridesSectionStorage::FIELD_NAME)) {
+            continue;
+        }
+        /** @var LayoutSectionItemList $list */
+        $list = $entity->get(OverridesSectionStorage::FIELD_NAME);
+        /** @var LayoutSectionItem $section */
+        foreach($list as $sectionItem) {
+            $components = $sectionItem->section->getComponents();
+            /** @var \Drupal\layout_builder\SectionComponent $component */
+            foreach($components as $component) {
+                $config = $component->get('configuration');
+                if(strpos($config['id'], 'inline_block') !== false) {
+                    if(!empty($config['uuid'])) {
+                        $usage->addUsageByBlockUuid($config['uuid'], $entity);
+                    }
+                }
+            }
+        }
+    }
+}
+
+function _sprowt_install_webforms_missing_handlers() {
+    $webforms = \Drupal::entityTypeManager()->getStorage('webform')->loadMultiple();
+    $missing = [];
+    foreach ($webforms as $webform) {
+        $hasConfirmationUrlHandler = false;
+
+        $addHandlers = [];
+        $deleteHandlers = [];
+        $handlers = $webform->getHandlers();
+        /** @var WebformHandlerInterface $handler */
+        foreach ($handlers as $handler) {
+            $pluginId = $handler->getPluginId();
+            $handlerId = $handler->getHandlerId();
+            if($pluginId == 'settings') {
+                /** @var \Drupal\webform\Plugin\WebformHandler\SettingsWebformHandler $handler */
+                $configuration = $handler->getConfiguration();
+                if(!empty($configuration['settings']["confirmation_url"]) && $handler->isEnabled()){
+                    $hasConfirmationUrlHandler = true;
+                }
+            }
+        }
+
+        if($hasConfirmationUrlHandler) {
+            continue;
+        }
+        $missing[] = $webform->label();
+    }
+
+    echo json_encode($missing, JSON_PRETTY_PRINT);
+}

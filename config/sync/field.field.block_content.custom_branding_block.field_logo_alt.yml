@@ -1,0 +1,19 @@
+uuid: 383a3e24-c049-4d28-b35b-a639ebb76c24
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.custom_branding_block
+    - field.storage.block_content.field_logo_alt
+id: block_content.custom_branding_block.field_logo_alt
+field_name: field_logo_alt
+entity_type: block_content
+bundle: custom_branding_block
+label: 'Logo Alt'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

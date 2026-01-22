@@ -1,0 +1,78 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+{{ attach_library('classy/node') }}
+{{ attach_library('sprowt3/featherlight') }}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+
+    <div{{content_attributes.addClass('node__content')}}>
+        <div class="package-description-label field--name-field-label-tag">Your Solution Includes</div>
+        
+        <div class="field field--name-field-heading">
+          {% if content.field_heading|render is not empty %}
+            {{ content.field_heading.0 }}
+          {% elseif primary_package_id is not empty %}
+            {{ drupal_field('title', 'node', primary_package_id) }}
+            {% if secondary_package_id is not empty %}
+               and {{ drupal_field('title', 'node', secondary_package_id) }}
+            {% endif %}
+            {% if primary_service_id is not empty %}
+               and {{ drupal_field('title', 'node', primary_service_id) }}
+            {% endif %}
+          {% elseif primary_service_id is not empty %}
+            {{ drupal_field('title', 'node', primary_service_id) }}
+          {% endif %}
+        </div>
+
+        {% if primary_package_id is not empty %}
+          {{ drupal_field('field_description', 'node', primary_package_id) }}
+        {% endif %}
+        {% if secondary_package_id is not empty %}
+          {{ drupal_field('field_description', 'node', secondary_package_id) }}
+        {% endif %}
+        {% if primary_service_id is not empty %}
+          {{ drupal_entity('node', primary_service_id, 'description') }}
+        {% endif %}
+        
+        {% if drupal_view_result('concerns', 'block_list', node.id()) is not empty %}
+          <div class="package-protection">
+            <div class="package-protection-title">{{ node.label|render }} This Solution Protects You From</div>
+            <div class="package-protection-content">
+              {{ drupal_view('concerns', 'block_list', node.id()) }}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if concern_ids is not empty %}
+          <div class="concerns">
+            <div class="concerns-title">You Selected</div>
+            <div class="concerns-content">
+              <div class="concerns-comment">As your local experts, we have compiled some helpful information regarding your concerns and why they cause problems. Click into each concern to learn more!</div>
+              <div class="concerns-list">
+                <div class="content-wrap">
+                  {% for concern_id in concern_ids %}
+                    {{ drupal_entity('node', concern_id, 'modal') }}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+    </div>
+
+  {% endblock %}
+</div>
+

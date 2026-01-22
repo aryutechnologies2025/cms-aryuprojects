@@ -1,0 +1,11 @@
+uuid: 3b1fb649-b0a3-4f1e-a5bf-f668feef09b1
+langcode: en
+status: true
+dependencies: {  }
+id: services_ps
+block_id: 'inline_block:services'
+category: custom_blocks
+label: Services
+image_path: ''
+image_alt: ''
+weight: -48

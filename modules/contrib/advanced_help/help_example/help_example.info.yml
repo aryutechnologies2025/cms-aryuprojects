@@ -1,0 +1,11 @@
+name: Help Example
+type: module
+description: A example help module to demonstrate the advanced help module.
+core_version_requirement: ^8.8 || ^9 || ^10
+dependencies:
+  - advanced_help:advanced_help
+
+# Information added by Drupal.org packaging script on 2023-11-10
+version: '8.x-1.1-alpha3'
+project: 'advanced_help'
+datestamp: 1699620857

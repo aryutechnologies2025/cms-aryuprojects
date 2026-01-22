@@ -1,0 +1,23 @@
+uuid: 95a2047c-9bf4-4104-baba-0757109369f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subsite
+    - node.type.standalone_landing_page
+  module:
+    - sprowt_subsite
+id: node.standalone_landing_page.field_subsite
+field_name: field_subsite
+entity_type: node
+bundle: standalone_landing_page
+label: Subsite
+description: 'Main or Subsite this content belongs to.'
+required: false
+translatable: false
+default_value:
+  -
+    target: _main
+default_value_callback: ''
+settings: {  }
+field_type: sprowt_subsite_reference

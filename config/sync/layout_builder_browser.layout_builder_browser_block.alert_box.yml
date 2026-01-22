@@ -1,0 +1,11 @@
+uuid: 3469a3ec-e60d-4935-8815-5d0dae121154
+langcode: en
+status: true
+dependencies: {  }
+id: alert_box
+block_id: 'block_content:6a4c9020-817b-4217-9bd0-ca397e3f3ea6'
+category: re_usable_blocks
+label: 'Alert Box'
+image_path: ''
+image_alt: ''
+weight: -99

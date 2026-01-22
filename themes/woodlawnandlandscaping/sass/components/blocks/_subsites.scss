@@ -1,0 +1,16 @@
+// Subsites
+.layout__region {
+  .block-inline-blocksubsites,
+  .block--type-subsites {
+    .view-subsite.view-display-id-block_title .view-content,
+    .field--name-field-subsite-overrides {
+      .field--name-title-text,
+      .views-field-title {
+        &::before {
+          color: palette(secondary);
+        }
+      }
+    }
+  }
+}
+

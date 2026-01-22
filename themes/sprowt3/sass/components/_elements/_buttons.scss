@@ -1,0 +1,55 @@
+.field--name-field-cta a {
+  min-width: 260px;
+}
+
+%underline-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    margin-top: -2px;
+    background-color: var(--color-secondary);
+    transition: width $duration;
+  }
+
+  .bg-primary &,
+  .bg-tertiary &,
+  .bg-black &,
+  .bg-dark & {
+    &::after {
+      background-color: var(--color-secondary);
+    }
+  }
+  
+  .bg-secondary & {
+    &::after {
+      background-color: palette(white);
+    }
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+%underline-link-reverse {
+  @extend %underline-link;
+
+  &::after {
+    width: 100%;
+  }
+
+  &:hover {
+    &::after {
+      width: 0%;
+    }
+  }
+}

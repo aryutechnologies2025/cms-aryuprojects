@@ -1,0 +1,476 @@
+uuid: 9ee51da3-17a5-471f-b310-4166d7e79fe4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - block_content.type.hero_learning_center
+    - field.field.node.concern.body
+    - field.field.node.concern.field_exclude
+    - field.field.node.concern.field_exclude_from_solution_find
+    - field.field.node.concern.field_icon_concern
+    - field.field.node.concern.field_industry
+    - field.field.node.concern.field_issues
+    - field.field.node.concern.field_meta_description
+    - field.field.node.concern.field_meta_tags
+    - field.field.node.concern.field_package_level
+    - field.field.node.concern.field_services
+    - field.field.node.concern.field_subsite
+    - field.field.node.concern.field_subsite_multiple
+    - field.field.node.concern.field_summary
+    - field.field.node.concern.layout_builder__layout
+    - node.type.concern
+  content:
+    - 'block_content:call_out:bf55a2c2-9a0e-40ca-8960-7335c352fbbb'
+    - 'block_content:issues:9c6f6ab1-dfb2-449b-ad05-eb86c9c4ecec'
+  module:
+    - anchor_list_block
+    - block_content
+    - layout_builder
+    - layout_discovery
+    - metatag
+    - options
+    - sprowt_subsite
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Masthead
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - full_page_width
+            - dark
+          layout_builder_id: masthead
+        components:
+          -
+            uuid: 33fdf069-b192-468a-9926-de28b256a31d
+            region: content
+            configuration:
+              id: 'inline_block:hero_learning_center'
+              label: Masthead
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 735
+              block_serialized: null
+              type: hero_learning_center
+              uuid: ef514465-1dd0-4ecd-8ac8-645141464020
+            weight: 0
+            additional:
+              layout_builder_id: ''
+          -
+            uuid: 28597ff3-72ba-4522-a396-81ec6409988e
+            region: content
+            configuration:
+              id: 'field_block:node:concern:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: Introduction
+          context_mapping: {  }
+          column_widths: 75-25
+          layout_builder_styles_style:
+            - small_container_width
+            - ''
+            - light
+          layout_builder_id: introduction
+        components:
+          -
+            uuid: 2520878e-dfc8-4ef3-b440-6282018ce7a1
+            region: first
+            configuration:
+              id: 'inline_block:basic'
+              label: Introduction
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 736
+              block_serialized: null
+              type: basic
+              uuid: 613c951d-afc9-4756-8435-4121c8bd98eb
+            weight: 1
+            additional:
+              layout_builder_styles_style:
+                - left_aligned
+              layout_builder_id: ''
+          -
+            uuid: e513cf31-1545-44a9-97a9-d82c97703ea1
+            region: second
+            configuration:
+              id: 'block_content:9c6f6ab1-dfb2-449b-ad05-eb86c9c4ecec'
+              label: 'Issues Sidebar (global)'
+              label_display: '1'
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - block_black
+              layout_builder_id: ''
+          -
+            uuid: 15fd2461-ae50-4d09-9902-0a2d05c02f92
+            region: first
+            configuration:
+              id: 'field_block:node:concern:field_summary'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Link List'
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - ''
+            - primary_color
+        components:
+          -
+            uuid: 5649abde-b0d4-43a3-ad2e-2e0ee2c68f13
+            region: content
+            configuration:
+              id: anchor_list_block
+              label: 'Anchor list block'
+              label_display: ''
+              provider: anchor_list_block
+              context_mapping: {  }
+              heading: ''
+              heading_tag: h2
+              links:
+                -
+                  linkText: Identification
+                  linkUrlSelect: '#introduction'
+                  linkUrl: '#introduction'
+                  linkTargetBlank: 0
+                  weight: '0'
+                -
+                  linkText: Characteristics
+                  linkUrlSelect: '#characteristics'
+                  linkUrl: '#characteristics'
+                  linkTargetBlank: 0
+                  weight: '0'
+                -
+                  linkText: Habits
+                  linkUrlSelect: '#habits'
+                  linkUrl: '#habits'
+                  linkTargetBlank: 0
+                  weight: '0'
+                -
+                  linkText: 'Health Risks'
+                  linkUrlSelect: '#health-risks'
+                  linkUrl: '#health-risks'
+                  linkTargetBlank: 0
+                  weight: '0'
+            weight: 0
+            additional:
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Identification
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - small_container_width
+            - white
+          layout_builder_id: identification
+        components:
+          -
+            uuid: b9c2462a-530c-4173-92a4-f6a995cd1324
+            region: content
+            configuration:
+              id: 'inline_block:basic'
+              label: Identification
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 739
+              block_serialized: null
+              type: basic
+              uuid: 943b1378-55f4-420f-89a5-ad34b1b28e84
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - left_aligned
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Characteristics
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - small_container_width
+            - light
+          layout_builder_id: characteristics
+        components:
+          -
+            uuid: de1e3bdd-b370-4e6c-bc67-3680d073284b
+            region: content
+            configuration:
+              id: 'inline_block:basic'
+              label: Characteristics
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 741
+              block_serialized: null
+              type: basic
+              uuid: cf8afc10-ebc2-484d-88be-795670a29259
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - left_aligned
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Habits
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - small_container_width
+            - white
+          layout_builder_id: habits
+        components:
+          -
+            uuid: 33ecd607-7919-4012-a870-ee22fa34406d
+            region: content
+            configuration:
+              id: 'inline_block:basic'
+              label: Habits
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 742
+              block_serialized: null
+              type: basic
+              uuid: b72a5096-d601-4cf8-891e-7b284bb55200
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - left_aligned
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Health Risks'
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - small_container_width
+            - light
+          layout_builder_id: health-risks-2
+        components:
+          -
+            uuid: 8ef91f9b-b8ad-42f9-9630-98d99d5181db
+            region: content
+            configuration:
+              id: 'inline_block:basic'
+              label: 'Health Risks'
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 743
+              block_serialized: null
+              type: basic
+              uuid: c20b1d54-451d-4445-bc23-2afbedbc2803
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - left_aligned
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Call Out'
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - small_container_width
+            - ''
+          layout_builder_id: cta
+        components:
+          -
+            uuid: ac239d92-5a52-407f-b47b-be6851f608bf
+            region: content
+            configuration:
+              id: 'block_content:bf55a2c2-9a0e-40ca-8960-7335c352fbbb'
+              label: 'Call Out - Issues and Concerns (global)'
+              label_display: ''
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - center_aligned
+                - block_black
+                - ''
+              layout_builder_id: ''
+        third_party_settings: {  }
+id: node.concern.default
+targetEntityType: node
+bundle: concern
+mode: default
+content:
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 116
+    region: content
+  field_exclude:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_exclude_from_solution_find:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_icon_concern:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_industry:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 115
+    region: content
+  field_issues:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_meta_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 121
+    region: content
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_package_level:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 117
+    region: content
+  field_services:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_subsite:
+    type: sprowt_subsite_reference_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 120
+    region: content
+  field_subsite_multiple:
+    type: sprowt_subsite_reference_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 119
+    region: content
+  field_summary:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  layout_builder__layout: true

@@ -1,0 +1,17 @@
+uuid: 24157718-9aac-421d-931e-d4a325ba703a
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: icon_square_200x200
+label: 'Icon Square (200x200)'
+effects:
+  9ec7643d-ec37-413a-b7ed-f283c18fff45:
+    uuid: 9ec7643d-ec37-413a-b7ed-f283c18fff45
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 200
+      crop_type: focal_point

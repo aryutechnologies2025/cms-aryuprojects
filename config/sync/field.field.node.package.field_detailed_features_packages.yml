@@ -1,0 +1,29 @@
+uuid: cd4d8c3c-2f4c-4c88-9476-7f95d176f999
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_detailed_features_packages
+    - node.type.package
+    - taxonomy.vocabulary.features
+id: node.package.field_detailed_features_packages
+field_name: field_detailed_features_packages
+entity_type: node
+bundle: package
+label: 'Detailed Feature(s)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      features: features
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,5 @@
+name: 'Sprowt Base Install'
+type: module
+description: 'A module installed before everything else. Used mostly for installer tasks.'
+core_version_requirement: ^9 || ^10
+package: 'Coalmarch'

@@ -1,0 +1,21 @@
+uuid: b856a964-e42d-45ff-a82c-08a6fc21d116
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_state
+    - node.type.branch
+  module:
+    - options
+id: node.branch.field_state
+field_name: field_state
+entity_type: node
+bundle: branch
+label: State/Province
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

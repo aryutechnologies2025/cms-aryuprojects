@@ -1,0 +1,21 @@
+{
+    "name": "color_variables",
+    "version": "1.0.0",
+    "dependencies": {
+        "autoprefixer": "^9.6.1",
+        "postcss-cli": "^6.1.3"
+    },
+    "devDependencies": {
+        "node-sass": "^4.12.0",
+        "watch": "^1.0.2"
+    },
+    "browserslist": [
+        "defaults"
+    ],
+    "scripts": {
+        "autoprefix": "postcss ./css/*.css --use autoprefixer -d ./css",
+        "compile": "node-sass ./scss -o ./css",
+        "build": "npm run compile && npm run autoprefix",
+        "watch": "watch 'npm run build' ./scss"
+    }
+}

@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Creates an automatic TOC using tocbot js library.
+ */
+
+use Drupal\Core\Hook\Attribute\LegacyHook;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\tocbot\Hook\TocbotHooks;
+
+/**
+ * Implements hook_help().
+ */
+#[LegacyHook]
+function tocbot_help($route_name, RouteMatchInterface $route_match) {
+  return \Drupal::service(TocbotHooks::class)->help($route_name, $route_match);
+}

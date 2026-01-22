@@ -1,0 +1,25 @@
+uuid: 050b580c-719b-4a8f-822a-037c64321bb8
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:webform:c5135cd6-02af-42b4-b4a5-03f89600dad3'
+  module:
+    - block_content
+  theme:
+    - s3_subtheme
+id: webformfreeestimatesubsitesmainsiteglobal
+theme: s3_subtheme
+region: disabled
+weight: 0
+provider: null
+plugin: 'block_content:c5135cd6-02af-42b4-b4a5-03f89600dad3'
+settings:
+  id: 'block_content:c5135cd6-02af-42b4-b4a5-03f89600dad3'
+  label: 'Webform - Free Estimate | Subsites main site (global)'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

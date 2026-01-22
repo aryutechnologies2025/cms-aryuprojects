@@ -1,0 +1,25 @@
+uuid: 327abb79-a1ee-4341-91eb-7cceed214d96
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_hero_content_width
+id: block_content.hero.field_hero_content_width
+field_name: field_hero_content_width
+entity_type: block_content
+bundle: hero
+label: 'Hero Content Width'
+description: 'Set the content width of the Hero Copy from 50 to 75 in increments of 5.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 50
+default_value_callback: ''
+settings:
+  min: 50
+  max: 75
+  prefix: ''
+  suffix: ''
+field_type: integer

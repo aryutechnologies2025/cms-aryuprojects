@@ -1,0 +1,21 @@
+uuid: 28eac6ac-8b33-4a1d-b3bf-fa69dea2522e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subsite_type
+    - node.type.subsite
+  module:
+    - options
+id: node.subsite.field_subsite_type
+field_name: field_subsite_type
+entity_type: node
+bundle: subsite
+label: 'Subsite Type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

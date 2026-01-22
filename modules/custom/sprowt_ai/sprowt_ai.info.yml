@@ -1,0 +1,8 @@
+name: 'Sprowt AI'
+type: module
+description: 'A module for using AI to generate content'
+package: Coalmarch
+core_version_requirement: ^10
+dependencies:
+    - sprowt_settings:sprowt_settings
+    - inline_block_content:inline_block_content

@@ -1,0 +1,39 @@
+entity.solution.collection:
+    path: '/admin/structure/solution'
+    defaults:
+        _entity_list: 'solution'
+        _title: 'Solution configuration'
+    requirements:
+        _permission: 'administer solution finder'
+
+entity.solution.add_form:
+    path: '/admin/structure/solution/add'
+    defaults:
+        _entity_form: 'solution.add'
+        _title: 'Add a solution'
+    requirements:
+        _permission: 'administer solution finder'
+
+entity.solution.edit_form:
+    path: '/admin/structure/solution/{solution}'
+    defaults:
+        _entity_form: 'solution.edit'
+        _title: 'Edit a solution'
+    requirements:
+        _permission: 'administer solution finder'
+
+entity.solution.delete_form:
+    path: '/admin/structure/solution/{solution}/delete'
+    defaults:
+        _entity_form: 'solution.delete'
+        _title: 'Delete a solution'
+    requirements:
+        _permission: 'administer solution finder'
+
+solution_finder.solution_finder_test:
+    path: '/admin/structure/solution/test'
+    defaults:
+        _title: 'Solution finder test'
+        _form: 'Drupal\solution_finder\Form\SolutionFinderTestForm'
+    requirements:
+        _permission: 'administer solution finder'

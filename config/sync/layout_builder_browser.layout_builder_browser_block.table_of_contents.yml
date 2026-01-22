@@ -1,0 +1,11 @@
+uuid: be09950c-8e04-46e7-9648-343d20aae496
+langcode: en
+status: true
+dependencies: {  }
+id: table_of_contents
+block_id: tocbot_block
+category: custom_blocks
+label: 'Table of Contents'
+image_path: ''
+image_alt: ''
+weight: -41

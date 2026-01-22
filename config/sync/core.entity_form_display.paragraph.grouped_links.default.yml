@@ -1,0 +1,35 @@
+uuid: b57ba28c-8943-414a-80e5-340e067c222c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grouped_links.field_city_link
+    - field.field.paragraph.grouped_links.field_group_heading
+    - paragraphs.paragraphs_type.grouped_links
+  module:
+    - sprowt_admin_override
+    - tag_text_field
+id: paragraph.grouped_links.default
+targetEntityType: paragraph
+bundle: grouped_links
+mode: default
+content:
+  field_city_link:
+    type: link_with_description
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_group_heading:
+    type: html_tag_text_field_widget
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for GCLID Field module.
+ */
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function gclid_field_page_attachments(array &$attachments)
+{
+    $attachments['#attached']['library'][] = 'gclid_field/collect';
+}

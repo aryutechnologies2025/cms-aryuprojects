@@ -1,0 +1,47 @@
+// Form styles
+$_form-background-color: #fff;
+$_form-box-shadow-focus: 0px 3px 3px rgba(0, 0, 0, 0.1);
+
+label {
+  color: palette(dark);
+}
+
+input,
+select,
+textarea {
+  color: palette(black);
+}
+
+[type="color"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+input:not([type]),
+.form-textarea-wrapper textarea {
+  background-color: $_form-background-color;
+
+  &:hover {
+    border-color: shade($_form-background-color, 20%);
+  }
+
+  &:disabled {
+    background-color: shade($_form-background-color, 5%);
+  }
+
+  &::placeholder {
+    color: $base-font-color;
+  }
+}
+select {
+  background-color: $_form-background-color;
+}

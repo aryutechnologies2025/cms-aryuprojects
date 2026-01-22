@@ -1,0 +1,9 @@
+name: 'Sprowt Admin Override'
+type: module
+description: 'Overrides js and css in the admin theme'
+core_version_requirement: ^9 || ^10
+package: 'Coalmarch'
+
+dependencies:
+    - pathauto:pathauto
+    - drupal:layout_builder

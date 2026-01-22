@@ -1,0 +1,30 @@
+uuid: a429249c-603f-48d7-b9f9-4a15ddef0af1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced
+    - field.storage.block_content.field_heading
+  module:
+    - tag_text_field
+id: block_content.areas_serviced.field_heading
+field_name: field_heading
+entity_type: block_content
+bundle: areas_serviced
+label: Heading
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  defaultTag: div
+  tagList: |-
+    h1|H1
+    h2|H2
+    h3|H3
+    h4|H4
+    h5|H5
+    h6|H6
+    div|Div
+field_type: html_tag_text_field_type

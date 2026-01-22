@@ -1,0 +1,11 @@
+uuid: 6b813c21-30ea-4df3-9e3c-5a33a1cd39de
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_manual
+id: block_content.areas_serviced_manual
+target_entity_type_id: block_content
+target_bundle: areas_serviced_manual
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,8 @@
+uuid: 0f5c2ada-9d0f-48d2-a478-8eda850cef38
+langcode: en
+status: true
+dependencies: {  }
+id: image
+label: Image
+revision: false
+description: 'Upload a single image (jpg, jpeg, png, svg).'

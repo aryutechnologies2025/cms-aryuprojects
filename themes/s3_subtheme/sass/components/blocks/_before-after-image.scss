@@ -1,0 +1,38 @@
+.layout__region {
+  .block-inline-blockbefore-after-image-slider,
+  .block--type-before-after-image-slider {
+
+    $colors: "black", "dark", "light", "white", "primary", "secondary";
+
+    @each $color in $colors {
+      &.before-color-#{$color} .before-text {
+        background-color: palette($color);
+      }
+      &.after-color-#{$color} .after-text {
+        background-color: palette($color);
+      }
+    }
+
+    &.before-color-white .before-text,
+    &.after-color-white .after-text,
+    &.before-color-light .before-text,
+    &.after-color-light .after-text {
+      color: palette(black);
+    }
+
+    &.before-color-primary-dark .before-text {
+      background-color: palette(primary, dark);
+    }
+    &.after-color-primary-dark .after-text {
+      background-color: palette(primary, dark);
+    }
+
+    &.before-color-primary-light .before-text {
+      background-color: palette(primary, light);
+    }
+    &.after-color-primary-light .after-text {
+      background-color: palette(primary, light);
+    }
+    
+  }
+}

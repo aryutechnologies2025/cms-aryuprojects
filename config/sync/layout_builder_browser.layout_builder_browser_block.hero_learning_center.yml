@@ -1,0 +1,11 @@
+uuid: 8db039ba-65b8-4212-9dd8-a1cade421419
+langcode: en
+status: true
+dependencies: {  }
+id: hero_learning_center
+block_id: 'inline_block:hero_learning_center'
+category: custom_blocks
+label: 'Hero - Learning Center'
+image_path: ''
+image_alt: ''
+weight: -92

@@ -1,0 +1,22 @@
+uuid: 3a2083c6-22bb-473d-8f48-e8accaee519a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: job_post
+label: 'Job Post'
+type: 'canonical_entities:node'
+pattern: '[sprowt:careers_page_url:opportunities]/[node:title]'
+selection_criteria:
+  95654f5d-8df5-4a9d-b7f7-c283405943c6:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 95654f5d-8df5-4a9d-b7f7-c283405943c6
+    context_mapping:
+      node: node
+    bundles:
+      job_post: job_post
+selection_logic: and
+weight: -2
+relationships: {  }

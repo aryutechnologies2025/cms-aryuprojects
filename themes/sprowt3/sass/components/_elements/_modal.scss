@@ -1,0 +1,11 @@
+// Color Box Overrides
+#cboxWrapper {
+    border-radius: 0;
+}
+
+#cboxTitle {
+    display: block !important;
+    height: auto !important;
+    padding-top: inherit !important;
+    padding-bottom: inherit !important;
+}

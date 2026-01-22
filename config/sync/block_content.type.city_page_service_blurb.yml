@@ -1,0 +1,8 @@
+uuid: d6830ab0-f024-40f3-83bc-b044e066644b
+langcode: en
+status: true
+dependencies: {  }
+id: city_page_service_blurb
+label: 'City Page Service Blurb'
+revision: false
+description: 'Gives the ability to add blocks on a City Page that describe a service. Allows the ability to add a Concerns sidebar, image, or other.'

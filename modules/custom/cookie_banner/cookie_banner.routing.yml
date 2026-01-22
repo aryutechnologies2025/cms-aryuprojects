@@ -1,0 +1,7 @@
+cookie_banner.settings_form:
+    path: '/admin/config/services/cookie-banner'
+    defaults:
+        _title: 'Cookie Banner settings'
+        _form: 'Drupal\cookie_banner\Form\SettingsForm'
+    requirements:
+        _permission: 'administer cookie_banner configuration'

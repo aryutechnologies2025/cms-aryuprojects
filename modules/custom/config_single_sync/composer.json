@@ -1,0 +1,11 @@
+{
+    "name": "coalmarch/config_single_sync",
+    "type": "drupal-drush",
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^10"
+            }
+        }
+    }
+}

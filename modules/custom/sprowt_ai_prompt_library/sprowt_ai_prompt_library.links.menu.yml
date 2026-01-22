@@ -1,0 +1,6 @@
+entity.ai_prompt.collection:
+    title: 'Prompts'
+    description: 'List of prompts.'
+    route_name: entity.ai_prompt.collection
+    parent: sprowt_ai.settings
+    weight: 7

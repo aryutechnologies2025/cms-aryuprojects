@@ -1,0 +1,14 @@
+uuid: 98f66d53-2046-4cfe-b81d-5a7302d2c47b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.client_webform
+  module:
+    - user
+id: user_add_role_action.client_webform
+label: 'Add the Client - Webform role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: client_webform

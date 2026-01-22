@@ -1,0 +1,39 @@
+uuid: 7cd897d3-f196-41b2-8664-d56afab9af5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dynamic_address_multiple
+    - field.field.block_content.dynamic_address_multiple.field_heading
+    - field.field.block_content.dynamic_address_multiple.field_label_tag
+    - field.field.block_content.dynamic_address_multiple.field_subheading_tag
+  module:
+    - tag_text_field
+id: block_content.dynamic_address_multiple.default
+targetEntityType: block_content
+bundle: dynamic_address_multiple
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true

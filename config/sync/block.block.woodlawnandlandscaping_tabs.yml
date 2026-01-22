@@ -1,0 +1,20 @@
+uuid: df301fc0-4855-4660-bbdd-88ff2c4ea7b4
+langcode: en
+status: true
+dependencies:
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_tabs
+theme: woodlawnandlandscaping
+region: admin_links
+weight: -10
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

@@ -1,0 +1,8 @@
+uuid: 9882e2d7-90e3-47b3-95ba-1014813f46e7
+langcode: en
+status: true
+dependencies: {  }
+id: custom_branding_block
+label: 'Custom Branding Block'
+revision: false
+description: ''

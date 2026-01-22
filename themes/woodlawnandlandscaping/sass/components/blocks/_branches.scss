@@ -1,0 +1,18 @@
+// Locations
+.layout__region {
+  .block-inline-blockbranches,
+  .block--type-branches {
+    .view-branches {
+      &.view-display-id-block_title {
+        .view-content {
+          .field--name-title-text {
+            &::before {
+              color: palette(secondary);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

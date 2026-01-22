@@ -1,0 +1,9 @@
+uuid: 1c28fa9e-039a-4129-b137-c095ea85f3e8
+langcode: en
+status: true
+dependencies: {  }
+name: 'Ai Prompt Tags'
+vid: ai_prompt_tag
+description: 'Tags for AI prompts'
+weight: 0
+new_revision: false

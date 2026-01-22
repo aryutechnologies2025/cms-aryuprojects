@@ -1,0 +1,63 @@
+section_library.add_section_to_library:
+  path: '/section_library/add/{template_type}/{section_storage_type}/{section_storage}/{delta}'
+  defaults:
+    _title_callback: 'Drupal\section_library\Form\AddSectionToLibraryForm::titleCallback'
+    _form: '\Drupal\section_library\Form\AddSectionToLibraryForm'
+  requirements:
+    _layout_builder_access: 'view'
+    _entity_create_access: 'section_library_template'
+  options:
+    _admin_route: TRUE
+    parameters:
+      section_storage:
+        layout_builder_tempstore: TRUE
+
+section_library.choose_template_from_library:
+  path: '/section_library/choose/template/{section_storage_type}/{section_storage}/{delta}'
+  defaults:
+    _controller: '\Drupal\section_library\Controller\ChooseSectionFromLibraryController::build'
+    _title: 'Templates library'
+  requirements:
+    _layout_builder_access: 'view'
+    _permission: 'import template from section library'
+  options:
+    _admin_route: TRUE
+    parameters:
+      section_storage:
+        layout_builder_tempstore: TRUE
+
+section_library.import_section_from_library:
+  path: '/section_library/import/section/{section_library_id}/{section_storage_type}/{section_storage}/{delta}'
+  defaults:
+    _controller: '\Drupal\section_library\Controller\ImportSectionFromLibraryController::build'
+    _title: 'Import a section'
+  requirements:
+    _layout_builder_access: 'view'
+    _permission: 'import template from section library'
+  options:
+    _admin_route: TRUE
+    parameters:
+      section_storage:
+        layout_builder_tempstore: TRUE
+
+section_library.admin_index:
+  path: '/admin/config/content/section-library'
+  defaults:
+    _form: '\Drupal\section_library\Form\SettingsForm'
+    _title: 'Section library'
+  requirements:
+    _permission: 'administer section library template entities'
+
+entity.section_library_template.preview:
+  path: '/admin/content/section-library/{section_library_template}/preview'
+  defaults:
+    _controller: '\Drupal\section_library\Controller\PreviewSectionController::build'
+    _title_callback: '\Drupal\section_library\Controller\PreviewSectionController::title'
+  requirements:
+    _entity_access: 'section_library_template.view'
+    section_library_template: \d+
+  options:
+    _admin_route: FALSE
+    parameters:
+      section_library_template:
+        type: entity:section_library_template

@@ -1,0 +1,11 @@
+uuid: a670005a-e9d9-4ed6-ba8c-12a1f17fc663
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_simple_sitemap_type
+label: 'Bulk Update Simple XML sitemap type Fields'
+type: simple_sitemap_type
+plugin: bulk_update_fields_action_base
+configuration: {  }

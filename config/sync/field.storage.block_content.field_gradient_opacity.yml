@@ -1,0 +1,20 @@
+uuid: bd892841-e2f1-4217-a136-ccb751bd835d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.field_gradient_opacity
+field_name: field_gradient_opacity
+entity_type: block_content
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

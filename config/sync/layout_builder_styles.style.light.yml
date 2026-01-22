@@ -1,0 +1,12 @@
+uuid: 7fdc972b-a76b-430f-8ee0-9b4d163cf1af
+langcode: en
+status: true
+dependencies: {  }
+id: light
+label: Light
+classes: bg-light
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -10

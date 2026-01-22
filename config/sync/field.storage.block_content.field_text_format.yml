@@ -1,0 +1,31 @@
+uuid: 1c1baf94-290b-4714-80f8-ace3a0b1205c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - field_permissions
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: block_content.field_text_format
+field_name: field_text_format
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: full
+      label: Full
+    -
+      value: summary
+      label: Summary
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

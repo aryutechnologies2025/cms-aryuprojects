@@ -1,0 +1,23 @@
+uuid: 30f5f3a6-feb9-4e3b-8056-ea91e01b1e5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_do_not_change
+    - node.type.testimonial
+id: node.testimonial.field_do_not_change
+field_name: field_do_not_change
+entity_type: node
+bundle: testimonial
+label: 'Do Not Change'
+description: 'Check this off to indicate that you do not want this review updated by the external importer.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

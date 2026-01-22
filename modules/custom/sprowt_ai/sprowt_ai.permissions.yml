@@ -1,0 +1,18 @@
+administer sprowt_ai_example:
+    title: 'Administer examples'
+    restrict access: true
+
+administer ai_system:
+    title: 'Administer ai system'
+    restrict access: true
+
+administer sprowt_ai_context:
+    title: 'Administer contexts'
+    restrict access: true
+
+administer sprowt_ai:
+    title: 'Administer Sprowt AI settings'
+    restrict access: true
+
+use sprowt_ai:
+    title: 'Use Sprowt AI to generate content'

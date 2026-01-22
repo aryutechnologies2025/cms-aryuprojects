@@ -1,0 +1,8 @@
+uuid: 72988749-e339-4644-a20f-ff027f33266f
+langcode: en
+status: true
+dependencies: {  }
+id: branches
+label: Locations
+revision: false
+description: ''

@@ -1,0 +1,28 @@
+uuid: f569ea0a-89f2-46ac-9aa6-113753ffec07
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.image
+    - field.storage.block_content.field_image
+    - media.type.media_image
+id: block_content.image.field_image
+field_name: field_image
+entity_type: block_content
+bundle: image
+label: Image
+description: 'Upload a single image (jpg, jpeg, png, svg).'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

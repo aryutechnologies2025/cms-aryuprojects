@@ -1,0 +1,14 @@
+uuid: 6f86ba06-212d-49ec-ba81-7e77c7054d03
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.region_page
+id: node_type_region_page
+entity_type_id: node_type
+entity_id: region_page
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

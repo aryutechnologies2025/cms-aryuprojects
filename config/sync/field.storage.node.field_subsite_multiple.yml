@@ -1,0 +1,23 @@
+uuid: f952aeb8-6ba1-4ca6-a2bc-167aa558b806
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - node
+    - sprowt_subsite
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_subsite_multiple
+field_name: field_subsite_multiple
+entity_type: node
+type: sprowt_subsite_reference
+settings: {  }
+module: sprowt_subsite
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

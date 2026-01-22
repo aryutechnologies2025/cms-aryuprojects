@@ -1,0 +1,7 @@
+layout_builder_ids.settings:
+  path: "/admin/config/user-interface/layout-builder-ids"
+  defaults:
+    _form: '\Drupal\layout_builder_ids\Form\LayoutBuilderIdsSettingsForm'
+    _title: "Layout Builder IDs settings"
+  requirements:
+    _permission: "administer site configuration"

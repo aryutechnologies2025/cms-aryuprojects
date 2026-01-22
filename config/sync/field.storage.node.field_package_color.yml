@@ -1,0 +1,45 @@
+uuid: 4545aefb-0d92-49db-a9a0-617e33edb216
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_package_color
+field_name: field_package_color
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: black
+      label: Black
+    -
+      value: dark
+      label: Dark
+    -
+      value: primary
+      label: Primary
+    -
+      value: secondary
+      label: Secondary
+    -
+      value: tertiary
+      label: Tertiary
+    -
+      value: white
+      label: White
+    -
+      value: light
+      label: Light
+    -
+      value: grey
+      label: Gray
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

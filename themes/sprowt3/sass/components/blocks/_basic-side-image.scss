@@ -1,0 +1,137 @@
+.layout__region {
+  .block-inline-blockbasic-side-image,
+  .block--type-basic-side-image {
+    padding: $margin;
+
+    .field--name-field-label-tag {
+      &:after {
+        background-color: var(--color-dark);
+      }
+    }
+
+    @include breakpoint($small) {
+      padding: ($margin * 1.5) $margin $margin;
+    }
+
+    .basic-side-image-wrap {
+      @include flexbox;
+      flex-direction: column;
+      align-items: center;
+
+      .content-wrap {
+        padding: $margin;
+        z-index: 1;
+        .field--name-field-link {
+          a {
+            &:hover {
+              color: var(--color-dark);
+              background-color: palette(white);
+            }
+          }
+        }
+        @include breakpoint($small) {
+          width: calc(50% + 30px);
+        }
+      }
+      .image-wrap {
+        @include breakpoint($small) {
+          width: calc(50% + 30px);
+        }
+      }
+    }
+
+    &.image-align-right {
+      .content-wrap {
+        color: palette(white);
+        background-color: var(--color-dark);
+      }
+      @include breakpoint($small) {
+        .basic-side-image-wrap {
+          flex-direction: row;
+        }
+        .content-wrap {
+          margin-right: -30px;
+        }
+      }
+
+      .bg-primary & {
+        .content-wrap {
+          background-color: var(--color-light);
+          * {
+            color: palette(black);
+          }
+        }
+      }
+
+      .bg-secondary & {
+        .content-wrap {
+          background-color: var(--color-light);
+          * {
+            color: palette(black);
+          }
+        }
+      }
+      .bg-zebra &,
+      .bg-white &,
+      .bg-light & {
+        .content-wrap {
+          color: palette(white);
+          background-color: var(--color-dark);
+          * {
+            color: palette(white);
+          }
+        }
+      }
+    }
+
+    &.image-align-left {
+      .content-wrap {
+        color: palette(white);
+        background-color: var(--color-dark);
+      }
+      .bg-secondary & {
+        .content-wrap {
+          color: palette(white);
+          background-color: var(--color-dark);
+          * {
+            color: palette(white);
+          }
+        }
+      }
+
+      .bg-zebra &,
+      .bg-white &,
+      .bg-light & {
+        .content-wrap {
+          color: palette(white);
+          background-color: var(--color-dark);
+          * {
+            color: palette(white);
+          }
+        }
+      }
+
+      .bg-dark &,
+      .bg-black & {
+        .content-wrap {
+          color: palette(white);
+          background-color: var(--color-light);
+          * {
+            color: palette(black);
+          }
+        }
+      }
+      @include breakpoint($small) {
+        .basic-side-image-wrap {
+          flex-direction: row-reverse;
+        }
+        .content-wrap {
+          margin-left: -30px;
+        }
+        .image-wrap {
+          margin-right: -30px;
+        }
+      }
+    }
+  }
+}

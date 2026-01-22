@@ -1,0 +1,20 @@
+nav.pager {
+  .pager__item {
+    a {
+      color: palette(black);
+      background-color: palette(light);
+
+      &:hover {
+        color: palette(white, pure);
+        background-color: palette(primary);
+      }
+    }
+
+    &.is-active {
+      a {
+        color: palette(white, pure);
+        background-color: palette(primary, light);
+      }
+    }
+  }
+}

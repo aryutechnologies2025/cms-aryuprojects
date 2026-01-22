@@ -1,0 +1,14 @@
+uuid: 3d787c86-5603-4dc4-bbc0-346026e3be97
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_benefits
+label: 'Subsite and Benefits'
+enabled: true
+first_field: field_subsite_multiple
+second_field: field_benefit
+add_direction: append
+bundles:
+  node:
+    - benefit
+    - subsite

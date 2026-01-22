@@ -1,0 +1,29 @@
+uuid: cec53768-91c0-4275-8147-7eaf3f122868
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.section_styles
+    - field.storage.block_content.field_bg_section_image
+    - media.type.media_image
+id: block_content.section_styles.field_bg_section_image
+field_name: field_bg_section_image
+entity_type: block_content
+bundle: section_styles
+label: 'Background Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

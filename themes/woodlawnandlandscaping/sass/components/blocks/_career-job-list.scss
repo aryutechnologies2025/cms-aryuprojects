@@ -1,0 +1,69 @@
+#job-list-section {
+
+  // filter section 
+  .view-filters {
+      .form--inline {
+          .form-item-search {
+              .form-text {
+                  background-color: #f4f4f4;
+                  border-color: #ebebeb;
+              }
+          }
+          .form-text,
+          .form-type-select,
+          .select2-container {
+              .select2-selection {
+                  background-color: #f4f4f4;
+                  border-color: #ebebeb;
+              }
+          }
+
+          .form-type-textfield {
+              &:after {
+                  color: palette(primary);
+              }
+          }
+          .form-type-select {
+              &:after {
+                  color: palette(primary);
+              }
+          }
+          .button {
+              &:last-child {
+                  color: palette(secondary);
+                  background-color: transparent;
+                  border-color: palette(secondary);
+                  &:hover {
+                      color: palette(white);
+                      background-color: palette(primary);
+                      border-color: palette(primary);
+                  }
+              }
+          }
+      }
+  }
+  // end filter section 
+
+  // job listing section 
+   .view-content {
+      .views-row {
+         + .views-row {
+            border-color: #f3f3f3;
+         }
+      }
+   }
+}
+
+
+// override select hover colors 
+.select2-container--default {
+  .select2-results__option--highlighted[aria-selected] {
+    background-color: palette(primary);
+  }
+}
+
+select option {
+  &:hover {
+    background-color: palette(primary) !important;
+  }
+}

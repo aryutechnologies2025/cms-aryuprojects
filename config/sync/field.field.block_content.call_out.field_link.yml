@@ -1,0 +1,23 @@
+uuid: 1e2d632d-d55e-476a-827a-b1be88bc4bd1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.call_out
+    - field.storage.block_content.field_link
+  module:
+    - link
+id: block_content.call_out.field_link
+field_name: field_link
+entity_type: block_content
+bundle: call_out
+label: 'Button | Link'
+description: 'If your link text is vague (e.g. "View More" or "Check it out!"), please add a thorough description of the link destination to ensure the site is ADA compliant.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

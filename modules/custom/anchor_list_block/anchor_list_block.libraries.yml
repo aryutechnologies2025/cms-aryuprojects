@@ -1,0 +1,7 @@
+config:
+    version: 1.x
+    js:
+        js/config.js: {}
+    dependencies:
+        - core/jquery
+        - select2_all/select2

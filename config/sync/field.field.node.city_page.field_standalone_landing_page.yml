@@ -1,0 +1,29 @@
+uuid: f5687879-d939-4738-9609-5375eb77bc88
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_standalone_landing_page
+    - node.type.city_page
+    - node.type.standalone_landing_page
+id: node.city_page.field_standalone_landing_page
+field_name: field_standalone_landing_page
+entity_type: node
+bundle: city_page
+label: 'Standalone Landing Page(s)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      standalone_landing_page: standalone_landing_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

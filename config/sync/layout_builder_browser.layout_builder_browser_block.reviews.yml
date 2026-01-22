@@ -1,0 +1,11 @@
+uuid: 64c62ff5-f41a-4545-845e-350f54264206
+langcode: en
+status: true
+dependencies: {  }
+id: reviews
+block_id: 'inline_block:testimonials'
+category: custom_blocks
+label: Reviews
+image_path: ''
+image_alt: ''
+weight: -51

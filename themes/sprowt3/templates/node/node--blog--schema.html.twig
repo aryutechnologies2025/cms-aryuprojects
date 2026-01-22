@@ -1,0 +1,50 @@
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org/",
+    "@type": "BlogPosting",
+    "@id": "{{ url('<front>') }}{{ url }}",
+    "mainEntityOfPage": "{{ url('<front>') }}{{ url }}",
+    "headline": "{{ label|render|striptags }}",
+    "name": "{{ label|render|striptags }}",
+    "description": "{{ content.body|render|striptags }}",
+    "datePublished": "{{ node.getCreatedTime()|date('m/d/Y') }}",
+    {% if (sprowt_get_setting('blog_global_author') is not empty) %}
+      "author": {
+        "@type": "Person",
+        "name": "{{ sprowt_get_setting('blog_global_author') }}",
+        "url": "{{ url('<front>') }}{{ sprowt_get_setting('blog_global_author_link') }}"
+      },
+    {% else %}
+      {% if content.field_author|render %}
+        "author": {
+          "@type": "Person",
+          "name": "{{ content.field_author|render|striptags }}",
+          "url": "{{ url('<front>') }}{{ content.field_author[0]['#url'] }}"
+        },
+      {% endif %}
+    {% endif %}
+    "publisher": {
+        "@type": "Organization",
+        "@id": "{{ url('<front>') }}",
+        "name": "{{ drupal_token('site:name') }}"
+    },
+    "image": {
+        "@type": "ImageObject",
+        "@id": "{{ url('<front>') }}{{ file_url(content.field_image_blog['#items']|file_uri) }}",
+        "url": "{{ url('<front>') }}{{ file_url(content.field_image_blog['#items']|file_uri) }}",
+        "height": "450",
+        "width": "300"
+    },
+    "url": "{{ url }}",
+    "isPartOf": {
+        "@type" : "Blog",
+          "@id": "{{ url('<front>') }}/blog",
+          "name": "{{ drupal_token('site:name') }} Blog",
+          "publisher": {
+              "@type": "Organization",
+              "@id": "{{ url('<front>') }}",
+              "name": "{{ drupal_token('site:name') }}"
+          }
+      }
+}
+</script>

@@ -1,0 +1,11 @@
+uuid: 23c0ca83-a650-45ea-a489-d6f08e42506a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_blog_post
+id: block_content.hero_blog_post
+target_entity_type_id: block_content
+target_bundle: hero_blog_post
+default_langcode: site_default
+language_alterable: false

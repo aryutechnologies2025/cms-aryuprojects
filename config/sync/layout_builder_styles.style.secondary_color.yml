@@ -1,0 +1,12 @@
+uuid: 1fd8af99-b44e-4efa-9aac-8d53e41b3d61
+langcode: en
+status: true
+dependencies: {  }
+id: secondary_color
+label: 'Secondary Color'
+classes: bg-secondary
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -15

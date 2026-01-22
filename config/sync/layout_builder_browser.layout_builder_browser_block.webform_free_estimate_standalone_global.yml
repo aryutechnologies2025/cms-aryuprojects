@@ -1,0 +1,11 @@
+uuid: 968946e1-3811-48aa-a916-cfa5f1a8995c
+langcode: en
+status: true
+dependencies: {  }
+id: webform_free_estimate_standalone_global
+block_id: 'block_content:156cc0d8-a3a7-448c-98cb-cdf08734e7d1'
+category: re_usable_blocks
+label: 'Webform - Free Estimate | Standalone (global)'
+image_path: ''
+image_alt: ''
+weight: -100

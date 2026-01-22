@@ -1,0 +1,18 @@
+uuid: 23afff9c-7a6a-4573-a705-833a06fcc95b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.solution_page_package_service
+id: node.solution_page_package_service.title
+field_name: title
+entity_type: node
+bundle: solution_page_package_service
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

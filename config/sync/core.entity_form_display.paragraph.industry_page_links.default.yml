@@ -1,0 +1,36 @@
+uuid: 6dbac042-48a3-4316-9779-e8b0335bd464
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.industry_page_links.field_industry
+    - field.field.paragraph.industry_page_links.field_page_link
+    - paragraphs.paragraphs_type.industry_page_links
+  module:
+    - sprowt_admin_override
+id: paragraph.industry_page_links.default
+targetEntityType: paragraph
+bundle: industry_page_links
+mode: default
+content:
+  field_industry:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_page_link:
+    type: link_with_description
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

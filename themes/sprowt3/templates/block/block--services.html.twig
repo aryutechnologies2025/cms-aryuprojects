@@ -1,0 +1,41 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'display-' ~ content.field_display_service.0['#markup'],
+    'center-align'
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+    <div class="services-wrap">
+      {{ content|without('field_filter','field_count_service','field_display_service','field_view_all') }}
+
+      {% set sectorID = content.field_sector[0] ? content.field_sector[0]|render|striptags|spaceless  : 'all' %}
+      {% if (is_front) or (page_type == 'home') %}
+        {{ drupal_view((subsite == '_main' ? 'services' : 'services_subsite'), 'block_compact_front', content.field_display_service.0['#markup'], content.field_count_service.0['#markup'], sectorID )}}
+      {% else %}
+        {{ drupal_view((subsite == '_main' ? 'services' : 'services_subsite'), 'block_compact', content.field_display_service.0['#markup'], content.field_count_service.0['#markup'], sectorID )}}
+      {% endif %}
+      {% if content.field_view_all[0]['#url'] is not empty %}
+        {% if content.field_view_all[0]['#url'].options.attributes is not empty %}
+          {% set view_all_attributes = create_attribute(content.field_view_all[0]['#url'].options.attributes) %}
+        {% else %}
+          {% set view_all_attributes = create_attribute() %}
+        {% endif %}
+        <div class="view-all-services">
+          <a href="{{ content.field_view_all.0['#url'] }}" {{view_all_attributes.addClass(['button'])}}>
+            {{ content.field_view_all.0['#title'] }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  {% endblock %}
+</div>

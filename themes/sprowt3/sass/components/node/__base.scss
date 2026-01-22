@@ -1,0 +1,105 @@
+.overlay-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+%tokenview {
+  width: 85px;
+  margin: 0 15px 15px;
+
+  [class*="field--name-field-icon"] {
+    @include flexbox;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 75px;
+    min-width: 75px;
+    height: 75px;
+    margin: 0 auto 10px auto;
+    border-radius: 100px;
+    transition: all $duration;
+
+    .field__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all $duration;
+    }
+
+    a {
+      display: flex;
+    }
+
+    img {
+      max-width: 40px;
+      max-height: 40px;
+    }
+
+    svg {
+      display: block;
+      width: 40px;
+      height: 40px;
+
+      path {
+        transition: fill $duration;
+      }
+    }
+  }
+}
+
+%secondarytokenview {
+  @extend %tokenview;
+  width: auto;
+
+  .node__content {
+    @include flexbox;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    text-align: left;
+  }
+
+  [class*="field--name-field-icon"] {
+    width: 45px;
+    min-width: 45px;
+    height: 45px;
+    margin: 0 15px 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    img {
+      max-width: 25px;
+      max-height: 25px;
+    }
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .field--name-title-text {
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .view-list-and-more {
+    margin: 0;
+    text-align: left;
+    font-weight: 600;
+  }
+}
+
+.article-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+// Boolean fields to hide
+.field--name-field-sector,
+.field--name-field-disable-link {
+  display: none;
+}

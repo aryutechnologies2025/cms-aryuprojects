@@ -1,0 +1,21 @@
+uuid: 38ef88d8-7902-4594-bd67-35620af92749
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.city_page_main_branch
+    - field.storage.block_content.field_hide_street_address
+id: block_content.city_page_main_branch.field_hide_street_address
+field_name: field_hide_street_address
+entity_type: block_content
+bundle: city_page_main_branch
+label: 'Hide Street Address. Maintain Address Schema'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

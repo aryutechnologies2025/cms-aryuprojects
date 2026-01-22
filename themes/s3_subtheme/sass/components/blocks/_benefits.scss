@@ -1,0 +1,10 @@
+// city page and service page intro/benefits section 
+.page-node-type-city-page,
+.page-node-type-region-page,
+.page-node-type-service {
+    .block-inline-blockbenefits,
+    .block-service-intro {
+        max-width: 100%;
+        padding: 15px 30px 30px;
+    }
+}

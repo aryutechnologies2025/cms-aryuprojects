@@ -1,0 +1,11 @@
+uuid: 1b8d92ab-0b77-442b-9719-efbb21210c5e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.alte
+label: 'Alt E'
+description: ''
+targetEntityType: node
+cache: true

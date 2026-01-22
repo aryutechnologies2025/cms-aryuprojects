@@ -1,0 +1,22 @@
+uuid: 2192597d-acd2-41b9-860a-d4ffb1e1274f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: city_page_path_pattern
+label: 'City Page Pattern'
+type: 'canonical_entities:node'
+pattern: 'locations/[node:field_services:0:entity]-[node:title]'
+selection_criteria:
+  9c4c8c0e-a90c-4cc2-b274-6eca0a929034:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 9c4c8c0e-a90c-4cc2-b274-6eca0a929034
+    context_mapping:
+      node: node
+    bundles:
+      city_page: city_page
+selection_logic: and
+weight: -3
+relationships: {  }

@@ -1,0 +1,28 @@
+uuid: b5df9565-fab2-4071-8af6-72bc600d89ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_button
+    - node.type.package
+  module:
+    - link
+id: node.package.field_button
+field_name: field_button
+entity_type: node
+bundle: package
+label: 'Button URL'
+description: 'Where the package goes when clicked on. Defaults to the package node url.'
+required: false
+translatable: true
+default_value:
+  -
+    attributes: {  }
+    uri: 'internal:/free-quote'
+    title: ''
+    options: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

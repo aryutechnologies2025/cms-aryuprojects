@@ -1,0 +1,55 @@
+uuid: 6e840362-29a0-4ee7-88a6-dedde87d4f57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_secondary_emails
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - path
+    - svg_image
+    - user
+_core:
+  default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: -10
+    region: content
+  contact:
+    weight: 5
+    region: content
+  field_secondary_emails:
+    type: email_default
+    weight: 31
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  language:
+    weight: 0
+    region: content
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 6
+    region: content
+  user_picture:
+    type: image_image
+    weight: -1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  langcode: true

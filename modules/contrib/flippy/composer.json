@@ -1,0 +1,12 @@
+{
+    "name": "drupal/flippy",
+    "type": "drupal-module",
+    "description": "Allows administrators to define custom pagers for navigation in lists of nodes.",
+    "keywords": ["Drupal"],
+    "license": "GPL-2.0+",
+    "homepage": "https://www.drupal.org/project/flippy",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/flippy",
+        "source": "http://cgit.drupalcode.org/flippy"
+    }
+}

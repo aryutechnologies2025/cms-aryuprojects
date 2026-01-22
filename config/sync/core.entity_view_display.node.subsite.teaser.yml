@@ -1,0 +1,82 @@
+uuid: bc3f8fd0-759b-41e0-85c6-124db574a7c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.subsite.field_basic_page
+    - field.field.node.subsite.field_benefit
+    - field.field.node.subsite.field_blog_post
+    - field.field.node.subsite.field_branch
+    - field.field.node.subsite.field_city_ref
+    - field.field.node.subsite.field_concerns
+    - field.field.node.subsite.field_ctm_numbers
+    - field.field.node.subsite.field_disable_social_media
+    - field.field.node.subsite.field_faqs
+    - field.field.node.subsite.field_footer_menu
+    - field.field.node.subsite.field_issues
+    - field.field.node.subsite.field_landing_page_ref
+    - field.field.node.subsite.field_list_display_title
+    - field.field.node.subsite.field_logo
+    - field.field.node.subsite.field_ltp_ref
+    - field.field.node.subsite.field_main_menu
+    - field.field.node.subsite.field_mobile_footer_utility_menu
+    - field.field.node.subsite.field_mobile_utility_menu
+    - field.field.node.subsite.field_packages
+    - field.field.node.subsite.field_profiles
+    - field.field.node.subsite.field_reverse_logo
+    - field.field.node.subsite.field_services
+    - field.field.node.subsite.field_social_media
+    - field.field.node.subsite.field_solution_ref
+    - field.field.node.subsite.field_special_offers
+    - field.field.node.subsite.field_standalone_landing_page
+    - field.field.node.subsite.field_subsite_type
+    - field.field.node.subsite.field_utility_menu
+    - node.type.subsite
+  module:
+    - user
+id: node.subsite.teaser
+targetEntityType: node
+bundle: subsite
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_basic_page: true
+  field_benefit: true
+  field_blog_post: true
+  field_branch: true
+  field_city_ref: true
+  field_concerns: true
+  field_ctm_numbers: true
+  field_disable_social_media: true
+  field_faqs: true
+  field_footer_menu: true
+  field_issues: true
+  field_landing_page_ref: true
+  field_list_display_title: true
+  field_logo: true
+  field_ltp_ref: true
+  field_main_menu: true
+  field_mobile_footer_utility_menu: true
+  field_mobile_utility_menu: true
+  field_packages: true
+  field_profiles: true
+  field_reverse_logo: true
+  field_services: true
+  field_social_media: true
+  field_solution_ref: true
+  field_special_offers: true
+  field_standalone_landing_page: true
+  field_subsite_type: true
+  field_utility_menu: true
+  langcode: true

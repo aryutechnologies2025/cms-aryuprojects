@@ -1,0 +1,24 @@
+.layout-builder .layout-builder__section .layout-builder__layout[data-hidden-section] .layout-builder__region {
+    opacity: 0.5;
+}
+
+.layout-builder .layout-builder-block[data-hidden-component] > *:not(.contextual) {
+    opacity: 0.5;
+}
+
+.layout-builder .layout-builder__section .layout-builder__layout[data-hidden-section] .layout-builder__region .layout-builder .layout-builder-block[data-hidden-component] > *:not(.contextual)
+{
+    opacity: 1;
+}
+
+.layout-builder .layout-builder-block .contextual .layout-builder-hide-show-block {
+    display: none;
+}
+
+.layout-builder .layout-builder-block[data-hidden-component] .contextual .layout-builder-hide-show-block {
+    display: block;
+}
+
+.layout-builder .layout-builder-block[data-hidden-component] .contextual .layout-builder-hide-hide-block {
+    display: none;
+}

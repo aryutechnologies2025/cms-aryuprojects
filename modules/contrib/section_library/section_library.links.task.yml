@@ -1,0 +1,10 @@
+section_library.collection:
+  title: 'Section library'
+  route_name: entity.section_library_template.collection
+  base_route: system.admin_content
+  weight: 11
+
+section_library.list_tab:
+  title: Settings
+  route_name: section_library.admin_index
+  base_route: section_library.admin_index

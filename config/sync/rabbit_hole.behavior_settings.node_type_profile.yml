@@ -1,0 +1,14 @@
+uuid: 7a65f86f-530b-4739-8294-9c39673f701a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.profile
+id: node_type_profile
+entity_type_id: node_type
+entity_id: profile
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

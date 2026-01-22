@@ -1,0 +1,11 @@
+uuid: e4d9e84e-9906-45cd-bdda-ca60241c168a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.altc
+label: 'Alt C'
+description: ''
+targetEntityType: node
+cache: true

@@ -1,0 +1,11 @@
+.node--type-issue {
+  // Token View Mode
+  &.node--view-mode-token {
+    @extend %tokenview;
+  }
+
+  // Secondary Token View Mode
+  &.node--view-mode-secondary-token {
+    @extend %secondarytokenview;
+  }
+}

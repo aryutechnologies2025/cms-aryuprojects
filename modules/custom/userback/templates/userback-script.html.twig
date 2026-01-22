@@ -1,0 +1,13 @@
+{% if enabled is not empty and access_token is not empty %}
+<!-- START Userback script -->
+<script>
+    window.Userback = window.Userback || {};
+    Userback.access_token = '{{ access_token }}';
+    (function(d) {
+        var s = d.createElement('script');s.async = true;
+        s.src = 'https://static.userback.io/widget/v1.js';
+        (d.head || d.body).appendChild(s);
+    })(document);
+</script>
+<!-- END Userback script -->
+{% endif %}

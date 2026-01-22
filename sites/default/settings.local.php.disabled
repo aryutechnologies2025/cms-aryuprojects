@@ -1,0 +1,47 @@
+<?php
+/**
+ * Skip file system permissions hardening.
+ *
+ * The system module will periodically check the permissions of your site's
+ * site directory to ensure that it is not writable by the website user. For
+ * sites that are managed with a version control system, this can cause problems
+ * when files in that directory such as settings.php are updated, because the
+ * user pulling in the changes won't have permissions to modify files in the
+ * directory.
+ */
+$settings['skip_permissions_hardening'] = TRUE;
+
+//https://www.drupal.org/docs/installing-drupal/trusted-host-settings
+$settings['trusted_host_patterns'] = [];
+
+$config['config_split.config_split.dev']['status'] = false;
+$config['config_split.config_split.live']['status'] = false;
+$config['config_split.config_split.test']['status'] = false;
+$config['config_split.config_split.local']['status'] = false;
+$config['config_split.config_split.overrides']['status'] = false;
+
+$settings['trusted_host_patterns'][] = $_SERVER['HTTP_HOST'];
+
+//https://www.drupal.org/docs/8/core/modules/file/overview#access
+$settings['file_private_path'] = __DIR__ .'/files/private';
+$settings['file_public_path'] = 'sites/default/files';
+
+$_SERVER['SPROWTHQ_SITE_NAME'] = 'woodlawnandlandscaping';
+
+$settings['hash_salt'] = '9154224637e6a3915a8883919298829a';
+
+$databases = [
+    'default' =>
+        [
+            'default' =>
+                [
+                    'database' => 'woodlawnandlandscaping',
+                    'username' => 'root',
+                    'password' => 'root',
+                    'host' => 'local_dev_mariadb',
+                    'port' => '3306',
+                    'driver' => 'mysql',
+                    'prefix' => '',
+                ],
+        ],
+];

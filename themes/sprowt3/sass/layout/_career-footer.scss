@@ -1,0 +1,27 @@
+.page-node-type-career-page,
+.page-node-type-job-post {
+  .page-footer {
+    .block-footer-layout-careers {
+      [id*=footer-top] {
+        ul.menu {
+          li {
+            a {
+              text-transform: uppercase;
+              font-weight: 700;
+
+              &:hover {
+                color: var(--color-light);
+              }
+            }
+          }
+        }
+      }
+
+      [id*=footer-bottom] {
+        .block-copyright {
+          order: 1;
+        }
+      }
+    }
+  }  
+}

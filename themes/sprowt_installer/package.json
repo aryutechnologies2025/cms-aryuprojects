@@ -1,0 +1,19 @@
+{
+  "name": "sprowt_installer",
+  "private": true,
+  "scripts": {
+    "bs": "browser-sync start --config bs-config.js",
+    "autoprefix": "postcss ./css/*.css --use autoprefixer -d ./css",
+    "compile": "node-sass ./scss -o ./css",
+    "build": "npm run compile && npm run autoprefix",
+    "watch": "watch 'npm run build' ./scss",
+    "start": "npm run bs & npm run watch"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.2",
+    "browser-sync": "^2.27.7",
+    "node-sass": "^7.0.1",
+    "postcss-cli": "^9.1.0",
+    "watch": "^1.0.2"
+  }
+}

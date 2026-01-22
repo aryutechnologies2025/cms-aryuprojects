@@ -1,0 +1,25 @@
+uuid: c8508df7-b216-40d1-9da4-5a7b663970cf
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:ctm_contact:7f4f8b13-79cb-405f-b6ae-0b47e2bc9d24'
+  module:
+    - block_content
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_ctmcontact
+theme: woodlawnandlandscaping
+region: disabled
+weight: -7
+provider: null
+plugin: 'block_content:7f4f8b13-79cb-405f-b6ae-0b47e2bc9d24'
+settings:
+  id: 'block_content:7f4f8b13-79cb-405f-b6ae-0b47e2bc9d24'
+  label: 'CTM Contact'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

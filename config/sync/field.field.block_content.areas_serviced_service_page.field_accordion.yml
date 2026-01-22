@@ -1,0 +1,21 @@
+uuid: 2ad64d7b-5caa-4f7a-8112-c9fc521cbf9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_service_page
+    - field.storage.block_content.field_accordion
+id: block_content.areas_serviced_service_page.field_accordion
+field_name: field_accordion
+entity_type: block_content
+bundle: areas_serviced_service_page
+label: Accordion
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

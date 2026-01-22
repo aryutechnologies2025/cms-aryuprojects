@@ -1,0 +1,65 @@
+companyInfo:
+    company_name: 'Wood Lawn & Landscape'
+    year_started: '2005'
+    company_phone: '2527275301'
+    customer_login: 'https://lawngateway.com/woodlawnlandscaping/login_new.aspx'
+    webform_to_email: support@woodlawnandlandscaping.com
+    webform_from_email: support@woodlawnandlandscaping.com
+    state: NC
+    contact_name: Gary
+    contact_email: gary@woodlawnandlandscaping.com
+    contact_phone: '2527251482'
+    webform_from_name: 'Wood Lawn & Landscape'
+    company_type:
+        - a8f7963f-d2a8-48b2-ae23-0a4231f705ad
+    solution_finder_enabled: false
+services:
+    -
+        title: 'SERVICE PAGE TEMPLATE'
+        template: 774b613e-ca46-4631-bdbd-7571e7abb79c
+cities:
+    -
+        title: 'LAWN CITY TEMPLATE'
+        template: bfa3dfdd-b46b-4b0f-bf09-c95e593da6ba
+socialMedia:
+    facebook:
+        platform: facebook
+        link: 'https://www.facebook.com/woodlawnandlandscaping/'
+packageLevel: corporate
+careers_setup: noSection
+configuration:
+    site_name: 'Wood Lawn & Landscape'
+    date_default_timezone: America/New_York
+    site_default_country: US
+    site_mail: support@woodlawnandlandscaping.com
+    enable_update_status_module: 1
+    enable_update_status_emails: 1
+    account:
+        name: coalmarch
+        mail: dms-webservices@workwave.com
+page_setup:
+    home: 9b7de021-e5e6-4e44-af3b-b277c26a71a6
+    'menu_link_content:e151f645-87b1-4472-876a-ddd6c09561ca': bee1747c-02a7-4867-a07a-275acb4b5f47
+    'menu_link_content:6bf358f7-81c2-48ed-aa07-edc551f75f4a': 5ec211e1-0f6f-4755-8c2f-bf361f2dddb5
+    'menu_link_content:7eead1e1-1267-4086-a5a2-445414439b50': a285bb5e-063a-49e2-8196-a6df39d1704c
+    'menu_link_content:89bb5647-9df1-49df-9200-f1cbde7d2a92': 71c46a04-d605-45e4-b735-e4fb62d339a4
+    'menu_link_content:b0ca7eaa-d258-4449-8324-496a7816acb9': 35e588fb-cf40-4266-943f-b7c58d76236b
+    'menu_link_content:d6a1f159-e616-493e-8bfd-91ecb6e577e5': 2d01b48c-3607-4b8a-b668-8b70369d8d40
+    'menu_link_content:d1a90523-bdc5-4d52-8611-f84d5f9b3163': 0b52e005-191c-4774-bef4-3075be2ddf03
+branding:
+    sprowt_theme: round
+    headerBlock: dba3ea50-fa80-461d-adfb-7e0e6aa9fb3d
+branches:
+    main-office:
+        source: 9728e4fc-7cd1-4f5f-8b33-37b4920e579b
+        field_state: NC
+        field_street:
+            - '845 Hibbs Road'
+        field_city: Newport
+        field_zip: '28570'
+        field_is_main_branch: true
+        field_add_to_footer: true
+        field_hours: 'M-F: 8AM - 4PM'
+        title: 'Main Office'
+auto_add_menu_services: true
+auto_add_menu_cities: true

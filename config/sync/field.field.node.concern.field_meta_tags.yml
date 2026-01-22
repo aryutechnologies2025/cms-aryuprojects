@@ -1,0 +1,21 @@
+uuid: 2a82326a-61fc-4f87-9853-131140aeaf46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meta_tags
+    - node.type.concern
+  module:
+    - metatag
+id: node.concern.field_meta_tags
+field_name: field_meta_tags
+entity_type: node
+bundle: concern
+label: 'Meta Tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

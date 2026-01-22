@@ -1,0 +1,33 @@
+sprowt3.mobile:
+  label: mobile
+  mediaQuery: ""
+  weight: 0
+  multipliers:
+    - 1x
+sprowt3.wide:
+  label: wide
+  mediaQuery: "all and (min-width: 1024px)"
+  weight: 1
+  multipliers:
+    - 1x
+sprowt3.group2.mobile:
+  label: narrow
+  mediaQuery: ''
+  weight: 0
+  multipliers:
+    - 1x
+  group: sprowt3.group2
+sprowt3.group2.narrow:
+  label: narrow
+  mediaQuery: '(min-width: 768px)'
+  weight: 0
+  multipliers:
+    - 1x
+  group: sprowt3.group2
+sprowt3.group2.wide:
+  label: wide
+  mediaQuery: 'all and (min-width: 1024px)'
+  weight: 1
+  multipliers:
+    - 1x
+  group: sprowt3.group2

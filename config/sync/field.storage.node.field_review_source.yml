@@ -1,0 +1,30 @@
+uuid: 838c9635-c652-48f5-a01b-1ab2d6435462
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_review_source
+field_name: field_review_source
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: other
+      label: Other
+    -
+      value: facebook
+      label: Facebook
+    -
+      value: google
+      label: Google
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

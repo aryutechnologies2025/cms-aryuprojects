@@ -1,0 +1,29 @@
+uuid: 1f52842a-5e72-4ba3-ba93-c78db963e434
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.address
+    - field.field.block_content.address.field_branch_address
+id: block_content.address.default
+targetEntityType: block_content
+bundle: address
+mode: default
+content:
+  field_branch_address:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  revision_log: true

@@ -1,0 +1,14 @@
+uuid: 6dfe31f5-5657-4b7e-a626-bbd1236d1a17
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_basic_pages
+label: 'Subsite and Basic Pages'
+enabled: true
+first_field: field_subsite
+second_field: field_basic_page
+add_direction: append
+bundles:
+  node:
+    - page
+    - subsite

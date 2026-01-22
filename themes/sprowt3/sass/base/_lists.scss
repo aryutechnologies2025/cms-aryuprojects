@@ -1,0 +1,59 @@
+////
+/// List styles
+/// @group Base
+////
+
+ul,
+ol {
+  list-style-type: none;
+  margin: 0 0 $base-spacing 0;
+  padding: 0;
+  text-align: left;
+  line-height: $base-line-height;
+
+  li {
+    margin-bottom: 5px;
+  }
+
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+.text-formatted,
+.field--type-text-long,
+.views-field-body,
+.__body {
+  ul {
+    list-style-type: disc;
+    padding-left: 40px;
+  }
+  ol {
+    list-style-type: decimal;
+    padding-left: 40px;
+  }
+}
+
+ul[style*="list-style-type: circle"] {
+  list-style-type: none !important;
+  padding-left: 75px;
+  margin-top: 30px;
+
+  li {
+    margin-bottom: 20px;
+
+    @include icon-before(check-hand, 17px) {
+      position: absolute;
+      margin-top: -5px;
+      margin-left: -55px;
+      font-size: 3.8rem;
+    }
+  }
+}
+
+dl,
+dt,
+dd {
+  margin: 0;
+}

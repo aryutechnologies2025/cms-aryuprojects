@@ -1,0 +1,21 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+    <div class="ctm-contact-wrap">
+      {{ content|without('field_filter','field_count','field_display','field_phone_number','field_heading') }}
+      <div class="field field--name-field-phone-number field--type-telephone"><a href="tel:{{ content.field_phone_number[0] }}">{{ content.field_heading[0] }}</a></div>
+    </div>
+  {% endblock %}
+</div>

@@ -1,0 +1,39 @@
+uuid: 32cc2fea-b9dc-4577-9c1e-8d51aa321de8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.services_no_link
+    - field.field.block_content.services_no_link.field_heading
+    - field.field.block_content.services_no_link.field_label_tag
+    - field.field.block_content.services_no_link.field_subheading_tag
+  module:
+    - tag_text_field
+id: block_content.services_no_link.default
+targetEntityType: block_content
+bundle: services_no_link
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,38 @@
+uuid: 5bdb7ab8-177c-48be-8b36-0e1346c5bbc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.landing_page.field_city_ref
+    - field.field.node.landing_page.field_industry
+    - field.field.node.landing_page.field_package_level
+    - field.field.node.landing_page.field_services
+    - field.field.node.landing_page.field_subsite
+    - field.field.node.landing_page.layout_builder__layout
+    - node.type.landing_page
+  module:
+    - user
+id: node.landing_page.teaser
+targetEntityType: node
+bundle: landing_page
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_city_ref: true
+  field_industry: true
+  field_package_level: true
+  field_services: true
+  field_subsite: true
+  langcode: true
+  layout_builder__layout: true

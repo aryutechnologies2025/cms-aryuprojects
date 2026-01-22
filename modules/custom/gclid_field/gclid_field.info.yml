@@ -1,0 +1,7 @@
+name: 'GCLID Field'
+type: module
+description: 'Adds a webform field type for gclid collection'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - webform:webform

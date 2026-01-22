@@ -1,0 +1,11 @@
+uuid: 61c14c63-b308-48e1-9c5a-cc15f799b621
+langcode: en
+status: true
+dependencies: {  }
+id: before_after_image_slider
+block_id: 'inline_block:before_after_image_slider'
+category: custom_blocks
+label: 'Before/After Image Slider'
+image_path: ''
+image_alt: ''
+weight: -94

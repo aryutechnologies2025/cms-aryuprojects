@@ -1,0 +1,104 @@
+uuid: 03eb176d-fde3-4992-92e0-55f34c297a05
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.altc
+    - field.field.node.service.body
+    - field.field.node.service.field_additional_service_cities
+    - field.field.node.service.field_benefit
+    - field.field.node.service.field_disable_link
+    - field.field.node.service.field_icon_service
+    - field.field.node.service.field_image_service
+    - field.field.node.service.field_industry
+    - field.field.node.service.field_landing_page_ref
+    - field.field.node.service.field_ltp_ref
+    - field.field.node.service.field_meta_description
+    - field.field.node.service.field_meta_tags
+    - field.field.node.service.field_package_level
+    - field.field.node.service.field_packages
+    - field.field.node.service.field_ref_faqs
+    - field.field.node.service.field_ref_issue
+    - field.field.node.service.field_secondary_solution_ref
+    - field.field.node.service.field_sector
+    - field.field.node.service.field_service_cities
+    - field.field.node.service.field_solution_heading
+    - field.field.node.service.field_solution_ref
+    - field.field.node.service.field_special_offers
+    - field.field.node.service.field_standalone_landing_page
+    - field.field.node.service.field_subsite
+    - field.field.node.service.layout_builder__layout
+    - node.type.service
+  module:
+    - layout_builder
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.service.altc
+targetEntityType: node
+bundle: service
+mode: altc
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_disable_link:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_icon_service:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: vector
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image_service:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser_600x300_
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_additional_service_cities: true
+  field_benefit: true
+  field_industry: true
+  field_landing_page_ref: true
+  field_ltp_ref: true
+  field_meta_description: true
+  field_meta_tags: true
+  field_package_level: true
+  field_packages: true
+  field_ref_faqs: true
+  field_ref_issue: true
+  field_secondary_solution_ref: true
+  field_sector: true
+  field_service_cities: true
+  field_solution_heading: true
+  field_solution_ref: true
+  field_special_offers: true
+  field_standalone_landing_page: true
+  field_subsite: true
+  langcode: true
+  layout_builder__layout: true
+  links: true
+  show_title: true

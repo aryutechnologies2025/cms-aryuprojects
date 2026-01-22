@@ -1,0 +1,23 @@
+lawnbot.instantquote:
+    path: '/instantquote'
+    defaults:
+        _title: 'Instant Quote'
+        _controller: '\Drupal\lawnbot\Controller\LawnbotController::instantquote'
+    requirements:
+        _permission: 'access content'
+
+lawnbot.settings_form:
+    path: '/admin/config/services/servicebot'
+    defaults:
+        _title: 'ServiceBot settings'
+        _form: 'Drupal\lawnbot\Form\SettingsForm'
+    requirements:
+        _permission: 'administer servicebot configuration'
+
+entity.servicebot.canonical:
+    path: '/servicebot/{servicebot}'
+    defaults:
+        _title: 'Instant Quote'
+        _controller: '\Drupal\lawnbot\Controller\LawnbotController::servicebot'
+    requirements:
+        _permission: 'administer servicebot configuration'

@@ -1,0 +1,51 @@
+.view-filters {
+  margin-bottom: 20px;
+
+  .form--inline .form-item {
+    margin-right: $margin;
+  }
+
+  .form-type-textfield {
+    position: relative;
+
+    input {
+      margin-bottom: 0;
+      font-weight: 700;
+      border: none;
+      border-bottom: 3px solid;
+    }
+
+    @include icon-after(search) {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      display: inline-block;
+      margin-left: 5px;
+      margin-bottom: 6px;
+      font-size: 2rem;
+      pointer-events: none;
+    }
+  }
+
+  .form-type-select {
+    position: relative;
+
+    select {
+      margin-bottom: 0;
+      font-weight: 700;
+      border: none;
+      background-image: none;
+    }
+
+    @include icon-after(chevron-down) {
+      position: absolute;
+      bottom: 6px;
+      right: 10px;
+      display: inline-block;
+      margin-left: 5px;
+      margin-bottom: 6px;
+      font-size: 1.4rem;
+      pointer-events: none;
+    }
+  }
+}

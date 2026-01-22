@@ -1,0 +1,21 @@
+uuid: ac45144a-ae9b-494a-b853-307a2530733f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_homepage
+    - field.storage.block_content.field_group_by
+  module:
+    - options
+id: block_content.areas_serviced_homepage.field_group_by
+field_name: field_group_by
+entity_type: block_content
+bundle: areas_serviced_homepage
+label: 'Group By'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

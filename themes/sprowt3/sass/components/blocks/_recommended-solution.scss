@@ -1,0 +1,74 @@
+.layout__region {
+    .block-inline-blockrecommended-solution,
+    .block--type-recommended-solution,
+    .node--type-package.node--view-mode-description {
+        padding: 30px;
+        
+        .field--name-field-description-title {
+            @extend %h2;
+            margin-bottom: 15px;
+        }
+        .field--name-field-description {
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        .package-protection {
+            margin-bottom: 30px;
+        }
+        .package-protection-title {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .package-protection-content {
+            .view-content {
+                > div {
+                    display: inline-block;
+                }
+                > div::after {
+                    content: ", ";
+                }
+                > div:last-child::after {
+                    content: none;
+                }
+            }
+        }
+
+        .concerns {
+            display: flex;
+            flex-direction: column;
+            background-color: whitesmoke;
+        }
+        .concerns-title {
+            padding: 8px 15px;
+            color: palette(white);
+            font-weight: 600;
+            background-color: palette(black);
+        }
+        .concerns-content {
+            padding: 8px 15px;
+        }
+        .concerns-comment {
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .concerns-list {
+            .content-wrap {
+                display: flex;
+                flex-wrap: wrap;
+
+                .node--view-mode-modal {
+                    width: 100%;
+
+                    @include breakpoint($xsmall) {
+                        width: calc(50% - 5px);
+                    }
+
+                    @include breakpoint($small) {
+                        width: calc(33% - 5px);
+                    }
+                }
+            }
+        }
+    }
+}

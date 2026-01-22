@@ -1,0 +1,7 @@
+form#system-theme-settings {
+  display: flex;
+  flex-direction: column;
+  #edit-actions.to-bottom {
+    order: 1;
+  }
+}

@@ -1,0 +1,23 @@
+uuid: 910fcecb-18d9-4c5a-8597-f749ae3e943b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured
+    - node.type.package
+id: node.package.field_featured
+field_name: field_featured
+entity_type: node
+bundle: package
+label: 'Most Popular'
+description: 'Marking this field as "Yes" adds extra markup and design to standout in the list of other packages.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

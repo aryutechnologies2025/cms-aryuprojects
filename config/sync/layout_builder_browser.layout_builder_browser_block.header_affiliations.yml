@@ -1,0 +1,11 @@
+uuid: 9874fd31-5897-4d77-ae5b-0afbd00b3bed
+langcode: en
+status: true
+dependencies: {  }
+id: header_affiliations
+block_id: 'block_content:ecc746d0-6506-43bb-9b55-c762acb794c4'
+category: re_usable_blocks
+label: 'Header Affiliations'
+image_path: ''
+image_alt: ''
+weight: -92

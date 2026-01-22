@@ -1,0 +1,47 @@
+.block-aggregatereviewsblock,
+.block-aggregate-reviews-block {
+  position: relative;
+  
+  .field--name-field-label,
+  .field--name-field-label-tag {
+    margin: 0 0 0 5px;
+    &::after,
+    &::before {
+      content: none;
+    }
+  }
+  .google-rating-link {
+    display: none;
+  }
+  .rating-inner-wrap {
+    position: relative;
+    .external-url {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+  }
+}
+
+@include breakpoint($max-small) {
+  .region-header1,
+  .region-header-layout #header-1 {
+    .block-aggregatereviewsblock,
+    .block-aggregate-reviews-block {
+      margin: 0 auto;
+      padding: 0 15px;
+      .star-ratings-wrap {
+        .rating-inner-wrap {
+          margin: 0 auto;
+          padding: 3px 0;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+uuid: b48e7837-08a6-4fca-95e8-50db70c5c4af
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:issues:9c6f6ab1-dfb2-449b-ad05-eb86c9c4ecec'
+  module:
+    - block_content
+  theme:
+    - s3_subtheme
+id: s3_subtheme_issuessidebarglobal
+theme: s3_subtheme
+region: disabled
+weight: -13
+provider: null
+plugin: 'block_content:9c6f6ab1-dfb2-449b-ad05-eb86c9c4ecec'
+settings:
+  id: 'block_content:9c6f6ab1-dfb2-449b-ad05-eb86c9c4ecec'
+  label: 'Issues Sidebar (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

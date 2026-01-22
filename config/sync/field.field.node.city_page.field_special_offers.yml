@@ -1,0 +1,29 @@
+uuid: fe94e07a-c92b-4e6f-aa1c-2f6eff3f215b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_special_offers
+    - node.type.city_page
+    - node.type.special_offer
+id: node.city_page.field_special_offers
+field_name: field_special_offers
+entity_type: node
+bundle: city_page
+label: 'Special Offer(s)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      special_offer: special_offer
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

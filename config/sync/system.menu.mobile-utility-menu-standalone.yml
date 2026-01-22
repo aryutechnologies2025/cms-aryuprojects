@@ -1,0 +1,8 @@
+uuid: ae5ab3a8-c012-4a61-8b69-46b4b6da6a1a
+langcode: en
+status: true
+dependencies: {  }
+id: mobile-utility-menu-standalone
+label: 'Mobile Utility Menu: Standalone Landing Page'
+description: ''
+locked: false

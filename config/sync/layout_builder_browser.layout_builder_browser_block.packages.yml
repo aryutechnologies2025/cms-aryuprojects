@@ -1,0 +1,11 @@
+uuid: 5a1481ec-afa4-4317-8d93-5f3306124432
+langcode: en
+status: true
+dependencies: {  }
+id: packages
+block_id: 'inline_block:packages'
+category: custom_blocks
+label: Packages
+image_path: ''
+image_alt: ''
+weight: -59

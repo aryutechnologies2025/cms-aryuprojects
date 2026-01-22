@@ -1,0 +1,23 @@
+uuid: 58be1dcb-8452-4d78-837e-4e46d18f5d18
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_media
+    - field.storage.block_content.field_use_subsite_links
+id: block_content.social_media.field_use_subsite_links
+field_name: field_use_subsite_links
+entity_type: block_content
+bundle: social_media
+label: 'Use Subsite Links'
+description: 'Check this to use subsite links (or the main site links if there is no subsite/subsite links)'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

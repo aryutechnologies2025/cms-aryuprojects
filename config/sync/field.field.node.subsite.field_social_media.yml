@@ -1,0 +1,58 @@
+uuid: f0fc33ca-2fc8-4499-845b-9ed2d2c61be3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_social_media
+    - node.type.subsite
+    - paragraphs.paragraphs_type.social_media
+  module:
+    - entity_reference_revisions
+id: node.subsite.field_social_media
+field_name: field_social_media
+entity_type: node
+bundle: subsite
+label: 'Social Media Links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      social_media: social_media
+    negate: 0
+    target_bundles_drag_drop:
+      basic_content:
+        weight: 11
+        enabled: false
+      brand:
+        weight: 12
+        enabled: false
+      ctm_target_number:
+        weight: 13
+        enabled: false
+      identifications:
+        weight: 14
+        enabled: false
+      link_box:
+        weight: 15
+        enabled: false
+      media_with_categories:
+        weight: 16
+        enabled: false
+      media_with_categories_images:
+        weight: 17
+        enabled: false
+      media_with_categories_img_vid:
+        weight: 18
+        enabled: false
+      media_with_categories_remote_vid:
+        weight: 19
+        enabled: false
+      social_media:
+        weight: 20
+        enabled: true
+field_type: entity_reference_revisions

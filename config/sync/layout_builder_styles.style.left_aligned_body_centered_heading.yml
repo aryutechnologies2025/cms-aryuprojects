@@ -1,0 +1,13 @@
+uuid: dec5752c-753b-4ca7-aeff-53775805a1c8
+langcode: en
+status: true
+dependencies: {  }
+id: left_aligned_body_centered_heading
+label: 'Left Aligned Body / Centered Heading'
+classes: "left-align\r\ncenter-align-headings"
+type: component
+group: alignment
+block_restrictions:
+  - 'inline_block:basic'
+layout_restrictions: {  }
+weight: 1

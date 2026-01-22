@@ -1,0 +1,24 @@
+uuid: 1899f5f6-bca0-4c54-bde3-abb63d25241a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - field_permissions
+    - media
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: block_content.field_before_image
+field_name: field_before_image
+entity_type: block_content
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

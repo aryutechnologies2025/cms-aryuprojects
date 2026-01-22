@@ -1,0 +1,11 @@
+uuid: ee913c61-768f-4201-9ecf-da3067661400
+langcode: en
+status: true
+dependencies: {  }
+id: language_toggle
+block_id: sprowt_translation_language_toggle
+category: header_footer
+label: 'Language Toggle'
+image_path: ''
+image_alt: ''
+weight: -79

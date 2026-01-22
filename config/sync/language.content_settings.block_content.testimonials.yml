@@ -1,0 +1,11 @@
+uuid: a8ab8dc4-cd1b-43a3-977a-3796ee769ddd
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.testimonials
+id: block_content.testimonials
+target_entity_type_id: block_content
+target_bundle: testimonials
+default_langcode: site_default
+language_alterable: false

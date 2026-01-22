@@ -1,0 +1,217 @@
+<?php
+
+/**
+ * @file
+ * Contains color_variables.module.
+ */
+
+use Drupal\color_variables\Entity\ColorVariableItem;
+use Drupal\Core\Extension\Extension;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function color_variables_help($route_name, RouteMatchInterface $route_match) {
+    switch ($route_name) {
+        // Main module help for the color_variables module.
+        case 'help.page.color_variables':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('Adds ability to add dynamic color variables to the site') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function color_variables_theme() {
+    return [
+        'color_variables' => [
+            'render element' => 'children',
+        ],
+    ];
+}
+
+function _color_variables_safe_css_value($val) {
+    $ret = trim(str_replace([
+        '}',
+        '{',
+        ';'
+    ], '', $val));
+    $ret .= ';';
+
+    return $ret;
+}
+
+function _color_variables_get_theme_colors($theme) {
+    try {
+        /** @var Extension $themeObj */
+        $themeObj = \Drupal::service('theme_handler')->getTheme($theme);
+    } catch (Drupal\Core\Extension\Exception\UnknownExtensionException $e) {
+        $themeObj = null;
+    }
+
+    $themeColors = [];
+
+    if($themeObj instanceof Extension) {
+        $info = $themeObj->info ?? [];
+        if(!empty($info['colors'])) {
+            $stop = true;
+            foreach ($info['colors'] as $colorName => $val) {
+                $themeColors['color-' . $colorName] = $val;
+            }
+        }
+        if(!empty($info["base theme"])) {
+            $baseColors = _color_variables_get_theme_colors($info["base theme"]);
+            $themeColors = array_merge($baseColors, $themeColors);
+        }
+    }
+    return $themeColors;
+}
+
+function _color_variables_get_color_variables($theme = null) {
+    if(!isset($theme)) {
+        $theme = \Drupal::service('theme.manager')->getActiveTheme()->getName();
+    }
+
+
+    $themeColors = _color_variables_get_theme_colors($theme);
+
+    $configKey = 'color_variables.' . $theme;
+    $colors = \Drupal::config($configKey)->getRawData() ?? [];
+    $variables = [];
+    if(!empty($colors)) {
+        foreach ($colors as $var => $val) {
+            $variables['color-' . $var] = $val;
+        }
+    }
+    $variables = array_merge($themeColors, $variables);
+    $context = [
+        'theme' => $theme
+    ];
+    \Drupal::service('module_handler')->alter('color_variables', $variables, $context);
+    return $variables;
+}
+
+function _color_variables_get_inherited_color_variables($theme) {
+    if($theme == 'global') {
+        return [];
+    }
+
+    /**
+     * @var $activeTheme \Drupal\Core\Theme\ActiveTheme
+     */
+    $activeTheme = \Drupal::service('theme.initialization')->initTheme($theme);
+    $colorVariables = [];
+    $colorVariables[] = _color_variables_get_color_variables('global');
+    $baseThemeExtensions = $activeTheme->getBaseThemeExtensions();
+    $oldestThemes = array_reverse(array_keys($baseThemeExtensions));
+    foreach($oldestThemes as $themeName) {
+        $colorVariables[] = _color_variables_get_color_variables($themeName);
+    }
+
+    $colors = [];
+    foreach($colorVariables as $variables) {
+        $colors = array_merge($colors, $variables);
+    }
+    return $colors;
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function color_variables_page_attachments(array &$attachments) {
+    /**
+     * @var $activeTheme \Drupal\Core\Theme\ActiveTheme
+     */
+    $activeTheme = \Drupal::service('theme.manager')->getActiveTheme();
+    $activeThemeName = $activeTheme->getName();
+    /** @var \Drupal\color_variables\ColorVariablesService $service */
+    $service = \Drupal::service('color_variables.service');
+
+    $colors = $service->getAllColorVariablesForTheme($activeThemeName);
+
+    if(!empty($colors)) {
+        $css = $service->getCssMarkupForTheme($activeThemeName, 'body');
+
+        $attachments['#attached']['html_head'][] = [[
+            '#tag' => 'style',
+            '#value' => $css,
+            '#attributes' => [
+                'data-provider' => 'color_variables',
+                'id' => 'color-variables-style-tag'
+            ]
+        ], 'color_variables'];
+    }
+}
+
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function color_variables_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id = null) {
+
+
+    $theme = \Drupal::routeMatch()->getParameter('theme');
+    $item = _color_variables_form_item($theme);
+    $item['#type'] = 'fieldset';
+
+    $form['color_variables'] = $item;
+
+}
+
+function _color_variables_form_item($theme = null) {
+    $fieldset = [
+        '#type' => 'item',
+        '#title' => 'Color Variables',
+    ];
+    $entity = null;
+    if(!empty($theme)) {
+        $entity = ColorVariableItem::load($theme);
+    }
+    if($entity instanceof ColorVariableItem) {
+        $fieldset['summary'] = [
+            '#type' => 'fieldset',
+            '#title' => 'Overridden Colors',
+            'ul' => $entity->getSummary()
+        ];
+        $fieldset['link'] = [
+            '#type' => 'link',
+            '#title' => 'Edit color variables',
+            '#url' => $entity->toUrl('edit-form', [
+                'query' => \Drupal::destination()->getAsArray()
+            ]),
+            '#attributes' => [
+                'class' => ['button']
+            ]
+        ];
+    }
+    else {
+        if(!empty($theme)) {
+            $fieldset['link'] = [
+                '#type' => 'link',
+                '#title' => 'Add color variables',
+                '#url' => \Drupal\Core\Url::fromRoute('entity.color_variable_item.add_form', [
+                    'theme' => $theme
+                ], [
+                    'query' => \Drupal::destination()->getAsArray()
+                ]),
+                '#attributes' => [
+                    'class' => ['button']
+                ]
+            ];
+        }
+        else {
+            $fieldset['no-colors'] = [
+                '#type' => 'markup',
+                '#markup' => \Drupal\Core\Render\Markup::create('<p>No color variables can be added for this theme.</p>')
+            ];
+        }
+    }
+
+    return $fieldset;
+}

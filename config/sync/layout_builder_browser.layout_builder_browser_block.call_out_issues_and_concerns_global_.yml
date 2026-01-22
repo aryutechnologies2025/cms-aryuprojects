@@ -1,0 +1,11 @@
+uuid: 2251f6f6-ad66-4249-bc2f-55c4b8fed665
+langcode: en
+status: true
+dependencies: {  }
+id: call_out_issues_and_concerns_global_
+block_id: 'block_content:bf55a2c2-9a0e-40ca-8960-7335c352fbbb'
+category: re_usable_blocks
+label: 'Call Out - Issues and Concerns (global)'
+image_path: ''
+image_alt: ''
+weight: -95

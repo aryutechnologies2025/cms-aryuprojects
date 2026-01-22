@@ -1,0 +1,55 @@
+<?php
+
+
+/**
+ * Register new entity
+ */
+function lawnbot_update_9001(&$sandbox)
+{
+    /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */
+    $entityTypeManager = \Drupal::service('entity_type.manager');
+    /** @var \Drupal\Core\Entity\EntityTypeListener $entityTypeListener */
+    $entityTypeListener = \Drupal::service('entity_type.listener');
+
+    $entityType = $entityTypeManager->getDefinition('servicebot');
+    $entityTypeListener->onEntityTypeCreate($entityType);
+}
+
+
+/**
+ * Convert current lawnbot settings
+ */
+function lawnbot_update_9002()
+{
+    $config = \Drupal::config('lawnbot.settings');
+    $current = [
+        'enabled' => $config->get('enabled'),
+        'customerId' => $config->get('customerId'),
+        'botId' => $config->get('botId'),
+    ];
+    if(!empty($current['customerId']) && !empty($current['botId'])) {
+        /** @var \Drupal\lawnbot\Entity\Servicebot $bot */
+        $bot = \Drupal\lawnbot\Entity\Servicebot::create();
+        $bot->setTitle('Default');
+        $bot->setStatus(!empty($current['enabled']));
+        $bot->set('customer_id', [
+            'value' => $current['customerId']
+        ]);
+        $bot->set('bot_id', [
+            'value' => $current['botId']
+        ]);
+        $bot->save();
+    }
+    if(!empty($bot) && $bot instanceof \Drupal\lawnbot\Entity\Servicebot) {
+        $webforms = \Drupal::entityTypeManager()->getStorage('webform')->loadMultiple();
+        /** @var \Drupal\webform\WebformInterface $webform */
+        foreach($webforms as $webform) {
+            /** @var \Drupal\webform\Plugin\WebformHandlerPluginCollection $handlers */
+            $handlers = $webform->getHandlers('Lawnbot integration');
+            /** @var \Drupal\lawnbot\Plugin\WebformHandler\LawnbotWebformHandler $handler */
+            foreach($handlers as $handler) {
+                $handler->setLinkedServiceBot($bot);
+            }
+        }
+    }
+}

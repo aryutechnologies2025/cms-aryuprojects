@@ -1,0 +1,21 @@
+uuid: 15969c30-e885-4b74-badc-24113d81068d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_package_level
+    - node.type.concern
+  module:
+    - options
+id: node.concern.field_package_level
+field_name: field_package_level
+entity_type: node
+bundle: concern
+label: 'Package Level'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

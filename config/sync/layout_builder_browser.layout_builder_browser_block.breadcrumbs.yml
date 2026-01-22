@@ -1,0 +1,11 @@
+uuid: 614ea673-0652-4b3e-9d33-0542fcf8289c
+langcode: en
+status: true
+dependencies: {  }
+id: breadcrumbs
+block_id: 'inline_block:breadcrumbs'
+category: custom_blocks
+label: Breadcrumbs
+image_path: ''
+image_alt: ''
+weight: -77

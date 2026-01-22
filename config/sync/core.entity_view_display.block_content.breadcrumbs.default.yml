@@ -1,0 +1,28 @@
+uuid: 659ca163-f472-460c-b767-befdd5411640
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.breadcrumbs
+    - field.field.block_content.breadcrumbs.field_crumb
+  module:
+    - link
+id: block_content.breadcrumbs.default
+targetEntityType: block_content
+bundle: breadcrumbs
+mode: default
+content:
+  field_crumb:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

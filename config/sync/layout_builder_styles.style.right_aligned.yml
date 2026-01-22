@@ -1,0 +1,22 @@
+uuid: b8fd614c-910d-4a45-bc35-db75b6d4a650
+langcode: en
+status: true
+dependencies: {  }
+id: right_aligned
+label: 'Right Aligned'
+classes: right-align
+type: component
+group: alignment
+block_restrictions:
+  - 'inline_block:accordion_content'
+  - 'inline_block:basic'
+  - 'inline_block:before_after_image_slider'
+  - 'inline_block:blog_list'
+  - 'inline_block:call_out'
+  - 'inline_block:gallery'
+  - 'inline_block:hero'
+  - 'inline_block:quote'
+  - 'inline_block:social_media'
+  - 'inline_block:special_offers'
+layout_restrictions: {  }
+weight: -20

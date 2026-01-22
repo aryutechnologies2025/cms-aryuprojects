@@ -1,0 +1,162 @@
+.layout__region {
+  .block-inline-blockcity-page-main-branch,
+  .block--type-city-page-main-branch {
+    padding: $margin $margin;
+
+    @include breakpoint($large) {
+      padding: ($margin * 1.5) $margin;
+    }
+
+    .city-info-heading {
+      @extend %h3;
+    }
+    .city-title {
+      font-weight: 700;
+    }
+
+    .node--view-mode-block .node__content {
+      .city-address,
+      .city-hours {
+        display: inline-block;
+        min-width: 280px;
+
+        .fieldset-wrapper {
+          display: inline-block;
+          margin-right: 15px;
+          @extend %p;
+        }
+
+        legend {
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+
+        .field--name-field-street {
+          width: 100%;
+        }
+        .field--name-field-city,
+        .field--name-field-state,
+        .field--name-field-zip {
+          display: inline-block;
+          margin-right: 5px;
+        }
+        .field--name-field-city {
+          &::after {
+            content: ",";
+          }
+        }
+        .field--name-field-phone {
+          width: 100%;
+          &::before {
+            content: "Tel: ";
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Google Rating Block on page region
+.region-content {
+  .block.block-google-star-rating,
+  .block.block-aggregate-reviews-block {
+    border-top: 1px solid;
+    margin-top: 15px;
+    padding: 30px;
+
+    @include breakpoint($small) {
+      //padding: 30px 0 0 0;
+    }
+
+    // &::before {
+    //   content: "";
+    //   display: inline-block;
+    //   width: 40px;
+    //   height: 40px;
+    //   margin-right: 6px;
+    //   background-image: url(../assets/google-logo.png);
+    //   background-repeat: no-repeat;
+    //   background-size: cover;
+    // }
+
+    .star-ratings-wrap {
+      display: inline-block;
+
+      &::before {
+        content: "Google Rating";
+        display: inline-block;
+        font-weight: 600;
+        text-transform: uppercase;
+        position: absolute;
+        left:77px;
+        bottom:54px;
+      }
+    }
+    .rating-inner-wrap {
+      align-items: baseline;
+      position: relative;
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin-right: 7px;
+        background-image: url(../assets/google-logo.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+  
+    }
+    .rating-heading {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      .prelabel {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: normal;
+        text-transform: uppercase;
+      }
+      .postlabel {
+        display: none;
+      }
+    }
+    .field--name-field-label,
+    .field--name-field-label-tag {
+      font-size: 1.4rem;
+      text-transform: inherit;
+      &::after {
+        content: none;
+      }
+    }
+    .google-rating-link {
+      display: none;
+      //display: inline-block;
+      margin: 0 0 0 15px;
+    }
+  }
+}
+
+// Align Branch hours under 480px
+// Code from Tony Wilson
+@include breakpoint($max-xsmall) {
+  #branch-info {
+    .city-branch-information-wrap {
+      text-align: center;
+      .node--view-mode-secondary-teaser .form-item {
+        text-align: center;
+
+        legend {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .node--type-branch.node--view-mode-secondary-teaser
+    .node__content
+    > fieldset {
+    margin-right: 0;
+  }
+}

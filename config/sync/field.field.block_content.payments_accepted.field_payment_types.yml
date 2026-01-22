@@ -1,0 +1,21 @@
+uuid: 3dc9de89-129b-47b6-a6ae-7e6e3dbf5c5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.payments_accepted
+    - field.storage.block_content.field_payment_types
+  module:
+    - options
+id: block_content.payments_accepted.field_payment_types
+field_name: field_payment_types
+entity_type: block_content
+bundle: payments_accepted
+label: 'Payment Types'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

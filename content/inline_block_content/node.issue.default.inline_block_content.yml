@@ -1,0 +1,672 @@
+_entities:
+  'b26ee4c8-e0fa-4644-913a-a0f0e5bb1058::4043':
+    _exportInfo:
+      key: 'b26ee4c8-e0fa-4644-913a-a0f0e5bb1058::4043'
+      entity_type: block_content
+      bundle: hero_learning_center
+      entity_id: '464'
+      uuid: b26ee4c8-e0fa-4644-913a-a0f0e5bb1058
+      isDefaultRevision: true
+      revisionId: '4043'
+      label: Masthead
+    id:
+      -
+        value: 464
+    uuid:
+      -
+        value: b26ee4c8-e0fa-4644-913a-a0f0e5bb1058
+    revision_id:
+      -
+        value: 4043
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: hero_learning_center
+        target_type: block_content_type
+        target_uuid: ce26794d-912b-4a33-b33e-817e937df3fc
+    revision_created:
+      -
+        value: '2021-04-22T17:52:23+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Hero - Learning Center'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Masthead
+    changed:
+      -
+        value: '2021-04-22T17:52:23+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+  '1b9918a1-f63e-4cda-9f4d-50d5e038b53a::3466':
+    _exportInfo:
+      key: '1b9918a1-f63e-4cda-9f4d-50d5e038b53a::3466'
+      entity_type: block_content
+      bundle: basic
+      entity_id: '465'
+      uuid: 1b9918a1-f63e-4cda-9f4d-50d5e038b53a
+      isDefaultRevision: false
+      revisionId: '3466'
+      label: Introduction
+    id:
+      -
+        value: 465
+    uuid:
+      -
+        value: 1b9918a1-f63e-4cda-9f4d-50d5e038b53a
+    revision_id:
+      -
+        value: 3466
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: basic
+        target_type: block_content_type
+        target_uuid: 34ebec69-1449-469a-9ec4-be32f1e9c367
+    revision_created:
+      -
+        value: '2021-04-23T17:40:51+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Basic'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Introduction
+    changed:
+      -
+        value: '2021-04-23T17:40:51+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading: {  }
+    field_industry: {  }
+    field_label: {  }
+    field_link: {  }
+    field_subheading: {  }
+    field_text:
+      -
+        value: "<p>Etiam mattis nisl id magna rutrum, eget consectetur libero fringilla. Ut eu laoreet ipsum. Suspendisse imperdiet feugiat leo. Pellentesque mattis luctus volutpat. Duis euismod tempor sem, at laoreet augue ultricies non. Fusce rutrum nulla ut convallis laoreet. Pellentesque congue massa eu erat posuere faucibus. In vel erat mauris. Quisque tempor eget justo id volutpat. Nullam consequat risus non lorem gravida facilisis. Sed ut ornare eros. Curabitur commodo diam massa, sit amet bibendum libero laoreet sed. Nunc gravida ornare commodo. Nullam ligula tellus, euismod nec velit nec, semper interdum dolor.</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>Etiam mattis nisl id magna rutrum, eget consectetur libero fringilla. Ut eu laoreet ipsum. Suspendisse imperdiet feugiat leo. Pellentesque mattis luctus volutpat. Duis euismod tempor sem, at laoreet augue ultricies non. Fusce rutrum nulla ut convallis laoreet. Pellentesque congue massa eu erat posuere faucibus. In vel erat mauris. Quisque tempor eget justo id volutpat. Nullam consequat risus non lorem gravida facilisis. Sed ut ornare eros. Curabitur commodo diam massa, sit amet bibendum libero laoreet sed. Nunc gravida ornare commodo. Nullam ligula tellus, euismod nec velit nec, semper interdum dolor.</p>
+  'e57c1b89-d471-4caf-a904-02bafa7128d8::4045':
+    _exportInfo:
+      key: 'e57c1b89-d471-4caf-a904-02bafa7128d8::4045'
+      entity_type: block_content
+      bundle: identifications
+      entity_id: '467'
+      uuid: e57c1b89-d471-4caf-a904-02bafa7128d8
+      isDefaultRevision: true
+      revisionId: '4045'
+      label: Identifications
+    id:
+      -
+        value: 467
+    uuid:
+      -
+        value: e57c1b89-d471-4caf-a904-02bafa7128d8
+    revision_id:
+      -
+        value: 4045
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: identifications
+        target_type: block_content_type
+        target_uuid: d992ed9f-5ddf-4dd8-934c-6b15b7cfddd1
+    revision_created:
+      -
+        value: '2021-04-23T17:54:45+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Identifications'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Identifications
+    changed:
+      -
+        value: '2021-04-23T18:24:47+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading:
+      -
+        value: 'Pest Identification'
+        tag: h2
+    field_identifications:
+      -
+        target_id: 33
+        target_revision_id: 981
+        target_type: paragraph
+        target_uuid: 42727f60-6ec4-4af1-9a59-fab8292f8067
+        _export: '42727f60-6ec4-4af1-9a59-fab8292f8067::981'
+      -
+        target_id: 34
+        target_revision_id: 982
+        target_type: paragraph
+        target_uuid: aad90c73-f627-4ee2-9819-ff28951a7a0c
+        _export: 'aad90c73-f627-4ee2-9819-ff28951a7a0c::982'
+      -
+        target_id: 35
+        target_revision_id: 983
+        target_type: paragraph
+        target_uuid: 230cf9db-9120-423c-8d27-ef82f7628d89
+        _export: '230cf9db-9120-423c-8d27-ef82f7628d89::983'
+      -
+        target_id: 36
+        target_revision_id: 984
+        target_type: paragraph
+        target_uuid: c8411aa3-349d-4e83-bc10-adf518b83dd9
+        _export: 'c8411aa3-349d-4e83-bc10-adf518b83dd9::984'
+      -
+        target_id: 37
+        target_revision_id: 985
+        target_type: paragraph
+        target_uuid: 353fb9a7-7233-4fe2-a1ad-c1f1e4c8a90a
+        _export: '353fb9a7-7233-4fe2-a1ad-c1f1e4c8a90a::985'
+      -
+        target_id: 38
+        target_revision_id: 986
+        target_type: paragraph
+        target_uuid: daf30bdc-ff63-4856-9b25-f2fc1bfa5a89
+        _export: 'daf30bdc-ff63-4856-9b25-f2fc1bfa5a89::986'
+      -
+        target_id: 39
+        target_revision_id: 987
+        target_type: paragraph
+        target_uuid: 2eca3911-89ee-4373-a97c-6ed77c5cb804
+        _export: '2eca3911-89ee-4373-a97c-6ed77c5cb804::987'
+    field_industry: {  }
+_content:
+  '42727f60-6ec4-4af1-9a59-fab8292f8067::981':
+    _exportInfo:
+      key: '42727f60-6ec4-4af1-9a59-fab8292f8067::981'
+      entity_type: paragraph
+      bundle: identifications
+      entity_id: '33'
+      uuid: 42727f60-6ec4-4af1-9a59-fab8292f8067
+      isDefaultRevision: false
+      revisionId: '981'
+      label: 'Identifications > Identifications'
+    id:
+      -
+        value: 33
+    uuid:
+      -
+        value: 42727f60-6ec4-4af1-9a59-fab8292f8067
+    revision_id:
+      -
+        value: 981
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: identifications
+        target_type: paragraphs_type
+        target_uuid: 898c2094-d0d0-43de-8a91-3d69720e3165
+    status:
+      -
+        value: true
+    created:
+      -
+        value: '2021-04-23T17:54:45+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    parent_id:
+      -
+        value: '467'
+    parent_type:
+      -
+        value: block_content
+    parent_field_name:
+      -
+        value: field_identifications
+    behavior_settings:
+      -
+        value: {  }
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    field_description:
+      -
+        value: "<p>1/6 - 1/8 in.</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>1/6 - 1/8 in.</p>
+    field_label:
+      -
+        value: Size
+  'aad90c73-f627-4ee2-9819-ff28951a7a0c::982':
+    _exportInfo:
+      key: 'aad90c73-f627-4ee2-9819-ff28951a7a0c::982'
+      entity_type: paragraph
+      bundle: identifications
+      entity_id: '34'
+      uuid: aad90c73-f627-4ee2-9819-ff28951a7a0c
+      isDefaultRevision: false
+      revisionId: '982'
+      label: 'Identifications > Identifications'
+    id:
+      -
+        value: 34
+    uuid:
+      -
+        value: aad90c73-f627-4ee2-9819-ff28951a7a0c
+    revision_id:
+      -
+        value: 982
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: identifications
+        target_type: paragraphs_type
+        target_uuid: 898c2094-d0d0-43de-8a91-3d69720e3165
+    status:
+      -
+        value: true
+    created:
+      -
+        value: '2021-04-23T18:05:54+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    parent_id:
+      -
+        value: '467'
+    parent_type:
+      -
+        value: block_content
+    parent_field_name:
+      -
+        value: field_identifications
+    behavior_settings:
+      -
+        value: {  }
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    field_description:
+      -
+        value: "<p>Light brown to black</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>Light brown to black</p>
+    field_label:
+      -
+        value: Color
+  '230cf9db-9120-423c-8d27-ef82f7628d89::983':
+    _exportInfo:
+      key: '230cf9db-9120-423c-8d27-ef82f7628d89::983'
+      entity_type: paragraph
+      bundle: identifications
+      entity_id: '35'
+      uuid: 230cf9db-9120-423c-8d27-ef82f7628d89
+      isDefaultRevision: false
+      revisionId: '983'
+      label: 'Identifications > Identifications'
+    id:
+      -
+        value: 35
+    uuid:
+      -
+        value: 230cf9db-9120-423c-8d27-ef82f7628d89
+    revision_id:
+      -
+        value: 983
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: identifications
+        target_type: paragraphs_type
+        target_uuid: 898c2094-d0d0-43de-8a91-3d69720e3165
+    status:
+      -
+        value: true
+    created:
+      -
+        value: '2021-04-23T18:06:30+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    parent_id:
+      -
+        value: '467'
+    parent_type:
+      -
+        value: block_content
+    parent_field_name:
+      -
+        value: field_identifications
+    behavior_settings:
+      -
+        value: {  }
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    field_description:
+      -
+        value: "<p>Head, two spines on thorax and heart-shaped abdomen when viewed from above.</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>Head, two spines on thorax and heart-shaped abdomen when viewed from above.</p>
+    field_label:
+      -
+        value: 'Body Structure'
+  'c8411aa3-349d-4e83-bc10-adf518b83dd9::984':
+    _exportInfo:
+      key: 'c8411aa3-349d-4e83-bc10-adf518b83dd9::984'
+      entity_type: paragraph
+      bundle: identifications
+      entity_id: '36'
+      uuid: c8411aa3-349d-4e83-bc10-adf518b83dd9
+      isDefaultRevision: false
+      revisionId: '984'
+      label: 'Identifications > Identifications'
+    id:
+      -
+        value: 36
+    uuid:
+      -
+        value: c8411aa3-349d-4e83-bc10-adf518b83dd9
+    revision_id:
+      -
+        value: 984
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: identifications
+        target_type: paragraphs_type
+        target_uuid: 898c2094-d0d0-43de-8a91-3d69720e3165
+    status:
+      -
+        value: true
+    created:
+      -
+        value: '2021-04-23T18:08:03+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    parent_id:
+      -
+        value: '467'
+    parent_type:
+      -
+        value: block_content
+    parent_field_name:
+      -
+        value: field_identifications
+    behavior_settings:
+      -
+        value: {  }
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    field_description:
+      -
+        value: "<p>When an acrobat ant is disturbed, it raises its abdomen over its head and thorax in a threatening manner, hence its name. Likewise, worker ants will emit a foul odor and may bite when disturbed. Colonies are formed by flying ants, or \"swarming,\" anytime from May to September.</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>When an acrobat ant is disturbed, it raises its abdomen over its head and thorax in a threatening manner, hence its name. Likewise, worker ants will emit a foul odor and may bite when disturbed. Colonies are formed by flying ants, or "swarming," anytime from May to September.</p>
+    field_label:
+      -
+        value: Characteristics
+  '353fb9a7-7233-4fe2-a1ad-c1f1e4c8a90a::985':
+    _exportInfo:
+      key: '353fb9a7-7233-4fe2-a1ad-c1f1e4c8a90a::985'
+      entity_type: paragraph
+      bundle: identifications
+      entity_id: '37'
+      uuid: 353fb9a7-7233-4fe2-a1ad-c1f1e4c8a90a
+      isDefaultRevision: false
+      revisionId: '985'
+      label: 'Identifications > Identifications'
+    id:
+      -
+        value: 37
+    uuid:
+      -
+        value: 353fb9a7-7233-4fe2-a1ad-c1f1e4c8a90a
+    revision_id:
+      -
+        value: 985
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: identifications
+        target_type: paragraphs_type
+        target_uuid: 898c2094-d0d0-43de-8a91-3d69720e3165
+    status:
+      -
+        value: true
+    created:
+      -
+        value: '2021-04-23T18:10:14+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    parent_id:
+      -
+        value: '467'
+    parent_type:
+      -
+        value: block_content
+    parent_field_name:
+      -
+        value: field_identifications
+    behavior_settings:
+      -
+        value: {  }
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    field_description:
+      -
+        value: "<p>Acrobat ants nest in moist, damp areas, from rotting logs to tree stumps. Often, acrobat ants will nest indoors wherever damp, damaged wood is present. They also may nest in Styrofoam insulation, wall voids or in the abandoned nests of termites or other wood-boring insects. In the wild, acrobat ants feed on other insects and honeydew. Indoors, they seek out sugary, sweet food items.</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>Acrobat ants nest in moist, damp areas, from rotting logs to tree stumps. Often, acrobat ants will nest indoors wherever damp, damaged wood is present. They also may nest in Styrofoam insulation, wall voids or in the abandoned nests of termites or other wood-boring insects. In the wild, acrobat ants feed on other insects and honeydew. Indoors, they seek out sugary, sweet food items.</p>
+    field_label:
+      -
+        value: 'Habitat & Behavior'
+  'daf30bdc-ff63-4856-9b25-f2fc1bfa5a89::986':
+    _exportInfo:
+      key: 'daf30bdc-ff63-4856-9b25-f2fc1bfa5a89::986'
+      entity_type: paragraph
+      bundle: identifications
+      entity_id: '38'
+      uuid: daf30bdc-ff63-4856-9b25-f2fc1bfa5a89
+      isDefaultRevision: false
+      revisionId: '986'
+      label: 'Identifications > Identifications'
+    id:
+      -
+        value: 38
+    uuid:
+      -
+        value: daf30bdc-ff63-4856-9b25-f2fc1bfa5a89
+    revision_id:
+      -
+        value: 986
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: identifications
+        target_type: paragraphs_type
+        target_uuid: 898c2094-d0d0-43de-8a91-3d69720e3165
+    status:
+      -
+        value: true
+    created:
+      -
+        value: '2021-04-23T18:10:31+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    parent_id:
+      -
+        value: '467'
+    parent_type:
+      -
+        value: block_content
+    parent_field_name:
+      -
+        value: field_identifications
+    behavior_settings:
+      -
+        value: {  }
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    field_description:
+      -
+        value: "<p>Spring / Summer / Fall</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>Spring / Summer / Fall</p>
+    field_label:
+      -
+        value: 'Commonly Active'
+  '2eca3911-89ee-4373-a97c-6ed77c5cb804::987':
+    _exportInfo:
+      key: '2eca3911-89ee-4373-a97c-6ed77c5cb804::987'
+      entity_type: paragraph
+      bundle: identifications
+      entity_id: '39'
+      uuid: 2eca3911-89ee-4373-a97c-6ed77c5cb804
+      isDefaultRevision: false
+      revisionId: '987'
+      label: 'Identifications > Identifications'
+    id:
+      -
+        value: 39
+    uuid:
+      -
+        value: 2eca3911-89ee-4373-a97c-6ed77c5cb804
+    revision_id:
+      -
+        value: 987
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: identifications
+        target_type: paragraphs_type
+        target_uuid: 898c2094-d0d0-43de-8a91-3d69720e3165
+    status:
+      -
+        value: true
+    created:
+      -
+        value: '2021-04-23T18:12:55+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    parent_id:
+      -
+        value: '467'
+    parent_type:
+      -
+        value: block_content
+    parent_field_name:
+      -
+        value: field_identifications
+    behavior_settings:
+      -
+        value: {  }
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    field_description:
+      -
+        value: "<p>As with most ants, keeping food prep and dining areas free and clear of food debris is a good way to prevent acrobat ant infestation. Caulking cracks and openings around door frames and around pipes also can help block acrobat ants from entering your home. Presence of acrobat ants may indicate a larger moisture problem in your home. Also, tracking acrobat ants' trail back to the nest often is difficult. It is recommended that a pest control professional inspect your home to find the actual source of infestation.</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>As with most ants, keeping food prep and dining areas free and clear of food debris is a good way to prevent acrobat ant infestation. Caulking cracks and openings around door frames and around pipes also can help block acrobat ants from entering your home. Presence of acrobat ants may indicate a larger moisture problem in your home. Also, tracking acrobat ants' trail back to the nest often is difficult. It is recommended that a pest control professional inspect your home to find the actual source of infestation.</p>
+    field_label:
+      -
+        value: 'Prevention & Treatment'

@@ -1,0 +1,11 @@
+uuid: b91712f7-6d1d-4c97-be9d-2a60727c4844
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.career_page
+id: node.career_page
+target_entity_type_id: node
+target_bundle: career_page
+default_langcode: site_default
+language_alterable: false

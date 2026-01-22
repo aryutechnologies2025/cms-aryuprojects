@@ -1,0 +1,14 @@
+uuid: 7afef944-ad5c-4b82-b6ee-29344c4fd450
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.media_gallery
+id: node_type_media_gallery
+entity_type_id: node_type
+entity_id: media_gallery
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,14 @@
+uuid: 7334fddd-ae54-4f86-a7f0-f6e7e29f279a
+langcode: en
+status: true
+dependencies: {  }
+id: branches_and_city_pages
+label: 'Locations and City Pages'
+enabled: true
+first_field: field_main_city
+second_field: field_main_branch
+add_direction: append
+bundles:
+  node:
+    - branch
+    - city_page

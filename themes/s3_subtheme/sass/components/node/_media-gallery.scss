@@ -1,0 +1,44 @@
+
+.node--type-media-gallery {
+
+  &.node--view-mode-gallery-node {
+    > .node__content {
+      .field--name-field-media {
+        > .field__item {
+          .media {
+            .field--type-image {
+              > .field__item {
+                
+                a {
+                  &:after {
+                    background-color: #000;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // video only
+      .colorbox-media-video {
+        &:after {
+          background-color: #000;
+        }
+      }
+      // end video only
+    }
+
+    // documents only 
+    .field--name-field-media-documents {
+      .field--name-field-media {
+        a {
+          color: palette(primary);
+          &:hover {
+            color: palette(primary, dark);
+          }
+        }
+      }
+    }
+  }
+}

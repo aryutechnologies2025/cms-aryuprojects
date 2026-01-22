@@ -1,0 +1,56 @@
+.layout__region {
+  .block-inline-blockpayments-accepted {
+    padding: 20px 30px;
+
+    .payments-wrap {
+    }
+
+    .field--name-field-label {
+      margin-bottom: 5px;
+      text-align: left;
+      color: palette(black);
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-transform: initial;
+      text-align: center;
+
+      @include breakpoint($medium) {
+        text-align: left;
+      }
+
+      &::after {
+        content: none;
+      }
+    }
+
+    .payment-types {
+      @include flexbox;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      @include breakpoint($medium) {
+        justify-content: flex-start;
+      }
+    }
+
+    .payment-item {
+      margin-right: 4px;
+      margin-bottom: 4px;
+      img {
+        width: auto;
+        max-height: 21px;
+      }
+    }
+  }
+
+  footer & {
+    .field--name-field-label {
+      color: palette(white);
+    }
+    .block-inline-blockpayments-accepted {
+      padding: 15px 0;
+    }
+  }
+  
+}
+

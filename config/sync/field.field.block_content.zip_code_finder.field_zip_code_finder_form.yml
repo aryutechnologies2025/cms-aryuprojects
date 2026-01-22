@@ -1,0 +1,21 @@
+uuid: 09287794-3f08-4ec8-b4fe-948398369085
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.zip_code_finder
+    - field.storage.block_content.field_zip_code_finder_form
+  module:
+    - zipcode_finder
+id: block_content.zip_code_finder.field_zip_code_finder_form
+field_name: field_zip_code_finder_form
+entity_type: block_content
+bundle: zip_code_finder
+label: 'Zip Code Finder Form'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: zipcode_finder_zipcode_finder_form

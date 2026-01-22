@@ -1,0 +1,23 @@
+uuid: c37a93aa-2fd1-4616-b8e0-0ce36a1a6676
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.social_media
+    - field.storage.block_content.field_icon_style
+  module:
+    - options
+id: block_content.social_media.field_icon_style
+field_name: field_icon_style
+entity_type: block_content
+bundle: social_media
+label: 'Icon Style'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: small
+default_value_callback: ''
+settings: {  }
+field_type: list_string

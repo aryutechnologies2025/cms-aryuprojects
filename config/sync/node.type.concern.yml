@@ -1,0 +1,24 @@
+uuid: 56bf8ef8-8b07-480f-97f5-0bb3791d2ba3
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-navigation-subsite-full
+      - main
+      - main-navigation-subsite-
+    parent: 'main-navigation-subsite-full:'
+  sprowt_admin_override:
+    external_node_type: false
+    title_help: 'The Title may be used and rendered on the website depending on the location of the content type.'
+name: Concern
+type: concern
+description: null
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

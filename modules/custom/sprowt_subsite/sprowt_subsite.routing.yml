@@ -1,0 +1,57 @@
+sprowt_subsite.subsite_settings:
+    path: '/node/{node}/subsite-settings'
+    defaults:
+        _title: 'Subsite settings'
+        _form: 'Drupal\sprowt_subsite\Form\SubsiteSettingsForm'
+    requirements:
+        _custom_access: 'Drupal\sprowt_subsite\Form\SubsiteSettingsForm::access'
+    options:
+        _admin_route: true
+        parameters:
+            node:
+                type: entity:node
+
+sprowt_subsite.subsite_configure:
+    path: '/node/{node}/subsite-configure'
+    defaults:
+        _title: 'Configure subsite'
+        _controller: '\Drupal\sprowt_subsite\Controller\SprowtSubsiteController::configureSubsite'
+    requirements:
+        _custom_access: '\Drupal\sprowt_subsite\Controller\SprowtSubsiteController::configureSubsiteAccess'
+    options:
+        parameters:
+            node:
+                type: entity:node
+
+sprowt_subsite.subsite_homepage:
+    path: '/node/{node}/subsite-homepage'
+    defaults:
+        _title: 'Subsite home'
+        _controller: '\Drupal\sprowt_subsite\Controller\SprowtSubsiteController::subsiteHomePageView'
+    requirements:
+        _custom_access: '\Drupal\sprowt_subsite\Controller\SprowtSubsiteController::subsiteHomePageViewAccess'
+    options:
+        parameters:
+            node:
+                type: entity:node
+
+sprowt_subsite.conditional_token:
+    path: '/sprowt-subsite/conditional-token/{subsite}'
+    defaults:
+        _title: 'Conditional Token'
+        _form: 'Drupal\sprowt_subsite\Form\SubsiteConditionalTokenForm'
+    requirements:
+        _permission: 'access administration pages'
+    options:
+        _admin_route: TRUE
+
+
+sprowt_subsite.conditional_token_delete:
+    path: '/sprowt-subsite/conditional-token-delete/{key}/{subsite}'
+    defaults:
+        _title: 'Delete conditional token'
+        _form: 'Drupal\sprowt_subsite\Form\SubsiteConditionalTokenDeleteForm'
+    requirements:
+        _permission: 'access administration pages'
+    options:
+        _admin_route: TRUE

@@ -1,0 +1,17 @@
+uuid: cbf05d62-9277-442e-8143-3ff291f12237
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: large_1000x450
+label: 'Large (1000x450)'
+effects:
+  f8ba2530-6c1e-4514-8b30-1aae8f755d3c:
+    uuid: f8ba2530-6c1e-4514-8b30-1aae8f755d3c
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1000
+      height: 450
+      crop_type: focal_point

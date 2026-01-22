@@ -1,0 +1,21 @@
+uuid: 36a9df1f-66d1-4893-9400-e2a32c2c9cb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hours
+    - node.type.branch
+id: node.branch.field_hours
+field_name: field_hours
+entity_type: node
+bundle: branch
+label: 'Hours of Operation'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: "M-F: x:xx AM-x:xx PM\r\nSAT: x:xx AM-x:xx PM\r\nSUN: Closed (Emergency Calls)"
+default_value_callback: ''
+settings: {  }
+field_type: string_long

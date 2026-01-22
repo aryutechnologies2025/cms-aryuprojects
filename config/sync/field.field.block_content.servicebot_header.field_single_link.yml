@@ -1,0 +1,28 @@
+uuid: 3b9df332-d588-46a4-b934-4dbc6f4e3247
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot_header
+    - field.storage.block_content.field_single_link
+  module:
+    - link
+id: block_content.servicebot_header.field_single_link
+field_name: field_single_link
+entity_type: block_content
+bundle: servicebot_header
+label: Link
+description: 'If your link text is vague (e.g. "View More" or "Check it out!"), please add a thorough description of the link destination to ensure the site is ADA compliant.'
+required: false
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'internal:/instantquote'
+    title: 'Click to Get Started Now'
+    options: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

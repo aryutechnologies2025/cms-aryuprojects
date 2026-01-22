@@ -1,0 +1,31 @@
+uuid: 2bbe253a-16aa-441d-840c-1e86c95ec6b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - sprowt3
+id: mainnavigation_about
+theme: sprowt3
+region: disabled
+weight: 0
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Main navigation : About'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 1
+  expand_all_items: false
+  parent: 'main:menu_link_content:e151f645-87b1-4472-876a-ddd6c09561ca'
+  suggestion: main
+visibility: {  }

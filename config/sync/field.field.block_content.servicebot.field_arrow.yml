@@ -1,0 +1,21 @@
+uuid: dd6c9c35-695d-47d2-b5b3-f952b9293983
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot
+    - field.storage.block_content.field_arrow
+id: block_content.servicebot.field_arrow
+field_name: field_arrow
+entity_type: block_content
+bundle: servicebot
+label: 'Remove Arrow'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

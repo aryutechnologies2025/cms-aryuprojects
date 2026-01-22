@@ -1,0 +1,11 @@
+uuid: 33d31c8d-2fb7-400e-b424-a6f200db7526
+langcode: en
+status: true
+dependencies: {  }
+id: hero
+block_id: 'inline_block:hero'
+category: custom_blocks
+label: Hero
+image_path: ''
+image_alt: ''
+weight: -69

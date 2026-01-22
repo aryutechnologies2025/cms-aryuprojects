@@ -1,0 +1,23 @@
+uuid: 776a03d5-24d8-4347-a49a-1078d6cdb901
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot
+    - field.storage.block_content.field_why_wait
+id: block_content.servicebot.field_why_wait
+field_name: field_why_wait
+entity_type: block_content
+bundle: servicebot
+label: 'Why Wait Heading'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

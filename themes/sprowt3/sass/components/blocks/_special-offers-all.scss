@@ -1,0 +1,88 @@
+.layout__region {
+  .block-inline-blockspecial-offers-all {
+    height: min-content;
+    padding: 30px;
+
+    .views-exposed-form {
+      max-width: 450px;
+      margin: 0 auto;
+
+      .form--inline {
+        @include flexbox;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .form-type-select {
+        @include flexbox;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+        height: 70px;
+        width: 280px;
+        max-width: 280px;
+        margin-right: 0;
+
+        label {
+          display: inline-block;
+          min-width: 200px;
+          text-align: center;
+        }
+        select {
+          margin-top: 2px;
+          //width: 230px;
+          //max-width: 230px;
+        }
+      }
+
+      .form-actions {
+        width: 100%;
+      }
+
+      @include breakpoint($xsmall) {
+        .form-type-select {
+          height: 70px;
+
+          label {
+            //width: 280px;
+          }
+          select {
+            width: 280px;
+            max-width: 280px;
+          }
+        }
+      }
+      @include breakpoint($small) {
+        .form--inline {
+          flex-wrap: nowrap;
+        }
+        .form-type-select {
+          margin-right: $margin;
+          width: inherit;
+          max-width: inherit;
+          flex-wrap: nowrap;
+
+          label {
+            text-align: inherit;
+          }
+
+          &::after {
+            bottom: 23px;
+          }
+        }
+        .form-actions {
+          width: inherit;
+        }
+      }
+    }
+
+    .view-content {
+      flex-wrap: wrap;
+
+      .views-row {
+        width: 400px;
+        margin: 0 15px 30px !important;
+      }
+    }
+  }
+}

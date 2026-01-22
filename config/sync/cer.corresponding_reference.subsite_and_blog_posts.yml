@@ -1,0 +1,14 @@
+uuid: 27fa044c-9d55-43bf-8a92-bbf306637487
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_blog_posts
+label: 'Subsite and Blog Posts'
+enabled: true
+first_field: field_subsite_multiple
+second_field: field_blog_post
+add_direction: append
+bundles:
+  node:
+    - blog
+    - subsite

@@ -1,0 +1,48 @@
+name: woodlawnandlandscaping
+type: theme
+description: 'woodlawnandlandscaping theme copied from s3_subtheme'
+core_version_requirement: '^9 || ^10'
+version: 1.1
+'base theme': sprowt3
+libraries:
+    - woodlawnandlandscaping/global-styling
+    - woodlawnandlandscaping/global-scripts
+logo: assets/logos/logo.webp
+screenshot: screenshot.png
+colors:
+    primary: '#47a836'
+    primary-light: '#61bd51'
+    primary-dark: '#257628'
+    secondary: '#ffb100'
+    secondary-light: '#ffc237'
+    secondary-dark: '#f0a700'
+    tertiary: '#0c52a1'
+    light: '#f3f6f6'
+    dark: '#383838'
+    custom-light: '#fff'
+    custom-light-2: '#fff'
+    custom-dark: '#000'
+    custom-dark-2: '#000'
+regions:
+    admin_links: 'Admin Links'
+    banner: Banner
+    header1: 'Header 1'
+    header2: 'Header 2'
+    header3: 'Header 3'
+    header4: 'Header 4'
+    header_layout: 'Header Layout'
+    header_mobile_menu: 'Header Mobile Menu'
+    breadcrumb: Breadcrumb
+    help: Help
+    highlighted: Highlighted
+    content_top: 'Content Top'
+    content: Content
+    sidebar: Sidebar
+    sections: Sections
+    content_bottom: 'Content Bottom'
+    footer: Footer
+    footer_bottom: 'Footer Bottom'
+    footer_layout: 'Footer Layout'
+    disabled: Disabled
+dependencies:
+    - 'sprowt3:sprowt3'

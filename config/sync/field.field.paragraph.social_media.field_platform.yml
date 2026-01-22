@@ -1,0 +1,21 @@
+uuid: ac32011b-fece-4d53-b322-6e61e781e1ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_platform
+    - paragraphs.paragraphs_type.social_media
+  module:
+    - options
+id: paragraph.social_media.field_platform
+field_name: field_platform
+entity_type: paragraph
+bundle: social_media
+label: Platform
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

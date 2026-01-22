@@ -1,0 +1,26 @@
+uuid: d9f855a3-a63f-4083-bc57-13ece1e7a246
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.focal_point
+  module:
+    - crop
+name: cropped_image_thumbnail
+label: 'Cropped Image Thumbnail'
+effects:
+  2bb5b779-e6f0-40e8-83c2-ba89dca229ca:
+    uuid: 2bb5b779-e6f0-40e8-83c2-ba89dca229ca
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: focal_point
+      automatic_crop_provider: null
+  62820c9d-20ff-46a1-a4ba-5728feec4853:
+    uuid: 62820c9d-20ff-46a1-a4ba-5728feec4853
+    id: image_scale
+    weight: 2
+    data:
+      width: 100
+      height: null
+      upscale: false

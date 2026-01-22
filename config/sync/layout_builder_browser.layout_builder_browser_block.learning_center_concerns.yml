@@ -1,0 +1,11 @@
+uuid: 9206a699-36aa-4e7b-a727-b944c0488b28
+langcode: en
+status: true
+dependencies: {  }
+id: learning_center_concerns
+block_id: 'inline_block:concerns_list'
+category: custom_blocks
+label: 'Learning Center Concerns'
+image_path: ''
+image_alt: ''
+weight: -63

@@ -1,0 +1,21 @@
+uuid: 664d4f55-5847-4763-a185-7e5027ca1dd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.schema
+    - field.field.block_content.schema.field_schema
+id: block_content.schema.default
+targetEntityType: block_content
+bundle: schema
+mode: default
+content:
+  field_schema:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

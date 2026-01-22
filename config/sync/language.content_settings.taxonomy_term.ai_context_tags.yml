@@ -1,0 +1,11 @@
+uuid: dea076b0-3af0-423c-adfa-07fc3d7219c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ai_context_tags
+id: taxonomy_term.ai_context_tags
+target_entity_type_id: taxonomy_term
+target_bundle: ai_context_tags
+default_langcode: site_default
+language_alterable: false

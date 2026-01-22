@@ -1,0 +1,10 @@
+.layout__region {
+  .block-inline-blockgallery,
+  .block--type-galley {
+    margin-top: 40px;
+    .slick--field-images {
+      padding-top: $margin;
+      padding-bottom: $margin;
+    }
+  }
+}

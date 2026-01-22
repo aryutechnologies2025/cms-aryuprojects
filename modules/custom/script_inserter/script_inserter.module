@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Script Inserter module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Theme\ActiveTheme;
+
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function script_inserter_page_attachments_alter(array &$attachments)
+{
+    $build = script_inserter_get_build('head');
+
+    if(!empty($build)) {
+        $html = \Drupal::service('renderer')->renderPlain($build);
+        $attachments['#attached']['html_head'][] = [[
+            '#type' => 'markup',
+            '#markup' => Markup::create($html)
+        ], 'script_inserter'];
+    }
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function script_inserter_page_top(array &$page_top)
+{
+    $build = script_inserter_get_build('page_top');
+    if(!empty($build)) {
+        $page_top['script_inserter'] = $build;
+    }
+}
+
+/**
+ * Implements hook_page_bottom().
+ */
+function script_inserter_page_bottom(array &$page_bottom)
+{
+    $build = script_inserter_get_build('page_bottom');
+    if(!empty($build)) {
+        $page_bottom['script_inserter'] = $build;
+    }
+}
+
+
+function script_inserter_get_build($location) {
+    /** @var ActiveTheme $theme */
+    $theme = \Drupal::service('theme.manager')->getActiveTheme();
+    $defaultThemeName = \Drupal::config('system.theme')->get('default');
+    $adminThemeName = \Drupal::config('system.theme')->get('admin');
+
+    $routeMatch = \Drupal::routeMatch();
+    $node = $routeMatch->getParameter('node');
+    if(!empty($node) && !$node instanceof \Drupal\node\Entity\Node) {
+        $node = \Drupal\node\Entity\Node::load($node);
+    }
+
+    if($theme->getName() == $adminThemeName) {
+        //don't render in admin theme
+        return [];
+    }
+
+    /** @var \Drupal\Core\Entity\EntityStorageInterface $storage */
+    $storage = \Drupal::entityTypeManager()->getStorage('script');
+
+    $scripts = $storage->loadByProperties([
+        'status' => 1,
+        'location' => $location
+    ]) ?? [];
+
+    $context = [
+        'activeTheme' => $theme,
+        'activeThemeName' => $theme->getName(),
+        'defaultThemeName' => $defaultThemeName,
+        'location' => $location,
+        'node' => $node
+    ];
+
+    \Drupal::moduleHandler()->alter('script_inserter_scripts', $scripts, $context);
+
+    $build = [];
+    /** @var \Drupal\script_inserter\Entity\Script $script */
+    foreach($scripts as $script) {
+        $isVisible = $script->isVisible($node);
+        if($isVisible) {
+            $key = 'script_inserter__' . $script->id();
+            $build[$key] = $script->render();
+        }
+    }
+    if(!empty($build)) {
+        $build['#weight'] = 500;
+    }
+
+    \Drupal::moduleHandler()->alter('script_inserter_build', $build, $context);
+
+    return $build;
+}

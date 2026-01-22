@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Contains node_view_blocks.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function node_view_blocks_help($route_name, RouteMatchInterface $route_match) {
+    switch ($route_name) {
+        // Main module help for the node_view_blocks module.
+        case 'help.page.node_view_blocks':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('Creates a block type which displays the current node using a particular view mode') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+function _node_view_modes_test() {
+    /**
+     * @var $displayRepository \Drupal\Core\Entity\EntityDisplayRepositoryInterface
+     */
+    $displayRepository = \Drupal::service('entity_display.repository');
+    $viewModes = $displayRepository->getViewModes('node');
+}

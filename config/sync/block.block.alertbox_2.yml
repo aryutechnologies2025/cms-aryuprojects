@@ -1,0 +1,25 @@
+uuid: 6af126d6-998e-4f00-a4e3-de9c62ab554a
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:alert_box:6a4c9020-817b-4217-9bd0-ca397e3f3ea6'
+  module:
+    - block_content
+  theme:
+    - sprowt3
+id: alertbox_2
+theme: sprowt3
+region: disabled
+weight: -6
+provider: null
+plugin: 'block_content:6a4c9020-817b-4217-9bd0-ca397e3f3ea6'
+settings:
+  id: 'block_content:6a4c9020-817b-4217-9bd0-ca397e3f3ea6'
+  label: 'Alert Box'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,4 @@
+services:
+    sprowt_uninstall.service:
+        class: Drupal\sprowt_uninstall\SprowtUninstallService
+        public: true

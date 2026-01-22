@@ -1,0 +1,17 @@
+entity.solution.overview:
+    title: Sprowt solutions
+    parent: system.admin_structure
+    description: 'List of solutions used in the solution finder.'
+    route_name: entity.solution.collection
+
+solution_finder.test:
+    title: Test solution finder
+    parent: entity.solution.overview
+    description: 'Test the solution finder'
+    route_name: solution_finder.solution_finder_test
+
+entity.solution.add_form:
+    title: Add solution
+    parent: entity.solution.overview
+    description: 'Add a solution'
+    route_name: entity.solution.add_form

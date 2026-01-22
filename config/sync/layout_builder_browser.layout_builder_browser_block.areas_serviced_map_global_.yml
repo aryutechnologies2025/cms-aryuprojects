@@ -1,0 +1,11 @@
+uuid: 750f10c6-ab29-4d97-8ef8-33ed07500218
+langcode: en
+status: true
+dependencies: {  }
+id: areas_serviced_map_global_
+block_id: 'block_content:b508fdf5-297d-43e1-afce-a7d2f6ed1a17'
+category: re_usable_blocks
+label: 'Areas Serviced Map (global)'
+image_path: ''
+image_alt: ''
+weight: -97

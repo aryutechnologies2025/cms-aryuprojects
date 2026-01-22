@@ -1,0 +1,11 @@
+uuid: b5348022-ed51-498b-aedb-af5812e8a7a1
+langcode: en
+status: true
+dependencies: {  }
+id: special_offers_global_
+block_id: 'block_content:0c236609-8387-4a41-9f88-726eefe04816'
+category: re_usable_blocks
+label: 'Special Offers (global)'
+image_path: ''
+image_alt: ''
+weight: -88

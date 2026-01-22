@@ -1,0 +1,23 @@
+uuid: dc9902f1-b3f4-472e-bae3-26ac0d9d0053
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.services
+    - field.storage.block_content.field_display_service
+  module:
+    - options
+id: block_content.services.field_display_service
+field_name: field_display_service
+entity_type: block_content
+bundle: services
+label: Display
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: teaser
+default_value_callback: ''
+settings: {  }
+field_type: list_string

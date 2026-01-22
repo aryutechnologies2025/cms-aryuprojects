@@ -1,0 +1,126 @@
+.modal-block-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: auto;
+  min-width: calc(100% - 30px);
+  max-width: calc(100% - 30px);
+  padding: 35px 15px 15px 15px;
+  transform: translate(-50%, -50%);
+  transition: $duration;
+  background-color: palette(white);
+  box-shadow: 0 0 20px rgba(0, 0, 0, .25);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+  z-index: -1;
+
+  @include breakpoint($xsmall) {
+    min-width: 380px;
+    max-width: calc(100% - 60px);
+  }
+
+  @include breakpoint($medium) {
+    min-width: 500px;
+    padding: 45px 30px 30px 30px;
+    max-width: calc(100% - 120px);
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    font-size: 0;
+    cursor: pointer;
+    @include icon-after(close, 1.6rem) {
+        display: inline-block;
+        margin-top: -3px;
+        color: palette(black);
+        font-weight: 800;
+    }
+  }
+
+  .field--name-field-block-ref {
+
+  }
+
+  .block--type-zip-code-finder {
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+    padding-bottom: 0;
+    
+    .text-wrap {
+      align-items: center;
+      max-width: 100%;
+      margin-right: 0;
+    }
+
+    .field--name-field-text {
+        max-width: 340px;
+    }
+
+    .field--name-field-heading,
+    .field--name-field-text {
+        text-align: center;
+    }
+
+    .field--name-field-zip-code-finder-form {
+      @include breakpoint($small) {
+        max-width: 80%;
+      }
+      @include breakpoint($max-small) {
+        > form {
+          flex-direction: column;
+
+          .form-item-zip {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .block--type-webform {
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+.modal-overlay {
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  background-color: rgba(palette(black), .6);
+  z-index: 0;
+
+  &.show {
+    opacity: 1;
+    display: block;
+    z-index: 99;
+  }
+}
+
+body > .dialog-off-canvas-main-canvas {
+  &.blur {
+    filter: blur(5px);
+    transition: filter .3s ease-in-out;
+  }
+}

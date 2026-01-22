@@ -1,0 +1,1297 @@
+//Coloring Block Elements based on Section/Block Color Style
+%blockcolors {
+  &.bg-primary {
+    background-color: var(--color-primary);
+  }
+  &.bg-primary-light {
+    background-color: var(--color-primary-light);
+  }
+  &.bg-primary-dark {
+    background-color: var(--color-primary-dark);
+  }
+  &.bg-secondary {
+    background-color: var(--color-secondary); 
+  }
+  &.bg-secondary-light {
+    background-color: var(--color-secondary-light);
+  }
+  &.bg-secondary-dark {
+    background-color: var(--color-secondary-dark);
+  }
+  &.bg-tertiary {
+    background-color: var(--color-tertiary);
+  }
+  &.bg-white {
+    background-color: palette(white);
+  }
+  &.bg-light {
+    background-color: var(--color-light);
+  }
+  &.bg-dark {
+    background-color: var(--color-dark);
+  }
+  &.bg-custom-light {
+    background-color: var(--custom-light);
+  }
+  &.bg-custom-light-2 {
+    background-color: var(--custom-light-2);
+  }
+  &.bg-dark {
+    background-color: var(--color-dark);
+  }
+  &.bg-custom-dark {
+    background-color: var(--custom-dark);
+  }
+  &.bg-custom-dark-2 {
+    background-color: var(--custom-dark-2);
+  }
+  &.bg-black {
+    background-color: palette(black);
+  }
+  &.bg-zebra {
+    &:nth-child(odd) {
+      background-color: palette(white);
+    }
+    &:nth-child(even) {
+      background-color: var(--color-light);
+    }
+  }
+
+  &.bg-white,
+  &.bg-light,
+  &.bg-zebra,
+  &.bg-custom-light,
+  &.bg-custom-light-2,
+  &.overlay-white,
+  &.overlay-light {
+    @extend %bg-light;
+  }
+
+  &.bg-dark,
+  &.bg-black,
+  &.bg-custom-dark,
+  &.bg-custom-dark-2,
+  &.overlay-dark,
+  &.overlay-black {
+    @extend %bg-dark;
+  }
+
+  &.bg-primary,
+  &.bg-primary-dark {
+    @extend %bg-dark; //change if primary color is light (text on top should be black)
+    @extend %bg-primary;
+
+    // color overrides
+    .learn-more a,
+    .learn-more span,
+    .field-content a,
+    .field--type-entity-reference a,
+    .field--name-field-text::before {
+      color: palette(white);
+
+      &:hover {
+        color: var(--color-light);
+      }
+    }
+
+    .field--name-field-label::after,
+    .field--name-field-label-tag::after {
+      background-color: palette(white);
+    }
+
+    input[type="submit"] {
+      color: var(--color-primary);
+      background-color: palette(white);
+      &:hover {
+        color: palette(white);
+        background-color: var(--color-primary-dark);
+      }
+    }
+  }
+
+  &.bg-parimary-light {
+    @extend %bg-light;
+  }
+
+  &.bg-secondary,
+  &.bg-secondary-light {
+    @extend %bg-light; //change if secondary color is dark (text on top should be white)
+  }
+
+  &.bg-secondary-dark {
+    @extend %bg-dark;
+  }
+
+  &.bg-tertiary {
+    @extend %bg-dark; //change if tertiary color is light (text on top should be dark)
+  }
+
+  &.bg-dark,
+  &.bg-black,
+  &.overlay-dark,
+  &.overlay-black {
+    .learn-more a,
+    .learn-more span,
+    .field-content a,
+    .field--type-entity-reference a {
+      color: palette(white);
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  // Form field inputs coloring
+  textarea,
+  input:not[type="submit"] {
+    color: $base-font-color;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-text-fill-color: palette(white) !important;
+      -webkit-box-shadow: 0 0 0 30px palette(black) inset !important;
+    }
+  }
+}
+
+// Foreground colors for hight contrast
+%bg-light {
+  .field--name-field-label,
+  .field--name-field-label a,
+  .field--name-field-label-tag,
+  .field--name-field-label-tag a,
+  .field--name-field-heading,
+  .field--name-field-heading a,
+  .field--name-field-group-heading,
+  .field--name-field-subheading,
+  .field--name-field-subheading a,
+  .field--name-field-subheading-tag,
+  .field--name-field-subheading-tag a,
+  .field--name-title-text,
+  .field--name-field-offer-headline,
+  .field--name-field-speaker,
+  .field--name-field-position-company,
+  .anchor-list-block-heading,
+  .preheading,
+  .page_title,
+  .anchor-list-block-heading,
+  .anchor-list-block-link,
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  p,
+  .__body,
+  li,
+  //.field__item a,
+  blockquote,
+  .anchor-list-block-link,
+  .list-link,
+  .webform-confirmation__message {
+    color: $base-font-color;
+  }
+  p,
+  .field--name-field-text,
+  .field--name-field-city-link,
+  .field--name-field-city-link a,
+  .paragraph--type--social-media,
+  .__body {
+    a:not(.button) {
+      color: var(--color-primary);
+      transition: .3s;
+
+      &:hover {
+        color: var(--color-secondary);
+      }
+    }
+  }
+  .form-item label,
+  .form-item .fieldset-legend,
+  .form-item .fieldset-wrapper [class*="field--name-field"],
+  .star-ratings-wrap,
+  .rating-inner-wrap {
+    color: $base-font-color;
+  }
+  .field--name-field-link a {
+    //color: palette(white);
+
+    &:hover {
+      //color: $base-font-color;
+    }
+  }
+  .learn-more a,
+  .learn-more span,
+  .field-content a,
+  .field--type-entity-reference a {
+    color: $base-font-color;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+%bg-dark {
+  .field--name-field-label,
+  .field--name-field-label a,
+  .field--name-field-label-tag,
+  .field--name-field-label-tag a,
+  .field--name-field-heading,
+  .field--name-field-heading a,
+  .field--name-field-group-heading,
+  .field--name-field-subheading,
+  .field--name-field-subheading a,
+  .field--name-field-subheading-tag,
+  .field--name-field-subheading-tag a,
+  .field--name-title-text,
+  .field--name-field-city-link,
+  .field--name-field-city-link a,
+  .field--name-field-offer-headline,
+  .field--name-field-speaker,
+  .field--name-field-position-company,
+  .anchor-list-block-heading,
+  .preheading,
+  .page_title,
+  .anchor-list-block-heading,
+  .anchor-list-block-link,
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  p,
+  .__body,
+  li,
+  blockquote,
+  .webform-confirmation__message {
+    color: palette(white);
+  }
+  p,
+  .field--name-field-text,
+  .paragraph--type--social-media,
+  .field--type-telephone,
+  .__body {
+    a:not(.button) {
+      color: palette(white);
+
+      &:hover {
+        color: var(--color-secondary);
+      }
+    }
+  }
+  .form-item label,
+  .form-item .fieldset-legend,
+  .form-item .fieldset-wrapper [class*="field--name-field"],
+  .star-ratings-wrap,
+  .rating-inner-wrap,
+  .form-item-privacy,
+  .form-item-privacy a {
+    color: var(--color-light);
+  }
+  .anchor-list-block-link,
+  .list-link {
+    color: palette(white);
+
+    &::after {
+      background-color: palette(white);
+    }
+  }
+  input[type="submit"] {
+    color: palette(white);
+    background-color: var(--color-secondary);
+    &:hover {
+      color: palette(white);
+      background-color: var(--color-primary);
+    }
+  }
+}
+
+%bg-primary {
+  input[type="submit"] {
+    color: palette(white);
+    background-color: var(--color-secondary);
+    &:hover {
+      color: var(--color-primary);
+      background-color: palette(white);
+    }
+  }
+}
+
+.layout {
+  @extend %blockcolors;
+
+  .block {
+    @extend %blockcolors;
+  }
+
+  [class*="overlay-dark"] {
+    &::before {
+      background-color: var(--color-dark);
+    }
+  }
+  [class*="overlay-light"] {
+    &::before {
+      background-color: var(--color-light);
+    }
+  }
+  [class*="overlay-black"] {
+    &::before {
+      background-color: palette(black, pure);
+    }
+  }
+  [class*="overlay-white"] {
+    &::before {
+      background-color: palette(white);
+    }
+  }
+  [class*="overlay-primary"] {
+    &::before {
+      background-color: var(--color-primary);
+    }
+  }
+  [class*="overlay-primary-dark"] {
+    &::before {
+      background-color: var(--color-primary-dark);
+    }
+  }
+  [class*="overlay-primary-light"]{
+    &::before {
+      background-color: var(--color-primary-light);
+    }
+  }
+  [class*="overlay-secondary"] {
+    &::before {
+      background-color: var(--color-secondary);
+    }
+  }
+
+  .foreground-color-black {
+    &::after {
+      background-color: palette(black, pure);
+    }
+  }
+
+  .foreground-color-dark {
+    &::after {
+      background-color: var(--color-dark);
+    }
+  }
+
+  .foreground-color-light {
+    &::after {
+      background-color: var(--color-light);
+    }
+  }
+
+  .foreground-color-white {
+    &::after {
+      background-color: palette(white, pure);
+    }
+  }
+
+  .foreground-color-primary {
+    &::after {
+      background-color: var(--color-primary);
+    }
+  }
+
+  .foreground-color-primary-dark {
+    &::after {
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  .foreground-color-primary-light {
+    &::after {
+      background-color: var(--color-primary-light);
+    }
+  }
+
+  .foreground-color-secondary {
+    &::after {
+      background-color: var(--color-secondary);
+    }
+  }
+}
+
+.section-label {
+  .field--name-field-section-label {
+    color: palette(black);
+  }
+
+  &.yellow {
+    .field--name-field-section-label {
+      color: palette(white);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.sections {
+  > .field > .field__item > .paragraph {
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+//Coloring Block Elements based on Section/Block Color Style
+%blockcolors {
+  &.bg-primary {
+    background-color: var(--color-primary);
+  }
+  &.bg-secondary {
+    background-color: var(--color-secondary);
+  }
+  &.bg-tertiary {
+    background-color: var(--color-tertiary);
+  }
+  &.bg-white {
+    background-color: palette(white);
+  }
+  &.bg-light {
+    background-color: palette(light);
+  }
+  &.bg-dark {
+    background-color: palette(dark);
+  }
+  &.bg-custom-light {
+    background-color: var(--color-custom-light);
+  }
+  &.bg-custom-light-2 {
+    background-color: var(--color-custom-light-2);
+  }
+  &.bg-dark {
+    background-color: palette(dark);
+  }
+  &.bg-custom-dark {
+    background-color: var(--color-custom-dark);
+  }
+  &.bg-custom-dark-2 {
+    background-color: var(--color-custom-dark-2);
+  }
+  &.bg-black {
+    background-color: palette(black);
+  }
+  &.bg-zebra {
+    &:nth-child(odd) {
+      background-color: palette(white);
+    }
+    &:nth-child(even) {
+      background-color: palette(light);
+    }
+  }
+
+  &.bg-white,
+  &.bg-light,
+  &.bg-zebra,
+  &.bg-custom-light,
+  &.bg-custom-light-2,
+  &.overlay-white,
+  &.overlay-light {
+    @extend %bg-light;
+  }
+
+  &.bg-dark,
+  &.bg-black,
+  &.bg-custom-dark,
+  &.bg-custom-dark-2,
+  &.overlay-dark,
+  &.overlay-black {
+    @extend %bg-dark;
+  }
+
+  &.bg-primary {
+    @extend %bg-dark; //change if primary color is light (text on top should be black)
+    @extend %bg-primary;
+
+    // color overrides
+    .learn-more a,
+    .learn-more span,
+    .field-content a,
+    .field--type-entity-reference a,
+    .field--name-field-text::before {
+      color: palette(white);
+
+      &:hover {
+        color: palette(light);
+      }
+    }
+
+    .field--name-field-label::after,
+    .field--name-field-label-tag::after {
+      background-color: palette(white);
+    }
+
+    input[type="submit"] {
+      color: var(--color-primary);
+      background-color: palette(white);
+      &:hover {
+        color: palette(white);
+        background-color: var(--color-primary-dark);
+      }
+    }
+  }
+
+  &.bg-secondary {
+    @extend %bg-light; //change if secondary color is dark (text on top should be white)
+  }
+
+  &.bg-tertiary {
+    @extend %bg-dark; //change if tertiary color is light (text on top should be dark)
+  }
+
+  &.bg-dark,
+  &.bg-black,
+  &.overlay-dark,
+  &.overlay-black {
+    .learn-more a,
+    .learn-more span,
+    .field-content a,
+    .field--type-entity-reference a {
+      color: palette(white);
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  // Form field inputs coloring
+  textarea,
+  input:not[type="submit"] {
+    color: $base-font-color;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-text-fill-color: palette(white) !important;
+      -webkit-box-shadow: 0 0 0 30px palette(black) inset !important;
+    }
+  }
+}
+
+// Foreground colors for hight contrast
+%bg-light {
+  .field--name-field-label,
+  .field--name-field-label a,
+  .field--name-field-label-tag,
+  .field--name-field-label-tag a,
+  .field--name-field-heading,
+  .field--name-field-heading a,
+  .field--name-field-group-heading,
+  .field--name-field-subheading,
+  .field--name-field-subheading a,
+  .field--name-field-subheading-tag,
+  .field--name-field-subheading-tag a,
+  .field--name-title-text,
+  .field--name-field-offer-headline,
+  .field--name-field-speaker,
+  .field--name-field-position-company,
+  .anchor-list-block-heading,
+  .preheading,
+  .page_title,
+  .anchor-list-block-heading,
+  .anchor-list-block-link,
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  p,
+  .__body,
+  li,
+  //.field__item a,
+  blockquote,
+  .anchor-list-block-link,
+  .list-link,
+  .webform-confirmation__message {
+    color: $base-font-color;
+  }
+  p,
+  .field--name-field-text,
+  .field--name-field-city-link,
+  .field--name-field-city-link a,
+  .paragraph--type--social-media,
+  .__body {
+    a:not(.button) {
+      color: var(--color-primary);
+      transition: .3s;
+
+      &:hover {
+        color: var(--color-secondary);
+      }
+    }
+  }
+  .form-item label,
+  .form-item .fieldset-legend,
+  .form-item .fieldset-wrapper [class*="field--name-field"],
+  .star-ratings-wrap,
+  .rating-inner-wrap {
+    color: $base-font-color;
+  }
+  .field--name-field-link a {
+    //color: palette(white);
+
+    &:hover {
+      //color: $base-font-color;
+    }
+  }
+  .learn-more a,
+  .learn-more span,
+  .field-content a,
+  .field--type-entity-reference a {
+    color: $base-font-color;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+%bg-dark {
+  .field--name-field-label,
+  .field--name-field-label a,
+  .field--name-field-label-tag,
+  .field--name-field-label-tag a,
+  .field--name-field-heading,
+  .field--name-field-heading a,
+  .field--name-field-group-heading,
+  .field--name-field-subheading,
+  .field--name-field-subheading a,
+  .field--name-field-subheading-tag,
+  .field--name-field-subheading-tag a,
+  .field--name-title-text,
+  .field--name-field-city-link,
+  .field--name-field-city-link a,
+  .field--name-field-offer-headline,
+  .field--name-field-speaker,
+  .field--name-field-position-company,
+  .anchor-list-block-heading,
+  .preheading,
+  .page_title,
+  .anchor-list-block-heading,
+  .anchor-list-block-link,
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  p,
+  .__body,
+  li,
+  blockquote,
+  .webform-confirmation__message {
+    color: palette(white);
+  }
+  p,
+  .field--name-field-text,
+  .paragraph--type--social-media,
+  .field--type-telephone,
+  .__body {
+    a:not(.button) {
+      color: palette(white);
+
+      &:hover {
+        color: var(--color-secondary);
+      }
+    }
+  }
+  .form-item label,
+  .form-item .fieldset-legend,
+  .form-item .fieldset-wrapper [class*="field--name-field"],
+  .star-ratings-wrap,
+  .rating-inner-wrap,
+  .form-item-privacy,
+  .form-item-privacy a {
+    color: palette(light);
+  }
+  .anchor-list-block-link,
+  .list-link {
+    color: palette(white);
+
+    &::after {
+      background-color: palette(white);
+    }
+  }
+  input[type="submit"] {
+    color: palette(white);
+    background-color: var(--color-secondary);
+    &:hover {
+      color: palette(white);
+      background-color: var(--color-primary);
+    }
+  }
+}
+
+%bg-primary {
+  input[type="submit"] {
+    color: palette(white);
+    background-color: var(--color-secondary);
+    &:hover {
+      color: var(--color-primary);
+      background-color: palette(white);
+    }
+  }
+}
+
+.layout {
+  @extend %blockcolors;
+
+  .block {
+    @extend %blockcolors;
+  }
+
+  [class*="overlay-dark"] {
+    &::before {
+      background-color: palette(dark);
+    }
+  }
+  [class*="overlay-light"] {
+    &::before {
+      background-color: palette(light);
+    }
+  }
+  [class*="overlay-black"] {
+    &::before {
+      background-color: palette(black, pure);
+    }
+  }
+  [class*="overlay-white"] {
+    &::before {
+      background-color: palette(white);
+    }
+  }
+  [class*="overlay-primary"] {
+    &::before {
+      background-color: var(--color-primary);
+    }
+  }
+  [class*="overlay-primary-dark"] {
+    &::before {
+      background-color: var(--color-primary-dark);
+    }
+  }
+  [class*="overlay-primary-light"]{
+    &::before {
+      background-color: var(--color-primary-light);
+    }
+  }
+  [class*="overlay-secondary"] {
+    &::before {
+      background-color: var(--color-secondary);
+    }
+  }
+
+  .foreground-color-black {
+    &::after {
+      background-color: palette(black, pure);
+    }
+  }
+
+  .foreground-color-dark {
+    &::after {
+      background-color: palette(dark);
+    }
+  }
+
+  .foreground-color-light {
+    &::after {
+      background-color: palette(light);
+    }
+  }
+
+  .foreground-color-white {
+    &::after {
+      background-color: palette(white, pure);
+    }
+  }
+
+  .foreground-color-primary {
+    &::after {
+      background-color: var(--color-primary);
+    }
+  }
+
+  .foreground-color-primary-dark {
+    &::after {
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  .foreground-color-primary-light {
+    &::after {
+      background-color: var(--color-primary-light);
+    }
+  }
+
+  .foreground-color-secondary {
+    &::after {
+      background-color: var(--color-secondary);
+    }
+  }
+  
+  &.bg-zebra {
+    &:nth-child(odd) {
+      background-color: palette(white);
+    }
+    &:nth-child(even) {
+      background-color: var(--color-light);
+    }
+  }
+
+  .layout-container-wrap {
+    @extend %container;
+    padding: 0;
+  }
+
+  [class*="overlay-"],
+  [class*="gradient-"] {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    > div {
+      z-index: 1;
+    }
+  }
+
+  @include breakpoint($medium) {
+    [class*="mobile-overlay-"] {
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  [class*="overlay-dark"] {
+    &::before {
+      background-color: var(--color-dark);
+    }
+  }
+  [class*="overlay-light"] {
+    &::before {
+      background-color: var(--color-light);
+    }
+  }
+  [class*="overlay-black"] {
+    &::before {
+      background-color: palette(black, pure);
+    }
+  }
+  [class*="overlay-white"] {
+    &::before {
+      background-color: palette(white, pure);
+    }
+  }
+
+  .style-round-edge {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      -webkit-mask: url(../assets/clippaths/round-edge-right-clippath.svg) no-repeat 100% 100%;
+      mask: url(../assets/clippaths/round-edge-right-clippath.svg) no-repeat 50% 50%;
+      mask-size: cover;
+    }
+
+    &.right-align {
+      &::after {
+        right: initial;
+        left: 0;
+        -webkit-mask: url(../assets/clippaths/round-edge-left-clippath.svg) no-repeat 100% 100%;
+        mask: url(../assets/clippaths/round-edge-left-clippath.svg) no-repeat 50% 50%;
+      }
+    }
+
+    @include breakpoint($max-medium) {
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  .foreground-color-black {
+    &::after {
+      background-color: palette(black, pure);
+    }
+  }
+
+  .foreground-color-dark {
+    &::after {
+      background-color: var(--color-dark);
+    }
+  }
+
+  .foreground-color-light {
+    &::after {
+      background-color: var(--color-light);
+    }
+  }
+
+  .foreground-color-white {
+    &::after {
+      background-color: palette(white, pure);
+    }
+  }
+
+  .layout__region {
+    .bgrepeat {
+      .block-bg-image {
+        background-size: auto;
+        background-repeat: repeat;
+        background-position: center center;
+      }
+    }
+  }
+
+  &.full-width {
+    .layout-container-wrap {
+      @extend %container-full;
+      padding: 0;
+    }
+
+    .layout__region--first {
+      //justify-content: flex-end;
+    }
+    .layout__region--second {
+      //justify-content: flex-start;
+    }
+    .layout__region--third {
+      //justify-content: flex-start;
+    }
+  }
+  &.sm-width {
+    .layout-container-wrap {
+      @extend %container-sm;
+      padding: 0;
+    }
+  }
+}
+
+.layout__region {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+
+  .block:not(:first-child) {
+    margin-top: 0;
+    //padding-top: 0;
+  }
+}
+
+.layout--onecol {
+  .block-inline-blockbasic,
+  .block-inline-blockbenefits {
+    //max-width: $container-sm;
+
+    &.center-align {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.layout--twocol-section,
+.layout--twocol-header-section {
+  @include breakpoint($large) {
+    .layout__region--first {
+      > .block:not(.bg-*) {
+        padding-right: $margin * 1.5;
+
+        &.block-special-offers,
+        &.block-services,
+        &.block-testimonials {
+          padding-right: $margin * 0.75;
+        }
+        &.block-inline-blockimage {
+          padding-right: 0;
+        }
+      }
+    }
+    .layout__region--second {
+      > .block:not(.bg-*) {
+        padding-left: $margin * 1.5;
+
+        &.block-inline-blockimage {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+.section-label {
+  position: absolute;
+  top: 0;
+  right: $gutter * 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50px;
+  z-index: 1;
+
+  @include breakpoint(max-width $xxlarge) {
+    display: none;
+  }
+
+  .field--name-field-section-label {
+    color: palette(black);
+    font-size: 8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    opacity: 0.15;
+    transform: rotate(-90deg);
+  }
+
+  &.yellow {
+    .field--name-field-section-label {
+      color: palette(white);
+    }
+  }
+}
+
+//Layout Column Overrides
+
+.layout-container-wrap,
+.layout-column-wrap {
+  @include flexbox;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+
+  > .layout__region {
+    flex: 0 1 100%;
+
+    @include breakpoint($medium) {
+      &:first-child {
+        > .block[class*="bg-"]:not(.center-align) {
+          width: auto;
+          margin-left: $margin;
+        }
+      }
+      &:last-child {
+        > div[class*="bg-"]:not(.center-align) {
+          width: auto;
+          margin-right: $margin;
+        }
+      }
+    }
+  }
+}
+
+.layout-column-wrap {
+  flex: 0 1 100%;
+}
+
+.layout {
+  &[class*="section--50-50"],
+  &[class*="section--33-67"],
+  &[class*="section--67-33"],
+  &[class*="section--25-75"],
+  &[class*="section--75-25"],
+  &[class*="section--25-50-25"],
+  &[class*="section--25-25-50"],
+  &[class*="section--50-25-25"],
+  &[class*="section--33-34-33"] {
+    .layout__region--first,
+    .layout__region--second,
+    .layout__region--third {
+      flex: 0 1 100%;
+      max-width: 100%;
+    }
+  }
+
+  &[class*="section--50-50"] {
+    .layout__region--first {
+      align-items: flex-end;
+    }
+  }
+
+  @include breakpoint($small) {
+    &[class*="section--75-25"] {
+      .layout__region--first {
+        flex: 0 1 60%;
+        max-width: 60%;
+      }
+      .layout__region--second {
+        flex: 0 1 40%;
+        max-width: 40%;
+      }
+    }
+  }
+
+  @include breakpoint($medium) {
+    &[class*="section--50-50"] {
+      .layout__region--first,
+      .layout__region--second {
+        flex: 0 1 50%;
+        max-width: 50%;
+      }
+    }
+    &[class*="section--33-67"] {
+      .layout__region--first {
+        flex: 0 1 40%;
+        max-width: 40%;
+      }
+      .layout__region--second {
+        flex: 0 1 60%;
+        max-width: 60%;
+      }
+    }
+    &[class*="section--67-33"] {
+      .layout__region--first {
+        flex: 0 1 60%;
+        max-width: 60%;
+      }
+      .layout__region--second {
+        flex: 0 1 40%;
+        max-width: 40%;
+      }
+    }
+    &[class*="section--25-75"] {
+      .layout__region--first {
+        flex: 0 1 30%;
+        max-width: 30%;
+      }
+      .layout__region--second {
+        flex: 0 1 70%;
+        max-width: 70%;
+      }
+    }
+    &[class*="section--75-25"] {
+      .layout__region--first {
+        flex: 0 1 70%;
+        max-width: 70%;
+      }
+      .layout__region--second {
+        flex: 0 1 30%;
+        max-width: 30%;
+      }
+    }
+
+    &[class*="section--25-50-25"] {
+      .layout__region--first {
+        flex: 0 1 25%;
+        max-width: 25%;
+      }
+      .layout__region--second {
+        flex: 0 1 50%;
+        max-width: 50%;
+      }
+      .layout__region--third {
+        flex: 0 1 25%;
+        max-width: 25%;
+      }
+    }
+    &[class*="section--25-25-50"] {
+      .layout__region--first {
+        flex: 0 1 25%;
+        max-width: 25%;
+      }
+      .layout__region--second {
+        flex: 0 1 25%;
+        max-width: 25%;
+      }
+      .layout__region--third {
+        flex: 0 1 50%;
+        max-width: 50%;
+      }
+    }
+    &[class*="section--50-25-25"] {
+      .layout__region--first {
+        flex: 0 1 50%;
+        max-width: 50%;
+      }
+      .layout__region--second {
+        flex: 0 1 25%;
+        max-width: 25%;
+      }
+      .layout__region--third {
+        flex: 0 1 25%;
+        max-width: 25%;
+      }
+    }
+    &[class*="section--33-34-33"] {
+      .layout__region--first,
+      .layout__region--second,
+      .layout__region--third {
+        flex: 0 1 33.33%;
+        max-width: 33.33%;
+      }
+    }
+
+    &.layout--fourcol-section {
+      .layout__region {
+        flex: 0 1 50%;
+        max-width: 50%;
+      }
+    }
+  }
+
+  @include breakpoint($large) {
+    &.layout--fourcol-section {
+      .layout__region {
+        flex: 0 1 25%;
+        max-width: 25%;
+      }
+    }
+  }
+}
+
+.layout {
+  &.order-reverse {
+    .layout-container-wrap {
+      flex-flow: wrap-reverse;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+uuid: b1ae0ff3-e5c7-4c0e-aec3-6e58be0bd1f1
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+id: solution_finder_concerns
+label: 'Solution Finder Concerns and Issues'
+category: Sprowt
+likert: false
+options: ''

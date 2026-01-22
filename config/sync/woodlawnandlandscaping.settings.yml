@@ -1,0 +1,20 @@
+logo_reverse:
+  use_default: 0
+  path: 'public://wood-lawn-landscaping-logo.webp'
+  width: ''
+touch_icon:
+  use_default: 0
+  path: 'public://apple-touch-icon-precomposed-180x180.png'
+logo:
+  width: ''
+  use_default: 0
+  path: 'public://wood-lawn-landscaping-logo_0.webp'
+features:
+  node_user_picture: 0
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: 1
+favicon:
+  use_default: 0
+  path: 'public://favicon.png'
+  mimetype: image/png

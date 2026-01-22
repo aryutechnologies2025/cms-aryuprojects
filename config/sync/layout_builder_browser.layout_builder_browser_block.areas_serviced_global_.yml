@@ -1,0 +1,11 @@
+uuid: 715300fa-50ec-483d-9760-2da39dcd13fc
+langcode: en
+status: true
+dependencies: {  }
+id: areas_serviced_global_
+block_id: 'block_content:0ad9e406-8a67-47d7-90d5-f549946b8c69'
+category: re_usable_blocks
+label: 'Areas Serviced (global)'
+image_path: ''
+image_alt: ''
+weight: -98

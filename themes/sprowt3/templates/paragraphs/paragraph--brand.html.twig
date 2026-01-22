@@ -1,0 +1,30 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'paragraph--id--' ~ paragraph.id(),
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+{% block paragraph %}
+  <div{{attributes.addClass(classes)}}>
+    {% block content %}
+      <div class="brand">
+        {% if content.field_link[0]['#url'] is not empty %}
+          {% if content.field_link[0]['#url'].options.attributes is not empty %}
+            {% set view_all_attributes = create_attribute(content.field_link[0]['#url'].options.attributes) %}
+          {% else %}
+            {% set view_all_attributes = create_attribute() %}
+          {% endif %}
+          <a href="{{ content.field_link[0]['#url'] }}" target="_blank" rel="nofollow" {{view_all_attributes.addClass(['brand-link'])}}>
+        {% endif %}
+          {{ content.field_brand_image }}
+        {% if content.field_link[0]['#url'] is not empty %}
+          </a>
+        {% endif %}
+      </div>
+      {{ content|without('field_brand_image','field_link') }}
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

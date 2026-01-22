@@ -1,0 +1,55 @@
+uuid: e96fcf34-5705-4d62-a677-dd3fd523b839
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.media_image
+    - views.view.media_entity_browser
+  module:
+    - dropzonejs_eb_widget
+    - media
+    - views
+_core:
+  default_config_hash: VOi0Ua3BAuJlwzee4EWw-XHxybYY-IqVBetnROZff_I
+name: media_entity_browser_modal
+label: 'Media Entity Browser - Image (modal)'
+display: modal
+display_configuration:
+  width: '2000'
+  height: '2000'
+  link_text: 'Select media'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  fc729026-c85f-4561-acd5-38d4082b69fb:
+    id: view
+    uuid: fc729026-c85f-4561-acd5-38d4082b69fb
+    label: 'Choose existing media'
+    weight: -8
+    settings:
+      submit_text: 'Select media'
+      auto_select: false
+      view: media_entity_browser
+      view_display: media_browser_all
+  2d0c8b8d-68c1-44cb-b5ad-f6c54b268c56:
+    id: dropzonejs_media_entity_inline_entity_form
+    uuid: 2d0c8b8d-68c1-44cb-b5ad-f6c54b268c56
+    label: 'Drop/upload an image here'
+    weight: -10
+    settings:
+      submit_text: 'Select entities'
+      upload_location: 'public://[date:custom:Y]-[date:custom:m]'
+      dropzone_description: 'Drop/upload an image here'
+      max_filesize: 2M
+      extensions: 'jpg jpeg gif png txt doc xls pdf ppt pps odt ods odp'
+      clientside_resize: false
+      resize_width: null
+      resize_height: null
+      resize_quality: 1.0
+      resize_method: contain
+      thumbnail_method: contain
+      media_type: media_image
+      form_mode: media_library

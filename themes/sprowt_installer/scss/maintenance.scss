@@ -1,0 +1,30 @@
+.layout-container.layout-container.layout-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 0;
+  display: flex;
+  flex-wrap: wrap;
+  > header {
+    width: 100%;
+  }
+  > aside {
+    width: 25%;
+    max-width: 325px;
+    margin-right: 35px;
+  }
+  > main {
+    flex: 1 1 auto;
+    width: 65%;
+  }
+}
+
+.install-page, .maintenance-page {
+  padding: 20px;
+}
+
+.sprowt-icon {
+  svg {
+    height: 24px;
+  }
+}

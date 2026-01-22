@@ -1,0 +1,29 @@
+uuid: ef4020c6-a3e4-44a8-b803-e6af91bb274e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.services
+    - field.storage.block_content.field_sector
+    - taxonomy.vocabulary.sector
+id: block_content.services.field_sector
+field_name: field_sector
+entity_type: block_content
+bundle: services
+label: 'Filter by Sector'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      sector: sector
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

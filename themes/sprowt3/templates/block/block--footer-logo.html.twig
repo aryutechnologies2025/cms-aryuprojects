@@ -1,0 +1,24 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+{% if sprowt_theme_get_setting('logo_reverse') is not empty %}
+  <div{{attributes.addClass(classes)}}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    {% if content_type == 'standalone_landing_page' %}
+      <img {% if sprowt_theme_get_setting('logo_reverse.width') is not empty %}width="{{ sprowt_theme_get_setting('logo_reverse.width') }}"{% endif %} src="{{ sprowt_theme_get_setting('logo_reverse') }}" alt="{{ drupal_config('system.site', 'name') }}">
+    {% else %}
+      <a href="/" rel="home" class="site-logo">
+        <img {% if sprowt_theme_get_setting('logo_reverse.width') is not empty %}width="{{ sprowt_theme_get_setting('logo_reverse.width') }}"{% endif %} src="{{ sprowt_theme_get_setting('logo_reverse') }}" alt="{{ drupal_config('system.site', 'name') }}">
+      </a>
+    {% endif %}
+  </div>
+{% endif %}

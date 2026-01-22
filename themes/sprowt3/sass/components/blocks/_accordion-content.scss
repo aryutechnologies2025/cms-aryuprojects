@@ -1,0 +1,49 @@
+.layout__region {
+  .block-inline-blockaccordion-content,
+  .block--type-accordion-content {
+    padding: $margin;
+    
+    .field--name-field-accordions {
+      padding-top: 10px;
+      > .field__item {
+        position: relative;
+        padding-bottom: 10px;
+        text-align: left;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .field--name-field-heading {
+        margin: 0 -15px;
+        padding: 15px 45px 15px 15px;
+        @extend %h3;
+        cursor: pointer;
+        background-color: whitesmoke;
+
+        @include icon-after(chevron-right, 20px) {
+          position: absolute;
+          top: 20px;
+          right: 0;
+          @include flexbox;
+          justify-content: center;
+          align-items: center;
+          transition: color $duration, background-color $duration;
+        }
+
+        &:hover {
+        }
+
+        &.active {
+          @include icon-after(chevron-down, 20px);
+        }
+      }
+
+      .field--name-field-content {
+        display: none;
+        padding: 15px 0;
+      }
+    }
+  }
+}

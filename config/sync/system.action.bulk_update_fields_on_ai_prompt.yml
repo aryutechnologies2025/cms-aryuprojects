@@ -1,0 +1,11 @@
+uuid: 7f51e470-9e63-401c-954c-942598e7b75a
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_ai_prompt
+label: 'Bulk Update Prompt Fields'
+type: ai_prompt
+plugin: bulk_update_fields_action_base
+configuration: {  }

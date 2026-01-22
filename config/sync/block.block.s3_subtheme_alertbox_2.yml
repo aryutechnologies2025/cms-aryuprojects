@@ -1,0 +1,25 @@
+uuid: 127c164a-2f17-4a19-ab34-ad22708d5488
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:alert_box:6a4c9020-817b-4217-9bd0-ca397e3f3ea6'
+  module:
+    - block_content
+  theme:
+    - s3_subtheme
+id: s3_subtheme_alertbox_2
+theme: s3_subtheme
+region: disabled
+weight: -16
+provider: null
+plugin: 'block_content:6a4c9020-817b-4217-9bd0-ca397e3f3ea6'
+settings:
+  id: 'block_content:6a4c9020-817b-4217-9bd0-ca397e3f3ea6'
+  label: 'Alert Box'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

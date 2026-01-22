@@ -1,0 +1,37 @@
+uuid: 064102cf-ee4f-46bd-b673-cd411d1b95a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quick_media_embed
+    - field.field.block_content.quick_media_embed.field_media
+  module:
+    - paragraphs
+id: block_content.quick_media_embed.default
+targetEntityType: block_content
+bundle: quick_media_embed
+mode: default
+content:
+  field_media:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed_expand_nested
+      closed_mode: preview
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: media_with_categories
+      features:
+        add_above: add_above
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+hidden:
+  info: true
+  langcode: true
+  revision_log: true

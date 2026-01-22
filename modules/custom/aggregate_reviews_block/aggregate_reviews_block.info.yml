@@ -1,0 +1,7 @@
+name: 'Aggregate Reviews Block'
+type: module
+description: 'Gathers aggregate reviews and generates a block based on them'
+core_version_requirement: ^9 || ^10
+package: 'Coalmarch'
+dependencies:
+    - sprowt_subsite:sprowt_subsite

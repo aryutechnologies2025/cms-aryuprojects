@@ -1,0 +1,20 @@
+uuid: 6a355cd3-753f-430f-bf64-6f2053e38c54
+langcode: en
+status: true
+dependencies:
+  theme:
+    - s3_subtheme
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: s3_subtheme_local_actions
+theme: s3_subtheme
+region: content
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

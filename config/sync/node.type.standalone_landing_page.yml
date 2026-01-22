@@ -1,0 +1,23 @@
+uuid: a880f86e-7442-4f70-be2c-88d3b3c64e5a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-navigation-subsite-
+      - main-navigation-subsite-full
+      - main
+    parent: ''
+  sprowt_admin_override:
+    external_node_type: true
+name: 'Standalone Landing Page'
+type: standalone_landing_page
+description: 'Landing page without menu links to the rest of the site.'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

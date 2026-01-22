@@ -1,0 +1,8 @@
+uuid: acf76bee-3e5b-44e5-adc4-7961e006e72a
+langcode: en
+status: true
+dependencies: {  }
+id: node__issue
+label: 'Content: Issue'
+tags:
+  robots: 'noindex, nofollow, noydir'

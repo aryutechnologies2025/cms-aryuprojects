@@ -1,0 +1,11 @@
+uuid: 2232a093-e783-4a79-ab5f-69c6a6863034
+langcode: en
+status: true
+dependencies: {  }
+id: subsites
+block_id: 'inline_block:subsites'
+category: custom_blocks
+label: Subsites
+image_path: ''
+image_alt: ''
+weight: -42

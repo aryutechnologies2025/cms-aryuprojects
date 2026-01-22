@@ -1,0 +1,21 @@
+uuid: bd2b50a7-1e9c-4d90-ac54-5549452c0a5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.special_offers
+    - field.storage.block_content.field_count_special_offer
+  module:
+    - options
+id: block_content.special_offers.field_count_special_offer
+field_name: field_count_special_offer
+entity_type: block_content
+bundle: special_offers
+label: Count
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

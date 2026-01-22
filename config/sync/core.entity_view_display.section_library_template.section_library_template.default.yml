@@ -1,0 +1,38 @@
+uuid: bb45a59b-d188-4f73-b35f-5590e1ae2054
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.medium
+  module:
+    - section_library
+    - svg_image
+_core:
+  default_config_hash: uElKeOr9oNRd4-0C_FMB7jfhLS-4MmlkZUZjgTIk7Mw
+id: section_library_template.section_library_template.default
+targetEntityType: section_library_template
+bundle: section_library_template
+mode: default
+content:
+  image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true
+  user_id: true

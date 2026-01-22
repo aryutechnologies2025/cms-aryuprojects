@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+    module:
+        - action
+        - node
+        - sprowt_admin_override
+        - metatag
+id: sprowt_admin_override_edit_metatags
+label: 'Bulk update metatags'
+type: node
+plugin: sprowt_admin_override_edit_metatags

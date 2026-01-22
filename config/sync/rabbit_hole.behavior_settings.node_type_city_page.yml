@@ -1,0 +1,14 @@
+uuid: b160dfb9-6f1a-482d-b6af-6cbb424b51d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.city_page
+id: node_type_city_page
+entity_type_id: node_type
+entity_id: city_page
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

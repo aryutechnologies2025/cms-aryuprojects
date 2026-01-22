@@ -1,0 +1,16 @@
+uuid: 7e124416-b37f-4e1a-a13f-cf9fdd3037a7
+langcode: en
+status: true
+dependencies:
+  module:
+    - sprowt_admin_override
+third_party_settings:
+  sprowt_admin_override:
+    description: '<p>List of City Pages grouped by Industry with option to filter by the Industry of the current page.</p>'
+id: cities_serviced_by_branch
+block_id: 'inline_block:cities_serviced_by_branch'
+category: custom_blocks
+label: 'Areas Serviced (Locations Page)'
+image_path: ''
+image_alt: ''
+weight: -74

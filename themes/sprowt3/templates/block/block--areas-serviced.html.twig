@@ -1,0 +1,35 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    (content.field_accordion.0['#markup'] == '1' ? 'accordioned' )
+  ]
+%}
+{% if content_type == 'landing_page' %}
+  {% set display_id = 'block_city_specific_lp' %}
+{% else %}
+  {% set display_id =  'block_city_specific' %}
+{% endif %}
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {{ content|without('field_filter','field_count','field_display','field_link','field_industry','field_region_filter','field_accordion') }}
+
+  {% block content %}
+    {% if content.field_industry[0] is not empty %}
+      {% set industryFilter = content.field_industry[0]|render|striptags|spaceless %}
+      {{ drupal_view((subsite == '_main' ? 'areas_serviced' : 'areas_serviced_subsite'), 'block_override', industryFilter) }}
+    {% elseif content.field_region_filter[0] is not empty %}
+      {% set regionFilter = content.field_region_filter[0]|render|striptags|spaceless %}
+      {{ drupal_view((subsite == '_main' ? 'areas_serviced' : 'areas_serviced_subsite'), 'block_region', regionFilter) }}
+    {% else %}
+      {{ drupal_view((subsite == '_main' ? 'areas_serviced' : 'areas_serviced_subsite'), display_id) }} 
+    {% endif %}
+  {% endblock %}
+
+  <div>{{ content.field_link }}</div>
+</div>

@@ -1,0 +1,36 @@
+# Schema for the views filter plugins.
+
+views.filter.zipcode_finder_log_has_zipcode_finder:
+    type: views_filter
+    label: 'IN operator'
+    mapping:
+        operator:
+            type: string
+            label: 'Operator'
+        value:
+            type: sequence
+            label: 'Values'
+            sequence:
+                type: string
+                label: 'Value'
+        expose:
+            type: mapping
+            label: 'Expose'
+            mapping:
+                reduce:
+                    type: boolean
+                    label: 'Reduce'
+        group_info:
+            mapping:
+                group_items:
+                    sequence:
+                        type: views.filter.group_item.in_operator
+                        label: 'Group item'
+
+
+views.filter_value.zipcode_finder_log_has_zipcode_finder:
+    type: sequence
+    label: 'Values'
+    sequence:
+        type: string
+        label: 'Value'

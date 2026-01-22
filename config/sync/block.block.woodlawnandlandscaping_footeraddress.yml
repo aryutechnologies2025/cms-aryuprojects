@@ -1,0 +1,25 @@
+uuid: b700e588-43e8-4698-a8df-0868c13d0cb5
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:city_page_main_branch:fc2db14f-63c7-42df-aea8-0118e3623429'
+  module:
+    - block_content
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_footeraddress
+theme: woodlawnandlandscaping
+region: disabled
+weight: -6
+provider: null
+plugin: 'block_content:fc2db14f-63c7-42df-aea8-0118e3623429'
+settings:
+  id: 'block_content:fc2db14f-63c7-42df-aea8-0118e3623429'
+  label: 'Footer Address'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

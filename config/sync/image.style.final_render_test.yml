@@ -1,0 +1,19 @@
+uuid: 8bdd57d7-cbe1-4c61-a35c-15dfb58e7cde
+langcode: en
+status: true
+dependencies: {  }
+name: final_render_test
+label: 'Final Render Test'
+effects:
+  f0255d63-3783-434c-8c50-a04597719fe0:
+    uuid: f0255d63-3783-434c-8c50-a04597719fe0
+    id: image_desaturate
+    weight: 1
+    data: {  }
+  c632ccda-a9e5-4a52-9e75-7349c199e2fc:
+    uuid: c632ccda-a9e5-4a52-9e75-7349c199e2fc
+    id: image_resize
+    weight: 2
+    data:
+      width: 150
+      height: 150

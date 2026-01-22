@@ -1,0 +1,14 @@
+uuid: 85dc72a5-d5e7-4f6b-81a1-7a1143120176
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5Jwnn4-BEKjYy5jOsSQ3tlNC_9OdHhmQq2zk9xHdW-A
+label: 'Free crop'
+id: crop_free_ratio
+description: ''
+aspect_ratio: ''
+soft_limit_width: null
+soft_limit_height: null
+hard_limit_width: null
+hard_limit_height: null

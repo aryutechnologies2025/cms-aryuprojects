@@ -1,0 +1,4 @@
+admin:
+  css:
+    theme:
+      css/lb_copy_section.css: {}

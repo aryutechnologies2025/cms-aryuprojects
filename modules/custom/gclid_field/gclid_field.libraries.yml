@@ -1,0 +1,12 @@
+collect:
+    js:
+        js/collect_gclid.js: { }
+    dependencies:
+        - core/jquery
+        - core/drupal
+        - core/once
+field:
+    js:
+        js/gclid_field.js: { }
+    dependencies:
+        - gclid_field/collect

@@ -1,0 +1,25 @@
+uuid: daca460a-a35a-440b-bf82-dbee8fecdb71
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:image:b508fdf5-297d-43e1-afce-a7d2f6ed1a17'
+  module:
+    - block_content
+  theme:
+    - sprowt3
+id: areasservicesglobal
+theme: sprowt3
+region: disabled
+weight: -9
+provider: null
+plugin: 'block_content:b508fdf5-297d-43e1-afce-a7d2f6ed1a17'
+settings:
+  id: 'block_content:b508fdf5-297d-43e1-afce-a7d2f6ed1a17'
+  label: 'Areas Services Map (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

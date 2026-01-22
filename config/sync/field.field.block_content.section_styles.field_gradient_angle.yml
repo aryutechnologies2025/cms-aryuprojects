@@ -1,0 +1,23 @@
+uuid: c9097264-2aa9-4c37-b5f8-11d206ae02a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.section_styles
+    - field.storage.block_content.field_gradient_angle
+  module:
+    - options
+id: block_content.section_styles.field_gradient_angle
+field_name: field_gradient_angle
+entity_type: block_content
+bundle: section_styles
+label: 'Gradient Angle'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: '90'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

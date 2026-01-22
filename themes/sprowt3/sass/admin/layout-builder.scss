@@ -1,0 +1,183 @@
+.block-help {
+  p {
+    margin-bottom: 0 !important;
+    font-size: 1.4rem;
+    line-height: 1.1;
+  }
+}
+.layout-builder-form {
+  .form-actions {
+    margin: 20px 0;
+
+    input.button {
+      margin-left: 0;
+      padding: 8px 17px;
+      font-size: 1.7rem;
+    }
+    .form-item-toggle-content-preview {
+      display: none;
+    }
+  }
+  .messages {
+    font-size: 1.4rem;
+    line-height: 1.1;
+  }
+  .vertical-tabs {
+    .vertical-tabs__menu {
+      font-size: 1.6rem;
+      line-height: 1.1;
+    }
+    details > .details-wrapper {
+      padding: 0 1.5rem;
+    }
+  }
+}
+
+%admin-link {
+  color: palette(blue);
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.layout-builder {
+  padding: 1em 1em 0.5em;
+  font-size: 1.5rem;
+  border: 2px solid #f5f5f5 !important;
+
+  .layout-builder__section {
+    position: relative;
+  }
+
+  .layout-builder-block {
+    background-color: transparent;
+  }
+
+  .layout-builder__link--add {
+    @extend %admin-link;
+    display: inline-block;
+    text-align: left;
+    line-height: 1.1;
+    padding: 8px 10px 8px 24px;
+    margin: 0 10px;
+    background-position: left 5px center;
+    background-color: transparent;
+    &:hover {
+      color: palette(white);
+      background-color: darken(#eff6fc, 50%);
+      background-image: url(/core/misc/icons/bebebe/plus.svg);
+    }
+  }
+
+  .layout-builder__add-section {
+    padding: 10px;
+    margin-bottom: 20px;
+    opacity: 0.4;
+  }
+  .layout-builder__add-block {
+  }
+  .layout-builder__link--remove {
+    position: absolute;
+    top: 0;
+    right: -8px;
+    width: 28px;
+    height: 29px;
+    padding: 6px;
+    text-indent: 9999px;
+    border: none;
+    border-radius: inherit;
+    background-color: #eff6fc;
+    background-image: url(/core/misc/icons/787878/ex.svg);
+
+    &:hover {
+      background-color: palette(red);
+      background-image: url(/core/misc/icons/ffffff/ex.svg);
+    }
+  }
+  .layout-builder__link--configure {
+    display: inline-block;
+    padding: 2px 10px 2px 10px;
+    margin-right: 32px;
+    margin-bottom: 2px;
+    @extend %admin-link;
+    background-color: #eff6fc;
+
+    &:hover {
+      background-color: darken(#eff6fc, 50%);
+      color: palette(white);
+    }
+  }
+}
+
+#layout-builder-modal {
+}
+
+.layout-builder-configure-block {
+  .form-item-settings-label-display {
+    display: none;
+  }
+
+  label {
+    margin-bottom: 3px;
+  }
+
+  .description {
+    margin-top: -15px;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    line-height: 1.3;
+    font-style: italic;
+  }
+
+  .field-multiple-table {
+    table-layout: initial;
+
+    .tabledrag-handle {
+      height: 45px;
+      overflow: visible;
+      line-height: 30px;
+      background-color: var(--color-light);
+      .handle {
+        width: 22px;
+        height: 22px;
+        background-image: url(/core/misc/icons/000000/move.svg);
+      }
+    }
+
+    .clearfix {
+      text-align: right;
+    }
+  }
+
+  input.button {
+    margin-left: 0;
+    padding: 8px 17px;
+    font-size: 1.7rem;
+    text-align: right;
+  }
+}
+
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+  font-size: 1.8rem;
+}
+
+.quickedit-field.quickedit-editable,
+.quickedit-field .quickedit-editable {
+  box-shadow: none;
+}
+
+.ui-dialog {
+  .form-text {
+    border-radius: 3px;
+    border: 1px solid palette(grey, lightest);
+  }
+  .field--type-string {
+    &::after {
+      content: none;
+    }
+  }
+}

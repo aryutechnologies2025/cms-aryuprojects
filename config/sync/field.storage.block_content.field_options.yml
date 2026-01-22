@@ -1,0 +1,27 @@
+uuid: 6dff60c1-2d14-4afe-beec-fc55261f822b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_options
+field_name: field_options
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: concerns
+      label: Concerns
+    -
+      value: image_right
+      label: 'Image Right'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

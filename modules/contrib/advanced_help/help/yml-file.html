@@ -1,0 +1,122 @@
+<p class="bob"><strong>Note:</strong> Some of these settings has
+regressions when compared to the Drupal 7 version of this module. This
+page also serves as a reminder about known regressions.</p>
+
+<p>The name of the Advanced Help configuration file is the machine
+name of the extension it provides help for, followed by
+<code>.help.yml</code>.</p>
+
+<p>The configuration file starts with an optional section for global
+settings that will be inherited by each help topic, followed by
+sections with settings for each help topic.</p>
+
+<p>Global settings may be put into a section named <code>advanced help
+settings</code>.  This means that this name is reserved and it cannot
+be a topic identifier. The following settings may be set in this
+section, with the default value (if any) in brackets.</p>
+
+<dl>
+<dt><code>show readme</code> (false)</dt>
+<dd>For extensions that provide advanced help by means of help topics,
+the default is to hide the README-file that comes with the
+extension. Setting this true will show the extension's README along
+with the topics. The weight for the READE will fixed at -99.</dd>
+
+<dt><code>line break</code> (false)</dt>
+<dd>If set, the line break filter will be applied to all help topics
+defined by this extension (unless overridden). When enabled (true),
+the line break filter converts line breaks into <code>&lt;br&gt;</code>
+and <code>&lt;p&gt;</code> tags. The default (false) is
+to <em>not</em> convert line breaks into markup, so that formatting a
+help topic with lines that have maximum 80 characters will not result
+in a rendering of the topic with a forced line break after 80
+characters.</dd>
+
+<dt><code>navigation</code> (true)</dt>
+<dd>Navigation will be displayed at the end of each help page:
+<em>previous page</em>, Up (parent), <em>next page</em>.
+Setting this false turns this feature off.</dd>
+
+<dt><code>hide</code> (false)</dt>
+<dd>This may be used to hide a extension in the list of extensions for
+which help is available.  This is particularly useful for extensions
+thet insert their help topics into the hierarchy of another extension,
+as might be done by those that extend <strong>Views</strong> or themes
+that extend base themes like <strong>Zen</strong>. By setting this to
+true the extension will not appear as its own entry.</dd>
+</dl>
+
+<p>Settings that need to be ported to work with the D9/10 version:</p>
+
+<dl>
+<dt><code>name</code></dt>
+<dd>May be set to override the extension's name given in
+its <code>.info.yml</code>. It will be displayed on both the list of
+extensions with help available and the extension's TOC page. Usually,
+this is not set, but for some extensions you may want to use a more
+friendly name than appears in the extension's <code>.info.yml</code>
+file. [Regressions: Not sorted correctly on "Extensions with help
+available" page. Not used in the title for the extension's TOC
+page.]</dd>
+
+<dt><code>css</code></dt>
+<dd>Specify a css file that will be used for all help topics (unless
+overridden), including the .css extension. This .css file must reside
+in the help directory along with the .html files, and will not be
+affected by translation.</dd>
+</dl>
+
+<p>Each section after that will correspond to a single help topic.  It
+starts with the topic identifier not indented, followed with a list of
+keys and values indented two spaces. The following keys may be set for
+each topic, with the default value (if any) in brackets.</p>
+
+<dl>
+<dt><code>title</code></dt>
+<dd>The title of the topic, presented to the user and used in
+links. If you have special characters in your title, be sure to
+enclose it in quotes.  (This setting is currently not optional.)</dd>
+
+<dt><code>file</code></dt>
+<dd>The name of the file that contains the help text for the
+topic. This is optional. If not specified, the topic identifier will
+be the used, with the extension .html .md or .txt.</dd>
+
+<dt><code>weight</code> (0)</dt>
+<dd>The weight, used for sorting help topics on the TOC page for the
+extension. The default is 0 (zero) if unspecified. Topics with the
+same weight are sorted alphabetically.</dd>
+
+<dt><code>parent</code></dt>
+<dd>The topic identifier to use in a hierarchy; children will be
+listed beneath parents in the TOC, and will have the parent in
+their breadcrumb trail. You may parent this topic to a
+topic in another extension by using <code>module%topic</code>
+or <code>theme%topic</code> as the identifier,
+where <code>module</code> or <code>theme</code> is the extension's short
+name. For example if parent is set to, '<code>views%display</code>',
+the topic will be regarded as a child of the
+<code>display</code> topic in the <strong>Views</strong> module.
+[Regressions: No breadcrumb. Double bullets and parent also indented.]</dd>
+
+<dt><code>line break</code></dt>
+<dd>Set the line break filter for this topic only (true or
+false). This will override any global line break setting.</dd>
+
+<dt><code>css</code></dt>
+<dd>Specify a css file that will be used for this file. This .css file
+must reside in the help directory along with the .html files. This
+will replace any .css file added in the global setting.
+[Regression: Has no effect.]</dd>
+
+<dt><code>popup width</code> (500)</dt>
+<dd>The width in pixels of the popup window.
+[Regression: Requires theme function to work.]</dd>
+
+<dt><code>popup height</code> (500)</dt>
+<dd>The height in pixels of the popup window.
+[Regression: Requires theme function to work.]</dd>
+</dl>
+
+<p>For an example, examine the <code>help_example.help.yml</code> file
+that comes with the submodule <strong>Help Example</strong>.</p>

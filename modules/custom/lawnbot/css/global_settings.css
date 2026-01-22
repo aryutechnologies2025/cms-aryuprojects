@@ -1,0 +1,11 @@
+.edit-button.action-link.hidden {
+    display: none;
+}
+
+.view-button.action-link.hidden {
+    display: none;
+}
+
+.form-actions .view-button.action-link {
+    margin-left: auto;
+}

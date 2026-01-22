@@ -1,0 +1,11 @@
+uuid: bdcfca8a-b65a-4a5e-8819-dcc8dacd1a04
+langcode: en
+status: true
+dependencies: {  }
+id: blog_post_breadcrumbs
+block_id: 'block_content:8f58d2da-75c8-4c68-a8f0-7e8e2e27cf61'
+category: re_usable_blocks
+label: 'Blog Post Breadcrumbs'
+image_path: ''
+image_alt: ''
+weight: -100

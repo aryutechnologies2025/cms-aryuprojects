@@ -1,0 +1,23 @@
+uuid: 92a6a3ab-fc9e-4f19-9355-0d5481ae253d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot_header
+    - field.storage.block_content.field_new_window
+id: block_content.servicebot_header.field_new_window
+field_name: field_new_window
+entity_type: block_content
+bundle: servicebot_header
+label: 'Open in new window'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,14 @@
+uuid: 285b56b0-05fc-48f8-b42f-f48180d946fd
+langcode: en
+status: true
+dependencies: {  }
+id: standalone_landing_page_and_service
+label: 'Standalone Landing Page and Service'
+enabled: true
+first_field: field_standalone_landing_page
+second_field: field_services
+add_direction: append
+bundles:
+  node:
+    - service
+    - standalone_landing_page

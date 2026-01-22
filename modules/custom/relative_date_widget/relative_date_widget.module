@@ -1,0 +1,102 @@
+<?php
+
+require_once __DIR__ . '/src/Plugin/Field/FieldType/DateTimeItem.php';
+
+use Drupal\relative_date_widget\Plugin\Field\FieldType\DateTimeItem;
+
+/**
+ * @file
+ * Primary module hooks for Relative Date Widget module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+
+/**
+ * Implements hook_field_info_alter().
+ */
+function relative_date_widget_field_info_alter(&$info)
+{
+    foreach($info as &$definition) {
+        if($definition['id'] == 'datetime') {
+            $definition['class'] = DateTimeItem::class;
+            $constraints = $definition['constraints'] ?? [];
+            if(isset($constraints['DateTimeFormat'])) {
+                unset($constraints['DateTimeFormat']);
+            }
+            $constraints['RelativeDateWidgetDateTimeRelativeFormatConstraint'] = [];
+            $definition['constraints'] = $constraints;
+        }
+    }
+}
+
+function _relative_date_widget_update_field_length() {
+    /** @var \Drupal\Core\Entity\EntityFieldManagerInterface $fieldManager */
+    $fieldManager = \Drupal::service('entity_field.manager');
+    $map = $fieldManager->getFieldMapByFieldType('datetime');
+
+    foreach($map as $entityType => $fields) {
+        foreach($fields as $field_name => $definition) {
+            _relative_date_widget_db_change_varchar_field($entityType, $field_name, 1000);
+        }
+    }
+}
+
+/**
+ * Change length of a varchar entity field with data, safe with entity-updates.
+ *
+ * This updates the storage schema, the database schema, and the last
+ * installed schema.
+ *
+ * The entity schema must also be changed in code in the entities
+ * baseFieldDefinitions() or in an alter.
+ *
+ * @param string $entity_type_id
+ *   The entity type.
+ * @param string $field_name
+ *   The field name to change.
+ * @param int $field_length
+ *   The new length of the field, must be larger than the previous value.
+ */
+function _relative_date_widget_db_change_varchar_field($entity_type_id, $field_name, $field_length) {
+    /** @var \Drupal\Core\Entity\EntityLastInstalledSchemaRepositoryInterface $schema_repository */
+    $schema_repository = \Drupal::service('entity.last_installed_schema.repository');
+    /** @var \Drupal\Core\Entity\EntityFieldManager $entity_field_manager */
+    $entity_field_manager = \Drupal::service('entity_field.manager');
+//    $base_field_definitions = $entity_field_manager->getBaseFieldDefinitions($entity_type_id);
+//    $schema_repository->setLastInstalledFieldStorageDefinition($base_field_definitions[$field_name]);
+    $field_storage_definitions = $schema_repository->getLastInstalledFieldStorageDefinitions($entity_type_id);
+
+    // Update the serialized schema property.
+    $rc = new \ReflectionClass($field_storage_definitions[$field_name]);
+    $schema_property = $rc->getProperty('schema');
+    $schema_property->setAccessible(TRUE);
+    $schema = $schema_property->getValue($field_storage_definitions[$field_name]);
+    $schema['columns']['value']['length'] = $field_length;
+    $schema['indexes'] = [];
+    $schema_property->setValue($field_storage_definitions[$field_name], $schema);
+
+    // Update the field definition in the last installed schema repository.
+    $schema_repository->setLastInstalledFieldStorageDefinitions($entity_type_id, $field_storage_definitions);
+
+    // Update the storage schema.
+    $key_value = \Drupal::keyValue('entity.storage_schema.sql');
+    $key_name = $entity_type_id . '.field_schema_data.' . $field_name;
+    $storage_schema = $key_value->get($key_name);
+    $storageFieldName = $field_name . '_value';
+    // Update all tables where the field is present.
+    foreach ($storage_schema as &$table_schema) {
+        $table_schema['fields'][$storageFieldName]['length'] = $field_length;
+        unset($table_schema['indexes'][$storageFieldName]);
+    }
+    $key_value->set($key_name, $storage_schema);
+
+    // Update the database tables where the field is part of.
+    $db = Drupal::database();
+    foreach ($storage_schema as $table_name => $table_schema) {
+        $db->schema()->dropIndex($table_name, $storageFieldName);
+        $db->schema()->changeField($table_name, $storageFieldName, $storageFieldName, $table_schema['fields'][$storageFieldName]);
+    }
+}

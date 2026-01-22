@@ -1,0 +1,6 @@
+html_title.settings:
+  title: Html title
+  description: 'Manage your site''s Html title settings.'
+  parent: system.admin_config_ui
+  route_name: html_title.settings
+  weight: 1

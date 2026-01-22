@@ -1,0 +1,11 @@
+uuid: 8f20b9d3-865d-4bc1-8824-3dfb028ec0b8
+langcode: en
+status: true
+dependencies: {  }
+id: ctm_contact
+block_id: 'block_content:7f4f8b13-79cb-405f-b6ae-0b47e2bc9d24'
+category: re_usable_blocks
+label: 'CTM Contact'
+image_path: ''
+image_alt: ''
+weight: -94

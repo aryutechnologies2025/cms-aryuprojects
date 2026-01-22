@@ -1,0 +1,25 @@
+uuid: dfd4df03-6e21-4590-9d55-ef82155e196e
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:webform:6c516ecc-fe32-4e1e-8bcc-d756fd98ff44'
+  module:
+    - block_content
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_webformcontactussubsitesmainsiteglobal
+theme: woodlawnandlandscaping
+region: disabled
+weight: 0
+provider: null
+plugin: 'block_content:6c516ecc-fe32-4e1e-8bcc-d756fd98ff44'
+settings:
+  id: 'block_content:6c516ecc-fe32-4e1e-8bcc-d756fd98ff44'
+  label: 'Webform - Contact Us | Subsites main site (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

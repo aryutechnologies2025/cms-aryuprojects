@@ -1,0 +1,13 @@
+uuid: d8b0f4c5-a705-4b09-86c5-ce175c137869
+langcode: en
+status: true
+dependencies: {  }
+id: vertical_align
+label: 'Vertical Center Align'
+classes: vertical-center-align
+type: component
+group: alignment
+block_restrictions:
+  - 'inline_block:image'
+layout_restrictions: {  }
+weight: 2

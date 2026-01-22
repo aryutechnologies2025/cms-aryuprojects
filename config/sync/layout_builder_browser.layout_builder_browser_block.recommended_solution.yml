@@ -1,0 +1,11 @@
+uuid: 0e4e6a0b-c701-40ce-b6a7-64257bdc6f64
+langcode: en
+status: true
+dependencies: {  }
+id: recommended_solution
+block_id: 'inline_block:recommended_solution'
+category: custom_blocks
+label: 'Recommended Solution'
+image_path: ''
+image_alt: ''
+weight: -52

@@ -1,0 +1,11 @@
+uuid: bfde764e-bb63-45ad-9d67-144a231929d0
+langcode: en
+status: true
+dependencies: {  }
+id: solution_finder
+block_id: solution_finder_solution_finder
+category: custom_blocks
+label: 'Solution Finder'
+image_path: ''
+image_alt: ''
+weight: -45

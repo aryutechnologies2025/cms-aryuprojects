@@ -1,0 +1,8 @@
+uuid: 2f8dde95-1942-4484-aafa-09b4e3a083cd
+langcode: en
+status: true
+dependencies: {  }
+id: individual_media_gallery
+label: 'Individual Media Gallery'
+revision: false
+description: 'Place a single gallery on any page.'

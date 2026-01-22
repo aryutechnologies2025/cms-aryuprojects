@@ -1,0 +1,11 @@
+uuid: c60f3192-e798-462d-90ce-aba5da333e1c
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.icon_square_200x200
+label: 'Icon Square (200x200)'
+description: ''
+targetEntityType: media
+cache: true

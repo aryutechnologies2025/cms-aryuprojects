@@ -1,0 +1,23 @@
+uuid: d5ae3bf4-b63b-4fb6-8770-45c76c39bc39
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_disable_social_media
+    - node.type.subsite
+id: node.subsite.field_disable_social_media
+field_name: field_disable_social_media
+entity_type: node
+bundle: subsite
+label: 'Disable Social Media'
+description: "Check this to not show any social media links. By default, the block will display the main site's media links if none are added. This disables them altogether."
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

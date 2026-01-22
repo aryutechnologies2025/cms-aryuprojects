@@ -1,0 +1,29 @@
+uuid: 24bd50f2-55f2-4e4a-8406-cd5f3beb77fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_primary_package_sp
+    - node.type.package
+    - node.type.solution_page_package_service
+id: node.solution_page_package_service.field_primary_package_sp
+field_name: field_primary_package_sp
+entity_type: node
+bundle: solution_page_package_service
+label: Package
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      package: package
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

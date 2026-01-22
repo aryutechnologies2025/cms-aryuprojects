@@ -1,0 +1,53 @@
+uuid: 457e2319-cd5b-46e1-9ff2-4e70d6de8fff
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.utility-menu
+  module:
+    - menu_block
+    - node
+    - sprowt_subsite
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_utilitymenu_2
+theme: woodlawnandlandscaping
+region: header_mobile_menu
+weight: -21
+provider: null
+plugin: 'menu_block:utility-menu'
+settings:
+  id: 'menu_block:utility-menu'
+  label: 'Utility Menu'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 1
+  expand_all_items: false
+  parent: 'utility-menu:'
+  render_parent: false
+  suggestion: utility_menu
+  hide_on_nonactive: false
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_page: career_page
+      job_post: job_post
+      standalone_landing_page: standalone_landing_page
+  sprowt_subsite_condition:
+    id: sprowt_subsite_condition
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    use: true
+    value:
+      _main: _main
+    hasNoFields: show

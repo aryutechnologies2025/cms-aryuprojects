@@ -1,0 +1,11 @@
+uuid: f7491036-0ea2-408f-8b12-bd068bce8e06
+langcode: en
+status: true
+dependencies: {  }
+id: identifications
+block_id: 'inline_block:identifications'
+category: custom_blocks
+label: Identifications
+image_path: ''
+image_alt: ''
+weight: -68

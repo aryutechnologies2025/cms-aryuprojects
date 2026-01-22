@@ -1,0 +1,21 @@
+uuid: 55561d73-1ae7-4887-a428-7503dcca43cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ctm_contact
+    - field.storage.block_content.field_phone_number
+  module:
+    - telephone
+id: block_content.ctm_contact.field_phone_number
+field_name: field_phone_number
+entity_type: block_content
+bundle: ctm_contact
+label: 'Phone Number'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

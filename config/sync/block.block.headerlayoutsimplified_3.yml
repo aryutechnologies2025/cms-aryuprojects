@@ -1,0 +1,45 @@
+uuid: 7fc1a4fe-bb2f-45af-a2c8-ef161da1bb85
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:header:75fef345-db5b-4e94-b9c3-7e129d23000b'
+  module:
+    - block_content
+    - node
+    - sprowt_subsite
+  theme:
+    - s3_subtheme
+id: headerlayoutsimplified_3
+theme: s3_subtheme
+region: header_layout
+weight: 0
+provider: null
+plugin: 'block_content:75fef345-db5b-4e94-b9c3-7e129d23000b'
+settings:
+  id: 'block_content:75fef345-db5b-4e94-b9c3-7e129d23000b'
+  label: 'Header Layout: Simplified'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  sprowt_subsite_condition:
+    id: sprowt_subsite_condition
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    use: true
+    value:
+      _main: _main
+    hasNoFields: show
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_page: career_page
+      job_post: job_post
+      standalone_landing_page: standalone_landing_page

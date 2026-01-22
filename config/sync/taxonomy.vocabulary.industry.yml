@@ -1,0 +1,9 @@
+uuid: 9091013b-dc93-4598-853e-2e44afbda33f
+langcode: en
+status: true
+dependencies: {  }
+name: Industry
+vid: industry
+description: Industry
+weight: 0
+new_revision: false

@@ -1,0 +1,20 @@
+uuid: 6d6f0f4b-7c8d-41a7-8e88-c7555db94134
+langcode: en
+status: true
+dependencies:
+  theme:
+    - sprowt3
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: sprowt3_local_actions
+theme: sprowt3
+region: content
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

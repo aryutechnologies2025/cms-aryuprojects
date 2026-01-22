@@ -1,0 +1,27 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'layout bg-dark center-align'
+  ]
+%}
+{% if content.field_image_bg_hero['#items'].entity.uri.value is not empty %}
+  {% set bg = file_url(content.field_image_bg_hero['#items'].entity.uri.value) %}
+{% endif %}
+
+<div{{attributes.addClass(classes)}} style="{% if bg is not empty %}background-image: url({{ bg }});{% endif %}">
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="hero-wrap learning-center-hero-wrap">
+      <div class="preheading">Learning Center</div>
+      <div class="h1 page_title">{{ drupal_field('title', 'node', nid) }}</div>
+      <div class="hero-icon">
+        {{ drupal_entity('node', nid, 'token') }}
+      </div>
+    </div>
+  {% endblock %}
+</div>

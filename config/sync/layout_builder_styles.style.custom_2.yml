@@ -1,0 +1,21 @@
+uuid: b8d56b7d-5268-466e-869f-23bc88c95bdd
+langcode: en
+status: true
+dependencies: {  }
+id: custom_2
+label: 'Custom Light 2'
+classes: bg-custom-light-2
+type: component
+group: bgcolor
+block_restrictions:
+  - 'inline_block:areas_serviced'
+  - 'inline_block:call_out'
+  - 'inline_block:concerns'
+  - 'inline_block:issues'
+  - 'inline_block:testimonials'
+  - 'inline_block:servicebot'
+  - 'inline_block:services'
+  - 'inline_block:special_offers'
+  - 'inline_block:webform'
+layout_restrictions: {  }
+weight: 20

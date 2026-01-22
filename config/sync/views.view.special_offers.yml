@@ -1,0 +1,2794 @@
+uuid: 9e380c03-db45-49e0-a9cb-3c516b5dd272
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.secondary_teaser
+    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.title
+    - core.entity_view_mode.node.token
+    - node.type.special_offer
+  module:
+    - draggableviews
+    - entity_reference_exposed_filters
+    - node
+    - sprowt_subsite
+    - sprowt_views
+    - user
+    - views_contextual_limit
+id: special_offers
+label: 'Special Offers'
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Special Offers'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          settings:
+            link_to_entity: 1
+          link_to_node: true
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 1
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        weight:
+          id: weight
+          table: draggableviews_structure
+          field: weight
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight
+          exposed: false
+          draggable_views_reference: 'content_sorting:special_offer_sorting'
+          draggable_views_null_order: after
+      arguments:
+        sprowt_views_dynamic_view_mode:
+          id: sprowt_views_dynamic_view_mode
+          table: node
+          field: sprowt_views_dynamic_view_mode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: sprowt_views_dynamic_view_mode
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: teaser
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+        limit:
+          id: limit
+          table: views
+          field: limit
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: limit
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: '3'
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            special_offer: special_offer
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_subsite_multiple_target:
+          id: field_subsite_multiple_target
+          table: node__field_subsite_multiple
+          field: field_subsite_multiple_target
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sprowt_subsite_views_filter
+          operator: or
+          value:
+            _main: _main
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      style:
+        type: default
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships:
+        field_services:
+          id: field_services
+          table: node__field_services
+          field: field_services
+          relationship: none
+          group_type: group
+          admin_label: 'field_services: Content'
+          plugin_id: standard
+          required: false
+        reverse__node__field_services:
+          id: reverse__node__field_services
+          table: node_field_data
+          field: reverse__node__field_services
+          relationship: field_services
+          group_type: group
+          admin_label: services_ref
+          entity_type: node
+          plugin_id: entity_reverse
+          required: false
+      group_by: true
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  all_offers:
+    id: all_offers
+    display_title: 'All Offers'
+    display_plugin: block
+    position: 1
+    display_options:
+      title: 'Special Offers'
+      pager:
+        type: none
+        options:
+          offset: 0
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            special_offer: special_offer
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        eref_node_titles:
+          id: eref_node_titles
+          table: node_field_data
+          field: eref_node_titles
+          relationship: field_services
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: eref_node_titles
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'What is your pest issue?'
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: service
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              client: '0'
+            reduce: 0
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: 'Entity Reference Exposed Filters Node Titles'
+            description: null
+            identifier: eref_node_titles
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+          reduce_duplicates: false
+          sort_order: '0'
+          sort_by: '1'
+          get_unpublished: '1'
+          get_filter_no_results: '0'
+        field_subsite_multiple_target:
+          id: field_subsite_multiple_target
+          table: node__field_subsite_multiple
+          field: field_subsite_multiple_target
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sprowt_subsite_views_filter
+          operator: or
+          value:
+            _main: _main
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options: {  }
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      defaults:
+        title: false
+        use_ajax: false
+        pager: false
+        group_by: false
+        style: false
+        row: false
+        relationships: false
+        arguments: false
+        filters: false
+        filter_groups: false
+      relationships:
+        field_services:
+          id: field_services
+          table: node__field_services
+          field: field_services
+          relationship: none
+          group_type: group
+          admin_label: 'field_services: Content'
+          plugin_id: standard
+          required: false
+      use_ajax: true
+      group_by: true
+      display_description: ''
+      display_extenders: {  }
+      block_description: 'All Offers'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  all_offers_no_filter:
+    id: all_offers_no_filter
+    display_title: 'All Offers No Filter'
+    display_plugin: block
+    position: 2
+    display_options:
+      title: 'Special Offers'
+      pager:
+        type: none
+        options:
+          offset: 0
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            special_offer: special_offer
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_subsite_multiple_target:
+          id: field_subsite_multiple_target
+          table: node__field_subsite_multiple
+          field: field_subsite_multiple_target
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sprowt_subsite_views_filter
+          operator: or
+          value:
+            _main: _main
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options: {  }
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      defaults:
+        title: false
+        use_ajax: false
+        pager: false
+        group_by: false
+        style: false
+        row: false
+        relationships: false
+        arguments: false
+        filters: false
+        filter_groups: false
+      relationships:
+        field_services:
+          id: field_services
+          table: node__field_services
+          field: field_services
+          relationship: none
+          group_type: group
+          admin_label: 'field_services: Content'
+          plugin_id: standard
+          required: false
+      use_ajax: true
+      group_by: true
+      display_description: ''
+      display_extenders: {  }
+      block_description: 'All Offers'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_compact:
+    id: block_compact
+    display_title: 'Compact Service'
+    display_plugin: block
+    position: 3
+    display_options:
+      fields: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      empty:
+        view:
+          id: view
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: view
+          empty: true
+          view_to_insert: 'special_offers:block_compact_city'
+          inherit_arguments: true
+      arguments:
+        sprowt_views_dynamic_view_mode:
+          id: sprowt_views_dynamic_view_mode
+          table: node
+          field: sprowt_views_dynamic_view_mode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: sprowt_views_dynamic_view_mode
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: teaser
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+        limit:
+          id: limit
+          table: views
+          field: limit
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: limit
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: '3'
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: field_services
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            special_offer: special_offer
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_subsite_multiple_target:
+          id: field_subsite_multiple_target
+          table: node__field_subsite_multiple
+          field: field_subsite_multiple_target
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sprowt_subsite_views_filter
+          operator: or
+          value:
+            _main: _main
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      defaults:
+        empty: false
+        pager: false
+        style: false
+        row: false
+        relationships: false
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      relationships:
+        field_services:
+          id: field_services
+          table: node__field_services
+          field: field_services
+          relationship: none
+          group_type: group
+          admin_label: 'field_services: Content'
+          plugin_id: standard
+          required: false
+      display_description: ''
+      header: {  }
+      display_extenders: {  }
+      block_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_compact_city:
+    id: block_compact_city
+    display_title: 'Compact City'
+    display_plugin: block
+    position: 4
+    display_options:
+      fields: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      empty:
+        view:
+          id: view
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: view
+          empty: true
+          view_to_insert: 'special_offers:block_compact_landing'
+          inherit_arguments: true
+      arguments:
+        sprowt_views_dynamic_view_mode:
+          id: sprowt_views_dynamic_view_mode
+          table: node
+          field: sprowt_views_dynamic_view_mode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: sprowt_views_dynamic_view_mode
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: teaser
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+        limit:
+          id: limit
+          table: views
+          field: limit
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: limit
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: '3'
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: field_ref_city
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            special_offer: special_offer
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_subsite_multiple_target:
+          id: field_subsite_multiple_target
+          table: node__field_subsite_multiple
+          field: field_subsite_multiple_target
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sprowt_subsite_views_filter
+          operator: or
+          value:
+            _main: _main
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      defaults:
+        empty: false
+        pager: false
+        style: false
+        row: false
+        relationships: false
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      relationships:
+        field_ref_city:
+          id: field_ref_city
+          table: node__field_ref_city
+          field: field_ref_city
+          relationship: none
+          group_type: group
+          admin_label: 'field_ref_city: Content'
+          plugin_id: standard
+          required: false
+      display_description: ''
+      header: {  }
+      display_extenders: {  }
+      block_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_compact_front:
+    id: block_compact_front
+    display_title: 'Compact Front'
+    display_plugin: block
+    position: 8
+    display_options:
+      fields: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      empty: {  }
+      arguments:
+        sprowt_views_dynamic_view_mode:
+          id: sprowt_views_dynamic_view_mode
+          table: node
+          field: sprowt_views_dynamic_view_mode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: sprowt_views_dynamic_view_mode
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: teaser
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+        limit:
+          id: limit
+          table: views
+          field: limit
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: limit
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: '3'
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            special_offer: special_offer
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        promote:
+          id: promote
+          table: node_field_data
+          field: promote
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: promote
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_subsite_multiple_target:
+          id: field_subsite_multiple_target
+          table: node__field_subsite_multiple
+          field: field_subsite_multiple_target
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sprowt_subsite_views_filter
+          operator: or
+          value:
+            _main: _main
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      defaults:
+        empty: false
+        pager: false
+        style: false
+        row: false
+        relationships: false
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      relationships: {  }
+      display_description: ''
+      header: {  }
+      display_extenders: {  }
+      block_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_compact_landing:
+    id: block_compact_landing
+    display_title: 'Compact Landing'
+    display_plugin: block
+    position: 5
+    display_options:
+      fields: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      empty:
+        view:
+          id: view
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: view
+          empty: true
+          view_to_insert: 'special_offers:block_compact_slp'
+          inherit_arguments: true
+      arguments:
+        sprowt_views_dynamic_view_mode:
+          id: sprowt_views_dynamic_view_mode
+          table: node
+          field: sprowt_views_dynamic_view_mode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: sprowt_views_dynamic_view_mode
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: teaser
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+        limit:
+          id: limit
+          table: views
+          field: limit
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: limit
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: '3'
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: field_landing_page_ref
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+        nid_1:
+          id: nid_1
+          table: node_field_data
+          field: nid
+          relationship: field_landing_page_ref_1
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            special_offer: special_offer
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_subsite_multiple_target:
+          id: field_subsite_multiple_target
+          table: node__field_subsite_multiple
+          field: field_subsite_multiple_target
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sprowt_subsite_views_filter
+          operator: or
+          value:
+            _main: _main
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: null
+          contextual_filters_or: true
+      defaults:
+        empty: false
+        query: false
+        pager: false
+        group_by: false
+        style: false
+        row: false
+        relationships: false
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      relationships:
+        field_ref_city:
+          id: field_ref_city
+          table: node__field_ref_city
+          field: field_ref_city
+          relationship: none
+          group_type: group
+          admin_label: 'field_ref_city: Content'
+          plugin_id: standard
+          required: false
+        field_landing_page_ref:
+          id: field_landing_page_ref
+          table: node__field_landing_page_ref
+          field: field_landing_page_ref
+          relationship: field_ref_city
+          group_type: group
+          admin_label: 'field_landing_page_ref: Content'
+          plugin_id: standard
+          required: false
+        field_services:
+          id: field_services
+          table: node__field_services
+          field: field_services
+          relationship: none
+          group_type: group
+          admin_label: 'field_services: Content'
+          plugin_id: standard
+          required: false
+        field_landing_page_ref_1:
+          id: field_landing_page_ref_1
+          table: node__field_landing_page_ref
+          field: field_landing_page_ref
+          relationship: field_services
+          group_type: group
+          admin_label: 'field_landing_page_ref: Content'
+          plugin_id: standard
+          required: false
+      group_by: true
+      display_description: ''
+      header: {  }
+      display_extenders: {  }
+      block_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_compact_nofilter:
+    id: block_compact_nofilter
+    display_title: 'Compact No Filter'
+    display_plugin: block
+    position: 7
+    display_options:
+      fields: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      empty: {  }
+      arguments:
+        sprowt_views_dynamic_view_mode:
+          id: sprowt_views_dynamic_view_mode
+          table: node
+          field: sprowt_views_dynamic_view_mode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: sprowt_views_dynamic_view_mode
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: token
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+        limit:
+          id: limit
+          table: views
+          field: limit
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: limit
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: '3'
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            special_offer: special_offer
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_subsite_multiple_target:
+          id: field_subsite_multiple_target
+          table: node__field_subsite_multiple
+          field: field_subsite_multiple_target
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sprowt_subsite_views_filter
+          operator: or
+          value:
+            _main: _main
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: secondary_teaser
+      defaults:
+        empty: false
+        pager: false
+        style: false
+        row: false
+        relationships: false
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      relationships: {  }
+      display_description: ''
+      header: {  }
+      display_extenders: {  }
+      block_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_compact_slp:
+    id: block_compact_slp
+    display_title: 'Compact Standalone Landing'
+    display_plugin: block
+    position: 5
+    display_options:
+      fields: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      empty:
+        view:
+          id: view
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: view
+          empty: true
+          view_to_insert: 'special_offers:block_compact_solution'
+          inherit_arguments: true
+      arguments:
+        sprowt_views_dynamic_view_mode:
+          id: sprowt_views_dynamic_view_mode
+          table: node
+          field: sprowt_views_dynamic_view_mode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: sprowt_views_dynamic_view_mode
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: teaser
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+        limit:
+          id: limit
+          table: views
+          field: limit
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: limit
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: '3'
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: field_standalone_landing_page
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+        nid_1:
+          id: nid_1
+          table: node_field_data
+          field: nid
+          relationship: field_standalone_landing_page_1
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            special_offer: special_offer
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_subsite_multiple_target:
+          id: field_subsite_multiple_target
+          table: node__field_subsite_multiple
+          field: field_subsite_multiple_target
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sprowt_subsite_views_filter
+          operator: or
+          value:
+            _main: _main
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: null
+          contextual_filters_or: true
+      defaults:
+        empty: false
+        query: false
+        pager: false
+        group_by: false
+        style: false
+        row: false
+        relationships: false
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      relationships:
+        field_ref_city:
+          id: field_ref_city
+          table: node__field_ref_city
+          field: field_ref_city
+          relationship: none
+          group_type: group
+          admin_label: 'field_ref_city: Content'
+          plugin_id: standard
+          required: false
+        field_standalone_landing_page:
+          id: field_standalone_landing_page
+          table: node__field_standalone_landing_page
+          field: field_standalone_landing_page
+          relationship: field_ref_city
+          group_type: group
+          admin_label: 'field_standalone_landing_page: Content'
+          plugin_id: standard
+          required: false
+        field_services:
+          id: field_services
+          table: node__field_services
+          field: field_services
+          relationship: none
+          group_type: group
+          admin_label: 'field_services: Content'
+          plugin_id: standard
+          required: false
+        field_standalone_landing_page_1:
+          id: field_standalone_landing_page_1
+          table: node__field_standalone_landing_page
+          field: field_standalone_landing_page
+          relationship: field_services
+          group_type: group
+          admin_label: 'field_standalone_landing_page: Content'
+          plugin_id: standard
+          required: false
+      group_by: true
+      display_description: ''
+      header: {  }
+      display_extenders: {  }
+      block_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_compact_solution:
+    id: block_compact_solution
+    display_title: 'Compact Solution'
+    display_plugin: block
+    position: 6
+    display_options:
+      fields: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      empty:
+        view:
+          id: view
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: view
+          empty: true
+          view_to_insert: 'special_offers:block_compact_nofilter'
+          inherit_arguments: true
+      arguments:
+        sprowt_views_dynamic_view_mode:
+          id: sprowt_views_dynamic_view_mode
+          table: node
+          field: sprowt_views_dynamic_view_mode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: sprowt_views_dynamic_view_mode
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: teaser
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+        limit:
+          id: limit
+          table: views
+          field: limit
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: limit
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: '3'
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: field_solution_ref
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+        nid_1:
+          id: nid_1
+          table: node_field_data
+          field: nid
+          relationship: field_secondary_solution_ref
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: node
+          default_argument_options: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            special_offer: special_offer
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_subsite_multiple_target:
+          id: field_subsite_multiple_target
+          table: node__field_subsite_multiple
+          field: field_subsite_multiple_target
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: sprowt_subsite_views_filter
+          operator: or
+          value:
+            _main: _main
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_tags: {  }
+          contextual_filters_or: true
+      defaults:
+        empty: false
+        query: false
+        pager: false
+        group_by: false
+        style: false
+        row: false
+        relationships: false
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        header: false
+      relationships:
+        field_services:
+          id: field_services
+          table: node__field_services
+          field: field_services
+          relationship: none
+          group_type: group
+          admin_label: 'field_services: Content'
+          plugin_id: standard
+          required: false
+        field_solution_ref:
+          id: field_solution_ref
+          table: node__field_solution_ref
+          field: field_solution_ref
+          relationship: field_services
+          group_type: group
+          admin_label: 'field_solution_ref: Content'
+          plugin_id: standard
+          required: false
+        field_services_1:
+          id: field_services_1
+          table: node__field_services
+          field: field_services
+          relationship: none
+          group_type: group
+          admin_label: 'field_services: Content'
+          plugin_id: standard
+          required: false
+        field_secondary_solution_ref:
+          id: field_secondary_solution_ref
+          table: node__field_secondary_solution_ref
+          field: field_secondary_solution_ref
+          relationship: field_services_1
+          group_type: group
+          admin_label: 'field_secondary_solution_ref: Content'
+          plugin_id: standard
+          required: false
+      group_by: true
+      display_description: ''
+      header: {  }
+      display_extenders: {  }
+      block_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_service_title:
+    id: block_service_title
+    display_title: 'Block Service Title'
+    display_plugin: block
+    position: 10
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 1
+      arguments:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: field_services
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: 'access denied'
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      style:
+        type: default
+        options: {  }
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: title
+      defaults:
+        pager: false
+        style: false
+        row: false
+        relationships: false
+        arguments: false
+      relationships:
+        field_services:
+          id: field_services
+          table: node__field_services
+          field: field_services
+          relationship: none
+          group_type: group
+          admin_label: 'field_services: Content'
+          plugin_id: standard
+          required: true
+      display_description: ''
+      display_extenders: {  }
+      block_description: 'Block Service Title'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+    deleted: false
+  block_service_token:
+    id: block_service_token
+    display_title: 'Block Service Token'
+    display_plugin: block
+    position: 9
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 1
+      arguments:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: field_services
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: node_nid
+          default_action: 'access denied'
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      style:
+        type: default
+        options: {  }
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: token
+      defaults:
+        pager: false
+        style: false
+        row: false
+        relationships: false
+        arguments: false
+      relationships:
+        field_services:
+          id: field_services
+          table: node__field_services
+          field: field_services
+          relationship: none
+          group_type: group
+          admin_label: 'field_services: Content'
+          plugin_id: standard
+          required: true
+      display_description: ''
+      display_extenders: {  }
+      block_description: 'Block Service Token'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+    deleted: false
+  entity_reference:
+    id: entity_reference
+    display_title: 'Entity Reference'
+    display_plugin: entity_reference
+    position: 11
+    display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          link_to_node: true
+      arguments: {  }
+      style:
+        type: entity_reference
+        options:
+          search_fields:
+            title: title
+      defaults:
+        relationships: false
+        fields: false
+        arguments: false
+      relationships: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

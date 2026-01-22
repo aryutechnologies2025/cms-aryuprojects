@@ -1,0 +1,11 @@
+uuid: 7e4467be-bd46-439b-a1a3-c758a532444e
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_sprowt_ai_context
+label: 'Bulk Update Context Fields'
+type: sprowt_ai_context
+plugin: bulk_update_fields_action_base
+configuration: {  }

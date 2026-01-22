@@ -1,0 +1,190 @@
+uuid: ca8b479b-77d1-4678-90d6-bbc8ed84d9bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_media_gallery
+    - field.field.node.media_gallery.body
+    - field.field.node.media_gallery.field_gallery_thumbnail_hero
+    - field.field.node.media_gallery.field_media
+    - field.field.node.media_gallery.field_media_documents
+    - field.field.node.media_gallery.field_media_gallery
+    - field.field.node.media_gallery.field_media_img_vid
+    - field.field.node.media_gallery.field_media_remote_vid
+    - field.field.node.media_gallery.field_subsite_multiple
+    - field.field.node.media_gallery.field_type
+    - field.field.node.media_gallery.layout_builder__layout
+    - node.type.media_gallery
+    - views.view.media_gallery
+  module:
+    - entity_reference_revisions
+    - layout_builder
+    - layout_discovery
+    - options
+    - sprowt_subsite
+    - text
+    - user
+    - views
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Hero
+          context_mapping: {  }
+          layout_builder_id: hero-gallery
+          layout_builder_styles_style:
+            - dark
+            - full_page_width
+        components:
+          -
+            uuid: 6765770c-8ca2-4eb5-9254-991fe6ba505f
+            region: content
+            configuration:
+              id: 'inline_block:hero_media_gallery'
+              label: 'Hero - Media Gallery'
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 6262
+              block_serialized: null
+              type: hero_media_gallery
+              uuid: 50c2861d-a6bd-4f04-9df3-3b8dd6645fe2
+            weight: 5
+            additional:
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Gallery Pager'
+          context_mapping: {  }
+          layout_builder_id: pager
+          layout_builder_styles_style:
+            - ''
+            - ''
+        components:
+          -
+            uuid: 284f87ab-7ac6-41d9-be65-8e01f90fa18c
+            region: content
+            configuration:
+              id: 'views_block:media_gallery-gallery_pager'
+              label: ''
+              label_display: '1'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 2
+            additional:
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Media Gallery'
+          context_mapping: {  }
+          layout_builder_id: media-gallery
+          layout_builder_styles_style:
+            - ''
+            - ''
+        components:
+          -
+            uuid: d59b2b8c-d50a-4741-91bd-6c98178ffbee
+            region: content
+            configuration:
+              id: 'views_block:media_gallery-individual_gallery'
+              label: ''
+              label_display: '1'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 0
+            additional:
+              layout_builder_id: individual-gallery
+        third_party_settings: {  }
+id: node.media_gallery.default
+targetEntityType: node
+bundle: media_gallery
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_gallery_thumbnail_hero:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_media:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_media_gallery:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_media_img_vid:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_subsite_multiple:
+    type: sprowt_subsite_reference_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_media_documents: true
+  field_media_remote_vid: true
+  langcode: true
+  layout_builder__layout: true

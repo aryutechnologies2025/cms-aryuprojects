@@ -1,0 +1,11 @@
+uuid: 0cfad72b-ab31-4b4f-9c97-6d6e3fb554d7
+langcode: en
+status: true
+dependencies: {  }
+id: anchor_list
+block_id: anchor_list_block
+category: custom_blocks
+label: 'Anchor List'
+image_path: ''
+image_alt: ''
+weight: -87

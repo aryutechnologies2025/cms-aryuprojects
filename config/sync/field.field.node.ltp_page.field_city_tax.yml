@@ -1,0 +1,29 @@
+uuid: dea6b076-bebb-4f12-87e1-bcd4830476d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city_tax
+    - node.type.ltp_page
+    - taxonomy.vocabulary.city
+id: node.ltp_page.field_city_tax
+field_name: field_city_tax
+entity_type: node
+bundle: ltp_page
+label: 'City Taxonomies'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      city: city
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

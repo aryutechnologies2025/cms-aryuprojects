@@ -1,0 +1,41 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    (content.field_accordion.0['#markup'] == '1' ? 'accordioned' )
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+    {% set branchID = content.field_branch[0] ? content.field_branch[0]|render|striptags|spaceless : 'all values' %}
+
+    <div class="areas-serviced-wrap">
+      {% if content.field_address_as_header[0]['#markup'] == 1 %}
+        {% set locHeader %}
+          {{ drupal_entity('node', branchID, 'title') }}
+        {% endset %}
+        <div class="field field--name-field-heading"><{{ content.field_location_name_heading_tag[0]['#markup'] ? content.field_location_name_heading_tag[0]['#markup'] : 'h2' }}>{{ locHeader|striptags }}</{{ content.field_location_name_heading_tag[0]['#markup'] ? content.field_location_name_heading_tag[0]['#markup'] : 'h2' }}></div>
+        {{ drupal_entity('node', branchID, 'alta')  }}
+      {% else %}
+        {{ content|without('field_branch','field_address_as_header','field_accordion','field_location_name_heading_tag','field_remove_industry_labels') }}
+      {% endif %}
+
+      {% if content.field_filter_by_industry[0]['#markup'] == 1 %}
+        {{ drupal_view((subsite == '_main' ? 'areas_serviced' : 'areas_serviced_subsite'), 'block_areas_serviced_branch_filter', branchID) }}
+      {% else %}
+        {% if content.field_remove_industry_labels[0]['#markup'] == 1 %}
+          {{ drupal_view((subsite == '_main' ? 'areas_serviced' : 'areas_serviced_subsite'), 'block_areas_serviced_branch_nogroup', branchID) }}
+        {% else %}
+          {{ drupal_view((subsite == '_main' ? 'areas_serviced' : 'areas_serviced_subsite'), 'block_areas_serviced_branch', branchID) }}
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endblock %}
+</div>

@@ -1,0 +1,14 @@
+uuid: 1b2d8256-b503-4142-b9c0-ef3825f62d15
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.client_advanced
+  module:
+    - user
+id: user_remove_role_action.client_advanced
+label: 'Remove the Client - Advanced role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: client_advanced

@@ -1,0 +1,67 @@
+uuid: 06d0b1f8-fd00-4078-a22c-cf7ea8b6825d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot_header
+    - field.field.block_content.servicebot_header.field_accent_color
+    - field.field.block_content.servicebot_header.field_icon
+    - field.field.block_content.servicebot_header.field_new_window
+    - field.field.block_content.servicebot_header.field_rounded
+    - field.field.block_content.servicebot_header.field_single_link
+    - field.field.block_content.servicebot_header.field_title
+  module:
+    - media_library
+    - sprowt_admin_override
+id: block_content.servicebot_header.default
+targetEntityType: block_content
+bundle: servicebot_header
+mode: default
+content:
+  field_accent_color:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_icon:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_new_window:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_rounded:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_single_link:
+    type: link_with_description
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  info: true
+  langcode: true
+  revision_log: true

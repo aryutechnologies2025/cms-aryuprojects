@@ -1,0 +1,17 @@
+uuid: f7e26459-1bdc-4677-9c1f-9c0a108cb019
+langcode: en
+status: true
+dependencies: {  }
+id: solution_and_service
+label: 'Solution and Service'
+enabled: true
+first_field: field_solution_ref
+second_field: field_services_lp
+add_direction: append
+bundles:
+  node:
+    - service
+    - solution_page_package_alt
+    - solution_page_package_service
+    - solution_page_packages
+    - solution_page_services

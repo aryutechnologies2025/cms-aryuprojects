@@ -1,0 +1,26 @@
+uuid: 287ff34d-b0db-4571-88ce-b9df23519f61
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_caption
+    - filter.format.basic_html
+    - filter.format.plain_text
+    - media.type.media_image
+  module:
+    - text
+id: media.media_image.field_caption
+field_name: field_caption
+entity_type: media
+bundle: media_image
+label: Caption
+description: 'Displayed in media galleries only.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - plain_text
+field_type: text

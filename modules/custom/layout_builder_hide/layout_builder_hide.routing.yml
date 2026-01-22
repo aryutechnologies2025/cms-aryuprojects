@@ -1,0 +1,54 @@
+layout_builder_hide.hide_block:
+    path: '/layout_builder/hide/block/{section_storage_type}/{section_storage}/{delta}/{region}/{uuid}'
+    defaults:
+        _title: 'Hide Block'
+        _controller: '\Drupal\layout_builder_hide\Controller\LayoutBuilderHideController:hideBlock'
+    requirements:
+        _layout_builder_access: 'view'
+    options:
+        _admin_route: TRUE
+        parameters:
+            section_storage:
+                layout_builder_tempstore: TRUE
+
+layout_builder_hide.show_block:
+    path: '/layout_builder/show/block/{section_storage_type}/{section_storage}/{delta}/{region}/{uuid}'
+    defaults:
+        _title: 'Hide Block'
+        _controller: '\Drupal\layout_builder_hide\Controller\LayoutBuilderHideController:showBlock'
+    requirements:
+        _layout_builder_access: 'view'
+    options:
+        _admin_route: TRUE
+        parameters:
+            section_storage:
+                layout_builder_tempstore: TRUE
+
+layout_builder_hide.bulk_hide_component_form:
+    path: '/layout_builder/bulk-hide-components/{section_storage_type}/{section_storage}'
+    defaults:
+        _title: 'Bulk Hide/Show Blocks'
+        _form: 'Drupal\layout_builder_hide\Form\BulkHideComponentform'
+    requirements:
+        _layout_builder_access: 'view'
+    options:
+        _admin_route: TRUE
+        parameters:
+            section_storage:
+                layout_builder_tempstore: TRUE
+
+layout_builder_hide.section_visibility:
+    path: '/admin/layout-builder-hide/section/{section_storage_type}/{section_storage}/{delta}/{plugin_id}'
+    defaults:
+        _title: 'Section Visibility'
+        _form: 'Drupal\layout_builder_hide\Form\SectionVisibilityForm'
+        # Adding a new section requires a plugin_id, while configuring an existing
+        # section does not.
+        plugin_id: null
+    requirements:
+        _layout_builder_access: 'view'
+    options:
+        _admin_route: TRUE
+        parameters:
+            section_storage:
+                layout_builder_tempstore: TRUE

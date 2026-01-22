@@ -1,0 +1,14 @@
+uuid: 255ea3b6-f92d-4ab2-9b05-136714827fa8
+langcode: en
+status: true
+dependencies: {  }
+id: gradient_secondary
+label: 'Gradient White'
+classes: gradient-white
+type: component
+group: bgstyle
+block_restrictions:
+  - 'inline_block:call_out'
+  - 'inline_block:hero'
+layout_restrictions: {  }
+weight: 11

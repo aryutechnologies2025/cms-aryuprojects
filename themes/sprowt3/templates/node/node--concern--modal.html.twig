@@ -1,0 +1,39 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div{{content_attributes.addClass('node__content')}}>
+      <a href="#" class="concern-link" data-featherlight="#concern-modal-{{ node.id }}" data-featherlight-variant="popup">
+        {{ content.field_icon_concern }}
+        {{label}}
+      </a>
+      <div id="concern-modal-{{ node.id }}" class="concern-modal">
+        <div class="concern-modal-header">
+          <div class="concern-title">You Want To Know More About {{ label }}</div>
+        </div>
+        {{ content.field_icon_concern }}
+        {{ content|without('label', 'field_icon_concern') }}
+        <script>
+        $('a.concern-link').featherlightGallery({
+          previousIcon: '&#9664;',     /* Code that is used as previous icon */
+          nextIcon: '&#9654;',         /* Code that is used as next icon */
+          galleryFadeIn: 100,          /* fadeIn speed when slide is loaded */
+          galleryFadeOut: 300          /* fadeOut speed before slide is loaded */
+        });
+        </script>
+      </div>
+  </div>
+
+</article>

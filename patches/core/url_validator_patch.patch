@@ -1,0 +1,45 @@
+diff --git a/core/modules/link/src/Plugin/Validation/Constraint/LinkExternalProtocolsConstraintValidator.php b/core/modules/link/src/Plugin/Validation/Constraint/LinkExternalProtocolsConstraintValidator.php
+index 4395286a0f..5b40ec3398 100644
+--- a/core/modules/link/src/Plugin/Validation/Constraint/LinkExternalProtocolsConstraintValidator.php
++++ b/core/modules/link/src/Plugin/Validation/Constraint/LinkExternalProtocolsConstraintValidator.php
+@@ -3,6 +3,7 @@
+ namespace Drupal\link\Plugin\Validation\Constraint;
+ 
+ use Drupal\Component\Utility\UrlHelper;
++use Drupal\Core\Url;
+ use Symfony\Component\Validator\Constraint;
+ use Symfony\Component\Validator\ConstraintValidator;
+ 
+@@ -27,6 +28,9 @@ public function validate($value, Constraint $constraint) {
+       catch (\InvalidArgumentException $e) {
+         return;
+       }
++      if(!$url instanceof Url) {
++        return;
++      }
+       // Disallow external URLs using untrusted protocols.
+       if ($url->isExternal() && !in_array(parse_url($url->getUri(), PHP_URL_SCHEME), UrlHelper::getAllowedProtocols())) {
+         $this->context->addViolation($constraint->message, ['@uri' => $value->uri]);
+diff --git a/core/modules/link/src/Plugin/Validation/Constraint/LinkNotExistingInternalConstraintValidator.php b/core/modules/link/src/Plugin/Validation/Constraint/LinkNotExistingInternalConstraintValidator.php
+index b89e5791ae..c5103eea68 100644
+--- a/core/modules/link/src/Plugin/Validation/Constraint/LinkNotExistingInternalConstraintValidator.php
++++ b/core/modules/link/src/Plugin/Validation/Constraint/LinkNotExistingInternalConstraintValidator.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Drupal\link\Plugin\Validation\Constraint;
+ 
++use Drupal\Core\Url;
+ use Symfony\Component\Routing\Exception\InvalidParameterException;
+ use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
+ use Symfony\Component\Routing\Exception\RouteNotFoundException;
+@@ -29,7 +30,9 @@ public function validate($value, Constraint $constraint) {
+       catch (\InvalidArgumentException $e) {
+         return;
+       }
+-
++      if(!$url instanceof Url) {
++        return;
++      }
+       if ($url->isRouted()) {
+         $allowed = TRUE;
+         try {

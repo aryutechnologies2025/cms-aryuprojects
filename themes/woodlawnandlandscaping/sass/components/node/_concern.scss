@@ -1,0 +1,80 @@
+.node--type-concern {
+  // Teaser View (Learning Center Concerns List)
+  &.node--view-mode-teaser {
+    .node__content {
+      [class*="field--name-field-icon"] {
+        background-color: palette(gray, lit);
+        svg {
+          path {
+            fill: palette(primary);
+          }
+        }
+      }
+      .title-link {
+        &:hover {
+          color: palette(primary);
+        }
+      }
+      .learn-more {
+        span {
+          @extend %button;
+
+          &:hover {
+            color: palette(white);
+          }
+        }
+      }
+
+      .field--name-field-issues {
+        .field__item {
+          &::before {
+            color: palette(primary);
+          }
+        }
+      }
+
+      &:hover {
+        [class*="field--name-field-icon"] {
+          svg {
+            path {
+              fill: palette(primary, light);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Token View Mode
+  &.node--view-mode-token {
+    @extend %tokenview;
+  }
+
+  // Secondary Token View Mode
+  &.node--view-mode-secondary-token {
+    @extend %secondarytokenview;
+  }
+
+  // Modal
+  &.node--view-mode-modal {
+    .concern-link {
+
+      .field--name-field-icon-concern {
+        background-color: palette(primary);
+
+        svg {
+          padding: 6px;
+          path {
+            fill: palette(white);
+          }
+        }
+      }
+      .field--name-title {
+        @extend %underline-link-reverse;
+      }
+    }
+    .concern-modal {
+      display: none;
+    }
+  }
+}

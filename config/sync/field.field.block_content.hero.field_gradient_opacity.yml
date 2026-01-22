@@ -1,0 +1,25 @@
+uuid: 34992078-4d69-4b3d-9f96-fb63eed7d91d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_gradient_opacity
+id: block_content.hero.field_gradient_opacity
+field_name: field_gradient_opacity
+entity_type: block_content
+bundle: hero
+label: 'Gradient Opacity'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 100
+default_value_callback: ''
+settings:
+  min: 0
+  max: 100
+  prefix: ''
+  suffix: ''
+field_type: integer

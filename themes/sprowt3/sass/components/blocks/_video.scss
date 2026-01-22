@@ -1,0 +1,53 @@
+.block-inline-blockvideo {
+    padding: 30px;
+}
+
+// careers video
+.block-career-video {
+    .field--name-field-heading {
+        text-align: center;
+    }
+    .media--type-remote-video {
+        > .field__item {
+            display: flex;
+            justify-content: center;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    .field--name-field-video-thumbnail {
+        // don't display thumbnail so it can be swapped with the default thumbnail image
+        display: none !important;
+    }
+    .colorbox-media-video {
+       position: relative;
+       overflow: hidden;
+       cursor: pointer;
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
+        opacity: .3;
+        transition: .3s;
+    }
+    &:before {
+        content: url('../assets/icons8-play-50.png');
+        position: absolute;
+        top: calc(50% - 25px);
+        left: calc(50% - 25px);
+        z-index: 1;
+    }
+    &:hover {
+      &:after {
+        opacity: .5;
+      }
+    }
+  }
+}

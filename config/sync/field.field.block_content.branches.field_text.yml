@@ -1,0 +1,30 @@
+uuid: ffd63816-89e7-4686-a954-cbbccacb680a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.branches
+    - field.storage.block_content.field_text
+    - filter.format.basic_html
+    - filter.format.code
+    - filter.format.full_html
+    - filter.format.restricted_html
+  module:
+    - text
+id: block_content.branches.field_text
+field_name: field_text
+entity_type: block_content
+bundle: branches
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - code
+    - restricted_html
+    - full_html
+field_type: text_long

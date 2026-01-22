@@ -1,0 +1,76 @@
+global_settings:
+    css:
+        theme:
+            css/global_settings.css: { }
+    js:
+        js/global_settings.js: {}
+    dependencies:
+        - core/jquery
+        - sprowt_settings/sprowt_object
+
+handler_settings:
+    js:
+        js/handler_settings.js: {}
+    dependencies:
+        - core/jquery
+        - sprowt_settings/sprowt_object
+
+instantquote:
+    css:
+        theme:
+            css/instantquote.css: {}
+
+modal:
+    css:
+        theme:
+            css/modal.css: { }
+    js:
+        js/modal.js: {}
+    dependencies:
+        - core/jquery
+        - lawnbot/jquery.modal
+
+jquery.modal:
+    css:
+        theme:
+            https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css: { external: true, minimized: true }
+    js:
+        https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js: { external: true, minimized: true }
+
+## Custom module library for general purposes.
+#lawnbot:
+#    js:
+#        js/lawnbot.js: { }
+#    css:
+#        component:
+#            css/lawnbot.css: { }
+#    dependencies:
+#        - core/drupalSettings
+#        - lawnbot/jquery-labelauty
+#
+## Third-party library (self hosted).
+#jquery-labelauty:
+#    remote: https://github.com/fntneves/jquery-labelauty
+#    version: 1.1.0
+#    license:
+#        name: MIT
+#        url: https://github.com/fntneves/jquery-labelauty/blob/v1.1.0/LICENSE
+#        gpl-compatible: true
+#    js:
+#        /libraries/jquery-labelauty/source/jquery-labelauty.js: { }
+#    css:
+#        component:
+#            /libraries/jquery-labelauty/source/jquery-labelauty.css: { }
+#    dependencies:
+#        - core/jquery
+#
+## Third-party library (CDN).
+#vuejs:
+#    remote: https://vuejs.org
+#    version: 2.0.5
+#    license:
+#        name: MIT
+#        url: https://github.com/vuejs/vue/blob/dev/LICENSE
+#        gpl-compatible: true
+#    js:
+#        https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js: { type: external, minified: true }

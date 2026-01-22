@@ -1,0 +1,25 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    (content.field_image_mobile[0]['#media'].field_media_image.entity.uri.value is not empty ? 'mobile-image' )
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+  {% if content.field_text[0] is empty %}
+    {% set display = 'inline' %}
+  {% endif %}
+    <div class="call-out-wrap {{ display }}">
+      {{ content|without('field_image','field_image_mobile') }}
+    </div>
+  {% endblock %}
+  <div class="block-bg-image">{{ content.field_image }}{{ content.field_image_mobile }}</div>
+</div>

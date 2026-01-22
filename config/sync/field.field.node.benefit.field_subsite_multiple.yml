@@ -1,0 +1,23 @@
+uuid: 23ce72ae-e42f-4ad6-a3c8-e1f08e3f6ed2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subsite_multiple
+    - node.type.benefit
+  module:
+    - sprowt_subsite
+id: node.benefit.field_subsite_multiple
+field_name: field_subsite_multiple
+entity_type: node
+bundle: benefit
+label: Subsite(s)
+description: 'Main and/or Subsites this content belongs to.'
+required: false
+translatable: false
+default_value:
+  -
+    target: _main
+default_value_callback: ''
+settings: {  }
+field_type: sprowt_subsite_reference

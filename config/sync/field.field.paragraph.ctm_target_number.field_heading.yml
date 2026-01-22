@@ -1,0 +1,19 @@
+uuid: 07f67497-9993-493b-8a47-9241ed814542
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.ctm_target_number
+id: paragraph.ctm_target_number.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: ctm_target_number
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

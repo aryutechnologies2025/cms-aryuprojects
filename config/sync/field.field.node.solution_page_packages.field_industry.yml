@@ -1,0 +1,29 @@
+uuid: b57a8fe6-35ff-4957-ad67-bbee561e7663
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_industry
+    - node.type.solution_page_packages
+    - taxonomy.vocabulary.industry
+id: node.solution_page_packages.field_industry
+field_name: field_industry
+entity_type: node
+bundle: solution_page_packages
+label: Industry
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      industry: industry
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

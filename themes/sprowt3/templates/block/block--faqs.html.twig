@@ -1,0 +1,58 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    (content.field_accordion.0['#markup'] != '0' ? 'accordioned' )
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="faqs-wrap">
+      {{ content|without('field_faqs','field_accordion') }}
+
+      {% if content.field_faqs|render %}
+        <div class="view-faqs">
+          <div class="view-content">
+            {{ content.field_faqs }}
+          </div>
+        </div>
+
+
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{% for item in content.field_faqs['#items'] %}
+                {% if item.entity.field_question.value is not empty %}
+                  {
+                    "@type": "Question",
+                    "name": "{{ item.entity.field_question.value }}",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "{{ item.entity.field_answer.value|striptags }}"
+                    }
+                  }, 
+                {% endif %}
+              {% endfor %}]
+          }
+        </script>
+
+      {% else %}
+        {{ drupal_view((subsite == '_main' ? 'faqs' : 'faqs_subsite'), 'block_teasers') }}
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{{ drupal_view((subsite == '_main' ? 'faqs' : 'faqs_subsite'),'block_schema_all') }}{}]
+          }
+        </script>
+      {% endif %}
+    </div>
+  {% endblock %}
+</div>

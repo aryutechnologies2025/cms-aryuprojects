@@ -1,0 +1,11 @@
+uuid: ef458bee-65ac-40ec-bf8e-2d6c38331926
+langcode: en
+status: true
+dependencies: {  }
+id: main_menu_mega_menu
+block_id: 'we_megamenu_fork_block:main'
+category: header_footer
+label: 'Main Menu Mega Menu'
+image_path: ''
+image_alt: ''
+weight: -78

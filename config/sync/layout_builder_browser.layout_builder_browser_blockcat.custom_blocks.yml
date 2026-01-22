@@ -1,0 +1,10 @@
+uuid: 0b45ca40-88e4-4a59-b610-75607eebf256
+langcode: en
+status: true
+dependencies: {  }
+id: custom_blocks
+label: 'Page Specific Blocks'
+weight: -10
+opened: true
+image_path: null
+image_alt: null

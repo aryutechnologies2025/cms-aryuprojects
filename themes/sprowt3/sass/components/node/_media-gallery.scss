@@ -1,0 +1,536 @@
+.node--type-media-gallery {
+  // pager other galleries
+  .layout-container-wrap {
+    max-width: 1145px;
+  }
+
+  // pager for other galleries 
+  [id*="pager"] {
+    padding: 30px 30px 20px;
+    @include breakpoint($small) {
+      padding: 30px 20px;
+    }
+    > .layout-container-wrap > .layout__region > .block-inline-blockbasic {
+      padding: 0;
+      text-align: center;
+      .field--name-field-heading,
+      .field--name-field-subheading-tag {
+        font-size: 2.8rem;
+        font-weight: bold;
+      }
+    }
+    .field--name-field-label-tag {
+      font-weight: bold;
+      &:after {
+        margin: 6px auto 0;
+      }
+    }
+    @include breakpoint($small) {
+      > .layout-container-wrap {
+        max-width: 1165px;
+      }
+      > .layout-container-wrap > .layout__region > .block-inline-blockbasic {
+        padding: 0 10px;
+        text-align: left;
+        .field--name-field-heading,
+        .field--name-field-subheading-tag {
+          font-size: 4.2rem;
+          font-weight: bold;
+        }
+      }
+      .field--name-field-label-tag:after {
+        margin: 6px 0 0;
+      }
+    }
+    .view-display-id-gallery_pager {
+      padding: 30px 0;
+
+      .view-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .views-row {
+          display: inline-block;
+          margin-bottom: 0px;
+          + .views-row {
+            margin-top: 30px;
+          }
+          .views-field-title {
+            border-bottom: none;
+            a {
+              font-size: 1.6rem;
+              padding: 10px 20px;
+              text-decoration: none;
+              color: palette(black);
+              border: 2px solid palette(grey, lightest);
+              transition: .3s;
+              &:hover {
+                color: palette(black, pure);
+                background-color: palette(grey, lightest);
+                border: 2px solid palette(grey, lightest);
+              }
+            }
+          }
+        }
+      }
+      @include breakpoint($small) {
+        padding: 10px 0;
+        .view-content {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          max-width: 800px;
+          .views-row {
+            flex: 0 1 auto;
+            margin: 30px 10px 5px;
+            .views-field-title {
+              a {
+                font-size: 1.6rem;
+              }
+            }
+          }
+        }
+      }
+      @include breakpoint($medium) {
+        .view-content {
+          max-width: 100%;
+          .views-row {
+            flex: 0 1 auto;
+            padding: 0 0 5px;
+            .views-field-title {
+              a {
+                font-size: 1.7rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // links if primary, secondary background
+    &.bg-primary,
+    &.bg-secondary {
+      .view-content {
+        .views-row {
+          .views-field-title {
+            a {
+              color: #fff;
+              &:hover {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // links if dark, black background 
+    &.bg-dark,
+    &.bg-black {
+      .view-content {
+        .views-row {
+          .views-field-title {
+            a {
+              color: #fff;
+              &:hover {
+                color: black;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // links if white, light background 
+    &.bg-zebra,
+    &.bg-light,
+    &.bg-white {
+      .view-content {
+        .views-row {
+          .views-field-title {
+            a {
+              color: palette(black);
+              &:hover {
+                color: palette(black);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // end pager 
+
+  #media-gallery {
+    margin-top: 20px;
+    padding: 0 20px;
+    @include breakpoint($small) {
+      padding: 0 30px;
+    }
+  }
+
+  .view-media-gallery {
+    @include breakpoint($small) {
+      padding: 30px 0;
+    }
+  }
+
+  .view-display-id-individual_gallery {
+    padding-bottom: 30px;
+  }
+
+  &.node--view-mode-gallery-node {
+    > .node__content {
+      > .field__items {
+        > .field__item {
+          + .field__item {
+            margin-top: 30px;
+          }
+        }
+      }
+      .paragraph--type--media-with-categories-img-vid,
+      .paragraph--type--media-with-categories-remote-vid,
+      .paragraph--type--media-with-categories-images,
+      .paragraph--type--media-with-categories {
+        .field--name-field-mp-heading,
+        .field--name-field-label {
+          font-weight: bold;
+          font-size: 2.1rem;
+          text-align: center;
+          text-transform: capitalize;
+          margin-bottom: 10px;
+          &:after {
+            display: none;
+          }
+        }
+        .field--name-field-mp-heading {
+          font-size: 2.8rem;
+        }
+        @include breakpoint($small) {
+          .field--name-field-label,
+          .field--name-field-mp-heading {
+            text-align: left;
+          }
+          .field--name-field-mp-heading {
+            font-size: 3.1rem;
+          }
+        }
+      }
+      .field--name-field-media {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 400px;
+        margin: 0 auto;
+        > .field__item {
+          display: flex;
+          justify-content: center;
+          flex: 0 1 350px;
+          .media {
+            .field--type-image {
+              > .field__item {
+                a {
+                  display: inline-block;
+                  height: 100%;
+                  position: relative;
+                  &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background-color: #000;
+                    opacity: 0;
+                    transition: .3s;
+                  }
+                }
+                &:hover {
+                  a {
+                    &:after {
+                      opacity: .5;
+                    }
+                  }
+                }
+              }
+            }
+            .field--name-name,
+            .field--name-field-caption p {
+              font-size: 1.7rem;
+              font-weight: 600;
+              margin: 10px 0;
+              line-height: 1.2;
+            }
+          }
+          + .field__item {
+            margin-top: 15px;
+          }
+        }
+        @include breakpoint($small) {
+          max-width: 100%;
+          margin: 0;
+          justify-content: flex-start;
+          > .field__item {
+            flex: 0 1 330px;
+            justify-content: flex-start;
+            margin: 10px;
+            + .field__item {
+              margin-top: 10px;
+            }
+            &:nth-of-type(2n + 1) {
+              margin-left: 0;
+            }
+          }
+        }
+        @include breakpoint(800px) {
+          > .field__item {
+            flex: 0 1 350px;
+          }
+        }
+        @include breakpoint($medium) {
+          > .field__item {
+            flex: 0 1 300px;
+            &:nth-of-type(2n + 1) {
+              margin-left: 10px;
+            }
+            &:nth-of-type(3n + 1) {
+              margin-left: 0;
+            }
+          }
+        }
+        @include breakpoint(1175px) {
+          > .field__item {
+            flex: 0 1 350px;
+          }
+        }
+      }
+
+      // video only
+      .node__content {
+        > .field--name-field-media-remote-vid {
+          > .field__item {
+            > .paragraph {
+              > .field--name-field-media {
+                @include breakpoint($medium) {
+                  > .field__item {
+                    flex: 0 1 350px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .colorbox-media-video {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: #000;
+          opacity: .3;
+          transition: .3s;
+        }
+        &:before {
+          content: url('../assets/icons8-play-50.png');
+          position: absolute;
+          top: 39%;
+          left: 42%;
+          z-index: 1;
+        }
+        &:hover {
+          &:after {
+            opacity: .5;
+          }
+        }
+      }
+      // end video only
+
+      > .field--name-field-media-gallery {
+        @include flexbox;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        > .field__item {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+
+        @include breakpoint($xsmall $max-small) {
+          > .field__item {
+            width: calc(50% - 8px);
+            margin-right: 16px;
+
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+    
+        @include breakpoint($small) {
+          > .field__item {
+            width: calc(33.33% - 10px);
+            margin-right: 15px;
+
+            &:nth-child(3n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+
+    // images only
+    > .node__content {
+      > .field--name-field-media {
+        display: block;
+        > .field__item {
+          > .paragraph > .field--name-field-media {
+            @include breakpoint(1175px) {
+              > .field__item {
+                flex: 0 1 345px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // documents only 
+    .field--name-field-media-documents {
+      .field--name-field-media {
+        display: block;
+        align-items: flex-start;
+        max-width: 900px;
+        margin: 0 auto;
+        > .field__item {
+          margin-top: 5px;
+          + .field__item {
+            margin-top: 5px;
+          }
+        }
+        a {
+          color: palette(black);
+          text-decoration: none;
+          &:hover {
+            color: palette(black);
+          }
+        }
+        @include breakpoint($small) {
+          column-count: 2;
+          column-gap: 0;
+          > .field__item {
+            display: inline-block;
+            width: 270px;
+          }
+          a {
+            font-size: 1.5rem;
+          }
+        }
+        @include breakpoint($medium) {
+          a {
+            font-size: 1.6rem;
+          }
+        }
+        @include breakpoint(1200px) {
+          column-count: 3;
+          max-width: 100%;
+          a {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+    // end documents only 
+  }
+
+  &.node--view-mode-token {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  
+  // all galleries list 
+  &.node--view-mode-galleries-listing {
+
+    .node__content {
+      position: relative;
+
+      .field--name-title-text {
+        @include flexbox;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: palette(white);
+        pointer-events: none;
+        transition: transform $duration;
+        z-index: 1;
+
+        @include breakpoint($small) {
+          font-size: 2.4rem;
+        }
+      }
+
+      .field--name-field-gallery-thumbnail-hero {
+        a {
+          display: inline-block;
+          height: 100%;
+          position: relative;
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: background-color $duration;
+            pointer-events: none;
+          }
+          &:hover {
+            &::before {
+              background-color: rgba(0, 0, 0, 0.7);
+            }
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .field--name-title-text {
+        transform: scale(1.05);
+      }
+      .field--name-field-gallery-thumbnail-hero {
+        &::before {
+          background-color: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+  }
+}
+
+
+// modal
+#cboxContent {
+  #cboxTitle {
+    display: none !important;
+  }
+  #cboxClose {
+    top: 0;
+  }
+}

@@ -1,0 +1,58 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'display-' ~ content.field_display_special_offer.0['#markup'],
+    'slick-count-' ~ content.field_count_special_offer.0['#markup']
+  ]
+%}
+
+{# If Special Offer View is empty, don't display block #}
+{% set so_view = 'block_compact' %}
+{% set so_view_result = drupal_view_result('special_offers', so_view)|length %}
+{% set so_view_city = so_view ~ '_city' %}
+{% set so_view_city_result = drupal_view_result('special_offers', so_view_city)|length %}
+{% set so_view_landing = so_view ~ '_landing' %}
+{% set so_view_landing_result = drupal_view_result('special_offers', so_view_landing)|length %}
+{% set so_view_solution = so_view ~ '_solution' %}
+{% set so_view_solution_result = drupal_view_result('special_offers', so_view_solution)|length %}
+{% set so_view_nofilter = so_view ~ '_nofilter' %}
+{% set so_view_nofilter_result = drupal_view_result('special_offers', so_view_nofilter)|length %}
+{% set so_view_front = so_view ~ '_front' %}
+{% set so_view_front_result = drupal_view_result('special_offers', so_view_front)|length %}
+{% if (so_view_result > 0) or (so_view_city_result > 0) or (so_view_landing_result > 0) or (so_view_solution_result > 0) or (so_view_nofilter_result > 0) or (so_view_front_result > 0) %}
+
+  <div{{attributes.addClass(classes)}}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    {% block content %}
+      <div class="special-offers-wrap">
+        {{ content|without('field_filter','field_count_special_offer','field_display_special_offer','field_special_offer_overrides') }}
+
+        {% if content.field_special_offer_overrides|render %}
+          <div class="view-content">
+            {% for key, item in content.field_special_offer_overrides %}
+              {% if key|first != '#' %}
+                <div class="views-row">
+                  {{ drupal_entity('node', item['#plain_text'], content.field_display_special_offer.0['#markup']) }}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% else %}
+          {% set which_view = 'block_compact' %}
+          {% if is_front %}
+            {% set which_view = which_view ~ '_front' %}
+          {% endif %}
+          {{ drupal_view((subsite == '_main' ? 'special_offers' : 'special_offers_subsite'), which_view, content.field_display_special_offer.0['#markup'], content.field_count_special_offer.0['#markup']) }}
+        {% endif %}
+
+      </div>
+    {% endblock %}
+  </div>
+
+{% endif %}

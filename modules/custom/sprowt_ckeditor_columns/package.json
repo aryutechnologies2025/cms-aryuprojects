@@ -1,0 +1,25 @@
+{
+  "name": "drupal-ckeditor5-sprowt-columns",
+  "version": "1.0.0",
+  "description": "Drupal CKEditor 5 for Sprowt columns",
+  "author": "",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "watch": "webpack --watch",
+    "build": "npm run compile && webpack",
+    "autoprefix": "postcss ./css/*.css --use autoprefixer -d ./css",
+    "compile": "node-sass ./scss -o ./css",
+    "build:sass": "npm run compile && npm run autoprefix"
+  },
+  "devDependencies": {
+    "@ckeditor/ckeditor5-dev-utils": "^30.0.0",
+    "ckeditor5": "~34.1.0",
+    "raw-loader": "^4.0.2",
+    "terser-webpack-plugin": "^5.2.0",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.4.0",
+    "autoprefixer": "^9.6.1",
+    "postcss-cli": "^6.1.3",
+    "node-sass": "^4.12.0"
+  }
+}

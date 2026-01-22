@@ -1,0 +1,7 @@
+services:
+  sprowt_uninstall.commands:
+    class: \Drupal\sprowt_uninstall\Commands\SprowtUninstallCommands
+    tags:
+      - { name: drush.command }
+    arguments:
+        - '@sprowt_uninstall.service'

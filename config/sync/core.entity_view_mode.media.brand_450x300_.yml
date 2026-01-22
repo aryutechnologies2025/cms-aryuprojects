@@ -1,0 +1,11 @@
+uuid: 9a2faec8-b1b2-4486-9755-ceccdc74017c
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.brand_450x300_
+label: 'Brand (450x300)'
+description: ''
+targetEntityType: media
+cache: true

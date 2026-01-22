@@ -1,0 +1,8 @@
+uuid: 082af216-f464-4136-93ca-7d13df624bd6
+langcode: en
+status: true
+dependencies: {  }
+id: solution_finder
+label: 'Solution Finder'
+revision: false
+description: ''

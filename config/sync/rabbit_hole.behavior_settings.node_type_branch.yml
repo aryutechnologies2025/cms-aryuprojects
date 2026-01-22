@@ -1,0 +1,14 @@
+uuid: ca5dd6b9-1ce5-4c3c-821c-c34fff8579b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.branch
+id: node_type_branch
+entity_type_id: node_type
+entity_id: branch
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

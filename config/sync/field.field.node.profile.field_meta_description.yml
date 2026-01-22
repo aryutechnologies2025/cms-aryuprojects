@@ -1,0 +1,19 @@
+uuid: 59bc564c-e1a7-48c1-9599-8304187f4e47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meta_description
+    - node.type.profile
+id: node.profile.field_meta_description
+field_name: field_meta_description
+entity_type: node
+bundle: profile
+label: 'Meta Description'
+description: 'Text used for the description meta tag'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

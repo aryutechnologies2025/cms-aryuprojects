@@ -1,0 +1,14 @@
+uuid: de5462a7-5d73-4145-97e6-3088a2032a26
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_landing_pages
+label: 'Subsite and Landing Pages'
+enabled: true
+first_field: field_subsite
+second_field: field_landing_page_ref
+add_direction: append
+bundles:
+  node:
+    - landing_page
+    - subsite

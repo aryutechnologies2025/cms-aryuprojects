@@ -1,0 +1,8 @@
+uuid: a4a1fbee-8bac-49b5-bb1a-85fa3e230198
+langcode: en
+status: true
+dependencies: {  }
+id: blog_list
+label: 'Blog List'
+revision: false
+description: ''

@@ -1,0 +1,15 @@
+services:
+    sprowt_admin_override.config_overrider:
+        class: Drupal\sprowt_admin_override\Config\ConfigOverrider
+        tags:
+            - { name: config.factory.override, priority: 5 }
+
+    sprowt_admin_override.event_subscriber:
+        class: Drupal\sprowt_admin_override\EventSubscriber\LayoutBuilderBlockRenderSubscriber
+        tags:
+            - { name: event_subscriber }
+
+    sprowt_admin_override.event_subscriber_main:
+        class: Drupal\sprowt_admin_override\EventSubscriber\SprowtAdminOverrideSubscriber
+        tags:
+            - { name: event_subscriber }

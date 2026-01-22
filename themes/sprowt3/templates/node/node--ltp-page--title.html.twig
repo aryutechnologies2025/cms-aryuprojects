@@ -1,0 +1,28 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<div{{attributes.addClass(classes).removeAttribute('role')}}>
+
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div{{content_attributes.addClass('node__content')}}>
+    <a class="list-link" href="{{ linktourl['#value'] }}">
+      {% if content.field_city_tax[0] is not empty %}
+        <div class="field field--name-title-text">{{ content.field_city_tax[0]['#plain_text'] }}</div>
+      {% else %}
+        {{ content|without('field_used_for_lists_only','field_ltp_ref','field_city_tax') }}
+      {% endif %}
+    </a>
+  </div>
+
+</div>

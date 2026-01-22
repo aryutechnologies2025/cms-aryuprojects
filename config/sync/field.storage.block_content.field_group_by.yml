@@ -1,0 +1,34 @@
+uuid: 4c92dfe0-003f-4dcb-839f-abdc87059a83
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - field_permissions
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: block_content.field_group_by
+field_name: field_group_by
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: industry
+      label: Industry
+    -
+      value: region
+      label: Region
+    -
+      value: location
+      label: Location
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

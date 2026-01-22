@@ -1,0 +1,8 @@
+uuid: c1a7ab05-f3fe-478d-adfa-33adfe4f6a21
+langcode: en
+status: true
+dependencies: {  }
+id: dynamic_address_multiple
+label: 'Dynamic Address - Multiple'
+revision: false
+description: 'Dynamic address for footer. Order addresses via /admin/content/sorting/location'

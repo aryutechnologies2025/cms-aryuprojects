@@ -1,0 +1,11 @@
+uuid: 3ebce74a-eda9-407b-81b6-2d93de9ad042
+langcode: en
+status: true
+dependencies: {  }
+id: author
+block_id: 'field_block:node:blog:field_author'
+category: custom_blocks
+label: Author
+image_path: ''
+image_alt: ''
+weight: -85

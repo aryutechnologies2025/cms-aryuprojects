@@ -1,0 +1,22 @@
+uuid: 948867b7-3835-47eb-b962-74c7ded2207d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - woodlawnandlandscaping
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: woodlawnandlandscaping_content
+theme: woodlawnandlandscaping
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

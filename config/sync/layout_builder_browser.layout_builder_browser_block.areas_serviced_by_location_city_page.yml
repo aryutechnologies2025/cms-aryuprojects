@@ -1,0 +1,16 @@
+uuid: 7866c3d6-5716-4e57-9b63-b5d638edbb46
+langcode: en
+status: true
+dependencies:
+  module:
+    - sprowt_admin_override
+third_party_settings:
+  sprowt_admin_override:
+    description: '<p>List of City Pages also tagged with the Location that the current City Page is tagged with.</p>'
+id: areas_serviced_by_location_city_page
+block_id: 'inline_block:areas_serviced_by_location_city'
+category: custom_blocks
+label: 'Areas Serviced by Location (City Page)'
+image_path: ''
+image_alt: ''
+weight: -95

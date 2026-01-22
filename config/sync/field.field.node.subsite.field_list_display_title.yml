@@ -1,0 +1,19 @@
+uuid: 1579b958-24b6-489a-9c43-5532af8f4bf2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_list_display_title
+    - node.type.subsite
+id: node.subsite.field_list_display_title
+field_name: field_list_display_title
+entity_type: node
+bundle: subsite
+label: 'List display title'
+description: 'Title to use in list displays (i.e. in pre-built webform options).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

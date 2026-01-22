@@ -1,0 +1,11 @@
+uuid: 022d27d0-c6ea-4d24-ade7-6dedfbaf7c59
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.senary_teaser
+label: 'Senary Teaser'
+description: ''
+targetEntityType: node
+cache: true

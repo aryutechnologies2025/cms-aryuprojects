@@ -1,0 +1,17 @@
+uuid: 9bf3f81e-5625-432d-b90a-82192f0aa506
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: media_gallery_individual_thumb_video
+label: 'Media Gallery Individual Thumb - Video'
+effects:
+  006713f3-7be8-404d-bc81-127166c1b760:
+    uuid: 006713f3-7be8-404d-bc81-127166c1b760
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 352
+      height: 240
+      crop_type: focal_point

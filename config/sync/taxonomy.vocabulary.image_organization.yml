@@ -1,0 +1,9 @@
+uuid: 03660708-b9ab-4543-8fef-26222f137528
+langcode: en
+status: true
+dependencies: {  }
+name: 'Image Organization'
+vid: image_organization
+description: 'Taxonomy for organizing uploaded images.'
+weight: 0
+new_revision: false

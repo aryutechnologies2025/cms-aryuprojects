@@ -1,0 +1,24 @@
+uuid: 9a913cfa-4506-457b-8da8-c5cb62609d30
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_posting_date
+    - node.type.job_post
+  module:
+    - datetime
+id: node.job_post.field_job_posting_date
+field_name: field_job_posting_date
+entity_type: node
+bundle: job_post
+label: 'Posting Date'
+description: 'Date when the job is posted.'
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

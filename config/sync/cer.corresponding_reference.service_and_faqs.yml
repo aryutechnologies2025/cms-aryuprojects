@@ -1,0 +1,14 @@
+uuid: f9e3f5ab-c341-46fe-a708-5dcb1039241f
+langcode: en
+status: true
+dependencies: {  }
+id: service_and_faqs
+label: 'Service and FAQs'
+enabled: true
+first_field: field_services
+second_field: field_ref_faqs
+add_direction: null
+bundles:
+  node:
+    - faq
+    - service

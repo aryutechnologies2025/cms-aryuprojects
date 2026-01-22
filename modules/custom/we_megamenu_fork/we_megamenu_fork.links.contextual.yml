@@ -1,0 +1,4 @@
+we_megamenu_fork.block.contextual_links:
+    title: "Drupal 8 Mega Menu Configure"
+    route_name: we_megamenu_fork.admin.configure
+    group: we_megamenu_fork_block

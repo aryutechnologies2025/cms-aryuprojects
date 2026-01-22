@@ -1,0 +1,16 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'max-col-' ~ content.field_max_columns[0]['#markup'],
+    (content.field_accordion.0['#markup'] == '1' ? 'accordioned' )
+  ]
+%}
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {{ content|without('field_accordion') }}
+</div>

@@ -1,0 +1,22 @@
+uuid: 754e5b85-fb42-4121-abc7-ad9bb200527a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: issues
+label: Issues
+type: 'canonical_entities:node'
+pattern: 'learning-center/[node:field_concerns:entity:title]/[node:title]/'
+selection_criteria:
+  494b096a-e055-44d4-a33a-ee97271a606a:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 494b096a-e055-44d4-a33a-ee97271a606a
+    context_mapping:
+      node: node
+    bundles:
+      issue: issue
+selection_logic: and
+weight: -9
+relationships: {  }

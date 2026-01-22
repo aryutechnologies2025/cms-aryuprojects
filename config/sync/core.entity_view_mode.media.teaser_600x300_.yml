@@ -1,0 +1,11 @@
+uuid: ec7096e0-3bc3-4f72-8778-6e2baf7dab45
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.teaser_600x300_
+label: 'Teaser (600x300)'
+description: ''
+targetEntityType: media
+cache: true

@@ -1,0 +1,12 @@
+uuid: 19a42d28-4ddf-4622-b1c8-01ab25ebfc76
+langcode: en
+status: true
+dependencies: {  }
+id: primary_color
+label: 'Primary Color'
+classes: bg-primary
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -18

@@ -1,0 +1,25 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="basic-wrap">
+      {{ content|without('field_text','field_image','field_image_alignment','field_link') }}
+      <div class="basic-text-wrap image-align-{{ content.field_image_alignment[0]['#markup'] }}">
+        {{ content.field_image }}
+        {{ content.field_text }}
+      </div>
+      {{ content.field_link }}
+    </div>
+  {% endblock %}
+</div>
+ 

@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains sprowt_install.module.
+ */
+require_once __DIR__ . '/src/SprowtBaseInstallUtil.php';
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
+
+/**
+ * Implements hook_help().
+ */
+function sprowt_base_install_help($route_name, $route_match) {
+    switch ($route_name) {
+        // Main module help for the sprowt_install module.
+        case 'help.page.sprowt_install':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('A module installed before everything else. Used mostly for installer tasks.') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+function _sprowt_base_install_test() {
+    $pid = '999';
+    $running = \Drupal\sprowt_base_install\SprowtBaseInstallUtil::isProcessRunningByPid($pid);
+    return $running;
+}

@@ -1,0 +1,23 @@
+uuid: 81cdf49e-8d58-416c-99a0-f9611825550e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subsite
+    - node.type.service
+  module:
+    - sprowt_subsite
+id: node.service.field_subsite
+field_name: field_subsite
+entity_type: node
+bundle: service
+label: Subsite
+description: 'Main or Subsite this content belongs to.'
+required: false
+translatable: false
+default_value:
+  -
+    target: _main
+default_value_callback: ''
+settings: {  }
+field_type: sprowt_subsite_reference

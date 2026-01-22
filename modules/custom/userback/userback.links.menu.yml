@@ -1,0 +1,6 @@
+userback.settings_form:
+    title: Userback
+    description: Configure Userback.
+    parent: system.admin_config_services
+    route_name: userback.settings_form
+    weight: 10

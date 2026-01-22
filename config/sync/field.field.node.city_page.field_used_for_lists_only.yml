@@ -1,0 +1,23 @@
+uuid: 03f26427-bd2e-4891-b70d-746053047484
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_used_for_lists_only
+    - node.type.city_page
+id: node.city_page.field_used_for_lists_only
+field_name: field_used_for_lists_only
+entity_type: node
+bundle: city_page
+label: 'Used for Lists Only'
+description: "When toggled on, this will allow this city to display in lists only on the site. It will not be an individual City Page.\r\n\r\nWhen toggled on, this will allow this city to display in lists only on the site. It will not be an individual City Page.\r\n\r\nThis will also affect the \\\"noindex\\\" metatag and the index setting in simple xml sitemap: When toggled on, this will add the noindex metatag and turn off the index setting in simple xml sitemap. When toggled off, it will add back in the original metatag noindex setting and turn back on the index setting in simple xml sitemap. If the field is untouched, then these two things won't happen."
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

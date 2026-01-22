@@ -1,0 +1,29 @@
+uuid: ae57e717-26f5-4be5-bfdd-56cf72adcd92
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faqs
+    - node.type.faq
+    - node.type.subsite
+id: node.subsite.field_faqs
+field_name: field_faqs
+entity_type: node
+bundle: subsite
+label: FAQ(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      faq: faq
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

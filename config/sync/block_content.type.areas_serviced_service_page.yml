@@ -1,0 +1,8 @@
+uuid: 28a358ba-2209-4d60-88ab-dfc86c4f8eae
+langcode: en
+status: true
+dependencies: {  }
+id: areas_serviced_service_page
+label: 'Areas Serviced (Service Page)'
+revision: false
+description: "List of City Pages and LTP Pages tagged with the current Service Page and options to group by Industry, Location or Region Taxonomy.\r\nIf 'Show Additional Service Cities' is selected the list will be filtered by cities tagged with the 'Additional Services - No Follow Link' field. "

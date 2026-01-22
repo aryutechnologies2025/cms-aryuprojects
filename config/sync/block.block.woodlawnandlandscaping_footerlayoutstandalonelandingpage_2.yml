@@ -1,0 +1,33 @@
+uuid: 433c8847-1e6a-412f-8107-2c669e33e4f9
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:footer:be78cd09-fb74-47bf-b476-e675b5a612ac'
+  module:
+    - block_content
+    - node
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_footerlayoutstandalonelandingpage_2
+theme: woodlawnandlandscaping
+region: footer_layout
+weight: 0
+provider: null
+plugin: 'block_content:be78cd09-fb74-47bf-b476-e675b5a612ac'
+settings:
+  id: 'block_content:be78cd09-fb74-47bf-b476-e675b5a612ac'
+  label: 'Footer Layout: Standalone Landing Page'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      standalone_landing_page: standalone_landing_page

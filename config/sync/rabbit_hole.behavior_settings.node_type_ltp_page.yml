@@ -1,0 +1,14 @@
+uuid: 83e5903d-78b4-462f-bb77-226e5f3787e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.ltp_page
+id: node_type_ltp_page
+entity_type_id: node_type
+entity_id: ltp_page
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

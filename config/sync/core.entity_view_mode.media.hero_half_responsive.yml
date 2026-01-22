@@ -1,0 +1,11 @@
+uuid: 98a85539-741e-4ae2-b473-95a886ae0333
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.hero_half_responsive
+label: 'Hero Half Responsive'
+description: ''
+targetEntityType: media
+cache: true

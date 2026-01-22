@@ -1,0 +1,11 @@
+uuid: 16ea901e-389f-4d53-bb47-cc81842a7188
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_zipcode_finder_log
+label: 'Bulk Update Zipcode finder log Fields'
+type: zipcode_finder_log
+plugin: bulk_update_fields_action_base
+configuration: {  }

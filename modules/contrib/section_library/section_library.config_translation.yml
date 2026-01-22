@@ -1,0 +1,5 @@
+section_library.admin_index:
+  title: 'Section library settings'
+  base_route_name: section_library.admin_index
+  names:
+    - section_library.settings

@@ -1,0 +1,21 @@
+uuid: d7508b7e-d35a-4141-8baa-6c3744133f9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_do_not_show_address
+    - node.type.branch
+id: node.branch.field_do_not_show_address
+field_name: field_do_not_show_address
+entity_type: node
+bundle: branch
+label: 'Do not show Street Address in the Footer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

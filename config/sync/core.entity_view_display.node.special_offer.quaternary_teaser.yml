@@ -1,0 +1,109 @@
+uuid: 3854ce98-7e37-485c-aabe-437043af3b9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.quaternary_teaser
+    - field.field.node.special_offer.body
+    - field.field.node.special_offer.field_button
+    - field.field.node.special_offer.field_button_text
+    - field.field.node.special_offer.field_disclaimer
+    - field.field.node.special_offer.field_expiration_date
+    - field.field.node.special_offer.field_featured
+    - field.field.node.special_offer.field_heading_alt
+    - field.field.node.special_offer.field_industry
+    - field.field.node.special_offer.field_offer_headline
+    - field.field.node.special_offer.field_ref_city
+    - field.field.node.special_offer.field_services
+    - field.field.node.special_offer.field_special_offer_featured_ico
+    - field.field.node.special_offer.field_subheading
+    - field.field.node.special_offer.field_subsite_multiple
+    - node.type.special_offer
+  module:
+    - datetime
+    - layout_builder
+    - link
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.special_offer.quaternary_teaser
+targetEntityType: node
+bundle: special_offer
+mode: quaternary_teaser
+content:
+  field_button:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_button_text:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_disclaimer:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_expiration_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: short
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_featured:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_offer_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_subheading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  body: true
+  field_heading_alt: true
+  field_industry: true
+  field_ref_city: true
+  field_services: true
+  field_special_offer_featured_ico: true
+  field_subsite_multiple: true
+  langcode: true
+  links: true
+  show_title: true

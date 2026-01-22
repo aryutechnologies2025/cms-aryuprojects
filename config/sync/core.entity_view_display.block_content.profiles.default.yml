@@ -1,0 +1,70 @@
+uuid: ece3fa1d-6412-423f-ad98-5b6cb404365d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.profiles
+    - field.field.block_content.profiles.field_display_profile
+    - field.field.block_content.profiles.field_group_by_department
+    - field.field.block_content.profiles.field_heading
+    - field.field.block_content.profiles.field_label_tag
+    - field.field.block_content.profiles.field_paged
+    - field.field.block_content.profiles.field_subheading_tag
+  module:
+    - options
+    - tag_text_field
+id: block_content.profiles.default
+targetEntityType: block_content
+bundle: profiles
+mode: default
+content:
+  field_display_profile:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_group_by_department:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_paged:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true

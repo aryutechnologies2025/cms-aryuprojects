@@ -1,0 +1,29 @@
+_core:
+  default_config_hash: 9rAU4Pku7eMBQxauQqAgjzlcicFZ2As6zEa6zvTlCB8
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: ''
+  use_default: true
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: false
+logo:
+  path: ''
+  url: null
+  use_default: true
+  width: ''
+variableName: ''
+variableValue: ''
+colorPicker: '#000000'
+colorVariables: {  }
+sassVariablesTextArea: '$color_test_test: var(--test-test);'
+logo_reverse:
+  use_default: 1
+  path: ''
+  width: ''
+touch_icon:
+  use_default: 1
+  path: ''

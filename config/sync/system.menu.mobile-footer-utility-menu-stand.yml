@@ -1,0 +1,8 @@
+uuid: 6ae638c5-120a-4d0a-a7bf-33d8e33b6d30
+langcode: en
+status: true
+dependencies: {  }
+id: mobile-footer-utility-menu-stand
+label: 'Mobile Footer Utility Menu: Standalone Landing Page'
+description: ''
+locked: false

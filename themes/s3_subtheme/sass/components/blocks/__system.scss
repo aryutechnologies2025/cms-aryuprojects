@@ -1,0 +1,24 @@
+.user-login-form {
+  color: palette(white);
+  background-color: palette(primary);
+
+  label {
+    color: palette(white);
+  }
+  .form-submit {
+    color: palette(white);
+    background-color: palette(secondary);
+    &:hover {
+      color: palette(primary);
+      background-color: #fff;
+    }
+  }
+  .button {
+    color: palette(white);
+    background-color: palette(secondary);
+    &:hover {
+      color: palette(primary);
+      background-color: #fff;
+    }
+  }
+}

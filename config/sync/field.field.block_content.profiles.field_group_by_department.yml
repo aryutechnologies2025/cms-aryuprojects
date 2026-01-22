@@ -1,0 +1,23 @@
+uuid: fbe122ea-56b0-4424-ab75-e40f72ad962a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.profiles
+    - field.storage.block_content.field_group_by_department
+id: block_content.profiles.field_group_by_department
+field_name: field_group_by_department
+entity_type: block_content
+bundle: profiles
+label: 'Group by Department'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

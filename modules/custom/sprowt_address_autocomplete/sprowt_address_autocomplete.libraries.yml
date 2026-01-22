@@ -1,0 +1,63 @@
+google_maps_library_init:
+    js:
+        js/google_maps_library_init.js: {}
+    dependencies:
+        - core/drupalSettings
+
+element:
+    js:
+        js/element.js: {}
+    dependencies:
+        - core/drupalSettings
+        - core/jquery
+        - sprowt_address_autocomplete/google_maps_library_init
+        - core/once
+        - sprowt_address_autocomplete/detect_autofill
+
+detect_autofill:
+    remote: https://github.com/matteobad/detect-autofill
+    version: 1.1.4
+    license:
+        name: MIT
+        url: https://github.com/matteobad/detect-autofill#MIT-1-ov-file
+        gpl-compatible: true
+    js:
+        https://unpkg.com/detect-autofill/dist/detect-autofill.js: { external: true }
+
+## Custom module library for general purposes.
+#sprowt_address_autocomplete:
+#  js:
+#    js/sprowt-address-autocomplete.js: {}
+#  css:
+#    component:
+#      css/sprowt-address-autocomplete.css: {}
+#  dependencies:
+#    - core/drupalSettings
+#    - sprowt_address_autocomplete/jquery-labelauty
+#
+## Third-party library (self hosted).
+#jquery-labelauty:
+#  remote: https://github.com/fntneves/jquery-labelauty
+#  version: 1.1.0
+#  license:
+#    name: MIT
+#    url: https://github.com/fntneves/jquery-labelauty/blob/v1.1.0/LICENSE
+#    gpl-compatible: true
+#  js:
+#    /libraries/jquery-labelauty/source/jquery-labelauty.js: {}
+#  css:
+#    component:
+#      /libraries/jquery-labelauty/source/jquery-labelauty.css: {}
+#  dependencies:
+#    - core/jquery
+#
+## Third-party library (CDN).
+#vuejs:
+#  remote: https://vuejs.org
+#  version: 2.0.5
+#  license:
+#    name: MIT
+#    url: https://github.com/vuejs/vue/blob/dev/LICENSE
+#    gpl-compatible: true
+#  js:
+#    https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js: {type: external, minified: true}

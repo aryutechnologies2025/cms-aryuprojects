@@ -1,0 +1,28 @@
+uuid: 0b024f0f-c12d-440b-a42d-b4201646e5cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_services
+    - node.type.service
+    - node.type.testimonial
+id: node.testimonial.field_services
+field_name: field_services
+entity_type: node
+bundle: testimonial
+label: Services
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      service: service
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

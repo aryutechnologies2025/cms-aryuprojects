@@ -1,0 +1,25 @@
+uuid: 0aa27f88-3e27-4013-9913-a2aa03ce5984
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:ctm_header_block:d1b9896d-f54c-47d8-bfd1-b44a645cf1c1'
+  module:
+    - block_content
+  theme:
+    - s3_subtheme
+id: ctmheaderblock_2
+theme: s3_subtheme
+region: disabled
+weight: -5
+provider: null
+plugin: 'block_content:d1b9896d-f54c-47d8-bfd1-b44a645cf1c1'
+settings:
+  id: 'block_content:d1b9896d-f54c-47d8-bfd1-b44a645cf1c1'
+  label: 'CTM Header Block'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

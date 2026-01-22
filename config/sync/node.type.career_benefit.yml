@@ -1,0 +1,20 @@
+uuid: 663f3665-f555-4291-a589-32958d4105f1
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-navigation-subsite-
+      - main-navigation-subsite-full
+      - main
+    parent: 'main:'
+name: 'Career Benefit'
+type: career_benefit
+description: 'Benefits specifically for the Career section of the website (Career Pages).'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

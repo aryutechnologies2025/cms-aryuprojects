@@ -1,0 +1,14 @@
+uuid: c289507b-9bf9-40cc-b6b2-3c41635a55be
+langcode: en
+status: true
+dependencies: {  }
+id: overlay_light
+label: 'Overlay Light'
+classes: overlay-light
+type: component
+group: bgstyle
+block_restrictions:
+  - 'inline_block:call_out'
+  - 'inline_block:hero'
+layout_restrictions: {  }
+weight: 6

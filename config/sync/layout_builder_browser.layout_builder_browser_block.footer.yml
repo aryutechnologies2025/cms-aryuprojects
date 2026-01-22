@@ -1,0 +1,11 @@
+uuid: 96365125-2011-43bd-a0e6-ec51dbf80d96
+langcode: en
+status: true
+dependencies: {  }
+id: footer
+block_id: 'inline_block:footer'
+category: custom_blocks
+label: footer
+image_path: ''
+image_alt: ''
+weight: -90

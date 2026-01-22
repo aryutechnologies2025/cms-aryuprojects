@@ -1,0 +1,46 @@
+.banner {
+  display: none;
+
+  @include breakpoint($large) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 1279px) {
+  .block-alert-box {
+    margin-top: 100px;
+  }
+}
+
+.region-banner {
+  width: 100%;
+}
+
+.block-alert-box {
+  @include flexbox;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 6px 20px;
+  font-weight: bold;
+  text-align: center;
+
+  .field--name-field-text {
+    max-width: $container;
+    margin: 0 auto;
+    text-align: center;
+
+    p {
+      font-size: 1.6rem;
+    }
+
+    .button {
+      padding: 4px 30px;
+      margin-left: 8px;
+      margin-bottom: 2px;
+      font-size: inherit;
+      text-transform: inherit;
+    }
+  }
+}

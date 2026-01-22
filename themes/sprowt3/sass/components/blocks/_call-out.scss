@@ -1,0 +1,122 @@
+.layout__region {
+  .block-inline-blockcall-out,
+  .block--type-call-out {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: $margin;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    &[class^="bg-"] {
+      margin: 30px auto;
+    }
+
+    &[class*="bg-"] {
+      margin: 0px auto;
+
+      @include breakpoint($medium) {
+        margin: 30px auto;
+      }
+    }
+
+    &.mobile-image {
+
+      .field--name-field-image {
+        display: none;
+      }
+      .block-bg-image {
+        display: block;
+      }
+
+      @include breakpoint($max-small) {
+        flex-direction: column;
+
+        .block-bg-image {
+          margin: 15px 0;
+        }
+      }
+
+      @include breakpoint($small) {
+        .field--name-field-image {
+          display: block;
+        }
+        .field--name-field-image-mobile {
+          display: none;
+        }
+      }
+    }
+
+    .call-out-wrap {
+      max-width: $container;
+      z-index: 1;
+
+      @include breakpoint($smedium) {
+        &.inline {
+          @include flexbox;
+          // margin-top: 20px;
+
+          .field--name-field-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+            > * {
+              margin-left: 1rem;
+              margin-right: 1rem;
+            }
+          }
+          .field--name-field-link {
+            display: inline-block;
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+
+    &.left-align,
+    &.right-align {
+      .call-out-wrap {
+        width: $container;
+        max-width: 100%;
+        > * {
+          max-width: $container/2;
+        }
+      }
+    }
+
+    @extend %gradient-backgrounds;
+
+    .block-bg-image {
+      display: none;
+      margin: -60px 0;
+      pointer-events: none;
+
+      @include breakpoint($small) {
+        display: block;
+      }
+    }
+
+    &[class*="gradient-"],
+    &[class*="overlay-"] {
+      @extend %block-background-image;
+    }
+
+    .field--name-field-link a {
+      margin-bottom: 0;
+    }
+  }
+
+  &.layout__region--first,
+  &.layout__region--second,
+  &.layout__region--third {
+    .block-inline-blockcall-out,
+    .block--type-call-out {
+      .call-out-wrap {
+        flex-direction: column;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+widget:
+    version: VERSION
+    css:
+        theme:
+            css/widget.css: { }
+    js:
+        js/zipcode_finder.widget.js: { }
+    dependencies:
+        - core/drupal.dialog.ajax
+        - core/once
+        - sprowt_settings/sprowt_object

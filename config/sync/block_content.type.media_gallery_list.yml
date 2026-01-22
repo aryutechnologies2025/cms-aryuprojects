@@ -1,0 +1,8 @@
+uuid: aa2cdf74-9b70-4a90-90d8-c7845f820ac0
+langcode: en
+status: true
+dependencies: {  }
+id: media_gallery_list
+label: 'Media Gallery List'
+revision: false
+description: 'Choose a list of galleries to be displayed as the Gallery Thumb/Hero clickable to the Gallery.'

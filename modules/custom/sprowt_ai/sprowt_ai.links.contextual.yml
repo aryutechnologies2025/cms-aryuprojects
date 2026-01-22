@@ -1,0 +1,9 @@
+sprowt_ai.regenerate_content:
+    title: 'Regenerate content'
+    route_name: 'sprowt_ai.regenerate_content'
+    group: 'sprowt_ai'
+
+sprowt_ai.regenerate_layout_block:
+    title: 'Regenerate content'
+    route_name: 'sprowt_ai.regenerate_layout_block'
+    group: 'sprowt_ai_regenerate_layout_block'

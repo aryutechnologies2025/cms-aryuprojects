@@ -1,0 +1,16 @@
+uuid: 569a39a7-93f0-4970-b6e2-60fd427b5a65
+langcode: en
+status: true
+dependencies:
+  module:
+    - sprowt_admin_override
+third_party_settings:
+  sprowt_admin_override:
+    description: '<p>List of City Pages and LTP Pages that is filtered based on the Industry of the current page.<br>For City Pages and LTP Pages it also filters by the Main Location of that page and for Service Pages it filters by that service.</p>'
+id: areas_serviced
+block_id: 'inline_block:areas_serviced'
+category: custom_blocks
+label: 'Areas Serviced'
+image_path: ''
+image_alt: ''
+weight: -86

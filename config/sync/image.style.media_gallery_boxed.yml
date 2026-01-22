@@ -1,0 +1,15 @@
+uuid: 473245d2-67c4-4c75-9ffd-20284e9b73da
+langcode: en
+status: true
+dependencies: {  }
+name: media_gallery_boxed
+label: 'Media Gallery Boxed'
+effects:
+  c709c2eb-d01d-41db-9fe7-d7842dd6f3aa:
+    uuid: c709c2eb-d01d-41db-9fe7-d7842dd6f3aa
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 900
+      upscale: true

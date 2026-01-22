@@ -1,0 +1,24 @@
+uuid: 9cd15080-01a4-406a-853e-3b6f552fe059
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.desktop_max_1600_x_1200
+    - image.style.mobile_max_800_x_600
+  theme:
+    - sprowt3
+id: standard_responsive_image
+label: 'Standard Responsive Image'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: desktop_max_1600_x_1200
+    breakpoint_id: sprowt3.wide
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: mobile_max_800_x_600
+    breakpoint_id: sprowt3.mobile
+    multiplier: 1x
+breakpoint_group: sprowt3
+fallback_image_style: desktop_max_1600_x_1200

@@ -1,0 +1,454 @@
+uuid: 8b0e33f9-8ab1-49fa-80df-b53ac687ca38
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - block_content.type.breadcrumbs
+    - block_content.type.city_page_main_branch
+    - block_content.type.hero
+    - field.field.node.ltp_page.field_city_tax
+    - field.field.node.ltp_page.field_industry
+    - field.field.node.ltp_page.field_main_branch
+    - field.field.node.ltp_page.field_meta_description
+    - field.field.node.ltp_page.field_meta_tags
+    - field.field.node.ltp_page.field_ref_benefits
+    - field.field.node.ltp_page.field_services
+    - field.field.node.ltp_page.field_subsite
+    - field.field.node.ltp_page.layout_builder__layout
+    - node.type.ltp_page
+  content:
+    - 'block_content:image:b508fdf5-297d-43e1-afce-a7d2f6ed1a17'
+    - 'block_content:special_offers:0c236609-8387-4a41-9f88-726eefe04816'
+    - 'block_content:testimonials:de0e91db-dddf-4805-a593-0a337c7a90da'
+    - 'block_content:webform:de416d0d-07eb-49ca-b892-bffe9a319a15'
+    - 'block_content:webform:ee969304-82cb-41e4-899c-f74bfc2b0ded'
+  module:
+    - aggregate_reviews_block
+    - anchor_list_block
+    - block_content
+    - layout_builder
+    - layout_discovery
+    - metatag
+    - sprowt_subsite
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Hero
+          context_mapping: {  }
+          layout_builder_id: hero
+          layout_builder_styles_style:
+            - primary_color
+            - full_page_width
+        components:
+          -
+            uuid: 4be6c4c1-52e7-4bc7-b4d4-82cd852c4d02
+            region: content
+            configuration:
+              id: 'inline_block:hero'
+              label: Masthead
+              label_display: '1'
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 6401
+              block_serialized: null
+              type: hero
+              uuid: 619a18a1-cb0c-4aa7-a439-93a1953b807f
+            weight: 0
+            additional:
+              layout_builder_id: ''
+              layout_builder_styles_style:
+                - center_aligned
+                - ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Breadcrumbs
+          context_mapping: {  }
+          layout_builder_id: breadcrumbs
+          layout_builder_styles_style:
+            - white
+            - ''
+        components:
+          -
+            uuid: 05f5faa4-77d4-4e74-97af-bb979f42ce37
+            region: content
+            configuration:
+              id: 'inline_block:breadcrumbs'
+              label: Breadcrumbs
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 6402
+              block_serialized: null
+              type: breadcrumbs
+              uuid: 1c7b93a9-c6dd-43e9-838d-191910c96b3c
+            weight: 0
+            additional:
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: Introduction
+          context_mapping: {  }
+          column_widths: 67-33
+          layout_builder_id: introduction
+          layout_builder_styles_style:
+            - white
+            - ''
+            - ''
+        components:
+          -
+            uuid: 640d46d1-0e08-418b-a9db-4c6d8a9978e6
+            region: first
+            configuration:
+              id: 'inline_block:basic'
+              label: Introduction
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 6403
+              block_serialized: null
+              type: basic
+              uuid: c8f020d1-af3b-4945-872c-c351c4ee4310
+            weight: 0
+            additional:
+              layout_builder_id: ''
+              layout_builder_styles_style:
+                - ''
+          -
+            uuid: ec0b40b5-ecf6-4949-82eb-ba0b1e92eb52
+            region: second
+            configuration:
+              id: 'block_content:de416d0d-07eb-49ca-b892-bffe9a319a15'
+              label: 'Webform - Free Estimate (global)'
+              label_display: '1'
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_id: ''
+              layout_builder_styles_style:
+                - center_aligned
+                - block_light
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Additional Services'
+          context_mapping: {  }
+          layout_builder_id: additional-services
+          layout_builder_styles_style:
+            - black
+            - ''
+        components:
+          -
+            uuid: e6cec4e1-c2df-4ac9-a104-5d5a6f453a4e
+            region: content
+            configuration:
+              id: anchor_list_block
+              label: 'Anchor list block'
+              label_display: '1'
+              provider: anchor_list_block
+              context_mapping: {  }
+              heading: 'Additional Services'
+              heading_tag: h2
+              links:
+                -
+                  linkText: Example
+                  linkUrlSelect: custom
+                  linkUrl: /
+                  linkTargetBlank: 0
+                  weight: '0'
+            weight: 0
+            additional:
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: 'Service Area'
+          context_mapping: {  }
+          column_widths: 50-50
+          layout_builder_id: service-area
+          layout_builder_styles_style:
+            - dark
+            - ''
+            - ''
+        components:
+          -
+            uuid: 5ad85e98-b9a6-4638-bd36-4c4324e065bf
+            region: first
+            configuration:
+              id: 'inline_block:city_page_main_branch'
+              label: 'Main Location'
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 6404
+              block_serialized: null
+              type: city_page_main_branch
+              uuid: 96eae545-0b41-42f1-bd29-3c2b62e04cc8
+            weight: 0
+            additional:
+              layout_builder_id: ''
+          -
+            uuid: 392efb16-d3c6-44ee-977d-837798941363
+            region: first
+            configuration:
+              id: aggregate_reviews_block
+              label: 'Aggregate reviews block'
+              label_display: '1'
+              provider: aggregate_reviews_block
+              context_mapping: {  }
+              instance_id: null
+              rating_override: ''
+              text_override: ''
+              my_business_limit: {  }
+              external_url: ''
+            weight: 1
+            additional:
+              layout_builder_id: ''
+          -
+            uuid: c85c8098-135a-49e1-841c-83600a5a22ef
+            region: second
+            configuration:
+              id: 'block_content:b508fdf5-297d-43e1-afce-a7d2f6ed1a17'
+              label: 'Service Area Map (global)'
+              label_display: '1'
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_id: ''
+              layout_builder_styles_style:
+                - ''
+                - ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Services
+          context_mapping: {  }
+          layout_builder_id: services
+          layout_builder_styles_style:
+            - white
+            - ''
+        components:
+          -
+            uuid: 566dbba4-c916-4212-a393-22764e8c0553
+            region: content
+            configuration:
+              id: 'inline_block:basic'
+              label: Services
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 6405
+              block_serialized: null
+              type: basic
+              uuid: 5680d252-21f1-440d-bd02-598cd9801dc3
+            weight: 0
+            additional:
+              layout_builder_id: ''
+              layout_builder_styles_style:
+                - ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Special Offers'
+          context_mapping: {  }
+          layout_builder_id: special-offers
+          layout_builder_styles_style:
+            - ''
+            - ''
+        components:
+          -
+            uuid: a0abf6db-b607-4834-aba9-73d94c268eb9
+            region: content
+            configuration:
+              id: 'block_content:0c236609-8387-4a41-9f88-726eefe04816'
+              label: 'Special Offers (global)'
+              label_display: '1'
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_id: ''
+              layout_builder_styles_style:
+                - center_aligned
+                - ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Reviews
+          context_mapping: {  }
+          layout_builder_id: reviews
+          layout_builder_styles_style:
+            - light
+            - ''
+        components:
+          -
+            uuid: 05f4f955-bdc0-433e-9a9e-2f903085ce5e
+            region: content
+            configuration:
+              id: 'block_content:de0e91db-dddf-4805-a593-0a337c7a90da'
+              label: 'Reviews (global)'
+              label_display: '1'
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_id: ''
+              layout_builder_styles_style:
+                - ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Webform
+          context_mapping: {  }
+          layout_builder_id: webform
+          layout_builder_styles_style:
+            - primary_color
+            - ''
+        components:
+          -
+            uuid: c4699563-321f-4057-b534-2b7e8feae0f1
+            region: content
+            configuration:
+              id: 'block_content:ee969304-82cb-41e4-899c-f74bfc2b0ded'
+              label: 'Webform - Contact Us (global)'
+              label_display: '1'
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_id: ''
+              layout_builder_styles_style:
+                - center_aligned
+                - ''
+        third_party_settings: {  }
+id: node.ltp_page.default
+targetEntityType: node
+bundle: ltp_page
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_city_tax:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_industry:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_main_branch:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_meta_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_ref_benefits:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_services:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_subsite:
+    type: sprowt_subsite_reference_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  layout_builder__layout: true

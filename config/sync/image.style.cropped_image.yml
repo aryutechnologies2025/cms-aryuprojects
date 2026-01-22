@@ -1,0 +1,18 @@
+uuid: c0fc5700-2a2f-40c7-ad85-356dcd1d969d
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.focal_point
+  module:
+    - crop
+name: cropped_image
+label: 'Cropped Image'
+effects:
+  2bb5b779-e6f0-40e8-83c2-ba89dca229ca:
+    uuid: 2bb5b779-e6f0-40e8-83c2-ba89dca229ca
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: focal_point
+      automatic_crop_provider: null

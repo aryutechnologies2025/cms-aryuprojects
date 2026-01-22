@@ -1,0 +1,29 @@
+uuid: c3059b1d-2dc1-4161-a9e2-940513a042e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_secondary_service_lp
+    - node.type.service
+    - node.type.solution_page_services
+id: node.solution_page_services.field_secondary_service_lp
+field_name: field_secondary_service_lp
+entity_type: node
+bundle: solution_page_services
+label: 'Secondary Service'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      service: service
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

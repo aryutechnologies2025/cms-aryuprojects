@@ -1,0 +1,26 @@
+theme_settings:
+    version: 1.x
+    js:
+        js/theme_settings.js: {}
+    css:
+        state:
+            css/theme_settings.css: {}
+    dependencies:
+        - core/jquery
+        - color_variables/jquery_color
+
+color_variable_item_form:
+    version: 1.x
+    js:
+        js/color-var-item.js: {}
+    css:
+        state:
+            css/color-var-item.css: {}
+    dependencies:
+        - core/jquery
+        - color_variables/jquery_color
+
+jquery_color:
+    version: 1.x
+    js:
+        http://code.jquery.com/color/jquery.color-2.1.2.min.js: { type: external, minified: true }

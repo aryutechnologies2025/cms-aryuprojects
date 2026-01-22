@@ -1,0 +1,14 @@
+uuid: a7a0c4d6-a059-4fd2-bb57-2409bd7f02c3
+langcode: en
+status: true
+dependencies: {  }
+id: overlay_primary
+label: 'Overlay Black'
+classes: overlay-black
+type: component
+group: bgstyle
+block_restrictions:
+  - 'inline_block:call_out'
+  - 'inline_block:hero'
+layout_restrictions: {  }
+weight: 4

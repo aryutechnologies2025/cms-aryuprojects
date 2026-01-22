@@ -1,0 +1,5 @@
+name: 'Tag Text Field'
+type: module
+description: 'Adds a special text field with a tag selector'
+core_version_requirement: ^9 || ^10
+package: 'Coalmarch'

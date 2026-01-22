@@ -1,0 +1,36 @@
+.ctm-number-wrap {
+  .field--name-field-ctm-target-numbers,
+  .field--name-field-ctm-numbers {
+    > .field__item {
+      + .field__item {
+        &:before {
+          border-color: palette(grey, 'lightest');
+        }
+      }
+    }
+    .field--name-field-phone-number {
+      a {
+        color: palette(primary);
+      }
+    }
+  }
+}
+
+header.page-header .phone-number-count-1 .ctm-number-wrap {
+  .field--name-field-ctm-target-numbers,
+  .field--name-field-ctm-numbers {
+    .field--name-field-phone-number,
+    .field--name-field-heading {
+      font-size: 3.4rem;
+      color: palette(primary);
+    }
+  }
+}
+
+header.page-header .phone-number-count-1 .ctm-number-wrap {
+  .field--name-field-subheading-tag {
+    color: palette(secondary);
+    font-size: 2.4rem;
+    line-height: 32px;
+  }
+}

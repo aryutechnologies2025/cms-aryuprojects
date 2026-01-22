@@ -1,0 +1,17 @@
+uuid: 3c43ba43-c513-4a2f-9535-b974ee3e0986
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: gallery_900x600
+label: 'Gallery (900x600)'
+effects:
+  edc34c34-b0ff-4a8c-b35b-42fb6bfa7a73:
+    uuid: edc34c34-b0ff-4a8c-b35b-42fb6bfa7a73
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 900
+      height: 600
+      crop_type: focal_point

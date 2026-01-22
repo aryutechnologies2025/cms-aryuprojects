@@ -1,0 +1,17 @@
+uuid: 6aefd025-6f7e-478a-bec7-d374c508de53
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: side_900x900
+label: 'Side (900x900)'
+effects:
+  f1f34557-6701-4812-a23a-b5bbe3434b9f:
+    uuid: f1f34557-6701-4812-a23a-b5bbe3434b9f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 900
+      height: 900
+      crop_type: focal_point

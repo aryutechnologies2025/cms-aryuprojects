@@ -1,0 +1,63 @@
+
+#breadcrumbs {
+  .layout-container-wrap {
+    max-width: 1060px;
+  }
+}
+
+.layout__region {
+  .block-system-breadcrumb-block,
+  .block-inline-blockbreadcrumbs {
+    padding: 15px;
+    @include breakpoint($small) {
+      padding: 15px 30px;
+    }
+
+    ol {
+      li {
+        font-size: 1.6rem;
+
+        span {
+          font-weight: 600;
+        }
+
+        a {
+          color: palette(primary);
+          text-decoration: none;
+          &::before {
+            color: palette(primary);
+          }
+        }
+        &:last-child {
+          a {
+            color: palette(black);
+          }
+        }
+      }
+    }
+  }
+}
+
+.block-breadcrumbs {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+// city and service page breadcrumbs 
+.page-node-type-city-page,
+.page-node-type-region-page,
+.page-node-type-ltp-page,
+.page-node-type-service {
+  #breadcrumbs {
+    .layout-container-wrap {
+      max-width: 1360px;
+    }
+  }
+  .layout__region {
+    .block-system-breadcrumb-block,
+    .block-inline-blockbreadcrumbs {
+      padding: 15px 30px;
+    }
+  }
+}

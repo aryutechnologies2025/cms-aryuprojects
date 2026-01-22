@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Cookie Banner module.
+ */
+
+
+/**
+ * Implements hook_theme().
+ */
+function cookie_banner_theme($existing, $type, $theme, $path)
+{
+    return [
+        'cookie_banner' => [
+            'variables' => [
+                'bannerText' => null,
+                'acceptButtonText' => null
+            ],
+            'path' => $path . '/templates',
+            'template' => 'cookie-banner'
+        ]
+    ];
+}
+
+
+/**
+ * Implements hook_page_bottom().
+ */
+function cookie_banner_page_bottom(array &$page_bottom)
+{
+    /** @var \Drupal\cookie_banner\CookieBannerService $service */
+    $service = \Drupal::service('cookie_banner.service');
+    $build = $service->getBuild();
+    if(!empty($build)) {
+        $page_bottom['cookie_banner'] = $build;
+    }
+}

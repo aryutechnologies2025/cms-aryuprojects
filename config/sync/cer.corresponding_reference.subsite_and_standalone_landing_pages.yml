@@ -1,0 +1,14 @@
+uuid: 3400ae69-3b97-4e95-b8fd-50df229704ca
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_standalone_landing_pages
+label: 'Subsite and Standalone Landing Pages'
+enabled: true
+first_field: field_subsite
+second_field: field_standalone_landing_page
+add_direction: append
+bundles:
+  node:
+    - standalone_landing_page
+    - subsite

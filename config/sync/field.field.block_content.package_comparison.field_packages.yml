@@ -1,0 +1,29 @@
+uuid: c411fc36-19da-4942-934b-07f3ec383def
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.package_comparison
+    - field.storage.block_content.field_packages
+    - node.type.package
+id: block_content.package_comparison.field_packages
+field_name: field_packages
+entity_type: block_content
+bundle: package_comparison
+label: Packages
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      package: package
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,14 @@
+uuid: 9d05e55e-7152-4716-a6bb-42e4d4b98679
+langcode: en
+status: true
+dependencies: {  }
+id: city_page_and_faqs
+label: 'City Page and FAQs'
+enabled: true
+first_field: field_ref_faqs
+second_field: field_services
+add_direction: null
+bundles:
+  node:
+    - city_page
+    - faq

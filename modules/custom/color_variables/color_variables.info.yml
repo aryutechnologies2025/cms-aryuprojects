@@ -1,0 +1,5 @@
+name: 'Color Variables'
+type: module
+description: 'Adds ability to add dynamic color variables to the site'
+core_version_requirement: ^9 || ^10
+package: 'Coalmarch'

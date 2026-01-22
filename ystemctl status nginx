@@ -1,0 +1,24 @@
+[0;1;32m●[0m apache2.service - The Apache HTTP Server
+     Loaded: loaded (]8;;file://srv866038/usr/lib/systemd/system/apache2.service/usr/lib/systemd/system/apache2.service]8;;; [0;1;38;5;185mdisabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Wed 2026-01-21 06:55:50 UTC; 6h ago
+       Docs: ]8;;https://httpd.apache.org/docs/2.4/https://httpd.apache.org/docs/2.4/]8;;
+   Main PID: 1337790 (apache2)
+      Tasks: 11 (limit: 38468)
+     Memory: 14.5M (peak: 24.3M)
+        CPU: 19.147s
+     CGroup: /system.slice/apache2.service
+             ├─[0;38;5;245m1337790 /usr/sbin/apache2 -k start[0m
+             ├─[0;38;5;245m1337994 /usr/sbin/apache2 -k start[0m
+             ├─[0;38;5;245m1338734 /usr/sbin/apache2 -k start[0m
+             ├─[0;38;5;245m1339102 /usr/sbin/apache2 -k start[0m
+             ├─[0;38;5;245m1339204 /usr/sbin/apache2 -k start[0m
+             ├─[0;38;5;245m1339205 /usr/sbin/apache2 -k start[0m
+             ├─[0;38;5;245m1339218 /usr/sbin/apache2 -k start[0m
+             ├─[0;38;5;245m1339226 /usr/sbin/apache2 -k start[0m
+             ├─[0;38;5;245m1339227 /usr/sbin/apache2 -k start[0m
+             ├─[0;38;5;245m1339234 /usr/sbin/apache2 -k start[0m
+             └─[0;38;5;245m1339238 /usr/sbin/apache2 -k start[0m
+
+Jan 21 06:55:50 srv866038 systemd[1]: Starting apache2.service - The Apache HTTP Server...
+Jan 21 06:55:50 srv866038 apachectl[1337788]: [Wed Jan 21 06:55:50.905375 2026] [alias:warn] [pid 1337788] AH00671: The Alias directive in /etc/phpmyadmin/apache.conf at line 3 will probably never match because it overlaps an earlier Alias.
+Jan 21 06:55:50 srv866038 systemd[1]: Started apache2.service - The Apache HTTP Server.

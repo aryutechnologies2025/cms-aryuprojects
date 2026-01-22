@@ -1,0 +1,44 @@
+uuid: 3999d4b7-e547-4c91-af4d-9677a35e9d09
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:footer:58db35af-b3c8-43ce-8e14-622eafe84687'
+  module:
+    - block_content
+    - node
+    - sprowt_subsite
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_footerlayoutcareers
+theme: woodlawnandlandscaping
+region: footer_layout
+weight: 0
+provider: null
+plugin: 'block_content:58db35af-b3c8-43ce-8e14-622eafe84687'
+settings:
+  id: 'block_content:58db35af-b3c8-43ce-8e14-622eafe84687'
+  label: 'Footer Layout Careers'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  sprowt_subsite_condition:
+    id: sprowt_subsite_condition
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    use: true
+    value:
+      _main: _main
+    hasNoFields: show
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_page: career_page
+      job_post: job_post

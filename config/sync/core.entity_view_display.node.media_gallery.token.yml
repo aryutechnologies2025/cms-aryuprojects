@@ -1,0 +1,62 @@
+uuid: c03f0da5-0e49-48f4-8adb-e63553e42137
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.token
+    - field.field.node.media_gallery.body
+    - field.field.node.media_gallery.field_gallery_thumbnail_hero
+    - field.field.node.media_gallery.field_media
+    - field.field.node.media_gallery.field_media_documents
+    - field.field.node.media_gallery.field_media_gallery
+    - field.field.node.media_gallery.field_media_img_vid
+    - field.field.node.media_gallery.field_media_remote_vid
+    - field.field.node.media_gallery.field_subsite_multiple
+    - field.field.node.media_gallery.field_type
+    - field.field.node.media_gallery.layout_builder__layout
+    - node.type.media_gallery
+  module:
+    - layout_builder
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.media_gallery.token
+targetEntityType: node
+bundle: media_gallery
+mode: token
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_gallery_thumbnail_hero:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: hero_responsive
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_media: true
+  field_media_documents: true
+  field_media_gallery: true
+  field_media_img_vid: true
+  field_media_remote_vid: true
+  field_subsite_multiple: true
+  field_type: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

@@ -1,0 +1,25 @@
+uuid: 429722c2-b512-4f61-9ca6-3b30830f3ff5
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:call_out:9f7cf4e1-5742-41c6-8414-14dd5c5bdc18'
+  module:
+    - block_content
+  theme:
+    - sprowt3
+id: calloutglobal
+theme: sprowt3
+region: disabled
+weight: 0
+provider: null
+plugin: 'block_content:9f7cf4e1-5742-41c6-8414-14dd5c5bdc18'
+settings:
+  id: 'block_content:9f7cf4e1-5742-41c6-8414-14dd5c5bdc18'
+  label: ' Call Out (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

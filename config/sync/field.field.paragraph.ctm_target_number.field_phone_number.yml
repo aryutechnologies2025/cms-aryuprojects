@@ -1,0 +1,21 @@
+uuid: 35ea2912-d2af-4845-8c9f-ace23cc4f020
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_phone_number
+    - paragraphs.paragraphs_type.ctm_target_number
+  module:
+    - telephone
+id: paragraph.ctm_target_number.field_phone_number
+field_name: field_phone_number
+entity_type: paragraph
+bundle: ctm_target_number
+label: 'Phone number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

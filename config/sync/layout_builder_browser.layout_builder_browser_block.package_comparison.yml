@@ -1,0 +1,11 @@
+uuid: c2dacdbc-027e-40ce-8f19-438bdec35f05
+langcode: en
+status: false
+dependencies: {  }
+id: package_comparison
+block_id: 'inline_block:package_comparison'
+category: custom_blocks
+label: 'Package Comparison'
+image_path: ''
+image_alt: ''
+weight: -58

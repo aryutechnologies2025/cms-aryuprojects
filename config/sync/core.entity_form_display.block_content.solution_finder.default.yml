@@ -1,0 +1,22 @@
+uuid: fd8fe3ca-da37-45b8-9bba-39b52ab56d07
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.solution_finder
+id: block_content.solution_finder.default
+targetEntityType: block_content
+bundle: solution_finder
+mode: default
+content:
+  info:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  revision_log: true

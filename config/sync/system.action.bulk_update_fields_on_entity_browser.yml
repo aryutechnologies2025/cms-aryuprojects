@@ -1,0 +1,11 @@
+uuid: 8b93bb13-c59a-4f90-ab3a-de1d5a23f596
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_entity_browser
+label: 'Bulk Update Entity browser Fields'
+type: entity_browser
+plugin: bulk_update_fields_action_base
+configuration: {  }

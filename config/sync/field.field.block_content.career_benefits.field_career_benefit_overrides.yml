@@ -1,0 +1,29 @@
+uuid: 8420e9f9-692f-42c8-a974-44479b8b71de
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.career_benefits
+    - field.storage.block_content.field_career_benefit_overrides
+    - node.type.career_benefit
+id: block_content.career_benefits.field_career_benefit_overrides
+field_name: field_career_benefit_overrides
+entity_type: block_content
+bundle: career_benefits
+label: 'Benefit Overrides'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      career_benefit: career_benefit
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

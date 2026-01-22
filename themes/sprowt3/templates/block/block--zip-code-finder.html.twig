@@ -1,0 +1,22 @@
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {% block content %}
+    <div class="text-wrap">
+      {{ content.field_heading }}
+      {{ content.field_text }}
+    </div>
+
+    {{ content.field_zip_code_finder_form }}
+    {{ content.field_view_all }}
+  {% endblock %}
+</div>

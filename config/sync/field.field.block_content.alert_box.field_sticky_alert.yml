@@ -1,0 +1,23 @@
+uuid: 44e35b77-974d-44cd-880a-6f2de4421d72
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.alert_box
+    - field.storage.block_content.field_sticky_alert
+id: block_content.alert_box.field_sticky_alert
+field_name: field_sticky_alert
+entity_type: block_content
+bundle: alert_box
+label: Sticky
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

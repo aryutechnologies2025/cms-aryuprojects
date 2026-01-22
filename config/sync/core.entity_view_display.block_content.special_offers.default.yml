@@ -1,0 +1,73 @@
+uuid: 98569371-de80-4b11-aa05-0a54fa9d8aed
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.special_offers
+    - field.field.block_content.special_offers.field_count_special_offer
+    - field.field.block_content.special_offers.field_display_special_offer
+    - field.field.block_content.special_offers.field_heading
+    - field.field.block_content.special_offers.field_label_tag
+    - field.field.block_content.special_offers.field_special_offer_overrides
+    - field.field.block_content.special_offers.field_subheading_tag
+    - field.field.block_content.special_offers.field_text
+  module:
+    - options
+    - tag_text_field
+    - text
+id: block_content.special_offers.default
+targetEntityType: block_content
+bundle: special_offers
+mode: default
+content:
+  field_count_special_offer:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_display_special_offer:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_special_offer_overrides:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,23 @@
+uuid: 8e078090-7ce0-4c6f-8be2-9a1aa8088aea
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.blog_list
+    - field.storage.block_content.field_count_blog_posts
+  module:
+    - options
+id: block_content.blog_list.field_count_blog_posts
+field_name: field_count_blog_posts
+entity_type: block_content
+bundle: blog_list
+label: Count
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: '3'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

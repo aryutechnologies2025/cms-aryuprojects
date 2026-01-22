@@ -1,0 +1,5 @@
+name: Sprowt Uninstall
+type: module
+description: Uninstall&#039;s proprietary modules, profiles, and themes
+package: Custom
+core_version_requirement: ^9 || ^10

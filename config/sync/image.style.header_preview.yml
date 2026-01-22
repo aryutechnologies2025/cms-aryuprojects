@@ -1,0 +1,15 @@
+uuid: 4c53b7ae-d3cf-4add-ac56-c24aad37d0cf
+langcode: en
+status: true
+dependencies: {  }
+name: header_preview
+label: 'Header Preview'
+effects:
+  7060deb0-bcf7-403f-9423-8de13b7cc749:
+    uuid: 7060deb0-bcf7-403f-9423-8de13b7cc749
+    id: image_scale
+    weight: 1
+    data:
+      width: 850
+      height: null
+      upscale: false

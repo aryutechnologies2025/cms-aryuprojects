@@ -1,0 +1,24 @@
+uuid: 2ec4985e-8ba0-40f7-b380-33472fa08b09
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.hero_1600x520
+    - image.style.hero_mobile_900x350
+  theme:
+    - sprowt3
+id: hero_image
+label: 'Hero Responsive Image'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: hero_1600x520
+    breakpoint_id: sprowt3.wide
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: hero_mobile_900x350
+    breakpoint_id: sprowt3.mobile
+    multiplier: 1x
+breakpoint_group: sprowt3
+fallback_image_style: hero_1600x520

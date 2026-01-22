@@ -1,0 +1,25 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="basic-wrap">
+      {{ content|without('field_region_filter','field_subsite_overrides','field_link') }}
+      {% if content.field_subsite_overrides|render %}
+        {{ content.field_subsite_overrides }}
+      {% else %}
+        {{ drupal_view('subsite', 'block_title', content.field_region_filter[0]['#plain_text'], content.field_region_filter[1]['#plain_text'], content.field_region_filter[2]['#plain_text'], content.field_region_filter[3]['#plain_text'], content.field_region_filter[4]['#plain_text'] ) }}
+      {% endif %}
+    </div>
+    <div>{{ content.field_link }}</div>
+  {% endblock %}
+</div>

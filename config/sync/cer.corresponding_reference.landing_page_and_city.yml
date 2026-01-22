@@ -1,0 +1,14 @@
+uuid: 601c368f-a23e-49ad-b476-32a9f8a067c4
+langcode: en
+status: true
+dependencies: {  }
+id: landing_page_and_city
+label: 'Landing Page and City'
+enabled: true
+first_field: field_city_ref
+second_field: field_landing_page_ref
+add_direction: null
+bundles:
+  node:
+    - city_page
+    - landing_page

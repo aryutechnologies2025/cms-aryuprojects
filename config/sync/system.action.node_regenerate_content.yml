@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - sprowt_ai
+id: node_regenerate_content
+label: 'Bulk Regenerate Content'
+type: node
+plugin: sprowt_ai_bulk_regenerate_content
+configuration: {  }

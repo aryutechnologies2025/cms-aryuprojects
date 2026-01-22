@@ -1,0 +1,23 @@
+uuid: 6fb74a11-f85c-4203-88b9-e542a4b2183c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot
+    - field.storage.block_content.field_accent_color
+  module:
+    - options
+id: block_content.servicebot.field_accent_color
+field_name: field_accent_color
+entity_type: block_content
+bundle: servicebot
+label: 'Block Color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: secondary
+default_value_callback: ''
+settings: {  }
+field_type: list_string

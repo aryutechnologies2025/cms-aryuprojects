@@ -1,0 +1,11 @@
+entity.script.overview:
+    title: Script Inserter
+    parent: system.admin_structure
+    description: 'List of inserted scripts'
+    route_name: entity.script.collection
+
+entity.script.add_form:
+    title: Add script
+    parent: entity.script.overview
+    description: 'Add a script'
+    route_name: entity.script.add_form

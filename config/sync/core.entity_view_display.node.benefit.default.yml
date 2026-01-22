@@ -1,0 +1,73 @@
+uuid: 6e7d54a1-3fd8-4e50-bf92-0bf552f36def
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.benefit.body
+    - field.field.node.benefit.field_company_wide
+    - field.field.node.benefit.field_icon_benefit
+    - field.field.node.benefit.field_industry
+    - field.field.node.benefit.field_ltp_ref
+    - field.field.node.benefit.field_ref_city
+    - field.field.node.benefit.field_services
+    - field.field.node.benefit.field_subsite_multiple
+    - node.type.benefit
+  module:
+    - text
+    - user
+id: node.benefit.default
+targetEntityType: node
+bundle: benefit
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_icon_benefit:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_ltp_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 119
+    region: content
+  field_ref_city:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_services:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_company_wide: true
+  field_industry: true
+  field_subsite_multiple: true
+  langcode: true
+  links: true

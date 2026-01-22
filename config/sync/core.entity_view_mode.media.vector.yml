@@ -1,0 +1,11 @@
+uuid: d1841a5a-aed2-404e-9b6b-a1dc2c6d491f
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.vector
+label: Vector
+description: ''
+targetEntityType: media
+cache: true

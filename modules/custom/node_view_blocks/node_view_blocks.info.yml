@@ -1,0 +1,5 @@
+name: 'Node View Blocks'
+type: module
+description: 'Creates a block type which displays the current node using a particular view mode'
+core_version_requirement: ^9 || ^10
+package: 'Coalmarch'

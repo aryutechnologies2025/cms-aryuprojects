@@ -1,0 +1,45 @@
+.layout__region {
+  .block-inline-blockprofiles-is-this-you,
+  .block--type-profiles-is-this-you {
+    padding: $margin;
+    .field--name-field-heading {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .profile-wrap {
+      @include flexbox;
+      flex-direction: column;
+      align-items: center;
+      .view-row {
+        + .view-row {
+          margin-top: 20px;
+        }
+      }
+      @include breakpoint($small) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        .view-row {
+          + .view-row {
+            margin-top: 0;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+    .node--type-profile {
+      > .node__content {
+        text-align: center;
+      }
+    }
+    .field--name-field-view-all {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    @include breakpoint($medium) {
+      padding: ($margin * 1.5) $margin $margin;
+    }
+  }
+}

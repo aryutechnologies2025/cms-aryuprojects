@@ -1,0 +1,12 @@
+uuid: f225f213-d9b6-48f7-88ec-c2b64f78adb5
+langcode: en
+status: true
+dependencies: {  }
+id: primary_light_color
+label: 'Primary Light Color'
+classes: bg-primary-light
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -17

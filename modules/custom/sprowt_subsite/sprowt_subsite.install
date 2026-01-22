@@ -1,0 +1,105 @@
+<?php
+
+
+/**
+ * Implements hook_schema().
+ */
+function sprowt_subsite_schema()
+{
+    $tables = [];
+    $tables['subsite_settings'] = [
+        'description' => 'subsite setting field',
+        'fields' => [
+            'nid' => [
+                'type' => 'int',
+                'not null' => true,
+                'unsigned' => true
+            ],
+            'setting_key' => [
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => true
+            ],
+            'setting_value' => [
+                'type' => 'blob'
+            ]
+        ],
+        'indexes' => [['nid', 'setting_key']],
+        'foreign keys' => [
+            'node_field_data' => [
+                'table' => 'node_field_data',
+                'columns' => ['nid' => 'nid']
+            ],
+            'node' => [
+                'table' => 'node',
+                'columns' => ['nid' => 'nid']
+            ]
+        ]
+    ];
+
+    return $tables;
+}
+
+/**
+ * Update field type
+ */
+function sprowt_subsite_update_9001()
+{
+    $field_type = 'sprowt_subsite_reference';
+    $new_property = 'target_id';
+    $manager = \Drupal::entityDefinitionUpdateManager();
+    $field_map = \Drupal::service('entity_field.manager')->getFieldMapByFieldType($field_type);
+    foreach ($field_map as $entity_type_id => $fields) {
+        foreach (array_keys($fields) as $field_name) {
+            $field_storage_definition = $manager->getFieldStorageDefinition($field_name, $entity_type_id);
+            $storage = \Drupal::entityTypeManager()->getStorage($entity_type_id);
+            if ($storage instanceof \Drupal\Core\Entity\Sql\SqlContentEntityStorage) {
+                $table_mapping = $storage->getTableMapping([
+                    $field_name => $field_storage_definition,
+                ]);
+                $table_names = $table_mapping->getDedicatedTableNames();
+                $columns = $table_mapping->getColumnNames($field_name);
+
+                foreach ($table_names as $table_name) {
+                    $field_schema = $field_storage_definition->getSchema();
+                    $schema = \Drupal::database()->schema();
+                    $field_exists = $schema->fieldExists($table_name, $columns[$new_property]);
+                    $table_exists = $schema->tableExists($table_name);
+
+                    if (!$field_exists && $table_exists) {
+                        $schema->addField($table_name, $columns[$new_property], $field_schema['columns'][$new_property]);
+                    }
+                }
+            }
+            $manager->updateFieldStorageDefinition($field_storage_definition);
+        }
+    }
+}
+
+
+/**
+ * Add settings table
+ */
+function sprowt_subsite_update_9002()
+{
+    $schema = \Drupal::database()->schema();
+    $tables = sprowt_subsite_schema();
+    foreach ($tables as $tableName => $tableDef) {
+        if (!$schema->tableExists($tableName)) {
+            $schema->createTable($tableName, $tableDef);
+        }
+    }
+}
+
+/**
+ * Add more options to subsite type
+ */
+function sprowt_subsite_10001()
+{
+    $file = DRUPAL_ROOT . '/config/sync/field.storage.node.field_subsite_type.yml';
+    $yaml = file_get_contents($file);
+    $newData = \Symfony\Component\Yaml\Yaml::parse($yaml);
+    $config = \Drupal::configFactory()->getEditable('field.storage.node.field_subsite_type');
+    $config->setData($newData);
+    $config->save();
+}

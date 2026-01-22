@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * @file
+ * Contains bulk_update_fields.module.
+ */
+
+use Drupal\Core\Database\Database;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\system\Entity\Action;
+
+/**
+ * Implements hook_entity_operation_alter().
+ */
+function bulk_update_fields_entity_operation_alter(array &$operations, EntityInterface $entity) {
+  $bulk_update_fields_config = 'system.action.bulk_update_fields_on_';
+  $config_names = \Drupal::configFactory()->listAll($bulk_update_fields_config);
+  foreach (\Drupal::entityTypeManager()->getDefinitions() as $entity_type_machine_name => $entity_type) {
+    if (!in_array($bulk_update_fields_config . $entity_type_machine_name, $config_names)) {
+      _bulk_update_fields_create_action($entity_type_machine_name, $entity_type->getLabel());
+    }
+  }
+}
+
+/**
+ * Create Action.
+ */
+function _bulk_update_fields_create_action($entity_type_machine_name, $entity_type_label) {
+  $label = t('Bulk Update @entity_type_label Fields', ['@entity_type_label' => $entity_type_label]);
+  // Creating a new configured action.
+  $action = Action::create([
+    'id' => 'bulk_update_fields_on_' . $entity_type_machine_name,
+    'label' => $label,
+    'type' => $entity_type_machine_name,
+    'configuration' => [],
+    'plugin' => 'bulk_update_fields_action_base',
+  ]);
+  $action->save();
+  \Drupal::messenger()->addStatus(t('Action @label created from bulk_update_fields module.', ['@label' => $label]));
+}
+
+/**
+ * Implements hook_help().
+ */
+function bulk_update_fields_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.bulk_update_fields':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A module for those who need to bulk update fields in nodes or other entities.') . '</p>';
+      $output .= '<h3>' . t('Requirements') . '</h3>';
+      $output .= '<p>' . t('Latest release of Drupal 8.x.') . '</p>';
+      $output .= '<h3>' . t('Configuration') . '</h3>';
+      $output .= '<dt>' . t('Enable the module.') . '</dt>';
+      $output .= '<dt>' . t('Go to /admin/content') . '</dt>';
+      $output .= '<dt>' . t('Select Some nodes') . '</dt>';
+      $output .= '<dt>' . t('Select Action "Bulk Update Fields to Another Value') . '</dt>';
+      $output .= '<dt>' . t('Hit "Apply to selected items') . '</dt>';
+      $output .= '<dt>' . t('Select the Fields to alter (NOTE: ok to select fields not in all content types)') . '</dt>';
+      $output .= '<dt>' . t('Hit "Next"') . '</dt>';
+      $output .= '<dt>' . t('Update the fields with appropriate values (NOTE dates not working yet)') . '</dt>';
+      $output .= '<dt>' . t('Hit "Next"') . '</dt>';
+      $output .= '<dt>' . t('"Are you sure?" - Hit "Alter Fields"') . '</dt>';
+      $output .= '<dt>' . t('Wait for batch process.') . '</dt>';
+      $output .= '<dt>' . t('Done') . '</dt>';
+      return $output;
+
+    default:
+  }
+}

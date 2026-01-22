@@ -1,0 +1,35 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div{{content_attributes.addClass('node__content',content.field_featured.0|render)}}>
+    {% apply spaceless %}
+      <div class="stars">
+          {% if external_url is not empty %}
+            <a class="external-url" href="{{ external_url }}" target="_blank" aria-label="Link to reviewed location"></a>
+          {% endif %}
+          {% for star in stars %}
+            <span class="star icon-{{ star }}"></span>
+          {% endfor %}
+          <span class="star-text"> {{ rating }} Star Review</span>
+      </div>
+    {% endapply %}
+      {{ content|without('field_rating','label','field_location') }}
+      <div class="quotee">
+        {{ label }}{{ content.field_location }}
+      </div>
+  </div>
+
+</article>

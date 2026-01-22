@@ -1,0 +1,23 @@
+uuid: 9af2de95-b2f3-4cba-890f-2c18ad24e586
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_employment_type
+    - node.type.job_post
+  module:
+    - options
+id: node.job_post.field_employment_type
+field_name: field_employment_type
+entity_type: node
+bundle: job_post
+label: 'Employment Type'
+description: 'The type of employment for this position.'
+required: true
+translatable: false
+default_value:
+  -
+    value: FULL_TIME
+default_value_callback: ''
+settings: {  }
+field_type: list_string

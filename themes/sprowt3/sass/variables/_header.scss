@@ -1,0 +1,36 @@
+// Header
+$header-utility-height: 54px;
+$header-utility-height-mobile: 67px;
+
+$header-main-height: 120px;
+$header-main-height-mobile: 72px;
+
+$header-nav-height: 53px;
+$header-nav-height-mobile: 0px;
+
+$header-height: $header-utility-height + $header-main-height +
+  $header-nav-height;
+$header-height-tablet: $header-utility-height + $header-main-height;
+$header-height-mobile: $header-utility-height-mobile +
+  $header-main-height-mobile;
+
+// Careers Header
+$header-career-utility-height-mobile: 45px;
+$header-career-main-height-mobile: 72px;
+
+$header-career-height-mobile: $header-career-main-height-mobile + $header-career-utility-height-mobile;
+
+// Logo Size
+$logo-height: 100px;
+$logo-width: 350px;
+$logo-height-mobile: 60px;
+$logo-width-mobile: 210px;
+
+$logo-footer-height: 100px;
+$logo-footer-width: 350px;
+$logo-mobile-footer-height: 60px;
+$logo-mobile-footer-width: 210px;
+
+// Admin Bar
+$admin-bar-height-mobile: 83px;
+$admin-bar-height: 93px;

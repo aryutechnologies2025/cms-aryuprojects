@@ -1,0 +1,5 @@
+entity.ai_prompt.collection:
+    title: 'Prompts'
+    route_name: entity.ai_prompt.collection
+    base_route: sprowt_ai.settings
+    weight: 10

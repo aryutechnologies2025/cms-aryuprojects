@@ -1,0 +1,14 @@
+uuid: 1c1a61ff-74bf-4a55-afa3-20fb8387df2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.job_post
+id: node_type_job_post
+entity_type_id: node_type
+entity_id: job_post
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

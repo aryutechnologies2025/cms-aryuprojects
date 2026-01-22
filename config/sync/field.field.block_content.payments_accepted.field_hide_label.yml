@@ -1,0 +1,23 @@
+uuid: ec21a5a8-f51b-47b3-99ae-901d88938b7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.payments_accepted
+    - field.storage.block_content.field_hide_label
+id: block_content.payments_accepted.field_hide_label
+field_name: field_hide_label
+entity_type: block_content
+bundle: payments_accepted
+label: 'Hide Label'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

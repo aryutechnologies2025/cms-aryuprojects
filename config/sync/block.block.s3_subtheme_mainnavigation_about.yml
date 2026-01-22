@@ -1,0 +1,31 @@
+uuid: e0f41a03-9f1f-43ce-8654-b5738d0bfd04
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - s3_subtheme
+id: s3_subtheme_mainnavigation_about
+theme: s3_subtheme
+region: disabled
+weight: -12
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Main navigation : About'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 1
+  expand_all_items: false
+  parent: 'main:menu_link_content:e151f645-87b1-4472-876a-ddd6c09561ca'
+  suggestion: main
+visibility: {  }

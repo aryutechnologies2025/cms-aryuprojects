@@ -1,0 +1,49 @@
+uuid: ea9f4908-ab2e-40cd-8462-3bcb46ed210a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - field_permissions
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: block_content.field_after_color
+field_name: field_after_color
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: black
+      label: Black
+    -
+      value: dark
+      label: Dark
+    -
+      value: light
+      label: Light
+    -
+      value: white
+      label: White
+    -
+      value: primary
+      label: Primary
+    -
+      value: primary-dark
+      label: 'Primary Dark'
+    -
+      value: primary-light
+      label: 'Primary Light'
+    -
+      value: secondary
+      label: Secondary
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,28 @@
+uuid: aada0bee-62a7-49f2-81b6-d78ed629c7fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_icon_package
+    - media.type.media_image
+    - node.type.package
+id: node.package.field_icon_package
+field_name: field_icon_package
+entity_type: node
+bundle: package
+label: Icon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

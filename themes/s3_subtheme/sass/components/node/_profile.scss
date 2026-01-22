@@ -1,0 +1,55 @@
+.node--type-profile {
+  // Full Page View
+  &.node--view-mode-full {
+    .field--name-field-image-profile {
+      border-color: palette(grey, lit);
+    }
+    .field--name-field-position {
+      color: palette(grey);
+    }
+  }
+
+  // Teaser View
+  &.node--view-mode-teaser,
+  &.node--view-mode-secondary-teaser {
+    .field--name-field-position {
+      color: palette(grey);
+    }
+
+    .profile-link {
+      &:hover {
+        .field--name-title-text {
+          color: palette(primary);
+        }
+      }
+    }
+  }
+
+  // Secondary Teaser View (Profile List)
+  &.node--view-mode-secondary-teaser {
+    .node__content {
+      .title-link {
+        &:hover {
+          color: palette(primary);
+        }
+      }
+      .learn-more {
+        span {
+          @extend %button;
+
+          &:hover {
+            color: palette(white);
+          }
+        }
+      }
+
+      .field--name-field-issues {
+        .field__item {
+          &::before {
+            color: palette(primary);
+          }
+        }
+      }
+    }
+  }
+}

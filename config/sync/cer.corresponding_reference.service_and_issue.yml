@@ -1,0 +1,13 @@
+uuid: 98081334-5b81-4763-af4e-6559c5de4c9e
+langcode: en
+status: true
+dependencies: {  }
+id: service_and_issue
+label: 'Service and Issue'
+enabled: true
+first_field: field_ref_issue
+second_field: field_services
+add_direction: null
+bundles:
+  node:
+    - service

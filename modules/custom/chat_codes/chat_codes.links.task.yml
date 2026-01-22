@@ -1,0 +1,18 @@
+#entity.chat_code.view:
+#    title: View
+#    route_name: entity.chat_code.canonical
+#    base_route: entity.chat_code.canonical
+#entity.chat_code.edit_form:
+#    title: Edit
+#    route_name: entity.chat_code.edit_form
+#    base_route: entity.chat_code.canonical
+#entity.chat_code.delete_form:
+#    title: Delete
+#    route_name: entity.chat_code.delete_form
+#    base_route: entity.chat_code.canonical
+#    weight: 10
+#entity.chat_code.collection:
+#    title: Chat Code
+#    route_name: entity.chat_code.collection
+#    base_route: system.admin_content
+#    weight: 10

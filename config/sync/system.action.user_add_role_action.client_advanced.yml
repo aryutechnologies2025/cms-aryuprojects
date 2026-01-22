@@ -1,0 +1,14 @@
+uuid: b49d2f18-6de0-41c8-a9f7-516c5ba82b61
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.client_advanced
+  module:
+    - user
+id: user_add_role_action.client_advanced
+label: 'Add the Client - Advanced role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: client_advanced

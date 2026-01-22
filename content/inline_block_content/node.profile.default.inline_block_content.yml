@@ -1,0 +1,77 @@
+_entities:
+  '6346e693-2ffe-48e7-b435-d9b9d54d105e::3547':
+    _exportInfo:
+      key: '6346e693-2ffe-48e7-b435-d9b9d54d105e::3547'
+      entity_type: block_content
+      bundle: breadcrumbs
+      entity_id: '469'
+      uuid: 6346e693-2ffe-48e7-b435-d9b9d54d105e
+      isDefaultRevision: true
+      revisionId: '3547'
+      label: Breadcrumbs
+    id:
+      -
+        value: 469
+    uuid:
+      -
+        value: 6346e693-2ffe-48e7-b435-d9b9d54d105e
+    revision_id:
+      -
+        value: 3547
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: breadcrumbs
+        target_type: block_content_type
+        target_uuid: 1ec43ff3-fb5e-4179-8038-be87ea23392b
+    revision_created:
+      -
+        value: '2021-04-30T14:07:09+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Breadcrumbs'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Breadcrumbs
+    changed:
+      -
+        value: '2021-04-30T14:07:09+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_crumb:
+      -
+        uri: 'internal:/'
+        title: Home
+        options: {  }
+      -
+        uri: 'entity:node/20'
+        title: 'About Us'
+        options: {  }
+      -
+        uri: 'entity:node/101'
+        title: 'Team Members'
+        options: {  }
+    field_industry: {  }
+_content: {  }

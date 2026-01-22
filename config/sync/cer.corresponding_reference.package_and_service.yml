@@ -1,0 +1,14 @@
+uuid: 83644741-5698-470f-96dd-615dd12e27fb
+langcode: en
+status: true
+dependencies: {  }
+id: package_and_service
+label: 'Package and Service'
+enabled: true
+first_field: field_services
+second_field: field_packages
+add_direction: null
+bundles:
+  node:
+    - package
+    - service

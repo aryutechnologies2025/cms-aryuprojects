@@ -1,0 +1,11 @@
+uuid: de1b20f4-ec8f-4a3a-8357-f243499b7813
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_slick
+label: 'Bulk Update Slick optionset Fields'
+type: slick
+plugin: bulk_update_fields_action_base
+configuration: {  }

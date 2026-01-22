@@ -1,0 +1,4 @@
+services:
+    lawnbot.service:
+        class: Drupal\lawnbot\LawnbotService
+        arguments: [ '@request_stack' ]

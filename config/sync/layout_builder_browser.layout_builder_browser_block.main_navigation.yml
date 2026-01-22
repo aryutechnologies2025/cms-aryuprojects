@@ -1,0 +1,11 @@
+uuid: 1c762f0b-cb66-45c4-a704-daebe18d3967
+langcode: en
+status: true
+dependencies: {  }
+id: main_navigation
+block_id: 'menu_block:main'
+category: header_footer
+label: 'Main Navigation'
+image_path: ''
+image_alt: ''
+weight: -71

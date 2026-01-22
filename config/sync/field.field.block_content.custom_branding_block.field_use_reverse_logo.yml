@@ -1,0 +1,23 @@
+uuid: 2183fac0-cb10-42d6-875e-86f63bb897ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.custom_branding_block
+    - field.storage.block_content.field_use_reverse_logo
+id: block_content.custom_branding_block.field_use_reverse_logo
+field_name: field_use_reverse_logo
+entity_type: block_content
+bundle: custom_branding_block
+label: 'Use reverse logo'
+description: "Use the active theme's reverse logo"
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

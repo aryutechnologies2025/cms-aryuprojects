@@ -1,0 +1,238 @@
+.node--type-profile {
+  // Full Page View
+  &.node--view-mode-full {
+    .field--name-field-image-profile {
+      max-width: 420px;
+      margin: 0px auto 20px auto;
+      padding: 0 30px;
+
+      .media--type-media-image {
+        border: 1px solid;
+      }
+
+      @include breakpoint($medium) {
+        width: auto;
+        margin: 30px 30px 20px 30px;
+        padding: 0;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+    .block-extra-field-blocknodeprofileshow-title {
+      padding: 0;
+
+      @include breakpoint($medium) {
+        margin-top: 30px;
+      }
+    }
+    .field--name-title-text {
+      @extend %h1;
+    }
+    .block-field-blocknodeprofilefield-position {
+      padding: 0;
+    }
+    .block-field-blocknodeprofilebody {
+      padding: 0;
+    }
+    .field--name-field-position {
+      margin-bottom: 5px;
+      font-size: 2.4rem;
+      font-style: italic;
+    }
+  }
+
+  // Teaser, Sec, Tertiary View
+  &.node--view-mode-teaser,
+  &.node--view-mode-secondary-teaser,
+  &.node--view-mode-tertiary-teaser,
+  &.node--view-mode-quaternary-teaser {
+    a {
+      text-decoration: none;
+    }
+    .field--name-field-image-profile {
+      margin-bottom: 10px;
+
+      .media--type-media-image {
+        overflow: visible;
+      }
+
+      .field__item {
+        padding: 3px;
+      }
+      img {
+        transform: scale(1.01);
+        padding: 5px;
+        border-radius: 50%;
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+        transition: transform $duration;
+      }
+    }
+    .field--name-title-text {
+      @extend %h4;
+      margin-bottom: 5px;
+    }
+    .field--name-field-position {
+      margin-bottom: 5px;
+      font-size: 1.8rem;
+      font-style: italic;
+    }
+
+    .profile-link {
+      &:hover {
+        .field--name-field-image-profile img {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  &.node--view-mode-tertiary-teaser {
+    max-width: 130px;
+
+    @include breakpoint($smedium) {
+      max-width: 200px;
+    }
+  }
+
+  &.node--view-mode-teaser {
+    max-width: 200px;
+  }
+
+  // Secondary Teaser View (Profile List)
+  &.node--view-mode-secondary-teaser,
+  &.node--view-mode-quaternary-teaser {
+    max-width: 650px;
+
+    .node__content {
+      @include flexbox;
+      flex-direction: column;
+      //padding-top: 10px;
+      //padding-bottom: 20px;
+      text-align: left;
+      transition: background-color $duration;
+
+      @include breakpoint($small) {
+        margin: 0 auto;
+      }
+
+      .profile-link {
+        @include flexbox;
+      }
+
+      [class*="field--name-field-image"] {
+        @include flexbox;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100px;
+        min-width: 100px;
+        height: 100px;
+        margin: 0px 25px 10px -10px;
+        transition: all $duration;
+        @include breakpoint($xsmall) {
+          margin: 0 25px 0 0;
+        }
+        a {
+          display: flex;
+        }
+      }
+      .title-link {
+        color: inherit;
+        text-decoration: none;
+
+        > .field--name-title,
+        > .field--name-title-text {
+          display: block;
+          margin: 20px 0 5px;
+          @extend %h3;
+          font-weight: 700;
+        }
+      }
+      .__body {
+        line-height: 1.6;
+      }
+      .learn-more {
+        margin-top: 20px;
+      }
+
+      .field--name-field-issues {
+        @include flexbox;
+        flex-wrap: wrap;
+
+        .field__item {
+          width: 215px;
+          @include icon-before(chevron-right) {
+            font-size: 1.4rem;
+          }
+
+          .node__content {
+            display: inline-block;
+          }
+        }
+      }
+
+      &:hover {
+        [class*="field--name-field-image"] {
+          transform: scale(1.05);
+        }
+      }
+    }
+    @include breakpoint($xsmall) {
+      .node__content {
+        flex-direction: row;
+      }
+    }
+    @include breakpoint($small) {
+      .node__content {
+        [class*="field--name-field-image"] {
+          width: 125px;
+          min-width: 125px;
+          height: 125px;
+          margin: 0 30px 0 0;
+        }
+      }
+    }
+    @include breakpoint($medium) {
+      .node__content {
+        [class*="field--name-field-image"] {
+          width: 175px;
+          min-width: 175px;
+          height: 175px;
+        }
+        .profile-copy-wrap {
+          @include flexbox;
+          justify-content: space-between;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // quaternary only remove hover state 
+  &.node--view-mode-quaternary-teaser {
+    .node__content {
+      &:hover {
+        [class*="field--name-field-image"] {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
+
+#profile {
+  .layout__region--second {
+    padding: 0 30px;
+  }
+}
+
+// Fixes the disappearing second row admin bar in Chrome.
+.page-node-type-profile.user-logged-in {
+  .dialog-off-canvas-main-canvas {
+    .region-admin-links {
+      display: block;
+    }
+  }
+}

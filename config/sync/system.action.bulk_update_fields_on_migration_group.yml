@@ -1,0 +1,11 @@
+uuid: a0922934-657b-4f3b-85ae-3eb3503561f5
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_migration_group
+label: 'Bulk Update Migration Group Fields'
+type: migration_group
+plugin: bulk_update_fields_action_base
+configuration: {  }

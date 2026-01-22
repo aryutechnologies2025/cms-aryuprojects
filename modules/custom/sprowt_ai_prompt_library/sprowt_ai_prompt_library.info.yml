@@ -1,0 +1,11 @@
+name: 'Sprowt AI prompt library'
+type: module
+description: 'Provides a prompt library for the Sprowt AI module'
+package: Custom
+core_version_requirement: ^10
+dependencies:
+    - sprowt_content:sprowt_content
+    - content_library:content_library
+    - sprowt_ai:sprowt_ai
+    - drupal:taxonomy
+    - sprowt_settings:sprowt_settings

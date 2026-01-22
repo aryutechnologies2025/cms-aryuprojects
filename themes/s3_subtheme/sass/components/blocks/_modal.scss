@@ -1,0 +1,11 @@
+.modal-block-modal {
+  border-radius: $base-border-radius;
+
+  &.bg-primary,
+  &.bg-black,
+  &.bg-dark {
+    .modal-close::after {
+        color: palette(white);
+    }
+  }
+}

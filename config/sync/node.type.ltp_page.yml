@@ -1,0 +1,23 @@
+uuid: e63533f6-d7f1-4a39-8860-6497925c29b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-navigation-subsite-
+      - main-navigation-subsite-full
+      - main
+    parent: 'main:'
+  sprowt_admin_override:
+    external_node_type: true
+name: 'LTP Page'
+type: ltp_page
+description: null
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

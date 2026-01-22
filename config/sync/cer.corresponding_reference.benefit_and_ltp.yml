@@ -1,0 +1,14 @@
+uuid: b8a246dc-cfcf-4da0-83fe-3b15dd5ccec4
+langcode: en
+status: true
+dependencies: {  }
+id: benefit_and_ltp
+label: 'Benefit and LTP'
+enabled: true
+first_field: field_ref_benefits
+second_field: field_ltp_ref
+add_direction: append
+bundles:
+  node:
+    - benefit
+    - ltp_page

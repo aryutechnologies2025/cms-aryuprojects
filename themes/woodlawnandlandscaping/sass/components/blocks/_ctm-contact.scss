@@ -1,0 +1,25 @@
+.ctm-contact-wrap {
+  .field--name-field-subheading,
+  .field--name-field-subheading-tag {
+    //color: palette(black);
+
+    @include breakpoint($small) {
+      //font-size: 1.8rem;
+    }
+    @include breakpoint($medium) {
+      //font-size: 2.7rem;
+    }
+  }
+
+  .field--name-field-phone-number {
+    a {
+      color: palette(primary);
+      // font-size: 2.5rem;
+
+      @include breakpoint($medium) {
+        // font-size: 2.7rem;
+      }
+    }
+  }
+}
+

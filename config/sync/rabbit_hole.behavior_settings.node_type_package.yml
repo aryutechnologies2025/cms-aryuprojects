@@ -1,0 +1,14 @@
+uuid: a6390b22-864c-4046-b9b6-64c9f884fcbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.package
+id: node_type_package
+entity_type_id: node_type
+entity_id: package
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,7 @@
+name: Views Contextual Limit
+type: module
+description: Adds a contextual filter for limiting a view
+package: Coalmarch
+core_version_requirement: ^9 || ^10
+dependencies:
+    - drupal:views

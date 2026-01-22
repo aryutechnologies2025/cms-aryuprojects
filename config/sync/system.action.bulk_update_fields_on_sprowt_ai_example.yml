@@ -1,0 +1,11 @@
+uuid: ceda34d7-a0b5-4949-a083-3093b0493e2e
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_sprowt_ai_example
+label: 'Bulk Update Example Fields'
+type: sprowt_ai_example
+plugin: bulk_update_fields_action_base
+configuration: {  }

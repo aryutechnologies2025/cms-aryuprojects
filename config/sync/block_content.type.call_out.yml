@@ -1,0 +1,8 @@
+uuid: 8c939cd4-b501-4bb0-b741-982f2c6de31f
+langcode: en
+status: true
+dependencies: {  }
+id: call_out
+label: 'Call Out'
+revision: false
+description: 'Simple block with optional single link'

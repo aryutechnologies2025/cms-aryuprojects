@@ -1,0 +1,11 @@
+uuid: 31f2937e-7f0d-4966-9c8e-823e489f5903
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.max_1060x600
+label: 'Max 1060x600'
+description: ''
+targetEntityType: media
+cache: true

@@ -1,0 +1,11 @@
+uuid: 1fb4eeb6-a60d-4e60-913c-35243adbb49a
+langcode: en
+status: true
+dependencies: {  }
+id: career_benefits
+block_id: 'inline_block:career_benefits'
+category: career_pages
+label: 'Career Benefits'
+image_path: ''
+image_alt: ''
+weight: -100

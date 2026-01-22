@@ -1,0 +1,24 @@
+sprowt_ai.settings:
+    title: Settings
+    route_name: sprowt_ai.settings
+    base_route: sprowt_ai.settings
+    weight: 10
+
+entity.sprowt_ai_example.collection:
+    title: 'Examples'
+    route_name: entity.sprowt_ai_example.collection
+    base_route: sprowt_ai.settings
+    weight: 10
+
+entity.ai_system.overview:
+    title: AI system users
+    description: 'List of ai systems to extend site functionality.'
+    route_name: entity.ai_system.collection
+    base_route: sprowt_ai.settings
+    weight: 10
+
+entity.sprowt_ai_context.collection:
+    title: 'Contexts'
+    route_name: entity.sprowt_ai_context.collection
+    base_route: sprowt_ai.settings
+    weight: 10

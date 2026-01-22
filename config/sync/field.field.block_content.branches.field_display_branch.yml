@@ -1,0 +1,23 @@
+uuid: 612baf96-b20e-4942-aee3-e332c9b20629
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.branches
+    - field.storage.block_content.field_display_branch
+  module:
+    - options
+id: block_content.branches.field_display_branch
+field_name: field_display_branch
+entity_type: block_content
+bundle: branches
+label: Display
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: token
+default_value_callback: ''
+settings: {  }
+field_type: list_string

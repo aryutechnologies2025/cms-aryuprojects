@@ -1,0 +1,17 @@
+uuid: f34682b7-bfab-41c4-b2da-20bdd6816c59
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_solutions
+label: 'Subsite and Solutions'
+enabled: true
+first_field: field_subsite
+second_field: field_solution_ref
+add_direction: append
+bundles:
+  node:
+    - solution_page_package_alt
+    - solution_page_package_service
+    - solution_page_packages
+    - solution_page_services
+    - subsite

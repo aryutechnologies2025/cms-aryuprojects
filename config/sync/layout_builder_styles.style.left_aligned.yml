@@ -1,0 +1,26 @@
+uuid: 67b95258-3d99-4cf1-9073-98facc0a8f89
+langcode: en
+status: true
+dependencies: {  }
+id: left_aligned
+label: 'Left Aligned'
+classes: left-align
+type: component
+group: alignment
+block_restrictions:
+  - 'inline_block:accordion_content'
+  - 'inline_block:areas_serviced'
+  - 'inline_block:basic'
+  - 'inline_block:before_after_image_slider'
+  - 'inline_block:benefits'
+  - 'inline_block:blog_list'
+  - 'inline_block:brands'
+  - 'inline_block:call_out'
+  - 'inline_block:gallery'
+  - 'inline_block:hero'
+  - 'inline_block:quote'
+  - 'inline_block:social_media'
+  - 'inline_block:special_offers'
+  - 'inline_block:webform'
+layout_restrictions: {  }
+weight: -21

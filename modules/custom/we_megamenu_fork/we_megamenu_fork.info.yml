@@ -1,0 +1,6 @@
+name: "Drupal Mega Menu Fork"
+type: module
+description: "Modified we_megamenu module https://www.drupal.org/project/we_megamenu for Sprowt3"
+package: "Coalmarch"
+core_version_requirement: ^9 || ^10
+configure: we_megamenu_fork.admin

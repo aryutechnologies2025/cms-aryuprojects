@@ -1,0 +1,28 @@
+uuid: e8c2a73a-419e-4489-bd8e-4aa1cea430d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_special_offer_featured_ico
+    - media.type.media_image
+    - node.type.special_offer
+id: node.special_offer.field_special_offer_featured_ico
+field_name: field_special_offer_featured_ico
+entity_type: node
+bundle: special_offer
+label: 'Featured Icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

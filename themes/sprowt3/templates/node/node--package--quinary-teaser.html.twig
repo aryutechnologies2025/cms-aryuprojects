@@ -1,0 +1,42 @@
+{% set picon = content.field_icon_package|render ? 'yes' : 'no' %}
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    node.label|render|lower|replace({' ':'-'}),
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'featured-' ~ node.field_featured.value,
+    'icon-' ~ picon,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div{{content_attributes.addClass('node__content featured-')}}>
+    {{ label }}
+    {{ content.field_image_package }}
+    {{ content.field_icon_package }}
+    <div class="package-copy">
+      {% if content.field_starting_price[0] is not empty %}
+        <div class="price-prefix">Starting at</div>
+      {% endif %}
+      <div class="package-content">
+        {{ content|without('show_title','field_image_package','field_icon_package','field_initial_fee','field_featured','field_button_text','field_button','field_features_package') }}
+      </div>
+      {{ content.field_initial_fee }}
+      {% if content.field_features_package[0] is not empty %}
+        <div class="package-features">
+          <div class="package-features-label">{{ node_title }} Features:</div>
+          {{ content.field_features_package }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+</article>

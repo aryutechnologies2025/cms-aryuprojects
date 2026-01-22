@@ -1,0 +1,8 @@
+uuid: 64771e4f-7552-43d9-8832-7a7b13b39dd8
+langcode: en
+status: true
+dependencies: {  }
+id: main-navigation-subsite-
+label: 'Main navigation (Subsite Lite)'
+description: ''
+locked: false

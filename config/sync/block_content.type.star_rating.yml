@@ -1,0 +1,8 @@
+uuid: 2ed67df5-35e6-45ca-b7f0-ad02d1a94b1b
+langcode: en
+status: true
+dependencies: {  }
+id: star_rating
+label: 'Star Rating'
+revision: false
+description: ''

@@ -1,0 +1,13 @@
+diff --git a/js/jquery.treetable.js b/js/jquery.treetable.js
+index ac9d90ac37..4535880735 100644
+--- a/js/jquery.treetable.js
++++ b/js/jquery.treetable.js
+@@ -81,7 +81,7 @@
+         this.settings.onNodeExpand.apply(this);
+       }
+
+-      if ($(this.row).is(":visible")) {
++      if ($(this.row).css("display") !== "none") {
+         this._showChildren();
+       }
+

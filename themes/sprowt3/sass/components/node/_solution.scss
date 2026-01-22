@@ -1,0 +1,10 @@
+[class*="node--type-solution"] {
+  .block-inline-blockhero {
+    .field--name-field-label-tag {
+      margin-bottom: 10px;
+      &::after {
+        content: none;
+      }
+    }
+  }
+}

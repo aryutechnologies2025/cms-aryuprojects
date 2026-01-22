@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Install, requirements functions for the sprowt_ckeditor_buttons module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function sprowt_ckeditor_buttons_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'install' || $phase == 'runtime') {
+
+    // Is the library found in the root libraries path.
+    $library_found = file_exists(DRUPAL_ROOT . '/libraries/ckeditor/plugins/sprowtbutton');
+
+    if ($library_found) {
+      $requirements['sprowtbutton'] = [
+        'title' => t('sprowtbutton'),
+        'value' => t('Plugin detected'),
+        'severity' => REQUIREMENT_OK,
+      ];
+    }
+    else {
+      $requirements['sprowtbutton'] = [
+        'title' => t('Sprowt CKEditor Buttons'),
+        'value' => t('Sprowt CKEditor Buttons library missing'),
+        'severity' => REQUIREMENT_ERROR,
+        'description' => t(''),
+      ];
+    }
+  }
+
+  return $requirements;
+
+}

@@ -1,0 +1,11 @@
+uuid: 1d58f417-d710-40ad-9459-14179d3db6b0
+langcode: en
+status: true
+dependencies: {  }
+id: quote
+block_id: 'inline_block:quote'
+category: custom_blocks
+label: Quote
+image_path: ''
+image_alt: ''
+weight: -53

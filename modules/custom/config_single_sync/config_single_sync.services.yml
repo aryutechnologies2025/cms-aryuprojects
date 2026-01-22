@@ -1,0 +1,18 @@
+services:
+  config_single_sync.service:
+    class: Drupal\config_single_sync\ConfigSingleSyncService
+    arguments:
+      - '@config.storage.sync'
+      - '@config.storage'
+      - '@config.storage.snapshot'
+      - '@lock.persistent'
+      - '@event_dispatcher'
+      - '@config.manager'
+      - '@config.typed'
+      - '@module_handler'
+      - '@module_installer'
+      - '@theme_handler'
+      - '@renderer'
+      - '@extension.list.module'
+      - '@config.import_transformer'
+      - '@string_translation'

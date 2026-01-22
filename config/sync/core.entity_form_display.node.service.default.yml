@@ -1,0 +1,328 @@
+uuid: ae5ea4a3-e15f-41d9-9b5b-8c2251e6c252
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.service.body
+    - field.field.node.service.field_additional_service_cities
+    - field.field.node.service.field_benefit
+    - field.field.node.service.field_disable_link
+    - field.field.node.service.field_icon_service
+    - field.field.node.service.field_image_service
+    - field.field.node.service.field_industry
+    - field.field.node.service.field_landing_page_ref
+    - field.field.node.service.field_ltp_ref
+    - field.field.node.service.field_meta_description
+    - field.field.node.service.field_meta_tags
+    - field.field.node.service.field_package_level
+    - field.field.node.service.field_packages
+    - field.field.node.service.field_ref_faqs
+    - field.field.node.service.field_ref_issue
+    - field.field.node.service.field_secondary_solution_ref
+    - field.field.node.service.field_sector
+    - field.field.node.service.field_service_cities
+    - field.field.node.service.field_solution_heading
+    - field.field.node.service.field_solution_ref
+    - field.field.node.service.field_special_offers
+    - field.field.node.service.field_standalone_landing_page
+    - field.field.node.service.field_subsite
+    - field.field.node.service.layout_builder__layout
+    - node.type.service
+  module:
+    - allowed_formats
+    - field_group
+    - hide_revision_field
+    - media_library
+    - metatag
+    - path
+    - sprowt_admin_override
+    - sprowt_subsite
+third_party_settings:
+  field_group:
+    group_connected_content:
+      children:
+        - field_benefit
+        - field_special_offers
+        - field_packages
+        - field_ref_issue
+        - field_service_cities
+        - field_ref_faqs
+        - field_landing_page_ref
+        - field_standalone_landing_page
+        - field_solution_ref
+        - field_secondary_solution_ref
+        - field_ltp_ref
+        - field_additional_service_cities
+      label: 'Connected Content'
+      region: content
+      parent_name: ''
+      weight: 9
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: 'Select content that goes with this Service. This field works two ways, so it will auto-select this option on the corresponding Content.'
+        required_fields: true
+        weight: -8
+    group_configurations:
+      children:
+        - field_subsite
+        - path
+        - url_redirects
+        - field_meta_tags
+      label: Configurations
+      region: content
+      parent_name: ''
+      weight: 8
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
+        weight: -9
+    group_package_level:
+      children:
+        - field_package_level
+      label: 'Package Level'
+      region: content
+      parent_name: ''
+      weight: 17
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+        weight: 0
+id: node.service.default
+targetEntityType: node
+bundle: service
+mode: default
+content:
+  body:
+    type: sprowt_admin_override_text_area_with_a_formatted_summary
+    weight: 7
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+      use_editor: true
+    third_party_settings:
+      allowed_formats:
+        hide_help: '0'
+        hide_guidelines: '0'
+  content_library_include:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_additional_service_cities:
+    type: options_select
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_benefit:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_disable_link:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_icon_service:
+    type: media_library_widget
+    weight: 4
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_image_service:
+    type: media_library_widget
+    weight: 5
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_industry:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_landing_page_ref:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ltp_ref:
+    type: options_select
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_meta_description:
+    type: string_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 14
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_package_level:
+    type: options_buttons
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_packages:
+    type: options_select
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ref_faqs:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ref_issue:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_secondary_solution_ref:
+    type: options_select
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_sector:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_service_cities:
+    type: options_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_solution_heading:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_solution_ref:
+    type: options_select
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_special_offers:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_standalone_landing_page:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_subsite:
+    type: sprowt_subsite_reference_selector
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  revision_log:
+    type: hide_revision_field_log_widget
+    weight: 10
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+      show: true
+      default: ''
+      permission_based: false
+      allow_user_settings: false
+      hide_revision: false
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  layout_builder__layout: true
+  layout_selection: true
+  sticky: true
+  uid: true

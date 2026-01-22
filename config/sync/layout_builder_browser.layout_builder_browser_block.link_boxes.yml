@@ -1,0 +1,11 @@
+uuid: 0ae10203-759a-447d-8d34-456fd090c6fb
+langcode: en
+status: true
+dependencies: {  }
+id: link_boxes
+block_id: 'inline_block:link_boxes'
+category: custom_blocks
+label: 'Link Boxes'
+image_path: ''
+image_alt: ''
+weight: -62

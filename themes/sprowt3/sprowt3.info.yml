@@ -1,0 +1,41 @@
+name: Sprowt3 Parent Theme
+type: theme
+description: Sprowt3 parent theme (subtheme of Classy).
+core_version_requirement: ^9 || ^10
+version: 1.x
+base theme: classy
+libraries:
+  - sprowt3/global-styling
+  - sprowt3/global-scripts
+logo: assets/logos/logo.png
+touch_icon: assets/logos/apple-touch-icon-152x152-precomposed.png
+logo_reverse: assets/logos/logo_white.png
+# screenshot: screenshot.png
+regions:
+  admin_links: "Admin Links"
+  banner: "Banner"
+  header1: "Header 1"
+  header2: "Header 2"
+  header3: "Header 3"
+  header4: "Header 4"
+  header_layout: "Header Layout"
+  header_mobile_menu: "Header Mobile Menu"
+  breadcrumb: "Breadcrumb"
+  help: "Help"
+  highlighted: "Highlighted"
+  content_top: "Content Top"
+  content: "Content"
+  sidebar: "Sidebar"
+  sections: "Sections"
+  content_bottom: "Content Bottom"
+  footer: "Footer"
+  footer_bottom: "Footer Bottom"
+  footer_layout: "Footer Layout"
+  disabled: "Disabled"
+
+ckeditor_stylesheets:
+  - https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800
+  - css/admin/ckeditor.css
+
+dependencies:
+  - classy:classy

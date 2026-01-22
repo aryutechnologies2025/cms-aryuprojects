@@ -1,0 +1,23 @@
+uuid: 8d043528-6953-41d1-984a-43bf601eb74a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_salary_currency
+    - node.type.job_post
+  module:
+    - options
+id: node.job_post.field_salary_currency
+field_name: field_salary_currency
+entity_type: node
+bundle: job_post
+label: 'Salary Currency'
+description: 'The <a href="https://www.iban.com/currency-codes" target="_blank">currency code</a> for the salary.'
+required: false
+translatable: false
+default_value:
+  -
+    value: USD
+default_value_callback: ''
+settings: {  }
+field_type: list_string

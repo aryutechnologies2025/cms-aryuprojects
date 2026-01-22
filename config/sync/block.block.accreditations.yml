@@ -1,0 +1,35 @@
+uuid: 741652b5-c2c3-45e8-80a2-9397e90c3c4d
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:brands:d347d783-31c7-46ee-840b-5e54cc30fb34'
+  module:
+    - block_content
+    - ctools
+  theme:
+    - sprowt3
+id: accreditations
+theme: sprowt3
+region: content_bottom
+weight: 0
+provider: null
+plugin: 'block_content:d347d783-31c7-46ee-840b-5e54cc30fb34'
+settings:
+  id: 'block_content:d347d783-31c7-46ee-840b-5e54cc30fb34'
+  label: Accreditations
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      city_page: city_page
+      page: page
+      service: service

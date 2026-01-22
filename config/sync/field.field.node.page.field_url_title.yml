@@ -1,0 +1,21 @@
+uuid: a251aaac-ecc5-4f8b-941b-77d2cacec230
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_url_title
+    - node.type.page
+id: node.page.field_url_title
+field_name: field_url_title
+entity_type: node
+bundle: page
+label: 'URL Title'
+description: 'Field used as the "title" in the URL pattern.'
+required: false
+translatable: false
+default_value:
+  -
+    value: '[node:title]'
+default_value_callback: ''
+settings: {  }
+field_type: string

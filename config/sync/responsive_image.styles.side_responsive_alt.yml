@@ -1,0 +1,29 @@
+uuid: 9ece8f79-e51c-4f4d-8790-be52b12cd5f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.side_900x600
+    - image.style.side_mobile_900x450
+  theme:
+    - sprowt3
+id: side_responsive_alt
+label: 'Side Responsive Alt'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: side_900x600
+    breakpoint_id: sprowt3.group2.wide
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: side_900x600
+    breakpoint_id: sprowt3.group2.narrow
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: side_mobile_900x450
+    breakpoint_id: sprowt3.group2.mobile
+    multiplier: 1x
+breakpoint_group: sprowt3.group2
+fallback_image_style: side_900x600

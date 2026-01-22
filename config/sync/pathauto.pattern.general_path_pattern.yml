@@ -1,0 +1,27 @@
+uuid: 893a6895-9e59-443e-84b3-21c906f0d23b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: general_path_pattern
+label: 'General Path Pattern'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:title]'
+selection_criteria:
+  fd7b6ee8-9b4c-4241-ae09-6557f60cf03f:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: fd7b6ee8-9b4c-4241-ae09-6557f60cf03f
+    context_mapping:
+      node: node
+    bundles:
+      landing_page: landing_page
+      media_gallery: media_gallery
+      package: package
+      page: page
+      region_page: region_page
+      service: service
+selection_logic: and
+weight: 2
+relationships: {  }

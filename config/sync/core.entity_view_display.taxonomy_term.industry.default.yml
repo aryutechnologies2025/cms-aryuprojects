@@ -1,0 +1,29 @@
+uuid: 66031601-c78b-45a0-b445-8f18d9028f1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.industry.field_is_company_industry
+    - taxonomy.vocabulary.industry
+  module:
+    - text
+id: taxonomy_term.industry.default
+targetEntityType: taxonomy_term
+bundle: industry
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_is_company_industry: true
+  langcode: true

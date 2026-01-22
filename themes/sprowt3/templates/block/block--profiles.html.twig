@@ -1,0 +1,44 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'paged-' ~ content.field_paged.0['#markup'],
+    'center-align'
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+    <div class="profiles-wrap">
+      {{ content|without('field_display_profile','field_group_by_department','field_paged') }}
+
+      {% if content.field_group_by_department[0]['#markup'] == 0 %}
+        {% set which_view = 'block_compact' %}
+
+        {% if content.field_paged.0['#markup'] == 1 %}
+          {% if (content.field_display_profile.0['#markup'] == 'teaser') or (content.field_display_profile.0['#markup'] == 'tertiary_teaser') %}
+            {% set which_view = which_view ~ '_paged10' %}
+          {% else %}
+            {% set which_view = which_view ~ '_paged6' %}
+          {% endif %}
+        {% endif %}
+
+      {% else %}
+        {% set which_view = 'block_compact_grouped' %}
+      {% endif %}
+
+      {% if content_type == 'career_page' %}
+        {{ drupal_view('profiles', which_view, content.field_display_profile.0['#markup']) }}
+      {% else %}
+        {{ drupal_view((subsite == '_main' ? 'profiles' : 'profiles_subsite'), which_view, content.field_display_profile.0['#markup']) }}
+      {% endif %}
+      
+    </div>
+  {% endblock %}
+</div>

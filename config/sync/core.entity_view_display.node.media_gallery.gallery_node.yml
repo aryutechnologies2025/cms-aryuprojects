@@ -1,0 +1,76 @@
+uuid: 9b896e7a-bc9e-4068-9992-972d40a83e36
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.gallery_node
+    - field.field.node.media_gallery.body
+    - field.field.node.media_gallery.field_gallery_thumbnail_hero
+    - field.field.node.media_gallery.field_media
+    - field.field.node.media_gallery.field_media_documents
+    - field.field.node.media_gallery.field_media_gallery
+    - field.field.node.media_gallery.field_media_img_vid
+    - field.field.node.media_gallery.field_media_remote_vid
+    - field.field.node.media_gallery.field_subsite_multiple
+    - field.field.node.media_gallery.field_type
+    - field.field.node.media_gallery.layout_builder__layout
+    - node.type.media_gallery
+  module:
+    - entity_reference_revisions
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.media_gallery.gallery_node
+targetEntityType: node
+bundle: media_gallery
+mode: gallery_node
+content:
+  field_media:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_media_documents:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_media_img_vid:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_media_remote_vid:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  body: true
+  field_gallery_thumbnail_hero: true
+  field_media_gallery: true
+  field_subsite_multiple: true
+  field_type: true
+  langcode: true
+  layout_builder__layout: true
+  links: true
+  show_title: true

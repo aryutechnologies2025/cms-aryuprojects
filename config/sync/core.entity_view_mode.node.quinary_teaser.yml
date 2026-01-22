@@ -1,0 +1,11 @@
+uuid: d93eb861-3230-44c1-94d2-29f277e38c28
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.quinary_teaser
+label: 'Quinary Teaser'
+description: ''
+targetEntityType: node
+cache: true

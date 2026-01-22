@@ -1,0 +1,11 @@
+uuid: 567818d8-06e9-4f99-9ffa-77c1a2ccb245
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.secondary_teaser
+label: 'Secondary Teaser'
+description: ''
+targetEntityType: node
+cache: true

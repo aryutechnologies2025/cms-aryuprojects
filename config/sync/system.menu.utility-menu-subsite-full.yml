@@ -1,0 +1,8 @@
+uuid: bec7a400-3c5e-47d8-ae31-2789afd0e03e
+langcode: en
+status: true
+dependencies: {  }
+id: utility-menu-subsite-full
+label: 'Utility Menu (subsite full)'
+description: ''
+locked: false

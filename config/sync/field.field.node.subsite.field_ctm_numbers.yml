@@ -1,0 +1,58 @@
+uuid: f9c6ab8a-0b7a-4a4f-9aec-990f33ab5c81
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ctm_numbers
+    - node.type.subsite
+    - paragraphs.paragraphs_type.ctm_target_number
+  module:
+    - entity_reference_revisions
+id: node.subsite.field_ctm_numbers
+field_name: field_ctm_numbers
+entity_type: node
+bundle: subsite
+label: 'CTM Numbers'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      ctm_target_number: ctm_target_number
+    negate: 0
+    target_bundles_drag_drop:
+      basic_content:
+        weight: 11
+        enabled: false
+      brand:
+        weight: 12
+        enabled: false
+      ctm_target_number:
+        weight: 13
+        enabled: true
+      identifications:
+        weight: 14
+        enabled: false
+      link_box:
+        weight: 15
+        enabled: false
+      media_with_categories:
+        weight: 16
+        enabled: false
+      media_with_categories_images:
+        weight: 17
+        enabled: false
+      media_with_categories_img_vid:
+        weight: 18
+        enabled: false
+      media_with_categories_remote_vid:
+        weight: 19
+        enabled: false
+      social_media:
+        weight: 20
+        enabled: false
+field_type: entity_reference_revisions

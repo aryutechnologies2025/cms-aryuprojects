@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Relative Date Widget module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function relative_date_widget_install()
+{
+    _relative_date_widget_update_field_length();
+}

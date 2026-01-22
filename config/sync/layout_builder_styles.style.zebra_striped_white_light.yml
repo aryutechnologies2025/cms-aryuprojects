@@ -1,0 +1,12 @@
+uuid: 8f934164-fb72-4eb3-91ab-40d73937c65e
+langcode: en
+status: true
+dependencies: {  }
+id: zebra_striped_white_light
+label: 'Zebra (striped white/light)'
+classes: bg-zebra
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -7

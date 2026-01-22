@@ -1,0 +1,140 @@
+<?php
+
+use Drupal\sprowt_address_autocomplete\Form\SwitchWebformAddressFieldForm;
+use Drupal\sprowt_address_autocomplete\Form\UndoSwitchForm;
+use Drupal\webform\Entity\Webform;
+
+/**
+ * @file
+ * Primary module hooks for Sprowt address autocomplete module.
+ */
+
+
+function _sprowt_address_autocomplete_test()
+{
+    $webform = Webform::load('contact_us');
+    _sprowt_address_autocomplete_replace_address_fields($webform);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function sprowt_address_autocomplete_theme($existing, $type, $theme, $path)
+{
+    return [
+        'sprowt_address_autocomplete' => [
+            'render element' => 'element',
+        ]
+    ];
+}
+
+function template_preprocess_sprowt_address_autocomplete(&$variables) {
+    _template_preprocess_webform_composite($variables);
+}
+
+function sprowt_address_autocomplete_replace_webform_address_fields()
+{
+    $webforms = Webform::loadMultiple();
+    foreach($webforms as $webform) {
+        if(SwitchWebformAddressFieldForm::hasAddressField($webform)) {
+            _sprowt_address_autocomplete_replace_address_fields($webform);
+        }
+    }
+}
+
+function sprowt_address_autocomplete_undo_replace_webform_address_fields()
+{
+    $webforms = Webform::loadMultiple();
+    foreach($webforms as $webform) {
+        if(UndoSwitchForm::undoAble($webform)) {
+            _sprowt_address_autocomplete_undo_replace_address_fields($webform);
+        }
+    }
+}
+
+function _sprowt_address_autocomplete_replace_address_fields(Webform $webform) {
+
+    $context = [
+        'sandbox' => [],
+        'results' => []
+    ];
+    $submissions = \Drupal::entityTypeManager()->getStorage('webform_submission')->loadByProperties([
+        'webform_id' => $webform->id()
+    ]);
+
+    SwitchWebformAddressFieldForm::batchAddField($webform->id(), $context);
+    foreach ($submissions as $submission) {
+        SwitchWebformAddressFieldForm::batchUpdateSubmission($submission->id(), $context);
+    }
+    $handlers = $webform->getHandlers();
+    /** @var \Drupal\webform\Plugin\WebformHandlerBase $handler */
+    foreach($handlers as $handler) {
+        SwitchWebformAddressFieldForm::batchUpdateHandler($webform->id(), $handler->getHandlerId(), $context);
+    }
+    SwitchWebformAddressFieldForm::batchUpdateServiceBotHandlers($webform->id(), $context);
+    SwitchWebformAddressFieldForm::batchRemoveOldField($webform->id(), $context);
+}
+
+function _sprowt_address_autocomplete_undo_replace_address_fields(Webform $webform) {
+    $context = [
+        'sandbox' => [],
+        'results' => []
+    ];
+    $submissions = \Drupal::entityTypeManager()->getStorage('webform_submission')->loadByProperties([
+        'webform_id' => $webform->id()
+    ]);
+
+    UndoSwitchForm::batchAddField($webform->id(), $context);
+    foreach ($submissions as $submission) {
+        UndoSwitchForm::batchUpdateSubmission($submission->id(), $context);
+    }
+    $handlers = $webform->getHandlers();
+    /** @var \Drupal\webform\Plugin\WebformHandlerBase $handler */
+    foreach($handlers as $handler) {
+        UndoSwitchForm::batchUpdateHandler($webform->id(), $handler->getHandlerId(), $context);
+    }
+    UndoSwitchForm::batchRemoveOldField($webform->id(), $context);
+    $elementStateKey = 'sprowt_address_autocomplete.webform_switch_elements.' . $webform->id();
+    $keymapStateKey = 'sprowt_address_autocomplete.webform_switch_keymap.' . $webform->id();
+    \Drupal::state()->delete($elementStateKey);
+    \Drupal::state()->delete($keymapStateKey);
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function sprowt_address_autocomplete_form_webform_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    /** @var Webform $webform */
+    $webform = \Drupal::routeMatch()->getParameter('webform');
+    $hasAddressField = SwitchWebformAddressFieldForm::hasAddressField($webform);
+    $undoAble = UndoSwitchForm::undoAble($webform);
+    if($hasAddressField) {
+        $form['actions']['switch'] = [
+            '#type' => 'link',
+            '#title' => 'Switch address field(s) to autocomplete',
+            '#url' => \Drupal\Core\Url::fromRoute('sprowt_address_autocomplete.switch_webform_address_field', [
+                'webform' => $webform->id()
+            ]),
+            '#attributes' => [
+                'class' => ['button']
+            ],
+            '#weight' => 100
+        ];
+    }
+
+
+    if($undoAble) {
+        $form['actions']['switch'] = [
+            '#type' => 'link',
+            '#title' => 'Undo autocomplete address switch',
+            '#url' => \Drupal\Core\Url::fromRoute('sprowt_address_autocomplete.undo_switch_webform_address_field', [
+                'webform' => $webform->id()
+            ]),
+            '#attributes' => [
+                'class' => ['button']
+            ],
+            '#weight' => 100
+        ];
+    }
+}

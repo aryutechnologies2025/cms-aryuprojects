@@ -1,0 +1,7 @@
+condition.plugin.sprowt_settings_schedule_condition:
+  type: condition.plugin
+  label: 'Schedule condition'
+  mapping:
+    age:
+      type: integer
+      label: Age

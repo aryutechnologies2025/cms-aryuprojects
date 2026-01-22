@@ -1,0 +1,334 @@
+_core:
+  default_config_hash: K_LddvA0aVOWbF6aw7aoX1n_BmWah6y3HWE1Ya7QmUc
+entity_type_cancel_destination:
+  default:
+    path: /
+    enabled: true
+  comment:
+    path: /
+    enabled: false
+  block:
+    path: /admin/structure/block
+    enabled: true
+  block_content_type:
+    path: /admin/structure/block/block-content/types
+    enabled: true
+  comment_type:
+    path: /admin/structure/comment
+    enabled: true
+  contact_form:
+    path: /admin/structure/contact
+    enabled: true
+  editor:
+    path: /
+    enabled: false
+  field_storage_config:
+    path: /
+    enabled: false
+  field_config:
+    path: /
+    enabled: true
+  file:
+    path: /
+    enabled: false
+  filter_format:
+    path: /admin/config/content/formats
+    enabled: true
+  image_style:
+    path: /admin/config/media/image-styles
+    enabled: true
+  node_type:
+    path: /admin/structure/types
+    enabled: true
+  node:
+    path: /
+    enabled: true
+  shortcut_set:
+    path: /
+    enabled: false
+  shortcut:
+    path: /
+    enabled: false
+  action:
+    path: /
+    enabled: false
+  menu:
+    path: /
+    enabled: false
+  taxonomy_term:
+    path: /
+    enabled: false
+  taxonomy_vocabulary:
+    path: /admin/structure/taxonomy
+    enabled: true
+  tour:
+    path: /
+    enabled: false
+  user_role:
+    path: /admin/people/roles
+    enabled: true
+  user:
+    path: /
+    enabled: true
+  menu_link_content:
+    path: /
+    enabled: false
+  view:
+    path: /
+    enabled: false
+  base_field_override:
+    path: /
+    enabled: false
+  date_format:
+    path: /
+    enabled: false
+  entity_view_mode:
+    path: /admin/structure/display-modes/view
+    enabled: true
+  entity_form_display:
+    path: /
+    enabled: false
+  entity_view_display:
+    path: /
+    enabled: false
+  entity_form_mode:
+    path: /admin/structure/display-modes/form
+    enabled: true
+  backup_migrate_destination:
+    path: /
+    enabled: true
+  backup_migrate_schedule:
+    path: /
+    enabled: true
+  backup_migrate_source:
+    path: /
+    enabled: true
+  backup_migrate_settings:
+    path: /
+    enabled: true
+  block_content_alert_box:
+    path: /
+  block_content_basic:
+    path: /
+  block_content_benefits:
+    path: /
+  block_content_brands:
+    path: /
+  block_content_call_out:
+    path: /
+  block_content_city_information:
+    path: /
+  block_content_concerns:
+    path: /
+  block_content_copyright:
+    path: /
+  block_content_ctm_contact:
+    path: /
+  block_content_faqs:
+    path: /
+  block_content_gallery:
+    path: /
+  block_content_hero:
+    path: /
+  block_content_hero_learning_center:
+    path: /
+  block_content_identifications:
+    path: /
+  block_content_image:
+    path: /
+  block_content_issues:
+    path: /
+  block_content_link_list:
+    path: /
+  block_content_locations:
+    path: /
+  block_content_packages:
+    path: /
+  block_content_services:
+    path: /
+  block_content_single_image_svg_:
+    path: /
+  block_content_social_media:
+    path: /
+  block_content_solution_finder:
+    path: /
+  block_content_special_offers:
+    path: /
+  block_content_special_offers_all:
+    path: /
+  block_content_star_rating:
+    path: /
+  block_content_testimonials:
+    path: /
+  block_content_webform:
+    path: /
+  block_content:
+    enabled: true
+  captcha_point:
+    path: /
+    enabled: true
+  config_split:
+    path: /
+    enabled: true
+  contact_message_feedback:
+    path: /
+  contact_message_personal:
+    path: /
+  contact_message:
+    enabled: true
+  content_moderation_state:
+    path: /
+    enabled: true
+  crop_crop_16_9:
+    path: /
+  crop_crop_4_1:
+    path: /
+  crop_crop_4_3:
+    path: /
+  crop_crop_free_ratio:
+    path: /
+  crop_focal_point:
+    path: /
+  crop:
+    enabled: true
+  crop_type:
+    path: /
+    enabled: true
+  embed_button:
+    path: /
+    enabled: true
+  entity_browser:
+    path: /
+    enabled: true
+  entity_embed_fake_entity:
+    path: /
+    enabled: true
+  configurable_language:
+    path: /
+    enabled: true
+  language_content_settings:
+    path: /
+    enabled: true
+  layout_builder_browser_block:
+    path: /
+    enabled: true
+  layout_builder_browser_blockcat:
+    path: /
+    enabled: true
+  layout_builder_style:
+    path: /
+    enabled: true
+  layout:
+    path: /
+    enabled: true
+  media_type:
+    path: /
+    enabled: true
+  media_audio:
+    path: /
+  media_document:
+    path: /
+  media_image:
+    path: /
+  media_image_no_svg_:
+    path: /
+  media_image_with_crop:
+    path: /
+  media_multi_image:
+    path: /
+  media_remote_video:
+    path: /
+  media_svg_image:
+    path: /
+  media_video:
+    path: /
+  media:
+    enabled: true
+  metatag_defaults:
+    path: /
+    enabled: true
+  node_benefit:
+    path: /
+  node_city_page:
+    path: /
+  node_concern:
+    path: /
+  node_faq:
+    path: /
+  node_issue:
+    path: /
+  node_landing_page:
+    path: /
+  node_location:
+    path: /
+  node_package:
+    path: /
+  node_page:
+    path: /
+  node_profile:
+    path: /
+  node_service:
+    path: /
+  node_special_offer:
+    path: /
+  node_testimonial:
+    path: /
+  path_alias:
+    path: /
+    enabled: true
+  behavior_settings:
+    path: /
+    enabled: true
+  rdf_mapping:
+    path: /
+    enabled: true
+  redirect:
+    path: /
+    enabled: true
+  responsive_image_style:
+    path: /
+    enabled: true
+  section_library_template:
+    path: /
+    enabled: true
+  shortcut_default:
+    path: /
+  slick:
+    path: /
+    enabled: true
+  taxonomy_term_image_organization:
+    path: /
+  taxonomy_term_tags:
+    path: /
+  webform:
+    path: /
+    enabled: false
+  webform_submission_contact:
+    path: /
+  webform_submission_free_quote:
+    path: /
+  webform_submission:
+    enabled: false
+  webform_options:
+    path: /
+    enabled: false
+  workflow:
+    path: /
+    enabled: true
+  pathauto_pattern:
+    path: /
+    enabled: true
+  paragraph_brand:
+    path: /
+  paragraph_identifications:
+    path: /
+  paragraph_social_media:
+    path: /
+  paragraph:
+    enabled: true
+  paragraphs_type:
+    path: /
+    enabled: true
+  corresponding_reference:
+    path: /
+    enabled: true

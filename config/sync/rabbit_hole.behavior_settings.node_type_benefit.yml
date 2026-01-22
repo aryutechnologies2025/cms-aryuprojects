@@ -1,0 +1,14 @@
+uuid: 79a86ee8-d636-4503-b93a-ba507613360b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.benefit
+id: node_type_benefit
+entity_type_id: node_type
+entity_id: benefit
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

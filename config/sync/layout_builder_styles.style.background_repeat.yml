@@ -1,0 +1,13 @@
+uuid: 11e0aac2-4a1f-40d2-b77f-9b54275591c9
+langcode: en
+status: true
+dependencies: {  }
+id: background_repeat
+label: 'Background Repeat'
+classes: bgrepeat
+type: component
+group: bgstyle
+block_restrictions:
+  - 'inline_block:hero'
+layout_restrictions: {  }
+weight: -22

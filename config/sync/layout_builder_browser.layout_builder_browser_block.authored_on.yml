@@ -1,0 +1,11 @@
+uuid: 35b359c8-9321-4fe5-b509-a9ca90e38fe5
+langcode: en
+status: true
+dependencies: {  }
+id: authored_on
+block_id: 'field_block:node:blog:created'
+category: custom_blocks
+label: 'Authored on'
+image_path: ''
+image_alt: ''
+weight: -84

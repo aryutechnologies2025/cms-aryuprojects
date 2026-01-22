@@ -1,0 +1,11 @@
+uuid: eae32853-dda5-4a31-a14d-b49e9750233e
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.gallery_900x600
+label: 'Gallery (900x600)'
+description: ''
+targetEntityType: media
+cache: true

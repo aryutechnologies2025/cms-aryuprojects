@@ -1,0 +1,23 @@
+uuid: a2941b02-7b76-4e07-a755-fc185877f2b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_background_image_size
+  module:
+    - options
+id: block_content.hero.field_background_image_size
+field_name: field_background_image_size
+entity_type: block_content
+bundle: hero
+label: 'Background Image Size'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: normal
+default_value_callback: ''
+settings: {  }
+field_type: list_string

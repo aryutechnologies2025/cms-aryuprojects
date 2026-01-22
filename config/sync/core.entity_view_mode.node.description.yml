@@ -1,0 +1,11 @@
+uuid: ad3bf110-8fae-40f1-a499-e1c1f309112e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.description
+label: Description
+description: ''
+targetEntityType: node
+cache: true

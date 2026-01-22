@@ -1,0 +1,8 @@
+uuid: 65910968-4b75-4007-be8b-f7504f15c980
+langcode: en
+status: true
+dependencies: {  }
+id: alert_box
+label: 'Alert Box'
+revision: false
+description: 'Add a new Alert at the top of the page. Could be used for notifications and offers.'

@@ -1,0 +1,55 @@
+uuid: 54f96e53-b459-499b-b91a-9e36ae8c2b78
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.testimonial.body
+    - field.field.node.testimonial.field_do_not_change
+    - field.field.node.testimonial.field_external_change_key
+    - field.field.node.testimonial.field_external_id
+    - field.field.node.testimonial.field_external_url
+    - field.field.node.testimonial.field_industry
+    - field.field.node.testimonial.field_location
+    - field.field.node.testimonial.field_rating
+    - field.field.node.testimonial.field_review_source
+    - field.field.node.testimonial.field_services
+    - field.field.node.testimonial.field_subsite_multiple
+    - node.type.testimonial
+  module:
+    - text
+    - user
+id: node.testimonial.teaser
+targetEntityType: node
+bundle: testimonial
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_location:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_do_not_change: true
+  field_external_change_key: true
+  field_external_id: true
+  field_external_url: true
+  field_industry: true
+  field_rating: true
+  field_review_source: true
+  field_services: true
+  field_subsite_multiple: true
+  langcode: true
+  links: true
+  show_title: true

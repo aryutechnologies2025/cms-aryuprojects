@@ -1,0 +1,11 @@
+uuid: a8ced585-7cd9-41e3-ba9b-297bf03868ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.altb
+label: 'Alt B'
+description: ''
+targetEntityType: node
+cache: true

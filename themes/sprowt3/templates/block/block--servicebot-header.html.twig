@@ -1,0 +1,35 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'block-color-' ~ content.field_accent_color[0]['#markup'],
+    content.field_rounded[0]['#markup'] == 1 ? 'rounded' : '',
+    content.field_icon[0] is not empty ? 'with-logo' : ''
+  ]
+%}
+
+{{ attach_library('sprowt3/font-caveat') }}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="servicebot-wrap">
+      <a class="servicebot-link" href="{{ content.field_single_link[0]['#url'] }}"{% if content.field_new_window[0]['#markup'] == 1 %} target="_blank"{% endif %}></a>
+      <div class="inner-wrap">
+        <div class="inner-box">
+          {{ content.field_icon }}
+          <div class="inner-text">
+            {{ content|without('field_icon','field_single_link','field_new_window','field_accent_color','field_rounded') }}
+            <div class="single-link-wrap">
+              <div class="field field-name-field-single-link field__item">{{ content.field_single_link[0]['#title'] }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+</div>

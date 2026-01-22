@@ -1,0 +1,15 @@
+uuid: a2547203-1259-4975-834d-8054ff4b3cc2
+langcode: en
+status: true
+dependencies: {  }
+name: mobile_max_800_x_600
+label: 'Mobile (max 800 x 600)'
+effects:
+  c74b29a2-bd81-4256-ae44-346c356b1416:
+    uuid: c74b29a2-bd81-4256-ae44-346c356b1416
+    id: image_scale
+    weight: 1
+    data:
+      width: 800
+      height: 600
+      upscale: false

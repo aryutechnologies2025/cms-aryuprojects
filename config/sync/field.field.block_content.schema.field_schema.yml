@@ -1,0 +1,19 @@
+uuid: d76c7614-4eda-4e58-8fcb-8451a279eb91
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.schema
+    - field.storage.block_content.field_schema
+id: block_content.schema.field_schema
+field_name: field_schema
+entity_type: block_content
+bundle: schema
+label: Schema
+description: "Use JSON-LD markup. Reference https://schema.org/docs/schemas.html for proper markup\r\n\r\nExample:\r\n<script type=\"application/ld+json\">\r\n    {\r\n      \"@context\": \"https://schema.org/\",\r\n      \"@type\": \"Person\",\r\n      \"name\": \"John Smith\",\r\n      \"sponsor\":\r\n      {\r\n        \"@type\": \"Organization\",\r\n        \"name\": \"Workwave\",\r\n        \"url\": \"http://www.workwave.com/\"\r\n      }\r\n    }\r\n</script>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

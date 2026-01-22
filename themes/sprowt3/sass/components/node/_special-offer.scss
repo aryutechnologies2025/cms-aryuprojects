@@ -1,0 +1,310 @@
+.special-offer-link {
+  position: relative;
+  display: block;
+  max-width: 500px;
+  height: 100%;
+  //margin: 0 auto;
+  color: inherit;
+  text-decoration: none;
+
+  .center-align & {
+    margin: 0 auto;
+  }
+
+  @include breakpoint($max-medium) {
+    margin: 0 auto;
+  }
+}
+
+.node--type-special-offer {
+  position: relative;
+
+  // Teasers
+  &.node--view-mode-teaser,
+  &.node--view-mode-secondary-teaser,
+  &.node--view-mode-tertiary-teaser,
+  &.node--view-mode-quaternary-teaser {
+    height: 100%;
+    padding: 12px;
+    box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.1);
+    transition: all $duration;
+
+    &:hover {
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .node__content {
+      @include flexbox;
+      justify-content: flex-start;
+      flex-direction: column;
+      max-width: 500px;
+      height: 100%;
+      padding: 12px;
+      margin: 0 auto;
+
+      //Border image properties (subtheme v1.1 overrides)
+      border-style: solid;
+      border-width: 4px;
+      border-image-source: url("../assets/coupon_border.png");
+      border-image-slice: 2;
+      border-image-repeat: round;
+
+      background-position: 0 0, 0 0, 100% 0, 0 100%;
+      background-repeat: no-repeat;
+
+      .field--name-field-offer-headline {
+        margin-bottom: 8px;
+        font-size: 3.2rem;
+        font-weight: 800;
+        line-height: 1.125;
+        text-align: center;
+
+        @include breakpoint($medium) {
+          font-size: 4rem;
+        }
+      }
+      .field--name-field-subheading,
+      .field--name-field-subheading-tag {
+        margin-bottom: 10px;
+        font-size: 2.4rem;
+        font-weight: 600;
+        line-height: 1.2;
+        text-align: center;
+      }
+      .field--name-field-body,
+      .__body {
+        padding: 0 $margin;
+
+        p {
+          margin-bottom: 15px;
+          line-height: 1.6;
+          color: initial;
+        }
+      }
+      .field--name-field-disclaimer {
+        margin-bottom: 15px;
+        padding: 0 $margin;
+        font-size: 1.4rem;
+        font-style: italic;
+      }
+      .field--name-field-expiration-date {
+        margin-bottom: 15px;
+        padding: 0 $margin;
+        font-size: 1.4rem;
+        &::before {
+          content: "Expires:";
+          display: inline-block;
+          margin-right: 6px;
+        }
+      }
+      .field--name-field-button {
+        margin-top: auto;
+
+        span {
+          margin-right: 0;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+      }
+      .special-offer-logo {
+        display: block;
+        width: calc(100% - 30px);
+        max-width: 190px;
+        height: 80px;
+        margin: 5px auto 0;
+        img {
+          max-height: 75px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  // Tertiary Teaser (horizontal) (deprecated)
+  &.node--view-mode-tertiary-teaser {
+    box-shadow: 0 0 0.75em 0 rgba(0, 0, 0, 0.05);
+
+    .node__content {
+      max-width: 850px;
+
+      .sp-content-wrap {
+        width: auto;
+        margin: 10px 15px;
+      }
+
+      // &::after {
+      //   content: "";
+      //   display: flex;
+      //   width: calc(100% - 30px);
+      //   max-width: 225px;
+      //   min-width: 150px;
+      //   //height: 100px;
+      //   margin: 0 auto;
+      //   background-image: url("../assets/logos/logo.png");
+      //   background-size: calc(100% - 40px);
+      //   background-position: center center;
+      //   background-repeat: no-repeat;
+      // }
+    }
+    .special-offer-logo {
+      display: none;
+    }
+
+    @include breakpoint($xsmall) {
+      min-width: 420px;
+
+      .node__content {
+        flex-direction: row;
+      }
+    }
+    @include breakpoint($small) {
+      min-width: 450px;
+    }
+    @include breakpoint($smedium) {
+      .node__content {
+        .sp-content-wrap {
+          width: 100%;
+        }
+      }
+    }
+    @include breakpoint($large) {
+      min-width: 600px;
+    }
+  }
+
+  // Quaternary Teaser (new horizontal)
+  &.node--view-mode-quaternary-teaser {
+    max-width: 850px;
+    box-shadow: 0 0 0.75em 0 rgba(0, 0, 0, 0.05);
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 185px;
+      background-color: palette(black);
+
+      @include breakpoint($small) {
+        top: 0;
+        bottom: initial;
+        width: 50%;
+        height: 100%;
+      }
+    }
+
+    .node__content {
+      position: relative;
+      @include flexbox;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      min-width: 100%;
+      background-color: transparent !important;
+
+      @include breakpoint($small) {
+        flex-wrap: nowrap;
+      }
+    }
+
+    .sp-content-wrap {
+      @include flexbox;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 100%;
+      padding: 10px 15px;
+
+      .sp-content {
+      }
+
+      @include breakpoint($small) {
+        width: 50%;
+        min-width: 50%;
+      }
+    }
+
+    .special-offer-logo-side {
+      @include flexbox;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 160px;
+      margin: 0 auto;
+      padding: 30px;
+
+      @include breakpoint($small) {
+        height: auto;
+      }
+
+      img {
+        width: 100%;
+        max-width: 350px;
+        max-height: 130px;
+      }
+    }
+
+    @include breakpoint($large) {
+      min-width: 600px;
+      max-width: 850px;
+    }
+  }
+
+  // Token (small teaser)
+  &.node--view-mode-token {
+    margin-top: 20px;
+    transition: background-color $duration;
+
+    .node__content {
+      @include flexbox;
+      justify-content: center;
+      flex-direction: column;
+      max-width: 500px;
+      height: 100%;
+      padding: 25px 12px;
+      margin: 0 auto;
+
+      .field--name-field-offer-headline {
+        margin-bottom: 5px;
+        font-size: 3.2rem;
+        font-weight: 900;
+        line-height: 1.15;
+        text-align: center;
+
+        @include breakpoint($medium) {
+          font-size: 4rem;
+        }
+      }
+      .field--name-field-subheading,
+      .field--name-field-subheading-tag {
+        @extend %h3;
+        margin-bottom: 15px;
+        font-size: 2.1rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      .field--name-field-button {
+        margin: 0 auto;
+        span {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  &.featured {
+    .node__content {
+      border-image-source: url("../assets/coupon_border_white.png");
+      background-color: transparent;
+
+      .field--name-field-button {
+        span {
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+      }
+    }
+  }
+}

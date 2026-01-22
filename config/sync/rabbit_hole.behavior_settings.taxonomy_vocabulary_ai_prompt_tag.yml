@@ -1,0 +1,14 @@
+uuid: 2ccade4a-7c12-45a6-899f-29b9bedd22e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ai_prompt_tag
+id: taxonomy_vocabulary_ai_prompt_tag
+entity_type_id: taxonomy_vocabulary
+entity_id: ai_prompt_tag
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

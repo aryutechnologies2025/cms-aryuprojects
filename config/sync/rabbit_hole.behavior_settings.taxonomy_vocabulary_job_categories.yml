@@ -1,0 +1,14 @@
+uuid: 87d3b130-9375-4e37-bcd4-29936c115a67
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.job_categories
+id: taxonomy_vocabulary_job_categories
+entity_type_id: taxonomy_vocabulary
+entity_id: job_categories
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

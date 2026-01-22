@@ -1,0 +1,8 @@
+uuid: d20a773c-d163-486f-adf2-2b9b1a0eb1cf
+langcode: en
+status: true
+dependencies: {  }
+id: quick_media_embed
+label: 'Quick Media Embed'
+revision: true
+description: "Don't need a full blown Media Gallery but need to add multiple Media items to a page, this is it!"

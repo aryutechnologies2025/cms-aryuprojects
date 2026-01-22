@@ -1,0 +1,221 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Lawnbot module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+
+/**
+ * Implements hook_theme().
+ */
+function lawnbot_theme($existing, $type, $theme, $path)
+{
+    return [
+        'page__instantquote' => [
+            'path' => $path . '/templates',
+            'template' => 'page--instantquote',
+            'base hook' => 'page',
+            'variables' => [
+                'botConfig' => json_encode([], JSON_FORCE_OBJECT),
+                'testing' => false
+            ]
+        ],
+        'instantquote_modal' => [
+            'render element' => 'children',
+            'path' => $path . '/templates',
+            'template' => 'instantquote-modal',
+            'variables' => [
+                'iframeUrl' => null
+            ]
+        ]
+    ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function lawnbot_preprocess_page__instantquote(&$variables)
+{
+    $storage = \Drupal::entityTypeManager()->getStorage('servicebot');
+    $bot = null;
+    if(!empty($_GET['serviceBotId'])) {
+        $bots = $storage->loadByProperties([
+            'uuid' => $_GET['serviceBotId']
+        ]);
+        if(!empty($bots)) {
+            $bot = array_shift($bots);
+        }
+    }
+    else {
+        $bots = $storage->loadMultiple();
+        if(!empty($bots)) {
+            $bot = array_shift($bots);
+        }
+    }
+    if(isset($bot) && $bot instanceof \Drupal\lawnbot\Entity\Servicebot) {
+        $botConfig = [
+            'customerId' => $bot->getCustomerId(),
+            'botId' => $bot->getBotId()
+        ];
+    }
+    else {
+        $botConfig = [
+            'customerId' => 'noData',
+            'botId' => 'noData'
+        ];
+    }
+    $testing = \Drupal::state()->get('lawnbot.testing') ?? false;
+    $variables['botConfig'] = json_encode($botConfig);
+    $variables['testing'] = !empty($testing);
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function lawnbot_page_attachments(array &$attachments)
+{
+    $routeMatch = \Drupal::routeMatch();
+    if($routeMatch->getRouteName() == 'lawnbot.instantquote') {
+        $attachments['#attached']['library'][] = 'lawnbot/instantquote';
+    }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function lawnbot_page_attachments_alter(array &$attachments)
+{
+    $routeMatch = \Drupal::routeMatch();
+    if($routeMatch->getRouteName() == 'lawnbot.instantquote') {
+        $library = $attachments["#attached"]["library"];
+        foreach($library as $key => $val) {
+            if(strpos('toolbar', $val) !== false) {
+                unset($library[$key]);
+            }
+        }
+        $attachments["#attached"]["library"] = array_values($library);
+    }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function lawnbot_preprocess_html(&$variables)
+{
+    $routeMatch = \Drupal::routeMatch();
+    if($routeMatch->getRouteName() == 'lawnbot.instantquote') {
+        if(!empty($variables['page_bottom']) && is_array($variables['page_bottom'])) {
+            $page_bottom = &$variables['page_bottom'];
+            if(!empty($page_bottom['chatcodes'])) {
+                unset($page_bottom['chatcodes']);
+            }
+        }
+        if(!empty($variables['page_top']) && is_array($variables['page_top'])) {
+            $page_top = &$variables['page_top'];
+            if (!empty($page_top['toolbar'])) {
+                unset($page_top['toolbar']);
+            }
+            if (!empty($page_top['indicator'])) {
+                unset($page_top['indicator']);
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_page_bottom().
+ */
+function lawnbot_page_bottom(array &$page_bottom)
+{
+    $build = \Drupal::service('lawnbot.service')->buildModal();
+    if(!empty($build['lawnbot'])) {
+        $page_bottom['lawnbot'] = $build['lawnbot'];
+    }
+}
+
+
+/**
+ * Implements hook_cron().
+ */
+function lawnbot_cron()
+{
+    /** @var \Drupal\lawnbot\LawnbotService $service */
+    $service = \Drupal::service('lawnbot.service');
+    $service->clearExpiry();
+}
+
+function lawnbot_sprowt_address_autocomplete_replace_webform_address_fields_handler_update($webform, $handler, $keyMap) {
+    if($handler->getPluginId() == 'Lawnbot integration' || $handler->getPluginId() == 'multiservicebot') {
+        $handlerSettingsChanged = false;
+        $settings = $handler->getSettings();
+        $mappingKeys = [
+            'first_or_full_name_key',
+            'last_name_key',
+            'phone_key',
+            'email_key',
+            'address_key',
+            'zip_key',
+            'city_key',
+            'state_key'
+        ];
+        foreach($mappingKeys as $mappingKey) {
+            if(isset($settings[$mappingKey])
+                && isset($keyMap[$settings[$mappingKey]])
+            ) {
+                $settings[$mappingKey] = $keyMap[$settings[$mappingKey]];
+                $handlerSettingsChanged = true;
+            }
+        }
+
+        if($handlerSettingsChanged) {
+            $handler->setSettings($settings);
+            $webform->updateWebformHandler($handler);
+            $webform->save();
+        }
+    }
+}
+
+/**
+ * Implements hook_sprowt_address_autocomplete_undo_replace_webform_address_fields_handler_update().
+ */
+function lawnbot_sprowt_address_autocomplete_undo_replace_webform_address_fields_handler_update($webform, $handler, $keyMap)
+{
+    lawnbot_sprowt_address_autocomplete_replace_webform_address_fields_handler_update($webform, $handler, $keyMap);
+}
+
+
+function lawnbot_integration_enabled() {
+    $botEnabled = false;
+    $serviceBots = \Drupal::entityTypeManager()->getStorage('servicebot')->loadMultiple();
+    /** @var \Drupal\lawnbot\Entity\Servicebot $serviceBot */
+    foreach($serviceBots as $serviceBot) {
+        if(empty($botEnabled) && $serviceBot->isEnabled()) {
+            $botEnabled = true;
+            break;
+        }
+    }
+    if(empty($botEnabled)) {
+        return false;
+    }
+
+    $handlerEnabled = false;
+    $webforms = \Drupal::entityTypeManager()->getStorage('webform')->loadMultiple();
+    /** @var \Drupal\webform\WebformInterface $webform */
+    foreach($webforms as $webform) {
+        /** @var \Drupal\webform\Plugin\WebformHandlerPluginCollection $handlers */
+        $handlers = $webform->getHandlers('Lawnbot integration');
+        /** @var \Drupal\lawnbot\Plugin\WebformHandler\LawnbotWebformHandler $handler */
+        foreach($handlers as $handler) {
+            if($handler->isEnabled()) {
+                $handlerEnabled = true;
+                break;
+            }
+        }
+    }
+    return $handlerEnabled;
+}

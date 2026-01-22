@@ -1,0 +1,23 @@
+uuid: 84e044e2-969e-438a-9205-f18318e2bce1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_main_branch
+    - node.type.branch
+id: node.branch.field_is_main_branch
+field_name: field_is_main_branch
+entity_type: node
+bundle: branch
+label: 'Is Main Location'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

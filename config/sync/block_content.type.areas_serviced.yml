@@ -1,0 +1,8 @@
+uuid: 47d51613-c557-4a71-8780-bf2bde2e0a42
+langcode: en
+status: true
+dependencies: {  }
+id: areas_serviced
+label: 'Areas Serviced'
+revision: false
+description: "List of City Pages and LTP Pages that is filtered based on the Industry of the current page.\r\nFor City Pages and LTP Pages it also filters by the Main Location of that page and for Service Pages it filters by that service."

@@ -1,0 +1,36 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<div class="article-wrapper">
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% if content.field_button[0]['#url'] is not empty %}
+    {% if content.field_button[0]['#url'].options.attributes is not empty %}
+      {% set view_all_attributes = create_attribute(content.field_button[0]['#url'].options.attributes) %}
+    {% else %}
+      {% set view_all_attributes = create_attribute() %}
+    {% endif %}
+    <a href="{{ content.field_button[0]['#url'] }}" alt="{{ content.field_button_text[0]|render|striptags }}" {{view_all_attributes.addClass(['special-offer-link button'])}}>
+  {% else %}
+    <span class="special-offer-link button">
+  {% endif %}
+      {% if content.field_heading_alt[0] is not empty %}
+        {{ content.field_heading_alt.0 }}
+      {% else %}
+        {{ content.field_offer_headline }}
+      {% endif %}
+  {% if content.field_button[0]['#url'] is not empty %}
+    </a>
+  {% else %}
+    </span>
+  {% endif %}
+</div>

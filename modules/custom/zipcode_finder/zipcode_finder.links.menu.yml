@@ -1,0 +1,18 @@
+entity.zipcode_finder.overview:
+    title: Zipcode finders
+    parent: system.admin_structure
+    description: 'List of zipcode finders.'
+    route_name: entity.zipcode_finder.collection
+
+entity.zipcode_finder.add_form:
+    title: Add zipcode finder
+    parent: entity.zipcode_finder.overview
+    description: 'Add a zipcode finder'
+    route_name: entity.zipcode_finder.add_form
+
+
+entity.zipcode_finder.logs:
+    title: Zipcode log
+    parent: entity.zipcode_finder.overview
+    description: 'List of zipcode finders logs'
+    route_name: entity.zipcode_finder_log.collection

@@ -1,0 +1,5 @@
+sprowt_admin_override.taxonomy_term.bulk_add_form:
+    route_name: entity.taxonomy_term.bulk_add_form
+    title: 'Bulk add terms'
+    appears_on:
+        - entity.taxonomy_vocabulary.overview_form

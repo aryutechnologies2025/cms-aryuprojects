@@ -1,0 +1,22 @@
+uuid: d66da8ac-8a80-4d83-b70b-735d7552bc09
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: profiles
+label: Profiles
+type: 'canonical_entities:node'
+pattern: 'about-us/meet-team/[node:title]'
+selection_criteria:
+  e1610e68-9378-40f9-a06a-c17dcdc2d757:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e1610e68-9378-40f9-a06a-c17dcdc2d757
+    context_mapping:
+      node: node
+    bundles:
+      profile: profile
+selection_logic: and
+weight: -8
+relationships: {  }

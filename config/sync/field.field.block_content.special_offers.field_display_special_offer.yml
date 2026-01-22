@@ -1,0 +1,23 @@
+uuid: ad2acad7-0988-4d25-8af6-cf4a7de7fb64
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.special_offers
+    - field.storage.block_content.field_display_special_offer
+  module:
+    - options
+id: block_content.special_offers.field_display_special_offer
+field_name: field_display_special_offer
+entity_type: block_content
+bundle: special_offers
+label: Display
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: teaser
+default_value_callback: ''
+settings: {  }
+field_type: list_string

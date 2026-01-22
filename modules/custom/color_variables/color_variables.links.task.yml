@@ -1,0 +1,9 @@
+entity.color_variable_item.edit_form:
+    title: Edit
+    route_name: entity.color_variable_item.edit_form
+    base_route: entity.color_variable_item.canonical
+entity.color_variable_item.delete_form:
+    title: Delete
+    route_name: entity.color_variable_item.delete_form
+    base_route: entity.color_variable_item.canonical
+    weight: 10

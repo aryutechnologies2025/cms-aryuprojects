@@ -1,0 +1,11 @@
+uuid: e86aceef-8215-4675-b067-de6b00dda91a
+langcode: en
+status: true
+dependencies: {  }
+id: media_gallery_list
+block_id: 'inline_block:media_gallery_list'
+category: custom_blocks
+label: 'Media Gallery List'
+image_path: ''
+image_alt: ''
+weight: -61

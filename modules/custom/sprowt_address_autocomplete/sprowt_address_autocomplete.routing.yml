@@ -1,0 +1,31 @@
+sprowt_address_autocomplete.settings_form:
+    path: '/admin/config/services/sprowt-address-autocomplete'
+    defaults:
+        _title: 'Sprowt address autocomplete settings'
+        _form: 'Drupal\sprowt_address_autocomplete\Form\SettingsForm'
+    requirements:
+        _permission: 'administer sprowt_address_autocomplete configuration'
+
+sprowt_address_autocomplete.switch_webform_address_field:
+    path: '/admin/structure/webform/manage/{webform}/switch-webform-address-field'
+    defaults:
+        _title: 'Switch Webform Address Field'
+        _form: 'Drupal\sprowt_address_autocomplete\Form\SwitchWebformAddressFieldForm'
+    requirements:
+        _entity_access: 'webform.update'
+    options:
+        parameters:
+            webform:
+                type: entity:webform
+
+sprowt_address_autocomplete.undo_switch_webform_address_field:
+    path: '/admin/structure/webform/manage/{webform}/undo-switch-webform-address-field'
+    defaults:
+        _title: 'Switch Webform Address Field'
+        _form: 'Drupal\sprowt_address_autocomplete\Form\UndoSwitchForm'
+    requirements:
+        _entity_access: 'webform.update'
+    options:
+        parameters:
+            webform:
+                type: entity:webform

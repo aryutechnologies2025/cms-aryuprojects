@@ -1,0 +1,29 @@
+uuid: 1857a1b2-7623-4fa2-b7d1-5b2a37b6427b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_issues
+    - node.type.issue
+    - node.type.subsite
+id: node.subsite.field_issues
+field_name: field_issues
+entity_type: node
+bundle: subsite
+label: Issue(s)
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      issue: issue
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

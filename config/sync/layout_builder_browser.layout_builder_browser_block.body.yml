@@ -1,0 +1,11 @@
+uuid: f50e8dc2-d98a-4c8d-b05d-936de1d0300b
+langcode: en
+status: true
+dependencies: {  }
+id: body
+block_id: 'inline_block:body'
+category: custom_blocks
+label: Body
+image_path: ''
+image_alt: ''
+weight: -79

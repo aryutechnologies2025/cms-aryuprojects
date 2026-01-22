@@ -1,0 +1,60 @@
+uuid: 14768df7-27e0-40fb-8543-33203a500161
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ctm_contact
+    - field.field.block_content.ctm_contact.field_heading
+    - field.field.block_content.ctm_contact.field_label_tag
+    - field.field.block_content.ctm_contact.field_phone_number
+    - field.field.block_content.ctm_contact.field_subheading_tag
+  module:
+    - tag_text_field
+    - telephone
+id: block_content.ctm_contact.default
+targetEntityType: block_content
+bundle: ctm_contact
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_widget
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_label_tag:
+    type: html_tag_text_field_widget
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone_number:
+    type: telephone_default
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_subheading_tag:
+    type: html_tag_text_field_widget
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  revision_log: true

@@ -1,0 +1,48 @@
+uuid: 3c2d7d49-457a-4e57-981d-012bd35ae73d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.testimonials
+    - field.field.block_content.testimonials.field_count_testimonial
+    - field.field.block_content.testimonials.field_heading
+    - field.field.block_content.testimonials.field_label_tag
+    - field.field.block_content.testimonials.field_subheading_tag
+  module:
+    - options
+    - tag_text_field
+id: block_content.testimonials.default
+targetEntityType: block_content
+bundle: testimonials
+mode: default
+content:
+  field_count_testimonial:
+    type: list_key
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true

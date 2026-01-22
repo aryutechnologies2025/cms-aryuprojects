@@ -1,0 +1,62 @@
+<?php
+
+use Drupal\Core\Extension\ModuleInstaller;
+
+
+/**
+ * Install jquery modules for better_exposed_filters
+ */
+function sprowt_settings_update_8001(&$sandbox)
+{
+    /** @var ModuleInstaller $installer */
+    $installer = \Drupal::service('module_installer');
+    $installer->install([
+        'jquery_ui_slider',
+        'jquery_ui_touch_punch',
+        'jquery_ui_datepicker'
+    ]);
+}
+
+/**
+ * Enable solution finder
+ */
+function sprowt_settings_update_9001(&$sandbox)
+{
+    /** @var \Drupal\sprowt_settings\SprowtSettings $service */
+    $service = \Drupal::service('sprowt_settings.manager');
+    $service->setSetting('solution_finder_enabled', true);
+}
+
+/**
+ * Update al a carte field with value from solution_finder_enabled
+ */
+function sprowt_settings_update_100001(&$sandbox)
+{
+    /** @var \Drupal\sprowt_settings\SprowtSettings $service */
+    $service = \Drupal::service('sprowt_settings.manager');
+    $options = $service->getSetting('ala_carte', []);
+    $enabled = $service->getSetting('solution_finder_enabled', false);
+    if($enabled && !in_array('solutions_finder', $options)) {
+        $options['solutions_finder'] = 'solutions_finder';
+        $service->setSetting('ala_carte', $options);
+    }
+}
+
+/**
+ * update package to base if business, corporate, enterprise, or ultimate
+ */
+function sprowt_settings_update_100002(&$sandbox)
+{
+    $change = [
+        'business',
+        'corporate',
+        'enterprise',
+        'ultimate'
+    ];
+    /** @var \Drupal\sprowt_settings\SprowtSettings $service */
+    $service = \Drupal::service('sprowt_settings.manager');
+    $packageLevel = $service->getSetting('packageLevel', 'base');
+    if(in_array($packageLevel, $change)) {
+        $service->setSetting('packageLevel', 'base');
+    }
+}

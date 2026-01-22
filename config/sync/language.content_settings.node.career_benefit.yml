@@ -1,0 +1,11 @@
+uuid: ba5451b1-f0e8-4394-87cc-497a4c6fe562
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.career_benefit
+id: node.career_benefit
+target_entity_type_id: node
+target_bundle: career_benefit
+default_langcode: site_default
+language_alterable: false

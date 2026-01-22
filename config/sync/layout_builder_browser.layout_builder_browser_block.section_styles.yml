@@ -1,0 +1,11 @@
+uuid: e4e857d2-f62b-4b0f-9f62-299b9f50cdd9
+langcode: en
+status: true
+dependencies: {  }
+id: section_styles
+block_id: 'inline_block:section_styles'
+category: custom_blocks
+label: 'Section Styles'
+image_path: ''
+image_alt: ''
+weight: -49

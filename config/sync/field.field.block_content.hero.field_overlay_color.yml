@@ -1,0 +1,23 @@
+uuid: 86e3ef67-8f87-4110-aac8-ada47c8ca05b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_overlay_color
+  module:
+    - options
+id: block_content.hero.field_overlay_color
+field_name: field_overlay_color
+entity_type: block_content
+bundle: hero
+label: 'Overlay Color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: black
+default_value_callback: ''
+settings: {  }
+field_type: list_string

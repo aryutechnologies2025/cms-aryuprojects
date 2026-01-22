@@ -1,0 +1,23 @@
+uuid: 2e7bac2d-7a5d-4bdc-bcb3-2171d7c593d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.testimonials
+    - field.storage.block_content.field_count_testimonial
+  module:
+    - options
+id: block_content.testimonials.field_count_testimonial
+field_name: field_count_testimonial
+entity_type: block_content
+bundle: testimonials
+label: Count
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: '3'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,26 @@
+uuid: 388e7e5f-75dd-4619-8ebe-9a9c4e1909a3
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - menu_link_content
+    - menu_item_fields
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: menu_link_content.field_list_item_classes
+field_name: field_list_item_classes
+entity_type: menu_link_content
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

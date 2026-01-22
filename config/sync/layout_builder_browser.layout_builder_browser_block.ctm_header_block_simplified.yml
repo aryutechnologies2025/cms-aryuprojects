@@ -1,0 +1,11 @@
+uuid: 7fba7bfd-4fb6-40af-8afd-c30bfbfa3acf
+langcode: en
+status: true
+dependencies: {  }
+id: ctm_header_block_simplified
+block_id: 'block_content:6d85f716-c081-4e51-aa7b-c1375750b3ac'
+category: header_footer
+label: 'CTM Header Block (Simplified)'
+image_path: ''
+image_alt: ''
+weight: -86

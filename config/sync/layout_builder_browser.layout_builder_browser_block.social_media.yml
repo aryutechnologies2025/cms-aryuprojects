@@ -1,0 +1,11 @@
+uuid: c5f44a16-be19-4984-a271-c4cd374da86c
+langcode: en
+status: true
+dependencies: {  }
+id: social_media
+block_id: 'inline_block:social_media'
+category: custom_blocks
+label: 'Social Media'
+image_path: ''
+image_alt: ''
+weight: -46

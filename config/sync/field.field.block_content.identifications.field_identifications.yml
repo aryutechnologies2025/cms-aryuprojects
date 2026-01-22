@@ -1,0 +1,40 @@
+uuid: b2b2c7d4-e6df-4761-a047-95a176199954
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.identifications
+    - field.storage.block_content.field_identifications
+    - paragraphs.paragraphs_type.identifications
+  module:
+    - entity_reference_revisions
+id: block_content.identifications.field_identifications
+field_name: field_identifications
+entity_type: block_content
+bundle: identifications
+label: Identifications
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      identifications: identifications
+    negate: 0
+    target_bundles_drag_drop:
+      brand:
+        weight: 5
+        enabled: false
+      faqs:
+        weight: 6
+        enabled: false
+      identifications:
+        weight: 7
+        enabled: true
+      social_media:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

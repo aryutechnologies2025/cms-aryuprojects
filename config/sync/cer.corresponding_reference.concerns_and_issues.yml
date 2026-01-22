@@ -1,0 +1,14 @@
+uuid: e28cec72-470d-4784-a7c0-7346ee716446
+langcode: en
+status: true
+dependencies: {  }
+id: concerns_and_issues
+label: 'Concerns and Issues'
+enabled: true
+first_field: field_concerns
+second_field: field_issues
+add_direction: null
+bundles:
+  node:
+    - concern
+    - issue

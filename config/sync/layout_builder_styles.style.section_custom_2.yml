@@ -1,0 +1,12 @@
+uuid: d2355534-6af3-4a60-948e-2b31a2fee83e
+langcode: en
+status: true
+dependencies: {  }
+id: section_custom_2
+label: 'Custom Light 2'
+classes: bg-custom-light-2
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -5

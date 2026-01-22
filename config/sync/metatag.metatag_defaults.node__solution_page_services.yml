@@ -1,0 +1,8 @@
+uuid: 63555028-ed0b-4df2-8389-e7689b259bfd
+langcode: en
+status: true
+dependencies: {  }
+id: node__solution_page_services
+label: 'Content: Solution Page - Service(s)'
+tags:
+  robots: 'noindex, nofollow, noarchive, nosnippet, noodp, noydir, noimageindex, notranslate'

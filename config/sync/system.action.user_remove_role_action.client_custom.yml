@@ -1,0 +1,14 @@
+uuid: 41b20c73-6794-49df-8269-1d6452620559
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.client_custom
+  module:
+    - user
+id: user_remove_role_action.client_custom
+label: 'Remove the Client - Custom role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: client_custom

@@ -1,0 +1,5 @@
+name: Cookie Banner
+type: module
+description: Adds cookie banner functionality
+package: Coalmarch
+core_version_requirement: ^9 || ^10

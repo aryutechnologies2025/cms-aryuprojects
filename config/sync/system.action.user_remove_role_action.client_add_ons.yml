@@ -1,0 +1,14 @@
+uuid: 538b605c-eaad-4d57-86d6-0cfe79bd933f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.client_add_ons
+  module:
+    - user
+id: user_remove_role_action.client_add_ons
+label: 'Remove the Client - Add-ons role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: client_add_ons

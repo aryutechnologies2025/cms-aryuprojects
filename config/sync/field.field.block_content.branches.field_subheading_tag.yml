@@ -1,0 +1,30 @@
+uuid: 9c10488a-e662-4cca-a4f3-754fe3059278
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.branches
+    - field.storage.block_content.field_subheading_tag
+  module:
+    - tag_text_field
+id: block_content.branches.field_subheading_tag
+field_name: field_subheading_tag
+entity_type: block_content
+bundle: branches
+label: Subheading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  defaultTag: div
+  tagList: |-
+    h1|H1
+    h2|H2
+    h3|H3
+    h4|H4
+    h5|H5
+    h6|H6
+    div|Div
+field_type: html_tag_text_field_type

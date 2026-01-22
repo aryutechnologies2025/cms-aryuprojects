@@ -1,0 +1,7 @@
+administer zipcode finder:
+    title: 'Administer zipcode finders'
+    restrict access: true
+
+administer zipcode finder log:
+    title: 'Administer zipcode finder logs'
+    restrict access: true

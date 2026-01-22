@@ -1,0 +1,233 @@
+uuid: 31c05353-59f3-4edc-a4df-f89c4e75cc0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.breadcrumbs
+    - field.field.node.profile.body
+    - field.field.node.profile.field_department
+    - field.field.node.profile.field_image_profile
+    - field.field.node.profile.field_industry
+    - field.field.node.profile.field_meta_description
+    - field.field.node.profile.field_meta_tags
+    - field.field.node.profile.field_position
+    - field.field.node.profile.field_subsite_multiple
+    - field.field.node.profile.layout_builder__layout
+    - node.type.profile
+  content:
+    - 'block_content:webform:de416d0d-07eb-49ca-b892-bffe9a319a15'
+  module:
+    - block_content
+    - layout_builder
+    - layout_discovery
+    - metatag
+    - sprowt_subsite
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Breadcrumbs
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - ''
+            - white
+          layout_builder_id: breadcrumbs
+        components:
+          -
+            uuid: 8188a399-f762-4a74-9ffc-f480fc8f4d78
+            region: content
+            configuration:
+              id: 'inline_block:breadcrumbs'
+              label: Breadcrumbs
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 5383
+              block_serialized: null
+              type: breadcrumbs
+              uuid: 2990f80b-1b92-4147-bba5-18efa5d00b99
+            weight: 1
+            additional:
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: Profil
+          context_mapping: {  }
+          column_widths: 25-75
+          layout_builder_styles_style:
+            - ''
+            - ''
+            - white
+          layout_builder_id: profile
+        components:
+          -
+            uuid: bf9947de-8c7c-4507-b531-bf9c99062972
+            region: second
+            configuration:
+              id: 'extra_field_block:node:profile:show_title'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 2
+            additional: {  }
+          -
+            uuid: 5270f7e1-e3cc-42d8-9fb9-64fb5529057f
+            region: second
+            configuration:
+              id: 'field_block:node:profile:field_position'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          -
+            uuid: 07ee03b4-2ed5-4a26-9220-2c8f6c084dcd
+            region: second
+            configuration:
+              id: 'field_block:node:profile:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          -
+            uuid: 36d80b79-ae23-4ff4-a334-e449228f3b7e
+            region: first
+            configuration:
+              id: 'field_block:node:profile:field_image_profile'
+              label: Image
+              label_display: ''
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: max_650_x_900
+                third_party_settings: {  }
+            weight: 0
+            additional:
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Webform
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - ''
+            - primary_color
+          layout_builder_id: get-in-touch
+        components:
+          -
+            uuid: b329bee7-fd8e-4385-9fd1-1efb385f2068
+            region: content
+            configuration:
+              id: 'block_content:de416d0d-07eb-49ca-b892-bffe9a319a15'
+              label: 'Webform - Free Estimate (global)'
+              label_display: '1'
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - center_aligned
+                - block_primary_color
+              layout_builder_id: ''
+        third_party_settings: {  }
+id: node.profile.default
+targetEntityType: node
+bundle: profile
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_image_profile:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_industry:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_meta_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_position:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_subsite_multiple:
+    type: sprowt_subsite_reference_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_department: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

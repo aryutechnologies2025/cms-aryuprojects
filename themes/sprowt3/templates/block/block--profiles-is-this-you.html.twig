@@ -1,0 +1,43 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {{ content|without('field_team_members','field_view_all') }}
+
+    {% if content.field_team_members|render %}
+      <div class="profile-wrap">
+        {% for key, item in content.field_team_members %}
+          {% if key|first != '#' %}
+            <div class="view-row">
+              {{ drupal_entity('node', item['#plain_text'], 'tertiary_teaser') }}
+            </div>
+          {% endif %}
+        {% endfor %}
+        <div class="view-row">
+          <article class="node node--type-profile node--view-mode-teaser">
+            <div class="node__content">
+              <div class="field field--name-field-image-profile">
+                <img src="/themes/sprowt3/assets/avatar.jpg" width="200" height="200" alt="Is This You?" loading="lazy" typeof="foaf:Image" class="image-style-profile">
+              </div>
+              <div class="field field--name-title-text">Is This You?</div>
+              <div class="field field--name-field-position">Your Future</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    {% endif %}
+
+    {{ content.field_view_all }}
+
+  {% endblock %}
+</div>

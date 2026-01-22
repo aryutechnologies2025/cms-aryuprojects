@@ -1,0 +1,12 @@
+uuid: b556b0a9-6ba7-46ad-a510-d6403e57a740
+langcode: en
+status: true
+dependencies: {  }
+id: primary_dark_color
+label: 'Primary Dark Color'
+classes: bg-primary-dark
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -16

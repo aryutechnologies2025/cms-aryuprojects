@@ -1,0 +1,19 @@
+services:
+    sprowt_ai.claude_3:
+        class: Drupal\sprowt_ai\Claude3Service
+        arguments:
+            - '@http_client'
+            - '@config.factory'
+    sprowt_ai.service:
+        class: Drupal\sprowt_ai\AiService
+        arguments:
+            - '@database'
+    sprowt_ai.media_library_opener:
+        class: Drupal\sprowt_ai\SprowtAiMediaLibraryOpener
+        tags:
+            - { name: media_library.opener }
+
+    sprowt_ai.event_subscriber:
+        class: Drupal\sprowt_ai\EventSubscriber\SprowtAiSubscriber
+        tags:
+            - { name: event_subscriber }

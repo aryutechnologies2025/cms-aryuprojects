@@ -1,0 +1,30 @@
+uuid: f43852dd-7ce6-4d85-9f37-bb04d56aaf89
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mp_heading
+    - paragraphs.paragraphs_type.media_with_categories_remote_vid
+  module:
+    - tag_text_field
+id: paragraph.media_with_categories_remote_vid.field_mp_heading
+field_name: field_mp_heading
+entity_type: paragraph
+bundle: media_with_categories_remote_vid
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  defaultTag: div
+  tagList: |-
+    h1|H1
+    h2|H2
+    h3|H3
+    h4|H4
+    h5|H5
+    h6|H6
+    div|Div
+field_type: html_tag_text_field_type

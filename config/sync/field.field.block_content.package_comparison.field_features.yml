@@ -1,0 +1,29 @@
+uuid: 669e0360-8dba-4ae8-9b21-1c9327f80ff7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.package_comparison
+    - field.storage.block_content.field_features
+    - taxonomy.vocabulary.features
+id: block_content.package_comparison.field_features
+field_name: field_features
+entity_type: block_content
+bundle: package_comparison
+label: Features
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      features: features
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

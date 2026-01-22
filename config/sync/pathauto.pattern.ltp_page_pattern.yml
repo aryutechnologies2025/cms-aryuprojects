@@ -1,0 +1,22 @@
+uuid: 0a8e62dc-2160-47a5-9d69-462d70f45124
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: ltp_page_pattern
+label: 'LTP Page Pattern'
+type: 'canonical_entities:node'
+pattern: 'locations/[node:field_services:0:entity]-[node:title]-[node:field_ref_city:0:entity:field_main_branch:entity:field_state:value]'
+selection_criteria:
+  21070c53-4c58-49b9-8b87-0ae8b341190e:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 21070c53-4c58-49b9-8b87-0ae8b341190e
+    context_mapping:
+      node: node
+    bundles:
+      ltp_page: ltp_page
+selection_logic: and
+weight: -1
+relationships: {  }

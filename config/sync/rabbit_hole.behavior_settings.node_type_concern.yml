@@ -1,0 +1,14 @@
+uuid: 9889f97a-b19b-4497-a682-99df4bb6c513
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.concern
+id: node_type_concern
+entity_type_id: node_type
+entity_id: concern
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

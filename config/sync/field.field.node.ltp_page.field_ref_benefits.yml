@@ -1,0 +1,29 @@
+uuid: 5aa4eec9-e78d-41bf-9601-b7c2311d0f91
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ref_benefits
+    - node.type.benefit
+    - node.type.ltp_page
+id: node.ltp_page.field_ref_benefits
+field_name: field_ref_benefits
+entity_type: node
+bundle: ltp_page
+label: Benefit(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      benefit: benefit
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

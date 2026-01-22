@@ -1,0 +1,11 @@
+.block-alert-box {
+  color: #fff;
+  background-color: palette(red);
+
+  .field--name-field-text {
+    .button {
+      color: palette(red);
+      background-color: palette(white);
+    }
+  }
+}

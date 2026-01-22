@@ -1,0 +1,23 @@
+uuid: cc344bf5-70f0-4333-9c9f-909934ba674e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_menu
+    - node.type.subsite
+id: node.subsite.field_main_menu
+field_name: field_main_menu
+entity_type: node
+bundle: subsite
+label: 'Main menu'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: subsite_menu_reference
+  handler_settings:
+    target_bundles: null
+    auto_create: 0
+field_type: entity_reference

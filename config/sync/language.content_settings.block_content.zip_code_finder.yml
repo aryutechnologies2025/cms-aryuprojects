@@ -1,0 +1,11 @@
+uuid: 32190351-ecbc-4d5d-bcbe-8d00aebbec1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.zip_code_finder
+id: block_content.zip_code_finder
+target_entity_type_id: block_content
+target_bundle: zip_code_finder
+default_langcode: site_default
+language_alterable: false

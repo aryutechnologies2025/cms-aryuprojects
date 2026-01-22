@@ -1,0 +1,125 @@
+// Variables
+// -----------
+// For complete documentation:
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#variables_
+
+// Font stacks
+$stack-serif: Georgia, Times, "Times New Roman", _serif;
+$stack-sans-serif: Helvetica, Arial, _sans-serif;
+
+// Default Font
+$opensans: "Open Sans", $stack-sans-serif;
+$icomoon: "icomoon";
+
+// Replace default font by importing specific webfonts from Google CDN
+// Change $base-font-family and $base-heading-family in sass/base/_typography.scss
+
+// Body Fonts
+$lato: "Lato", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300..800&display=swap");
+$montserrat: "Montserrat", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300..800&display=swap");
+$poppins: "Poppins", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300..800&display=swap");
+$railway: "Railway", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Railway:wght@300..800&display=swap");
+$roboto: "Roboto", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300..800&display=swap");
+$sourcesans: "Source Sans", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Source+Sans:wght@300..800&display=swap");
+
+// Heading Fonts
+$abrilfatface: "Abril Fatface", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface:wght@300..800&display=swap");
+$aleo: "Aleo", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Aleo:wght@300..800&display=swap");
+$anton: "Anton", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Anton:wght@300..800&display=swap");
+$arvo: "Arvo", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Arvo:wght@300..800&display=swap");
+$bebasneue: "Bebas Neue", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@300..800&display=swap");
+$besley: "Besley", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Besley:wght@300..800&display=swap");
+$bevan: "Bevan", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Bevan:wght@300..800&display=swap");
+$blackopsone: "Black Ops One", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One:wght@300..800&display=swap");
+$bitter: "Bitter", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@300..800&display=swap");
+$carterone: "Carter One", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Carter+One:wght@300..800&display=swap");
+$changoone: "Changa One", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Changa+One:wght@300..800&display=swap");
+$courgette: "Courgette", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Courgette:wght@300..800&display=swap");
+$crimson: "Crimson", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Crimson:wght@300..800&display=swap");
+$librebaskerville: "Libre Baskerville", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@300..800&display=swap");
+$lobster: "Lobster", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Lobster:wght@300..800&display=swap");
+$lora: "Lora", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Lora:wght@300..800&display=swap");
+$oleoscript: "Oleo Script", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Oleo+Script:wght@300..800&display=swap");
+$oswald: "Oswald", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300..800&display=swap");
+$passionone: "Passion One", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Passion+One:wght@300..800&display=swap");
+$ptserif: "PT Serif", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@300..800&display=swap");
+$robotoslab: "Roboto Slab", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300..800&display=swap");
+$rokkitt: "Rokkitt", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Rokkitt:wght@300..800&display=swap");
+$russoone: "Russo One", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Russo+One:wght@300..800&display=swap");
+$spicyrice: "Spicy Rice", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Spicy+Rice:wght@300..800&display=swap");
+$teko: "Teko", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300..800&display=swap");
+$titanone: "Titan One", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Titan+One:wght@300..800&display=swap");
+$titilliumweb: "Titillium Web", $stack-sans-serif;
+//@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300..800&display=swap");
+
+// Typography
+$base-font-family: $opensans;
+$body-font-family: $base-font-family;
+$heading-font-family: $base-font-family;
+
+// Font Sizes
+$global-font-size: 62.5%; // Set rem value as Base 10 for ease of entering pixel values from comp while sticking with relative units (62.5% * 16px = 10px)
+$base-font-size: 1.6rem;
+
+// Line height
+$base-line-height: 1.8;
+$heading-line-height: 1.125;
+
+// Letter spacing
+$base-letter-spacing: 0;
+
+// Other Sizes
+$base-border-radius: 0;
+$base-spacing: $base-line-height * 1em;
+$xsmall-spacing: $base-spacing / 2;
+$base-z-index: 0;
+
+// Border
+$base-border-color: palette(grey, light);
+$base-border: 1px solid $base-border-color;
+
+// Background Colors
+$viewport-background-color: #fff;
+
+// Focus
+$focus-outline-color: palette(blue);
+$focus-outline-width: 3px;
+$focus-outline: $focus-outline-width solid $focus-outline-color;
+$focus-outline-offset: 2px;
+
+// Animations
+$base-duration: 0.3s;
+$base-ease: ease-in-out;
+$duration: $base-duration $base-ease;

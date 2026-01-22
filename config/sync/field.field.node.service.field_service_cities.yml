@@ -1,0 +1,28 @@
+uuid: dcc3ec09-5fca-4811-889e-ed290b68c076
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_cities
+    - node.type.city_page
+    - node.type.service
+id: node.service.field_service_cities
+field_name: field_service_cities
+entity_type: node
+bundle: service
+label: 'Cities that offer this Service'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      city_page: city_page
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: branch
+field_type: entity_reference

@@ -1,0 +1,14 @@
+uuid: 26d29c71-a0b0-4797-a7af-fd5aa480dc96
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_city_pages
+label: 'Subsite and City Pages'
+enabled: true
+first_field: field_subsite
+second_field: field_city_ref
+add_direction: append
+bundles:
+  node:
+    - city_page
+    - subsite

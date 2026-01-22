@@ -1,0 +1,11 @@
+uuid: d2a8ce2c-c957-4b3d-9f33-a45b6622026a
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.section_background
+label: 'Section Background (1600x700)'
+description: ''
+targetEntityType: media
+cache: true

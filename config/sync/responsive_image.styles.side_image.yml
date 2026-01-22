@@ -1,0 +1,24 @@
+uuid: b8e8211e-2347-4f1a-bce4-3d2e5d4b3d12
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.side_900x900
+    - image.style.side_mobile_900x450
+  theme:
+    - sprowt3
+id: side_image
+label: 'Side Responsive Image'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: side_900x900
+    breakpoint_id: sprowt3.wide
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: side_mobile_900x450
+    breakpoint_id: sprowt3.mobile
+    multiplier: 1x
+breakpoint_group: sprowt3
+fallback_image_style: side_900x900

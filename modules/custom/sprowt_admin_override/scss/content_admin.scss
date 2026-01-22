@@ -1,0 +1,23 @@
+.views-field.views-field-field-subsite {
+  .item-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      span::after {
+        display: inline-block;
+        margin-right: 5px;
+        content: ", ";
+      }
+      &:last-of-type {
+        span::after {
+          content: '';
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

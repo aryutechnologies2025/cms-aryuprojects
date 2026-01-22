@@ -1,0 +1,61 @@
+uuid: 96df3f4c-d67e-4489-8f10-86257f905bae
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.secondary_teaser
+    - field.field.node.issue.body
+    - field.field.node.issue.field_concerns
+    - field.field.node.issue.field_exclude_from_solution_find
+    - field.field.node.issue.field_icon_issue
+    - field.field.node.issue.field_image_issue
+    - field.field.node.issue.field_industry
+    - field.field.node.issue.field_meta_description
+    - field.field.node.issue.field_meta_tags
+    - field.field.node.issue.field_package_level
+    - field.field.node.issue.field_services
+    - field.field.node.issue.field_subsite
+    - field.field.node.issue.field_subsite_multiple
+    - field.field.node.issue.layout_builder__layout
+    - node.type.issue
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.issue.secondary_teaser
+targetEntityType: node
+bundle: issue
+mode: secondary_teaser
+content:
+  field_icon_issue:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: vector
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  body: true
+  field_concerns: true
+  field_exclude_from_solution_find: true
+  field_image_issue: true
+  field_industry: true
+  field_meta_description: true
+  field_meta_tags: true
+  field_package_level: true
+  field_services: true
+  field_subsite: true
+  field_subsite_multiple: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

@@ -1,0 +1,5 @@
+#color_variable_item.add_form:
+#    route_name: entity.color_variable_item.add_form
+#    title: 'Add theme color variables'
+#    appears_on:
+#        - entity.color_variable_item.collection

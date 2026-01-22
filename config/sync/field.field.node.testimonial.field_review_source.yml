@@ -1,0 +1,23 @@
+uuid: 8d7ec5e4-92a3-447f-a165-e5b51d095d53
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_review_source
+    - node.type.testimonial
+  module:
+    - options
+id: node.testimonial.field_review_source
+field_name: field_review_source
+entity_type: node
+bundle: testimonial
+label: 'Review Source'
+description: 'If the review was imported from an external source that is indicated here'
+required: false
+translatable: false
+default_value:
+  -
+    value: other
+default_value_callback: ''
+settings: {  }
+field_type: list_string

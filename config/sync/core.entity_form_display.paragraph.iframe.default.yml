@@ -1,0 +1,54 @@
+uuid: cc6c9c0b-9d85-4642-afff-e91019ce07db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.iframe.field_additional_attributes
+    - field.field.paragraph.iframe.field_iframe
+    - paragraphs.paragraphs_type.iframe
+  module:
+    - iframe
+    - paragraphs
+id: paragraph.iframe.default
+targetEntityType: paragraph
+bundle: iframe
+mode: default
+content:
+  field_additional_attributes:
+    type: paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: Attribute
+      title_plural: Attributes
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: attribute
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_iframe:
+    type: iframe_urlwidthheight
+    weight: 3
+    region: content
+    settings:
+      headerlevel: '3'
+      class: ''
+      frameborder: '0'
+      scrolling: auto
+      transparency: '0'
+      allowfullscreen: '0'
+      tokensupport: '0'
+      width: ''
+      height: ''
+      expose_class: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

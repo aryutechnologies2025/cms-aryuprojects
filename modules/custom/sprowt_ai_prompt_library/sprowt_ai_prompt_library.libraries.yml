@@ -1,0 +1,18 @@
+library_form:
+    css:
+        theme:
+            css/library_form.css: { }
+    js:
+        js/library_form.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+        - sprowt_settings/sprowt_object
+
+import_form:
+    js:
+        js/import_form.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+        - sprowt_settings/sprowt_object

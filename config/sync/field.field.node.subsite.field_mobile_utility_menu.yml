@@ -1,0 +1,23 @@
+uuid: ede7e00a-37bc-4fe5-903c-9a00966776f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mobile_utility_menu
+    - node.type.subsite
+id: node.subsite.field_mobile_utility_menu
+field_name: field_mobile_utility_menu
+entity_type: node
+bundle: subsite
+label: 'Mobile utility menu'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: subsite_menu_reference
+  handler_settings:
+    target_bundles: null
+    auto_create: 0
+field_type: entity_reference

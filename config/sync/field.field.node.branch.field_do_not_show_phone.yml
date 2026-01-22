@@ -1,0 +1,21 @@
+uuid: f1eca59c-0fb3-4872-8004-868843dbdabf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_do_not_show_phone
+    - node.type.branch
+id: node.branch.field_do_not_show_phone
+field_name: field_do_not_show_phone
+entity_type: node
+bundle: branch
+label: 'Do not show Phone in footer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

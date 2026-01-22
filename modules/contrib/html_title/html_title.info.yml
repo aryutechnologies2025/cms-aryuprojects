@@ -1,0 +1,12 @@
+name: 'Html title'
+description: 'Enables limited HTML markup in node titles.'
+core_version_requirement: ^8.8 || ^9 || ^10 || ^11
+type: module
+configure: html_title.settings
+dependencies:
+  - drupal:node
+
+# Information added by Drupal.org packaging script on 2024-09-13
+version: '8.x-1.6'
+project: 'html_title'
+datestamp: 1726238894

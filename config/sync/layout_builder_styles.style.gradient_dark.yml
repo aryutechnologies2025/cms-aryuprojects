@@ -1,0 +1,14 @@
+uuid: 011632ed-96a5-4dbb-9cde-049f1bf337b1
+langcode: en
+status: true
+dependencies: {  }
+id: gradient_dark
+label: 'Gradient Dark'
+classes: gradient-dark
+type: component
+group: bgstyle
+block_restrictions:
+  - 'inline_block:call_out'
+  - 'inline_block:hero'
+layout_restrictions: {  }
+weight: 9

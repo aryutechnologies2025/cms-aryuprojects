@@ -1,0 +1,23 @@
+uuid: d2477785-230b-4aeb-a906-566386905313
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subsite_multiple
+    - node.type.faq
+  module:
+    - sprowt_subsite
+id: node.faq.field_subsite_multiple
+field_name: field_subsite_multiple
+entity_type: node
+bundle: faq
+label: Subsite(s)
+description: 'Main and/or Subsites this content belongs to.'
+required: false
+translatable: true
+default_value:
+  -
+    target: _main
+default_value_callback: ''
+settings: {  }
+field_type: sprowt_subsite_reference

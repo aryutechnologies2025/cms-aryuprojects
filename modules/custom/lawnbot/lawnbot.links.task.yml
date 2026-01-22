@@ -1,0 +1,13 @@
+entity.servicebot.view:
+    title: View
+    route_name: entity.servicebot.canonical
+    base_route: entity.servicebot.canonical
+entity.servicebot.edit_form:
+    title: Edit
+    route_name: entity.servicebot.edit_form
+    base_route: entity.servicebot.canonical
+entity.servicebot.delete_form:
+    title: Delete
+    route_name: entity.servicebot.delete_form
+    base_route: entity.servicebot.canonical
+    weight: 10

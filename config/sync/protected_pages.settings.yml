@@ -1,0 +1,14 @@
+langcode: en
+password:
+  per_page_or_global: per_page_password
+  protected_pages_session_expire_time: '0'
+email:
+  subject: ''
+  body: ''
+others:
+  protected_pages_title: ''
+  protected_pages_description: 'A password is required to view this page'
+  protected_pages_password_fieldset_legend: ''
+  protected_pages_password_label: 'Please enter the password to continue'
+  protected_pages_submit_button_text: Submit
+  protected_pages_incorrect_password_msg: 'The password entered was not correct'

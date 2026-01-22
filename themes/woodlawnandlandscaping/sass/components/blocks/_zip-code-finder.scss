@@ -1,0 +1,94 @@
+.block--type-zip-code-finder {
+  .field--type-text-long {
+      a {
+          color: palette(primary);
+          &:hover {
+              color: palette(primary, dark);
+          }
+      }
+  }
+  .field--name-field-zip-code-finder-form {
+      .zipcode-finder-find-zipcode {
+          .form-type-textfield {
+              border: 2px solid palette(grey, lightest);
+          }
+          .form-submit {
+              border: 2px solid palette(grey, lightest);
+          }
+      }
+  }
+}
+
+
+// shared styles for header utility and mobile zip finder on main site
+.mobile-header-menu nav.menu--utility-menu,
+header.page-header {
+  .block--type-zip-code-finder {
+      background-color: palette(white);
+      &:after {
+          border-bottom-color: palette(white);
+      }
+      .field--name-field-heading {
+          color: palette(black) !important;
+      }
+      .field--name-field-zip-code-finder-form {
+          .zipcode-finder-find-zipcode {
+              .form-submit {
+                  border: 2px solid palette(grey, lightest);
+              }
+          }
+      }
+
+      .divider {
+          color: palette(black) !important;
+          background-color: palette(white);
+          &:before {
+              background-color: palette(light);
+          }
+      }
+
+      .field--name-field-text p {
+          color: palette(black) !important;
+          a {
+              color: palette(primary) !important;
+              &:hover {
+                  color: palette(primary, dark) !important;
+              }
+          }
+      }
+
+      .field--name-field-view-all {
+          a {
+              color: palette(primary);
+              &:hover {
+                  color: palette(primary, dark);
+              }
+          }
+      }
+  }
+}
+
+// styles for mobile utility zip finder only 
+.mobile-header-menu nav.menu--utility-menu {
+  .block--type-zip-code-finder {
+      background-color: palette(white);
+      &:before {
+          background-color: palette(primary);
+      }
+      .close-button {
+          &:after {
+              color: palette(primary);
+          }
+      }
+      .field--name-field-view-all {
+          a {
+              color: palette(white);
+              background-color: palette(primary);
+              &:hover {
+                  color: palette(white);
+                  background-color: palette(secondary);
+              }
+          }
+      }
+  }
+}

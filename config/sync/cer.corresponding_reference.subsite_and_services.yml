@@ -1,0 +1,14 @@
+uuid: 448d1e7d-0f67-4ec8-ba57-241943e89a0c
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_services
+label: 'Subsite and Services'
+enabled: true
+first_field: field_subsite
+second_field: field_services
+add_direction: append
+bundles:
+  node:
+    - service
+    - subsite

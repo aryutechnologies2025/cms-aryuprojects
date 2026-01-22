@@ -1,0 +1,11 @@
+uuid: 508a103a-1b2d-430d-b33f-a2e1e33d480a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.branches
+id: block_content.branches
+target_entity_type_id: block_content
+target_bundle: branches
+default_langcode: site_default
+language_alterable: false

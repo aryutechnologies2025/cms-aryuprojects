@@ -1,0 +1,8 @@
+.menu--utility-zip-finder {
+  ul.menu > li > a {
+      color: palette(dark);
+      &::before {
+        color: palette(primary);
+      }
+  }
+}

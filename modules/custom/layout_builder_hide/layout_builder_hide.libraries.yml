@@ -1,0 +1,10 @@
+preview:
+    version: 1.x
+    js:
+        js/preview.js: { }
+    css:
+        theme:
+            css/preview.css: { }
+    dependencies:
+        - core/jquery
+        - core/once

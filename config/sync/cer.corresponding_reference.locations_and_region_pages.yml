@@ -1,0 +1,14 @@
+uuid: f004486f-8be7-4130-a02e-0ab1712c0b50
+langcode: en
+status: true
+dependencies: {  }
+id: locations_and_region_pages
+label: 'Locations and Region Pages'
+enabled: true
+first_field: field_region_pages
+second_field: field_main_branch
+add_direction: append
+bundles:
+  node:
+    - branch
+    - region_page

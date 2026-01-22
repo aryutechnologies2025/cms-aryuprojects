@@ -1,0 +1,38 @@
+.layout__region {
+  .block-inline-blockbasic-side-image,
+  .block--type-basic-side-image {
+
+    .field--name-field-label-tag {
+      &:after {
+        background-color: palette(secondary);
+      }
+    }
+
+    .basic-side-image-wrap {
+
+      .content-wrap {
+        .field--name-field-link {
+          a {
+            &:hover {
+              color: palette(primary);
+              background-color: palette(white);
+            }
+          }
+        }
+      }
+    }
+
+    &.image-align-right {
+      .content-wrap {
+        background-color: palette(primary);
+      }
+
+      .bg-white &,
+      .bg-light & {
+        .content-wrap {
+          background-color: palette(primary);
+        }
+      }
+    }
+  }
+}

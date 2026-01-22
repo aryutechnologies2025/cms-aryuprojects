@@ -1,0 +1,33 @@
+uuid: 9ac94562-04a4-428b-8124-1daea950b834
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:header:75fef345-db5b-4e94-b9c3-7e129d23000b'
+  module:
+    - block_content
+    - node
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_headerlayoutnofrills
+theme: woodlawnandlandscaping
+region: disabled
+weight: 2
+provider: null
+plugin: 'block_content:75fef345-db5b-4e94-b9c3-7e129d23000b'
+settings:
+  id: 'block_content:75fef345-db5b-4e94-b9c3-7e129d23000b'
+  label: 'Header Layout: No Frills'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_page: career_page

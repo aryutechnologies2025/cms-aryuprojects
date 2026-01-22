@@ -1,0 +1,11 @@
+uuid: ad6cd48e-f2fb-458c-8fe1-0272d20423e3
+langcode: en
+status: true
+dependencies: {  }
+id: city_page_main_branch
+block_id: 'inline_block:city_page_main_branch'
+category: custom_blocks
+label: 'City Page - Main Location'
+image_path: ''
+image_alt: ''
+weight: -73

@@ -1,0 +1,107 @@
+uuid: fa6063c2-fbe1-42e0-ac48-e4ea984a359f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ctm_header_block
+    - field.field.block_content.ctm_header_block.field_ctm_target_numbers
+    - field.field.block_content.ctm_header_block.field_subheading_tag
+  module:
+    - conditional_fields
+    - hide_revision_field
+    - paragraphs
+    - tag_text_field
+id: block_content.ctm_header_block.default
+targetEntityType: block_content
+bundle: ctm_header_block
+mode: default
+content:
+  field_ctm_target_numbers:
+    type: paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings:
+      conditional_fields:
+        0aadf1fe-030e-4c7f-94ca-0f913fdb9bda:
+          entity_type: block_content
+          bundle: ctm_header_block
+          dependee: field_use_subsite_links
+          settings:
+            state: visible
+            reset: false
+            condition: '!checked'
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+        bb13723d-bc58-45da-99d0-3beb50f64336:
+          entity_type: block_content
+          bundle: ctm_header_block
+          dependee: field_use_subsite_links
+          settings:
+            state: '!visible'
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_subheading_tag:
+    type: html_tag_text_field_widget
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  revision_log:
+    type: hide_revision_field_log_widget
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+      show: true
+      default: ''
+      permission_based: false
+      allow_user_settings: true
+    third_party_settings: {  }
+hidden: {  }

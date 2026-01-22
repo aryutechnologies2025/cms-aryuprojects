@@ -1,0 +1,45 @@
+uuid: 907ff88e-1463-4131-a638-e1fa759a8f24
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:header:dd12d7d2-2902-46a0-88e2-f67a80d0ac85'
+  module:
+    - block_content
+    - node
+    - sprowt_subsite
+  theme:
+    - s3_subtheme
+id: headerlayoutazipcodefinder
+theme: s3_subtheme
+region: header_layout
+weight: 0
+provider: null
+plugin: 'block_content:dd12d7d2-2902-46a0-88e2-f67a80d0ac85'
+settings:
+  id: 'block_content:dd12d7d2-2902-46a0-88e2-f67a80d0ac85'
+  label: 'Header Layout A (Zip Code Finder)'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  sprowt_subsite_condition:
+    id: sprowt_subsite_condition
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    use: true
+    value:
+      _main: _main
+    hasNoFields: show
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      career_page: career_page
+      job_post: job_post
+      standalone_landing_page: standalone_landing_page

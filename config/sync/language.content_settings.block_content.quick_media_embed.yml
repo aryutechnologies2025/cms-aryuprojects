@@ -1,0 +1,11 @@
+uuid: ab39a207-ff53-401a-8a7f-ef972f1f6f75
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quick_media_embed
+id: block_content.quick_media_embed
+target_entity_type_id: block_content
+target_bundle: quick_media_embed
+default_langcode: site_default
+language_alterable: false

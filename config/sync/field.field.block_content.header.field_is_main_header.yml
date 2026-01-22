@@ -1,0 +1,21 @@
+uuid: b835eb35-449b-47a4-9c14-72765c709420
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.header
+    - field.storage.block_content.field_is_main_header
+id: block_content.header.field_is_main_header
+field_name: field_is_main_header
+entity_type: block_content
+bundle: header
+label: 'Is Main Header'
+description: 'Check this if this is a header block for a main site that should be used in the installer'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

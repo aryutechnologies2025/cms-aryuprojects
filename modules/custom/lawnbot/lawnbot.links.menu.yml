@@ -1,0 +1,6 @@
+lawnbot.settings_form:
+    title: ServiceBot settings
+    description: Lawnbot global settings
+    parent: system.admin_config_services
+    route_name: lawnbot.settings_form
+    weight: 10

@@ -1,0 +1,34 @@
+diff --git a/templates/claro/node.html.twig b/templates/claro/node.html.twig
+new file mode 100644
+index 0000000..b8e331f
+--- /dev/null
++++ b/templates/claro/node.html.twig
+@@ -0,0 +1,28 @@
++{%
++    set classes = [
++    'node',
++    'node--type-' ~ node.bundle|clean_class,
++    node.isPromoted() ? 'node--promoted',
++    node.isSticky() ? 'node--sticky',
++    not node.isPublished() ? 'node--unpublished',
++    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
++]
++%}
++{{ attach_library('classy/node') }}
++<article{{ attributes.addClass(classes) }}>
++
++    {% if display_submitted %}
++        <footer class="node__meta">
++            {{ author_picture }}
++            <div{{ author_attributes.addClass('node__submitted') }}>
++                {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
++                {{ metadata }}
++            </div>
++        </footer>
++    {% endif %}
++
++    <div{{ content_attributes.addClass('node__content') }}>
++        {{ content }}
++    </div>
++
++</article>

@@ -1,0 +1,41 @@
+.layout__region {
+    .block-inline-blockdivider {
+
+        $colors: black, dark, light, white, primary, secondary;
+        
+        @each $color in $colors {
+            &.svg-accent-#{$color} {
+                .svg-accent {
+                    fill: palette($color);
+                }
+            }
+            &.svg-bg-#{$color} {
+                .svg-bg {
+                    fill: palette($color);
+                }
+            }
+        }
+
+        &.svg-accent-primary-dark {
+            .svg-accent {
+                fill: palette(primary, dark);
+            }
+        }
+        &.svg-bg-primary-dark {
+            .svg-bg {
+                fill: palette(primary, dark);
+            }
+        }
+
+        &.svg-accent-primary-light {
+            .svg-accent {
+                fill: palette(primary, light);
+            }
+        }
+        &.svg-bg-primary-light {
+            .svg-bg {
+                fill: palette(primary, light);
+            }
+        }
+    }
+}

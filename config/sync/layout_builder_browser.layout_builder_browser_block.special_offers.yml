@@ -1,0 +1,11 @@
+uuid: 30441d3b-80b5-4aea-b163-d285944fe5b8
+langcode: en
+status: true
+dependencies: {  }
+id: special_offers
+block_id: 'inline_block:special_offers'
+category: custom_blocks
+label: 'Special Offers'
+image_path: ''
+image_alt: ''
+weight: -44

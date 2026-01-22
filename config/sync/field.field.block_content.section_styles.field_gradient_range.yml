@@ -1,0 +1,25 @@
+uuid: 586130bf-ed99-44d8-9321-bb892275400b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.section_styles
+    - field.storage.block_content.field_gradient_range
+id: block_content.section_styles.field_gradient_range
+field_name: field_gradient_range
+entity_type: block_content
+bundle: section_styles
+label: Gradient
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 50
+default_value_callback: ''
+settings:
+  min: 20
+  max: 80
+  prefix: ''
+  suffix: '%'
+field_type: integer

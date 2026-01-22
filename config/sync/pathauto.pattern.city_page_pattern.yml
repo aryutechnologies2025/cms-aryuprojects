@@ -1,0 +1,22 @@
+uuid: 51eb4962-7bad-439a-8d75-9917851fa2bf
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: city_page_pattern
+label: 'Service Page Pattern'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:title]'
+selection_criteria:
+  5849c7b8-1e21-4817-a72b-4c819a94f7a1:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 5849c7b8-1e21-4817-a72b-4c819a94f7a1
+    context_mapping:
+      node: node
+    bundles:
+      service: service
+selection_logic: and
+weight: 0
+relationships: {  }

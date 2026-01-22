@@ -1,0 +1,30 @@
+uuid: 563fdcae-b6bc-4e73-9fb8-e95667cf4812
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_hero_blog_style
+field_name: field_hero_blog_style
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: style_1
+      label: 'Style 1'
+    -
+      value: style_2
+      label: 'Style 2'
+    -
+      value: style_3
+      label: 'Style 3'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

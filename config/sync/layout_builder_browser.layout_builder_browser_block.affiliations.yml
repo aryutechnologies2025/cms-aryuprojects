@@ -1,0 +1,11 @@
+uuid: 5b0cff69-4cf7-442e-b243-95a588df1008
+langcode: en
+status: true
+dependencies: {  }
+id: affiliations
+block_id: 'block_content:d347d783-31c7-46ee-840b-5e54cc30fb34'
+category: re_usable_blocks
+label: Affiliations
+image_path: /themes/sprowt3/assets/layout_builder_browser/affiliations_mobile.png
+image_alt: ''
+weight: -100

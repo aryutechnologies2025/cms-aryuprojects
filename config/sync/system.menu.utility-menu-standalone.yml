@@ -1,0 +1,8 @@
+uuid: ff6ac744-5963-4ff2-9610-d39ed0d3b30e
+langcode: en
+status: true
+dependencies: {  }
+id: utility-menu-standalone
+label: 'Utility Menu: Standalone Landing Page'
+description: ''
+locked: false

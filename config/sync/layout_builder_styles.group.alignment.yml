@@ -1,0 +1,10 @@
+uuid: 5ba321d4-8f6a-45eb-8bf7-da179df8962b
+langcode: en
+status: true
+dependencies: {  }
+id: alignment
+label: Alignment
+multiselect: single
+form_type: checkboxes
+required: false
+weight: 0

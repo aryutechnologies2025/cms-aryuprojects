@@ -1,0 +1,371 @@
+.layout__region,
+header.page-header {
+  [class*="block-inline-blockservicebot"],
+  [class*="block--type-servicebot"] {
+    width: calc(100% - 60px);
+    max-width: 720px;
+    margin: 30px auto 0 auto;
+
+    &#webform,
+    &#contact,
+    &#contact-us,
+    &#free-quote,
+    &#quote {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &:hover {
+      .field-name-field-single-link {
+        text-decoration: underline;
+      }
+    }
+
+    &.why-wait {
+      margin-top: 68px;
+    }
+
+    @include breakpoint($medium) {
+      margin: 30px 30px 0 30px;
+    }
+
+    // // Header specific
+    // .page-header & {
+    //   align-content: center;
+    //   width: 100%;
+    //   margin: 0;
+    //   margin-right: 5px;
+    //   margin-left: auto;
+    //   padding: 0 15px;
+
+    //   @include breakpoint($medium) {
+    //     width: auto;
+    //     min-width: 340px;
+    //     height: 100%;
+    //     margin: 0 15px;
+    //   }
+
+    //   .servicebot-wrap {
+    //     margin: 0;
+    //   }
+      
+    //   .inner-wrap {
+    //     padding: 0px;
+    //   }
+
+    //   .field--name-field-icon {
+    //     position: relative;
+    //     top: 0;
+    //     right: 0;
+    //     max-height: 30px;
+    //     max-width: 30px;
+    //     margin-right: 6px;
+    //     opacity: 1;
+  
+    //     img {
+    //       height: auto;
+    //       width: auto;
+    //     }
+    //     svg {
+    //       width: 30px;
+    //       height: 30px;
+  
+    //       path {
+    //         fill: var(--color-dark);
+    //       }
+    //     }
+    //   }
+
+    //   .field--name-field-title {
+    //     text-transform: uppercase;
+    //     font-size: 1.6rem;
+    //     line-height: 1.1;
+    //   }
+
+    //   .field-name-field-single-link {
+    //     text-align: left;
+    //     margin-top: 0;
+    //     padding: 0;
+    //     line-height: 1.1;
+    //     text-transform: initial;
+    //     background-color: initial;
+    //   }
+    // }
+
+    .servicebot-wrap {
+      position: relative;
+
+      svg.why-wait-arrow {
+        //position: absolute;
+        //top: 18px;
+        //left: calc(50% - 170px);
+        // width: 42px;
+        // height: 42px;
+        margin-top: -32px;
+        margin-right: 5px;
+        margin-left: -40px;
+        pointer-events: none;
+        path {
+          fill: palette(black);
+        }
+      }
+      
+      &.why-wait {
+        margin-top: -38px;
+
+        &::before {
+          position: absolute;
+          content: '';
+          width: 100%;
+          height: 100%;
+          //margin-left: -150px;
+          //margin-top: 18px;
+          //background-image: url(../assets/whywaitarrow.svg);
+          //background-repeat: no-repeat;
+          //background-position: top center;
+          //background-size: 42px;
+          pointer-events: none;
+
+          @include breakpoint($medium) {
+            background-position: top;
+          }
+        }
+      }
+    }
+
+    .servicebot-link {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .inner-wrap {
+      padding: 0 0 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .inner-box {
+      @include flexbox;
+      width: 100%;
+      justify-content: center;
+      padding: 12px 20px;
+      background-color: var(--color-dark);
+    }
+
+    .inner-text {
+      text-align: center;
+    }
+
+    // &.with-logo .inner-text {
+    //   text-align: left;
+    // }
+
+    // .field--name-field-icon {
+    //   position: absolute;
+    //   top: 8px;
+    //   right: -26px;
+    //   pointer-events: none;
+    //   opacity: 0.2;
+
+    //   img {
+    //     width: 100px;
+    //     height: 100px;
+    //   }
+    //   svg {
+    //     width: 100px;
+    //     height: 100px;
+
+    //     path {
+    //       fill: palette(white);
+    //     }
+    //   }
+    // }
+
+    .field--name-field-icon {
+      position: relative;
+      top: 0;
+      right: 0;
+      //max-height: 45px;
+      //max-width: 45px;
+      margin-top: 9px;
+      margin-right: 6px;
+      opacity: 1;
+
+      img {
+        height: auto;
+        width: auto;
+      }
+      svg {
+        height: 46px;
+        width: 46px;
+
+        path {
+          fill: var(--color-dark);
+        }
+      }
+    }
+
+    .why-wait-text {
+      font-family: "Caveat";
+      font-size: 2.4rem;
+      font-weight: 500;
+      line-height: 1.2;
+      color: palette(black);
+      text-align: center;
+
+      @include breakpoint($small) {
+        font-size: 2.6rem;
+      }
+
+      @include breakpoint($large) {
+        font-size: 3.2rem;
+      }
+    }
+
+    .field--name-field-title {
+      color: palette(white);
+      //text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+
+      @include breakpoint($small) {
+        font-size: 1.7rem;
+      }
+
+      @include breakpoint($large) {
+        font-size: 2.2rem;
+      }
+    }
+    
+    .field-name-field-single-link {
+      display: inline-block;
+      margin-top: 2px;
+      padding: 9px 16px 8px 24px;
+      color: palette(white);
+      font-size: 1.4rem;
+      background-color: palette(black);
+
+      @include icon-after(arrow-right-circle, 13px, white) {
+        margin-top: -3px;
+        margin-left: 4px;
+      }
+    }
+
+    &.rounded {
+      .inner-box,
+      .field-name-field-single-link {
+        border-radius: 16px;
+      }
+    }
+
+    // &.bg-primary,
+    // &.bg-secondary,
+    // &.bg-dark,
+    // &.bg-black {
+    //   .field--name-field-icon {
+    //     svg {
+    //       path {
+    //         fill: palette(white);
+    //       }
+    //     }
+    //   }
+  
+    //   .field--name-field-title {
+    //     color: palette(white);
+    //   }
+    //   .field-name-field-single-link {
+    //     color: palette(white);
+    //   }
+    // }
+  }
+
+  .block-inline-blockservicebot-header,
+  .block--type-servicebot-header {
+    margin: 0;
+
+    @include breakpoint($max-small) {
+      width: 100%;
+    }
+
+    .servicebot-wrap {
+      margin: 0 20px;
+    }
+
+    .inner-wrap,
+    .inner-box {
+      padding: 0;
+    }
+    &[class*="block-color-p"],
+    &[class*="block-color-d"],
+    &[class*="block-color-b"],
+    &[class*="block-color-w"],
+    &[class*="block-color-l"],
+    &[class*="block-color-s"] {
+      @include breakpoint($max-small) {
+        margin-top: 5px !important;
+        margin-bottom: 5px;
+      }
+      .inner-box {
+        padding: 5px 15px;
+      }
+      &.with-logo {
+        .inner-box {
+          padding: 5px 15px 5px 10px;
+        }
+      }
+    }
+
+    .inner-box {
+      padding: 0;
+
+      @include breakpoint($max-small) {
+        padding: 5px 0;
+      }
+    }
+
+    .field--name-field-icon {
+      margin-top: 5px;
+
+      svg {
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    .field--name-field-title {
+      font-size: 1.4rem;
+      line-height: 1.4;
+    }
+    
+    .inner-text {
+      text-align: left;
+    }
+
+    .single-link-wrap {
+      display: flex;
+    }
+
+    .field-name-field-single-link {
+      margin-top: 2px;
+      padding: 0;
+      line-height: 1.2;
+      background-color: transparent;
+    }
+  }
+
+  @include breakpoint($small) {
+    .menu--utility-menu,
+    .menu--mobile-utility-menu {
+      & + .block-inline-blockservicebot-header {
+        margin-right: -15px;
+        margin-left: 15px;
+        max-width: 350px;
+      }
+    }
+  }
+}

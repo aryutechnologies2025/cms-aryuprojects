@@ -1,0 +1,19 @@
+uuid: 895bc3eb-8e5b-4fe3-b432-68cc58101453
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_disclaimer
+    - node.type.special_offer
+id: node.special_offer.field_disclaimer
+field_name: field_disclaimer
+entity_type: node
+bundle: special_offer
+label: Disclaimer
+description: 'This will display at the bottom of the special offer in red. It is suggested to begin every disclaimer text with "*".'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

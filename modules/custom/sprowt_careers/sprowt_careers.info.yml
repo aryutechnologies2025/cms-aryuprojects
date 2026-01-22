@@ -1,0 +1,10 @@
+name: Sprowt Careers
+type: module
+description: Provides careers related functionality to the site
+package: Coalmarch
+core_version_requirement: ^9 || ^10
+dependencies:
+    - drupal:node
+    - pathauto:pathauto
+    - sprowt_settings:sprowt_settings
+    - sprowt_content:sprowt_content

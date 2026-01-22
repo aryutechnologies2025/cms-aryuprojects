@@ -1,0 +1,17 @@
+uuid: 7730361b-f202-49a2-a4c9-6aa2559e098d
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: section_background
+label: 'Section Background (1600x700)'
+effects:
+  4b917358-950f-4348-9768-0861d9a888e3:
+    uuid: 4b917358-950f-4348-9768-0861d9a888e3
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1600
+      height: 700
+      crop_type: focal_point

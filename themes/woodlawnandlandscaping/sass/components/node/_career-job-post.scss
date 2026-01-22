@@ -1,0 +1,78 @@
+.node--type-job-post {
+  .title-wrap {
+      .linked-title {
+          color: palette(secondary) !important;
+          &:hover {
+              color: palette(black) !important;
+          }
+      }
+  }
+
+  // individual job on the listing page
+  &.node--view-mode-teaser {
+      .job-details {
+          .info-wrap {
+              .field--name-field-location {
+                  &::before {
+                    color: palette(secondary);
+                  }
+              }
+          }
+      }
+
+      .apply-wrap {
+          .apply-button {
+              color: palette(white);
+              &:hover {
+                  color: palette(white);
+              }
+          }
+      }
+  }
+
+  // individual job page 
+  &.node--view-mode-full {
+      > .node__content {
+          .additional-info {
+              > a {
+                  color: palette(black);
+                  &::before {
+                    color: palette(secondary);
+                  }
+              }
+          }
+          .__body {
+              > h1,
+              > h2,
+              > h3,
+              > h4 {
+                  border-color: #d0d0d0;
+              }
+          }
+      }
+      .field__item {
+          a {
+              color: palette(primary);
+          }
+      }
+  }
+}
+
+// individual job page header / hero section
+.page-node-type-job-post {
+  header.job-details {
+      background-color: palette(primary);
+      .info-wrap {
+          .apply-wrap {
+              a {
+                  color: palette(white);
+                  background-color: palette(secondary);
+                  &:hover {
+                      color: palette(primary);
+                      background-color: palette(white);
+                  }
+              }
+          }
+      }
+  }
+}

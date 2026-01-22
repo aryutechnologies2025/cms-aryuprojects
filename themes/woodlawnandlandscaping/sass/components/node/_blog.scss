@@ -1,0 +1,58 @@
+.node--type-blog {
+  // Teaser View (Blog List)
+  &.node--view-mode-teaser {
+    .node__content {
+      .title-link {
+        &:hover {
+          color: palette(primary);
+        }
+      }
+      .learn-more {
+        span {
+          @extend %button;
+
+          &:hover {
+            color: palette(white);
+          }
+        }
+      }
+
+      .field--name-field-issues {
+        .field__item {
+          &::before {
+            color: palette(primary);
+          }
+        }
+      }
+    }
+  }
+
+  // Secondary Teaser
+  &.node--view-mode-secondary-teaser {
+
+    .node__content {
+      box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.05);
+      background-color: palette(white);
+
+      .blog-copy {
+        border-bottom: 10px solid palette(primary);
+      }
+
+      .learn-more {
+      }
+      
+      &:hover {
+      }
+    }
+  }
+
+  // Token View Mode
+  &.node--view-mode-token {
+    @extend %tokenview;
+  }
+
+  // Secondary Token View Mode
+  &.node--view-mode-secondary-token {
+    @extend %secondarytokenview;
+  }
+}

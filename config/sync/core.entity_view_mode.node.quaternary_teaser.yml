@@ -1,0 +1,11 @@
+uuid: 39d94ef5-5506-42ae-95bc-78659cf51541
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.quaternary_teaser
+label: 'Quaternary Teaser'
+description: ''
+targetEntityType: node
+cache: true

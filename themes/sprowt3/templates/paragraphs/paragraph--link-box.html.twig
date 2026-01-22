@@ -1,0 +1,39 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'paragraph--id--' ~ paragraph.id(),
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+{% block paragraph %}
+  <div{{attributes.addClass(classes)}}>
+    {% block content %}
+      <div class="link-box-wrap">
+        {% if content.field_link[0]['#url'] is not empty %}
+          {% if content.field_link[0]['#url'].options.attributes is not empty %}
+            {% set view_all_attributes = create_attribute(content.field_link[0]['#url'].options.attributes) %}
+          {% else %}
+            {% set view_all_attributes = create_attribute() %}
+          {% endif %}
+          <a href="{{ content.field_link[0]['#url'] }}" {{view_all_attributes.addClass(['box-link'])}}>
+        {% endif %}
+          {{ content.field_image }}
+          <div class="box-copy">
+            {{ content|without('field_social_media_links','field_image','field_link') }}
+            {% if content.field_link[0]['#title'] is not empty %}
+              <div class="button">{{ content.field_link.0['#title'] }}</div>
+            {% endif %}
+            {% if content.field_social_media_links[0]['#markup'] == 1 %}
+              {{ drupal_entity('block_content', '12') }}
+            {% endif %}
+          </div>
+        {% if content.field_link[0]['#url'] is not empty %}
+          </a>
+        {% endif %}
+      </div>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}
+

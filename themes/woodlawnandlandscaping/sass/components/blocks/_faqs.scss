@@ -1,0 +1,83 @@
+.layout__region {
+  .block-inline-blockfaqs,
+  .block--type-faqs {
+    .view-faqs,
+    .view-faqs-subsite {
+      //> .field__item,
+      .view-content {
+        > .views-row {
+          border-color: palette(gray, lightest);
+        }
+      }
+    }
+    .views-field-field-question {
+      &::after {
+        color: palette(white);
+        background-color: palette(secondary);
+      }
+
+      &.active {
+        &::after {
+          color: palette(white);
+          background-color: palette(primary);
+        }
+      }
+    }
+  }
+
+  .bg-dark &,
+  .bg-black & {
+    .block-inline-blockfaqs,
+    .block--type-faqs {
+      .views-field-field-question {
+        color: palette(white);
+      }
+    }
+  }
+
+  .bg-primary & {
+    .block-inline-blockfaqs,
+    .block--type-faqs {
+      .views-field-field-question {
+        color: palette(white);
+        &::after {
+          color: palette(white);
+          background-color: palette(secondary);
+        }
+        &.active {
+          &::after {
+            color: palette(secondary);
+            background-color: palette(white);
+          }
+        }
+      }
+    }
+  }
+
+  .bg-secondary & {
+    .block-inline-blockfaqs,
+    .block--type-faqs {
+      .views-field-field-question {
+        &::after {
+          color: palette(white);
+          background-color: palette(primary);
+        }
+        &.active {
+          &::after {
+            color: palette(primary);
+            background-color: palette(white);
+          }
+        }
+      }
+
+      .view-faqs,
+      .view-faqs-subsite {
+        .view-content {
+          > .views-row {
+            border-color: palette(white);
+          }
+        }
+      }
+    }
+  }
+}

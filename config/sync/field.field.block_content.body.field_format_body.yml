@@ -1,0 +1,23 @@
+uuid: 156e9daa-73ad-450a-8101-a33adbb6b4f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.body
+    - field.storage.block_content.field_format_body
+  module:
+    - options
+id: block_content.body.field_format_body
+field_name: field_format_body
+entity_type: block_content
+bundle: body
+label: Format
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: full
+default_value_callback: ''
+settings: {  }
+field_type: list_string

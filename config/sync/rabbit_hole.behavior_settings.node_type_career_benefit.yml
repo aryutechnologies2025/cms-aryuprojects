@@ -1,0 +1,14 @@
+uuid: 610eeebb-3667-4212-b4e8-4f62833eb92c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.career_benefit
+id: node_type_career_benefit
+entity_type_id: node_type
+entity_id: career_benefit
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

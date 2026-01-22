@@ -1,0 +1,22 @@
+uuid: d8c4ace8-0e1d-4b82-93c6-f2b2a7b6dfeb
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_manual
+    - field.storage.block_content.field_text
+  module:
+    - text
+id: block_content.areas_serviced_manual.field_text
+field_name: field_text
+entity_type: block_content
+bundle: areas_serviced_manual
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

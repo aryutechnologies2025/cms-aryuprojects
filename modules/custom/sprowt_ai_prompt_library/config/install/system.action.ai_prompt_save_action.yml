@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - sprowt_ai_prompt_library
+id: ai_prompt_save_action
+label: 'Save prompts'
+type: ai_prompt
+plugin: entity:save_action:ai_prompt
+configuration: {  }

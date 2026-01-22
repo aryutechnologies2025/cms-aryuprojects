@@ -1,0 +1,47 @@
+diff --git a/media_thumbnails_svg.module b/media_thumbnails_svg.module
+index 051084db74..3c6f99adcb 100644
+--- a/media_thumbnails_svg.module
++++ b/media_thumbnails_svg.module
+@@ -32,7 +32,8 @@ function _media_thumbnails_svg_has_graphics_magick() {
+  * Returns if the Image Magick binary exists.
+  */
+ function _media_thumbnails_svg_has_image_magick() {
+-  return _media_thumbnails_svg_check_binary_exists('convert') && strpos(shell_exec('convert'), 'ImageMagick') !== FALSE;
++  return (_media_thumbnails_svg_check_binary_exists('convert') && strpos(shell_exec('convert'), 'ImageMagick') !== FALSE)
++    || (_media_thumbnails_svg_check_binary_exists('magick') && strpos(shell_exec('magick --version'), 'ImageMagick 7') !== FALSE);
+ }
+ 
+ /**
+diff --git a/src/Plugin/MediaThumbnail/MediaThumbnailSVG.php b/src/Plugin/MediaThumbnail/MediaThumbnailSVG.php
+index e8d9e2a6a9..dd3bcdf1c7 100644
+--- a/src/Plugin/MediaThumbnail/MediaThumbnailSVG.php
++++ b/src/Plugin/MediaThumbnail/MediaThumbnailSVG.php
+@@ -130,12 +130,23 @@ protected function createThumbnailImageMagick(string $path) {
+     $width = escapeshellarg($this->width);
+     $bg_colour = escapeshellarg($this->bgColor);
+ 
+-    shell_exec(
+-      sprintf(
+-        'convert -background %s -density %s -thumbnail %s -quality 100 -strip %s %s',
++
++    if (_media_thumbnails_svg_check_binary_exists('magick') && strpos(shell_exec('magick --version'), 'ImageMagick 7') !== FALSE) {
++      $binary = 'magick';
++      $cmd =  sprintf(
++        $binary . ' %s -background %s -density %s -thumbnail %s -quality 100 -strip %s',
++        $source, $bg_colour, $width, $width, $target
++      );
++    }
++    else {
++      $binary = 'convert';
++      $cmd =  sprintf(
++        $binary . '  -background %s -density %s -thumbnail %s -quality 100 -strip %s %s',
+         $bg_colour, $width, $width, $source, $target
+-      )
+-    );
++      );
++    }
++
++    shell_exec($cmd);
+     $data = file_get_contents($path . '.png');
+     if (!$data) {
+       $this->logger->warning($this->t('Could not create png from svg using IM.'));

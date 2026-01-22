@@ -1,0 +1,25 @@
+uuid: 249a3d47-9a56-4082-b7f9-a22ad970722e
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:special_offers:0c236609-8387-4a41-9f88-726eefe04816'
+  module:
+    - block_content
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_specialoffersglobal
+theme: woodlawnandlandscaping
+region: disabled
+weight: 4
+provider: null
+plugin: 'block_content:0c236609-8387-4a41-9f88-726eefe04816'
+settings:
+  id: 'block_content:0c236609-8387-4a41-9f88-726eefe04816'
+  label: 'Special Offers (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

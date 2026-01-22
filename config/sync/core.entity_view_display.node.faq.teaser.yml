@@ -1,0 +1,42 @@
+uuid: be3a4ddd-f07d-4219-9161-adb0cea5584d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.faq.field_answer
+    - field.field.node.faq.field_industry
+    - field.field.node.faq.field_question
+    - field.field.node.faq.field_services
+    - field.field.node.faq.field_subsite_multiple
+    - node.type.faq
+  module:
+    - text
+    - user
+id: node.faq.teaser
+targetEntityType: node
+bundle: faq
+mode: teaser
+content:
+  field_answer:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_question:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_industry: true
+  field_services: true
+  field_subsite_multiple: true
+  langcode: true
+  links: true
+  show_title: true

@@ -1,0 +1,18 @@
+uuid: 9125d91e-91a4-4e54-920f-cfa27c36a27d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.field_cookie
+field_name: field_cookie
+entity_type: block_content
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: 745810e9-2e6a-452a-ad20-e924403532a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.packages
+    - field.storage.block_content.field_collapse_features
+id: block_content.packages.field_collapse_features
+field_name: field_collapse_features
+entity_type: block_content
+bundle: packages
+label: 'Collapse Features'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,8 @@
+uuid: ee37b636-4a83-4583-983c-f7f0171ac4f0
+langcode: en
+status: true
+dependencies: {  }
+id: mobile-footer-utility-menu-full
+label: 'Mobile Footer Utility Menu (subsite full)'
+description: ''
+locked: false

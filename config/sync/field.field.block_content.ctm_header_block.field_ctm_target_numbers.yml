@@ -1,0 +1,46 @@
+uuid: e7f9dba0-ec33-4e0f-83dd-6c0af8c03363
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ctm_header_block
+    - field.storage.block_content.field_ctm_target_numbers
+    - paragraphs.paragraphs_type.ctm_target_number
+  module:
+    - entity_reference_revisions
+id: block_content.ctm_header_block.field_ctm_target_numbers
+field_name: field_ctm_target_numbers
+entity_type: block_content
+bundle: ctm_header_block
+label: 'CTM target numbers'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      ctm_target_number: ctm_target_number
+    negate: 0
+    target_bundles_drag_drop:
+      basic_content:
+        weight: 7
+        enabled: false
+      brand:
+        weight: 8
+        enabled: false
+      ctm_target_number:
+        weight: 9
+        enabled: true
+      identifications:
+        weight: 10
+        enabled: false
+      link_box:
+        weight: 11
+        enabled: false
+      social_media:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

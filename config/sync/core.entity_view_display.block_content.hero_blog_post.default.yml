@@ -1,0 +1,23 @@
+uuid: 26d8c23a-b1f9-4c46-b885-dfe8db9703af
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_blog_post
+    - field.field.block_content.hero_blog_post.field_hero_blog_style
+  module:
+    - options
+id: block_content.hero_blog_post.default
+targetEntityType: block_content
+bundle: hero_blog_post
+mode: default
+content:
+  field_hero_blog_style:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

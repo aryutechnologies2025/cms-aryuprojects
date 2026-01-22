@@ -1,0 +1,14 @@
+uuid: 80999ebc-7fca-4867-88b7-b34dda1fc86a
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_ltp_pages
+label: 'Subsite and LTP Pages'
+enabled: true
+first_field: field_subsite
+second_field: field_ltp_ref
+add_direction: append
+bundles:
+  node:
+    - ltp_page
+    - subsite

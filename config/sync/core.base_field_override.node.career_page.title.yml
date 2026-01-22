@@ -1,0 +1,18 @@
+uuid: 5e83767f-a7c7-418c-a3a2-1f9efa05d60a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.career_page
+id: node.career_page.title
+field_name: title
+entity_type: node
+bundle: career_page
+label: 'Admin Label'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

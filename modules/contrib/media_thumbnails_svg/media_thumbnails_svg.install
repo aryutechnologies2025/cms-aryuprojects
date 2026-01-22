@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Media Thumbnails SVG module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function media_thumbnails_svg_requirements($phase) {
+  $requirements = [];
+  if ($phase === 'runtime') {
+    switch (TRUE) {
+      case _media_thumbnails_svg_has_graphics_magick():
+        $rasterizer = t('GraphicsMagick CLI tool detected. This should give you the best possible quality.');
+        break;
+
+      case _media_thumbnails_svg_has_image_magick():
+        $rasterizer = t('ImageMagick CLI tool detected. Quality might be improved by installing the <a href="http://www.graphicsmagick.org">GraphicsMagick</a> CLI Tool.');
+        break;
+
+      default:
+        $rasterizer = t('PHP GD extension detected. Quality will be improved by installing the <a href="https://imagemagick.org">ImageMagick</a> or <a href="http://www.graphicsmagick.org">GraphicsMagick</a> CLI Tool.');
+    }
+    $requirements['rasterizer'] = [
+      'title' => t('Media Thumbnails SVG Rasterizer'),
+      'value' => $rasterizer,
+      'severity' => REQUIREMENT_INFO,
+    ];
+  }
+  return $requirements;
+}

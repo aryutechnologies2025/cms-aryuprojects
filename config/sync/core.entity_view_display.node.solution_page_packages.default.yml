@@ -1,0 +1,429 @@
+uuid: f3d902e3-0851-4cb4-8d11-2c77b64c7f58
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.benefits
+    - block_content.type.hero
+    - block_content.type.package_features
+    - block_content.type.packages
+    - block_content.type.special_offers
+    - field.field.node.solution_page_packages.field_industry
+    - field.field.node.solution_page_packages.field_meta_description
+    - field.field.node.solution_page_packages.field_meta_tags
+    - field.field.node.solution_page_packages.field_package_level
+    - field.field.node.solution_page_packages.field_primary_package_sp
+    - field.field.node.solution_page_packages.field_secondary_package_sp
+    - field.field.node.solution_page_packages.field_services_lp
+    - field.field.node.solution_page_packages.field_subsite
+    - field.field.node.solution_page_packages.layout_builder__layout
+    - node.type.solution_page_packages
+  content:
+    - 'block_content:call_out:f8444489-3a7b-4fa6-b469-114ce01c0ddf'
+    - 'block_content:special_offers:0c236609-8387-4a41-9f88-726eefe04816'
+    - 'block_content:testimonials:de0e91db-dddf-4805-a593-0a337c7a90da'
+    - 'block_content:webform:65965811-56f1-4934-9fae-e2755f889d6a'
+  module:
+    - block_content
+    - layout_builder
+    - layout_discovery
+    - metatag
+    - options
+    - sprowt_subsite
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Masthead
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - small_container_width
+            - dark
+          layout_builder_id: masthead
+        components:
+          -
+            uuid: 7f99cb37-5088-479c-b07d-cdb842a9fcf9
+            region: content
+            configuration:
+              id: 'inline_block:hero'
+              label: Masthead
+              label_display: ''
+              provider: layout_builder
+              view_mode: default
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 5252
+              block_serialized: null
+              type: hero
+              uuid: 17c6d289-b652-408c-971e-3cafbd8f8642
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - center_aligned
+                - ''
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: Introduction
+          context_mapping: {  }
+          column_widths: 67-33
+          layout_builder_styles_style:
+            - ''
+            - ''
+            - white
+          layout_builder_id: introduction
+        components:
+          -
+            uuid: a0fd720d-4de9-4438-9f5a-9724582094df
+            region: first
+            configuration:
+              id: 'field_block:node:solution_page_packages:field_primary_package_sp'
+              label: 'Primary Package'
+              label_display: ''
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: tertiary_teaser
+                third_party_settings: {  }
+            weight: 0
+            additional:
+              layout_builder_id: ''
+          -
+            uuid: 995eeab8-52a2-4d7e-b9e3-c8a7dcfc13f0
+            region: first
+            configuration:
+              id: 'field_block:node:solution_page_packages:field_secondary_package_sp'
+              label: 'Secondary Package'
+              label_display: ''
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: tertiary_teaser
+                third_party_settings: {  }
+            weight: 1
+            additional:
+              layout_builder_id: ''
+          -
+            uuid: e3dc5a7f-286c-472f-a5c4-763f285263be
+            region: second
+            configuration:
+              id: 'inline_block:special_offers'
+              label: 'Special Offer'
+              label_display: '1'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 5253
+              block_serialized: null
+              type: special_offers
+              uuid: 4de2de3c-7660-4727-8c24-0f4a96df70ab
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - ''
+                - ''
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Features
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - small_container_width
+            - light
+          layout_builder_id: features
+        components:
+          -
+            uuid: d61dc32b-e649-4261-b5c7-66ad77f98a53
+            region: content
+            configuration:
+              id: 'inline_block:package_features'
+              label: Features
+              label_display: ''
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 5254
+              block_serialized: null
+              type: package_features
+              uuid: fdbf28c0-c603-48c5-a918-5a7fbb163554
+            weight: 0
+            additional:
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Webform
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - ''
+            - dark
+          layout_builder_id: webform
+        components:
+          -
+            uuid: 00c0553a-5eee-4e72-ac80-03e663c58dc8
+            region: content
+            configuration:
+              id: 'block_content:65965811-56f1-4934-9fae-e2755f889d6a'
+              label: 'Webform - Solution Page (global)'
+              label_display: ''
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - center_aligned
+                - ''
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Packages
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - ''
+            - white
+          layout_builder_id: packages
+        components:
+          -
+            uuid: 2c500dbe-719e-4b59-a894-6c821296f874
+            region: content
+            configuration:
+              id: 'inline_block:packages'
+              label: Packages
+              label_display: ''
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 5234
+              block_serialized: null
+              type: packages
+              uuid: 72a5b481-c328-41b4-9397-4834889e4eb9
+            weight: 0
+            additional:
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Benefits
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - ''
+            - light
+          layout_builder_id: benefits
+        components:
+          -
+            uuid: 02f75092-6294-4989-b940-b6536884b5c8
+            region: content
+            configuration:
+              id: 'inline_block:benefits'
+              label: Benefits
+              label_display: ''
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_id: null
+              block_revision_id: 5235
+              block_serialized: null
+              type: benefits
+              uuid: 7d9dbda5-f955-4f66-aaab-fc2b42932777
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - center_aligned
+              layout_builder_id: ''
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Guarantee
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - ''
+            - white
+          layout_builder_id: guarantee
+        components:
+          -
+            uuid: c85b137a-95e1-4ca5-8e35-bb484d9a3fe4
+            region: content
+            configuration:
+              id: 'block_content:f8444489-3a7b-4fa6-b469-114ce01c0ddf'
+              label: 'Our Guarantee (global)'
+              label_display: '1'
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 1
+            additional:
+              layout_builder_styles_style:
+                - left_aligned
+                - block_primary_color
+                - ''
+              layout_builder_id: our-guarantee
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Speical Offers'
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - small_container_width
+            - ''
+          layout_builder_id: special-offers
+        components:
+          -
+            uuid: ccd34303-f007-4fc1-9076-1382453290c6
+            region: content
+            configuration:
+              id: 'block_content:0c236609-8387-4a41-9f88-726eefe04816'
+              label: 'Special Offers (global)'
+              label_display: ''
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - center_aligned
+                - ''
+              layout_builder_id: special-offers-global
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Reviews
+          context_mapping: {  }
+          layout_builder_styles_style:
+            - ''
+            - light
+          layout_builder_id: reviews
+        components:
+          -
+            uuid: af983c99-a43d-4ff8-81bb-77b9465d316c
+            region: content
+            configuration:
+              id: 'block_content:de0e91db-dddf-4805-a593-0a337c7a90da'
+              label: 'Reviews (global)'
+              label_display: ''
+              provider: block_content
+              status: true
+              info: ''
+              view_mode: full
+              context_mapping: {  }
+            weight: 0
+            additional:
+              layout_builder_styles_style:
+                - ''
+              layout_builder_id: reviews-global
+        third_party_settings: {  }
+id: node.solution_page_packages.default
+targetEntityType: node
+bundle: solution_page_packages
+mode: default
+content:
+  field_industry:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_meta_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_package_level:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_primary_package_sp:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_secondary_package_sp:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_services_lp:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_subsite:
+    type: sprowt_subsite_reference_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  layout_builder__layout: true

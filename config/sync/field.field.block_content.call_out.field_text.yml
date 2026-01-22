@@ -1,0 +1,29 @@
+uuid: 047e7a48-c1f7-477c-adf9-dfdd578b38d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.call_out
+    - field.storage.block_content.field_text
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    restricted_html: '0'
+    full_html: '0'
+    plain_text: '0'
+id: block_content.call_out.field_text
+field_name: field_text
+entity_type: block_content
+bundle: call_out
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

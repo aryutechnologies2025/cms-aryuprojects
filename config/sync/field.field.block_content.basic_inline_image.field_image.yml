@@ -1,0 +1,29 @@
+uuid: dec4288f-0793-4123-acce-5519cd704979
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic_inline_image
+    - field.storage.block_content.field_image
+    - media.type.media_image
+id: block_content.basic_inline_image.field_image
+field_name: field_image
+entity_type: block_content
+bundle: basic_inline_image
+label: Image
+description: 'Optional map image'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,25 @@
+uuid: e5b197fc-a0ba-484d-be96-2c1e9428643c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:social_media:7e5f53fa-561e-4ef8-9ba7-778f95cb1cce'
+  module:
+    - block_content
+  theme:
+    - sprowt3
+id: socialmediafooterlinks_2
+theme: sprowt3
+region: footer
+weight: -8
+provider: null
+plugin: 'block_content:7e5f53fa-561e-4ef8-9ba7-778f95cb1cce'
+settings:
+  id: 'block_content:7e5f53fa-561e-4ef8-9ba7-778f95cb1cce'
+  label: 'Social Media Footer Links'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

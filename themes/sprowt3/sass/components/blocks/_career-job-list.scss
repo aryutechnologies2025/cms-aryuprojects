@@ -1,0 +1,196 @@
+#job-list {
+  .job-list-view {
+    position: relative;
+  }
+}
+
+#job-list-section {
+
+  // filter section 
+  .view-filters {
+      margin-bottom: 50px;
+      .form--inline {
+          display: flex;
+          flex-direction: column;
+          .form-item {
+              flex: 1 1 auto;
+              margin-right: 0;
+          }
+          .form-item-search {
+              width: 100%;
+              margin: 0 0 20px;
+              .form-text {
+                  background-color: palette(white);
+                  padding: 10px;
+                  border: 1px solid var(--color-light);
+              }
+          }
+          input:focus-visible {
+              outline: none;
+          }
+          .form-text,
+          .form-type-select,
+          .select2-container {
+              flex: 1 1 auto;
+              .select2-selection {
+                  min-height: 0;
+                  background-color: palette(white);
+                  border-color: var(--color-light);
+                  .select2-selection__rendered {
+                      display: block;
+                      padding: 10px;
+                      li {
+                          margin-bottom: 0;
+                      }
+                  }
+              }
+          }
+
+          .form-type-textfield {
+              &:after {
+                  color: palette(black);
+              }
+          }
+          .form-type-select {
+              &:after {
+                  color: palette(black);
+              }
+              .select2 {
+                  width: 100% !important;
+                  margin-bottom: 0;
+              }
+              + .form-type-select {
+                  margin-top: 20px;
+              }
+          }
+          input:not([type=submit]) {
+              height: auto;
+              max-width: 100%;
+              margin: 0;
+          }
+          .form-actions {
+              display: flex;
+              flex-direction: column;
+          }
+          .button {
+              max-width: 150px;
+              margin-left: 0;
+              margin-right: 0;
+              margin-bottom: 0;
+              &:last-child {
+                  color: palette(black);
+                  background-color: transparent;
+                  border: 1px solid palette(black);
+                  margin-top: 20px;
+                  &:hover {
+                      color: palette(white);
+                      background-color: palette(black);
+                      border-color: palette(black);
+                  }
+              }
+          }
+      }
+
+      @include breakpoint($small) {
+          .form--inline {
+              flex-direction: row;
+              flex-wrap: wrap;
+              .form-item {
+                  margin-right: 20px;
+              }
+              .form-type-select {
+                  + .form-type-select {
+                      margin-top: 0;
+                  }
+              }
+              .form-actions {
+                  flex-direction: row;
+                  width: 100%;
+              }
+              .button {
+                  &:last-child {
+                      margin-top: 0;
+                      margin-left: 20px;
+                  }
+              }
+          }
+      }
+      @include breakpoint(850px) {
+          .form--inline {
+              .form-item-search {
+                  width: 20%;
+                  margin: 0 20px 0 0;
+                  input {
+                      padding: 32px 18px 6px;
+                  }
+              }
+              .form-type-select {
+                  display: flex;
+                  align-items: flex-end;
+              }
+          }
+      }
+      @include breakpoint(950px) {
+          .form--inline {
+              flex-direction: row;
+              align-items: center;
+              flex-wrap: nowrap;
+              .form-item {
+                  margin-right: 20px;
+              }
+              .form-item-search {
+                  input {
+                      padding: 14px 18px 5px;
+                  }
+              }
+              .form-actions {
+                  flex-direction: row;
+                  width: auto;
+              }
+          }
+      }
+      @include breakpoint($medium) {
+          .form--inline {
+              .form-text,
+              .form-type-select,
+              .select2-container {
+                  width: auto;
+              }
+              input {
+                  width: auto !important;
+              }
+          }
+      }
+  }
+  // end filter section 
+
+  // job listing section 
+   .view-content {
+      .views-row {
+         + .views-row {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 3px solid var(--color-light);
+         }
+         @include breakpoint($small) {
+            + .views-row {
+                margin-top: 20px;
+            }
+         }
+      }
+   }
+}
+
+
+// override select hover colors 
+.select2-container--default {
+  .select2-results__option--highlighted[aria-selected] {
+    background-color: palette(black);
+  }
+}
+
+select option {
+  &:hover {
+    background-color: palette(black, pure) !important;
+  }
+}

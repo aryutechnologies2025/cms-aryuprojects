@@ -1,0 +1,14 @@
+uuid: 9873e9f8-ae32-4c10-bc36-aeda092fbc93
+langcode: en
+status: true
+dependencies: {  }
+id: benefit_and_location
+label: 'Benefit and Location'
+enabled: true
+first_field: field_branches
+second_field: field_ref_benefits
+add_direction: append
+bundles:
+  node:
+    - benefit
+    - branch

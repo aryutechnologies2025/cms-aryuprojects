@@ -1,0 +1,29 @@
+uuid: cc84ab98-f2c5-48c9-b315-6c623a07e46b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_branch
+    - node.type.branch
+    - node.type.ltp_page
+id: node.ltp_page.field_main_branch
+field_name: field_main_branch
+entity_type: node
+bundle: ltp_page
+label: 'Main Location'
+description: 'Select the location (branch) used to display an Address and Hours on this page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      branch: branch
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

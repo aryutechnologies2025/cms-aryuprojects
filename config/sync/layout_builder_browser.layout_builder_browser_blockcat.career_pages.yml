@@ -1,0 +1,10 @@
+uuid: d7790778-805e-4267-95c6-98b5056da480
+langcode: en
+status: true
+dependencies: {  }
+id: career_pages
+label: 'Career Pages'
+weight: null
+opened: true
+image_path: null
+image_alt: null

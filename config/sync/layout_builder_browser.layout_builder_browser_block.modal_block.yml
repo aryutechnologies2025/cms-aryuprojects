@@ -1,0 +1,11 @@
+uuid: 512c1b72-b2a3-4ee5-93ef-672a412fd578
+langcode: en
+status: true
+dependencies: {  }
+id: modal_block
+block_id: 'inline_block:modal_block'
+category: custom_blocks
+label: 'Pop-up Block'
+image_path: ''
+image_alt: ''
+weight: -56

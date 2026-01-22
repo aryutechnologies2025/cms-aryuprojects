@@ -1,0 +1,22 @@
+uuid: 1a770736-e58c-47d4-9285-e37e96cafb1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote
+    - field.storage.block_content.field_text
+  module:
+    - text
+id: block_content.quote.field_text
+field_name: field_text
+entity_type: block_content
+bundle: quote
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

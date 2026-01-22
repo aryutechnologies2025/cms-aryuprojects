@@ -1,0 +1,19 @@
+nav.pager {
+  .pager__item--first,
+  .pager__item--last {
+    display: none;
+  }
+
+  .pager__item {
+    padding: 0px;
+
+    a {
+      display: inline-block;
+      padding: 0px 10px;
+      text-decoration: none;
+      border: 0;
+      border-radius: 0;
+      transition: background-color $duration;
+    }
+  }
+}

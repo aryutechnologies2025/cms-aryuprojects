@@ -1,0 +1,12 @@
+type: module
+name: Weight
+description: 'Allows arbitrary ordering of entities.'
+package: Field types
+core_version_requirement: ^9.5 || ^10.2 || ^11.0
+dependencies:
+  - drupal:field
+
+# Information added by Drupal.org packaging script on 2024-10-22
+version: '8.x-3.6'
+project: 'weight'
+datestamp: 1729637543

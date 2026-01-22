@@ -1,0 +1,11 @@
+uuid: f31fb37f-1f66-47b2-85e0-e8b3a736d4dd
+langcode: en
+status: true
+dependencies: {  }
+id: concerns
+block_id: 'inline_block:concerns'
+category: custom_blocks
+label: Concerns
+image_path: ''
+image_alt: ''
+weight: -71

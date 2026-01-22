@@ -1,0 +1,35 @@
+uuid: a219b284-f552-4eea-9172-4642328b730e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - block_content.type.modal_block
+    - block_content.type.special_offers
+    - block_content.type.webform
+    - block_content.type.zip_code_finder
+    - field.storage.block_content.field_block_ref
+id: block_content.modal_block.field_block_ref
+field_name: field_block_ref
+entity_type: block_content
+bundle: modal_block
+label: Block
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      basic: basic
+      special_offers: special_offers
+      webform: webform
+      zip_code_finder: zip_code_finder
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: webform
+field_type: entity_reference

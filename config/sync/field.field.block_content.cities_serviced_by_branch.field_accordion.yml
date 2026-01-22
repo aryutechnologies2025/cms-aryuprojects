@@ -1,0 +1,21 @@
+uuid: 186c19ca-0d8c-4c99-a823-2ead5e55c1c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cities_serviced_by_branch
+    - field.storage.block_content.field_accordion
+id: block_content.cities_serviced_by_branch.field_accordion
+field_name: field_accordion
+entity_type: block_content
+bundle: cities_serviced_by_branch
+label: Accordion
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

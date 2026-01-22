@@ -1,0 +1,93 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    content.field_hero_blog_style[0]['#markup']
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="hero-wrap">
+
+      {% if content.field_hero_blog_style[0]['#markup'] == 'style_1' %}
+        <h1 class="block blog-title">{{ drupal_title() }}</h1>
+        <div class="auth-date-wrap">
+          {% if (sprowt_get_setting('blog_global_author') is not empty) %}
+            <div class="field field--name-field-author"><a href="{{ sprowt_get_setting('blog_global_author_link') }}">{{ sprowt_get_setting('blog_global_author') }}</a></div>
+          {% else %}
+            {% if author %}
+              <span class="field field--name-field-author">{{ drupal_entity('node', author, 'description') }}</span>
+            {% endif %}
+          {% endif %}
+          {% if (sprowt_get_setting('blog_dates_displayed') == 1) %}
+            <span class="block block-authored-on block-field-blocknodeblogcreated">
+              <span class="field field--name-created field--type-created"><time datetime="{{ node.getCreatedTime|date('Y-m-dTH:i:s') }}" class="datetime">{{ node.getCreatedTime|date('M d, Y') }}</time></span>
+            </span>
+          {% endif %}
+        </div>
+        <div class="block block-image block-field-image-blog">
+          <div class="field field--name-field-image-blog field__item">
+            <img loading="lazy" src="{{ image_blog_url|image_style('large_1000x450') }}" alt="{{ image_blog_alt }}">
+          </div>
+        </div>
+      {% elseif content.field_hero_blog_style[0]['#markup'] == 'style_2' %}
+        <div class="hero-col-wrap">
+          <div class="hero-col-1">
+            <h1 class="block blog-title">{{ drupal_title() }}</h1>
+            <div class="auth-date-wrap">
+              {% if (sprowt_get_setting('blog_global_author') is not empty) %}
+                <div class="field field--name-field-author"><a href="{{ sprowt_get_setting('blog_global_author_link') }}">{{ sprowt_get_setting('blog_global_author') }}</a></div>
+              {% else %}
+                {% if author %}
+                  <span class="field field--name-field-author">{{ drupal_entity('node', author, 'description') }}</span>
+                {% endif %}
+              {% endif %}
+              {% if (sprowt_get_setting('blog_dates_displayed') == 1) %}
+                <span class="block block-authored-on block-field-blocknodeblogcreated">
+                  <span class="field field--name-created field--type-created"><time datetime="{{ node.getCreatedTime|date('Y-m-dTH:i:s') }}" class="datetime">{{ node.getCreatedTime|date('M d, Y') }}</time></span>
+                </span>
+              {% endif %}
+            </div>
+          </div>
+          <div class="hero-col-2">
+            <div class="block block-image block-field-image-blog">
+              <div class="field field--name-field-image-blog field__item">
+                <img loading="lazy" src="{{ image_blog_url|image_style('side_900x900') }}" alt="{{ image_blog_alt }}" width="400" height="400">
+              </div>
+            </div>
+          </div>
+        </div>
+      {% elseif content.field_hero_blog_style[0]['#markup'] == 'style_3' %}
+        <div class="block-bg-image">
+          <div class="field block-field-image-blog">
+            <img loading="lazy" src="{{ image_blog_url|image_style('large_1000x450') }}" alt="{{ image_blog_alt }}" />
+          </div>
+        </div>
+        <div class="hero-content-wrap">
+          <h1 class="block blog-title">{{ drupal_title() }}</h1>
+          <div class="auth-date-wrap">
+            {% if (sprowt_get_setting('blog_global_author') is not empty) %}
+              <div class="field field--name-field-author"><a href="{{ sprowt_get_setting('blog_global_author_link') }}">{{ sprowt_get_setting('blog_global_author') }}</a></div>
+            {% else %}
+              {% if author %}
+                <span class="field field--name-field-author">{{ drupal_entity('node', author, 'description') }}</span>
+              {% endif %}
+            {% endif %}
+            {% if (sprowt_get_setting('blog_dates_displayed') == 1) %}
+              <span class="block block-authored-on block-field-blocknodeblogcreated">
+                <span class="field field--name-created field--type-created"><time datetime="{{ node.getCreatedTime|date('Y-m-dTH:i:s') }}" class="datetime">{{ node.getCreatedTime|date('M d, Y') }}</time></span>
+              </span>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+  {% endblock %}
+</div>

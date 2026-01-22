@@ -1,0 +1,21 @@
+uuid: 17a90db9-8724-4dfb-a39e-f1e6edb4c581
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_package_level
+    - node.type.standalone_landing_page
+  module:
+    - options
+id: node.standalone_landing_page.field_package_level
+field_name: field_package_level
+entity_type: node
+bundle: standalone_landing_page
+label: 'Package Level'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

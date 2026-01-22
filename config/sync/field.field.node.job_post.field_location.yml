@@ -1,0 +1,29 @@
+uuid: 64f570b9-145f-41a3-a0e2-348c9aa076ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location
+    - node.type.branch
+    - node.type.job_post
+id: node.job_post.field_location
+field_name: field_location
+entity_type: node
+bundle: job_post
+label: Location
+description: 'The location the job is located at.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      branch: branch
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,29 @@
+uuid: 77b29751-c69f-4cf8-9330-72a4f2b2e060
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_logo
+    - media.type.media_image
+    - node.type.subsite
+id: node.subsite.field_logo
+field_name: field_logo
+entity_type: node
+bundle: subsite
+label: Logo
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

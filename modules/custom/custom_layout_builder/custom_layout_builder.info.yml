@@ -1,0 +1,7 @@
+name: Custom Layout Builder Sections
+description: Functionality which extends Layout Builder
+core_version_requirement: ^10
+type: module
+package: custom
+dependencies:
+  - drupal:layout_builder

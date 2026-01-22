@@ -1,0 +1,17 @@
+sprowt_ai_example.add_form:
+    title: 'Add example'
+    route_name: entity.sprowt_ai_example.add_form
+    appears_on:
+        - entity.sprowt_ai_example.collection
+
+entity.ai_system.add_form:
+    route_name: 'entity.ai_system.add_form'
+    title: 'Add ai system user'
+    appears_on:
+        - entity.ai_system.collection
+
+sprowt_ai_context.add_form:
+    title: 'Add context'
+    route_name: entity.sprowt_ai_context.add_form
+    appears_on:
+        - entity.sprowt_ai_context.collection

@@ -1,0 +1,11 @@
+uuid: fac4de4b-5616-4144-8757-5c12463e88b5
+langcode: en
+status: true
+dependencies: {  }
+id: utility_careers
+block_id: 'menu_block:careers-utility'
+category: custom_blocks
+label: 'Utility Careers'
+image_path: ''
+image_alt: ''
+weight: -88

@@ -1,0 +1,11 @@
+uuid: edb0790a-e97c-44f6-8b01-cd66b45fb955
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.view_mode_selector
+label: 'View mode selector'
+description: ''
+targetEntityType: block_content
+cache: true

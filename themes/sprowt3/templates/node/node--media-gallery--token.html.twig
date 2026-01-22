@@ -1,0 +1,25 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+{% if content.field_gallery_thumbnail_hero[0]['#media'].field_media_image.entity.uri.value is not empty %}
+    {% set bg_image_url = content.field_gallery_thumbnail_hero['#items']|file_uri %}
+{% endif %}
+<div{{attributes.addClass(classes)}} style="{% if bg_image_url is not empty %}background-image: url({{ bg_image_url|image_style('hero_1600x520') }});{% endif %}">
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="hero-wrap media-gallery-hero-wrap">
+      <div class="h1 page_title"><h1>{{ label }}</h1></div>
+      <div class="hero-desc">{{ content.body }}</div>
+    </div>
+  {% endblock %}
+</div>

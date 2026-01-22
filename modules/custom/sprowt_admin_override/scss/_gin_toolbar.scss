@@ -1,0 +1,39 @@
+.toolbar .toolbar-menu ul .toolbar-icon {
+  padding-right: 30px;
+}
+
+#toolbar-item-administration-tray {
+  padding-right: 50px;
+  .sprowt-hq-environment-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 10px;
+    span {
+      font-size: 13px;
+      font-weight: bold;
+      font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    }
+  }
+}
+
+@media screen and (min-width: 975px) {
+  #environment-indicator {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1130px) {
+  #toolbar-item-administration-tray {
+    .sprowt-hq-environment-indicator {
+      width: auto;
+      min-width: 50px;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.layout__region {
+  .block-inline-blockwebform,
+  .block--type-webform {
+    &.bg-primary,
+    &.bg-dark,
+    &.bg-black {
+      &.field__item,
+      h1,
+      h2,
+      p,
+      label {
+        color: palette(white);
+      }
+    }
+
+    input:not([type="submit"]),
+    .form-textarea-wrapper textarea,
+    select.form-select,
+    .select2-container--default .select2-selection--single {
+      border-width: 2px;
+      border-style: solid;
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    &.bg-light {
+      border-color: palette(gray, lit);
+
+      input:not([type="submit"]),
+      .form-textarea-wrapper textarea,
+      select.form-select,
+      .select2-container--default .select2-selection--single {
+        border-color: palette(gray, lightest);
+      }
+    }
+  }
+}

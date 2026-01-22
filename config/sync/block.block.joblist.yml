@@ -1,0 +1,29 @@
+uuid: ec81aeed-920e-41c3-b550-19e758489511
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:6a799780-b205-4840-bef4-8b7d17bd752c'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - s3_subtheme
+third_party_settings:
+  block_class:
+    classes: job-list-block
+id: joblist
+theme: s3_subtheme
+region: disabled
+weight: 0
+provider: null
+plugin: 'block_content:6a799780-b205-4840-bef4-8b7d17bd752c'
+settings:
+  id: 'block_content:6a799780-b205-4840-bef4-8b7d17bd752c'
+  label: 'Job list'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

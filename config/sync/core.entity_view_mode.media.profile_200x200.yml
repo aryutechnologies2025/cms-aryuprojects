@@ -1,0 +1,11 @@
+uuid: 32377fc1-e1f0-4d66-b244-61c5eafa133b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.profile_200x200
+label: 'Profile (200x200)'
+description: ''
+targetEntityType: media
+cache: true

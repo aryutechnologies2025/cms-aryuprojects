@@ -1,0 +1,205 @@
+<?php
+
+use Drupal\Core\Entity\RevisionableContentEntityBase;
+
+
+/**
+ * Implements hook_schema().
+ */
+function sprowt_ai_schema()
+{
+    $schema = [];
+
+    $schema['sprowt_ai_widget_prompts'] = [
+        'description' => 'Table to save prompt data for altered field widgets',
+        'fields' => [
+            'id' => [
+                'description' => 'The id of the prompt',
+                'type' => 'serial',
+                'not null' => TRUE,
+            ],
+            'entity_type' => [
+                'description' => 'The entity type',
+                'type' => 'varchar',
+                'length' => 1000,
+                'not null' => TRUE,
+            ],
+            'entity_id' => [
+                'description' => 'The entity id',
+                'type' => 'int',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+            ],
+            'entity_revision_id' => [
+                'description' => 'The entity revision id',
+                'type' => 'int',
+                'unsigned' => TRUE
+            ],
+            'entity_uuid' => [
+                'description' => 'The entity uuid',
+                'type' => 'varchar',
+                'length' => 1000,
+                'not null' => TRUE,
+            ],
+            'field_name' => [
+                'description' => 'The field name',
+                'type' => 'varchar',
+                'length' => 1000,
+                'not null' => TRUE,
+            ],
+            'delta' => [
+                'type' => 'int',
+                'unsigned' => TRUE
+            ],
+            'prompt' => [
+                'description' => 'The prompt',
+                'type' => 'text',
+                'not null' => TRUE,
+                'size' => 'big'
+            ],
+            'system' => [
+                'description' => 'System user ID',
+                'type' => 'varchar',
+                'length' => 1000
+            ],
+            'field_property' => [
+                'description' => 'The field property',
+                'type' => 'varchar',
+                'length' => 1000,
+            ],
+        ],
+        'primary key' => ['id'],
+        'indexes' => [
+            ['entity_type', 'entity_id', 'field_name', 'delta'],
+            ['entity_type', 'entity_revision_id', 'field_name', 'delta'],
+            ['entity_type', 'entity_uuid', 'field_name', 'delta'],
+            ['entity_type', 'entity_uuid', 'entity_revision_id', 'field_name', 'delta'],
+        ]
+    ];
+
+    return $schema;
+}
+
+
+/**
+ * Install tables
+ */
+function sprowt_ai_update_10000()
+{
+    $db = \Drupal::database();
+    $schema = sprowt_ai_schema();
+    foreach ($schema as $name => $table) {
+        if(!$db->schema()->tableExists($name)) {
+            $db->schema()->createTable($name, $table);
+        }
+    }
+}
+
+/**
+ * Add field to table
+ */
+function sprowt_ai_update_10001()
+{
+    $db = \Drupal::database();
+    $schema = $db->schema();
+    $fieldDef = [
+        'description' => 'System user ID',
+        'type' => 'varchar',
+        'length' => 1000
+    ];
+    $schema->addField('sprowt_ai_widget_prompts', 'system', $fieldDef);
+}
+
+/**
+ * re-install entities because their tables don't exist for some reason?
+ */
+function sprowt_ai_update_10002()
+{
+    //adding comment for a minor change so I can do a new release
+    $db = \Drupal::database();
+    $schema = $db->schema();
+    $update_manager = \Drupal::entityDefinitionUpdateManager();
+    if(!$schema->tableExists('sprowt_ai_context')){
+        $type = \Drupal::entityTypeManager()->getDefinition('sprowt_ai_context');
+        $update_manager->installEntityType($type);
+    }
+    if(!$schema->tableExists('sprowt_ai_example')){
+        $type = \Drupal::entityTypeManager()->getDefinition('sprowt_ai_example');
+        $update_manager->installEntityType($type);
+    }
+}
+
+/**
+ * Add another field to table
+ */
+function sprowt_ai_update_10003()
+{
+    $schemaDef = sprowt_ai_schema();
+    $table = 'sprowt_ai_widget_prompts';
+    $schemaDef = $schemaDef[$table];
+    $column = 'field_property';
+
+    $db = \Drupal::database();
+    $schema = $db->schema();
+    $fieldDef = $schemaDef['fields'][$column];
+    $schema->addField($table, $column, $fieldDef);
+}
+
+/**
+ * Add tag fields to context and example entities
+ */
+function sprowt_ai_update_10004()
+{
+    $entityTypeIds = [
+        'sprowt_ai_example',
+        'sprowt_ai_context'
+    ];
+
+    $definition_manager = \Drupal::entityDefinitionUpdateManager();
+
+    /** @var RevisionableContentEntityBase $entityDef */
+    foreach ($entityTypeIds as $entityTypeId) {
+        $fieldDef = $definition_manager->getFieldStorageDefinition('tags', $entityTypeId);
+        if(!empty($fieldDef)) {
+            continue;
+        }
+        /** @var \Drupal\Core\Entity\ContentEntityType $entityDef */
+        $entityDef = \Drupal::entityTypeManager()->getDefinition($entityTypeId);
+        $class = $entityDef->getClass();
+        $fieldDefs = $class::baseFieldDefinitions($entityDef);
+        $tagFieldDef = $fieldDefs['tags'];
+        $definition_manager->installFieldStorageDefinition('tags', $entityTypeId, 'sprowt_ai', $tagFieldDef);
+    }
+
+}
+
+/**
+ * Unset the system field from field configs
+ */
+function sprowt_ai_update_10005()
+{
+    /** @var \Drupal\Core\Entity\EntityFieldManager $fieldManager */
+    $fieldManager = \Drupal::service('entity_field.manager');
+
+    $supportedTypes = \Drupal::config('sprowt_ai.settings')->get('supported_field_types');
+    $fieldMap = [];
+    foreach ($supportedTypes as $type) {
+        $fieldMap[$type] = $fieldManager->getFieldMapByFieldType($type);
+    }
+
+    foreach ($fieldMap as $type => $entityTypes) {
+        foreach ($entityTypes as $entityType => $fields) {
+            foreach ($fields as $field => $fieldInfo) {
+                foreach($fieldInfo['bundles'] as $bundle) {
+                    $config = \Drupal::configFactory()->getEditable('field.field.' . $entityType . '.' . $bundle . '.' . $field);
+                    $aiSettings = $config->get('third_party_settings.sprowt_ai');
+                    if(!empty($aiSettings) && isset($aiSettings['system'])) {
+                        unset($aiSettings['system']);
+                        $config->set('third_party_settings.sprowt_ai', $aiSettings);
+                        $config->save();
+                    }
+                }
+            }
+        }
+    }
+}

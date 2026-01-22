@@ -1,0 +1,5 @@
+section_library.admin_index:
+  title: 'Section library'
+  description: 'Configure section library templates.'
+  parent: system.admin_config_content
+  route_name: section_library.admin_index

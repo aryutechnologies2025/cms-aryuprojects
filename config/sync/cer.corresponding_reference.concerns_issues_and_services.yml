@@ -1,0 +1,15 @@
+uuid: 73a95035-46f2-474a-a320-e9d9cf5c7d62
+langcode: en
+status: true
+dependencies: {  }
+id: concerns_issues_and_services
+label: 'Concerns, Issues, and Services'
+enabled: true
+first_field: field_services
+second_field: field_ref_issue
+add_direction: null
+bundles:
+  node:
+    - concern
+    - issue
+    - service

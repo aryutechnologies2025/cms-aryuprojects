@@ -1,0 +1,42 @@
+// Grid Settings
+// Override some default grid settings and establish breakpoints
+
+// Variables to override default grid settings
+$gutter: 20px;
+$margin: 30px;
+$margin-sm: $gutter / 2;
+
+// Breakpoints
+$xxsmall: 390px;
+$xsmall: 480px;
+$small: 768px;
+$smedium: 900px;
+$medium: 1024px;
+$large: 1280px;
+$xlarge: 1400px;
+$xxlarge: 1650px;
+
+$max-xsmall: max-width ($xsmall - 1);
+$max-small: max-width ($small - 1);
+$max-smedium: max-width ($smedium - 1);
+$max-medium: max-width ($medium - 1);
+$max-large: max-width ($large - 1);
+$max-xlarge: max-width ($xlarge - 1);
+$max-xxlarge: max-width ($xxlarge - 1);
+
+// Container width
+$container-sm: 1060px;
+$container: 1360px;
+$container-lg: 1500px;
+$container-xl: 1650px;
+
+.desktop-only {
+  @include breakpoint($max-small) {
+    display: none !important;
+  }
+}
+.mobile-only {
+  @include breakpoint($small) {
+    display: none !important;
+  }
+}

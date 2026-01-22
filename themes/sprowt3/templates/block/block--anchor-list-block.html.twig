@@ -1,0 +1,24 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+{% set image = '' %}
+{% if content.field_image['#items'].entity.uri.value is not empty %}
+  {% set image = file_url(content.field_image['#items'].entity.uri.value) %}
+{% endif %}
+
+<div{{attributes.addClass(classes)}} style="background-image: url({{ image }});">
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="anchor-link-list-wrap">
+      {{ content|without('field_heading') }}
+    </div>
+  {% endblock %}
+</div>

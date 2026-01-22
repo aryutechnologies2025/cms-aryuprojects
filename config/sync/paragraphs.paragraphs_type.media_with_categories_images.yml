@@ -1,0 +1,10 @@
+uuid: 8d3d849c-bc5c-495b-af8b-f01e15098f50
+langcode: en
+status: true
+dependencies: {  }
+id: media_with_categories_images
+label: 'Media with Categories - Images'
+icon_uuid: null
+icon_default: null
+description: 'Organize a group of images with a category/label.'
+behavior_plugins: {  }

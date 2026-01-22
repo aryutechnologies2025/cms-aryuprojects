@@ -1,0 +1,21 @@
+// Fixed Chat Widget bubbles positioned to make room for the Mobile Footer Utility Menu
+// Comment out if that menu is not in use.
+@include breakpoint($max-small) {
+	#captivated-launch-container {
+		bottom: 35px !important;
+	}
+	#web-messenger-container {
+		bottom: 40px !important;
+	}
+	#podium-website-widget {
+		#podium-bubble {
+			bottom: 20px !important;
+		}
+		#podium-prompt {
+			bottom: 95px !important;
+		}
+	}
+	.ctm-call-widget {
+		bottom: 52px !important;
+	}
+}

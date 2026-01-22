@@ -1,0 +1,264 @@
+uuid: e4b571ac-5000-40f0-98fe-c92268a13008
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.city_page.field_city_tax
+    - field.field.node.city_page.field_gmb_account
+    - field.field.node.city_page.field_industry
+    - field.field.node.city_page.field_landing_page_ref
+    - field.field.node.city_page.field_main_branch
+    - field.field.node.city_page.field_meta_description
+    - field.field.node.city_page.field_meta_tags
+    - field.field.node.city_page.field_package_level
+    - field.field.node.city_page.field_ref_benefits
+    - field.field.node.city_page.field_services
+    - field.field.node.city_page.field_services_additional
+    - field.field.node.city_page.field_special_offers
+    - field.field.node.city_page.field_standalone_landing_page
+    - field.field.node.city_page.field_subsite
+    - field.field.node.city_page.field_used_for_lists_only
+    - field.field.node.city_page.layout_builder__layout
+    - node.type.city_page
+  module:
+    - field_group
+    - hide_revision_field
+    - metatag
+    - path
+    - sprowt_subsite
+third_party_settings:
+  field_group:
+    group_connected_content:
+      children:
+        - field_main_branch
+        - field_city_tax
+        - field_ref_benefits
+        - field_services
+        - field_services_additional
+        - field_special_offers
+        - field_landing_page_ref
+        - field_standalone_landing_page
+      label: 'Connected Content'
+      region: content
+      parent_name: ''
+      weight: 9
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: 'Select content that goes with this City. This field works two ways, so it will auto-select this option on the corresponding Content.'
+        required_fields: false
+        weight: -8
+    group_configurations:
+      children:
+        - field_subsite
+        - path
+        - url_redirects
+        - field_gmb_account
+        - field_meta_tags
+      label: Configurations
+      region: content
+      parent_name: ''
+      weight: 8
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: false
+        weight: -9
+    group_package_level:
+      children:
+        - field_package_level
+      label: 'Package Level'
+      region: content
+      parent_name: ''
+      weight: 11
+      format_type: details_sidebar
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+        weight: 0
+id: node.city_page.default
+targetEntityType: node
+bundle: city_page
+mode: default
+content:
+  content_library_include:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_city_tax:
+    type: entity_reference_autocomplete_tags
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_gmb_account:
+    type: string_textfield
+    weight: 25
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_industry:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_landing_page_ref:
+    type: options_select
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_main_branch:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_meta_description:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_package_level:
+    type: options_buttons
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ref_benefits:
+    type: options_select
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_services:
+    type: options_select
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_services_additional:
+    type: options_select
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_special_offers:
+    type: options_select
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_standalone_landing_page:
+    type: options_select
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_subsite:
+    type: sprowt_subsite_reference_selector
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_used_for_lists_only:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  revision_log:
+    type: hide_revision_field_log_widget
+    weight: 14
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+      show: true
+      default: ''
+      permission_based: false
+      allow_user_settings: true
+      hide_revision: false
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 24
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  layout_builder__layout: true
+  sticky: true
+  uid: true

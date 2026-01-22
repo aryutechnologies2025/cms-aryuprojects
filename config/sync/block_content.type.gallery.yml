@@ -1,0 +1,8 @@
+uuid: 76a09d49-acc9-4a77-abdb-a8f42d777296
+langcode: en
+status: true
+dependencies: {  }
+id: gallery
+label: Gallery
+revision: false
+description: 'Create a gallery of images.'

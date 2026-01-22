@@ -1,0 +1,11 @@
+uuid: 737a0c1d-f230-4c08-9d05-d209ced27441
+langcode: en
+status: true
+dependencies: {  }
+id: reviews_global
+block_id: 'block_content:de0e91db-dddf-4805-a593-0a337c7a90da'
+category: re_usable_blocks
+label: 'Reviews (global)'
+image_path: ''
+image_alt: ''
+weight: -89

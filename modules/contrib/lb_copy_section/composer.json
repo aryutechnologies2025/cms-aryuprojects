@@ -1,0 +1,22 @@
+{
+  "name": "drupal/lb_copy_section",
+  "description": "Provides functionality to copy and paste layout builder sections within or between pages.",
+  "type": "drupal-module",
+  "keywords": ["Drupal", "section", "copy", "paste", "Layout Builder"],
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Robbe De Cooman",
+      "homepage": "https://www.drupal.org/u/robbevb",
+      "role": "Maintainer"
+    }
+  ],
+  "homepage": "https://www.drupal.org/project/lb_copy_section",
+  "support": {
+      "issues": "https://www.drupal.org/project/issues/lb_copy_section",
+      "source": "https://git.drupalcode.org/project/lb_copy_section"
+  },
+  "require": {
+      "drupal/core": "^9 || ^10"
+  }
+}

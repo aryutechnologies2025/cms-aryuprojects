@@ -1,0 +1,8 @@
+services:
+    sprowt_ai_prompt_library.service:
+        class: Drupal\sprowt_ai_prompt_library\AiPromptLibraryService
+        arguments:
+            - '@entity_type.manager'
+            - '@content_library.api_service'
+            - '@content_import_export.exporter'
+            - '@content_import_export.importer'

@@ -1,0 +1,11 @@
+uuid: 3162018a-117f-4067-9930-1b3870be9744
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ctm_contact
+id: block_content.ctm_contact
+target_entity_type_id: block_content
+target_bundle: ctm_contact
+default_langcode: site_default
+language_alterable: false

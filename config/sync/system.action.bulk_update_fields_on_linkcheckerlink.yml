@@ -1,0 +1,11 @@
+uuid: 6563cc3a-d7ae-4658-aa8a-a20513686d0e
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_linkcheckerlink
+label: 'Bulk Update LinkChecker link type Fields'
+type: linkcheckerlink
+plugin: bulk_update_fields_action_base
+configuration: {  }

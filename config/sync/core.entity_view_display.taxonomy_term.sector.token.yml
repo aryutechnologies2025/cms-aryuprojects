@@ -1,0 +1,33 @@
+uuid: 2b8fac07-6add-42ac-8275-8292cc979cf8
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.token
+    - taxonomy.vocabulary.sector
+  module:
+    - layout_builder
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: taxonomy_term.sector.token
+targetEntityType: taxonomy_term
+bundle: sector
+mode: token
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

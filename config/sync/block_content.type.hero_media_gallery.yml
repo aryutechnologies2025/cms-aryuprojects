@@ -1,0 +1,8 @@
+uuid: abd71538-43ec-4333-8895-5c09e7d90f0d
+langcode: en
+status: true
+dependencies: {  }
+id: hero_media_gallery
+label: 'Hero - Media Gallery'
+revision: false
+description: ''

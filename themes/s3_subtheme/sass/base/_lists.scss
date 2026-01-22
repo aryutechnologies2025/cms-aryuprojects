@@ -1,0 +1,12 @@
+////
+/// List styles
+/// @group Base
+////
+
+ul[style*="list-style-type: circle"] {
+  li {
+    &::before {
+      color: palette(primary);
+    }
+  }
+}

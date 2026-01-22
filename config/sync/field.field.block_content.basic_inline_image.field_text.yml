@@ -1,0 +1,28 @@
+uuid: 3a2df162-2347-42cd-88d9-ed32abbafaf6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic_inline_image
+    - field.storage.block_content.field_text
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.plain_text
+  module:
+    - text
+id: block_content.basic_inline_image.field_text
+field_name: field_text
+entity_type: block_content
+bundle: basic_inline_image
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
+    - plain_text
+field_type: text_long

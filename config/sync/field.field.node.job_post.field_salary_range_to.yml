@@ -1,0 +1,23 @@
+uuid: 3d95be2c-3322-4ec2-947b-91440dfb4d2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_salary_range_to
+    - node.type.job_post
+id: node.job_post.field_salary_range_to
+field_name: field_salary_range_to
+entity_type: node
+bundle: job_post
+label: 'Salary Range To'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

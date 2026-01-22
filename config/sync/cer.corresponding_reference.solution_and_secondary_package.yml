@@ -1,0 +1,15 @@
+uuid: 9681ed72-c439-4e58-b9cc-29244f6f737b
+langcode: en
+status: true
+dependencies: {  }
+id: solution_and_secondary_package
+label: 'Solution and Secondary Package'
+enabled: true
+first_field: field_secondary_package_sp
+second_field: field_secondary_solution_ref
+add_direction: append
+bundles:
+  node:
+    - package
+    - solution_page_package_alt
+    - solution_page_packages

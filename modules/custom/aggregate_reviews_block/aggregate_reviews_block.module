@@ -1,0 +1,98 @@
+<?php
+
+/**
+ * @file
+ * Contains aggregate_reviews_block.module.
+ */
+
+use Drupal\aggregate_reviews_block\Plugin\Block\AggregateReviewsBlock;
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function aggregate_reviews_block_help($route_name, RouteMatchInterface $route_match) {
+    switch ($route_name) {
+        // Main module help for the aggregate_reviews_block module.
+        case 'help.page.aggregate_reviews_block':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('Gathers aggregate reviews and generates a block based on them') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function aggregate_reviews_block_theme() {
+    return [
+        'aggregate_reviews_block' => [
+            'variables' => [
+                'rating' => 0,
+                'reviews' => 0,
+                'text' => null,
+                'classes' => [],
+                'stars' => [],
+                'block' => null,
+				'site_name' => null,
+                'external_url' => null
+            ],
+            'render element' => 'children',
+        ],
+    ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function aggregate_reviews_block_theme_suggestions_aggregate_reviews_block(array $variables)
+{
+    $suggestions = [];
+    /**
+     * @var $block AggregateReviewsBlock
+     */
+    $block = $variables['block'];
+    $config = $block->getConfiguration();
+    $machineName = $config['instance_id'] ?? '';
+
+    if(!empty($machineName)) {
+        $suggestions[] = $variables["theme_hook_original"] . '__' . $machineName;
+    }
+
+    return $suggestions;
+}
+
+
+/**
+ * Implements hook_token_info_alter().
+ */
+function aggregate_reviews_block_token_info_alter(&$data)
+{
+    $data['tokens']['sprowt']['aggregate_reviews:rating'] = [
+        'name' => t('Aggregate reviews rating'),
+        'description' => t('The aggregate number rating of all locations mapped in my business settings'),
+    ];
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function aggregate_reviews_block_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata)
+{
+    $replacements = [];
+    if($type == 'sprowt') {
+        if(!empty($tokens['aggregate_reviews:rating'])) {
+            $configuration = ['label_display' => BlockPluginInterface::BLOCK_LABEL_VISIBLE];
+
+            /** @var AggregateReviewsBlock $block_plugin */
+            $block_plugin = \Drupal::service('plugin.manager.block')
+                ->createInstance('aggregate_reviews_block', $configuration);
+            $replacements[$tokens['aggregate_reviews:rating']] = $block_plugin->getRating();
+        }
+    }
+    return $replacements;
+}

@@ -1,0 +1,13 @@
+uuid: fe1579c4-0df6-4f3e-8eb0-3c40732cc2de
+langcode: en
+status: true
+dependencies: {  }
+id: surrounding_cities
+label: 'Surrounding Cities'
+enabled: true
+first_field: field_surrounding_cities
+second_field: field_surrounding_cities
+add_direction: null
+bundles:
+  node:
+    - city_page

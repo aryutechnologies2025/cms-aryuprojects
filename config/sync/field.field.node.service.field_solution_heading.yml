@@ -1,0 +1,19 @@
+uuid: 7dd4589c-6dc7-4bef-be8b-61f512891cf6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_solution_heading
+    - node.type.service
+id: node.service.field_solution_heading
+field_name: field_solution_heading
+entity_type: node
+bundle: service
+label: 'Heading for Solution Pages'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

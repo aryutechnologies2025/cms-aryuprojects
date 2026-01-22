@@ -1,0 +1,8 @@
+uuid: 65377ad2-1646-4c1d-bc8e-bdce3d557044
+langcode: en
+status: true
+dependencies: {  }
+id: mobile-utility-menu-subsite-full
+label: 'Mobile Utility Menu (subsite full)'
+description: ''
+locked: false

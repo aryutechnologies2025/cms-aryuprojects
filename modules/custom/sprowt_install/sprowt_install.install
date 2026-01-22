@@ -1,0 +1,478 @@
+<?php
+
+
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\User;
+use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Implements hook_install().
+ */
+function sprowt_install_install($is_syncing)
+{
+    // Modify User 1
+    $user = User::load(1);
+    $user->addRole('administrator');
+    $user->setUsername('coalmarch');
+    $user->setEmail('devel@coalmarch.com');
+    $user->save();
+
+    $moduleHandler = \Drupal::service('module_handler');
+    if ($moduleHandler->moduleExists('sprowt_content')) {
+        //do nothing
+    }
+}
+
+/**
+ * Entity update taxonomy_term.field_is_company_industry
+ */
+function sprowt_install_update_8001() {
+    /** @var \Drupal\sprowt_install\SprowtEntityDefinitionUpdateManager $service */
+    $service = \Drupal::service('sprowt_install.entity_definition_update_manager');
+    $service->updateField('taxonomy_term', 'field_is_company_industry');
+}
+
+/**
+ * Update new fields on blocks with data
+ */
+function sprowt_install_update_8002(&$sandbox)
+{
+    $fieldMap = [
+        'field_label' => 'field_label_tag',
+        'field_subheading' => 'field_subheading_tag'
+    ];
+    $blocks = _sprowt_install_get_all_block_content();
+
+    foreach($fieldMap as $oldField => $newField) {
+        /** @var \Drupal\block_content\Entity\BlockContent $block */
+        foreach($blocks as $block) {
+            if($block->hasField($oldField) && $block->hasField($newField)) {
+                $oldValue = $block->{$oldField}->value;
+                if(!empty($oldValue)) {
+                    $newValue = [
+                        'value' => $oldValue,
+                        'tag' => 'div'
+                    ];
+                    $block->set($newField, $newValue);
+                    $block->set($oldField, null);
+                    $block->save();
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Update node.field_starting_price
+ */
+function sprowt_install_update_8003() {
+    $entity_definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+    $field_storage_definition = $entity_definition_update_manager->getFieldStorageDefinition('field_starting_price', 'node');
+    $entity_definition_update_manager->updateFieldStorageDefinition($field_storage_definition);
+}
+
+/**
+ * Switch profile to sprowt
+ */
+function sprowt_install_update_8004() {
+    _sprowt_install_switch_profile();
+}
+
+/**
+ * Add state variable for installed site
+ */
+function sprowt_install_update_8005() {
+    \Drupal::state()
+        ->set('sprowt_site_installed', true);
+}
+/**
+ * Delete solution_page_2_package_alt and solution_page_package_service_al content types (if exists)
+ *
+ */
+function sprowt_install_update_8006() {
+    $types = [
+        'solution_page_2_package_alt',
+        'solution_page_package_service_al'
+    ];
+    foreach($types as $type) {
+        // Delete all nodes of given content type.
+        $storage_handler = \Drupal::entityTypeManager()
+            ->getStorage('node');
+        $nodes = $storage_handler->loadByProperties(['type' => $type]);
+        if(!empty($nodes)) {
+            $storage_handler->delete($nodes);
+        }
+        // Delete content type.
+        $content_type = \Drupal::entityTypeManager()
+            ->getStorage('node_type')
+            ->load($type);
+        if(!empty($content_type)) {
+            $content_type->delete();
+        }
+    }
+}
+
+/**
+ * Set site as finalized
+ */
+function sprowt_install_update_9001() {
+    $finalized = \Drupal::state()->set('sprowt.site_install_finalized', true);
+}
+
+
+/**
+ * update chat code entity
+ */
+function sprowt_install_update_9002() {
+    /** @var \Drupal\sprowt_install\SprowtEntityDefinitionUpdateManager $service */
+    $service = \Drupal::service('sprowt_install.entity_definition_update_manager');
+    $service->updateField('chat_code', 'visibility');
+
+    $chatCodes = \Drupal::entityTypeManager()->getStorage('chat_code')->loadMultiple();
+    /** @var \Drupal\chat_codes\Entity\ChatCode $chatCode */
+    foreach($chatCodes as $chatCode) {
+        $pageRestriction = $chatCode->getPageRestriction();
+        $config = $pageRestriction->getConfiguration();
+        if(!empty($config)) {
+            $chatCode->setVisibilityConfig('request_path', $config);
+            $chatCode->save();
+        }
+    }
+
+}
+
+/**
+ * update script entity
+ */
+function sprowt_install_update_9003() {
+    /** @var \Drupal\sprowt_install\SprowtEntityDefinitionUpdateManager $service */
+    $service = \Drupal::service('sprowt_install.entity_definition_update_manager');
+    $service->updateField('script', 'visibility');
+
+    $scripts = \Drupal::entityTypeManager()->getStorage('script')->loadMultiple();
+    /** @var \Drupal\script_inserter\Entity\Script $script */
+    foreach($scripts as $script) {
+        $pageCondition = $script->getPageRestriction();
+        $nodeTypeCondition = $script->getNodeTypeRestriction();
+        $changed = false;
+        $pageConditionConfig = $pageCondition->getConfiguration();
+        $nodeTypeConditionConfig = $nodeTypeCondition->getConfiguration();
+        if(!empty($pageConditionConfig)) {
+            $script->setVisibilityConfig('request_path', $pageConditionConfig);
+            $changed = true;
+        }
+        if(!empty($nodeTypeConditionConfig)) {
+            $nodeTypeConditionConfig['context_mapping'] = [
+                'node' => '@node.node_route_context:node'
+            ];
+            $script->setVisibilityConfig('entity_bundle:node', $nodeTypeConditionConfig);
+            $changed = true;
+        }
+        if($changed) {
+            $script->save();
+        }
+    }
+}
+
+/**
+ * Update filters so that image_resize_filter can be uninstalled
+ */
+function sprowt_install_update_9004() {
+    $configs = [
+        'editor.editor.basic_html',
+        'editor.editor.full_html',
+        'filter.format.basic_html',
+        'filter.format.full_html'
+    ];
+
+    foreach($configs as $configName) {
+        $config = \Drupal::configFactory()->getEditable($configName);
+        $file = DRUPAL_ROOT . '/config/sync/' . $configName . '.yml';
+        $fileYaml = file_get_contents($file);
+        $data = \Drupal\Core\Serialization\Yaml::decode($fileYaml);
+        $config->setData($data);
+        $config->save();
+    }
+}
+
+/**
+ * Completely delete honeypot settings
+ */
+function sprowt_install_update_100001() {
+    $configName = 'honeypot.settings';
+    $config = \Drupal::configFactory()->getEditable($configName);
+    $config->delete();
+
+    if($_SERVER['SPROWTHQ_SITE_NAME'] == 'sprowt3') {
+        $sitesDir = DRUPAL_ROOT;
+    }
+    else {
+        if($_SERVER['SPROWTHQ_ENVIRONMENT'] == 'local') {
+            $sitesDir = DRUPAL_ROOT . '/sites/' . $_SERVER['SPROWTHQ_SITE_NAME'];
+        }
+        else {
+            $sitesDir = DRUPAL_ROOT . '/sites/' . $_SERVER['SPROWTHQ_SITE_NAME'] . '--' . $_SERVER['SPROWTHQ_ENVIRONMENT'];
+        }
+    }
+
+    foreach (glob($sitesDir . '/config/*/' . $configName . '.yml') as $file) {
+        unlink($file);
+    }
+}
+
+/**
+ * Reverse answer for new_customer_select webform
+ */
+function sprowt_install_update_100002() {
+    $webformComponentKey = 'new_customer_select';
+    /** @var Drupal\Core\Database\Connection $db */
+    $db = \Drupal::database();
+
+    $rows = $db->query("SELECT * FROM webform_submission_data WHERE name = :key", [
+        ':key' => $webformComponentKey
+    ])->fetchAll(\PDO::FETCH_ASSOC);
+
+    foreach($rows as $row) {
+        $oldVal = $row['value'];
+        $newVal = $oldVal == 'No' ? 'Yes' : 'No';
+        $db->update('webform_submission_data')
+            ->fields([
+                'value' => $newVal
+            ])
+            ->condition('sid', $row['sid'])
+            ->condition('name', $webformComponentKey)
+            ->condition('webform_id', $row['webform_id'])
+            ->condition('delta', $row['delta'])
+            ->condition('property', $row['property'])
+            ->execute();
+    }
+}
+
+/**
+ * Fix webform submission data
+ */
+function sprowt_install_update_100003()
+{
+    $file = 'private://webform_results.json';
+    /** @var \Drupal\Core\File\FileSystem $fs */
+    $fs = \Drupal::service('file_system');
+    $file = $fs->realpath($file);
+    if(!file_exists($file)) {
+        //file doesn't exist, so we're done
+        return;
+    }
+    $json = file_get_contents($file);
+    $data = json_decode($json, true);
+    $db = \Drupal::database();
+    $map = [];
+    foreach($data as $datum) {
+        $key = implode('::', [
+            $datum['webform_id'],
+            $datum['sid'],
+            $datum['name'],
+            $datum['delta'],
+            $datum['property']
+        ]);
+        $map[$key] = $datum;
+    }
+
+    $rows = $db->query("SELECT * FROM webform_submission_data")->fetchAll(\PDO::FETCH_ASSOC);
+    foreach($rows as $row) {
+        $key = implode('::', [
+            $row['webform_id'],
+            $row['sid'],
+            $row['name'],
+            $row['delta'],
+            $row['property']
+        ]);
+        $datum = $map[$key] ?? null;
+        if($datum && $datum['value'] != $row['value']) {
+            $val = $datum['value'];
+            if($row['name'] == 'new_customer_select') {
+                $val = $val == 'Yes' ? 'No' : 'Yes';
+            }
+            $db->update('webform_submission_data')
+                ->fields(['value' => $val])
+                ->condition('sid', $row['sid'])
+                ->condition('name', $row['name'])
+                ->condition('webform_id', $row['webform_id'])
+                ->condition('delta', $row['delta'])
+                ->condition('property', $row['property'])
+                ->execute();
+        }
+    }
+
+
+}
+
+/**
+ * Remove values from field_subsite on profile nodes
+ */
+function sprowt_install_update_100004()
+{
+    $profileNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+        'type' => 'profile'
+    ]);
+
+    foreach($profileNodes as $profileNode) {
+        if(!$profileNode->get('field_subsite')->isEmpty()) {
+            $subsiteValue = $profileNode->get('field_subsite')->first()->getValue();
+            $subsitesFieldList = $profileNode->get('field_subsite_multiple')->getValue() ?? [];
+            $found = false;
+            foreach($subsitesFieldList as $subsitesValue) {
+                if($subsitesValue['target'] == $subsiteValue['target']) {
+                    $found = true;
+                }
+            }
+
+            if(!$found) {
+                $subsitesFieldList[] = [
+                    'target' => $subsiteValue['target']
+                ];
+                $profileNode->set('field_subsite_multiple', $subsitesFieldList);
+            }
+        }
+        $profileNode->set('field_subsite', null);
+        $profileNode->save();
+    }
+}
+
+/**
+ * Remove data from field_ref_city on LTP nodes and field_ltp_ref on City nodes
+ */
+function sprowt_install_update_100005() {
+
+    $db = \Drupal::database();
+    $sql = "
+        DELETE FROM node__field_ref_city
+        WHERE bundle = 'ltp_page'
+    ";
+    $db->query($sql)->execute();
+
+    $sql = "
+        DELETE FROM node_revision__field_ref_city
+        WHERE bundle = 'ltp_page'
+    ";
+    $db->query($sql)->execute();
+
+    $sql = "
+        DELETE FROM node__field_ltp_ref
+        WHERE bundle = 'city_page'
+    ";
+    $db->query($sql)->execute();
+
+    $sql = "
+        DELETE FROM node_revision__field_ltp_ref
+        WHERE bundle = 'city_page'
+    ";
+    $db->query($sql)->execute();
+
+}
+
+/** Import overrides config split  */
+function sprowt_install_update_100006() {
+    $viewConfigKey = 'config_split.config_split.overrides';
+    $yamlFile = DRUPAL_ROOT . '/config/sync/config_split.config_split.overrides.yml';
+    $data = Yaml::parse(file_get_contents($yamlFile));
+    $config = \Drupal::service('config.factory')->getEditable($viewConfigKey);
+    $config->setData($data);
+    $config->save();
+}
+
+/**
+ * Remove data from location link fields
+ */
+function sprowt_install_update_100007() {
+    $locations = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+        'type' => 'branch',
+    ]);
+
+    $fields = [
+        'field_city_link_home_services',
+        'field_city_link_lawn_care',
+        'field_city_link_no_industry',
+        'field_city_link_pest_control',
+        'field_city_link_tree_shrub',
+        'field_city_link_wildlife'
+    ];
+
+    /** @var Node $location */
+    foreach($locations as $location) {
+        $changed = false;
+        foreach($fields as $field) {
+            if($location->hasField($field)
+                && !$location->get($field)->isEmpty()
+            ) {
+                $location->set($field, null);
+                $changed = true;
+            }
+        }
+        if($changed) {
+            $location->save();
+        }
+    }
+}
+
+/**
+ * switch package_levels from business, corporate, enterprise, and ultimate to base
+ */
+function sprowt_install_update_100008() {
+    $change = [
+        'business',
+        'corporate',
+        'enterprise',
+        'ultimate'
+    ];
+
+    $tables = [
+        'node__field_package_level',
+        'menu_link_content__field_package_level',
+    ];
+    $updated = [];
+    foreach($tables as $table) {
+        $parts = explode('__', $table);
+        $entityTypeId = $parts[0];
+        $rows = \Drupal::database()->query("
+            SELECT *
+            FROM $table
+            WHERE field_package_level_value IN ('" . implode("','", $change) . "')
+        ")->fetchAll(\PDO::FETCH_ASSOC);
+        foreach($rows as $row) {
+            $entityId = $row['entity_id'];
+            $updateKey = implode('::', [
+                $entityTypeId,
+                $entityId,
+            ]);
+            if(in_array($updateKey, $updated)) {
+                continue;
+            }
+
+            $entity = \Drupal::entityTypeManager()->getStorage($entityTypeId)->load($entityId);
+            /** @var \Drupal\Core\Field\FieldItemList $list */
+            $list = $entity->get('field_package_level');
+            $newValues = [];
+            $baseAdded = false;
+            /** @var \Drupal\Core\Field\Plugin\Field\FieldType\StringItem $item */
+            foreach($list as $item) {
+                $array = $item->getValue();
+                if(in_array($array['value'], $change)) {
+                    if($baseAdded) {
+                        continue;
+                    }
+                    $newValues[] = [
+                        'value' => 'base'
+                    ];
+                    $baseAdded = true;
+                }
+                else {
+                    $newValues[] = [
+                        'value' => $array['value']
+                    ];
+                }
+            }
+            $entity->set('field_package_level', $newValues);
+            $entity->save();
+            $updated[] = $updateKey;
+        }
+    }
+}

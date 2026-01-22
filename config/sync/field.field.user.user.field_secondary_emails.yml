@@ -1,0 +1,20 @@
+uuid: f61edcae-043b-4208-a55f-87f0c5483598
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_secondary_emails
+  module:
+    - user
+id: user.user.field_secondary_emails
+field_name: field_secondary_emails
+entity_type: user
+bundle: user
+label: 'Secondary Emails'
+description: 'List of secondary emails that can be used for logging in via google'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

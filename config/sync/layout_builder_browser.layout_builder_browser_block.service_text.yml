@@ -1,0 +1,11 @@
+uuid: a8afc46b-cfed-44bb-bde6-d4de777e88cb
+langcode: en
+status: true
+dependencies: {  }
+id: service_text
+block_id: 'inline_block:service_text'
+category: custom_blocks
+label: 'Service Text'
+image_path: ''
+image_alt: ''
+weight: -47

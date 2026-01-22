@@ -1,0 +1,23 @@
+uuid: 77da99cd-8483-4b6e-b5da-e57c6cd02f59
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_display_benefit
+  module:
+    - options
+id: block_content.hero.field_display_benefit
+field_name: field_display_benefit
+entity_type: block_content
+bundle: hero
+label: 'Benefit Display'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: token
+default_value_callback: ''
+settings: {  }
+field_type: list_string

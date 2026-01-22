@@ -1,0 +1,6 @@
+help_example.example:
+  title: 'Example help'
+  description: 'Foobar'
+  route_name: help_example.example
+  weight: 10
+  parent: system.admin

@@ -1,0 +1,73 @@
+_entities:
+  '155f9dac-7aef-4739-953d-367077937f74::5253':
+    _exportInfo:
+      key: '155f9dac-7aef-4739-953d-367077937f74::5253'
+      entity_type: block_content
+      bundle: breadcrumbs
+      entity_id: '1134'
+      uuid: 155f9dac-7aef-4739-953d-367077937f74
+      isDefaultRevision: true
+      revisionId: '5253'
+      label: Breadcrumbs
+    id:
+      -
+        value: 1134
+    uuid:
+      -
+        value: 155f9dac-7aef-4739-953d-367077937f74
+    revision_id:
+      -
+        value: 5253
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: breadcrumbs
+        target_type: block_content_type
+        target_uuid: 1ec43ff3-fb5e-4179-8038-be87ea23392b
+    revision_created:
+      -
+        value: '2021-05-11T17:47:12+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Breadcrumbs'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Breadcrumbs
+    changed:
+      -
+        value: '2021-05-11T17:47:12+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_crumb:
+      -
+        uri: 'internal:/'
+        title: Home
+        options: {  }
+      -
+        uri: 'entity:node/92'
+        title: 'Our Blog'
+        options: {  }
+    field_industry: {  }
+_content: {  }

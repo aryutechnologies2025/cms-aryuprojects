@@ -1,0 +1,73 @@
+uuid: 6654ac0e-e20d-4c36-b944-70a9fc35f62c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.brands
+    - field.field.block_content.brands.field_brands
+    - field.field.block_content.brands.field_heading
+    - field.field.block_content.brands.field_label_tag
+    - field.field.block_content.brands.field_slider
+    - field.field.block_content.brands.field_subheading_tag
+  module:
+    - paragraphs
+    - tag_text_field
+id: block_content.brands.default
+targetEntityType: block_content
+bundle: brands
+mode: default
+content:
+  field_brands:
+    type: entity_reference_paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: Brand
+      title_plural: Brands
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: brand
+    third_party_settings: {  }
+  field_heading:
+    type: html_tag_text_field_widget
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_label_tag:
+    type: html_tag_text_field_widget
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_slider:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_subheading_tag:
+    type: html_tag_text_field_widget
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  revision_log: true

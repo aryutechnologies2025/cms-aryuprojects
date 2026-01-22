@@ -1,0 +1,33 @@
+uuid: 9bcd82b1-a34d-40ec-8e1b-afa9a4035e23
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_mainnavigation
+theme: woodlawnandlandscaping
+region: disabled
+weight: -4
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 1
+  expand_all_items: false
+  parent: 'main:'
+  render_parent: false
+  suggestion: main
+  hide_on_nonactive: false
+visibility: {  }

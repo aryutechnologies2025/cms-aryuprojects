@@ -1,0 +1,23 @@
+uuid: 3dfd0a0a-a60a-449d-9e41-7f96cb05d7ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.career_benefits
+    - field.storage.block_content.field_display_career_benefit
+  module:
+    - options
+id: block_content.career_benefits.field_display_career_benefit
+field_name: field_display_career_benefit
+entity_type: block_content
+bundle: career_benefits
+label: Display
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: teaser
+default_value_callback: ''
+settings: {  }
+field_type: list_string

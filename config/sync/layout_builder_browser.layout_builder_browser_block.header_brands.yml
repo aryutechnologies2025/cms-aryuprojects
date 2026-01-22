@@ -1,0 +1,11 @@
+uuid: 5b890df0-2a8d-4026-87af-a804af6e3ffc
+langcode: en
+status: true
+dependencies: {  }
+id: header_brands
+block_id: 'block_content:ecc746d0-6506-43bb-9b55-c762acb794c4'
+category: header_footer
+label: 'Header Brands'
+image_path: ''
+image_alt: ''
+weight: -80

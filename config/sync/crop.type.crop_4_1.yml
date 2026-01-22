@@ -1,0 +1,12 @@
+uuid: c64dd9c1-6b11-4247-96ed-b0770ed5695e
+langcode: en
+status: true
+dependencies: {  }
+label: 'Crop 4:1'
+id: crop_4_1
+description: 'Typically used for Hero images.'
+aspect_ratio: '4:1'
+soft_limit_width: null
+soft_limit_height: null
+hard_limit_width: null
+hard_limit_height: null

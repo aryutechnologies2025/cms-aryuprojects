@@ -1,0 +1,21 @@
+uuid: 9a85f6db-d2af-4eb7-9346-97a4b7fc4b3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_spotlight
+    - node.type.package
+id: node.package.field_spotlight
+field_name: field_spotlight
+entity_type: node
+bundle: package
+label: Spotlight
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

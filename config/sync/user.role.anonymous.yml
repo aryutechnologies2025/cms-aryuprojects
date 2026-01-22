@@ -1,0 +1,18 @@
+uuid: f8f9b0d2-38e6-45d0-b48a-4ebe05b28d4a
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - protected_pages
+    - system
+_core:
+  default_config_hash: pq_mEIu_B4widZN7Ap81iCJSjShFFdcL0jEiCi8VrDk
+id: anonymous
+label: 'Anonymous user'
+weight: -10
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access protected page password screen'
+  - 'view media'

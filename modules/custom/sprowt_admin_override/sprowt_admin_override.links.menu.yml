@@ -1,0 +1,9 @@
+sprowt_admin_override.metatag_dashboard:
+    title: Metatag Dashboard
+    description: Dashboard to bulk edit metatags
+    parent: sprowt_settings.admin_config_sprowt
+    route_name: sprowt_admin_override.metatag_dashboard
+    weight: 10
+
+sprowt_admin_override.dynamic:
+    deriver: 'Drupal\sprowt_admin_override\Derivative\DynamicMenuLinks'

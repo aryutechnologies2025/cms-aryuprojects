@@ -1,0 +1,129 @@
+footer.page-footer {
+  color: palette(white);
+  background-color: palette(black);
+}
+
+%footer-menu-items {
+  color: palette(white);
+}
+
+.region-footer,
+.region-footer-layout #footer-top-b,
+.region-footer-layout [id*='footer-top'] {
+  .block-footer-logo {
+    width: $logo-footer-width-mobile;
+    min-width: $logo-footer-width-mobile;
+    max-width: $logo-footer-width-mobile;
+
+    @include breakpoint($medium) {
+      width: $logo-footer-width;
+      min-width: $logo-footer-width;
+      max-width: $logo-footer-width;
+    }
+  }
+}
+
+.region-footer,
+.region-footer-layout [id*='footer-top'] {
+  nav.menu--main,
+  nav.source-menu--main {
+    @include flexbox;
+    align-items: center;
+    justify-content: center;
+
+    > ul.menu {
+      > li {
+        a {
+          color: palette(white);
+          @extend %underline-link;
+        }
+      }
+    }
+  }
+}
+
+.block-social-media-footer-links {
+  @include flexbox;
+  align-items: center;
+  justify-content: center;
+
+  .field--name-field-social-media {
+    .social-icon {
+      color: palette(secondary);
+
+      span::before {
+        color: palette(secondary);
+      }
+
+      &:hover {
+        color: palette(white);
+        span::before {
+          color: palette(white);
+        }
+      }
+    }
+  }
+}
+
+.region-footer-bottom,
+.region-footer-layout [id*='footer-bottom'] {
+  .block-copyright {
+    color: palette(grey, light);
+  }
+
+  nav.menu--footer,
+  nav.source-menu--footer {
+    > ul.menu {
+      > li {
+        a {
+          color: palette(gray, lighter);
+        }
+
+        &::after {
+          color: palette(gray, lighter);
+        }
+      }
+    }
+  }
+}
+
+// Code to deal with the address blocks in the footer (tw)
+footer.page-footer {
+  .node--type-branch.node--view-mode-secondary-teaser .node__content {
+    flex-direction: column;
+  
+    .form-item {
+      text-align: center;
+    }
+  
+    @include breakpoint($smedium) {
+      flex-direction: row;
+      .form-item {
+        text-align: left;
+      }
+    }
+  
+    fieldset {
+      margin-right: 0;
+      @include breakpoint($smedium) {
+        margin-right: 30px;
+      }
+  
+    }
+    fieldset legend {
+      text-align: center;
+      margin: 0 auto;
+      @include breakpoint($smedium) {
+        text-align: left;
+        margin: 0 0 2px 0;
+      }
+    }
+  
+    fieldset .field {
+      text-align: center;
+      @include breakpoint($smedium) {
+        text-align: left;
+      }
+    }
+  }
+}

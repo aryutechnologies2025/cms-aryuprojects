@@ -1,0 +1,23 @@
+uuid: 6717cf9d-ebf1-46fc-8d09-43c2fe9a2db8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.blog_list
+    - field.storage.block_content.field_display_blog_posts
+  module:
+    - options
+id: block_content.blog_list.field_display_blog_posts
+field_name: field_display_blog_posts
+entity_type: block_content
+bundle: blog_list
+label: Display
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: secondary_teaser
+default_value_callback: ''
+settings: {  }
+field_type: list_string

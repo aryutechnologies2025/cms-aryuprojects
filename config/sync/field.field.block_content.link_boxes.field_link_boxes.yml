@@ -1,0 +1,40 @@
+uuid: 8498825e-cc42-4e13-9c76-293e64cbe236
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.link_boxes
+    - field.storage.block_content.field_link_boxes
+    - paragraphs.paragraphs_type.link_box
+  module:
+    - entity_reference_revisions
+id: block_content.link_boxes.field_link_boxes
+field_name: field_link_boxes
+entity_type: block_content
+bundle: link_boxes
+label: 'Link Boxes'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      link_box: link_box
+    negate: 0
+    target_bundles_drag_drop:
+      brand:
+        weight: 5
+        enabled: false
+      identifications:
+        weight: 6
+        enabled: false
+      link_box:
+        weight: 7
+        enabled: true
+      social_media:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

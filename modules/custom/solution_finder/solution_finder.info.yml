@@ -1,0 +1,11 @@
+name: Solution Finder
+type: module
+description: 'Provides a solution configuration entity.'
+package: Coalmarch
+core_version_requirement: ^9 || ^10
+configure: entity.solution.collection
+dependencies:
+    - drupal:node
+    - drupal:block
+    - draggableviews:draggableviews
+    - views_bulk_operations:views_bulk_operations

@@ -1,0 +1,10 @@
+uuid: 6f7ca2ff-4c53-4970-85ca-ff24160fcc7c
+langcode: en
+status: true
+dependencies: {  }
+id: media_with_categories_img_vid
+label: 'Media with Categories - Images and Video'
+icon_uuid: null
+icon_default: null
+description: 'Organize a group of images and video with a category/label.'
+behavior_plugins: {  }

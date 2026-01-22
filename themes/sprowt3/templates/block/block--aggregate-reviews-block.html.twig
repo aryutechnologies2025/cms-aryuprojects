@@ -1,0 +1,21 @@
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {{ content }}
+    {% if not content['#hidden'] %}
+      <span class="google-rating-link"><a class="button">View Google Ratings</a></span>
+    {% endif %}
+  {% endblock %}
+</div>

@@ -1,0 +1,23 @@
+uuid: ec8ec694-c00e-4cbb-acfd-776be1da3c7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_by_location_city
+    - field.storage.block_content.field_max_columns
+  module:
+    - options
+id: block_content.areas_serviced_by_location_city.field_max_columns
+field_name: field_max_columns
+entity_type: block_content
+bundle: areas_serviced_by_location_city
+label: 'Max Columns'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 3
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

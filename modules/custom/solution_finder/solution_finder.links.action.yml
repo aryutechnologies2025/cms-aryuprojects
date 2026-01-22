@@ -1,0 +1,11 @@
+solution.add_form:
+    route_name: entity.solution.add_form
+    title: 'Add solution'
+    appears_on:
+        - entity.solution.collection
+
+solution_sort.add_form:
+    route_name: entity.solution.add_form
+    title: 'Add solution'
+    appears_on:
+        - view.solutions.sort

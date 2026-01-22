@@ -1,0 +1,98 @@
+{% set hero_style_class = 'default' %}
+{% set overlay_color = content.field_overlay_color[0]['#markup'] %}
+{% set bg_image_url = content.field_image_bg_hero['#items']|file_uri %}
+{% set bg_image_size = content.field_background_image_size[0]['#markup'] %}
+{% set image_alt = content.field_image_bg_hero['#items'].entity.field_media_image.alt %}
+
+{% if content.field_hero_style['#items'] is not empty %}
+  {% set hero_style_key = content.field_hero_style['#items'].getString() %}
+{% else %}
+  {% set hero_style_key = 'empty' %}
+{% endif %}
+{% if hero_style_key == 'round' or hero_style_key == 'round-edge' or hero_style_key == 'diagonal' %}
+  {% set hero_style_classes = 'style-' ~ hero_style_key ~ ' mobile-overlay-' ~ overlay_color %}
+  {% set bg_image = {'#theme': 'image_style','#style_name': 'hero_half','#uri': bg_image_url,'#alt': image_alt} %}
+{% else %}
+  {% set hero_style_classes = 'style-' ~ hero_style_key ~ '-' ~ content.field_overlay_color['#items'].getString() %}
+  {% if bg_image_size == 'large' %}
+    {% set bg_image = {'#theme': 'image_style','#style_name': 'hero_large_2200x780','#uri': bg_image_url,'#alt': image_alt} %}
+  {% else %}
+    {% set bg_image = {'#theme': 'image_style','#style_name': 'hero_1600x520','#uri': bg_image_url,'#alt': image_alt} %}
+  {% endif %}
+{% endif %}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'foreground-color-' ~ content.field_foreground_color[0]['#markup'],
+    'hero-copy-width-' ~ content.field_hero_content_width[0]['#markup'],
+    hero_style_classes,
+    (content.field_image_mobile[0]['#media'].field_media_image.entity.uri.value is not empty ? 'mobile-image' ),
+    (hero_style_key == 'empty' ? 'opacity-50'),
+    (hero_style_key == 'overlay' ? 'opacity-' ~ content.field_opacity[0]['#markup']),
+    (hero_style_key == 'gradient' ? 'gradient-range-' ~ content.field_gradient_range[0]['#markup']),
+    (hero_style_key == 'gradient' ? 'gradient-opacity-' ~ content.field_gradient_opacity[0]['#markup']),
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {% if content.field_image_bg_hero[0]['#media'].field_media_image.entity.uri.value is not empty %}
+    {% if attributes.hasClass('bgrepeat') %}
+      <div class="block-bg-image" style="background-image:url({{ file_url(content.field_image_bg_hero[0]['#media'].field_media_image.entity.uri.value) }});"></div>
+    {% else %}
+      <div class="block-bg-image">
+        {% if hero_style_key == 'round' or hero_style_key == 'round-edge' or hero_style_key == 'diagonal' or bg_image_size == 'large' %}
+          <div class="field field--name-field-image-bg-hero field--type-entity-reference field--label-hidden field__item">
+            <div class="contextual-region media media--type-media-image">
+              {{ bg_image }}
+            </div>
+          </div>
+        {% else %}
+          {{ content.field_image_bg_hero }}
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endif %}
+
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="hero-wrap">
+      <div class="hero-copy">
+        {% if ( content_type == 'solution_page_packages' ) or ( content_type == 'solution_page_package_service' ) or ( content_type == 'solution_page_services' ) or ( content_type == 'solution_page_package_alt' ) or ( content_type == 'solution_page_2_package_alt' ) or ( content_type == 'solution_page_package_service_al' ) %}
+          {{ content.field_label }}
+          {{ content.field_label_tag }}
+          {% if content.field_heading|render is not empty %}
+            {{ content.field_heading }}
+          {% else %}
+            <div class="field field--name-field-heading field--type-html-tag-text-field-type field--label-hidden field__item">
+              {{ node_title }}
+            </div>
+          {% endif %}
+          {{ content.field_subheading }}
+          {{ content.field_subheading_tag}}
+          {{ content|without('field_image_bg_hero','field_image_fg_hero','field_benefits','field_display_benefit','field_opacity','field_gradient_range','field_gradient_opacity','field_label','field_label_tag','field_subheading','field_subheading_tag','field_heading','field_hero_style','field_foreground_color','field_overlay_color','field_background_image_size','field_hero_content_width') }}
+        {% else %}
+          {{ content|without('field_image_bg_hero','field_image_fg_hero','field_image_mobile', 'field_benefits','field_display_benefit','field_opacity','field_gradient_range','field_gradient_opacity','field_hero_style','field_foreground_color','field_overlay_color','field_background_image_size','field_hero_content_width') }}
+        {% endif %}
+
+        {% if '1' in content.field_benefits[0] %}
+          {% set benefitDisplay = content.field_display_benefit.0['#markup'] ?: 'token' %}
+          {{ drupal_view((subsite == '_main' ? 'benefits' : 'benefits_subsite'), 'block_compact', benefitDisplay, '2') }}
+        {% endif %}
+      </div>
+
+      {% if content.field_image_fg_hero[0]['#media'].field_media_image.entity.uri.value is not empty %}
+        <div class="hero-media">
+          {{ content.field_image_fg_hero }}
+          {{ content.field_image_mobile }}
+        </div>
+      {% endif %}
+    </div>
+
+  {% endblock %}
+</div>

@@ -1,0 +1,12 @@
+name: 'HTML Title tests'
+type: module
+description: 'Support module for the HTML Title module tests.'
+hidden: true
+package: Testing
+dependencies:
+  - html_title:html_title
+
+# Information added by Drupal.org packaging script on 2024-09-13
+version: '8.x-1.6'
+project: 'html_title'
+datestamp: 1726238894

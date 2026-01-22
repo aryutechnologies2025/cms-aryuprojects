@@ -1,0 +1,29 @@
+.solution-finder-concerns {
+  .concern-list-item {
+    transition: height .3s, opacity .3s;
+    label {
+      display: block;
+    }
+    max-height: 100px;
+    img {
+      max-height: 90px;
+      width: auto;
+    }
+    &.hide-default {
+      height: 0;
+      opacity: 0;
+    }
+  }
+  &.more-options {
+    .concern-list-item {
+      &.hide-default {
+        height: auto;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.block-solution-finder {
+  transition: height .3s;
+}

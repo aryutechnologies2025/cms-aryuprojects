@@ -1,0 +1,23 @@
+uuid: 0c3ef47a-360e-4256-b1f8-173268455910
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.benefits
+    - field.storage.block_content.field_count_benefit
+  module:
+    - options
+id: block_content.benefits.field_count_benefit
+field_name: field_count_benefit
+entity_type: block_content
+bundle: benefits
+label: 'Benefit Count'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: '2'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

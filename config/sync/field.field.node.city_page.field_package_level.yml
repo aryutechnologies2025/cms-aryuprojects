@@ -1,0 +1,21 @@
+uuid: 6b1101dd-b471-4d07-95a9-4db0e9ac1324
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_package_level
+    - node.type.city_page
+  module:
+    - options
+id: node.city_page.field_package_level
+field_name: field_package_level
+entity_type: node
+bundle: city_page
+label: 'Package Level'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,79 @@
+.layout__region {
+    .block-inline-blockdivider {
+        width: 100%;
+        margin: 0 !important;
+        z-index: 1;
+
+        .svg-divider {
+            position: relative;
+            display: flex;
+            width: calc(100vw + 20px);
+            margin-top: -7%;
+            margin-bottom: -1px;
+            margin-left: -10px;
+            margin-right: -10px;
+            
+            @include breakpoint($container-sm) {
+                .sm-width & {
+                    margin-left: calc(-50vw + 530px);
+                }
+
+                .full-width & {
+                    margin-left: 0;
+                }
+            }
+
+            @include breakpoint($container) {
+                margin-left: calc(-50vw + 680px);
+            }
+
+            svg {
+                width: 100%;
+                height: auto;
+                //height: fit-content;
+            }
+        }
+
+        $basecolors: black, white;
+        $colors: dark, light, primary, primary-light, primary-dark, secondary, secondary-light, secondary-dark, custom-light, custom-light-2, custom-dark, custom-dark-2;
+
+        @each $basecolor in $basecolors {
+            &.svg-accent-#{$basecolor} {
+                .svg-accent {
+                    fill: palette($basecolor);
+                }
+            }
+            &.svg-bg-#{$basecolor} {
+                .svg-bg {
+                    fill: palette($basecolor);
+                }
+            }
+        }
+        
+        @each $color in $colors {
+            &.svg-accent-#{$color} {
+                .svg-accent {
+                    fill: var(--color-#{$color});
+                }
+            }
+            &.svg-bg-#{$color} {
+                .svg-bg {
+                    fill: var(--color-#{$color})
+                }
+            }
+        }
+
+        &.divider-style-wave {
+            .svg-divider {
+                margin-top: -5%;
+            }
+        }
+    }
+
+    .block.has-divider {
+        padding-bottom: 6%;
+    }
+    .block:has(+ .block-inline-blockdivider) {
+        padding-bottom: 6%;
+    }
+}

@@ -1,0 +1,23 @@
+uuid: 1763eae0-046d-40e2-8529-b42b8ca32ea2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.profiles
+    - field.storage.block_content.field_display_profile
+  module:
+    - options
+id: block_content.profiles.field_display_profile
+field_name: field_display_profile
+entity_type: block_content
+bundle: profiles
+label: Display
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: teaser
+default_value_callback: ''
+settings: {  }
+field_type: list_string

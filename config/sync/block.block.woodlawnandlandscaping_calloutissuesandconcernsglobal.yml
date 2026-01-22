@@ -1,0 +1,25 @@
+uuid: 20cc050e-bf59-4f87-9e54-47e6dd32fdbf
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:call_out:bf55a2c2-9a0e-40ca-8960-7335c352fbbb'
+  module:
+    - block_content
+  theme:
+    - woodlawnandlandscaping
+id: woodlawnandlandscaping_calloutissuesandconcernsglobal
+theme: woodlawnandlandscaping
+region: disabled
+weight: -14
+provider: null
+plugin: 'block_content:bf55a2c2-9a0e-40ca-8960-7335c352fbbb'
+settings:
+  id: 'block_content:bf55a2c2-9a0e-40ca-8960-7335c352fbbb'
+  label: 'Call Out - Issues and Concerns (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

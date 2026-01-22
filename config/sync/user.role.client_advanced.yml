@@ -1,0 +1,175 @@
+uuid: 3e360a5a-787c-4096-aef8-1d50b246fc1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.node.blog.default
+    - core.entity_view_display.node.career_page.default
+    - core.entity_view_display.node.city_page.default
+    - core.entity_view_display.node.concern.default
+    - core.entity_view_display.node.issue.default
+    - core.entity_view_display.node.landing_page.default
+    - core.entity_view_display.node.ltp_page.default
+    - core.entity_view_display.node.media_gallery.default
+    - core.entity_view_display.node.page.default
+    - core.entity_view_display.node.profile.default
+    - core.entity_view_display.node.service.default
+    - core.entity_view_display.node.solution_page_package_alt.default
+    - entity_browser.browser.media_entity_browser_modal
+    - filter.format.code
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - media.type.document
+    - media.type.media_image
+    - media.type.remote_video
+    - node.type.benefit
+    - node.type.blog
+    - node.type.branch
+    - node.type.city_page
+    - node.type.concern
+    - node.type.faq
+    - node.type.issue
+    - node.type.ltp_page
+    - node.type.media_gallery
+    - node.type.package
+    - node.type.page
+    - node.type.profile
+    - node.type.service
+    - node.type.special_offer
+    - node.type.testimonial
+  module:
+    - contextual
+    - draggableviews
+    - dropzonejs
+    - entity_browser
+    - filter
+    - layout_builder
+    - media
+    - node
+    - save_edit
+    - system
+    - toolbar
+id: client_advanced
+label: 'Client - Advanced'
+weight: -5
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access draggableviews'
+  - 'access media_entity_browser_modal entity browser pages'
+  - 'access toolbar'
+  - 'configure all blog node layout overrides'
+  - 'configure all city_page node layout overrides'
+  - 'configure all concern node layout overrides'
+  - 'configure all issue node layout overrides'
+  - 'configure all ltp_page node layout overrides'
+  - 'configure all media_gallery node layout overrides'
+  - 'configure all page node layout overrides'
+  - 'configure all profile node layout overrides'
+  - 'configure all service node layout overrides'
+  - 'configure editable blog node layout overrides'
+  - 'configure editable career_page node layout overrides'
+  - 'configure editable city_page node layout overrides'
+  - 'configure editable concern node layout overrides'
+  - 'configure editable issue node layout overrides'
+  - 'configure editable landing_page node layout overrides'
+  - 'configure editable media_gallery node layout overrides'
+  - 'configure editable page node layout overrides'
+  - 'configure editable profile node layout overrides'
+  - 'configure editable service node layout overrides'
+  - 'configure editable solution_page_package_alt node layout overrides'
+  - 'create and edit custom blocks'
+  - 'create benefit content'
+  - 'create blog content'
+  - 'create branch content'
+  - 'create city_page content'
+  - 'create concern content'
+  - 'create document media'
+  - 'create faq content'
+  - 'create issue content'
+  - 'create ltp_page content'
+  - 'create media'
+  - 'create media_gallery content'
+  - 'create media_image media'
+  - 'create package content'
+  - 'create page content'
+  - 'create profile content'
+  - 'create remote_video media'
+  - 'create service content'
+  - 'create special_offer content'
+  - 'delete any benefit content'
+  - 'delete any blog content'
+  - 'delete any branch content'
+  - 'delete any city_page content'
+  - 'delete any concern content'
+  - 'delete any faq content'
+  - 'delete any issue content'
+  - 'delete any ltp_page content'
+  - 'delete any media_gallery content'
+  - 'delete any package content'
+  - 'delete any page content'
+  - 'delete any profile content'
+  - 'delete any service content'
+  - 'delete any special_offer content'
+  - 'delete any testimonial content'
+  - 'delete benefit revisions'
+  - 'delete blog revisions'
+  - 'delete media'
+  - 'delete own benefit content'
+  - 'delete own blog content'
+  - 'delete own branch content'
+  - 'delete own city_page content'
+  - 'delete own concern content'
+  - 'delete own document media'
+  - 'delete own faq content'
+  - 'delete own issue content'
+  - 'delete own ltp_page content'
+  - 'delete own media_gallery content'
+  - 'delete own media_image media'
+  - 'delete own package content'
+  - 'delete own page content'
+  - 'delete own profile content'
+  - 'delete own remote_video media'
+  - 'delete own service content'
+  - 'delete own special_offer content'
+  - 'delete own testimonial content'
+  - 'delete page revisions'
+  - 'dropzone upload files'
+  - 'edit any benefit content'
+  - 'edit any blog content'
+  - 'edit any branch content'
+  - 'edit any city_page content'
+  - 'edit any concern content'
+  - 'edit any faq content'
+  - 'edit any issue content'
+  - 'edit any ltp_page content'
+  - 'edit any media_gallery content'
+  - 'edit any package content'
+  - 'edit any page content'
+  - 'edit any profile content'
+  - 'edit any service content'
+  - 'edit any special_offer content'
+  - 'edit any testimonial content'
+  - 'edit own benefit content'
+  - 'edit own blog content'
+  - 'edit own branch content'
+  - 'edit own city_page content'
+  - 'edit own concern content'
+  - 'edit own faq content'
+  - 'edit own issue content'
+  - 'edit own ltp_page content'
+  - 'edit own media_gallery content'
+  - 'edit own package content'
+  - 'edit own page content'
+  - 'edit own profile content'
+  - 'edit own service content'
+  - 'edit own special_offer content'
+  - 'edit own testimonial content'
+  - 'use save and edit'
+  - 'use text format code'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
+  - 'view own unpublished content'
+  - 'view the administration theme'

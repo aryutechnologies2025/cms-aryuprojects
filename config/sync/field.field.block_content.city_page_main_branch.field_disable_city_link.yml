@@ -1,0 +1,21 @@
+uuid: a5ab94b8-cb88-4851-a635-5dca17670698
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.city_page_main_branch
+    - field.storage.block_content.field_disable_city_link
+id: block_content.city_page_main_branch.field_disable_city_link
+field_name: field_disable_city_link
+entity_type: block_content
+bundle: city_page_main_branch
+label: 'Disable City Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

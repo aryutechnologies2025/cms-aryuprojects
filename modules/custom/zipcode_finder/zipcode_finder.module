@@ -1,0 +1,151 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Zipcode Finder module.
+ */
+
+
+function _zipcode_finder_test() {
+    require_once __DIR__ . '/zipcode_finder.install';
+    zipcode_finder_update_9002();
+}
+
+
+/**
+ * Implements hook_views_data().
+ */
+function zipcode_finder_views_data()
+{
+    $data = [];
+//    $data['zipcode_log'] = [];
+//    $data['zipcode_log']['table'] = [];
+//    $data['zipcode_log']['table']['group'] = t('Zipcode finder logs');
+//    $data['zipcode_log']['table']['provider'] = 'zipcode_finder';
+//    $data['zipcode_log']['table']['base'] = [
+//        // Identifier (primary) field in this table for Views.
+//        'field' => 'zipcode',
+//        // Label in the UI.
+//        'title' => t('Zipcode finder logs'),
+//        // Longer description in the UI. Required.
+//        'help' => t('Contains logs of zipcodes searched via the zipcode finder form'),
+//        'weight' => -10,
+//    ];
+//
+//    $data['zipcode_log']['table']['join']['zipcode_finder'] = [
+//        'left_table' => 'zipcode_finder__zipcodes',
+//        'left_field' => 'zipcodes_value',
+//        'field' => 'zipcode',
+//        'extra' => [
+//            [
+//                'left_field' => 'deleted',
+//                'value' => 0
+//            ]
+//        ]
+//    ];
+//
+//    $data['zipcode_log']['zipcode'] = [
+//        'title' => t('Zip code'),
+//        'help' => t('Logged zip code'),
+//        'field' => [
+//            // ID of field handler plugin to use.
+//            'id' => 'standard',
+//        ],
+//        'sort' => [
+//            // ID of sort handler plugin to use.
+//            'id' => 'standard',
+//        ],
+//        'filter' => [
+//            // ID of filter handler plugin to use.
+//            'id' => 'string',
+//        ],
+//        'argument' => [
+//            // ID of argument handler plugin to use.
+//            'id' => 'string',
+//        ],
+//    ];
+//
+//    $data['zipcode_log']['count'] = [
+//        'title' => t('Number searched'),
+//        'help' => t('Number of times a zipcode has been searched'),
+//        'field' => [
+//            // ID of field handler plugin to use.
+//            'id' => 'numeric',
+//        ],
+//        'sort' => [
+//            // ID of sort handler plugin to use.
+//            'id' => 'standard',
+//        ],
+//        'filter' => [
+//            // ID of filter handler plugin to use.
+//            'id' => 'numeric',
+//        ],
+//        'argument' => [
+//            // ID of argument handler plugin to use.
+//            'id' => 'numeric',
+//        ],
+//    ];
+//
+//    $data['zipcode_log']['created'] = [
+//        'title' => t('Created'),
+//        'help' => t('The first date this zipcode was searched for'),
+//        'field' => [
+//            // ID of field handler plugin to use.
+//            'id' => 'date',
+//        ],
+//        'sort' => [
+//            // ID of sort handler plugin to use.
+//            'id' => 'date',
+//        ],
+//        'filter' => [
+//            // ID of filter handler plugin to use.
+//            'id' => 'date',
+//        ],
+//    ];
+//
+//    $data['zipcode_log']['updated'] = [
+//        'title' => t('Updated'),
+//        'help' => t('The last date this zipcode was first searched for'),
+//        'field' => [
+//            // ID of field handler plugin to use.
+//            'id' => 'date',
+//        ],
+//        'sort' => [
+//            // ID of sort handler plugin to use.
+//            'id' => 'date',
+//        ],
+//        'filter' => [
+//            // ID of filter handler plugin to use.
+//            'id' => 'date',
+//        ],
+//    ];
+
+    return $data;
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function zipcode_finder_views_data_alter(array &$data)
+{
+    $logTable = 'zipcode_finder_log';
+    $logData = &$data[$logTable];
+    $logData['zipcode_finder'] = [
+        'title' => t('Zipcode finder'),
+        'help' => t('Zipcode finder using the logged zipcode'),
+        'relationship' => [
+            'field_name' => 'zipcode_finder',
+            'base' => 'zipcode_finder',
+            'base field' => 'id',
+            'field table' => 'zipcode_finder__zipcodes',
+            'field field' => 'zipcodes_value',
+            'id' => 'entity_reverse',
+            'label' => t('Zipcode finder zipcode')
+        ],
+        'filter' => [
+            'title' => t('Has zipcode finder'),
+            'help' => t('Whether or not this zipcode is attached to a zipcode finder'),
+            'id' => 'zipcode_finder_log_has_zipcode_finder'
+        ]
+    ];
+}

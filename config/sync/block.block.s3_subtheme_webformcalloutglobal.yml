@@ -1,0 +1,25 @@
+uuid: 04a0b51d-1bcc-45f3-87db-34aa0767a8dd
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:webform:2bc7d39d-6f5f-464e-9022-71a3f83c64b9'
+  module:
+    - block_content
+  theme:
+    - s3_subtheme
+id: s3_subtheme_webformcalloutglobal
+theme: s3_subtheme
+region: disabled
+weight: -8
+provider: null
+plugin: 'block_content:2bc7d39d-6f5f-464e-9022-71a3f83c64b9'
+settings:
+  id: 'block_content:2bc7d39d-6f5f-464e-9022-71a3f83c64b9'
+  label: 'Webform Call Out (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

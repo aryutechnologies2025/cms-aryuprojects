@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * User View Mode : Teaser
+ */
+#}
+
+<div{{attributes.addClass('profile-compact')}}>
+  {% if content %}
+    <div class="profile-compact-image">
+      {{ content.field_profile_image }}
+    </div>
+    <div class="profile-compact-content">
+      {{- content|without('field_profile_image') -}}
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,137 @@
+{
+    "_entities": {
+        "6fd84e1d-91b4-4125-8ebe-e662b05c76a4::72": {
+            "_exportInfo": {
+                "key": "6fd84e1d-91b4-4125-8ebe-e662b05c76a4::72",
+                "entity_type": "menu_link_content",
+                "bundle": "menu_link_content",
+                "entity_id": "72",
+                "uuid": "6fd84e1d-91b4-4125-8ebe-e662b05c76a4",
+                "isDefaultRevision": true,
+                "revisionId": "72",
+                "label": "Find Your Location"
+            },
+            "id": [
+                {
+                    "value": 72
+                }
+            ],
+            "uuid": [
+                {
+                    "value": "6fd84e1d-91b4-4125-8ebe-e662b05c76a4"
+                }
+            ],
+            "revision_id": [
+                {
+                    "value": 72
+                }
+            ],
+            "langcode": [
+                {
+                    "value": "en"
+                }
+            ],
+            "bundle": [
+                {
+                    "value": "menu_link_content"
+                }
+            ],
+            "revision_created": [
+                {
+                    "value": "2023-09-11T13:41:40+00:00",
+                    "format": "Y-m-d\\TH:i:sP"
+                }
+            ],
+            "revision_user": [
+                {
+                    "target_id": 14,
+                    "target_type": "user",
+                    "target_uuid": "12739339-3f93-4f29-b4a6-065842b9525e",
+                    "url": "\/users\/chas-mckeown",
+                    "_export": "12739339-3f93-4f29-b4a6-065842b9525e"
+                }
+            ],
+            "revision_log_message": [
+                {
+                    "value": "Created new Custom menu link"
+                }
+            ],
+            "enabled": [
+                {
+                    "value": true
+                }
+            ],
+            "title": [
+                {
+                    "value": "Find Your Location"
+                }
+            ],
+            "description": [],
+            "menu_name": [
+                {
+                    "value": "utility-zip-finder"
+                }
+            ],
+            "link": [
+                {
+                    "uri": "internal:\/",
+                    "title": "",
+                    "options": {
+                        "attributes": {
+                            "class": [
+                                "zip-code-finder-link"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "external": [
+                {
+                    "value": false
+                }
+            ],
+            "rediscover": [
+                {
+                    "value": true
+                }
+            ],
+            "weight": [
+                {
+                    "value": 0
+                }
+            ],
+            "expanded": [
+                {
+                    "value": false
+                }
+            ],
+            "parent": [],
+            "changed": [
+                {
+                    "value": "2023-11-08T16:08:10+00:00",
+                    "format": "Y-m-d\\TH:i:sP"
+                }
+            ],
+            "default_langcode": [
+                {
+                    "value": true
+                }
+            ],
+            "revision_translation_affected": [
+                {
+                    "value": true
+                }
+            ],
+            "metatag": {
+                "value": {
+                    "canonical_url": "http:\/\/sprowt3.test\/admin\/content-import-export\/export\/menu_link_content\/72",
+                    "title": "Export | GrowinGreen"
+                }
+            },
+            "field_list_item_classes": [],
+            "field_package_level": [],
+            "field_page_type": []
+        }
+    },
+    "_content": []
+}

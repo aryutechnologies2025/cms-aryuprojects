@@ -1,0 +1,33 @@
+#####################################################################################################
+#  This file provides custom functionality to create preload links in the head.
+#  This file is loaded and used the the .theme file in the page_attachments_alter function
+#  see this for more details: https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload
+#  The format is:
+#    assets:
+#      as: <- this parameter will match the as attribute in the <link>
+#        name: <- this parameter is used by drupal as a unique ID for the <link>
+#          attr: attrValue <- these parameters define the attributes used on the <link>
+#
+#    NOTE:
+#      href attributes that don't start with a slash (/) will be assumed to be relative to the theme
+#
+#####################################################################################################
+
+assets:
+  font:
+    icomoonTtf:
+      href: /themes/sprowt3/fonts/icomoon/fonts/icomoon.ttf?qu873q
+      type: font/ttf
+      crossorigin: anonymous
+    icomoonWoff:
+      href: /themes/sprowt3/fonts/icomoon/fonts/icomoon.woff?qu873q
+      type: font/woff
+      crossorigin: anonymous
+    slickTtf:
+      href: /libraries/slick/slick/fonts/slick.ttf
+      type: font/ttf
+      crossorigin: anonymous
+    slickWoff:
+      href: /libraries/slick/slick/fonts/slick.woff
+      type: font/woff
+      crossorigin: anonymous

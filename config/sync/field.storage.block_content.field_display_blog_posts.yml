@@ -1,0 +1,39 @@
+uuid: e7532fd6-45e7-4a9e-aa69-2fd12c947ceb
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_display_blog_posts
+field_name: field_display_blog_posts
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: teaser
+      label: 'List View'
+    -
+      value: secondary_teaser
+      label: Teaser
+    -
+      value: tertiary_teaser
+      label: 'Teaser 2'
+    -
+      value: quaternary_teaser
+      label: 'Teaser 3'
+    -
+      value: quinary_teaser
+      label: 'Teaser 4'
+    -
+      value: senary_teaser
+      label: 'Teaser 5 (wide)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

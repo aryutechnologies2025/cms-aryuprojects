@@ -1,0 +1,7 @@
+<div class="color-var-preview-internal" style="padding: 15px; background: #ffffff;">
+    {% for var, val in colors %}
+        <div class="color-var-bg" style="margin-top: 15px; padding: 15px; font-weight: bold; font-size: 18px; background-color: var(--color-{{var}})">
+            {{var}}
+        </div>
+    {% endfor %}
+</div>

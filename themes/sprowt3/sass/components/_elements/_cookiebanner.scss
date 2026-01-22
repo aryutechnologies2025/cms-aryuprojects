@@ -1,0 +1,33 @@
+.cookie-banner {
+  transition: transform .5s ease-in-out;
+  transform: translateY(0%);
+  padding: 25px 30px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 222;
+  background: palette(white);
+  box-shadow: 0px -7px 14px -7px rgba(0,0,0,0.3);
+
+  a {
+    color: $base-font-color;
+    text-decoration: underline;
+  }
+
+  &.accepted {
+    transform: translateY(100%);
+  }
+
+  .discalimer-text,
+  .accept-button-wrap {
+    max-width: 600;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+  }
+}

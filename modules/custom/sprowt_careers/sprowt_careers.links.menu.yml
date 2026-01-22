@@ -1,0 +1,6 @@
+sprowt_careers.installer:
+    title: 'Install careers section'
+    description: 'Careers installer'
+    parent: sprowt_settings.admin_config_sprowt
+    route_name: sprowt_careers.installer
+    weight: 15

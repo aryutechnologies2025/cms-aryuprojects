@@ -1,0 +1,8 @@
+uuid: 5e55abcf-811b-49b1-9db1-3c6b4e62f66a
+langcode: en
+status: true
+dependencies: {  }
+id: basic_side_image
+label: 'Basic with Side Image'
+revision: false
+description: 'A basic block with side image used on Career Pages.'

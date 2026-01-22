@@ -1,0 +1,56 @@
+uuid: 3bf126e3-2cca-47b2-880f-f136eb1d8c17
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.divider
+    - field.field.block_content.divider.field_accent_color
+    - field.field.block_content.divider.field_divider_bg_color
+    - field.field.block_content.divider.field_divider_style
+  module:
+    - field_group
+    - options
+third_party_settings:
+  field_group:
+    group_divider_:
+      children: {  }
+      label: 'Divider Label'
+      parent_name: ''
+      region: hidden
+      weight: 20
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: Divider
+        required_fields: false
+id: block_content.divider.default
+targetEntityType: block_content
+bundle: divider
+mode: default
+content:
+  field_accent_color:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_divider_bg_color:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_divider_style:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

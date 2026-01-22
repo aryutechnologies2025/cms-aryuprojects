@@ -1,0 +1,21 @@
+uuid: 36f9d39e-e80f-4e5a-a30c-88b32d3e0a61
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot
+    - field.storage.block_content.field_rounded
+id: block_content.servicebot.field_rounded
+field_name: field_rounded
+entity_type: block_content
+bundle: servicebot
+label: 'Rounded corners'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

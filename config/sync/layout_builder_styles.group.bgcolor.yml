@@ -1,0 +1,10 @@
+uuid: 9422e3d5-f0ab-462f-a3bf-f7ed6ade0751
+langcode: en
+status: true
+dependencies: {  }
+id: bgcolor
+label: 'Background Color'
+multiselect: single
+form_type: checkboxes
+required: false
+weight: 0

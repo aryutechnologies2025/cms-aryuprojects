@@ -1,0 +1,11 @@
+uuid: 12d6f7f9-6dd7-43cd-8257-6786d4db0876
+langcode: en
+status: true
+dependencies: {  }
+id: basic_with_side_image_
+block_id: 'inline_block:basic_side_image'
+category: career_pages
+label: 'Basic (with Side Image)'
+image_path: ''
+image_alt: ''
+weight: -100

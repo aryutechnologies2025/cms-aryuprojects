@@ -1,0 +1,315 @@
+// Mixins
+// -----------
+// For complete documentation:
+// Sass mixins: http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins
+// Bourbon mixins: http://bourbon.io/docs/
+
+@mixin flexbox {
+  display: -webkit-box; // old
+  display: -moz-box; // old
+  display: -ms-flexbox; // ie
+  display: -webkit-flex; // new
+  display: flex; // new
+}
+
+/// Provides an easy way to include a clearfix for containing floats.
+///
+/// @link https://goo.gl/yP5hiZ
+///
+/// @example scss
+///   .element {
+///     @include clearfix;
+///   }
+///
+///   // CSS Output
+///   .element::after {
+///     clear: both;
+///     content: "";
+///     display: block;
+///   }
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+}
+
+/// Switches between two colors based on the contrast to another color. It’s
+/// like a [ternary operator] for color contrast and can be useful for building
+/// a button system.
+///
+/// The calculation of the contrast ratio is based on the [WCAG 2.0
+/// specification]. However, we cannot guarantee full compliance, though all of
+/// our manual testing passed.
+///
+///   [ternary operator]: https://goo.gl/ccfLqi
+///   [WCAG 2.0 specification]: https://goo.gl/zhQuYA
+///
+/// @argument {color} $base-color
+///   The color to evaluate lightness against.
+///
+/// @argument {color} $dark-color [#000]
+///   The color to be output when `$base-color` is light. Can also be set
+///   globally using the `contrast-switch-dark-color` key in the
+///   Bourbon settings.
+///
+/// @argument {color} $light-color [#fff]
+///   The color to be output when `$base-color` is dark. Can also be set
+///   globally using the `contrast-switch-light-color` key in the
+///   Bourbon settings.
+///
+/// @return {color}
+///
+/// @example scss
+///   .element {
+///     color: contrast-switch(#bae6e6);
+///   }
+///
+///   // CSS Output
+///   .element {
+///     color: #000;
+///   }
+///
+/// @example scss
+///   .element {
+///     $button-color: #2d72d9;
+///     background-color: $button-color;
+///     color: contrast-switch($button-color, #222, #eee);
+///   }
+///
+///   // CSS Output
+///   .element {
+///     background-color: #2d72d9;
+///     color: #eee;
+///   }
+///
+/// @require {function} _fetch-bourbon-setting
+///
+/// @require {function} _is-color
+///
+/// @require {function} _contrast-ratio
+///
+/// @since 5.0.0
+
+@function contrast-switch(
+  $base-color,
+  $dark-color: _fetch-bourbon-setting("contrast-switch-dark-color"),
+  $light-color: _fetch-bourbon-setting("contrast-switch-light-color")
+) {
+  @if not _is-color($base-color) {
+    @error "`#{$base-color}` is not a valid color for the `$base-color` " +
+           "argument in the `contrast-switch` function.";
+  } @else if not _is-color($dark-color) {
+    @error "`#{$dark-color}` is not a valid color for the `$dark-color` " +
+           "argument in the `contrast-switch` function.";
+  } @else if not _is-color($light-color) {
+    @error "`#{$light-color}` is not a valid color for the `$light-color` " +
+           "argument in the `contrast-switch` function.";
+  } @else {
+    $-contrast-to-dark: _contrast-ratio($base-color, $dark-color);
+    $-contrast-to-light: _contrast-ratio($base-color, $light-color);
+    $-prefer-dark: $-contrast-to-dark >= $-contrast-to-light;
+
+    @return if($-prefer-dark, $dark-color, $light-color);
+  }
+}
+
+/// Generates an `@font-face` declaration. You can choose the specific file
+/// formats you need to output; the mixin supports `eot`, `ttf`, `svg`, `woff2`
+/// and `woff`. The mixin also supports usage with the Rails Asset Pipeline,
+/// which you can enable per use, or globally in the `$bourbon()` settings.
+///
+/// @argument {string} $font-family
+///
+/// @argument {string} $file-path
+///
+/// @argument {string | list} $file-formats [("ttf", "woff2", "woff")]
+///   List of the font file formats to include. Can also be set globally using
+///   the `global-font-file-formats` key in the Bourbon settings.
+///
+/// @argument {string} $asset-pipeline [false]
+///   Set to `true` if you’re using the Rails Asset Pipeline (place the fonts
+///   in `app/assets/fonts/`). Can also be set globally using the
+///   `rails-asset-pipeline` key in the Bourbon settings.
+///
+/// @content
+///   Any additional CSS properties that are included in the `@include`
+///   directive will be output within the `@font-face` declaration, e.g. you can
+///   pass in `font-weight`, `font-style` and/or `unicode-range`.
+///
+/// @example scss
+///   @include font-face(
+///     "source-sans-pro",
+///     "fonts/source-sans-pro-regular",
+///     ("woff2", "woff")
+///   ) {
+///     font-style: normal;
+///     font-weight: 400;
+///   }
+///
+///   // CSS Output
+///   @font-face {
+///     font-family: "source-sans-pro";
+///     src: url("fonts/source-sans-pro-regular.woff2") format("woff2"),
+///          url("fonts/source-sans-pro-regular.woff") format("woff");
+///     font-style: normal;
+///     font-weight: 400;
+///   }
+///
+/// @require {function} _font-source-declaration
+///
+/// @require {function} _fetch-bourbon-setting
+
+@mixin font-face(
+  $font-family,
+  $file-path,
+  $file-formats: _fetch-bourbon-setting("global-font-file-formats"),
+  $asset-pipeline: _fetch-bourbon-setting("rails-asset-pipeline")
+) {
+  @font-face {
+    font-family: $font-family;
+    src: _font-source-declaration(
+      $font-family,
+      $file-path,
+      $asset-pipeline,
+      $file-formats
+    );
+    @content;
+  }
+}
+
+/// Mixes a color with black.
+///
+/// @argument {color} $color
+///
+/// @argument {number (percentage)} $percent
+///   The amount of black to be mixed in.
+///
+/// @return {color}
+///
+/// @example scss
+///   .element {
+///     background-color: shade(#ffbb52, 60%);
+///   }
+///
+///   // CSS Output
+///   .element {
+///     background-color: #664a20;
+///   }
+
+@function shade($color, $percent) {
+  @if not _is-color($color) {
+    @error "`#{$color}` is not a valid color for the `$color` argument in " +
+           "the `shade` mixin.";
+  } @else {
+    @return mix(#000, $color, $percent);
+  }
+}
+
+/// Mixes a color with white.
+///
+/// @argument {color} $color
+///
+/// @argument {number (percentage)} $percent
+///   The amount of white to be mixed in.
+///
+/// @return {color}
+///
+/// @example scss
+///   .element {
+///     background-color: tint(#6ecaa6, 40%);
+///   }
+///
+///   // CSS Output
+///   .element {
+///     background-color: #a8dfc9;
+///   }
+
+@function tint($color, $percent) {
+  @if not _is-color($color) {
+    @error "`#{$color}` is not a valid color for the `$color` argument in " +
+           "the `tint` mixin.";
+  } @else {
+    @return mix(#fff, $color, $percent);
+  }
+}
+
+/// Generates a triangle pointing in a specified direction.
+///
+/// @argument {string} $direction
+///   The direction the triangle should point. Accepts `up`, `up-right`,
+///   `right`, `down-right`, `down`, `down-left`, `left` or `up-left`.
+///
+/// @argument {number (with unit)} $width
+///   Width of the triangle.
+///
+/// @argument {number (with unit)} $height
+///   Height of the triangle.
+///
+/// @argument {color} $color
+///   Color of the triangle.
+///
+/// @example scss
+///   .element {
+///     &::before {
+///       @include triangle("up", 2rem, 1rem, #b25c9c);
+///       content: "";
+///     }
+///   }
+///
+///   // CSS Output
+///   .element::before {
+///     border-style: solid;
+///     height: 0;
+///     width: 0;
+///     border-color: transparent transparent #b25c9c;
+///     border-width: 0 1rem 1rem;
+///     content: "";
+///   }
+
+@mixin triangle($direction, $width, $height, $color) {
+  @if not
+    index(
+      "up" "up-right" "right" "down-right" "down" "down-left" "left" "up-left",
+      $direction
+    )
+  {
+    @error "Direction must be `up`, `up-right`, `right`, `down-right`, " +
+           "`down`, `down-left`, `left` or `up-left`.";
+  } @else if not _is-color($color) {
+    @error "`#{$color}` is not a valid color for the `$color` argument in " +
+           "the `triangle` mixin.";
+  } @else {
+    border-style: solid;
+    height: 0;
+    width: 0;
+
+    @if $direction == "up" {
+      border-color: transparent transparent $color;
+      border-width: 0 ($width / 2) $height;
+    } @else if $direction == "up-right" {
+      border-color: transparent $color transparent transparent;
+      border-width: 0 $width $width 0;
+    } @else if $direction == "right" {
+      border-color: transparent transparent transparent $color;
+      border-width: ($height / 2) 0 ($height / 2) $width;
+    } @else if $direction == "down-right" {
+      border-color: transparent transparent $color;
+      border-width: 0 0 $width $width;
+    } @else if $direction == "down" {
+      border-color: $color transparent transparent;
+      border-width: $height ($width / 2) 0;
+    } @else if $direction == "down-left" {
+      border-color: transparent transparent transparent $color;
+      border-width: $width 0 0 $width;
+    } @else if $direction == "left" {
+      border-color: transparent $color transparent transparent;
+      border-width: ($height / 2) $width ($height / 2) 0;
+    } @else if $direction == "up-left" {
+      border-color: $color transparent transparent;
+      border-width: $width $width 0 0;
+    }
+  }
+}

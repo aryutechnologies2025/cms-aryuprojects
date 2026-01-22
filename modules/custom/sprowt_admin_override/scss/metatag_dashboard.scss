@@ -1,0 +1,75 @@
+fieldset[data-drupal-selector="edit-filters"].fieldset {
+  position: relative;
+  .fieldset__wrapper {
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: var(--space-l);
+    padding-left: var(--space-l);
+
+    margin-top: -15px;
+    margin-left: -15px;
+    display: flex;
+    flex-wrap: wrap;
+    > div.form-actions,
+    > div.form-item {
+      margin: 0;
+      margin-top: 15px;
+      margin-left: 15px;
+    }
+    [data-drupal-selector="edit-filterbytitle"] {
+      max-width: 300px;
+    }
+    > div.form-actions {
+      align-items: end;
+      button, input {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+    .submit-filter-wrap {
+      .ajax-progress {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+      }
+    }
+  }
+}
+
+a.back-to-top {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  display: none;
+  &.show {
+    display: inline-block;
+  }
+}
+
+.bundle-count {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  margin-top: -10px;
+  margin-left: -10px;
+  display: flex;
+  flex-wrap: wrap;
+  > li {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+}
+
+.sprowt-admin-override-metatag-dashboard .fieldset__wrapper [id*="edit-published"],
+.sprowt-admin-override-metatag-dashboard .fieldset__wrapper [id*="edit-industry"],
+.sprowt-admin-override-metatag-dashboard .fieldset__wrapper [id*="edit-subsite"] {
+  display: inline-block;
+  margin: 0 15px 0 0;
+}
+
+.sprowt-admin-override-metatag-dashboard .fieldset__wrapper [id*="edit-published"] > *,
+.sprowt-admin-override-metatag-dashboard .fieldset__wrapper [id*="edit-industry"] > *,
+.sprowt-admin-override-metatag-dashboard .fieldset__wrapper [id*="edit-subsite"] > * {
+  display: inline-block;
+}

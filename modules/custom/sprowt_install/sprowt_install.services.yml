@@ -1,0 +1,29 @@
+services:
+    sprowt_install.entity_definition_update_manager:
+        class: Drupal\sprowt_install\SprowtEntityDefinitionUpdateManager
+        arguments:
+            - '@entity.definition_update_manager'
+            - '@entity.last_installed_schema.repository'
+            - '@entity_type.manager'
+            - '@entity_type.listener'
+            - '@entity_field.manager'
+            - '@field_storage_definition.listener'
+
+    logger.channel.sprowt_install:
+        parent: logger.channel_base
+        arguments: [ 'sprowt_install' ]
+
+    sprowt_install.config_import_subscriber:
+        class: Drupal\sprowt_install\EventSubscriber\ConfigImportSubscriber
+        arguments:
+            - '@logger.channel.sprowt_install'
+        tags:
+            - { name: event_subscriber }
+
+    sprowt_install.error_sibscriber:
+        class: Drupal\sprowt_install\EventSubscriber\ErrorSubscriber
+        arguments:
+            - '@logger.channel.sprowt_install'
+            - '@state'
+        tags:
+            - { name: event_subscriber }

@@ -1,0 +1,8 @@
+uuid: 83ee825e-940d-43ff-8f22-f756c999f6d9
+langcode: en
+status: true
+dependencies: {  }
+id: service_text
+label: 'Service Text'
+revision: false
+description: 'Content from the Service Text field on the Services for the Solution Pages.'

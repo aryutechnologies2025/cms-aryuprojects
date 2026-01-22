@@ -1,0 +1,111 @@
+.layout__region {
+  .block-inline-blockservices,
+  .block--type-services {
+    max-width: $container;
+    height: min-content;
+    margin: 0 auto;
+
+    .services-wrap {
+      margin: 30px 0;
+
+      .field--name-field-subheading,
+      .field--name-field-subheading-tag {
+        margin-bottom: min($margin);
+      }
+
+      @include breakpoint($small) {
+        margin: 30px;
+      }
+    }
+
+    .more-link {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .view-all-services {
+      margin-top: 10px;
+
+      @include breakpoint($small) {
+        margin-top: 40px;
+      }
+    }
+  }
+}
+
+//Teaser & Alt Views
+.block-inline-blockservices[class*="display-teaser"] [class*="view-services"],
+.block-inline-blockservices[class*="display-alt"] [class*="view-services"],
+[class*="view-services"][class*="block_teaser"] {
+  @extend %viewcolumns;
+}
+
+//Title View
+[class*="view-services"][class*="block_title"] {
+  margin: 30px 0;
+}
+
+// to be deprecated (keeping for services-by-sector)
+[class*="view-services"] {
+  &[class*="view-display-id-block_token"] {
+    > .view-content {
+      flex-wrap: wrap;
+
+      > .views-row {
+        display: inline-flex;
+      }
+    }
+  }
+
+  &[class*="view-display-id-block_secondary_teaser"] {
+    > .view-content {
+      flex-wrap: wrap;
+
+      > .views-row {
+        width: 100%;
+        border-bottom: 1px solid;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+.block-inline-blockservices {
+  &.display-token {
+    [class*="view-services"] {
+      > .view-content {
+        flex-wrap: wrap;
+  
+        > .views-row {
+          display: inline-flex;
+        }
+      }
+    }
+  }
+
+  &.display-secondary_teaser,
+  &.display-quaternary_teaser {
+    [class*="view-services"] {
+      > .view-content {
+        flex-wrap: wrap;
+  
+        > .views-row {
+          width: 100%;
+          border-bottom: 1px solid palette(grey, lightest);
+  
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.block.block-residential-services,
+.block.block-commercial-services {
+  text-align: left;
+}

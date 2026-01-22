@@ -1,0 +1,90 @@
+uuid: 2c47cddd-6ab5-49d2-8d4f-d79dd44fbe4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_homepage
+    - field.field.block_content.areas_serviced_homepage.field_accordion
+    - field.field.block_content.areas_serviced_homepage.field_group_by
+    - field.field.block_content.areas_serviced_homepage.field_heading
+    - field.field.block_content.areas_serviced_homepage.field_label_tag
+    - field.field.block_content.areas_serviced_homepage.field_link
+    - field.field.block_content.areas_serviced_homepage.field_max_columns
+    - field.field.block_content.areas_serviced_homepage.field_subheading_tag
+    - field.field.block_content.areas_serviced_homepage.field_text
+  module:
+    - link
+    - options
+    - tag_text_field
+    - text
+id: block_content.areas_serviced_homepage.default
+targetEntityType: block_content
+bundle: areas_serviced_homepage
+mode: default
+content:
+  field_accordion:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_group_by:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_max_columns:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,12 @@
+ckeditor5_dev:
+  js:
+    # The CKEditor 5 inspector does not need to be woven into Drupal's
+    # CKEditor 5 build. It is effectively standalone, and the inspector
+    # constructor receives an initialized CKEditor instance.
+    #
+    # @see https://github.com/ckeditor/ckeditor5-inspector
+    https://unpkg.com/@ckeditor/ckeditor5-inspector/build/inspector.js: { external: true, minified: true }
+    js/ckeditor5_dev.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

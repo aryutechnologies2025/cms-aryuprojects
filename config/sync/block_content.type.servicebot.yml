@@ -1,0 +1,8 @@
+uuid: c68e998a-0916-4134-b13c-4498ceb71159
+langcode: en
+status: true
+dependencies: {  }
+id: servicebot
+label: Servicebot
+revision: false
+description: 'Button block that links to Servicebot or other service'

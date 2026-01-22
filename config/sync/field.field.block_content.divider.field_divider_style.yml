@@ -1,0 +1,21 @@
+uuid: 9fc28080-e65f-4d20-b9bd-34013d19a353
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.divider
+    - field.storage.block_content.field_divider_style
+  module:
+    - options
+id: block_content.divider.field_divider_style
+field_name: field_divider_style
+entity_type: block_content
+bundle: divider
+label: 'Divider Style'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,8 @@
+uuid: ee581364-3068-4708-bb29-43937227d4b9
+langcode: en
+status: true
+dependencies: {  }
+id: copyright
+label: Copyright
+revision: false
+description: ''

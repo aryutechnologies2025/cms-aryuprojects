@@ -1,0 +1,11 @@
+uuid: 8605c12a-805f-40a5-94a6-559bd4bb17f5
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_chat_code
+label: 'Bulk Update Chat Code Fields'
+type: chat_code
+plugin: bulk_update_fields_action_base
+configuration: {  }

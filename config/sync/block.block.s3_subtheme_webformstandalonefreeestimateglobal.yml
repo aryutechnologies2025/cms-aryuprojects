@@ -1,0 +1,26 @@
+uuid: 68bc0fa9-b92a-4ad8-8ee5-ac45e35f2c67
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:webform:156cc0d8-a3a7-448c-98cb-cdf08734e7d1'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - s3_subtheme
+id: s3_subtheme_webformstandalonefreeestimateglobal
+theme: s3_subtheme
+region: disabled
+weight: 0
+provider: null
+plugin: 'block_content:156cc0d8-a3a7-448c-98cb-cdf08734e7d1'
+settings:
+  id: 'block_content:156cc0d8-a3a7-448c-98cb-cdf08734e7d1'
+  label: 'Webform - Standalone - Free Estimate (global)'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

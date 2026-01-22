@@ -1,0 +1,21 @@
+uuid: 155adad9-6e00-4395-971e-7d404951c0bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cities_serviced_by_branch
+    - field.storage.block_content.field_remove_industry_labels
+id: block_content.cities_serviced_by_branch.field_remove_industry_labels
+field_name: field_remove_industry_labels
+entity_type: block_content
+bundle: cities_serviced_by_branch
+label: 'Remove Industry Labels'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

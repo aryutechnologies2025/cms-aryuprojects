@@ -1,0 +1,22 @@
+uuid: 3b907d51-0bf0-467d-8411-993581c73cbb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - woodlawnandlandscaping
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: woodlawnandlandscaping_breadcrumbs
+theme: woodlawnandlandscaping
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

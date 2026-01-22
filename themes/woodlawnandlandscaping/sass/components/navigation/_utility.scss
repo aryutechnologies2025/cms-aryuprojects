@@ -1,0 +1,263 @@
+[class*="menu--utility-menu"],
+.source-menu--utility-menu {
+  > ul.menu {
+    > li {
+      padding: 9px 0;
+      margin: 0 5px;
+
+      a {
+        height: inherit;
+        color: palette(white);
+      }
+
+      &:nth-child(odd) {
+        a {
+          background-color: palette(secondary);
+          color: palette(white);
+
+          span::before {
+            color: palette(white);
+          }
+          &:hover {
+            background-color: palette(primary);
+            color: palette(white);
+
+            span::before {
+              color: palette(white);
+            }
+          }
+        }
+      }
+      &:nth-child(even) {
+        a {
+          background-color: palette(primary);
+
+          span::before {
+            color: palette(white);
+          }
+          &:hover {
+            background-color: palette(secondary);
+            color: palette(white);
+
+            span::before {
+              color: palette(white);
+            }
+          }
+        }
+      }
+
+      #block-headerlayoutnofrills &,
+      [id*="block-headerlayoutsimplified"] & {
+        a {
+          margin-bottom: 0;
+        }
+        &:nth-child(odd) {
+          a {
+            background-color: palette(secondary);
+            color: palette(white);
+  
+            span::before {
+              color: palette(white);
+            }
+            &:hover {
+              background-color: palette(primary);
+              color: palette(white);
+  
+              span::before {
+                color: palette(white);
+              }
+            }
+          }
+        }
+        &:nth-child(even) {
+          a {
+            background-color: palette(primary);
+  
+            span::before {
+              color: palette(white);
+            }
+            &:hover {
+              background-color: palette(secondary);
+              color: palette(white);
+  
+              span::before {
+                color: palette(white);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #header-1-nofrills {
+
+  }
+}
+
+[class*="menu--mobile-utility-menu"],
+.source-menu--mobile-utility-menu,
+[class*="menu--mobile-footer-utility-menu"],
+.source-menu--mobile-footer-utility-menu {
+  > ul.menu {
+    display: flex;
+    width: 100%;
+    margin: 0;
+
+    > li {
+      flex: 1;
+      a {
+        @extend %button;
+        width: 100%;
+        border: none;
+
+        span {
+          display: block;
+          text-align: center;
+        }
+
+        span::before {
+          color: palette(white);
+        }
+      }
+
+      &:nth-child(odd) {
+        a {
+          background-color: palette(secondary);
+          color: palette(white);
+
+          span::before {
+            color: palette(white);
+          }
+          &:hover {
+            background-color: palette(primary);
+            color: palette(white);
+
+            span::before {
+              color: palette(white);
+            }
+          }
+        }
+      }
+      &:nth-child(even) {
+        a {
+          background-color: palette(primary);
+
+          span::before {
+            color: palette(white);
+          }
+          &:hover {
+            background-color: palette(secondary);
+            color: palette(white);
+
+            span::before {
+              color: palette(white);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+[class*="menu--mobile-footer-utility-menu"],
+.source-menu--mobile-footer-utility-menu {
+  > ul.menu {
+    > li {
+      &:nth-child(odd) {
+        a {
+          background-color: palette(primary);
+
+          span::before {
+            color: palette(white);
+          }
+          &:hover {
+            background-color: palette(secondary);
+            color: palette(white);
+
+            span::before {
+              color: palette(white);
+            }
+          }
+        }
+      }
+      &:nth-child(even) {
+        a {
+          background-color: palette(secondary);
+          color: palette(white);
+
+          span::before {
+            color: palette(white);
+          }
+          &:hover {
+            background-color: palette(primary);
+            color: palette(white);
+
+            span::before {
+              color: palette(white);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+[class*="menu--mobile-utility-menu"],
+.source-menu--mobile-utility-menu {
+  ul.menu {
+    li {
+      a {
+        border-radius: 0;
+
+        span {
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+[class*="menu--mobile-footer-utility-menu"],
+.source-menu--mobile-footer-utility-menu {
+  background-color: palette(grey, lit);
+}
+
+.free-quote,
+.my-account,
+.call-us,
+.call-us-now {
+  span {
+    &::before {
+      color: palette(primary);
+    }
+  }
+}
+
+// Styles the buttons individually so they can be different colors on both Desktop/Tablet and mobile (TW)
+nav[class*="utility-menu"] {
+  .menu-item {
+    a {
+      @extend %button;
+      margin-bottom: 0;
+      text-transform: uppercase;
+    }
+
+    #block-headerlayoutnofrills & {
+      @include breakpoint($small $max-smedium) {
+        a {
+          min-width: inherit;
+          padding: 8px 14px;
+        }
+      }
+    }
+  }
+
+  // Removes the icon to the left of the utiility buttons (TW)
+  // span {
+  //   &::before {
+  //     content: none !important;
+  //   }
+  // }
+}

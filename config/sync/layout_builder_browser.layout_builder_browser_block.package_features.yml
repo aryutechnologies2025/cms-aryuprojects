@@ -1,0 +1,11 @@
+uuid: 16c1ae86-9ed8-4c6a-b319-6cb1a3eda322
+langcode: en
+status: true
+dependencies: {  }
+id: package_features
+block_id: 'inline_block:package_features'
+category: custom_blocks
+label: 'Package Features'
+image_path: ''
+image_alt: ''
+weight: -60

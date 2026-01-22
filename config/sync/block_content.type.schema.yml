@@ -1,0 +1,8 @@
+uuid: 0ee7a69f-bd04-4b00-8ec8-e77f394d3fa9
+langcode: en
+status: true
+dependencies: {  }
+id: schema
+label: Schema
+revision: false
+description: 'Add schema to page.'

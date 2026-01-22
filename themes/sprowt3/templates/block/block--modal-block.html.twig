@@ -1,0 +1,30 @@
+{% set pageLoad = content.field_on_page_load[0]['#markup'] == 1 ? 'showonload' : '' %}
+{% set cookieStatus = content.field_cookie[0]['#markup'] == 1 ? 'cookie' : '' %}
+
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'block-id-' ~ elements.content['#block_content'].id(),
+    'layout',
+    'modal-block-modal',
+    pageLoad,
+    cookieStatus,
+  ]
+%}
+
+{{ attach_library('sprowt3/js-cookie') }}
+
+<div{{attributes.addClass(classes)}} data-expiration="{{ content.field_expiration ? content.field_expiration[0]['#markup'] : '' }}">
+  {{ title_prefix }}
+  {{ title_suffix }}
+  <div class="modal-close">Close</div>
+  {% block content %}
+    {% if field_block_ref_plugin_id is not empty %}
+      {{ drupal_block(field_block_ref_plugin_id) }}
+    {% endif %}
+  {% endblock %}
+</div>

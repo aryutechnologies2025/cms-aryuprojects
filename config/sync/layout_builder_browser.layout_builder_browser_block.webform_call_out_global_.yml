@@ -1,0 +1,11 @@
+uuid: 7bdba59e-8fa7-4649-a7df-328a6154cf89
+langcode: en
+status: true
+dependencies: {  }
+id: webform_call_out_global_
+block_id: 'block_content:2bc7d39d-6f5f-464e-9022-71a3f83c64b9'
+category: re_usable_blocks
+label: 'Webform Call Out (global)'
+image_path: ''
+image_alt: ''
+weight: -87

@@ -1,0 +1,21 @@
+uuid: 37e56465-fca7-4025-867d-77855c3f1646
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_button_text
+    - node.type.package
+id: node.package.field_button_text
+field_name: field_button_text
+entity_type: node
+bundle: package
+label: 'Button Text'
+description: 'Text on the "Learn More" button'
+required: false
+translatable: true
+default_value:
+  -
+    value: 'Learn More'
+default_value_callback: ''
+settings: {  }
+field_type: string

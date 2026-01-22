@@ -1,0 +1,55 @@
+.layout__region {
+  .block-inline-blockquote,
+  .block--type-quote  {
+    padding: $margin $margin $margin 75px;
+
+    @include breakpoint($medium) {
+      padding-top: ($margin * 1.5);
+    }
+
+    &:only-child {
+      @include breakpoint($medium) {
+        padding-bottom: ($margin * 1.5);
+      }
+    }
+
+    .basic-wrap {
+      z-index: 1; //prevent fade overlap
+
+      > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .field--name-field-text {
+      &::before {
+        content: '“';
+        position: absolute;
+        left: 20px;
+        color: var(--color-light);
+        font-family: $stack-sans-serif;
+        font-size: 120px;
+        line-height: 0.9;
+      }
+    }
+
+    .field--name-field-speaker {
+      margin-top: 15px;
+      font-weight: 700;
+    }
+    
+    .field--name-field-position-company {
+      font-style: italic;
+    }
+  }
+}
+
+.layout.full-width:not(.layout--onecol) {
+  .block-inline-blockquote {
+    @include breakpoint($medium) {
+      @include flexbox;
+      align-items: center;
+      max-width: calc(#{$container} / 2);
+    }
+  }
+}

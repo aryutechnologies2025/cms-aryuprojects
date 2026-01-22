@@ -1,0 +1,20 @@
+uuid: f22c585e-60bf-4ad7-9c7a-0550537b9c65
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.webform_default
+  module:
+    - file
+    - filter
+    - shortcut
+id: project_coordinator
+label: 'Project Coordinator'
+weight: -1
+is_admin: null
+permissions:
+  - 'access shortcuts'
+  - 'delete own files'
+  - 'use text format basic_html'
+  - 'use text format webform_default'

@@ -1,0 +1,12 @@
+uuid: fc2f0200-f188-4bfe-b4d2-93c9bbb1f536
+langcode: en
+status: true
+dependencies: {  }
+id: black
+label: Black
+classes: bg-black
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -8

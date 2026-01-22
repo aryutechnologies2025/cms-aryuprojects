@@ -1,0 +1,10 @@
+services:
+    layout_builder_hide.event_subscriber:
+        class: Drupal\layout_builder_hide\EventSubscriber\LayoutBuilderHideSubscriber
+        arguments:
+            - '@layout_builder_hide.service'
+        tags:
+            - { name: event_subscriber }
+
+    layout_builder_hide.service:
+        class: Drupal\layout_builder_hide\LayoutBuilderHideService

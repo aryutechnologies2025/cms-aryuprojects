@@ -1,0 +1,11 @@
+uuid: b47c4bfa-fe78-4309-9e21-ad51b734d812
+langcode: en
+status: true
+dependencies: {  }
+id: zip_code_finder_block
+block_id: 'block_content:58f61f9a-9427-4916-9f55-9df1e1a26810'
+category: re_usable_blocks
+label: 'Zip Code Finder (Global)'
+image_path: ''
+image_alt: ''
+weight: -100

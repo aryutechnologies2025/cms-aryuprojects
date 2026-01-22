@@ -1,0 +1,46 @@
+// Base Navigation styles
+
+ul.menu {
+  margin: 0;
+
+  li.menu-item {
+    padding: 0;
+  }
+}
+
+a[href=""],
+.no-link > a,
+.nolink > a,
+a.nolink,
+a.no-link,
+.we-megamenu-nolink {
+  cursor: default !important;
+  pointer-events: none;
+  
+  &:hover {
+    cursor: default !important;
+    pointer-events: none;
+  }
+}
+
+@include breakpoint($max-small) {
+  .we-megamenu-nolink {
+    pointer-events: initial;
+    
+    &:hover {
+      pointer-events: initial;
+    }
+  } 
+}
+
+.mobile-header-menu {
+  a[href=""] {
+    pointer-events: visible;
+  }
+
+  .menu--main ul.menu ul.menu ul.menu a[href=""],
+  .source-menu--main ul.menu ul.menu ul.menu a[href=""] {
+    pointer-events: none;
+  }
+
+}

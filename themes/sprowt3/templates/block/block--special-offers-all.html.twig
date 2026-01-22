@@ -1,0 +1,25 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+    <div class="special-offers-wrap">
+      {{ content|without('field_filter_by_service') }}
+      {% if content.field_filter_by_service[0]['#markup'] == 1 %}
+        {{ drupal_view((subsite == '_main' ? 'special_offers' : 'special_offers_subsite'),'all_offers') }}
+      {% else %}
+        {{ drupal_view((subsite == '_main' ? 'special_offers' : 'special_offers_subsite'),'all_offers_no_filter') }}
+      {% endif %}
+    </div>
+  {% endblock %}
+</div>

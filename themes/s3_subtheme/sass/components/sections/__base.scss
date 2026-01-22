@@ -1,0 +1,443 @@
+//Coloring Block Elements based on Section/Block Color Style
+%blockcolors {
+  &.bg-primary {
+    background-color: palette(primary);
+  }
+  &.bg-primary-light {
+    background-color: palette(primary, light);
+  }
+  &.bg-primary-dark {
+    background-color: palette(primary, dark);
+  }
+  &.bg-secondary {
+    background-color: palette(secondary);
+  }
+  &.bg-secondary-light {
+    background-color: palette(secondary, light);
+  }
+  &.bg-secondary-dark {
+    background-color: palette(secondary, dark);
+  }
+  &.bg-tertiary {
+    background-color: palette(tertiary);
+  }
+  &.bg-white {
+    background-color: palette(white);
+  }
+  &.bg-light {
+    background-color: palette(light);
+  }
+  &.bg-dark {
+    background-color: palette(dark);
+  }
+  &.bg-custom-light {
+    background-color: palette(custom, light);
+  }
+  &.bg-custom-light-2 {
+    background-color: palette(custom, light-2);
+  }
+  &.bg-dark {
+    background-color: palette(dark);
+  }
+  &.bg-custom-dark {
+    background-color: palette(custom, dark);
+  }
+  &.bg-custom-dark-2 {
+    background-color: palette(custom, dark-2);
+  }
+  &.bg-black {
+    background-color: palette(black);
+  }
+  &.bg-zebra {
+    &:nth-child(odd) {
+      background-color: palette(white);
+    }
+    &:nth-child(even) {
+      background-color: palette(light);
+    }
+  }
+
+  &.bg-white,
+  &.bg-light,
+  &.bg-zebra,
+  &.bg-custom-light,
+  &.bg-custom-light-2,
+  &.overlay-white,
+  &.overlay-light {
+    @extend %bg-light;
+  }
+
+  &.bg-dark,
+  &.bg-black,
+  &.bg-custom-dark,
+  &.bg-custom-dark-2,
+  &.overlay-dark,
+  &.overlay-black {
+    @extend %bg-dark;
+  }
+
+  &.bg-primary,
+  &.bg-primary-dark {
+    @extend %bg-dark; //change if primary color is light (text on top should be black)
+    @extend %bg-primary;
+
+    // color overrides
+    .learn-more a,
+    .learn-more span,
+    .field-content a,
+    .field--type-entity-reference a,
+    .field--name-field-text::before {
+      color: palette(white);
+
+      &:hover {
+        color: palette(light);
+      }
+    }
+
+    .field--name-field-label::after,
+    .field--name-field-label-tag::after {
+      background-color: palette(white);
+    }
+
+    input[type="submit"] {
+      color: palette(primary);
+      background-color: palette(white);
+      &:hover {
+        color: palette(white);
+        background-color: palette(primary, dark);
+      }
+    }
+  }
+
+  &.bg-parimary-light {
+    @extend %bg-light;
+  }
+
+  &.bg-secondary,
+  &.bg-secondary-light {
+    @extend %bg-light; //change if secondary color is dark (text on top should be white)
+  }
+
+  &.bg-secondary-dark {
+    @extend %bg-dark;
+  }
+
+  &.bg-tertiary {
+    @extend %bg-dark; //change if tertiary color is light (text on top should be dark)
+  }
+
+  &.bg-dark,
+  &.bg-black,
+  &.overlay-dark,
+  &.overlay-black {
+    .learn-more a,
+    .learn-more span,
+    .field-content a,
+    .field--type-entity-reference a {
+      color: palette(white);
+
+      &:hover {
+        color: palette(primary);
+      }
+    }
+  }
+
+  // Form field inputs coloring
+  textarea,
+  input:not[type="submit"] {
+    color: $base-font-color;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-text-fill-color: palette(white) !important;
+      -webkit-box-shadow: 0 0 0 30px palette(black) inset !important;
+    }
+  }
+}
+
+// Foreground colors for hight contrast
+%bg-light {
+  .field--name-field-label,
+  .field--name-field-label a,
+  .field--name-field-label-tag,
+  .field--name-field-label-tag a,
+  .field--name-field-heading,
+  .field--name-field-heading a,
+  .field--name-field-group-heading,
+  .field--name-field-subheading,
+  .field--name-field-subheading a,
+  .field--name-field-subheading-tag,
+  .field--name-field-subheading-tag a,
+  .field--name-title-text,
+  .field--name-field-offer-headline,
+  .field--name-field-speaker,
+  .field--name-field-position-company,
+  .anchor-list-block-heading,
+  .preheading,
+  .page_title,
+  .anchor-list-block-heading,
+  .anchor-list-block-link,
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  p,
+  .__body,
+  li,
+  //.field__item a,
+  blockquote,
+  .anchor-list-block-link,
+  .list-link,
+  .webform-confirmation__message {
+    color: $base-font-color;
+  }
+  p,
+  .field--name-field-text,
+  .field--name-field-city-link,
+  .field--name-field-city-link a,
+  .paragraph--type--social-media,
+  .__body {
+    a:not(.button) {
+      color: palette(primary);
+      transition: .3s;
+
+      &:hover {
+        color: palette(secondary);
+      }
+    }
+  }
+  .form-item label,
+  .form-item .fieldset-legend,
+  .form-item .fieldset-wrapper [class*="field--name-field"],
+  .star-ratings-wrap,
+  .rating-inner-wrap {
+    color: $base-font-color;
+  }
+  .field--name-field-link a {
+    //color: palette(white);
+
+    &:hover {
+      //color: $base-font-color;
+    }
+  }
+  .learn-more a,
+  .learn-more span,
+  .field-content a,
+  .field--type-entity-reference a {
+    color: $base-font-color;
+
+    &:hover {
+      color: palette(primary);
+    }
+  }
+}
+
+%bg-dark {
+  .field--name-field-label,
+  .field--name-field-label a,
+  .field--name-field-label-tag,
+  .field--name-field-label-tag a,
+  .field--name-field-heading,
+  .field--name-field-heading a,
+  .field--name-field-group-heading,
+  .field--name-field-subheading,
+  .field--name-field-subheading a,
+  .field--name-field-subheading-tag,
+  .field--name-field-subheading-tag a,
+  .field--name-title-text,
+  .field--name-field-city-link,
+  .field--name-field-city-link a,
+  .field--name-field-offer-headline,
+  .field--name-field-speaker,
+  .field--name-field-position-company,
+  .anchor-list-block-heading,
+  .preheading,
+  .page_title,
+  .anchor-list-block-heading,
+  .anchor-list-block-link,
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  p,
+  .__body,
+  li,
+  blockquote,
+  .webform-confirmation__message {
+    color: palette(white);
+  }
+  p,
+  .field--name-field-text,
+  .paragraph--type--social-media,
+  .field--type-telephone,
+  .__body {
+    a:not(.button) {
+      color: palette(white);
+
+      &:hover {
+        color: palette(secondary);
+      }
+    }
+  }
+  .form-item label,
+  .form-item .fieldset-legend,
+  .form-item .fieldset-wrapper [class*="field--name-field"],
+  .star-ratings-wrap,
+  .rating-inner-wrap,
+  .form-item-privacy,
+  .form-item-privacy a {
+    color: palette(light);
+  }
+  .anchor-list-block-link,
+  .list-link {
+    color: palette(white);
+
+    &::after {
+      background-color: palette(white);
+    }
+  }
+  input[type="submit"] {
+    color: palette(white);
+    background-color: palette(secondary);
+    &:hover {
+      color: palette(white);
+      background-color: palette(primary);
+    }
+  }
+}
+
+%bg-primary {
+  input[type="submit"] {
+    color: palette(white);
+    background-color: palette(secondary);
+    &:hover {
+      color: palette(primary);
+      background-color: palette(white);
+    }
+  }
+}
+
+.layout {
+  @extend %blockcolors;
+
+  .block {
+    @extend %blockcolors;
+  }
+
+  [class*="overlay-dark"] {
+    &::before {
+      background-color: palette(dark);
+    }
+  }
+  [class*="overlay-light"] {
+    &::before {
+      background-color: palette(light);
+    }
+  }
+  [class*="overlay-black"] {
+    &::before {
+      background-color: palette(black, pure);
+    }
+  }
+  [class*="overlay-white"] {
+    &::before {
+      background-color: palette(white);
+    }
+  }
+  [class*="overlay-primary"] {
+    &::before {
+      background-color: palette(primary);
+    }
+  }
+  [class*="overlay-primary-dark"] {
+    &::before {
+      background-color: palette(primary, dark);
+    }
+  }
+  [class*="overlay-primary-light"]{
+    &::before {
+      background-color: palette(primary, light);
+    }
+  }
+  [class*="overlay-secondary"] {
+    &::before {
+      background-color: palette(secondary);
+    }
+  }
+
+  .foreground-color-black {
+    &::after {
+      background-color: palette(black, pure);
+    }
+  }
+
+  .foreground-color-dark {
+    &::after {
+      background-color: palette(dark);
+    }
+  }
+
+  .foreground-color-light {
+    &::after {
+      background-color: palette(light);
+    }
+  }
+
+  .foreground-color-white {
+    &::after {
+      background-color: palette(white, pure);
+    }
+  }
+
+  .foreground-color-primary {
+    &::after {
+      background-color: palette(primary);
+    }
+  }
+
+  .foreground-color-primary-dark {
+    &::after {
+      background-color: palette(primary, dark);
+    }
+  }
+
+  .foreground-color-primary-light {
+    &::after {
+      background-color: palette(primary, light);
+    }
+  }
+
+  .foreground-color-secondary {
+    &::after {
+      background-color: palette(secondary);
+    }
+  }
+}
+
+// body content links
+p,
+.field--name-field-text,
+.__body {
+  a:not(.button) {
+    font-weight: bold;
+    transition: .3s;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

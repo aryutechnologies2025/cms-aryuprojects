@@ -1,0 +1,20 @@
+.paragraph--type--link-box {
+  .box-copy {
+    background-color: palette(light);
+
+    .field--name-field-social-media {
+      .social-icon:hover {
+        color: palette(primary, dark);
+      }
+    }
+  }
+
+  &:hover {
+    .box-copy {
+      background-color: palette(white, pure);
+    }
+    .button {
+      background-color: palette(primary, dark);
+    }
+  }
+}

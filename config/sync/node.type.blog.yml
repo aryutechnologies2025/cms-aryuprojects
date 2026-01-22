@@ -1,0 +1,23 @@
+uuid: 56317fd2-f708-459a-bfcc-698022486951
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-navigation-subsite-
+      - main-navigation-subsite-full
+      - main
+    parent: ''
+  sprowt_admin_override:
+    external_node_type: true
+name: 'Blog Post'
+type: blog
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

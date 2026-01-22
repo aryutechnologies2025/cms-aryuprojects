@@ -1,0 +1,29 @@
+uuid: 754cf36c-b1eb-4e06-8d98-ca9baef40a5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_region
+    - node.type.region_page
+    - taxonomy.vocabulary.region
+id: node.region_page.field_region
+field_name: field_region
+entity_type: node
+bundle: region_page
+label: Region
+description: 'Taxonomy to group Locations by state, region or other category.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      region: region
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

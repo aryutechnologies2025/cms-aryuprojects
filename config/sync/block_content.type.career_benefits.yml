@@ -1,0 +1,8 @@
+uuid: 702c11c7-e76d-4b5a-b0a0-7cf74c2e5eca
+langcode: en
+status: true
+dependencies: {  }
+id: career_benefits
+label: 'Career Benefits'
+revision: false
+description: 'Add Career Benefits to the Career Pages.'

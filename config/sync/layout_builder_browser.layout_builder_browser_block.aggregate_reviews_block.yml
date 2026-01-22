@@ -1,0 +1,11 @@
+uuid: f2de69b0-893d-45ad-9755-5be0c368117e
+langcode: en
+status: true
+dependencies: {  }
+id: aggregate_reviews_block
+block_id: aggregate_reviews_block
+category: re_usable_blocks
+label: 'Google Star Rating'
+image_path: ''
+image_alt: ''
+weight: -93

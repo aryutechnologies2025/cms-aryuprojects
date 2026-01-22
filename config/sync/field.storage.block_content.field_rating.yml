@@ -1,0 +1,20 @@
+uuid: 47a63f60-cb8f-43a7-9dfb-1797b893c93f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.field_rating
+field_name: field_rating
+entity_type: block_content
+type: decimal
+settings:
+  precision: 10
+  scale: 1
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

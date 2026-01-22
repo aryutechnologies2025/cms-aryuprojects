@@ -1,0 +1,17 @@
+uuid: 21f49ca9-6e9a-4394-b767-33b52af3bdd2
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: body_wide_850x400
+label: 'Body Wide (850x400)'
+effects:
+  6bb683c0-cd4d-4af7-9605-e65b185e5d22:
+    uuid: 6bb683c0-cd4d-4af7-9605-e65b185e5d22
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 850
+      height: 400
+      crop_type: focal_point

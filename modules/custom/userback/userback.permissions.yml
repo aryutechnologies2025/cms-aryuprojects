@@ -1,0 +1,5 @@
+administer userback:
+    title: 'Administer Userback'
+    restrict access: true
+use userback:
+    title: 'Use Userback'

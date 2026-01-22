@@ -1,0 +1,25 @@
+uuid: badcbe3f-1e6a-4404-af4b-77da11e0e38f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.section_styles
+    - field.storage.block_content.field_opacity
+id: block_content.section_styles.field_opacity
+field_name: field_opacity
+entity_type: block_content
+bundle: section_styles
+label: Opacity
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 80
+default_value_callback: ''
+settings:
+  min: 0
+  max: 100
+  prefix: ''
+  suffix: ''
+field_type: integer

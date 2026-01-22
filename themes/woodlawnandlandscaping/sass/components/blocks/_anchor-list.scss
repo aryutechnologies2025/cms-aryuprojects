@@ -1,0 +1,16 @@
+.layout__region {
+  .block-anchor-list-block,
+  .block--type-anchor-list-block {
+    ul.anchor-list-block-list {
+      li.anchor-list-block-list-item {
+        .anchor-list-block-link {
+          @extend %underline-link;
+
+          &::before {
+            color: palette(secondary);
+          }
+        }
+      }
+    }
+  }
+}

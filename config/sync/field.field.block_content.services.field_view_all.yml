@@ -1,0 +1,29 @@
+uuid: a775b086-1c1b-482c-8f3c-515fc1b621ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.services
+    - field.storage.block_content.field_view_all
+  module:
+    - link
+id: block_content.services.field_view_all
+field_name: field_view_all
+entity_type: block_content
+bundle: services
+label: 'View All Link'
+description: 'If your link text is vague (e.g. "View More" or "Check it out!"), please add a thorough description of the link destination to ensure the site is ADA compliant.'
+required: false
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'entity:node/21'
+    title: 'View All Services'
+    options: {  }
+    aria_label: ''
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

@@ -1,0 +1,23 @@
+uuid: 1143f22b-a2f1-4403-b66b-65d886e0b855
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.issues
+    - field.field.block_content.issues.field_heading
+  module:
+    - tag_text_field
+id: block_content.issues.default
+targetEntityType: block_content
+bundle: issues
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

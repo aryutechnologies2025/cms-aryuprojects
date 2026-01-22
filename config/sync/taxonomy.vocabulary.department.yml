@@ -1,0 +1,9 @@
+uuid: 256487d1-f834-4067-a4e5-0ae11be2bcc6
+langcode: en
+status: true
+dependencies: {  }
+name: Department
+vid: department
+description: 'Grouping profiles by department'
+weight: 0
+new_revision: false

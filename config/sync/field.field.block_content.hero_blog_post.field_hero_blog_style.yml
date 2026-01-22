@@ -1,0 +1,23 @@
+uuid: 3c36432b-8e62-474a-a93b-5925ac4f40f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_blog_post
+    - field.storage.block_content.field_hero_blog_style
+  module:
+    - options
+id: block_content.hero_blog_post.field_hero_blog_style
+field_name: field_hero_blog_style
+entity_type: block_content
+bundle: hero_blog_post
+label: Style
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: style_1
+default_value_callback: ''
+settings: {  }
+field_type: list_string

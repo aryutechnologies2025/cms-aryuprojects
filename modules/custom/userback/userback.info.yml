@@ -1,0 +1,5 @@
+name: Userback
+type: module
+description: Provides Userback integration
+package: Coalmarch
+core_version_requirement: ^9 || ^10

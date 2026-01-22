@@ -1,0 +1,34 @@
+uuid: 44021229-f2ef-46a1-9702-5c02d265309f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot_header
+    - core.entity_view_mode.block_content.token
+    - field.field.block_content.servicebot_header.field_accent_color
+    - field.field.block_content.servicebot_header.field_icon
+    - field.field.block_content.servicebot_header.field_new_window
+    - field.field.block_content.servicebot_header.field_rounded
+    - field.field.block_content.servicebot_header.field_single_link
+    - field.field.block_content.servicebot_header.field_title
+  module:
+    - options
+id: block_content.servicebot_header.token
+targetEntityType: block_content
+bundle: servicebot_header
+mode: token
+content:
+  field_accent_color:
+    type: list_key
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_icon: true
+  field_new_window: true
+  field_rounded: true
+  field_single_link: true
+  field_title: true
+  langcode: true

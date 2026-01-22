@@ -1,0 +1,24 @@
+uuid: 3e2d34ec-2839-4a5b-8850-fc97f6ec905b
+langcode: en
+status: true
+dependencies:
+  module:
+    - aggregate_reviews_block
+  theme:
+    - sprowt3
+id: aggregatereviewsblock
+theme: sprowt3
+region: header1
+weight: -10
+provider: null
+plugin: aggregate_reviews_block
+settings:
+  id: aggregate_reviews_block
+  label: 'Aggregate reviews block'
+  label_display: '0'
+  provider: aggregate_reviews_block
+  rating_override: ''
+  text_override: ''
+  instance_id: aggregatereviewsblock
+  my_business_limit: {  }
+visibility: {  }

@@ -1,0 +1,32 @@
+uuid: 219009dd-e8f6-4dbe-a665-7749e395654d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.document.field_add_to_library
+    - field.field.media.document.field_media_document
+    - media.type.document
+  module:
+    - file
+_core:
+  default_config_hash: DXitcriWmE5QHvGvk2OzWouaSnXD5uipkRdAG6_pnkg
+id: media.document.default
+targetEntityType: media
+bundle: document
+mode: default
+content:
+  field_media_document:
+    type: file_default
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_add_to_library: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

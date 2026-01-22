@@ -1,0 +1,21 @@
+uuid: 45d46c5c-192c-45b3-bfc0-ad985d0321fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_package_level
+    - node.type.issue
+  module:
+    - options
+id: node.issue.field_package_level
+field_name: field_package_level
+entity_type: node
+bundle: issue
+label: 'Package Level'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

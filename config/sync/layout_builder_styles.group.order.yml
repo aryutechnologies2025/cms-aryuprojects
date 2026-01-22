@@ -1,0 +1,10 @@
+uuid: 3e93bf6e-0df9-4da6-87d5-157b53cb0592
+langcode: en
+status: true
+dependencies: {  }
+id: order
+label: 'Column Ordering (for mobile)'
+multiselect: single
+form_type: checkboxes
+required: false
+weight: 0

@@ -1,0 +1,57 @@
+sprowt_ai.ai_system.*:
+    type: config_entity
+    label: AI System
+    mapping:
+        id:
+            type: string
+            label: ID
+        label:
+            type: string
+            label: Label
+        uuid:
+            type: string
+        description:
+            type: string
+        is_default:
+            type: boolean
+            label: Default
+            nullable: true
+
+
+field.storage_settings.sprowt_ai_prompt:
+    type: mapping
+    label: AI Prompt storage settings
+    mapping:
+        system:
+            type: string
+            label: System user
+        max_tokens:
+            type: integer
+            label: Max tokens
+
+field.field_settings.sprowt_ai_prompt:
+    type: mapping
+    label: AI Prompt field settings
+    mapping:
+        insertField:
+            type: string
+            label: Insert field
+
+field.value.sprowt_ai_prompt:
+    type: mapping
+    label: Default value
+    mapping:
+        value:
+            type: text
+            label: Prompt value
+        system:
+            type: text
+            label: System user
+
+field.value.sprowt_ai_ai_system_select:
+  type: mapping
+  label: Default value
+  mapping:
+    value:
+      type: label
+      label: Value

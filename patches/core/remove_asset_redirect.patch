@@ -1,0 +1,23 @@
+diff --git a/core/modules/system/src/Controller/AssetControllerBase.php b/core/modules/system/src/Controller/AssetControllerBase.php
+index 4f8d5ad696..372e3c5e49 100644
+--- a/core/modules/system/src/Controller/AssetControllerBase.php
++++ b/core/modules/system/src/Controller/AssetControllerBase.php
+@@ -205,12 +205,12 @@ public function deliver(Request $request, string $file_name) {
+       $this->dumper->dumpToUri($data, $this->assetType, $uri);
+     }
+     else {
+-      $expected_filename = $this->fileExtension . '_' . $generated_hash . '.' . $this->fileExtension;
+-      $response = new RedirectResponse(
+-        str_replace($file_name, $expected_filename, $request->getRequestUri()),
+-        301,
+-        ['Cache-Control' => 'public, max-age=3600, must-revalidate'],
+-      );
++//      $expected_filename = $this->fileExtension . '_' . $generated_hash . '.' . $this->fileExtension;
++//      $response = new RedirectResponse(
++//        str_replace($file_name, $expected_filename, $request->getRequestUri()),
++//        301,
++//        ['Cache-Control' => 'public, max-age=3600, must-revalidate'],
++//      );
+     }
+     return $response;
+   }

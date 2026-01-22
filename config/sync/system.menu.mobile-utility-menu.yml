@@ -1,0 +1,8 @@
+uuid: 6f624121-718d-41c9-8986-94a1be625387
+langcode: en
+status: true
+dependencies: {  }
+id: mobile-utility-menu
+label: 'Mobile Utility Menu'
+description: ''
+locked: false

@@ -1,0 +1,14 @@
+uuid: 80a931d6-eea9-4c3c-9845-8547ac3ba58f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.project_coordinator
+  module:
+    - user
+id: user_add_role_action.project_coordinator
+label: 'Add the Project Coordinator role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: project_coordinator

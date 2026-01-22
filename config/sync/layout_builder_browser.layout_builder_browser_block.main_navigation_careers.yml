@@ -1,0 +1,11 @@
+uuid: b15036fd-cf5e-416c-babe-0e29a117405b
+langcode: en
+status: true
+dependencies: {  }
+id: main_navigation_careers
+block_id: 'menu_block:careers-menu'
+category: custom_blocks
+label: 'Main Navigation Careers'
+image_path: ''
+image_alt: ''
+weight: -89

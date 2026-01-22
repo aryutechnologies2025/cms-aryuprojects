@@ -1,0 +1,8 @@
+name: 'Layout Builder Hide'
+type: module
+description: 'Hide sections and components in the layout builder'
+package: Custom
+core_version_requirement: ^10
+dependencies:
+    - drupal:layout_builder
+    - hook_event_dispatcher:core_event_dispatcher

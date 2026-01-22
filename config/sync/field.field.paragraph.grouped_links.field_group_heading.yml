@@ -1,0 +1,30 @@
+uuid: 9b755838-8706-46ce-b87a-35de74a59a9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_group_heading
+    - paragraphs.paragraphs_type.grouped_links
+  module:
+    - tag_text_field
+id: paragraph.grouped_links.field_group_heading
+field_name: field_group_heading
+entity_type: paragraph
+bundle: grouped_links
+label: Heading
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  defaultTag: div
+  tagList: |-
+    h1|H1
+    h2|H2
+    h3|H3
+    h4|H4
+    h5|H5
+    h6|H6
+    div|Div
+field_type: html_tag_text_field_type

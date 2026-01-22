@@ -1,0 +1,8 @@
+uuid: 7127b793-b558-4826-9a9b-fbfe3b07f396
+langcode: en
+status: true
+dependencies: {  }
+id: footer-subsite
+label: 'Footer (Subsite)'
+description: ''
+locked: false

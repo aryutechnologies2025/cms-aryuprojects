@@ -1,0 +1,54 @@
+uuid: a63f1765-a015-4f61-a236-267f430762bc
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_platform
+field_name: field_platform
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: facebook
+      label: Facebook
+    -
+      value: google
+      label: Google
+    -
+      value: instagram
+      label: Instagram
+    -
+      value: linkedin
+      label: LinkedIn
+    -
+      value: pinterest
+      label: Pinterest
+    -
+      value: snapchat
+      label: Snapchat
+    -
+      value: tiktok
+      label: TikTok
+    -
+      value: twitter
+      label: X/Twitter
+    -
+      value: whatsapp
+      label: Whatsapp
+    -
+      value: yelp
+      label: Yelp
+    -
+      value: youtube
+      label: Youtube
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,6 @@
+cookie_banner.settings_form:
+    title: 'Cookie Banner'
+    description: 'Configure Cookie Banner.'
+    parent: system.admin_config_services
+    route_name: cookie_banner.settings_form
+    weight: 10

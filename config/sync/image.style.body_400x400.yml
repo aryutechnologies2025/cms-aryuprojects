@@ -1,0 +1,17 @@
+uuid: 6aee174b-4c3b-4b62-9f7d-8c128c8a6fda
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: body_400x400
+label: 'Body (400x400)'
+effects:
+  c3e7fbc5-9c99-477a-81fc-011f1a2af762:
+    uuid: c3e7fbc5-9c99-477a-81fc-011f1a2af762
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 400
+      height: 400
+      crop_type: focal_point

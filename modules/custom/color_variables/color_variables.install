@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Install new content entity
+ */
+function color_variables_update_8001(&$sandbox)
+{
+    //check if the table exists first.  If not, then create the entity.
+    if(!\Drupal::database()->schema()->tableExists('color_variable_item')) {
+        \Drupal::entityTypeManager()->clearCachedDefinitions();
+        \Drupal::entityDefinitionUpdateManager()
+            ->installEntityType(\Drupal::entityTypeManager()->getDefinition('color_variable_item'));
+    }
+    else {
+        return 'Color variable entity already exists';
+    }
+}

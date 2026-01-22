@@ -1,0 +1,40 @@
+<?php
+
+
+use Drupal\sprowt_ai_prompt_library\Entity\Prompt;
+
+function sprowt_ai_prompt_library_install()
+{
+    $vid = Prompt::$vocab;
+    $vocabularies = \Drupal\taxonomy\Entity\Vocabulary::loadMultiple();
+    if(!isset($vocabularies[$vid])) {
+        $vocab = \Drupal\taxonomy\Entity\Vocabulary::create([
+            'vid' => $vid,
+            'description' => 'Tags for AI prompts',
+            'name' => 'Ai prompt tags'
+        ])->save();
+    }
+}
+
+
+/**
+ * Install new taxonomy vocabulary
+ */
+function sprowt_ai_prompt_library_update_100000()
+{
+    sprowt_ai_prompt_library_install();
+}
+
+/**
+ * Update prompt entity
+ */
+function sprowt_ai_prompt_library_update_100001()
+{
+
+    $entityType = \Drupal::entityTypeManager()->getDefinition('ai_prompt');
+    $fieldStorageDefinitions = Prompt::baseFieldDefinitions($entityType);
+    $field_storage_definition = $fieldStorageDefinitions['tags'];
+
+    \Drupal::entityDefinitionUpdateManager()
+        ->installFieldStorageDefinition('tags', 'ai_prompt', 'sprowt_ai_prompt_library', $field_storage_definition);
+}

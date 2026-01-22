@@ -1,0 +1,8 @@
+graphicsmagick
+Inkscape
+Magick
+magick
+meyfa
+rasterizers
+rasterizing
+RSVG

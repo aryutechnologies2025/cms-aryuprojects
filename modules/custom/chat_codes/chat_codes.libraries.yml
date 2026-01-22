@@ -1,0 +1,8 @@
+entity_form:
+    js:
+        js/entity_form.js: { }
+    dependencies:
+        - core/jquery
+        - sprowt_admin_override/admin_override_js
+        - sprowt_settings/sprowt_object
+        - core/once

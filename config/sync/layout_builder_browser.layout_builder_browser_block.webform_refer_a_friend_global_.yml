@@ -1,0 +1,11 @@
+uuid: a1467447-0ad9-4ec9-9e84-db22e867222a
+langcode: en
+status: true
+dependencies: {  }
+id: webform_refer_a_friend_global_
+block_id: 'block_content:dae638c7-5aa0-413c-9063-f30359f6abce'
+category: re_usable_blocks
+label: 'Webform - Refer a Friend (global)'
+image_path: ''
+image_alt: ''
+weight: -84

@@ -1,0 +1,34 @@
+////
+/// Table styles
+/// @group Base
+////
+
+table {
+  width: 100%;
+  margin: 0 0 $base-spacing 0;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  line-height: $heading-line-height;
+  vertical-align: bottom;
+}
+
+tbody {
+  vertical-align: top;
+}
+
+tr {
+  border-bottom: $base-border;
+}
+
+th {
+  font-weight: 600;
+}
+
+th,
+td {
+  padding: $xsmall-spacing $xsmall-spacing $xsmall-spacing $xsmall-spacing;
+}

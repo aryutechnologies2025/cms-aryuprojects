@@ -1,0 +1,39 @@
+uuid: 2107c71c-f56b-4b62-8c01-96ae877baf0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.utility-menu-standalone
+  module:
+    - menu_block
+    - node
+  theme:
+    - s3_subtheme
+id: s3_subtheme_utilitymenustandalonelandingpage
+theme: s3_subtheme
+region: header_mobile_menu
+weight: 0
+provider: null
+plugin: 'menu_block:utility-menu-standalone'
+settings:
+  id: 'menu_block:utility-menu-standalone'
+  label: 'Utility Menu: Standalone Landing Page'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 0
+  expand_all_items: false
+  parent: 'utility-menu-standalone:'
+  suggestion: utility_menu_standalone
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      standalone_landing_page: standalone_landing_page

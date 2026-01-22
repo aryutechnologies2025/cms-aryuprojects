@@ -1,0 +1,22 @@
+uuid: b128cb4e-7198-4994-9125-56f832307756
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faqs
+    - field.storage.block_content.field_text
+  module:
+    - text
+id: block_content.faqs.field_text
+field_name: field_text
+entity_type: block_content
+bundle: faqs
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

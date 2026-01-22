@@ -1,0 +1,7 @@
+userback.settings_form:
+    path: '/admin/config/services/userback'
+    defaults:
+        _title: 'Userback settings'
+        _form: 'Drupal\userback\Form\SettingsForm'
+    requirements:
+        _permission: 'administer userback'

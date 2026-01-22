@@ -1,0 +1,11 @@
+uuid: 8ab3b675-b97d-4949-bdc9-0600a64ff4bb
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.max_650x650
+label: 'Max 650x650'
+description: ''
+targetEntityType: media
+cache: true

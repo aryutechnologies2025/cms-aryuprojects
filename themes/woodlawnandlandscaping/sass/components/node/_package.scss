@@ -1,0 +1,136 @@
+.node--type-package {
+
+  // Teaser
+  &.node--view-mode-teaser,
+  &.node--view-mode-quaternary-teaser,
+  &.node--view-mode-quinary-teaser {
+    .node__content {
+      background-color: palette(white);
+
+      .featured-tag {
+        color: palette(white);
+        background-color: palette(black);
+      }
+
+      .field--name-title {
+        color: palette(white);
+        background-color: palette(primary);
+      }
+
+      .field--name-field-initial-fee {
+        color: palette(red);
+      }
+
+      .cta-link span {
+        @extend %button;
+
+        background-color: palette(primary);
+      }
+    }
+
+    &:hover {
+      [class*="field--name-field-icon"] {
+        svg {
+          path {
+            fill: palette(primary);
+          }
+        }
+      }
+
+      .cta-link {
+        span {
+          background-color: palette(primary, dark);
+        }
+      }
+    }
+  }
+
+  // Secondary Teaser
+  &.node--view-mode-secondary-teaser {
+    .node__content {
+      background-color: palette(white);
+
+      [class*="field--name-field-icon"] {
+        background-color: palette(grey, lit);
+      }
+
+      .field--name-field-initial-fee {
+        color: palette(red);
+      }
+    }
+
+    &:hover {
+      [class*="field--name-field-icon"] {
+        svg {
+          path {
+            fill: palette(primary);
+          }
+        }
+      }
+
+      .cta-link {
+        span {
+          background-color: palette(primary, dark);
+        }
+      }
+    }
+  }
+
+  // Quinary Teaser (Solution Page - Concern Highlight)
+  &.node--view-mode-quinary-teaser {
+    .node__content {
+      .field--name-title {
+        color: palette(white);
+        background-color: palette(black);
+      }
+
+      .field--name-field-initial-fee {
+        color: $base-font-color;
+      }
+
+      .package-features {}
+
+      .package-features-label {}
+
+      .field--name-field-features-package {
+        .field__item {
+          &::before {
+            color: palette(primary);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.node--type-package[class*=node--view-mode-alt] {
+  height: auto;
+
+  .node__content {
+
+    background-color: white;
+    text-align: center;
+
+    .package-icon-price-wrap {
+      border-bottom: none !important;
+      background-color: palette(primary) !important;
+    }
+
+    .cta-link span {
+      @extend %button;
+
+      background-color: palette(primary);
+    }
+
+    ul {
+      li {
+        &:before {
+          color: palette(primary) !important;
+        }
+      }
+    }
+
+  }
+}

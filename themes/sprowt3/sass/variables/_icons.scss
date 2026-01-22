@@ -1,0 +1,181 @@
+////
+/// Icons
+////
+
+$icon-font-name: "icomoon" !default;
+$icon-font-dir: "/themes/sprowt3/fonts/icomoon/fonts/" !default;
+
+@font-face {
+  font-family: $icon-font-name;
+  src: url($icon-font-dir + $icon-font-name + ".eot?qu873q");
+  src: url($icon-font-dir + $icon-font-name + ".eot?qu873q#iefix")
+      format("embedded-opentype"),
+    url($icon-font-dir + $icon-font-name + ".ttf?qu873q") format("truetype"),
+    url($icon-font-dir + $icon-font-name + ".woff?qu873q") format("woff"),
+    url($icon-font-dir + $icon-font-name + ".svg?qu873q#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+%icon-base {
+  font-family: $icon-font-name !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: middle;
+  font-smoothing: antialiased;
+}
+
+$icons: (
+  search: "\e90c",
+  minus: "\e90b",
+  plus: "\e90a",
+  close: "\e91b",
+  envelope: "\e904",
+  marker: "\e905",
+  map-marker: "\e905",
+  chevron-left: "\e900",
+  chevron-right: "\e901",
+  chevron-up: "\e902",
+  chevron-down: "\e903",
+  caret-right: "\e91c",
+  caret-down: "\e91d",
+  comment: "\e92c",
+  dollar: "\e92b",
+  arrow-left: "\e909",
+  arrow-right: "\e908",
+  home: "\e907",
+  mobile: "\e958",
+  facebook: "\e91e",
+  instagram: "\ea92",
+  twitter: "\ea96",
+  twitter-old: "\e943",
+  youtube: "\ea9d",
+  linkedin: "\eaca",
+  pinterest: "\e920",
+  snapchat: "\e921",
+  reddit: "\e922",
+  tiktok: "\e923",
+  wechat: "\e924",
+  messenger: "\e925",
+  whatsapp: "\e926",
+  tumblr: "\e927",
+  yelp: "\e928",
+  google: "\e929",
+  checkmark: "\ea10",
+  check: "\ea10",
+  check-hand: "\e918",
+  clipboard: "\e92a",
+  sprowt: "\eae7",
+  sprowt2: "\eae6",
+  sprowt3: "\eae5",
+  sprowt4: "\eae9",
+  forgely: "\eae8",
+  forgely-hire: "\eae8",
+  sprowtsell: "\eaea",
+  ctm-integration: "\eaea",
+  plus-circle: "\e90d",
+  minus-circle: "\e90f",
+  info-circle: "\e910",
+  circle-check: "\e917",
+  x-circle: "\e944",
+  close-circle: "\e944",
+  arrow-right-circle: "\e92d",
+  quote-right: "\e911",
+  quote-left: "\e912",
+  star: "\e914",
+  star-empty: "\e915",
+  star-o: "\e915",
+  star-half: "\e913",
+  user-lock: "\e916",
+  career: "\e91f",
+  shield: "\e919",
+  award: "\e91a",
+  users: "\e90e",
+  user: "\e92e",
+  amex: "\e92f",
+  visa: "\e930",
+  mastercard: "\e931",
+  discover: "\e932",
+  pencil: "\e933",
+  edit: "\e933",
+  print: "\e934",
+  calendar: "\e935",
+  bell: "\e936",
+  download: "\e937",
+  list: "\e938",
+  excel: "\e939",
+  image: "\e93a",
+  word: "\e93b",
+  pdf: "\e93c",
+  chevron-circle-down: "\e93d",
+  chevron-circle-up: "\e93e",
+  chevron-circle-right: "\e93f",
+  chevron-circle-left: "\e940",
+) !default;
+
+@each $icon, $content in $icons {
+  .icon-#{$icon} {
+    @extend %icon-base;
+    &:before {
+      content: $content;
+    }
+  }
+}
+
+/// Add a font icon. This must be used in a before or after pseudo class
+@mixin icon($icon, $map: $icons) {
+  @if (map-has-key($map, $icon)) {
+    $icon: map-get($map, $icon);
+  }
+  @extend %icon-base;
+  content: "#{$icon}";
+}
+
+/// Add an icon to the before pseudo class
+@mixin icon-before($icon, $font-size: $base-font-size, $color: palette(black)) {
+  &::before {
+    @include icon($icon);
+    @extend %icon-base;
+    display: inline-block;
+    font-size: $font-size;
+    color: $color;
+    margin-top: -3px;
+    margin-left: -2px;
+    margin-right: 8px;
+    @content;
+  }
+}
+
+/// Add an icon to the after pseudo class
+@mixin icon-after($icon, $font-size: $base-font-size, $color: palette(black)) {
+  &::after {
+    @include icon($icon);
+    @extend %icon-base;
+    display: inline-block;
+    font-size: $font-size;
+    color: $color;
+    margin-left: 6px;
+    @content;
+  }
+}
+
+/// Replace text with icon
+@mixin replace-text-with-icon(
+  $icon,
+  $font-size: $base-font-size,
+  $color: palette(black)
+) {
+  font: 0/0 transparent;
+  text-decoration: none;
+  @include icon-before($icon) {
+    @extend %icon-base;
+    font-size: $font-size;
+    color: $color;
+    @content;
+  }
+}

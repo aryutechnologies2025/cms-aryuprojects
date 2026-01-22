@@ -1,0 +1,14 @@
+uuid: 482162a5-064e-4f9b-b5a0-9ee12783f277
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.subsite
+id: node_type_subsite
+entity_type_id: node_type
+entity_id: subsite
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

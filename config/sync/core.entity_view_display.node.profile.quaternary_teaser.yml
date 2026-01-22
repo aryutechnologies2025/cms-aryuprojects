@@ -1,0 +1,84 @@
+uuid: 52217015-9f07-4e72-899a-9298810ba1fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.quaternary_teaser
+    - field.field.node.profile.body
+    - field.field.node.profile.field_department
+    - field.field.node.profile.field_image_profile
+    - field.field.node.profile.field_industry
+    - field.field.node.profile.field_meta_description
+    - field.field.node.profile.field_meta_tags
+    - field.field.node.profile.field_position
+    - field.field.node.profile.field_subsite_multiple
+    - field.field.node.profile.layout_builder__layout
+    - node.type.profile
+  module:
+    - layout_builder
+    - smart_trim
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.profile.quaternary_teaser
+targetEntityType: node
+bundle: profile
+mode: quaternary_teaser
+content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 50
+      trim_type: words
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+        replace_tokens: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_image_profile:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: profile_200x200
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_position:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_department: true
+  field_industry: true
+  field_meta_description: true
+  field_meta_tags: true
+  field_subsite_multiple: true
+  langcode: true
+  layout_builder__layout: true
+  links: true

@@ -1,0 +1,141 @@
+// Colors
+// -----------
+// Naming conventions within single color, in order:
+// lit, lightest, lighter, light, base, dark, darker, darkest
+
+// Set by theme color picker in admin
+:root {
+  --color-primary-light: #61bd51;
+  --color-primary: #47a836;
+  --color-primary-dark: #257628;
+  --color-secondary-light: #ffc237;
+  --color-secondary: #ffb100;
+  --color-secondary-dark: #f0a700;
+  --color-tertiary: #0c52a1;
+  --color-light: #f3f6f6;
+  --color-dark: #383838;
+  --color-custom-light: #fff;
+  --color-custom-light-2: #ffffffd8;
+  --color-custom-dark: #000;
+  --color-custom-dark-2: #202020;
+}
+
+$COLORS: (
+  primary: (
+    light: var(--color-primary-light),
+    base: var(--color-primary),
+    dark: var(--color-primary-dark),
+  ),
+  secondary: (
+    light: var(--color-secondary-light),
+    base: var(--color-secondary),
+    dark: var(--color-secondary-dark),
+  ),
+  tertiary: (
+    base: var(--color-tertiary),
+  ),
+  light: (
+    base: var(--color-light),
+  ),
+  dark: (
+    base: var(--color-dark),
+  ),
+  red: (
+    light: #ff6666,
+    base: #df1414,
+  ),
+  yellow: (
+    light: #ffc237,
+    base: #ffb100,
+    dark: #f0a700,
+  ),
+  green: (
+    base: #07c950,
+    dark: #1db954,
+  ),
+  blue: (
+    light: #2c5d99,
+    base: #264e7f,
+  ),
+  purple: (
+    base: #800080,
+  ),
+  grey: (
+    lit: #e5e5e5,
+    lightest: #d5d5d5,
+    lighter: #a3a3a3,
+    light: #7c7c7c,
+    base: #464646,
+    dark: #252525,
+  ),
+  white: (
+    pure: #fff,
+    base: #fdfdfd,
+    dark: #edeff0,
+  ),
+  black: (
+    pure: #000,
+    base: #080808,
+  ),
+);
+
+// Palette color map retrieval function
+@function palette($color, $shade: base) {
+  // Default shade: base
+  // Return warning if color is invalid
+  @if not map-has-key($COLORS, $color) {
+    @warn "There is no color mapped to '#{$color}'";
+    @return null;
+  }
+
+  // Grab shade map for given color
+  $color-map: map-get($COLORS, $color);
+  // Return warning if shade is invalid
+  @if not map-has-key($color-map, $shade) {
+    @warn "There is no '#{$shade}' for the color '#{$color}'";
+    @return null;
+  }
+
+  // Return the proper shade
+  @return map-get($color-map, $shade);
+}
+
+// Functional color variables
+$base-font-color: palette(grey, dark);
+
+//$color-link: palette(yellow, dark);
+//$color-link-hover: palette(grey, light);
+//$color-link-visited: palette(yellow, dark);
+
+// $color-form-text: palette(grey, dark);
+// $color-form-placeholder: palette(grey, light);
+// $color-form-required: palette(grey, dark);
+// $color-form-border: palette(grey, light);
+// $color-form-error: palette(red);
+
+$color-highlight: palette(yellow);
+$color-shadow: rgba(palette(black), 0.8);
+$color-body: palette(white);
+
+$color-disabled: palette(grey, lighter);
+$color-error: palette(red);
+$color-warning: palette(red, light);
+$color-status: palette(green);
+
+// Social Media
+$color-facebook: #3b5998;
+$color-twitter: #00aced;
+$color-linkedin: #007bb6;
+$color-youtube: #e62117;
+$color-instagram: #c32aa3;
+
+$opacity: 0;
+@while $opacity < 101 {
+  .gradient-opacity-#{$opacity},
+  .opacity-#{$opacity} {
+    &::before {
+      opacity: $opacity / 100;
+    }
+  }
+  $opacity: $opacity + 1;
+}

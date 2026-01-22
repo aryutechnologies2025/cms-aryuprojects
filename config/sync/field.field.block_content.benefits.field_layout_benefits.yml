@@ -1,0 +1,23 @@
+uuid: 579daae3-0630-4cb2-83e5-7f76c3e2467b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.benefits
+    - field.storage.block_content.field_layout_benefits
+  module:
+    - options
+id: block_content.benefits.field_layout_benefits
+field_name: field_layout_benefits
+entity_type: block_content
+bundle: benefits
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: rows
+default_value_callback: ''
+settings: {  }
+field_type: list_string

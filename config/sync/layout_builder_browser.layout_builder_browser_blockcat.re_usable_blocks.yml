@@ -1,0 +1,10 @@
+uuid: 54a3b542-bb2f-468a-92ad-1d3dc6e8739a
+langcode: en
+status: true
+dependencies: {  }
+id: re_usable_blocks
+label: 'Re-usable Blocks'
+weight: -10
+opened: true
+image_path: null
+image_alt: null

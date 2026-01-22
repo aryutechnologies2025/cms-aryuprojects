@@ -1,0 +1,7 @@
+global:
+  version: 1.x
+  css:
+    theme:
+      css/maintenance.css: { weight: 300 }
+  dependencies:
+    - claro/global-styling

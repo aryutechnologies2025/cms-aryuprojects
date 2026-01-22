@@ -1,0 +1,20 @@
+uuid: c5e00b10-5545-4b7b-8f9a-25f02d23820d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: node.field_mobile_footer_utility_menu
+field_name: field_mobile_footer_utility_menu
+entity_type: node
+type: entity_reference
+settings:
+  target_type: menu
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,55 @@
+sprowt.start_install:
+    path: '/sprowt/install/start'
+    defaults:
+        _title: 'Start Install'
+        _controller: '\Drupal\sprowt_base_install\Controller\SprowtController::startInstall'
+    requirements:
+        _custom_access: '\Drupal\sprowt_base_install\Controller\SprowtController::installAccess'
+
+sprowt.start_install_process:
+    path: '/sprowt/install/start-process'
+    defaults:
+        _title: 'Start Install'
+        _controller: '\Drupal\sprowt_base_install\Controller\SprowtController::startInstallProcess'
+    requirements:
+        _custom_access: '\Drupal\sprowt_base_install\Controller\SprowtController::installAccess'
+
+sprowt.batch_info:
+    path: '/sprowt/install/batch-info'
+    defaults:
+        _title: 'Batch Info'
+        _controller: '\Drupal\sprowt_base_install\Controller\SprowtController::batchInfo'
+    requirements:
+        _custom_access: '\Drupal\sprowt_base_install\Controller\SprowtController::installAccess'
+
+sprowt.install_status:
+    path: '/sprowt/install/install-status'
+    defaults:
+        _title: 'Batch Info'
+        _controller: '\Drupal\sprowt_base_install\Controller\SprowtController::installStatus'
+    requirements:
+        _custom_access: '\Drupal\sprowt_base_install\Controller\SprowtController::installAccess'
+
+sprowt.installer_run:
+    path: '/sprowt/install/run'
+    defaults:
+        _title: 'Installer run'
+        _controller: '\Drupal\sprowt_base_install\Controller\SprowtController::installerRunBatchSet'
+    requirements:
+        _access: 'TRUE'
+
+sprowt.installer_batch:
+    path: '/sprowt/install/batch'
+    defaults:
+        _title: 'Installer run'
+        _controller: '\Drupal\sprowt_base_install\Controller\SprowtController::batchPage'
+    requirements:
+        _custom_access: '\Drupal\sprowt_base_install\Controller\SprowtController::installFinalized'
+
+sprowt.installer_reset:
+    path: '/sprowt/install/reset'
+    defaults:
+        _title: 'Installer reset'
+        _controller: '\Drupal\sprowt_base_install\Controller\SprowtController::reset'
+    requirements:
+        _custom_access: '\Drupal\sprowt_base_install\Controller\SprowtController::installError'

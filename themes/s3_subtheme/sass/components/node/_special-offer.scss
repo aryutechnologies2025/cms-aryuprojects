@@ -1,0 +1,183 @@
+$so-border-size: 4px;
+$so-border-dash-size: 15px;
+$so-border-color: palette(grey, lit);
+$so-featured-border-color: $so-border-color;
+
+$dashedv: repeating-linear-gradient(
+  0deg,
+  $so-border-color,
+  $so-border-color $so-border-dash-size,
+  transparent $so-border-dash-size,
+  transparent ($so-border-dash-size * 2),
+  $so-border-color ($so-border-dash-size * 2)
+);
+$dashedh: repeating-linear-gradient(
+  90deg,
+  $so-border-color,
+  $so-border-color $so-border-dash-size,
+  transparent $so-border-dash-size,
+  transparent ($so-border-dash-size * 2),
+  $so-border-color ($so-border-dash-size * 2)
+);
+
+$featured-dashedv: repeating-linear-gradient(
+  0deg,
+  $so-featured-border-color,
+  $so-featured-border-color $so-border-dash-size,
+  transparent $so-border-dash-size,
+  transparent ($so-border-dash-size * 2),
+  $so-featured-border-color ($so-border-dash-size * 2)
+);
+$featured-dashedh: repeating-linear-gradient(
+  90deg,
+  $so-featured-border-color,
+  $so-featured-border-color $so-border-dash-size,
+  transparent $so-border-dash-size,
+  transparent ($so-border-dash-size * 2),
+  $so-featured-border-color ($so-border-dash-size * 2)
+);
+
+.node--type-special-offer {
+  // Teasers
+  &.node--view-mode-teaser,
+  &.node--view-mode-secondary-teaser,
+  &.node--view-mode-tertiary-teaser,
+  &.node--view-mode-quaternary-teaser {
+    border-radius: $base-border-radius;
+    background-color: palette(white);
+
+    .node__content {
+      border-style: inherit; //overrides core
+      background-image: $dashedv, $dashedh, $dashedv, $dashedh;
+      background-size: $so-border-size 100%, 100% $so-border-size,
+        $so-border-size 100%, 100% $so-border-size;
+      background-color: palette(white);
+
+      .field--name-field-offer-headline,
+      .field--name-field-subheading,
+      .field--name-field-subheading-tag {
+        color: $base-font-color;
+      }
+
+      .field--name-field-button {
+        span {
+          @extend %button;
+          color: palette(white);
+          background-color: palette(secondary);
+        }
+      }
+    }
+    &:hover {
+      .node__content {
+        .field--name-field-button span {
+          background-color: palette(primary);
+        }
+      }
+    }
+  }
+
+  // Tertiary Teaser (horizontal) (deprecated)
+  &.node--view-mode-tertiary-teaser {
+    .node__content {
+      &::after {
+        background-color: palette(primary);
+      }
+    }
+  }
+
+  // Quaternary Teaser (new horizontal)
+  &.node--view-mode-quaternary-teaser {
+    &::before {
+      //height: 185px;
+      background-color: palette(primary);
+    }
+
+    .special-offer-logo-side {
+      //height: 160px;
+
+      img {
+        //max-width: 350px;
+        //max-height: 130px;
+      }
+    }
+  }
+
+  // Token (small teaser)
+  &.node--view-mode-token {
+    color: palette(dark);
+    background-color: palette(light);
+
+    .node__content {
+      .field--name-field-offer-headline {
+        color: palette(dark);
+      }
+      .field--name-field-subheading,
+      .field--name-field-subheading-tag {
+        color: palette(dark);
+      }
+      .field--name-field-button {
+        span {
+          @extend %button;
+        }
+      }
+    }
+    &:hover {
+      .node__content {
+        .field--name-field-button {
+          span {
+            background-color: palette(primary, dark);
+          }
+        }
+      }
+    }
+  }
+
+  &.featured {
+    color: palette(white);
+    background-color: palette(primary);
+    .node__content {
+      background-color: transparent;
+      background-image: $featured-dashedv, $featured-dashedh, $featured-dashedv,
+        $featured-dashedh;
+
+      .field--name-field-offer-headline,
+      .field--name-field-subheading,
+      .field--name-field-subheading-tag {
+        color: palette(white);
+      }
+
+      .field--name-field-body,
+      .__body {
+        p {
+          color: palette(white);
+        }
+      }
+
+      .field--name-field-button {
+        span {
+          @extend .button;
+          color: palette(primary) !important;
+          background-color: palette(white) !important;
+        }
+      }
+    }
+
+    &:hover {
+      .node__content {
+        .field--name-field-button span {
+          color: palette(white) !important;
+          background-color: palette(secondary) !important;
+        }
+      }
+    }
+
+    &.node--view-mode-tertiary-teaser,
+    &.node--view-mode-quaternary-teaser {
+      .node__content {
+        &::after {
+          background-color: palette(white);
+        }
+      }
+    }
+  }
+}

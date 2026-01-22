@@ -1,0 +1,45 @@
+uuid: dfea19d5-8fa1-413c-adba-6b92b0906c0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.divider
+    - core.entity_view_mode.block_content.token
+    - field.field.block_content.divider.field_accent_color
+    - field.field.block_content.divider.field_divider_bg_color
+    - field.field.block_content.divider.field_divider_style
+  module:
+    - layout_builder
+    - options
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: block_content.divider.token
+targetEntityType: block_content
+bundle: divider
+mode: token
+content:
+  field_accent_color:
+    type: list_key
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_divider_bg_color:
+    type: list_key
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_divider_style:
+    type: list_key
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

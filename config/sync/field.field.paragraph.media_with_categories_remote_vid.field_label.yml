@@ -1,0 +1,19 @@
+uuid: aa64a765-df64-45f2-9b58-b7567683f86d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_label
+    - paragraphs.paragraphs_type.media_with_categories_remote_vid
+id: paragraph.media_with_categories_remote_vid.field_label
+field_name: field_label
+entity_type: paragraph
+bundle: media_with_categories_remote_vid
+label: Label/Category
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

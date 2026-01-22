@@ -1,0 +1,106 @@
+.layout__region {
+  .block-inline-blockfaqs,
+  .block--type-faqs {
+    padding: 20px 30px;
+
+    @include breakpoint($smedium) {
+      padding: ($margin * 1.5) $margin;
+    }
+    @include breakpoint($medium) {
+      padding: ($margin * 1.5) ($margin * 1.5);
+    }
+
+    .paragraph--type--faqs {
+      max-width: calc(100% - 80px);
+
+      @include breakpoint($medium) {
+        max-width: calc(100% - 120px);
+      }
+    }
+
+    .field--name-field-label-tag {
+      &:after {
+        background-color: var(--color-dark);
+      }
+    }
+
+    .field--name-field-heading {
+      text-align: center;
+    }
+
+    .view-faqs,
+    .view-faqs-subsite {
+      .view-content > .views-row {
+        position: relative;
+        padding-bottom: 15px;
+      }
+    }
+    .field--name-field-faqs {
+      .field__item {
+        position: relative;
+        padding-bottom: 7px;
+      }
+    }
+
+    .views-field-field-question {
+      max-width: calc(100% - 55px);
+      padding: 28px 0 18px 0;
+      font-weight: 600;
+      font-size: $base-font-size;
+      cursor: pointer;
+    }
+
+    .views-field-field-answer {
+      padding-bottom: 10px;
+    }
+
+    &.accordioned {
+      .view-faqs,
+      .view-faqs-subsite {
+        .view-content > .views-row {
+          border-bottom: 1px solid;
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+      .field--name-field-faqs {
+        .field__item {
+          border-bottom: 1px solid palette(gray, lightest);
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+
+      .views-field-field-question {
+        @include icon-after(plus, 20px) {
+          position: absolute;
+          top: 15px;
+          right: 0;
+          @include flexbox;
+          justify-content: center;
+          align-items: center;
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          transition: color $duration, background-color $duration;
+        }
+
+        &.active {
+          @include icon-after(minus, 20px);
+
+          &:after {
+            display: flex;
+          }
+        }
+      }
+
+      .views-field-field-answer {
+        display: none;
+      }
+    }
+  }
+}

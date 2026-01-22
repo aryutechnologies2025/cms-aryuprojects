@@ -1,0 +1,11 @@
+uuid: 05fcc392-af17-4812-95ba-83f131c1a68b
+langcode: en
+status: true
+dependencies: {  }
+id: d_address
+block_id: 'inline_block:city_page_main_branch'
+category: re_usable_blocks
+label: 'Dynamic Address'
+image_path: ''
+image_alt: ''
+weight: -100

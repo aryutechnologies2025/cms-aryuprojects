@@ -1,0 +1,44 @@
+uuid: 40be98b1-5458-4ae4-a3a5-3c8a9fdc1f09
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.solution_page_packages.field_industry
+    - field.field.node.solution_page_packages.field_meta_description
+    - field.field.node.solution_page_packages.field_meta_tags
+    - field.field.node.solution_page_packages.field_package_level
+    - field.field.node.solution_page_packages.field_primary_package_sp
+    - field.field.node.solution_page_packages.field_secondary_package_sp
+    - field.field.node.solution_page_packages.field_services_lp
+    - field.field.node.solution_page_packages.field_subsite
+    - field.field.node.solution_page_packages.layout_builder__layout
+    - node.type.solution_page_packages
+  module:
+    - user
+id: node.solution_page_packages.teaser
+targetEntityType: node
+bundle: solution_page_packages
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_industry: true
+  field_meta_description: true
+  field_meta_tags: true
+  field_package_level: true
+  field_primary_package_sp: true
+  field_secondary_package_sp: true
+  field_services_lp: true
+  field_subsite: true
+  langcode: true
+  layout_builder__layout: true

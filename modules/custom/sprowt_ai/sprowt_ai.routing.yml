@@ -1,0 +1,165 @@
+sprowt_ai.settings:
+    path: '/admin/config/services/sprowt-ai'
+    defaults:
+        _title: 'Sprowt AI Settings'
+        _form: 'Drupal\sprowt_ai\Form\SettingsForm'
+    requirements:
+        _permission: 'administer sprowt_ai'
+    options:
+        admin_route: true
+
+sprowt_ai.choose_example:
+    path: '/admin/config/services/sprowt-ai/choose-example'
+    defaults:
+        _title: 'Choose Example'
+        _form: 'Drupal\sprowt_ai\Form\ChooseExampleForm'
+    requirements:
+        _permission: 'use sprowt_ai'
+    options:
+        admin_route: true
+
+sprowt_ai.choose_context:
+    path: '/admin/config/services/sprowt-ai/choose-context'
+    defaults:
+        _title: 'Choose Example'
+        _form: 'Drupal\sprowt_ai\Form\ChooseContextForm'
+    requirements:
+        _permission: 'use sprowt_ai'
+    options:
+        admin_route: true
+
+sprowt_ai.generate_content:
+    path: '/admin/config/services/sprowt-ai/generate-content'
+    defaults:
+        _title: 'Insert content'
+        _form: 'Drupal\sprowt_ai\Form\GeneratedContentModalForm'
+    requirements:
+        _custom_access: 'Drupal\sprowt_ai\AiService::accessAi'
+    options:
+        admin_route: true
+
+sprowt_ai.claude_tester:
+    path: '/admin/config/services/sprowt-ai/claude-tester'
+    defaults:
+        _title: 'Claude 3 Tester'
+        _form: 'Drupal\sprowt_ai\Form\ClaudeTester'
+    requirements:
+        _permission: 'use sprowt_ai'
+    options:
+        admin_route: true
+
+entity.ai_system.collection:
+    path: '/admin/config/services/sprowt-ai/ai-system'
+    defaults:
+        _entity_list: 'ai_system'
+        _title: 'AI System configuration'
+    requirements:
+        _permission: 'administer ai_system'
+
+entity.ai_system.add_form:
+    path: '/admin/config/services/sprowt-ai/ai_system/add'
+    defaults:
+        _entity_form: 'ai_system.add'
+        _title: 'Add an ai system'
+    requirements:
+        _permission: 'administer ai_system'
+
+entity.ai_system.edit_form:
+    path: '/admin/config/services/sprowt-ai/ai-system/{ai_system}'
+    defaults:
+        _entity_form: 'ai_system.edit'
+        _title: 'Edit an ai system'
+    requirements:
+        _permission: 'administer ai_system'
+
+entity.ai_system.delete_form:
+    path: '/admin/config/services/sprowt-ai/ai-system/{ai_system}/delete'
+    defaults:
+        _entity_form: 'ai_system.delete'
+        _title: 'Delete an ai system'
+    requirements:
+        _permission: 'administer ai_system'
+
+sprowt_ai.regenerate_content:
+    path: '/admin/config/services/sprowt-ai/regenerate-content/{entity_type}/{entity_id}'
+    defaults:
+        _title: 'Regenerate Content'
+        _form: 'Drupal\sprowt_ai\Form\RegenerateContentForm'
+    requirements:
+        _custom_access: 'Drupal\sprowt_ai\AiService::regenerateContentFormAccess'
+
+sprowt_ai.regenerate_layout_block:
+    path: '/admin/config/services/sprowt-ai/regenerate-layout-block/{entity_type}/{entity_id}/{viewMode}/{componentUuid}'
+    defaults:
+        _title: 'Layout block regenerate'
+        _form: 'Drupal\sprowt_ai\Form\RegenerateLayoutBlockForm'
+    requirements:
+        _custom_access: 'Drupal\sprowt_ai\AiService::regenerateContentFormAccess'
+    options:
+        _admin_route: TRUE
+
+sprowt_ai.widget_prompt:
+    path: '/sprowt-ai/widget-prompt/{widgetKey}'
+    defaults:
+        _title: 'Generate content'
+        _form: 'Drupal\sprowt_ai\Form\WidgetPromptForm'
+    requirements:
+        _permission: 'use sprowt_ai'
+    options:
+        _admin_route: TRUE
+
+sprowt_ai.widget_prompt_temp_store:
+    path: '/sprowt-ai/widget-prompt-temp-store'
+    defaults:
+        _title: 'Widget Prompt Temp Store'
+        _controller: '\Drupal\sprowt_ai\Controller\SprowtAiController::widgetTempStore'
+    requirements:
+        _permission: 'use sprowt_ai'
+
+sprowt_ai.reference_select:
+    path: '/sprowt-ai/reference-select'
+    defaults:
+        _title: 'Reference Select'
+        _form: 'Drupal\sprowt_ai\Form\ReferenceSelectForm'
+    requirements:
+        _permission: 'use sprowt_ai'
+    options:
+        _admin_route: TRUE
+
+sprowt_ai.unexpanded_prompt:
+    path: '/sprowt-ai/unexpanded-prompt'
+    defaults:
+        _title: 'Edit Prompt'
+        _form: 'Drupal\sprowt_ai\Form\UnexpandedPromptForm'
+    requirements:
+        _permission: 'use sprowt_ai'
+    options:
+        _admin_route: TRUE
+
+sprowt_ai.bulk_regenerate_content:
+    path: '/sprowt-ai/bulk-regenerate-content'
+    defaults:
+        _title: 'Bulk Regenerate Content'
+        _form: 'Drupal\sprowt_ai\Form\BulkRegenerateContentForm'
+    requirements:
+        _custom_access: 'Drupal\sprowt_ai\AiService::accessAi'
+    options:
+        _admin_route: TRUE
+
+sprowt_ai.edit_tags_ajax:
+    path: '/sprowt-ai/edit-tags-ajax/{entityTypeId}/{entityId}'
+    defaults:
+        _title: 'Edit Tags'
+        _form: 'Drupal\sprowt_ai\Form\EditTagsAjaxForm'
+    requirements:
+        _permission: 'use sprowt_ai'
+
+sprowt_ai.clone:
+    path: '/sprowt-ai/clone/{entity_type}/{entity_id}'
+    defaults:
+        _title: 'Clone'
+        _form: 'Drupal\sprowt_ai\Form\CloneForm'
+    requirements:
+        _permission: 'use sprowt_ai'
+    options:
+        _admin_route: TRUE

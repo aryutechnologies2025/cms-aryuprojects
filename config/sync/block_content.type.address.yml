@@ -1,0 +1,8 @@
+uuid: 4f501a12-6c6b-4c8f-a139-52b5af4d2865
+langcode: en
+status: true
+dependencies: {  }
+id: address
+label: 'Static Address'
+revision: false
+description: 'Manually set the address of a specific location.'

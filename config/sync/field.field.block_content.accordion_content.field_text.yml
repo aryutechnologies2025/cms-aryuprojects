@@ -1,0 +1,28 @@
+uuid: 1222a3e9-0ff1-4294-89f2-6c46572a4b7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.accordion_content
+    - field.storage.block_content.field_text
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.plain_text
+  module:
+    - text
+id: block_content.accordion_content.field_text
+field_name: field_text
+entity_type: block_content
+bundle: accordion_content
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
+    - plain_text
+field_type: text_long

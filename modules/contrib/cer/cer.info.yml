@@ -1,0 +1,6 @@
+name: Corresponding Entity References
+description: Allows user to create two-way references between entities.
+core_version_requirement: ^10.3 || ^11
+package: Fields
+type: module
+configure: entity.corresponding_reference.collection

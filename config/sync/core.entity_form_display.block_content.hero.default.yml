@@ -1,0 +1,276 @@
+uuid: c1bff48b-267d-44c2-8c2e-a9d244deb63d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.field.block_content.hero.field_background_image_size
+    - field.field.block_content.hero.field_benefits
+    - field.field.block_content.hero.field_display_benefit
+    - field.field.block_content.hero.field_foreground_color
+    - field.field.block_content.hero.field_gradient_opacity
+    - field.field.block_content.hero.field_gradient_range
+    - field.field.block_content.hero.field_heading
+    - field.field.block_content.hero.field_hero_content_width
+    - field.field.block_content.hero.field_hero_style
+    - field.field.block_content.hero.field_image_bg_hero
+    - field.field.block_content.hero.field_image_fg_hero
+    - field.field.block_content.hero.field_image_mobile
+    - field.field.block_content.hero.field_label_tag
+    - field.field.block_content.hero.field_link
+    - field.field.block_content.hero.field_opacity
+    - field.field.block_content.hero.field_overlay_color
+    - field.field.block_content.hero.field_subheading_tag
+    - field.field.block_content.hero.field_text
+  module:
+    - allowed_formats
+    - conditional_fields
+    - field_group
+    - link
+    - media_library
+    - sprowt_admin_override
+    - tag_text_field
+    - text
+third_party_settings:
+  field_group:
+    group_hero_styles:
+      children:
+        - field_hero_style
+        - field_opacity
+        - field_overlay_color
+        - field_gradient_range
+        - field_gradient_opacity
+        - field_foreground_color
+        - field_hero_content_width
+      label: 'Hero Styles'
+      region: content
+      parent_name: ''
+      weight: 11
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        required_fields: true
+id: block_content.hero.default
+targetEntityType: block_content
+bundle: hero
+mode: default
+content:
+  field_background_image_size:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_benefits:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_display_benefit:
+    type: options_select
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_foreground_color:
+    type: options_select
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_gradient_opacity:
+    type: number
+    weight: 16
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        148d3a37-cff3-43f6-929f-5d2c93afd0b1:
+          entity_type: block_content
+          bundle: hero
+          dependee: field_hero_style
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: gradient
+            value_form:
+              -
+                value: gradient
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_gradient_range:
+    type: number
+    weight: 15
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        376d5689-2e46-4854-a61e-8e42fd61aadb:
+          entity_type: block_content
+          bundle: hero
+          dependee: field_hero_style
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: gradient
+            effect: show
+            effect_options: {  }
+            selector: ''
+        1c2dd5a0-a1bd-492c-8d94-0113b86e2aa3:
+          entity_type: block_content
+          bundle: hero
+          dependee: field_hero_style
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: gradient
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_heading:
+    type: html_tag_text_field_widget
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hero_content_width:
+    type: number
+    weight: 18
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_hero_style:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image_bg_hero:
+    type: media_library_widget
+    weight: 6
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_image_fg_hero:
+    type: media_library_widget
+    weight: 4
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_image_mobile:
+    type: media_library_widget
+    weight: 5
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_label_tag:
+    type: html_tag_text_field_widget
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_link:
+    type: link_with_description
+    weight: 9
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_opacity:
+    type: number
+    weight: 13
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        48e2ca65-10c3-47ca-860b-82823bb20e71:
+          entity_type: block_content
+          bundle: hero
+          dependee: field_hero_style
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: overlay
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_overlay_color:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_subheading_tag:
+    type: html_tag_text_field_widget
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 8
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  revision_log: true

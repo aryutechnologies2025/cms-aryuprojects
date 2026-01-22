@@ -1,0 +1,8 @@
+uuid: ce26794d-912b-4a33-b33e-817e937df3fc
+langcode: en
+status: true
+dependencies: {  }
+id: hero_learning_center
+label: 'Hero - Learning Center'
+revision: false
+description: ''

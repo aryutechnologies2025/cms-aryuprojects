@@ -1,0 +1,11 @@
+uuid: 6bb9c90c-1120-4ffd-a5e9-e10acd012b66
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot
+id: block_content.servicebot
+target_entity_type_id: block_content
+target_bundle: servicebot
+default_langcode: site_default
+language_alterable: false

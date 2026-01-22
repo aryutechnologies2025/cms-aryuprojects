@@ -1,0 +1,54 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    (content.field_collapse_features.0['#markup'] == '1' ? 'collapse-features' )
+  ]
+%}
+
+{# If Package View is empty, don't display block #}
+{% set package_view = drupal_view_result((subsite == '_main' ? 'packages' : 'packages_subsite'), 'block_teaser_all')|length %}
+{% set package_fallback_view = drupal_view_result((subsite == '_main' ? 'packages' : 'packages_subsite'), 'block_teaser_lp')|length %}
+{% set package_fallback_sol_view = drupal_view_result((subsite == '_main' ? 'packages' : 'packages_subsite'), 'block_teaser_solution')|length %}
+{% if (package_view > 0) or (package_fallback_view > 0) or (package_fallback_sol_view > 0) or content.field_packages|render %}
+  {% set package_view_mode = content.field_display_package[0]['#markup'] %}
+  {% if package_view_mode is empty %}
+    {% set package_view_mode = 'teaser' %}
+  {% endif %}
+
+    <div{{attributes.addClass(classes)}}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    {% block content %}
+      <div class="packages-wrap view-mode-{{ package_view_mode }}">
+        {{ content|without('field_filter','field_count','field_display','field_packages','field_display_package','field_collapse_features') }}
+
+        {% if content.field_packages|render %}
+          <div class="view-packages block_teaser view-count-{{ content.field_packages['#items']|length }}">
+            <div class="view-content">
+            {% for key, item in content.field_packages %}
+              {% if key|first != '#' and item['#node'] is not empty %}
+                <div class="views-row">
+                  {{ drupal_entity('node', item['#node'].id, package_view_mode) }}
+                </div>
+              {% elseif key|first != '#' and item['#plain_text'] is not empty %}
+                <div class="views-row">
+                  {{ drupal_entity('node', item['#plain_text'], package_view_mode) }}
+                </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+          </div>
+        {% else %}
+          {{ drupal_view((subsite == '_main' ? 'packages' : 'packages_subsite'), 'block_teaser_all', package_view_mode )}}
+        {% endif %}
+      </div>
+    {% endblock %}
+
+  </div>
+
+{% endif %}

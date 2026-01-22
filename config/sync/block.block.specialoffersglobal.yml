@@ -1,0 +1,25 @@
+uuid: 9dd2b1c1-7c05-415f-9bd8-6dca5f228891
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:special_offers:0c236609-8387-4a41-9f88-726eefe04816'
+  module:
+    - block_content
+  theme:
+    - s3_subtheme
+id: specialoffersglobal
+theme: s3_subtheme
+region: disabled
+weight: 4
+provider: null
+plugin: 'block_content:0c236609-8387-4a41-9f88-726eefe04816'
+settings:
+  id: 'block_content:0c236609-8387-4a41-9f88-726eefe04816'
+  label: 'Special Offers (global)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,23 @@
+uuid: 5aedaf0f-92ab-43da-949b-9ca46a0fe025
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_utility_menu
+    - node.type.subsite
+id: node.subsite.field_utility_menu
+field_name: field_utility_menu
+entity_type: node
+bundle: subsite
+label: 'Utility menu'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: subsite_menu_reference
+  handler_settings:
+    target_bundles: null
+    auto_create: 0
+field_type: entity_reference

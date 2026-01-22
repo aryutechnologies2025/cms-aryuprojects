@@ -1,0 +1,11 @@
+# CSS libraries for Layout plugins.
+twocol_header_section:
+  version: 0.0.0
+  css:
+    theme:
+      layouts/twocol_header_section/twocol_header_section.css: {}
+threecol_header_section:
+  version: 0.0.0
+  css:
+    theme:
+      layouts/threecol_header_section/threecol_header_section.css: {}

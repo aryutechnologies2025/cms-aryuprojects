@@ -1,0 +1,21 @@
+uuid: 6ed9e4c2-5e3c-4b57-b830-53d93a4e7bc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.section_styles
+    - field.storage.block_content.field_section_style
+  module:
+    - options
+id: block_content.section_styles.field_section_style
+field_name: field_section_style
+entity_type: block_content
+bundle: section_styles
+label: Style
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

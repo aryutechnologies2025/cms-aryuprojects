@@ -1,0 +1,8 @@
+installer:
+    version: 1.x
+    js:
+        js/installer.js: {}
+    dependencies:
+        - sprowt_settings/sprowt_object
+        - core/once
+        - core/jquery

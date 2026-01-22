@@ -1,0 +1,73 @@
+sprowt_ai_prompt_library.prompt_map:
+    path: '/sprowt-ai-prompt-library/prompt-map'
+    defaults:
+        _title: 'Prompt Map'
+        _controller: '\Drupal\sprowt_ai_prompt_library\Controller\SprowtAiPromptLibraryController::promptMap'
+    requirements:
+        _permission: 'use sprowt_ai_prompt_library'
+    options:
+        _auth: [ 'content_library' ]
+        no_cache: 'TRUE'
+
+
+sprowt_ai_prompt_library.ai_content_collection_request:
+    path: '/sprowt-ai-prompt-library/ai_content_collection_request'
+    defaults:
+        _title: 'Content Collection Request'
+        _controller: '\Drupal\sprowt_ai_prompt_library\Controller\SprowtAiPromptLibraryController::aiContentCollectionRequest'
+    requirements:
+        _permission: 'use sprowt_ai_prompt_library'
+    options:
+        _auth: [ 'content_library' ]
+
+sprowt_ai_prompt_library.fetch_source_entity:
+    path: '/sprowt-ai-prompt-library/fetch_source_entity'
+    defaults:
+        _title: 'Fetch Source Entity'
+        _controller: '\Drupal\sprowt_ai_prompt_library\Controller\SprowtAiPromptLibraryController::fetchSourceEntity'
+    requirements:
+        _permission: 'use sprowt_ai_prompt_library'
+    options:
+        _auth: [ 'content_library' ]
+
+sprowt_ai_prompt_library.prompt_library:
+    path: '/sprowt-ai-prompt-library/prompt-library'
+    defaults:
+        _title: 'Prompt Library'
+        _form: 'Drupal\sprowt_ai_prompt_library\Form\PromptLibraryForm'
+    requirements:
+        _permission: 'use sprowt_ai_prompt_library'
+    options:
+        _admin_route: true
+
+sprowt_ai_prompt_library.import_from_library:
+    path: '/admin/config/services/sprowt-ai/import-from-library/{entityType}'
+    defaults:
+        _title: 'Import From Library'
+        _form: 'Drupal\sprowt_ai_prompt_library\Form\ImportFromLibraryForm'
+    requirements:
+        _permission: 'use sprowt_ai_prompt_library'
+    options:
+        _admin_route: true
+
+sprowt_ai_prompt_library.import_from_library_confirm:
+    path: '/admin/config/services/sprowt-ai/import-from-library-confirm'
+    defaults:
+        _title: 'Import From Library Confirm'
+        _form: 'Drupal\sprowt_ai_prompt_library\Form\ImportFromLibraryConfirmForm'
+    requirements:
+        _permission: 'use sprowt_ai_prompt_library'
+    options:
+        _admin_route: true
+
+sprowt_ai_prompt_library.prompt_clone:
+    path: '/admin/config/services/sprowt-ai/prompt/{prompt}/clone'
+    defaults:
+        _title: 'Prompt Clone'
+        _form: 'Drupal\sprowt_ai_prompt_library\Form\PromptCloneForm'
+    requirements:
+        _permission: 'use sprowt_ai_prompt_library'
+    options:
+        parameters:
+            prompt:
+                type: entity:ai_prompt

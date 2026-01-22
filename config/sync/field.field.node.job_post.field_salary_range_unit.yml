@@ -1,0 +1,21 @@
+uuid: 8006faf9-8728-43b4-a111-d924fba9f41f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_salary_range_unit
+    - node.type.job_post
+  module:
+    - options
+id: node.job_post.field_salary_range_unit
+field_name: field_salary_range_unit
+entity_type: node
+bundle: job_post
+label: 'Salary Range Unit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

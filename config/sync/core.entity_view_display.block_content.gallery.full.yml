@@ -1,0 +1,28 @@
+uuid: b60b3885-0a81-49e2-a14d-b72ff34dbb13
+langcode: en
+status: false
+dependencies:
+  config:
+    - block_content.type.gallery
+    - core.entity_view_mode.block_content.full
+    - field.field.block_content.gallery.field_heading
+    - field.field.block_content.gallery.field_images
+    - field.field.block_content.gallery.field_label_tag
+    - field.field.block_content.gallery.field_subheading_tag
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: block_content.gallery.full
+targetEntityType: block_content
+bundle: gallery
+mode: full
+content: {  }
+hidden:
+  field_heading: true
+  field_images: true
+  field_label_tag: true
+  field_subheading_tag: true
+  langcode: true

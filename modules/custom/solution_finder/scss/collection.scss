@@ -1,0 +1,22 @@
+.concern-str,
+.solution-str {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+@media screen and (min-width: 980px){
+  .concern-str,
+  .solution-str {
+    max-width: 220px;
+  }
+}
+
+@media screen and (min-width: 1300px){
+  .concern-str,
+  .solution-str {
+    max-width: 320px;
+  }
+}

@@ -1,0 +1,22 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'center-align'
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+    <div class="services-wrap">
+      {{ content }}
+      {{ drupal_view('services_no_link', 'block_compact') }}
+    </div>
+  {% endblock %}
+</div>

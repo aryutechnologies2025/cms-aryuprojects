@@ -1,0 +1,22 @@
+uuid: 5e24a2a6-2726-456d-9035-304c7285f512
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_package_level
+  module:
+    - menu_link_content
+    - options
+    - menu_item_fields
+id: menu_link_content.menu_link_content.field_package_level
+field_name: field_package_level
+entity_type: menu_link_content
+bundle: menu_link_content
+label: 'Package level'
+description: 'Only applicable to the main menu'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

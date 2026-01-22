@@ -1,0 +1,14 @@
+uuid: 8f71527f-b157-4816-8cd4-cad221402414
+langcode: en
+status: true
+dependencies: {  }
+id: ltp_and_services
+label: 'LTP and Services'
+enabled: true
+first_field: field_services
+second_field: field_ltp_ref
+add_direction: append
+bundles:
+  node:
+    - ltp_page
+    - service

@@ -1,0 +1,14 @@
+uuid: 31bdaccc-88b7-4684-b987-b2f0537344ea
+langcode: en
+status: true
+dependencies: {  }
+id: gradient_primary
+label: 'Gradient Black'
+classes: gradient-black
+type: component
+group: bgstyle
+block_restrictions:
+  - 'inline_block:call_out'
+  - 'inline_block:hero'
+layout_restrictions: {  }
+weight: 8

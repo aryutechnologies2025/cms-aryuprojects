@@ -1,0 +1,8 @@
+uuid: 0f363dae-a73b-42f0-a4cf-35ea57378215
+langcode: en
+status: true
+dependencies: {  }
+id: package_comparison
+label: 'Package Comparison'
+revision: false
+description: ''

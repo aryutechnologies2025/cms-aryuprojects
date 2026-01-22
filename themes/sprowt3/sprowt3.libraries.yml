@@ -1,0 +1,63 @@
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      css/style.css: { weight: -10 }
+global-scripts:
+  version: 1.x
+  js:
+    js/build/autofill-event.js: {}
+    js/build/scripts.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - slick/slick
+    - core/once
+    - core/js-cookie
+menu-style-blocky:
+  js:
+    js/menu-style-blocky.js: { }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+font-caveat:
+  css:
+    component:
+      //fonts.googleapis.com/css2?family=Caveat&display=swap: { type: external }
+scrollmagic:
+  version: 1.x
+  js:
+    js/vendor/scrollmagic/scrollmagic/minified/ScrollMagic.min.js:
+      { weight: -10 }
+glide:
+  version: 1.x
+  js:
+    js/vendor/glide/dist/glide.js: { weight: -10 }
+  css:
+    theme:
+      js/vendor/glide/dist/css/glide.core.min.css: {}
+      js/vendor/glide/dist/css/glide.theme.min.css: {}
+countup:
+  version: 1.x
+  js:
+    js/vendor/countUp.min.js: { weight: -10 }
+  dependencies:
+    - core/jquery
+featherlight:
+  version: 1.7.13
+  js:
+    js/vendor/featherlight/release/featherlight.min.js: { weight: -10 }
+    js/vendor/featherlight/release/featherlight.gallery.min.js: { weight: -10 }
+  css:
+    theme:
+      js/vendor/featherlight/release/featherlight.min.css: {}
+      js/vendor/featherlight/release/featherlight.gallery.min.css: {}
+  dependencies:
+    - core/jquery
+js-cookie:
+  version: 3.0.0-beta.4
+  js:
+    js/vendor/js-cookie/dist/js.cookie.min.js: { weight: -10 }
+  dependencies:
+    - core/jquery

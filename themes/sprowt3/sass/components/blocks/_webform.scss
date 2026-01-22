@@ -1,0 +1,396 @@
+.block-inline-blockwebform,
+.block--type-webform {
+  max-width: 720px;
+  padding: $margin;
+  margin: $margin auto;
+
+  &[class*="bg-"] {
+    width: calc(100% - 60px);
+    padding: $margin ($margin/1.5);
+  }
+
+  &[class*="block-webform---solution-page-"] {
+    max-width: $container;
+
+    fieldset > .fieldset-wrapper {
+      @include flexbox;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    #edit-name {
+      .form-item {
+        width: 100%;
+
+        @include breakpoint($xsmall) {
+          width: calc(50% - 7px);
+        }
+        @include breakpoint($medium) {
+          width: calc(25% - 10px);
+        }
+      }
+    }
+    #edit-contact-info {
+      .fieldset-wrapper {
+        #edit-address--wrapper {
+          width: 100%;
+        }
+        > .form-item {
+          width: 100%;
+        }
+
+        @include breakpoint($xsmall) {
+          #edit-address--wrapper {
+            width: 100%;
+          }
+        }
+        @include breakpoint($medium) {
+          #edit-address--wrapper {
+            width: calc(80% - 10px);
+          }
+          > .form-item {
+            width: calc(20.5% - 10px);
+          }
+        }
+      }
+
+      #edit-address--wrapper {
+        > .fieldset-wrapper {
+          > .form-item {
+          }
+
+          .form-item-address-address,
+          .form-item-address-city,
+          .form-item-address-state-province,
+          .form-item-address-postal-code {
+            width: 100%;
+          }
+
+          @include breakpoint($xsmall) {
+            .form-item-address-address,
+            .form-item-address-city,
+            .form-item-address-state-province,
+            .form-item-address-postal-code {
+              width: calc(50% - 7px);
+            }
+          }
+          @include breakpoint($medium) {
+            .form-item-address-address,
+            .form-item-address-city {
+              width: calc(31.5% - 10px);
+            }
+            .form-item-address-state-province,
+            .form-item-address-postal-code {
+              width: calc(18.5% - 10px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.form-item {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-end;
+  margin: 0;
+
+  label {
+    line-height: 1.4;
+  }
+}
+
+  .form-item-texting-opt-in {
+    margin-bottom: 10px;
+    font-size: 14px;
+
+    .description {
+      display: inline-block;
+      margin-left: 0;
+
+      a {
+        color: $base-font-color;
+      }
+
+      .bg-black &, .bg-dark &, .bg-primary & {
+        a {
+          color: palette(white);
+        }
+      }
+    }
+  }
+
+.fieldset-wrapper {
+    @include flexbox;
+    justify-content: space-between;
+    margin: 0;
+
+  > .form-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 48%;
+  }
+
+  // Address AutoComplete
+  .form-item-where-did-you-hear-about-us-select
+  .sprowt-address-autocomplete {
+    width: 100%;
+  }
+
+  .form-radios,
+  .form-checkboxes {
+    > div {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+
+  .form-actions {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.webform-checkboxes-other .fieldset-wrapper {
+  flex-wrap: wrap;
+}
+
+// TODO: remove once replacement CallOut field is in place
+// .form-expand-on {
+//   .webform-submission-form {
+//     > fieldset:not(#edit-submission),
+//     > div {
+//       &:not(:first-child) {
+//         height: 0;
+//         max-height: 0px;
+//         opacity: 0;
+//         margin-top: -0.5rem;
+//         overflow: hidden;
+//         transition: all 1s cubic-bezier(0.5, 0.1, 0, 1);
+//       }
+//     }
+
+//     .form-item {
+//       position: relative;
+//     }
+//   }
+
+//   &.form-expanded {
+//     .webform-submission-form {
+//       > fieldset,
+//       > div {
+//         &:not(:first-child) {
+//           height: auto;
+//           max-height: 1000px;
+//           margin-top: 0;
+//           overflow: inherit;
+//           opacity: 1;
+//         }
+//       }
+//     }
+//   }
+// }
+
+[class*="block-webform---solution-page-"] {
+  .webform-submission-form {
+    > fieldset:not([id*="edit-submission"]),
+    > div {
+      &:not(:first-child) {
+        height: 0;
+        max-height: 0px;
+        opacity: 0;
+        margin-top: -0.5rem;
+        overflow: hidden;
+        transition: all 1s cubic-bezier(0.5, 0.1, 0, 1);
+      }
+    }
+
+    .form-item {
+      position: relative;
+    }
+  }
+
+  &.form-expanded {
+    .webform-submission-form {
+      > fieldset:not([id*="edit-submission"]),
+      > div {
+        &:not(:first-child) {
+          height: auto;
+          max-height: 1000px;
+          margin-top: 0;
+          overflow: inherit;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.webform-address--wrapper {
+  .fieldset-wrapper {
+    flex-wrap: wrap;
+    .form-item-address-address {
+      width: 100%;
+    }
+  }
+}
+
+// reCAPTCHA
+.captcha {
+  display: inline-block;
+  margin: 0 0 0 15px;
+  transform: scale(0.72);
+  transform-origin: left;
+}
+
+//Lock Form
+$boxduration: 0.5s ease-in-out;
+
+.lock-form--wrap,
+.block-contact-us-webform {
+  .lock-form,
+  .field--name-field-webform {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .content {
+    max-width: $container;
+    margin: 0 auto;
+
+    .node__title {
+      text-align: center;
+      font-size: 3.6rem;
+      font-weight: normal;
+      max-height: 100px;
+      transition: margin $boxduration, max-height $boxduration;
+
+      @include breakpoint($medium) {
+        font-weight: 48px;
+      }
+    }
+
+    .field--name-body {
+      text-align: center;
+      max-height: 100px;
+      transition: margin $boxduration, max-height $boxduration;
+    }
+
+    .webform-client-form {
+      margin-top: 20px;
+      transition: margin $boxduration;
+
+      > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .form-item {
+        width: 100%;
+        margin: 8px 0;
+        transition: margin $boxduration;
+
+        @include breakpoint($medium) {
+          flex: 1 1 calc(50% - 30px);
+          margin: 15px 12px;
+        }
+
+        @include breakpoint($large) {
+          flex: 1;
+        }
+      }
+      .webform-privacy-policy {
+        display: none;
+        width: 100%;
+        text-align: center;
+      }
+      .form-actions {
+        margin: 20px 12px;
+        text-align: center;
+        transition: margin $boxduration;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="submit"] {
+        padding: 18px 15px;
+        border: none;
+        border-radius: 0;
+        transition: padding $boxduration;
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="submit"] {
+        padding: 18px 30px;
+      }
+    }
+  }
+}
+
+.lock-form--wrap,
+.block-contact-us-webform {
+  @include breakpoint($medium) {
+    &.fix-box {
+      > div {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 110;
+        transition: padding $boxduration;
+      }
+    }
+    &.shrink-box {
+      > div {
+        padding: 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .node__title,
+      .field--name-body {
+        max-height: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .webform-client-form {
+        margin-top: 0;
+
+        .form-item {
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+
+        .form-actions {
+          margin-top: 5px;
+          margin-bottom: 12px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="submit"] {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+// careers form
+.page-node-type-career-page {
+  .block-inline-blockwebform {
+    .form-actions {
+      margin-top: 2em;
+      margin-bottom: 0;
+    }
+  }
+}

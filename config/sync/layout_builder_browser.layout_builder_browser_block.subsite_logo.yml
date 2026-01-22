@@ -1,0 +1,11 @@
+uuid: 437bb228-b7cb-40c6-a0f2-770bf4eb7f07
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_logo
+block_id: sprowt_subsite_logo_block
+category: header_footer
+label: 'Subsite Header Logo'
+image_path: ''
+image_alt: ''
+weight: -92

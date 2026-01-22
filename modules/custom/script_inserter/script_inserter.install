@@ -1,0 +1,27 @@
+<?php
+
+use Drupal\Core\Entity\EntityLastInstalledSchemaRepository;
+use Drupal\Core\Entity\Schema\EntityStorageSchemaInterface;
+
+/**
+ * Update script inserter entity
+ */
+function script_inserter_update_9001(&$sandbox)
+{
+    /** @var EntityLastInstalledSchemaRepository $entityLastInstalledSchemaRepository */
+    $entityLastInstalledSchemaRepository = \Drupal::service('entity.last_installed_schema.repository');
+    /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */
+    $entityTypeManager = \Drupal::entityTypeManager();
+    /** @var \Drupal\Core\Entity\EntityFieldManager $entityFieldManager */
+    $entityFieldManager = \Drupal::service('entity_field.manager');
+    /** @var \Drupal\Core\Entity\EntityTypeListener $entityTypeListener */
+    $entityTypeListener = \Drupal::service('entity_type.listener');
+
+    $entity_type_id = 'script';
+    $entity_type = $entityTypeManager->getDefinition($entity_type_id);
+    $original = $entityLastInstalledSchemaRepository->getLastInstalledDefinition($entity_type_id);
+    $storage = $entityTypeManager->getStorage($entity_type->id());
+    $field_storage_definitions = $entityFieldManager->getFieldStorageDefinitions($entity_type_id);
+    $original_field_Storage_definitions = $entityLastInstalledSchemaRepository->getLastInstalledFieldStorageDefinitions($entity_type_id);
+    $entityTypeListener->onFieldableEntityTypeUpdate($entity_type, $original, $field_storage_definitions, $original_field_Storage_definitions);
+}

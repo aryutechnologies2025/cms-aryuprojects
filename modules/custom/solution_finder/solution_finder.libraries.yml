@@ -1,0 +1,59 @@
+# Custom module library for general purposes.
+
+collection:
+    css:
+        theme:
+            css/collection.css: { }
+
+entity_form:
+    css:
+        theme:
+            css/entity_form.css: { }
+    js:
+        js/entity-form.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+        - select2_all/drupal.select2
+
+test:
+    css:
+        theme:
+            css/test.css: { }
+
+solution_finder:
+    css:
+        theme:
+            css/solution_finder.css: { }
+    js:
+        js/solution-finder.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+#
+## Third-party library (self hosted).
+#jquery-labelauty:
+#    remote: https://github.com/fntneves/jquery-labelauty
+#    version: 1.1.0
+#    license:
+#        name: MIT
+#        url: https://github.com/fntneves/jquery-labelauty/blob/v1.1.0/LICENSE
+#        gpl-compatible: true
+#    js:
+#        /libraries/jquery-labelauty/source/jquery-labelauty.js: { }
+#    css:
+#        component:
+#            /libraries/jquery-labelauty/source/jquery-labelauty.css: { }
+#    dependencies:
+#        - core/jquery
+#
+## Third-party library (CDN).
+#vuejs:
+#    remote: https://vuejs.org
+#    version: 2.0.5
+#    license:
+#        name: MIT
+#        url: https://github.com/vuejs/vue/blob/dev/LICENSE
+#        gpl-compatible: true
+#    js:
+#        https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js: { type: external, minified: true }

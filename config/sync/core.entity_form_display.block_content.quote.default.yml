@@ -1,0 +1,89 @@
+uuid: e4e33751-4bea-488d-917c-f2b590e1bfcc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote
+    - field.field.block_content.quote.field_heading
+    - field.field.block_content.quote.field_label_tag
+    - field.field.block_content.quote.field_link
+    - field.field.block_content.quote.field_position_company
+    - field.field.block_content.quote.field_speaker
+    - field.field.block_content.quote.field_subheading_tag
+    - field.field.block_content.quote.field_text
+  module:
+    - sprowt_admin_override
+    - tag_text_field
+    - text
+id: block_content.quote.default
+targetEntityType: block_content
+bundle: quote
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_widget
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_label_tag:
+    type: html_tag_text_field_widget
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_link:
+    type: link_with_description
+    weight: 7
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_position_company:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_speaker:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_subheading_tag:
+    type: html_tag_text_field_widget
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  revision_log: true

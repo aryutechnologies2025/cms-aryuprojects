@@ -1,0 +1,23 @@
+uuid: 63c6a420-1aa6-45e6-9413-d1b79a61b5ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot
+    - field.storage.block_content.field_overlay_color
+  module:
+    - options
+id: block_content.servicebot.field_overlay_color
+field_name: field_overlay_color
+entity_type: block_content
+bundle: servicebot
+label: 'Button Color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: black
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,32 @@
+diff --git a/js/jquery.treetable.js b/js/jquery.treetable.js
+index 4535880735..cc757bc38e 100644
+--- a/js/jquery.treetable.js
++++ b/js/jquery.treetable.js
+@@ -96,7 +96,12 @@
+
+     Node.prototype.hide = function() {
+       this._hideChildren();
+-      this.row.hide();
++      if(typeof this.row.addClass === 'function') {
++        this.row.addClass('hidden');
++      }
++      else {
++        this.row.hide();
++      }
+       return this;
+     };
+
+@@ -178,7 +183,12 @@
+       if (!this.initialized) {
+         this._initialize();
+       }
+-      this.row.show();
++      if(typeof this.row.removeClass === 'function') {
++        this.row.removeClass('hidden');
++      }
++      else {
++        this.row.show();
++      }
+       if (this.expanded()) {
+         this._showChildren();
+       }

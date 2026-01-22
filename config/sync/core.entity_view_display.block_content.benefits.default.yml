@@ -1,0 +1,75 @@
+uuid: c63c4ae9-6be2-4c8d-9d6d-31bd227415d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.benefits
+    - field.field.block_content.benefits.field_benefit_overrides
+    - field.field.block_content.benefits.field_count_benefit
+    - field.field.block_content.benefits.field_heading
+    - field.field.block_content.benefits.field_label_tag
+    - field.field.block_content.benefits.field_layout_benefits
+    - field.field.block_content.benefits.field_subheading_tag
+    - field.field.block_content.benefits.field_text
+  module:
+    - options
+    - tag_text_field
+    - text
+id: block_content.benefits.default
+targetEntityType: block_content
+bundle: benefits
+mode: default
+content:
+  field_benefit_overrides:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_count_benefit:
+    type: list_key
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_layout_benefits:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,4 @@
+sprowt_admin_override_layout_builder_block_update:
+    title: 'Edit layout block'
+    route_name: 'sprowt_admin_override.layout_block_update'
+    group: 'sprowt_admin_override_layout_builder'

@@ -1,0 +1,59 @@
+<?php
+
+use Drupal\node\Entity\Node;
+use Drupal\sprowt_theme\SprowtThemeService;
+
+/**
+ * @file
+ * Primary module hooks for Sprowt Theme module.
+ */
+
+
+function _sprowt_theme_test() {
+    /** @var SprowtThemeService $service */
+    $service = \Drupal::service('sprowt_theme.service');
+    $node = \Drupal\node\Entity\Node::load(9);
+    $theme = 'generic';
+    $service->themeNode($node, $theme);
+
+    $stop = true;
+}
+
+
+/**
+ * Implements hook_sprowt_installer_entity_install_alter().
+ */
+function sprowt_theme_sprowt_installer_entity_install_alter(&$entity, $entityTypeId) {
+    if($entity instanceof Node) {
+        /** @var SprowtThemeService $service */
+        $service = \Drupal::service('sprowt_theme.service');
+        $service->themeNode($entity);
+    }
+}
+
+/**
+ * Implements hook_content_library_import_alter().
+ * @var \Drupal\Core\Entity\ContentEntityBase $entity
+ */
+function sprowt_theme_content_library_import_alter(&$entity, $context) {
+    $importContext = $context['context'];
+    if($importContext['source'] != 'local' && $entity instanceof Node) {
+        /** @var SprowtThemeService $service */
+        $service = \Drupal::service('sprowt_theme.service');
+        $service->themeNode($entity);
+    }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function sprowt_theme_preprocess_captcha(&$variables)
+{
+    $type = $variables["element"]["#captcha_type"] ?? '';
+    if(strpos($type, 'recaptcha') !== false) {
+        $classes = $variables["attributes"]['class'] ?? [];
+        $variables["attributes"]['aria-hidden'] = 'true';
+        $classes[] = 'sprowt-recaptcha-wrap';
+        $variables["attributes"]['class'] = $classes;
+    }
+}

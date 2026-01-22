@@ -1,0 +1,21 @@
+uuid: 57f92ae1-62dc-41c8-8769-3afd412d3019
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.city_page_service_blurb
+    - field.storage.block_content.field_options
+  module:
+    - options
+id: block_content.city_page_service_blurb.field_options
+field_name: field_options
+entity_type: block_content
+bundle: city_page_service_blurb
+label: Options
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,11 @@
+uuid: c90fb4de-1f65-4778-b643-1cbec355ac0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dynamic_address_multiple
+id: block_content.dynamic_address_multiple
+target_entity_type_id: block_content
+target_bundle: dynamic_address_multiple
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,23 @@
+uuid: 812188c0-808d-4400-a5bb-0f60c6d4bd76
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.divider
+    - field.storage.block_content.field_divider_bg_color
+  module:
+    - options
+id: block_content.divider.field_divider_bg_color
+field_name: field_divider_bg_color
+entity_type: block_content
+bundle: divider
+label: 'Divider Background Color'
+description: "set color of the following section's background color."
+required: false
+translatable: false
+default_value:
+  -
+    value: white
+default_value_callback: ''
+settings: {  }
+field_type: list_string

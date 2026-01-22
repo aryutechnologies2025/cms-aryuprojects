@@ -1,0 +1,15 @@
+uuid: 9b0a078a-962e-46c7-9e24-1395ed01339d
+langcode: en
+status: true
+dependencies: {  }
+name: preview
+label: Preview
+effects:
+  5ea9824a-1346-4ff8-996e-9da6431a46cb:
+    uuid: 5ea9824a-1346-4ff8-996e-9da6431a46cb
+    id: image_scale
+    weight: 1
+    data:
+      width: 250
+      height: null
+      upscale: false

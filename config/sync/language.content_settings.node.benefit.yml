@@ -1,0 +1,11 @@
+uuid: c42de030-67ae-45be-8560-cbe189f350b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.benefit
+id: node.benefit
+target_entity_type_id: node
+target_bundle: benefit
+default_langcode: site_default
+language_alterable: false

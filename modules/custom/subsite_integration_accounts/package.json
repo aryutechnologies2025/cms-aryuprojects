@@ -1,0 +1,26 @@
+{
+  "name": "integrations_mapper",
+  "version": "1.0.0",
+  "description": "Library for dynamically adding and removing api accounts for various integrations.",
+  "main": "main.js",
+  "private": true,
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "webpack",
+    "prod": "webpack --mode production",
+    "watch": "webpack --watch"
+  },
+  "author": "Michael Quattrochi <mquattrochi@workwave.com>",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "vue-loader": "^17.2.2",
+    "vue-template-compiler": "^2.7.14",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}

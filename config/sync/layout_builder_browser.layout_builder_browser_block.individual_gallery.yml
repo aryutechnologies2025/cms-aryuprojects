@@ -1,0 +1,11 @@
+uuid: 6da104c5-90d6-4f08-ba2d-e961109483c7
+langcode: en
+status: true
+dependencies: {  }
+id: individual_gallery
+block_id: 'views_block:media_gallery-individual_gallery'
+category: custom_blocks
+label: 'Individual Gallery'
+image_path: ''
+image_alt: ''
+weight: -65

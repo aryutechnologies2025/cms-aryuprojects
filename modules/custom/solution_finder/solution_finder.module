@@ -1,0 +1,168 @@
+<?php
+
+/**
+ * @file
+ * Provides a solution entity type.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function solution_finder_theme()
+{
+    return [
+        'solution' => [
+            'render element' => 'elements',
+        ],
+    ];
+}
+
+function _solution_finder_test() {
+    require_once __DIR__ . '/solution_finder.install';
+    solution_finder_update_100002();
+}
+
+/**
+ * Prepares variables for solution templates.
+ *
+ * Default template: solution.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the solution information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_solution(array &$variables)
+{
+    foreach (Element::children($variables['elements']) as $key) {
+        $variables['content'][$key] = $variables['elements'][$key];
+    }
+}
+
+
+/**
+ * Implements hook_options_list_alter().
+ */
+function solution_finder_options_list_alter(array &$options, array $context)
+{
+    if(!empty($context['entity'])) {
+        /** @var \Drupal\Core\Field\BaseFieldDefinition $fieldDefinition */
+        $fieldDefinition = $context['fieldDefinition'];
+        $entity = $context['entity'];
+        if ($entity instanceof \Drupal\solution_finder\SolutionInterface) {
+            /** @var \Drupal\solution_finder\SolutionFinderService $service */
+            $service = \Drupal::service('solution_finder.service');
+            if($fieldDefinition->getName() == 'concerns') {
+                $concerns = $service->getConcerns();
+                $options = [];
+                foreach($concerns as $concern) {
+                    $options[$concern->id()] = $concern->label() . " [{$concern->id()}]";
+                }
+            }
+            if($fieldDefinition->getName() == 'solution_page') {
+                $solutionPages = $service->getSolutionPages();
+                $options = [
+                    '_none' => t('Default destination')
+                ];
+                foreach($solutionPages as $solutionPage) {
+                    $options[$solutionPage->id()] = $solutionPage->label() . " [{$solutionPage->id()}]";
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function solution_finder_form_views_form_solutions_sort_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    $form["actions"]["save_order"]['#submit'][] = '_solution_finder_draggable_views_submit';
+}
+
+/**
+ * Save draggable weight as weight on the entity
+ * @param $form
+ * @param FormStateInterface $form_state
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function _solution_finder_draggable_views_submit(&$form, FormStateInterface $form_state) {
+    $input = $form_state->getUserInput();
+
+    /** @var \Drupal\views\ViewExecutable $view */
+    $view = $form_state->getBuildInfo()['args'][0];
+    $result = $view->result;
+    $map = [];
+    foreach($result as $row) {
+        $map[$row->id] = $row->_entity;
+    }
+
+    foreach ($input['draggableviews'] as $item) {
+        $entity = $map[$item['id']] ?? null;
+        if($entity instanceof \Drupal\solution_finder\Entity\Solution) {
+            $entity->setWeight($item['weight']);
+            $entity->save();
+        }
+    }
+}
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function solution_finder_page_attachments(array &$attachments)
+{
+    $routeMatch = \Drupal::routeMatch();
+    $routeName = $routeMatch->getRouteName();
+    if($routeName == 'view.solutions.actions' || $routeName == 'view.solutions.sort' || $routeName == 'entity.solution.collection') {
+        $attachments['#attached']['library'][] = 'solution_finder/collection';
+    }
+}
+
+
+/**
+ * Implements hook_webform_options_WEBFORM_OPTIONS_ID_alter().
+ */
+function solution_finder_webform_options_solution_finder_concerns_alter(array &$options, array &$element)
+{
+    /** @var \Drupal\solution_finder\SolutionFinderService $service */
+    $service = \Drupal::service('solution_finder.service');
+    $concerns = $service->getConcerns();
+    /** @var \Drupal\node\Entity\Node $concern */
+    foreach($concerns as $concern) {
+        $options[$concern->id()] = $concern->label();
+    }
+}
+
+/**
+ * Implements hook_honeypot_form_protections_alter().
+ */
+function solution_finder_honeypot_form_protections_alter(array &$options, array $form)
+{
+    // disable honeypot on the solution finder form
+    if(!empty($form['solution_finder_finder_form']) && in_array('honeypot', $options)) {
+        $idx = array_search('honeypot', $options);
+        unset($options[$idx]);
+    }
+    if(!empty($form['solution_finder_finder_form']) && in_array('time_restriction', $options)) {
+        $idx = array_search('time_restriction', $options);
+        unset($options[$idx]);
+    }
+}
+
+/**
+ * Implements hook_sprowt_translation_translate_attributes_alter().
+ */
+function solution_finder_sprowt_translation_translate_attributes_alter(&$translateAttributes, $language)
+{
+    $xpath = '//input[@type="submit"]';
+    if(empty($translateAttributes[$xpath])) {
+        $translateAttributes[$xpath] = [];
+    }
+    $translateAttributes[$xpath][] = 'data-hide-options-text';
+    $translateAttributes[$xpath][] = 'data-show-options-text';
+}

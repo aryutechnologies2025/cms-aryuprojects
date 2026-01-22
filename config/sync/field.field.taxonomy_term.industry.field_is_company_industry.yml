@@ -1,0 +1,23 @@
+uuid: 4e078951-8919-43b2-a9dc-8dbe256cd4ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_is_company_industry
+    - taxonomy.vocabulary.industry
+id: taxonomy_term.industry.field_is_company_industry
+field_name: field_is_company_industry
+entity_type: taxonomy_term
+bundle: industry
+label: 'Is Company Industry'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,8 @@
+uuid: 8aa3a757-547f-45d6-8d21-6b87cd7418e4
+langcode: en
+status: true
+dependencies: {  }
+id: node__package
+label: 'Content: Package'
+tags:
+  robots: 'noindex, nofollow, noydir'

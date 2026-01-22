@@ -1,0 +1,23 @@
+uuid: a3594b8a-1ed4-4d53-aba1-04427a6fe6a2
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-navigation-subsite-
+      - main-navigation-subsite-full
+      - main
+    parent: 'main:'
+  sprowt_admin_override:
+    external_node_type: true
+name: 'Solution Page - Concern Highlight'
+type: solution_page_package_alt
+description: 'Alternative solution for a single package, highlighting concerns.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

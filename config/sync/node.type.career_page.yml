@@ -1,0 +1,23 @@
+uuid: de11cc7b-1678-4447-a5a3-e4c755881837
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - careers-menu
+      - main
+    parent: 'careers-menu:'
+  sprowt_admin_override:
+    external_node_type: true
+    title_help: 'The label used for this content type is used for admin views only, it is never rendered on the page. '
+name: 'Career Page'
+type: career_page
+description: "Stand-alone product to provide a career site and hiring services. Similar to Basic Pages, but header and footer will be unique to the Career site.\r\n\r\n"
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

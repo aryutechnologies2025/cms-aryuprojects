@@ -1,0 +1,25 @@
+uuid: dd07fbd8-11ad-4438-98c0-7a52d9d72cc1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.zip_code_finder
+    - field.storage.block_content.field_text
+  module:
+    - text
+id: block_content.zip_code_finder.field_text
+field_name: field_text
+entity_type: block_content
+bundle: zip_code_finder
+label: Text
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: "<p>Call Us Now at&nbsp;[sprowt:contact_phone]</p>\r\n"
+    format: basic_html
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

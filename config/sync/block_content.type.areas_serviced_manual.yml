@@ -1,0 +1,8 @@
+uuid: d6bc34ca-ceb2-4fef-b6e3-6b43e6de9b6b
+langcode: en
+status: true
+dependencies: {  }
+id: areas_serviced_manual
+label: 'Areas Serviced (Manual)'
+revision: false
+description: 'Manually create any number of links (Text and URL) and group them via any defined headings.'

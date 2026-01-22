@@ -1,0 +1,27 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class
+  ]
+%}
+
+{# If blog has Author display #}
+{% if (sprowt_get_setting('blog_global_author') is not empty) %}
+  <div class="field field--name-field-author"><a href="{{ sprowt_get_setting('blog_global_author_link') }}">{{ sprowt_get_setting('blog_global_author') }}</a></div>
+{% else %}
+  {% if authorId is not empty %}
+    <div class="field field--name-field-author"><a href="{{ url('entity.node.canonical', {'node': authorId}) }}">{{ drupal_field('title', 'node', authorId) }}</a></div>
+  {% endif %}
+{% endif %}
+
+{# If Global 'Blog Dates Display' value is false, don't display block #}
+{% if (sprowt_get_setting('blog_dates_displayed') == 1) %}
+    <div{{attributes.addClass(classes)}}>
+        {{ title_prefix }}
+        {{ title_suffix }}
+        {{ content }}
+    </div>
+{% endif %}

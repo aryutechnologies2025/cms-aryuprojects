@@ -1,0 +1,14 @@
+uuid: f8f9b0c2-4092-4654-9453-01e47244e505
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.account_strategist
+  module:
+    - user
+id: user_add_role_action.account_strategist
+label: 'Add the Account Strategist role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: account_strategist

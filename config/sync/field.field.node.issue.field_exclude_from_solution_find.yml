@@ -1,0 +1,23 @@
+uuid: 96a1fe0c-9361-4c6c-af29-7547bbc39002
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_exclude_from_solution_find
+    - node.type.issue
+id: node.issue.field_exclude_from_solution_find
+field_name: field_exclude_from_solution_find
+entity_type: node
+bundle: issue
+label: 'Exclude from Solution Finder'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

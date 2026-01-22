@@ -1,0 +1,15 @@
+uuid: a4c69ddc-dc4e-4cd9-8c57-0e6ebc4046b7
+langcode: en
+status: true
+dependencies: {  }
+id: solution_and_primary_service
+label: 'Solution and Primary Service'
+enabled: true
+first_field: field_primary_service_lp
+second_field: field_secondary_solution_ref
+add_direction: append
+bundles:
+  node:
+    - service
+    - solution_page_package_alt
+    - solution_page_services

@@ -1,0 +1,8 @@
+uuid: d9fbc425-024f-4f6e-8313-278c13afeb37
+langcode: en
+status: true
+dependencies: {  }
+id: hero_blog_post
+label: 'Hero - Blog Post'
+revision: false
+description: null

@@ -1,0 +1,22 @@
+uuid: 9e9c0aee-5f43-4ba0-a6f2-6ce76660a70d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.special_offers_all
+    - field.storage.block_content.field_text
+  module:
+    - text
+id: block_content.special_offers_all.field_text
+field_name: field_text
+entity_type: block_content
+bundle: special_offers_all
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

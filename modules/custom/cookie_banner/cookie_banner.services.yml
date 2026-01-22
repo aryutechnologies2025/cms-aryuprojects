@@ -1,0 +1,3 @@
+services:
+    cookie_banner.service:
+        class: Drupal\cookie_banner\CookieBannerService

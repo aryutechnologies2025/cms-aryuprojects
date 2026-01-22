@@ -1,0 +1,185 @@
+[class*="menu--utility-menu"],
+.source-menu--utility-menu,
+[class*="menu--mobile-utility-menu"],
+.source-menu--mobile-utility-menu,
+[class*="menu--mobile-footer-utility-menu"],
+.source-menu--mobile-footer-utility-menu {
+  > ul.menu {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    > li {
+      display: inline-block;
+      margin: 0 8px;
+
+      &[class*="branch"] {
+        display: none;
+        &.show-mobile {
+          display: inline-block !important;
+          @include breakpoint($small) {
+            display: none !important;
+          }
+        }
+      }
+
+      &:last-child,
+      &:last-child a {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+[class*="menu--utility-menu"],
+.source-menu--utility-menu {
+  display: none;
+  > ul.menu {
+    > li {
+      padding: 7px 0;
+
+      a {
+        display: block;
+        height: 100%;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        font-size: inherit;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: right;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  @include breakpoint($small) {
+    display: block;
+  }
+}
+
+// utility menu if using zip code finder headers only
+
+.block--type-header[class*="zip"] {
+  @include breakpoint($small) {
+    [class*="menu--utility-menu"] {
+      width: auto;
+      margin-left: 5px;
+      margin-right: -15px !important;
+
+      > ul.menu {
+        > li.menu-item {
+          a {
+            padding: 12px 22px;
+          }
+          &:last-child {
+            margin-right: 0;
+            a {
+              margin-right: 0 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  @include breakpoint(950px) {
+    [class*="menu--utility-menu"] {
+      //margin-left: auto;
+    }
+  }
+  @include breakpoint($medium) {
+    [class*="menu--utility-menu"] {
+      //margin-left: 30px;
+    }
+  }
+}
+
+[class*="menu--mobile-utility-menu"],
+.source-menu--mobile-utility-menu,
+[class*="menu--mobile-footer-utility-menu"],
+.source-menu--mobile-footer-utility-menu {
+  > ul.menu {
+    width: calc(100% - 20px);
+    margin: 10px;
+    justify-content: center;
+
+    > li.menu-item {
+      margin: 0;
+
+      span {
+        display: flex;
+        justify-content: center;
+
+        &::before {
+          display: inline-block;
+          margin-right: 4px;
+        }
+      }
+
+      a {
+        min-width: inherit;
+        margin-bottom: 0;
+        padding: 10px 8px;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        text-align: left;
+      }
+
+      &:last-child a {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @include breakpoint($xsmall) {
+    > ul.menu {
+      > li.menu-item {
+        a {
+          padding: 14px 16px;
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+
+  @include breakpoint($small) {
+    display: none;
+  }
+}
+
+[class*="menu--mobile-footer-utility-menu"],
+.source-menu--mobile-footer-utility-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+
+  > ul.menu {
+    > li.menu-item {
+      a {
+        padding: 14px 16px;
+      }
+    }
+  }
+}
+
+nav[class*="utility-menu"] {
+  .menu-item[class*="free"] span {
+    @include icon-before(clipboard, 17px, white);
+  }
+  .menu-item[class*="account"] span {
+    @include icon-before(user-lock, 17px, white);
+  }
+  .menu-item[class*="coupon"] span,
+  .menu-item[class*="offer"] span {
+    @include icon-before(dollar, 17px, white);
+  }
+  .menu-item[class*="career"] span {
+    @include icon-before(career, 17px, white);
+  }
+  .menu-item[class*="call"] span {
+    @include icon-before(mobile, 17px, white);
+  }
+  .menu-item[class*="text"] span {
+    @include icon-before(comment, 17px, white);
+  }
+}

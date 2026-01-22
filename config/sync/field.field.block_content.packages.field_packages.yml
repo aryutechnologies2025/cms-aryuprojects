@@ -1,0 +1,29 @@
+uuid: cdb27862-8b3b-4585-95de-6f06b6f5ed89
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.packages
+    - field.storage.block_content.field_packages
+    - node.type.package
+id: block_content.packages.field_packages
+field_name: field_packages
+entity_type: block_content
+bundle: packages
+label: 'Package Overrides'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      package: package
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,448 @@
+_entities:
+  'ef514465-1dd0-4ecd-8ac8-645141464020::4027':
+    _exportInfo:
+      key: 'ef514465-1dd0-4ecd-8ac8-645141464020::4027'
+      entity_type: block_content
+      bundle: hero_learning_center
+      entity_id: '460'
+      uuid: ef514465-1dd0-4ecd-8ac8-645141464020
+      isDefaultRevision: true
+      revisionId: '4027'
+      label: Masthead
+    id:
+      -
+        value: 460
+    uuid:
+      -
+        value: ef514465-1dd0-4ecd-8ac8-645141464020
+    revision_id:
+      -
+        value: 4027
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: hero_learning_center
+        target_type: block_content_type
+        target_uuid: ce26794d-912b-4a33-b33e-817e937df3fc
+    revision_created:
+      -
+        value: '2021-04-22T17:51:34+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Hero - Learning Center'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Masthead
+    changed:
+      -
+        value: '2021-04-22T17:51:34+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+  '613c951d-afc9-4756-8435-4121c8bd98eb::4028':
+    _exportInfo:
+      key: '613c951d-afc9-4756-8435-4121c8bd98eb::4028'
+      entity_type: block_content
+      bundle: basic
+      entity_id: '461'
+      uuid: 613c951d-afc9-4756-8435-4121c8bd98eb
+      isDefaultRevision: true
+      revisionId: '4028'
+      label: Introduction
+    id:
+      -
+        value: 461
+    uuid:
+      -
+        value: 613c951d-afc9-4756-8435-4121c8bd98eb
+    revision_id:
+      -
+        value: 4028
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: basic
+        target_type: block_content_type
+        target_uuid: 34ebec69-1449-469a-9ec4-be32f1e9c367
+    revision_created:
+      -
+        value: '2021-04-21T21:49:46+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Basic'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Introduction
+    changed:
+      -
+        value: '2021-04-21T21:49:46+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading: {  }
+    field_industry: {  }
+    field_label: {  }
+    field_link: {  }
+    field_subheading: {  }
+    field_text:
+      -
+        value: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et varius urna. Proin iaculis justo eget consectetur bibendum. Nunc fringilla libero odio, at faucibus augue facilisis eu. Curabitur cursus tortor eu lorem consectetur pulvinar. Donec efficitur varius neque, sit amet pellentesque libero malesuada sed. Vestibulum dictum, dolor non porttitor pellentesque, enim massa pellentesque nisl, id scelerisque augue ligula quis nisl. Ut ac elit nec ex congue mattis.</p>\r\n\r\n<ul>\r\n\t<li><strong>Pellentesque</strong> molestie, orci non suscipit iaculis, est nulla malesuada nulla, ac condimentum nisi turpis sit amet eros. Donec sed viverra justo.</li>\r\n\t<li><strong>Class aptent taciti sociosqu</strong> ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc eu metus quis mauris consectetur hendrerit sed ac ante.</li>\r\n\t<li><strong>Quisque pulvinar</strong> ac nisi in ornare. Curabitur luctus ligula ac ipsum porta feugiat. Ut finibus condimentum augue sed pharetra. Etiam a elit massa.</li>\r\n</ul>\r\n"
+        format: basic_html
+        processed: |
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et varius urna. Proin iaculis justo eget consectetur bibendum. Nunc fringilla libero odio, at faucibus augue facilisis eu. Curabitur cursus tortor eu lorem consectetur pulvinar. Donec efficitur varius neque, sit amet pellentesque libero malesuada sed. Vestibulum dictum, dolor non porttitor pellentesque, enim massa pellentesque nisl, id scelerisque augue ligula quis nisl. Ut ac elit nec ex congue mattis.</p>
+          <ul>
+          <li><strong>Pellentesque</strong> molestie, orci non suscipit iaculis, est nulla malesuada nulla, ac condimentum nisi turpis sit amet eros. Donec sed viverra justo.</li>
+          <li><strong>Class aptent taciti sociosqu</strong> ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc eu metus quis mauris consectetur hendrerit sed ac ante.</li>
+          <li><strong>Quisque pulvinar</strong> ac nisi in ornare. Curabitur luctus ligula ac ipsum porta feugiat. Ut finibus condimentum augue sed pharetra. Etiam a elit massa.</li>
+          </ul>
+  '943b1378-55f4-420f-89a5-ad34b1b28e84::4029':
+    _exportInfo:
+      key: '943b1378-55f4-420f-89a5-ad34b1b28e84::4029'
+      entity_type: block_content
+      bundle: basic
+      entity_id: '453'
+      uuid: 943b1378-55f4-420f-89a5-ad34b1b28e84
+      isDefaultRevision: true
+      revisionId: '4029'
+      label: Identification
+    id:
+      -
+        value: 453
+    uuid:
+      -
+        value: 943b1378-55f4-420f-89a5-ad34b1b28e84
+    revision_id:
+      -
+        value: 4029
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: basic
+        target_type: block_content_type
+        target_uuid: 34ebec69-1449-469a-9ec4-be32f1e9c367
+    revision_created:
+      -
+        value: '2021-04-21T21:56:19+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Basic'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Identification
+    changed:
+      -
+        value: '2021-04-21T21:56:19+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading:
+      -
+        value: 'What do ants look like?'
+        tag: h2
+    field_industry: {  }
+    field_label: {  }
+    field_link: {  }
+    field_subheading: {  }
+    field_text:
+      -
+        value: "<p>Nunc ullamcorper ante id enim commodo, in iaculis metus malesuada. Donec dictum condimentum ante sed laoreet. Aenean in fermentum metus, et placerat sapien. Integer vestibulum leo in purus vehicula consectetur. Vivamus tempor ligula sed nunc luctus ornare. Nunc quis ex hendrerit, auctor urna non, maximus tortor. Nulla vestibulum venenatis est, vel vestibulum lacus facilisis volutpat. Praesent rhoncus egestas nulla, quis euismod augue maximus sed. Donec a placerat risus. Praesent laoreet fringilla nulla, at gravida dui efficitur in. Curabitur pellentesque ultricies sem. Integer nisi nisl, volutpat sit amet massa ornare, gravida hendrerit velit.</p>\r\n\r\n<p>Aliquam erat volutpat. Donec vehicula tempus malesuada. Vivamus malesuada nunc sapien, sed aliquam est finibus a. Praesent quis volutpat enim, vel dignissim eros. In elementum ullamcorper ullamcorper. Mauris quam nulla, efficitur et eleifend vitae, laoreet sodales nisi. Aliquam porta erat eget lectus mattis, non interdum mi sollicitudin. Aenean fringilla consequat pulvinar.</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>Nunc ullamcorper ante id enim commodo, in iaculis metus malesuada. Donec dictum condimentum ante sed laoreet. Aenean in fermentum metus, et placerat sapien. Integer vestibulum leo in purus vehicula consectetur. Vivamus tempor ligula sed nunc luctus ornare. Nunc quis ex hendrerit, auctor urna non, maximus tortor. Nulla vestibulum venenatis est, vel vestibulum lacus facilisis volutpat. Praesent rhoncus egestas nulla, quis euismod augue maximus sed. Donec a placerat risus. Praesent laoreet fringilla nulla, at gravida dui efficitur in. Curabitur pellentesque ultricies sem. Integer nisi nisl, volutpat sit amet massa ornare, gravida hendrerit velit.</p>
+          <p>Aliquam erat volutpat. Donec vehicula tempus malesuada. Vivamus malesuada nunc sapien, sed aliquam est finibus a. Praesent quis volutpat enim, vel dignissim eros. In elementum ullamcorper ullamcorper. Mauris quam nulla, efficitur et eleifend vitae, laoreet sodales nisi. Aliquam porta erat eget lectus mattis, non interdum mi sollicitudin. Aenean fringilla consequat pulvinar.</p>
+  'cf8afc10-ebc2-484d-88be-795670a29259::4030':
+    _exportInfo:
+      key: 'cf8afc10-ebc2-484d-88be-795670a29259::4030'
+      entity_type: block_content
+      bundle: basic
+      entity_id: '454'
+      uuid: cf8afc10-ebc2-484d-88be-795670a29259
+      isDefaultRevision: true
+      revisionId: '4030'
+      label: Characteristics
+    id:
+      -
+        value: 454
+    uuid:
+      -
+        value: cf8afc10-ebc2-484d-88be-795670a29259
+    revision_id:
+      -
+        value: 4030
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: basic
+        target_type: block_content_type
+        target_uuid: 34ebec69-1449-469a-9ec4-be32f1e9c367
+    revision_created:
+      -
+        value: '2021-04-21T22:02:15+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Basic'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Characteristics
+    changed:
+      -
+        value: '2021-04-21T22:02:15+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading:
+      -
+        value: 'What are the unique characteristics of ants?'
+        tag: h2
+    field_industry: {  }
+    field_label: {  }
+    field_link:
+      -
+        uri: 'internal:#'
+        title: 'CTA Link'
+        options: {  }
+    field_subheading: {  }
+    field_text:
+      -
+        value: "<p>Nam rhoncus tortor sem, id euismod eros suscipit et. Phasellus vulputate mauris a justo posuere fermentum. Maecenas vel mauris sed sapien gravida aliquet. Cras elementum eros libero, ac commodo est bibendum vitae. Fusce eget pharetra leo, id mollis dui. Mauris tincidunt maximus sapien. Integer mi arcu, facilisis quis congue in, faucibus eu ante. Quisque ultricies elementum accumsan. Suspendisse posuere fermentum ultrices.</p>\r\n"
+        format: basic_html
+        processed: |
+          <p>Nam rhoncus tortor sem, id euismod eros suscipit et. Phasellus vulputate mauris a justo posuere fermentum. Maecenas vel mauris sed sapien gravida aliquet. Cras elementum eros libero, ac commodo est bibendum vitae. Fusce eget pharetra leo, id mollis dui. Mauris tincidunt maximus sapien. Integer mi arcu, facilisis quis congue in, faucibus eu ante. Quisque ultricies elementum accumsan. Suspendisse posuere fermentum ultrices.</p>
+  'b72a5096-d601-4cf8-891e-7b284bb55200::4031':
+    _exportInfo:
+      key: 'b72a5096-d601-4cf8-891e-7b284bb55200::4031'
+      entity_type: block_content
+      bundle: basic
+      entity_id: '455'
+      uuid: b72a5096-d601-4cf8-891e-7b284bb55200
+      isDefaultRevision: true
+      revisionId: '4031'
+      label: Habits
+    id:
+      -
+        value: 455
+    uuid:
+      -
+        value: b72a5096-d601-4cf8-891e-7b284bb55200
+    revision_id:
+      -
+        value: 4031
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: basic
+        target_type: block_content_type
+        target_uuid: 34ebec69-1449-469a-9ec4-be32f1e9c367
+    revision_created:
+      -
+        value: '2021-04-21T22:04:35+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Basic'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Habits
+    changed:
+      -
+        value: '2021-04-21T22:04:35+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected: {  }
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading:
+      -
+        value: 'What are the habits of ants?'
+        tag: h2
+    field_industry: {  }
+    field_label: {  }
+    field_link: {  }
+    field_subheading: {  }
+    field_text:
+      -
+        value: "<p>Nunc ullamcorper ante id enim commodo, in iaculis metus malesuada. Donec dictum condimentum ante sed laoreet. Aenean in fermentum metus, et placerat sapien. Integer vestibulum leo in purus vehicula consectetur. Vivamus tempor ligula sed nunc luctus ornare. Nunc quis ex hendrerit, auctor urna non, maximus tortor.</p>\r\n\r\n<p>Nulla vestibulum venenatis est, vel vestibulum lacus facilisis volutpat. Praesent rhoncus egestas nulla, quis euismod augue maximus sed. Donec a placerat risus. Praesent laoreet fringilla nulla, at gravida dui efficitur in. Curabitur pellentesque ultricies sem. Integer nisi nisl, volutpat sit amet massa ornare, gravida hendrerit velit. In feugiat interdum lacinia. Integer id aliquet leo, sed porttitor ligula. Integer eu ultrices nunc.</p>\r\n\r\n<p>Aliquam erat volutpat. Donec vehicula tempus malesuada. Vivamus malesuada nunc sapien, sed aliquam est finibus a. Praesent quis volutpat enim, vel dignissim eros. In elementum ullamcorper ullamcorper. Mauris quam nulla, efficitur et eleifend vitae, laoreet sodales nisi. Aliquam porta erat eget lectus mattis, non interdum mi sollicitudin. Aenean fringilla consequat pulvinar.</p>\r\n\r\n<ul>\r\n\t<li>Fusce sapien ex, laoreet imperdiet ante eget, luctus facilisis augue. Quisque a suscipit lacus. Vivamus congue, mi eget egestas tristique, tortor odio dignissim purus, sed pretium turpis ligula vitae odio. Fusce in lacus sed dolor pretium pharetra. Donec interdum nisi ut euismod rhoncus.</li>\r\n\t<li>Quisque sed mollis metus. Quisque condimentum quam eros, vitae ultricies tortor lobortis a. Phasellus eu massa tristique, interdum lorem sit amet, interdum erat. Mauris consectetur in dui sed posuere. Nunc turpis urna, venenatis vel ipsum vitae, feugiat gravida felis.</li>\r\n\t<li>Curabitur quis lobortis eros. Sed blandit arcu libero. Mauris ultricies porttitor urna rhoncus feugiat.</li>\r\n</ul>\r\n"
+        format: basic_html
+        processed: |
+          <p>Nunc ullamcorper ante id enim commodo, in iaculis metus malesuada. Donec dictum condimentum ante sed laoreet. Aenean in fermentum metus, et placerat sapien. Integer vestibulum leo in purus vehicula consectetur. Vivamus tempor ligula sed nunc luctus ornare. Nunc quis ex hendrerit, auctor urna non, maximus tortor.</p>
+          <p>Nulla vestibulum venenatis est, vel vestibulum lacus facilisis volutpat. Praesent rhoncus egestas nulla, quis euismod augue maximus sed. Donec a placerat risus. Praesent laoreet fringilla nulla, at gravida dui efficitur in. Curabitur pellentesque ultricies sem. Integer nisi nisl, volutpat sit amet massa ornare, gravida hendrerit velit. In feugiat interdum lacinia. Integer id aliquet leo, sed porttitor ligula. Integer eu ultrices nunc.</p>
+          <p>Aliquam erat volutpat. Donec vehicula tempus malesuada. Vivamus malesuada nunc sapien, sed aliquam est finibus a. Praesent quis volutpat enim, vel dignissim eros. In elementum ullamcorper ullamcorper. Mauris quam nulla, efficitur et eleifend vitae, laoreet sodales nisi. Aliquam porta erat eget lectus mattis, non interdum mi sollicitudin. Aenean fringilla consequat pulvinar.</p>
+          <ul>
+          <li>Fusce sapien ex, laoreet imperdiet ante eget, luctus facilisis augue. Quisque a suscipit lacus. Vivamus congue, mi eget egestas tristique, tortor odio dignissim purus, sed pretium turpis ligula vitae odio. Fusce in lacus sed dolor pretium pharetra. Donec interdum nisi ut euismod rhoncus.</li>
+          <li>Quisque sed mollis metus. Quisque condimentum quam eros, vitae ultricies tortor lobortis a. Phasellus eu massa tristique, interdum lorem sit amet, interdum erat. Mauris consectetur in dui sed posuere. Nunc turpis urna, venenatis vel ipsum vitae, feugiat gravida felis.</li>
+          <li>Curabitur quis lobortis eros. Sed blandit arcu libero. Mauris ultricies porttitor urna rhoncus feugiat.</li>
+          </ul>
+  'c20b1d54-451d-4445-bc23-2afbedbc2803::4032':
+    _exportInfo:
+      key: 'c20b1d54-451d-4445-bc23-2afbedbc2803::4032'
+      entity_type: block_content
+      bundle: basic
+      entity_id: '457'
+      uuid: c20b1d54-451d-4445-bc23-2afbedbc2803
+      isDefaultRevision: true
+      revisionId: '4032'
+      label: Dangers
+    id:
+      -
+        value: 457
+    uuid:
+      -
+        value: c20b1d54-451d-4445-bc23-2afbedbc2803
+    revision_id:
+      -
+        value: 4032
+    langcode:
+      -
+        value: en
+    type:
+      -
+        target_id: basic
+        target_type: block_content_type
+        target_uuid: 34ebec69-1449-469a-9ec4-be32f1e9c367
+    revision_created:
+      -
+        value: '2021-04-21T22:05:37+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    revision_user: {  }
+    revision_log:
+      -
+        value: 'Created new Basic'
+    status:
+      -
+        value: true
+    info:
+      -
+        value: Dangers
+    changed:
+      -
+        value: '2021-05-05T14:35:44+00:00'
+        format: 'Y-m-d\TH:i:sP'
+    reusable:
+      -
+        value: false
+    default_langcode:
+      -
+        value: true
+    revision_default:
+      -
+        value: true
+    revision_translation_affected:
+      -
+        value: true
+    metatag:
+      value:
+        canonical_url: 'http://default/home-page'
+        title: '| Sprowt 3'
+    field_heading:
+      -
+        value: 'What are the risks of having an ant infestation?'
+        tag: h2
+    field_industry: {  }
+    field_label: {  }
+    field_link: {  }
+    field_subheading: {  }
+    field_text:
+      -
+        value: "<p>Aliquam erat volutpat. Donec vehicula tempus malesuada. Vivamus malesuada nunc sapien, sed aliquam est finibus a. Praesent quis volutpat enim, vel dignissim eros. In elementum ullamcorper ullamcorper. Mauris quam nulla, efficitur et eleifend vitae, laoreet sodales nisi. Aliquam porta erat eget lectus mattis, non interdum mi sollicitudin. Aenean fringilla consequat pulvinar.</p>\r\n\r\n<ul>\r\n\t<li>Vivamus malesuada nunc sapien, sed aliquam est finibus a.</li>\r\n\t<li>Praesent quis volutpat enim, vel dignissim eros.</li>\r\n\t<li>In elementum ullamcorper ullamcorper.</li>\r\n\t<li>Mauris quam nulla, efficitur et eleifend vitae, laoreet sodales nisi. Aliquam porta erat eget lectus mattis, non interdum mi sollicitudin. Aenean fringilla consequat pulvinar.</li>\r\n</ul>\r\n"
+        format: basic_html
+        processed: |
+          <p>Aliquam erat volutpat. Donec vehicula tempus malesuada. Vivamus malesuada nunc sapien, sed aliquam est finibus a. Praesent quis volutpat enim, vel dignissim eros. In elementum ullamcorper ullamcorper. Mauris quam nulla, efficitur et eleifend vitae, laoreet sodales nisi. Aliquam porta erat eget lectus mattis, non interdum mi sollicitudin. Aenean fringilla consequat pulvinar.</p>
+          <ul>
+          <li>Vivamus malesuada nunc sapien, sed aliquam est finibus a.</li>
+          <li>Praesent quis volutpat enim, vel dignissim eros.</li>
+          <li>In elementum ullamcorper ullamcorper.</li>
+          <li>Mauris quam nulla, efficitur et eleifend vitae, laoreet sodales nisi. Aliquam porta erat eget lectus mattis, non interdum mi sollicitudin. Aenean fringilla consequat pulvinar.</li>
+          </ul>
+_content: {  }

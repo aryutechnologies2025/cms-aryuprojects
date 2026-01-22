@@ -1,0 +1,15 @@
+entity.zipcode_finder.view:
+    title: 'View'
+    route_name: entity.zipcode_finder.canonical
+    base_route: entity.zipcode_finder.canonical
+
+entity.zipcode_finder.edit_form:
+    title: 'Edit'
+    route_name: entity.zipcode_finder.edit_form
+    base_route: entity.zipcode_finder.canonical
+
+entity.zipcode_finder.delete_form:
+    title: 'Delete'
+    route_name: entity.zipcode_finder.delete_form
+    base_route: entity.zipcode_finder.canonical
+    weight: 10

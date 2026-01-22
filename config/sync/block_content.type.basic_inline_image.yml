@@ -1,0 +1,8 @@
+uuid: c3cf998c-444a-4914-b4c4-0a8472abff03
+langcode: en
+status: true
+dependencies: {  }
+id: basic_inline_image
+label: 'Basic w/ Inline Image'
+revision: false
+description: null

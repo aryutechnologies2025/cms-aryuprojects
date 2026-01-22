@@ -1,0 +1,10 @@
+uuid: 528c7f11-167e-4069-b0b7-06bbb6d94d8c
+langcode: en
+status: true
+dependencies: {  }
+id: bgstyle
+label: 'Background Style (depecated)'
+multiselect: single
+form_type: checkboxes
+required: false
+weight: 0

@@ -1,0 +1,11 @@
+uuid: 57da5f85-b1de-4368-996f-7f3ad55e96d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_learning_center
+id: block_content.hero_learning_center
+target_entity_type_id: block_content
+target_bundle: hero_learning_center
+default_langcode: site_default
+language_alterable: false

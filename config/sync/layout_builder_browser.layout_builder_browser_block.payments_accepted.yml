@@ -1,0 +1,11 @@
+uuid: de54a37b-4245-44cf-9fec-455f239a5948
+langcode: en
+status: true
+dependencies: {  }
+id: payments_accepted
+block_id: 'inline_block:payments_accepted'
+category: custom_blocks
+label: 'Payments Accepted'
+image_path: ''
+image_alt: ''
+weight: -57

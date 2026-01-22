@@ -1,0 +1,11 @@
+uuid: fa438d80-9f54-430d-94e7-035f43296907
+langcode: en
+status: true
+dependencies: {  }
+id: mobile_utility_menu
+block_id: 'menu_block:mobile-utility-menu'
+category: header_footer
+label: 'Mobile Utility Menu'
+image_path: ''
+image_alt: ''
+weight: -82

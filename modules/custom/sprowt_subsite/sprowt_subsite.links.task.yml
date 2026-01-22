@@ -1,0 +1,14 @@
+sprowt_subsite.subsite_settings:
+    title: Subsite settings
+    route_name: sprowt_subsite.subsite_settings
+    base_route: entity.node.canonical
+
+sprowt_subsite.subsite_configure:
+    title: Configure subsite
+    route_name: sprowt_subsite.subsite_configure
+    base_route: entity.node.canonical
+
+sprowt_subsite.subsite_homepage:
+    title: Subsite home
+    route_name: sprowt_subsite.subsite_homepage
+    base_route: entity.node.canonical

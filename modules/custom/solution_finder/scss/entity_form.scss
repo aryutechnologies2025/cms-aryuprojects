@@ -1,0 +1,44 @@
+#edit-concerns {
+  > * {
+    max-width: 290px;
+  }
+}
+
+//firefox fix for disappearing checkboxes
+.form-type--boolean {
+  .form-checkbox.form-boolean {
+    float: none;
+    left: -2px;
+  }
+  .form-item__label {
+    top: 2px;
+  }
+}
+
+.select2-search-result {
+  font-size: .8em;
+}
+
+@media screen and (min-width: 720px){
+  #edit-concerns {
+    columns: 2 300px;
+  }
+}
+
+@media screen and (min-width: 950px){
+  #edit-concerns {
+    columns: 3 300px;
+  }
+}
+
+@media screen and (min-width: 1250px){
+  #edit-concerns {
+    columns: 4 300px;
+  }
+}
+
+@media screen and (min-width: 1550px){
+  #edit-concerns {
+    columns: 5 300px;
+  }
+}

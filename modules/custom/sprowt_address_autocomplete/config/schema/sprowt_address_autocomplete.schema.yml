@@ -1,0 +1,8 @@
+# Schema for the configuration files of the Sprowt address autocomplete module.
+sprowt_address_autocomplete.settings:
+    type: config_object
+    label: 'Sprowt address autocomplete settings'
+    mapping:
+        google_maps_api_key:
+            type: string
+            label: 'Google maps API key'

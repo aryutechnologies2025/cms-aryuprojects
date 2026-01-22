@@ -1,0 +1,11 @@
+uuid: 361b27db-2a78-4547-84a0-75f06e18788e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ctm_header_block
+id: block_content.ctm_header_block
+target_entity_type_id: block_content
+target_bundle: ctm_header_block
+default_langcode: site_default
+language_alterable: false

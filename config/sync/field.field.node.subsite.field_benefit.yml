@@ -1,0 +1,29 @@
+uuid: 559bdc64-6285-4ef1-977e-4959c4ee7644
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_benefit
+    - node.type.benefit
+    - node.type.subsite
+id: node.subsite.field_benefit
+field_name: field_benefit
+entity_type: node
+bundle: subsite
+label: Benefit(s)
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      benefit: benefit
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

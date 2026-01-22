@@ -1,0 +1,23 @@
+uuid: 6a9eabd6-2f42-4518-bee0-6f5685f751ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subsite
+    - node.type.solution_page_packages
+  module:
+    - sprowt_subsite
+id: node.solution_page_packages.field_subsite
+field_name: field_subsite
+entity_type: node
+bundle: solution_page_packages
+label: Subsite
+description: 'Main or Subsite this content belongs to.'
+required: false
+translatable: true
+default_value:
+  -
+    target: _main
+default_value_callback: ''
+settings: {  }
+field_type: sprowt_subsite_reference

@@ -1,0 +1,38 @@
+.node--type-career-benefit {
+  //Teaser
+  &.node--view-mode-teaser,
+  &.node--view-mode-secondary-teaser {
+    .node__content {
+      flex-direction: column;
+      text-align: center;
+
+      [class*="field--name-field-icon"] {
+        margin: 0 auto 20px;
+      }
+
+      [class*="field--name-field-image"] {
+        margin-bottom: 20px;
+      }
+
+      .fieldset-wrapper {
+        text-align: center;
+      }
+    }
+  }
+
+  //Token
+  &.node--view-mode-token {
+
+    .node__content {
+      flex-direction: column;
+
+      [class*="field--name-field-icon"] {
+        margin: 0 auto 20px;
+      }
+
+      .field--name-title-text {
+        text-align: center;
+      }
+    }
+  }
+}

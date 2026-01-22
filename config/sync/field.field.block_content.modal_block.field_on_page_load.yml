@@ -1,0 +1,21 @@
+uuid: b601f610-4d5f-4b1b-8c7f-b668d2120b2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.modal_block
+    - field.storage.block_content.field_on_page_load
+id: block_content.modal_block.field_on_page_load
+field_name: field_on_page_load
+entity_type: block_content
+bundle: modal_block
+label: 'On Page Load'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

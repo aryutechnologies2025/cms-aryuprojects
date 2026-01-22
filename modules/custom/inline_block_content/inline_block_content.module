@@ -1,0 +1,211 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Inline Block Content module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+require_once __DIR__ . '/src/Plugin/Block/InlineBlock.php';
+
+use Drupal\Core\Plugin\Context\EntityContext;
+use Drupal\inline_block_content\InlineBlockUsage;
+use Drupal\inline_block_content\Plugin\Block\InlineBlock;
+use Drupal\layout_builder\Section;
+
+
+function _inline_block_content_test() {
+//    /** @var \Drupal\inline_block_content\InlineBlockContentService $service */
+//    $service = \Drupal::service('inline_block_content.manager');
+//    $entityTypeManager = \Drupal::entityTypeManager();
+//    $entityId = 'node.landing_page.default';
+//    $entity = $entityTypeManager->getStorage('entity_view_display')->load($entityId);
+//
+//    _inline_block_content_update_view_displays([$entity]);
+
+
+    /** @var InlineBlockUsage $usageService */
+    $usageService = \Drupal::service('inline_block.usage');
+    $usageService->doubleCheckNodeUsage();
+
+}
+
+/**
+ * Implements hook_block_alter().
+ */
+function inline_block_content_block_alter(&$definitions)
+{
+    foreach($definitions as &$definition) {
+        if($definition['id'] == 'inline_block') {
+            $definition['class'] = InlineBlock::class;
+        }
+    }
+}
+
+function _inline_block_content_resave_view_displays() {
+    /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $manager */
+    $manager = \Drupal::service('entity_type.manager');
+    $entities = $manager->getStorage('entity_view_display')->loadMultiple();
+    foreach($entities as $entity) {
+        $entity->save();
+    }
+}
+
+function _inline_block_content_update_view_displays($entities = []) {
+    /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $manager */
+    $manager = \Drupal::service('entity_type.manager');
+
+    /** @var \Drupal\inline_block_content\InlineBlockContentService $service */
+    $service = \Drupal::service('inline_block_content.manager');
+
+    if(empty($entities)) {
+        $entities = $manager->getStorage('entity_view_display')->loadMultiple();
+    }
+
+    foreach ($entities as $entity) {
+        if($entity instanceof \Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay) {
+            if(strpos($entity->id(), 'landing_page.default') !== false) {
+                $stop = true;
+            }
+            if($entity->isLayoutBuilderEnabled()) {
+                $sections = $entity->getThirdPartySetting('layout_builder', 'sections');
+                $newSections = [];
+                /** @var \Drupal\layout_builder\Section $section */
+                foreach($sections as $section) {
+                    $sectionArray = $section->toArray();
+                    /** @var \Drupal\layout_builder\SectionComponent $component */
+                    foreach($sectionArray['components'] as &$component) {
+                        $configuration = $component['configuration'];
+                        if(strpos($configuration['id'], 'inline_block:') === 0) {
+                            $block = null;
+                            if(!empty($configuration['block_serialized'])) {
+                                $block = unserialize($configuration['block_serialized']);
+                            }
+                            if(empty($block) && !empty($configuration['block_revision_id'])) {
+                                $block = $manager->getStorage('block_content')->loadRevision($configuration['block_revision_id']);
+                            }
+                            if(empty($block) && !empty($configuration['uuid'])) {
+                                $blockEntity = $manager->getStorage('block_content')->loadByProperties(['uuid' => $configuration['uuid']]);
+                                $block = is_array($blockEntity) ? array_pop($blockEntity) : $blockEntity;
+                            }
+                            if(!empty($block) && $block->uuid() != $configuration['uuid']) {
+                                $configuration['uuid'] = $block->uuid();
+                                $configuration['type'] = $block->bundle();
+                                $component['configuration'] = $configuration;
+                            }
+                        }
+                    }
+                    $newSections[] = \Drupal\layout_builder\Section::fromArray($sectionArray);
+                }
+                $entity->setThirdPartySetting('layout_builder', 'sections', $newSections);
+                $entity->save();
+                $service->exportInlineBlockContentToFile($entity);
+            }
+        }
+    }
+}
+
+function _inline_block_content_import_all_inline_block_content() {
+    /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $manager */
+    $manager = \Drupal::service('entity_type.manager');
+    $layoutTempstoreRepository = \Drupal::service('layout_builder.tempstore_repository');
+    $sectionStorageManager = \Drupal::service('plugin.manager.layout_builder.section_storage');
+
+    $entities = $manager->getStorage('entity_view_display')->loadMultiple();
+    /** @var \Drupal\inline_block_content\InlineBlockContentService $service */
+    $service = \Drupal::service('inline_block_content.manager');
+    foreach($entities as $entity) {
+        if($entity instanceof \Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay
+            && $entity->isLayoutBuilderEnabled()
+        ) {
+            $service->importInlineBlockContentFromFile($entity);
+            $contexts = [];
+            $contexts['display'] = EntityContext::fromEntity($entity);
+            $storage = $sectionStorageManager->load('defaults', $contexts);
+            $layoutTempstoreRepository->delete($storage);
+        }
+    }
+}
+
+
+/**
+ * Implements hook_ENTITY_TYPE_load().
+ */
+function inline_block_content_entity_view_display_load(array $entities)
+{
+    $database = \Drupal::database();
+    foreach($entities as $entity) { //add usage on the fly
+        if($entity instanceof \Drupal\layout_builder\Entity\LayoutBuilderEntityViewDisplay) {
+            $currentUsage = $database->query("
+                SELECT block_content_id
+                FROM inline_block_usage
+            ")->fetchCol();
+            $sections = $entity->getSections();
+            $usageUuids = [];
+            /** @var Section $section */
+            foreach($sections as $section) {
+                $components = $section->getComponents();
+                foreach($components as $component) {
+                    $config = $component->get('configuration');
+                    if(strpos($config['id'], 'inline_block') !== false) {
+                        if(!empty($config['uuid'])) {
+                            $usageUuids[] = $config['uuid'];
+                        }
+                    }
+                }
+            }
+            if(!empty($usageUuids)) {
+                $blocks = \Drupal::entityTypeManager()->getStorage('block_content')->loadByProperties([
+                    'uuid' => $usageUuids
+                ]);
+                $inserts = [];
+                foreach ($blocks as $block) {
+                    $blockId = $block->id();
+                    if (!in_array($blockId, $currentUsage)) {
+                        $inserts[] = [
+                            'block_content_id' => $blockId,
+                            'layout_entity_type' => $entity->getEntityTypeId(),
+                            'layout_entity_id' => $entity->id()
+                        ];
+                    }
+                }
+                if (!empty($inserts)) {
+                    $q = $database->insert('inline_block_usage')->fields([
+                        'block_content_id',
+                        'layout_entity_type',
+                        'layout_entity_id'
+                    ]);
+                    foreach ($inserts as $insert) {
+                        $q->values($insert);
+                    }
+                    $q->execute();
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function inline_block_content_cron()
+{
+    $clonedNodeUuids = \Drupal::database()->query("
+        SELECT entity_uuid
+        FROM content_import_clones
+        WHERE entity_type = 'node'
+    ")->fetchCol();
+
+    if(!empty($clonedNodeUuids)) {
+        $clonedNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+            'uuid' => $clonedNodeUuids
+        ]);
+        /** @var \Drupal\content_import_export\Importer $importer */
+        $importer = \Drupal::service('content_import_export.importer');
+        foreach($clonedNodes as $node) {
+            $importer->addLayoutBuilderUsage($node);
+        }
+    }
+}

@@ -1,0 +1,22 @@
+uuid: 0405c6db-fdd7-41de-b429-e7ec27e71d06
+langcode: en
+status: true
+dependencies: {  }
+id: block_secondary_color
+label: 'Secondary Color'
+classes: bg-secondary
+type: component
+group: bgcolor
+block_restrictions:
+  - 'inline_block:areas_serviced'
+  - 'inline_block:call_out'
+  - 'inline_block:concerns'
+  - 'inline_block:issues'
+  - 'inline_block:modal_block'
+  - 'inline_block:testimonials'
+  - 'inline_block:servicebot'
+  - 'inline_block:services'
+  - 'inline_block:special_offers'
+  - 'inline_block:webform'
+layout_restrictions: {  }
+weight: 13

@@ -1,0 +1,28 @@
+uuid: fcc05299-dda4-49e3-b687-deaa95889ee6
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.areas_serviced
+  module:
+    - block_class
+    - views
+  theme:
+    - s3_subtheme
+third_party_settings:
+  block_class:
+    classes: ctm-no-swap
+id: views_block__areas_serviced_block_footer_addresses
+theme: s3_subtheme
+region: disabled
+weight: -2
+provider: null
+plugin: 'views_block:areas_serviced-block_footer_addresses'
+settings:
+  id: 'views_block:areas_serviced-block_footer_addresses'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility: {  }

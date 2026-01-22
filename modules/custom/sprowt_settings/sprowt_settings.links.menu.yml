@@ -1,0 +1,20 @@
+sprowt_settings.sprowt_settings:
+    title: Sprowt Settings
+    description: Sprowt specific settings
+    parent: sprowt_settings.admin_config_sprowt
+    route_name: sprowt_settings.sprowt_settings
+    weight: 10
+
+sprowt_settings.install_file:
+    title: Sprowt Install File
+    description: Sprowt install file
+    parent: sprowt_settings.admin_config_sprowt
+    route_name: sprowt_settings.install_file
+    weight: 10
+
+sprowt_settings.admin_config_sprowt:
+    title: 'Sprowt'
+    route_name: sprowt_settings.admin_config_sprowt
+    parent: system.admin_config
+    description: 'Configure Sprowt.'
+    weight: -13

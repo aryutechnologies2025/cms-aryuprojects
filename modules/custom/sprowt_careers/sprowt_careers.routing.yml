@@ -1,0 +1,15 @@
+sprowt_careers.installer:
+    path: '/admin/sprowt/careers/installer'
+    defaults:
+        _title: 'Install Careers Section'
+        _form: 'Drupal\sprowt_careers\Form\InstallerForm'
+    requirements:
+        _permission: 'create career_page content'
+
+sprowt_careers.installer_confirm:
+    path: '/admin/sprowt/careers/installer-confirm'
+    defaults:
+        _title: 'Installer confirm'
+        _form: 'Drupal\sprowt_careers\Form\InstallerConfirmForm'
+    requirements:
+        _permission: 'create career_page content'

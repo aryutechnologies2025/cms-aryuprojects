@@ -1,0 +1,14 @@
+uuid: 06bc57d1-cd0e-4e69-9924-78eecc483b38
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.industry
+id: taxonomy_vocabulary_industry
+entity_type_id: taxonomy_vocabulary
+entity_id: industry
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

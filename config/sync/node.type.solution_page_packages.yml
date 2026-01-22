@@ -1,0 +1,24 @@
+uuid: 78f050c7-a648-4deb-a941-3d62a6ca65a5
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-navigation-subsite-full
+      - main
+      - main-navigation-subsite-
+    parent: 'main:'
+  sprowt_admin_override:
+    external_node_type: true
+    title_help: 'The Title is used in the masthead of the solutions page itself.'
+name: 'Solution Page - Package(s)'
+type: solution_page_packages
+description: null
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

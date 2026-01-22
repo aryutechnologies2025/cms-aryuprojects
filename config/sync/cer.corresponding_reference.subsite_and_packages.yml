@@ -1,0 +1,14 @@
+uuid: cdb84adb-e688-4ae2-85af-e616125fb25c
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_packages
+label: 'Subsite and Packages'
+enabled: true
+first_field: field_subsite_multiple
+second_field: field_packages
+add_direction: append
+bundles:
+  node:
+    - package
+    - subsite

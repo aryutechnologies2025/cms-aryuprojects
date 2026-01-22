@@ -1,0 +1,12 @@
+uuid: 4da5f1a5-f9a7-4543-a857-1bbe1e3e4528
+langcode: en
+status: true
+dependencies: {  }
+id: full_page_width
+label: 'Full Page Width'
+classes: full-width
+type: section
+group: layout
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -24

@@ -1,0 +1,22 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% block content %}
+    <div class="city-branch-information-wrap">
+      {{ content|without('field_link','field_disable_city_link') }}
+      {{ drupal_view((subsite == '_main' ? 'areas_serviced' : 'areas_serviced_subsite'), 'block_footer_address_multiple', 'altb') }}
+      {{ content.field_link }}
+    </div>
+  {% endblock %}
+</div>

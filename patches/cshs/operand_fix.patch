@@ -1,0 +1,20 @@
+diff --git a/cshs.module b/cshs.module
+index a8f049b62..9af5fbab4 100644
+--- a/cshs.module
++++ b/cshs.module
+@@ -60,9 +60,13 @@ function cshs_theme(): array {
+  * @internal
+  */
+ function cshs_config_schema_info_alter(array &$definitions): void {
+-  $parent = $definitions['views.filter.' . CshsTaxonomyIndexTid::ID]['mapping'] += CshsTaxonomyIndexTid::getConfigSchema();
++  $parent = $definitions['views.filter.' . CshsTaxonomyIndexTid::ID]['mapping'] ?? [];
++  $parent += CshsTaxonomyIndexTid::getConfigSchema();
+   // The `depth` plugin extends the default one and
+   // the `taxonomy.views.schema.yml` does not define
+   // the configuration the parent provides.
+-  $definitions['views.filter.' . CshsTaxonomyIndexTidDepth::ID]['mapping'] += $parent + CshsTaxonomyIndexTidDepth::getConfigSchema();
++  $schema = $definitions['views.filter.' . CshsTaxonomyIndexTidDepth::ID] ?? [];
++  $schema['mapping'] = $schema['mapping'] ?? [];
++  $schema['mapping'] += $parent + CshsTaxonomyIndexTidDepth::getConfigSchema();
++  $definitions['views.filter.' . CshsTaxonomyIndexTidDepth::ID] = $schema;
+ }

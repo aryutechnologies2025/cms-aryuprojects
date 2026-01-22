@@ -1,0 +1,27 @@
+lb_copy_section.copy:
+  path: '/lb_copy_section/copy/{section_storage_type}/{section_storage}/{delta}'
+  defaults:
+    _controller: '\Drupal\lb_copy_section\Controller\CopySectionController::copy'
+    _title: 'Copy section'
+  requirements:
+    _layout_builder_access: 'view'
+    _permission: 'copy paste sections'
+  options:
+    _admin_route: TRUE
+    parameters:
+      section_storage:
+        layout_builder_tempstore: TRUE
+
+lb_copy_section.paste:
+  path: '/lb_copy_section/paste/{section_storage_type}/{section_storage}/{delta}'
+  defaults:
+    _controller: '\Drupal\lb_copy_section\Controller\CopySectionController::paste'
+    _title: 'Paste section'
+  requirements:
+    _layout_builder_access: 'view'
+    _permission: 'copy paste sections'
+  options:
+    _admin_route: TRUE
+    parameters:
+      section_storage:
+        layout_builder_tempstore: TRUE

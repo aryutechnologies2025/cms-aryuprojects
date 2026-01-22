@@ -1,0 +1,13 @@
+{
+  "name": "drupal/sprowt_ckeditor_buttons",
+  "description": "Extension to the Drupal 8 CKEditor module.",
+  "type": "drupal-module",
+  "authors": [
+    {
+      "name": "matthan"
+    }
+  ],
+  "require": {
+      "drupal/core": "*"
+  }
+}

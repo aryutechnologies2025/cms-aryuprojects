@@ -1,0 +1,21 @@
+uuid: 0bafea91-d2e1-425f-b5c1-5e333e1d9261
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_button_text
+    - node.type.special_offer
+id: node.special_offer.field_button_text
+field_name: field_button_text
+entity_type: node
+bundle: special_offer
+label: 'Button Text'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Redeem Offer'
+default_value_callback: ''
+settings: {  }
+field_type: string

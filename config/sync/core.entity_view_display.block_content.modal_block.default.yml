@@ -1,0 +1,53 @@
+uuid: 5bd85111-5dcc-4f6e-804e-59c5b484415a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.modal_block
+    - field.field.block_content.modal_block.field_block_ref
+    - field.field.block_content.modal_block.field_cookie
+    - field.field.block_content.modal_block.field_expiration
+    - field.field.block_content.modal_block.field_on_page_load
+id: block_content.modal_block.default
+targetEntityType: block_content
+bundle: modal_block
+mode: default
+content:
+  field_block_ref:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_cookie:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_expiration:
+    type: number_unformatted
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_on_page_load:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true

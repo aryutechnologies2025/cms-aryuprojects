@@ -1,0 +1,5 @@
+entity_form:
+    js:
+        js/entity_form.js: { }
+    dependencies:
+        - core/jquery

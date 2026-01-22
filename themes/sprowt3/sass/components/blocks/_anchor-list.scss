@@ -1,0 +1,64 @@
+.layout__region {
+  .block-anchor-list-block,
+  .block--type-anchor-list-block {
+    padding: ($margin / 2) ($margin * 1.5);
+
+    .anchor-link-list-wrap {
+      @include flexbox;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5px;
+    }
+
+    .heading-wrap {
+      display: block;
+      text-align: center;
+    }
+    .list-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .anchor-list-block-heading {
+      @extend %h4;
+      margin: 0 0 15px 0;
+    }
+
+    ul.anchor-list-block-list {
+      margin: 0 0 0 14px;
+
+      @include breakpoint($medium) {
+        @include flexbox;
+        justify-content: center;
+        align-items: center;
+      }
+
+      li.anchor-list-block-list-item {
+        display: inline-block;
+        margin-right: 40px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        @include breakpoint($medium) {
+          display: block;
+        }
+
+        .anchor-list-block-link {
+          font-size: 1.6rem;
+          font-weight: 600;
+          line-height: 1.25;
+
+          @include icon-before(chevron-right) {
+            font-size: 1.2rem;
+            line-height: 1;
+            margin-right: 5px;
+            margin-left: -13px;
+            color: inherit;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+uuid: f2a7e142-dc46-4eec-b7bd-1382806a2b59
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_services
+    - node.type.faq
+    - node.type.service
+id: node.faq.field_services
+field_name: field_services
+entity_type: node
+bundle: faq
+label: Services
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      service: service
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

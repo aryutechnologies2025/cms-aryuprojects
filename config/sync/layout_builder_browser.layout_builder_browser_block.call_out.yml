@@ -1,0 +1,11 @@
+uuid: f86edd01-bbdb-426b-aa48-3d75f9fdd459
+langcode: en
+status: true
+dependencies: {  }
+id: call_out
+block_id: 'inline_block:call_out'
+category: custom_blocks
+label: 'Call Out'
+image_path: ''
+image_alt: ''
+weight: -76

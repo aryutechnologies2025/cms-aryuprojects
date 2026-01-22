@@ -1,0 +1,23 @@
+uuid: 858fc817-54fc-4cea-9a93-43d384315365
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-navigation-subsite-
+      - main-navigation-subsite-full
+      - main
+    parent: 'main:'
+  sprowt_admin_override:
+    external_node_type: true
+name: 'Media Gallery'
+type: media_gallery
+description: 'A collection of items displayed in various ways. Example: Photo Gallery.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

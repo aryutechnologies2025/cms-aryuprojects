@@ -1,0 +1,11 @@
+uuid: 999b3423-63e1-445c-89e8-b99837d71901
+langcode: en
+status: true
+dependencies: {  }
+id: career_social_media
+block_id: 'block_content:5f639cae-d75e-4b52-b0dc-b07f28cb55c3'
+category: career_pages
+label: 'Career Social Media'
+image_path: ''
+image_alt: ''
+weight: -100

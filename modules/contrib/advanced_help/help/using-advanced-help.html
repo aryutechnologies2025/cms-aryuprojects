@@ -1,0 +1,133 @@
+<p>The <strong>Advanced Help</strong> module provides a framework that
+allows module and theme developers integrate help texts in a Drupal
+site.  Although the <strong>Advanced Help</strong> does not provide
+general help by itself, it provides a powerful and easy framework that
+modules and themes may use to provide their own help.</p>
+
+<h2>Enabling the module</h2>
+
+<p>To enable the module navigate to <em>Manage » Extend</em> and check
+the box next to “Advanced Help”, the press “Install”.</p>
+  
+
+<p>After you have enabled the module, a new tab with the legend
+“Advanced help” will show up alongside with “Help” when you navigate
+to <em>Manage » Help</em>. Select that to see the list of help topics
+available.</p>
+
+
+<h2>Creating help</h2>
+
+<p>Modules and themes utilizing <strong>Advanced Help</strong> should
+create a subdirectory named <code>help</code> inside their own main
+directory. Place the file
+<em>MODULENAME</em>.help.yml (resp. <em>THEMENAME</em>.help.yml) in
+this subdirectory.  formatted similar to the following example:</p>
+
+<pre>
+about-php:
+  title: 'About PHP'
+  weight = -10
+history:
+  title: 'History of PHP'
+  parent: about-php
+usage:
+  title: 'Usage of PHP'
+  weight: 1
+security:
+  title: 'Security of PHP'
+  weight: 2
+syntax:
+  title: PHP syntax
+  parent: usage
+</pre>
+
+<p>This file defines five help topics (the lines that are not indented),
+and some settings for them.
+See: <a href="&topic:advanced_help/yml-file&">Advanced Help .help.yml
+file format</a> for a list of defined settings.</p>
+
+<h2>Linking to help</h2>
+
+<p>All topics are addressed by the module or theme providing the
+topic, and by the topic id. For Drupal 7, one could use the a format
+similar to the following example to produce a themed link to popup
+about a topic:</p>
+
+<!-- D7 -->
+<pre>
+$output = theme('advanced_help_topic', array(
+  'module' => 'help_example',
+  'topic' => 'about-php',
+));
+$output .= '&nbsp;' . t('Click the help icon!');
+</pre>
+
+<p>This produced the following output:</p>
+
+<pre>
+&lt;a class="advanced-help-link" title="About PHP"
+  onclick="var w=window.open(this.href, 'advanced_help_window',
+  'width=500,height=500,scrollbars,resizable');
+  w.focus(); return false;"
+  href="/help/help_example/about-php?popup=1"&gt;
+&lt;span&gt;Help&lt;/span&gt;
+&lt;/a&gt;
+ Click the help icon!
+&lt;/div&gt;
+</pre>
+
+<p>This produces a clickable help icon like the one shown below:</p>
+
+<div class="help-imgpos-center" style="max-width:180px">
+<img class="help-img-center" alt="[If you see this, the '&path' token is not expanded.]" src="&path&click_icon.png" width="180" height="90" border="0" />
+</div>
+
+<!-- D9/10 -->
+<p><strong>NOTE:</strong> In Drupal 9/10, the
+function <code>theme()</code> is deprecated. A valid example for
+Drupal 9/10 has to be created.</p>
+
+
+<p>Inside your help file, you may link to other help topics using this format:</p>
+
+<pre>
+&lt;a href="&amp;topic:moduleshortname/moduletopic&amp">anchortext&lt;/a&gt;
+&lt;a href="&amp;topic:help_example/lorem&amp">Lorem ipsum&lt;/a&gt;
+</pre>
+
+<p>The second line show how to link to a help page provided by the
+module with shortname <code>help_example</code>, with the
+topic <code>lorem</code>.</p>
+
+<p>To reference items within the help directory, such as images you wish to embed  within the help text, use:</p>
+
+<pre>
+&lt;img src="&amp;path&amp;example.png"/&gt;
+&lt;img src="&amp;trans_path&amp;example.png"/&gt;
+</pre>
+
+<p>The <code>trans_path</code> keyword refers to a translated version of the image in the translation directory and may be used it differs from the original.</p>
+
+<p>To reference any normal path in the site, use:</p>
+<pre>
+&lt;a href="&amp;base_url&amp;admin/settings/site-configuration"&gt;anchor text&lt;/a&gt;
+</pre>
+
+<h2 id="search">Search</h2>
+
+<p><strong>Note:</strong> This fearure is currently only available for Drupal
+7. It need to be reimplemented for Drupal 9/10.</p>
+  
+<p>To enable advanced help search, navigate to
+<em>Manage » Configuration » Search and metadata » Search pages</em>.
+Scroll down to <em>Search pages</em> and choose “Advanced Help” from
+the pull-down menu.  Click “Add search page”. Addd path and click
+“Save help”. The search form will appear on the top of the advanced
+help index pages.</p>
+
+<p>If the core <strong>Search</strong> module is enabled, the contents
+of the advanced help framework will be indexed on cron. If you enable
+new modules or themes and wish to immediately index their help text,
+navigate to <em>Manage » Configuration » System » Cron</em> and
+click the button “Run cron”.</p>

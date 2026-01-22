@@ -1,0 +1,18 @@
+diff --git a/core/modules/link/src/Plugin/Field/FieldType/LinkItem.php b/core/modules/link/src/Plugin/Field/FieldType/LinkItem.php
+index f03d3afdfb..91fb0c667a 100644
+--- a/core/modules/link/src/Plugin/Field/FieldType/LinkItem.php
++++ b/core/modules/link/src/Plugin/Field/FieldType/LinkItem.php
+@@ -179,6 +179,13 @@ public static function mainPropertyName() {
+    * {@inheritdoc}
+    */
+   public function getUrl() {
++    if($this->isToken()) {
++      $url = Url::fromUri($this->uri, (array) $this->options);
++      if(null === $url) {
++          $url = Url::fromUri('base:' . str_replace('token:', '', $this->uri), (array) $this->options);
++      }
++      return $url;
++    }
+     return Url::fromUri($this->uri, (array) $this->options);
+   }
+ 

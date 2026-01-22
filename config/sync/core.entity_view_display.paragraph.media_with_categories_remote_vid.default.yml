@@ -1,0 +1,41 @@
+uuid: 84d2e112-c0e1-495f-a6da-b363b171628c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.media_with_categories_remote_vid.field_label
+    - field.field.paragraph.media_with_categories_remote_vid.field_media
+    - field.field.paragraph.media_with_categories_remote_vid.field_mp_heading
+    - paragraphs.paragraphs_type.media_with_categories_remote_vid
+  module:
+    - tag_text_field
+id: paragraph.media_with_categories_remote_vid.default
+targetEntityType: paragraph
+bundle: media_with_categories_remote_vid
+mode: default
+content:
+  field_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: colorbox
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_mp_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

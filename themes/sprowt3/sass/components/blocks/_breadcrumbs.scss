@@ -1,0 +1,30 @@
+.layout__region {
+  .block-system-breadcrumb-block,
+  .block-inline-blockbreadcrumbs,
+  .block--type-breadcrumbs {
+    padding: 15px;
+    @include breakpoint($small) {
+      padding: 15px 30px;
+    }
+
+    ol {
+      li {
+        font-size: 1.6rem;
+
+        span {
+          font-weight: 600;
+        }
+
+        a {
+          color: var(--color-dark);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.block-breadcrumbs {
+    padding-left: ($margin * 1.5);
+    padding-right: ($margin * 1.5);
+}

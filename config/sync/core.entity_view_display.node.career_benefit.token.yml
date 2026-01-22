@@ -1,0 +1,41 @@
+uuid: 01397ffa-296c-4fc3-a026-6d18fce748db
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.token
+    - field.field.node.career_benefit.body
+    - field.field.node.career_benefit.field_icon_benefit
+    - field.field.node.career_benefit.field_image_benefit
+    - node.type.career_benefit
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.career_benefit.token
+targetEntityType: node
+bundle: career_benefit
+mode: token
+content:
+  field_icon_benefit:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: vector
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  body: true
+  field_image_benefit: true
+  langcode: true
+  links: true

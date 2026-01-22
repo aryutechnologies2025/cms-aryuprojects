@@ -1,0 +1,23 @@
+uuid: bf2b9fc3-77f2-4f16-a2aa-14ff7d9d28ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - link
+    - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_job_description_link
+field_name: field_job_description_link
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

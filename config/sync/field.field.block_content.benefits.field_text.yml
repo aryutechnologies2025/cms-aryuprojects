@@ -1,0 +1,22 @@
+uuid: 9536ea41-dcbc-4cae-8981-ecadab70839f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.benefits
+    - field.storage.block_content.field_text
+  module:
+    - text
+id: block_content.benefits.field_text
+field_name: field_text
+entity_type: block_content
+bundle: benefits
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

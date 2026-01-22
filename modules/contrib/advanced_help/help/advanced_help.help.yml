@@ -1,0 +1,14 @@
+advanced help settings:
+  show readme: true  
+
+using-advanced-help:
+  title: 'Using Advanced Help'
+  weight: -10
+translation:
+  title: 'Translating Advanced Help'
+yml-file:
+  title: 'Advanced Help .help.yml file format'
+css:
+  title: 'Predefined CSS classes'
+why-advanced-help:
+  title: 'Why Advanced Help?'

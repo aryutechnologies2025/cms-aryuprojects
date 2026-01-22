@@ -1,0 +1,13 @@
+<?php
+use Drupal\subsite_integration_accounts\Notifications\SlackNotification;
+function test_get_site_url() {
+    $integrationType = "PestPac";
+    $errorMessage = "Error Fetching PestPac Branches";
+    $details = [
+        'response' => 'No valid database information found for Company Key 00010',
+        'account_id' => '12345',
+        'code' => '500'
+    ];
+    $notify = new SlackNotification($integrationType,$errorMessage,$details);
+    $notify->sendMessage();
+}

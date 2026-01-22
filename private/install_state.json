@@ -1,0 +1,23 @@
+{
+    "packageLevel": "Error fetching package level",
+    "companyName": "Wood Lawn & Landscaping",
+    "installed": true,
+    "infoExpires": "2025-12-12T08:00:00+00:00",
+    "webformIntegrations": [],
+    "installFile": "\/var\/www\/private_files\/woodlawnandlandscaping-dev\/wood-lawn-landscape--sprowt-setup.yml",
+    "installCmd": "\/var\/www\/sprowt3-core\/vendor\/bin\/drush @woodlawnandlandscaping-dev si sprowt install-file=\/var\/www\/private_files\/woodlawnandlandscaping-dev\/wood-lawn-landscape--sprowt-setup.yml -y -v --no-ansi",
+    "installStarted": false,
+    "installStartedAt": "2025-01-20T19:23:30+00:00",
+    "installProgress": 1,
+    "title": "Starting install",
+    "message": "Site installed!",
+    "installFinishedAt": "2025-01-20T20:10:52+00:00",
+    "error": false,
+    "errorOutput": "",
+    "errorTrace": [],
+    "processPid": 1292317,
+    "siteMail": "support@woodlawnandlandscaping.com",
+    "updateMail": "drupal_updates@coalmarch.com",
+    "launchDate": "2025-03-11T15:52:30+00:00",
+    "webformMail": "support@woodlawnandlandscaping.com"
+}

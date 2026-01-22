@@ -1,0 +1,10 @@
+uuid: cbacbfda-3951-4041-832c-9c9c463983c8
+langcode: en
+status: true
+dependencies: {  }
+id: grouped_links
+label: 'Grouped Links'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+uuid: 6c5b932a-181f-47d6-864e-b59ca7cbcdc6
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-navigation-subsite-
+      - main-navigation-subsite-full
+      - main
+    parent: 'careers-menu:'
+  sprowt_admin_override:
+    external_node_type: true
+name: 'Job Post'
+type: job_post
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

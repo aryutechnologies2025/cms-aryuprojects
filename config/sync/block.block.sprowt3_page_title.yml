@@ -1,0 +1,20 @@
+uuid: 00a6a132-0527-4ef3-a30e-5758851ae2f0
+langcode: en
+status: false
+dependencies:
+  theme:
+    - sprowt3
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: sprowt3_page_title
+theme: sprowt3
+region: content
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

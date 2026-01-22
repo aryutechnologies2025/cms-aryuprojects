@@ -1,0 +1,77 @@
+claude-prompt-element:
+    css:
+        theme:
+            css/claude-prompt-element.css: { }
+    js:
+        js/claude-prompt-element.js: { }
+    dependencies:
+        - core/jquery
+        - core/drupal.dialog.ajax
+        - core/once
+
+claude-tester:
+    js:
+        js/claude-tester.js: { }
+    dependencies:
+        - core/jquery
+        - core/drupal.dialog.ajax
+        - core/once
+        - sprowt_settings/sprowt_object
+
+altered_widget:
+    css:
+        theme:
+            css/altered-widget.css: { }
+    js:
+        js/altered-widget.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+        - sprowt_settings/sprowt_object
+        - core/drupal.dialog.ajax
+
+widget:
+    js:
+        js/widget.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+
+exposed_tags_field:
+    js:
+        js/exposed_tags_field.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+        - sprowt_settings/sprowt_object
+
+filter_clear:
+    js:
+        js/filter_clear.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+        - sprowt_settings/sprowt_object
+
+unexpanded_widget:
+    css:
+        theme:
+            css/unexpanded-widget.css: { }
+    js:
+        js/unexpanded-widget.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+        - sprowt_settings/sprowt_object
+        - core/drupal.dialog.ajax
+
+widget_prompt_form:
+    css:
+        theme:
+            css/widget-prompt-form.css: { }
+    js:
+        js/widget-prompt-form.js: { }
+    dependencies:
+        - core/jquery
+        - core/once
+        - sprowt_settings/tooltip

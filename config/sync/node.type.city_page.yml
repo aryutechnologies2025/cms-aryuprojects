@@ -1,0 +1,22 @@
+uuid: 6ac01539-9059-496e-9801-7ad2d791195f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - sprowt_admin_override
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+  sprowt_admin_override:
+    external_node_type: true
+    title_help: 'The Title may be used and rendered on the website depending on the location of the content type.'
+name: 'City Page'
+type: city_page
+description: 'Create a City Page to be used for City specific items such as Services.'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

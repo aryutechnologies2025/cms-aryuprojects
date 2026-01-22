@@ -1,0 +1,130 @@
+%tokenview {
+  width: 100px;
+  margin: 0 15px 15px;
+
+  [class*="field--name-field-icon"] {
+    @include flexbox;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 95px;
+    min-width: 95px;
+    height: 95px;
+    margin: 0 auto 10px auto;
+    border-radius: 100px;
+    background-color: palette(white, pure);
+    transition: all $duration;
+
+    .field__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all $duration;
+    }
+
+    a {
+      display: flex;
+    }
+
+    img {
+      max-width: 40px;
+      max-height: 40px;
+    }
+
+    svg {
+      width: 40px;
+      height: 40px;
+
+      path {
+        transition: fill $duration;
+        fill: palette(primary);
+      }
+    }
+  }
+
+  &.and-more {
+    [class*="field--name-field-icon"] {
+      background-color: palette(primary);
+      svg {
+        path {
+          fill: palette(white);
+        }
+      }
+    }
+  }
+
+  .bg-white & {
+    [class*="field--name-field-icon"] {
+      background-color: palette(light);
+    }
+
+    &.and-more {
+      [class*="field--name-field-icon"] {
+        background-color: palette(primary);
+      }
+    }
+  }
+  .bg-light & {
+    [class*="field--name-field-icon"] {
+      background-color: palette(primary);
+      svg {
+        path {
+          fill: palette(white);
+        }
+      }
+    }
+
+    &.and-more {
+      [class*="field--name-field-icon"] {
+        background-color: palette(white);
+        svg {
+          path {
+            fill: palette(primary);
+          }
+        }
+      }
+    }
+  }
+}
+
+%secondarytokenview {
+  @extend %tokenview;
+  width: auto;
+
+  .node__content {
+    @include flexbox;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    text-align: left;
+  }
+
+  [class*="field--name-field-icon"] {
+    width: 45px;
+    min-width: 45px;
+    height: 45px;
+    margin: 0 15px 0 0;
+    border: 1px solid rgba(palette(black), 0.1);
+
+    img {
+      max-width: 25px;
+      max-height: 25px;
+    }
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  .field--name-title-text {
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .view-list-and-more {
+    margin: 0;
+    text-align: left;
+    font-weight: 600;
+  }
+}

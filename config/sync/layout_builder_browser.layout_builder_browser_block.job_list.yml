@@ -1,0 +1,11 @@
+uuid: 8fcaf0b3-1de9-4251-abe5-519eaa316858
+langcode: en
+status: true
+dependencies: {  }
+id: job_list
+block_id: 'block_content:6a799780-b205-4840-bef4-8b7d17bd752c'
+category: career_pages
+label: 'Job list'
+image_path: ''
+image_alt: ''
+weight: -100

@@ -1,0 +1,15 @@
+layout_builder_hide_hide_block:
+    title: 'Hide Block'
+    route_name: 'layout_builder_hide.hide_block'
+    group: 'layout_builder_block'
+    options:
+        attributes:
+            class: ['use-ajax']
+
+layout_builder_hide_show_block:
+    title: 'Show Block'
+    route_name: 'layout_builder_hide.show_block'
+    group: 'layout_builder_block'
+    options:
+        attributes:
+            class: ['use-ajax']

@@ -1,0 +1,23 @@
+uuid: ad1c824d-1077-4347-a918-545b6c29a991
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_starting_price
+    - node.type.package
+id: node.package.field_starting_price
+field_name: field_starting_price
+entity_type: node
+bundle: package
+label: 'Starting Price'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

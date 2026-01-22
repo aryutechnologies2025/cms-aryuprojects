@@ -1,0 +1,8 @@
+uuid: bf30721f-252b-4cab-9369-d68ccecb1809
+langcode: en
+status: true
+dependencies: {  }
+id: benefits
+label: Benefits
+revision: false
+description: 'Add Benefits to the site to be used in various lists.'

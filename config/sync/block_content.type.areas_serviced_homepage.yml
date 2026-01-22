@@ -1,0 +1,8 @@
+uuid: 0525941e-11ef-40a6-80e1-7b46a174acbe
+langcode: en
+status: true
+dependencies: {  }
+id: areas_serviced_homepage
+label: 'Areas Serviced (Homepage)'
+revision: false
+description: 'Pulls in all City Pages tagged with "Promote to Homepage"'

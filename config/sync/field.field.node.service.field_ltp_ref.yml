@@ -1,0 +1,29 @@
+uuid: 92d00158-d117-4e3c-9aba-35350b84959d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ltp_ref
+    - node.type.ltp_page
+    - node.type.service
+id: node.service.field_ltp_ref
+field_name: field_ltp_ref
+entity_type: node
+bundle: service
+label: 'Local Target Pages (LTP)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      ltp_page: ltp_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

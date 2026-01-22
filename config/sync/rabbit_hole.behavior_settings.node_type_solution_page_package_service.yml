@@ -1,0 +1,14 @@
+uuid: b4b5fd14-7371-4f6c-aa38-22590dfaf3d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.solution_page_package_service
+id: node_type_solution_page_package_service
+entity_type_id: node_type
+entity_id: solution_page_package_service
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

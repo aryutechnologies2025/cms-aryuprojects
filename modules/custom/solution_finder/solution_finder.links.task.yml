@@ -1,0 +1,19 @@
+#entity.solution.view:
+#    title: View
+#    route_name: entity.solution.canonical
+#    base_route: entity.solution.canonical
+entity.solution.edit_form:
+    title: Edit
+    route_name: entity.solution.edit_form
+    base_route: entity.solution.canonical
+entity.solution.delete_form:
+    title: Delete
+    route_name: entity.solution.delete_form
+    base_route: entity.solution.canonical
+    weight: 10
+
+#entity.solution.collection:
+#  title: Solution
+#  route_name: entity.solution.collection
+#  base_route: system.admin_content
+#  weight: 10

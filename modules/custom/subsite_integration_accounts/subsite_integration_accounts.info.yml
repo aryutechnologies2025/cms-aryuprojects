@@ -1,0 +1,5 @@
+name: "Subsite Integration Accounts"
+type: module
+description: 'Abstraction layer for subsite integration accounts.'
+package: 'Coalmarch'
+core_version_requirement: ^9 || ^10

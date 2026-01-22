@@ -1,0 +1,23 @@
+uuid: 5b90ae4c-d1e2-41c4-a39c-f2ccdb3f4739
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.special_offers_all
+    - field.storage.block_content.field_filter_by_service
+id: block_content.special_offers_all.field_filter_by_service
+field_name: field_filter_by_service
+entity_type: block_content
+bundle: special_offers_all
+label: 'Filter by Service'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

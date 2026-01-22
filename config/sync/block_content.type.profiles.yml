@@ -1,0 +1,8 @@
+uuid: 77591db6-416f-4b27-83e2-2e5cc6ec03ff
+langcode: en
+status: true
+dependencies: {  }
+id: profiles
+label: Profiles
+revision: false
+description: 'Add Profiles to the site to be used in various lists.'

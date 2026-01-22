@@ -1,0 +1,11 @@
+uuid: fa57e001-f82f-431a-b593-7b7f9ea6e135
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cities_serviced_by_branch
+id: block_content.cities_serviced_by_branch
+target_entity_type_id: block_content
+target_bundle: cities_serviced_by_branch
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,49 @@
+.page-node-type-career-page,
+.page-node-type-job-post {
+  
+  // Header Careers Main Menu
+  header.page-header nav.menu--careers-menu {
+    .navbar-toggle {
+      .icon-bar {
+        background-color: palette(secondary);
+      }
+    }
+
+    > ul.menu {
+      > li {
+        > a {
+          color: palette(black);
+
+          &::after {
+            color: palette(primary) !important;
+          }
+        }
+       
+        &:hover {
+          > a {
+            color: palette(secondary);
+          }
+        }
+
+        &:last-child {
+          background-color: palette(secondary);
+          a {
+            color: palette(white);
+          }
+          &:hover {
+            background-color: palette(primary);
+          }
+        }
+      }
+    }
+  }
+
+    // Header Mobile Menu
+  .mobile-header-menu {
+    .mobile-menu-close {
+      @include icon-after(close, 1.6rem) {
+        color: palette(secondary);
+      }
+    }
+  }
+}

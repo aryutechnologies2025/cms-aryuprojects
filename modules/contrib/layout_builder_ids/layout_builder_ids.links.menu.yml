@@ -1,0 +1,5 @@
+layout_builder_ids.settings:
+  title: "Layout Builder IDs"
+  description: "Configure the Layout Builder IDs module."
+  route_name: layout_builder_ids.settings
+  parent: system.admin_config_ui

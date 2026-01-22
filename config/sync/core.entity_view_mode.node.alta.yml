@@ -1,0 +1,11 @@
+uuid: 6c9402c7-e207-4a33-9e0c-1988c1b1e231
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.alta
+label: 'Alt A'
+description: ''
+targetEntityType: node
+cache: true

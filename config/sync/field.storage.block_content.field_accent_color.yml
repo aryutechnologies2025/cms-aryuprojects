@@ -1,0 +1,63 @@
+uuid: 9d69d912-2287-4f4d-a9ee-64884f445e66
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_accent_color
+field_name: field_accent_color
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: black
+      label: Black
+    -
+      value: dark
+      label: Dark
+    -
+      value: light
+      label: Light
+    -
+      value: white
+      label: White
+    -
+      value: primary
+      label: Primary
+    -
+      value: primary-light
+      label: 'Primary Light'
+    -
+      value: primary-dark
+      label: 'Primary Dark'
+    -
+      value: secondary
+      label: Secondary
+    -
+      value: secondary-light
+      label: 'Secondary Light'
+    -
+      value: secondary-dark
+      label: 'Secondary Dark'
+    -
+      value: custom-light
+      label: 'Custom Light'
+    -
+      value: custom-light-2
+      label: 'Custom Light 2'
+    -
+      value: custom-dark
+      label: 'Custom Dark'
+    -
+      value: custom-dark-2
+      label: 'Custom Dark 2'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

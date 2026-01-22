@@ -1,0 +1,11 @@
+uuid: 1522e044-fb04-498a-b89e-131055ffe621
+langcode: en
+status: true
+dependencies: {  }
+id: footer_address
+block_id: 'block_content:fc2db14f-63c7-42df-aea8-0118e3623429'
+category: header_footer
+label: 'Footer Address'
+image_path: ''
+image_alt: ''
+weight: -85

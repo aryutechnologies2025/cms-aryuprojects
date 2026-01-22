@@ -1,0 +1,8 @@
+uuid: c94896f1-fb03-457e-bd79-4fc0fe1d5bfd
+langcode: en
+status: true
+dependencies: {  }
+id: node__solution_page_packages
+label: 'Content: Solution Page - Package(s)'
+tags:
+  robots: 'noindex, nofollow, noarchive, nosnippet, noodp, noydir, noimageindex, notranslate'

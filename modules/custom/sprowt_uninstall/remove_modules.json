@@ -1,0 +1,19 @@
+[
+    "cmauth",
+    "content_import_export",
+    "content_library",
+    "ctm_api",
+    "pestpac_api",
+    "pestpac_webforms",
+    "sa5_api",
+    "sa5_webforms",
+    "sales_center_api",
+    "sales_center_webforms",
+    "speed_lead",
+    "sprowt2migrate",
+    "sprowt_antispam",
+    "sprowt_content",
+    "sprowt_my_business",
+    "sprowt_translation",
+    "sprowt_subsite_installer"
+]

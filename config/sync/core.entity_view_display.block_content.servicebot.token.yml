@@ -1,0 +1,42 @@
+uuid: 176ed85d-f21d-4f3d-a8c7-f029b073022f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.servicebot
+    - core.entity_view_mode.block_content.token
+    - field.field.block_content.servicebot.field_accent_color
+    - field.field.block_content.servicebot.field_arrow
+    - field.field.block_content.servicebot.field_icon
+    - field.field.block_content.servicebot.field_new_window
+    - field.field.block_content.servicebot.field_overlay_color
+    - field.field.block_content.servicebot.field_rounded
+    - field.field.block_content.servicebot.field_single_link
+    - field.field.block_content.servicebot.field_title
+    - field.field.block_content.servicebot.field_why_wait
+    - field.field.block_content.servicebot.field_why_wait_text
+  module:
+    - options
+id: block_content.servicebot.token
+targetEntityType: block_content
+bundle: servicebot
+mode: token
+content:
+  field_accent_color:
+    type: list_key
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_arrow: true
+  field_icon: true
+  field_new_window: true
+  field_overlay_color: true
+  field_rounded: true
+  field_single_link: true
+  field_title: true
+  field_why_wait: true
+  field_why_wait_text: true
+  langcode: true

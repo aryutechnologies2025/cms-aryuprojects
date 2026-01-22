@@ -1,0 +1,11 @@
+uuid: f40772ca-0def-48d1-b355-c9f536c5eca6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.branch
+id: node.branch
+target_entity_type_id: node
+target_bundle: branch
+default_langcode: site_default
+language_alterable: false

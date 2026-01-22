@@ -1,0 +1,28 @@
+diff --git a/core/modules/link/src/Plugin/Field/FieldType/LinkItem.php b/core/modules/link/src/Plugin/Field/FieldType/LinkItem.php
+index 90aa1bced1..549928f7dc 100644
+--- a/core/modules/link/src/Plugin/Field/FieldType/LinkItem.php
++++ b/core/modules/link/src/Plugin/Field/FieldType/LinkItem.php
+@@ -165,7 +165,7 @@ public function isExternal() {
+    * {@inheritdoc}
+    */
+   public function isToken() {
+-    return $this->getUrl()->isToken();
++    return strpos($this->uri, 'token:') === 0;
+   }
+ 
+   /**
+diff --git a/core/modules/menu_link_content/src/Entity/MenuLinkContent.php b/core/modules/menu_link_content/src/Entity/MenuLinkContent.php
+index 5e99a557d0..c558ec7b41 100644
+--- a/core/modules/menu_link_content/src/Entity/MenuLinkContent.php
++++ b/core/modules/menu_link_content/src/Entity/MenuLinkContent.php
+@@ -166,6 +166,10 @@ public function getPluginDefinition() {
+       }
+       $definition['options'] = $url_object->getOptions();
+     }
++    else {
++      $definition['route_name'] = '<none>';
++      $definition['route_parameters'] = [];
++    }
+ 
+     $definition['title'] = $this->getTitle();
+     $definition['description'] = $this->getDescription();

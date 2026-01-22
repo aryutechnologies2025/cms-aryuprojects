@@ -1,0 +1,216 @@
+.layout__region {
+  > .block {
+    border-radius: $base-border-radius;
+  }
+}
+
+.field--name-field-label,
+.field--name-field-label-tag {
+  &::after {
+    background-color: palette(primary);
+  }
+}
+
+%gradient-backgrounds {
+  $gradient-range: 20;
+  @while $gradient-range < 81 {
+
+    &.gradient-black {
+      &::before {
+        background-color: palette(black, pure);
+
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(black, pure) 0%,
+            palette(black, pure) 35%,
+            rgba(palette(black), 0) 65%,
+            rgba(palette(black), 0) 100%
+          );
+        }
+      }
+
+      &.gradient-range-#{$gradient-range}::before {
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(black, pure) 0%,
+            palette(black, pure) ($gradient-range - 15) * 1%,
+            rgba(palette(black), 0) ($gradient-range + 15) * 1%,
+            rgba(palette(black), 0) 100%
+          );
+        }
+      }
+    }
+
+    &.gradient-dark {
+      &::before {
+        background-color: palette(dark);
+
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(dark) 0%,
+            palette(dark) 35%,
+            rgba(palette(black), 0) 65%,
+            rgba(palette(black), 0) 100%
+          );
+        }
+      }
+
+      &.gradient-range-#{$gradient-range}::before {
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(dark) 0%,
+            palette(dark) ($gradient-range - 15) * 1%,
+            rgba(palette(black), 0) ($gradient-range + 15) * 1%,
+            rgba(palette(black), 0) 100%
+          );
+        }
+      }
+    }
+
+    &.gradient-light {
+      &::before {
+        background-color: palette(light);
+
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(light) 0%,
+            palette(light) 35%,
+            rgba(palette(white), 0) 65%,
+            rgba(palette(white), 0) 100%
+          );
+        }
+      }
+
+      &.gradient-range-#{$gradient-range}::before {
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(light) 0%,
+            palette(light) ($gradient-range - 15) * 1%,
+            rgba(palette(white), 0) ($gradient-range + 15) * 1%,
+            rgba(palette(white), 0) 100%
+          );
+        }
+      }
+    }
+
+    &.gradient-primary {
+      &::before {
+        background-color: palette(primary);
+
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(primary) 0%,
+            palette(primary) 35%,
+            transparent 65%,
+            transparent 100%
+          );
+        }
+      }
+
+      &.gradient-range-#{$gradient-range}::before {
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(primary) 0%,
+            palette(primary) ($gradient-range - 15) * 1%,
+            transparent ($gradient-range + 15) * 1%,
+            transparent 100%
+          );
+        }
+      }
+    }
+
+    &.gradient-primary-dark {
+      &::before {
+        background-color: palette(primary, dark);
+
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(primary, dark) 0%,
+            palette(primary, dark) 35%,
+            transparent 65%,
+            transparent 100%
+          );
+        }
+      }
+
+      &.gradient-range-#{$gradient-range}::before {
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(primary, dark) 0%,
+            palette(primary, dark) ($gradient-range - 15) * 1%,
+            transparent ($gradient-range + 15) * 1%,
+            transparent 100%
+          );
+        }
+      }
+    }
+
+    &.gradient-primary-light {
+      &::before {
+        background-color: palette(primary, light);
+
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(primary, light) 0%,
+            palette(primary, light) 35%,
+            transparent 65%,
+            transparent 100%
+          );
+        }
+      }
+
+      &.gradient-range-#{$gradient-range}::before {
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(primary, light) 0%,
+            palette(primary, light) ($gradient-range - 15) * 1%,
+            transparent ($gradient-range + 15) * 1%,
+            transparent 100%
+          );
+        }
+      }
+    }
+
+    &.gradient-secondary {
+      &::before {
+        background-color: palette(secondary);
+
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(secondary) 0%,
+            palette(secondary) 35%,
+            transparent 65%,
+            transparent 100%
+          );
+        }
+      }
+
+      &.gradient-range-#{$gradient-range}::before {
+        @include breakpoint($medium) {
+          background: linear-gradient(
+            90deg,
+            palette(secondary) 0%,
+            palette(secondary) ($gradient-range - 15) * 1%,
+            transparent ($gradient-range + 15) * 1%,
+            transparent 100%
+          );
+        }
+      }
+    }
+
+    $gradient-range: $gradient-range + 1;
+  }
+}

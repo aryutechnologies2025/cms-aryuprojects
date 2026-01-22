@@ -1,0 +1,17 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}">
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+      {{ drupal_entity('node', nid, 'token') }}
+  {% endblock %}
+</div>

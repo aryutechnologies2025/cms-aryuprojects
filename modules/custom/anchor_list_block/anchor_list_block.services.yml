@@ -1,0 +1,6 @@
+services:
+    anchor_list_block.event_subscriber:
+        class: Drupal\anchor_list_block\EventSubscriber\AnchorListBlockSubscriber
+        arguments: [ '@messenger' ]
+        tags:
+            - { name: event_subscriber }

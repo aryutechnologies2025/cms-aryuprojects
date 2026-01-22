@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Contains tag_text_field.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\tag_text_field\Plugin\Field\FieldType\HtmlTagTextFieldType;
+
+/**
+ * Implements hook_help().
+ */
+function tag_text_field_help($route_name, RouteMatchInterface $route_match)
+{
+    switch ($route_name) {
+        // Main module help for the tag_text_field module.
+        case 'help.page.tag_text_field':
+            $output = '';
+            $output .= '<h3>' . t('About') . '</h3>';
+            $output .= '<p>' . t('Adds a special text field with a tag selector') . '</p>';
+            return $output;
+
+        default:
+    }
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function tag_text_field_theme($existing, $type, $theme, $path)
+{
+    return [
+        'field__html_tag_text_field_type' => [
+            'base hook' => 'field__text',
+            'path' => $path . '/templates'
+        ]
+    ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tag_text_field_preprocess_field(&$variables)
+{
+    if($variables["element"]["#field_type"] == 'html_tag_text_field_type') {
+        /** @var HtmlTagTextFieldType $field */
+        foreach($variables["element"]["#items"] as $delta => $field) {
+            $variables['items'][$delta]['tag'] = !empty($field->tag) ? $field->tag : 'div';
+        }
+        $stop = true;
+    }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function tag_text_field_form_field_config_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    if(!empty($form['settings']['isTagTextField'])) {
+        $form['#validate'][] = '_tag_text_field_settings_form_validate';
+        $form["default_value"]["widget"][0]["tag"]['#after_build'] = ['_tag_text_field_widget_after_build'];
+    }
+}
+
+function _tag_text_field_settings_form_validate(&$form, \Drupal\Core\Form\FormStateInterface  &$formState) {
+    HtmlTagTextFieldType::validateSettingsForm($form, $formState);
+}
+
+function _tag_text_field_widget_after_build($element) {
+    unset($element['#needs_validation']);
+
+    return $element;
+}

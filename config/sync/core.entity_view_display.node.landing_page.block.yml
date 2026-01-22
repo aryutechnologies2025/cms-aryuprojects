@@ -1,0 +1,65 @@
+uuid: fa6d3962-5a5d-470f-8f5f-b20da2162a36
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.block
+    - field.field.node.landing_page.field_city_ref
+    - field.field.node.landing_page.field_industry
+    - field.field.node.landing_page.field_package_level
+    - field.field.node.landing_page.field_services
+    - field.field.node.landing_page.field_subsite
+    - field.field.node.landing_page.layout_builder__layout
+    - node.type.landing_page
+  module:
+    - field_group
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_address:
+      children:
+        - field_street
+        - field_city
+        - field_state
+        - field_zip
+        - field_phone
+      label: Address
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: city-address
+        id: ''
+        description: ''
+    group_hours:
+      children:
+        - field_hours
+      label: Hours
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        classes: city-hours
+        id: ''
+        description: ''
+id: node.landing_page.block
+targetEntityType: node
+bundle: landing_page
+mode: block
+content: {  }
+hidden:
+  field_city_ref: true
+  field_industry: true
+  field_package_level: true
+  field_services: true
+  field_subsite: true
+  langcode: true
+  layout_builder__layout: true
+  links: true
+  show_title: true

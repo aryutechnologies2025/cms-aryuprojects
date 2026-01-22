@@ -1,0 +1,5 @@
+services:
+    sprowt_settings.commands:
+        class: \Drupal\sprowt_settings\Commands\SprowtSettingsCommands
+        tags:
+            - { name: drush.command }

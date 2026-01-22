@@ -1,0 +1,37 @@
+uuid: a32dc195-8a59-46a6-856c-5cb210b97fc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.brand.field_brand_image
+    - field.field.paragraph.brand.field_link
+    - paragraphs.paragraphs_type.brand
+  module:
+    - link
+id: paragraph.brand.default
+targetEntityType: paragraph
+bundle: brand
+mode: default
+content:
+  field_brand_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: brand_450x300_
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

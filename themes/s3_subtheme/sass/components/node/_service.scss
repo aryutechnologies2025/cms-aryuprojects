@@ -1,0 +1,421 @@
+.node--type-service {
+  // Teaser & Alt
+  &.node--view-mode-teaser,
+  &.node--view-mode-teaser-nolink,
+  &[class*="node--view-mode-alt"] {
+    border-radius: $base-border-radius;
+
+    .node__content {
+      background-color: palette(white);
+
+      [class*="field--name-field-icon"] {
+        display: flex;
+        background-color: palette(primary);
+
+        svg {
+          path {
+            fill: palette(white);
+          }
+        }
+      }
+
+      .field--name-title {
+        color: $base-font-color;
+      }
+
+      .__body p {
+        color: $base-font-color;
+      }
+
+      .learn-more {
+        font-weight: 700;
+        padding: 15px 30px 30px;
+        span {
+          color: $base-font-color;
+        }
+        &::after {
+          color: palette(primary);
+        }
+      }
+    }
+  }
+
+  // Teaser
+  &.node--view-mode-teaser {
+    .node__content {
+      &:hover {
+        background-color: palette(primary);
+        
+        [class*="field--name-field-icon"] {
+          background-color: palette(white);
+
+          svg {
+            path {
+              fill: palette(primary);
+            }
+          }
+        }
+
+        .field--name-title {
+          color: palette(white);
+        }
+
+        .__body p {
+          color: palette(white);
+        }
+
+        .learn-more {
+          span {
+            color: palette(white);
+          }
+          &::after {
+            color: palette(white);
+          }
+        }
+      }
+    }
+  }
+
+  &.node--view-mode-teaser,
+  &.node--view-mode-teaser-nolink {
+    .node__content {
+      .field--name-field-image-service {
+        img {
+          border-top-left-radius: $base-border-radius;
+          border-top-right-radius: $base-border-radius;
+        }
+      }
+    }
+  }
+
+  // Teaser Alt A
+  &.node--view-mode-alta {
+    .node__content {
+
+      .field--name-title {
+        color: palette(primary);
+      }
+
+      .learn-more {
+        background-color: palette(primary);
+
+        span {
+          color: palette(white);
+        }
+
+        &::after {
+          color: palette(white);
+        }
+      }
+
+      &:hover {
+        [class*="field--name-field-icon"] {
+          background-color: palette(black);
+        }
+  
+        .learn-more {
+          background-color: palette(black);
+        }
+      }
+    }
+  }
+
+  // Teaser Alt B
+  &.node--view-mode-altb {
+
+    .node__content {
+      background-color: transparent;
+      
+      [class*="field--name-field-icon"] {
+        background-color: transparent;
+
+          svg {
+            path {
+              fill: palette(primary);
+            }
+          }
+      }
+    }
+  }
+
+  // Teaser Alt C
+  &.node--view-mode-altc {
+
+    .node__content {
+      background-color: rgba(palette(white), 0.05);
+
+      [class*="field--name-field-icon"] {
+        background-color: palette(primary);
+
+        svg {
+          path {
+            fill: palette(white);
+          }
+        }
+      }
+
+      .field--name-title {
+        &::after {
+          background-color: palette(primary);
+        }
+      }
+
+      .field--name-title,
+      .__body p,
+      .learn-more span {
+        color: palette(white);
+      }
+
+      &:hover {
+        background-color: palette(white);
+        
+        [class*="field--name-field-icon"] {
+          background-color: palette(white);
+
+          svg {
+            path {
+              fill: palette(primary);
+            }
+          }
+        }
+
+        .field--name-title,
+        .__body p,
+        .learn-more span {
+          color: $base-font-color;
+        }
+      }
+    }
+  }
+
+  // Teaser Alt D
+  &.node--view-mode-altd {
+    .node__content {
+      &::before {
+        display: none;
+      }
+      &::before,
+      &::after {
+        background-color: palette(primary);
+      }
+
+      &:hover {
+        background-color: palette(primary);
+
+        [class*="field--name-field-icon"] {
+          background-color: palette(white);
+
+          svg {
+            path {
+              fill: palette(primary);
+            }
+          }
+        }
+
+        .field--name-title,
+        .__body p,
+        .learn-more span {
+          color: palette(white);
+        }
+      }
+
+      @include breakpoint($small) {
+        &::before {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // Teaser Alt E
+  &.node--view-mode-alte {
+    .node__content {
+
+      svg.wave {
+        .svgwave {
+          fill: palette(primary);
+        }
+        .svgbg {
+          fill: palette(white);
+        }
+      }
+
+      &:hover {
+        background-color: palette(primary);
+
+        [class*="field--name-field-icon"] {
+          background-color: palette(white);
+
+          svg {
+            path {
+              fill: palette(primary);
+            }
+          }
+        }
+
+        svg.wave .svgbg {
+          fill: palette(primary);
+        }
+
+        .field--name-title,
+        .__body p,
+        .learn-more span,
+        .learn-more::after {
+          color: palette(white);
+        }
+      }
+    }
+  }
+
+  // Teaser Alt F
+  &.node--view-mode-altf {
+    .node__content {
+
+      span.field--name-title {
+        background-color: palette(primary);
+      }
+
+      [class*="field--name-field-icon"] {
+        &::before {
+          background-color: palette(primary);
+        }
+      }
+
+      &:hover {
+        .learn-more span {
+          color: palette(primary);
+        }
+      }
+    }
+  }
+
+  // Secondary & Quaternary Teaser - (Services Overview Page)
+  &.node--view-mode-secondary-teaser,
+  &.node--view-mode-quaternary-teaser {
+    .node__content {
+      [class*="field--name-field-icon"] {
+        background-color: palette(primary);
+        svg {
+          path {
+            fill: palette(white);
+          }
+        }
+      }
+      .title-link {
+        &:hover {
+          color: palette(primary);
+        }
+      }
+      .learn-more {
+        span {
+          @extend %button;
+          background-color: palette(secondary);
+        }
+      }
+
+      &:hover {
+        [class*="field--name-field-icon"] {
+          background-color: palette(secondary);
+          svg {
+            path {
+              //fill: palette(white);
+            }
+          }
+        }
+        .learn-more span {
+          color: palette(white);
+          background-color: palette(primary);
+        }
+      }
+    }
+  }
+
+  // Tertiary Teaser
+  &.node--view-mode-tertiary-teaser {
+    .node__content {
+      [class*="field--name-field-icon"] {
+        background-color: palette(grey, lit);
+        svg {
+          path {
+            color: palette(primary);
+          }
+        }
+      }
+    }
+  }
+
+  // Token
+  &.node--view-mode-token {
+    @extend %tokenview;
+
+    .node__content {
+      [class*="field--name-field-icon"] {
+        background-color: palette(light);
+        svg {
+          height: 60px;
+          width: 60px;
+          path {
+            fill: palette(primary, dark);
+          }
+        }
+      }
+
+      .field--name-title-text {
+        //color: palette(white);
+        font-weight: 600;
+      }
+
+      &:hover {
+        [class*="field--name-field-icon"] {
+          background-color: palette(primary, dark);
+          svg {
+            path {
+              fill: palette(light);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Secondary Token (Solution Alt Pages)
+  &.node--view-mode-secondary-token {
+    .node__content {
+      .field--name-title-text {
+        background-color: palette(primary);
+      }
+
+      [class*="field--name-field-icon"] {
+        background-color: palette(light);
+
+        svg {
+          path {
+            fill: palette(primary);
+          }
+        }
+      }
+    }
+  }
+
+  //Title (Simple List)
+  &.node--view-mode-title {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .node__content {
+      [class*="field--name-field-icon"] {
+        background-color: palette(white);
+
+        svg {
+          path {
+            fill: palette(primary);
+          }
+        }
+      }
+      .field--name-title-text {
+      }
+      .__body {
+      }
+    }
+  }
+}

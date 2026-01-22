@@ -1,0 +1,22 @@
+uuid: 11fe06ed-3da2-41b5-af21-f1d90ff4611d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: concerns
+label: Concerns
+type: 'canonical_entities:node'
+pattern: 'learning-center/[node:title]'
+selection_criteria:
+  bb224b56-3645-4ec1-8aba-6ee06806b76f:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: bb224b56-3645-4ec1-8aba-6ee06806b76f
+    context_mapping:
+      node: node
+    bundles:
+      concern: concern
+selection_logic: and
+weight: -10
+relationships: {  }

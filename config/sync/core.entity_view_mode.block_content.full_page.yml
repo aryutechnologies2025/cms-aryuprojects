@@ -1,0 +1,11 @@
+uuid: bc2875ed-eeef-4bf9-8913-6fc22bfb01bd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content.full_page
+label: 'Full Page'
+description: ''
+targetEntityType: block_content
+cache: true

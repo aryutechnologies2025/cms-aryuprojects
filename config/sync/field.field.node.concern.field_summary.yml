@@ -1,0 +1,22 @@
+uuid: 1811a7e7-037d-480f-a741-55e854e37759
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.concern
+  module:
+    - text
+id: node.concern.field_summary
+field_name: field_summary
+entity_type: node
+bundle: concern
+label: Summary
+description: 'Text displayed for each concern on the Learning Center page'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

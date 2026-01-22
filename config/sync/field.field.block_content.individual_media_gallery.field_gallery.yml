@@ -1,0 +1,29 @@
+uuid: b832a2b7-b5cd-44cc-9120-ddec9e3c074f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.individual_media_gallery
+    - field.storage.block_content.field_gallery
+    - node.type.media_gallery
+id: block_content.individual_media_gallery.field_gallery
+field_name: field_gallery
+entity_type: block_content
+bundle: individual_media_gallery
+label: Gallery
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      media_gallery: media_gallery
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,13 @@
+uuid: 899e2355-5f44-4e57-aff6-2a1ff39d0e4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.concerns_list
+id: block_content.concerns_list.default
+targetEntityType: block_content
+bundle: concerns_list
+mode: default
+content: {  }
+hidden:
+  langcode: true

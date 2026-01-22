@@ -1,0 +1,22 @@
+uuid: 9574ed46-e2ab-4cfc-9993-a7cd8faf4a33
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced
+    - field.storage.block_content.field_text
+  module:
+    - text
+id: block_content.areas_serviced.field_text
+field_name: field_text
+entity_type: block_content
+bundle: areas_serviced
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,48 @@
+uuid: c18141ac-a488-4811-a0da-2a1bff31e15c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.ctm_contact
+    - field.field.block_content.ctm_contact.field_heading
+    - field.field.block_content.ctm_contact.field_label_tag
+    - field.field.block_content.ctm_contact.field_phone_number
+    - field.field.block_content.ctm_contact.field_subheading_tag
+  module:
+    - tag_text_field
+id: block_content.ctm_contact.default
+targetEntityType: block_content
+bundle: ctm_contact
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_label_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_phone_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_subheading_tag:
+    type: html_tag_text_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  langcode: true

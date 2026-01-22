@@ -1,0 +1,23 @@
+uuid: 884c7b67-3b79-489a-b3eb-79580c043969
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.areas_serviced_homepage
+    - field.storage.block_content.field_link
+  module:
+    - link
+id: block_content.areas_serviced_homepage.field_link
+field_name: field_link
+entity_type: block_content
+bundle: areas_serviced_homepage
+label: Link
+description: "Provide a link either internal or external in the Alert.\r\nIf your link text is vague (e.g. \"View More\" or \"Check it out!\"), please add a thorough description of the link destination to ensure the site is ADA compliant."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

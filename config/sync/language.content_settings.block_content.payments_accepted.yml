@@ -1,0 +1,11 @@
+uuid: f56b4cfa-3114-48d0-8812-01c4e54441db
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.payments_accepted
+id: block_content.payments_accepted
+target_entity_type_id: block_content
+target_bundle: payments_accepted
+default_langcode: site_default
+language_alterable: false

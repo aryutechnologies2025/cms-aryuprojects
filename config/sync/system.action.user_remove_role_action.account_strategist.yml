@@ -1,0 +1,14 @@
+uuid: 64f4367f-ea30-46a4-847d-91d381795ec5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.account_strategist
+  module:
+    - user
+id: user_remove_role_action.account_strategist
+label: 'Remove the Account Strategist role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: account_strategist

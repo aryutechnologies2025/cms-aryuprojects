@@ -1,0 +1,29 @@
+uuid: dd29bd7a-44d4-462f-a5a8-5babe27b220d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gallery_thumbnail_hero
+    - media.type.media_image
+    - node.type.media_gallery
+id: node.media_gallery.field_gallery_thumbnail_hero
+field_name: field_gallery_thumbnail_hero
+entity_type: node
+bundle: media_gallery
+label: 'Gallery Thumbnail/Hero'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      media_image: media_image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

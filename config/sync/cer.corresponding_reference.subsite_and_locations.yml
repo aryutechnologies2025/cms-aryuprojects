@@ -1,0 +1,14 @@
+uuid: d399b1be-16d2-40b8-bdb4-051030a5b349
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_and_locations
+label: 'Subsite and Locations'
+enabled: true
+first_field: field_subsite
+second_field: field_branch
+add_direction: append
+bundles:
+  node:
+    - branch
+    - subsite

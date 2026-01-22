@@ -1,0 +1,45 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+
+<header class="job-details">
+    <div class="title-wrap">
+      <h1>{{ label }}</h1>
+    </div>
+    
+    <div class="info-wrap">
+      {{ content.field_job_category }}
+        <span class="pipe">|</span>
+      {{ content.field_location }}
+        <span class="pipe">|</span>
+      {{ content.field_job_posting_date }}
+
+      <div class="apply-wrap">
+        {{ content.apply_button }}
+      </div>
+    </div>
+
+</header>
+
+<article{{attributes.addClass(classes).removeAttribute('role')}}>  
+  <div{{content_attributes.addClass('node__content')}}>
+
+    <div class="additional-info">
+      <a href="/careers/careers-opportunities">Job Openings</a>
+      {{ content.body }}
+    </div>
+
+    <div class="apply-wrap">
+      {{ content.apply_button }}
+    </div>
+  </div>
+</article>

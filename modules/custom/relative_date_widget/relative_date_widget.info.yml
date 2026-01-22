@@ -1,0 +1,7 @@
+name: Relative Date Widget
+type: module
+description: Creates a datetime widget which accepts any relative date string
+package: Coalmarch
+core_version_requirement: ^9 || ^10
+dependencies:
+    - core:datetime

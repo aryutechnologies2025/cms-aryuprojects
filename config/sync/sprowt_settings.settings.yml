@@ -1,0 +1,52 @@
+phone_replace: $1-$2-$3
+blog_dates_displayed: 0
+mail_reroute: pass
+mail_reroute_email: ''
+company_name: 'Wood Lawn & Landscaping'
+year_started: '2005'
+webform_email: ''
+company_phone: '2527275301'
+customer_login: 'https://portal.golmn.com/login/d6CXUdE1cu-3TAPBSLIcHg'
+state: NC
+contact_name: Gary
+contact_email: gary@woodlawnandlandscaping.com
+contact_phone: '2527251482'
+special_offer_logo: 39e8570e-5f40-44af-ba39-e68d1e53faa6
+special_offer_logo_reverse: 6ccb2716-ee0f-44fc-83ac-92918f70039d
+custom:
+  special_offer_pest: '$100 off'
+  special_offer_termite: '$50 off'
+  special_offer_mosquito: '$25 off'
+  special_offer_ant: '$16 off'
+  special_offer_spider: '$17 off'
+  special_offer_wildlife: '$18 off'
+  special_offer_stinging_insect: '$19 off'
+  special_offer_bed_bug: '$100 off'
+  special_offer_rodent: '$30 off'
+  special_offer_weed: '$23 off'
+  special_offer_lawn: '$24 off'
+  special_offer_tree_shrub: '$25 off'
+  special_offer_aeration_seeding: '$28 off'
+  special_offer_reminder: '$special offer'
+  uvp_pest_capital: Same-Day
+  uvp_pest_lowercase: same-day
+  special_offer_mowing: '$25 off'
+  special_offer_landscape: '$20 off'
+  uvp_lawn_lowercase: organic
+  uvp_lawn_capital: Organic
+  service_cta_estimate: 'Get Your FREE Estimate'
+  city_emotional_pest: '[sprowt:uvp_pest_capital] {Emotional Title} in [node:title]—Save up to $100!'
+  city_emotional_lawn: '[sprowt:uvp_lawn_capital] {Emotional Title} in [node:title]—Save up to $100!'
+  city_emotional_pest_alt: '[sprowt:uvp_pest_capital] {Emotional Title} in [node:title]'
+  city_emotional_lawn_alt: '[sprowt:uvp_lawn_capital] {Emotional Title} in [node:title]'
+solution_finder_enabled: 0
+packageLevel: corporate
+webform_from_email: support@woodlawnandlandscaping.com
+webform_to_email: support@woodlawnandlandscaping.com
+sprowt_theme: round
+disable_aggregaterating_schema: 1
+price_range: ''
+blog_global_author: ''
+blog_global_author_link: /about-us/meet-team
+webform_from_name: 'Wood Lawn & Landscape'
+jump_button: 0

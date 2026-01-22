@@ -1,0 +1,16 @@
+.page-hightlight {
+  position: relative;
+}
+
+.message-modal {
+  position: absolute;
+  left: 30px;
+  display: block;
+  width: calc(100% - 60px);
+  height: auto;
+  margin-top: 15px;
+  z-index: 10;
+  animation: stayAndFadeOut 8s;
+  animation-fill-mode: forwards;
+  pointer-events: none;
+}

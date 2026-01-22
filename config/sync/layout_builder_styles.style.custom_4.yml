@@ -1,0 +1,21 @@
+uuid: 04190cd0-1878-4081-9fe9-4c9aa19351be
+langcode: en
+status: true
+dependencies: {  }
+id: custom_4
+label: 'Custom Dark 2'
+classes: bg-custom-dark-2
+type: component
+group: bgcolor
+block_restrictions:
+  - 'inline_block:areas_serviced'
+  - 'inline_block:call_out'
+  - 'inline_block:concerns'
+  - 'inline_block:issues'
+  - 'inline_block:testimonials'
+  - 'inline_block:servicebot'
+  - 'inline_block:services'
+  - 'inline_block:special_offers'
+  - 'inline_block:webform'
+layout_restrictions: {  }
+weight: 22

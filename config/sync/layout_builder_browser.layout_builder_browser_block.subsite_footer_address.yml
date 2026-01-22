@@ -1,0 +1,11 @@
+uuid: 2a6c69a7-3357-4f54-904e-5b1189ff9948
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_footer_address
+block_id: 'views_block:branches-subsite_footer_address'
+category: header_footer
+label: 'Subsite Footer Address'
+image_path: ''
+image_alt: ''
+weight: -94

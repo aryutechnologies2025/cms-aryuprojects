@@ -1,0 +1,11 @@
+name: Zipcode Finder
+type: module
+description: Provides zipcode finder functionality
+package: Coalmarch
+core_version_requirement: ^9 || ^10
+dependencies:
+    - better_exposed_filters:better_exposed_filters
+    - bulk_update_fields:bulk_update_fields
+    - drupal:link
+    - views_autocomplete_filters:views_autocomplete_filters
+    - views_bulk_operations:views_bulk_operations

@@ -1,0 +1,12 @@
+uuid: 17110ec3-821e-49ad-ae59-3ec8803f6074
+langcode: en
+status: true
+dependencies: {  }
+id: secondary_light_color
+label: 'Secondary Light Color'
+classes: bg-secondary-light
+type: section
+group: bgcolor
+block_restrictions: {  }
+layout_restrictions: {  }
+weight: -14

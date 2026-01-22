@@ -1,0 +1,18 @@
+services:
+    sprowt_settings.manager:
+        class: Drupal\sprowt_settings\SprowtSettings
+        public: true
+        arguments:
+            - '@database'
+            - '@entity_type.manager'
+            - '@config.factory'
+            - '@state'
+            - '@file_system'
+
+    sprowt_settings.twig_extension:
+        class: Drupal\sprowt_settings\TwigExtension\SprowtSettingsTwigExtension
+        public: true
+        arguments:
+            - '@sprowt_settings.manager'
+        tags:
+            - { name: twig.extension }

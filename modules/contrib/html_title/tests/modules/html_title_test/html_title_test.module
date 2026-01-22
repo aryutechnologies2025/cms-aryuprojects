@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Support module for the HTML Title module tests.
+ */
+
+use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_system_breadcrumb_alter().
+ */
+function html_title_test_system_breadcrumb_alter(Breadcrumb $breadcrumb, RouteMatchInterface $route_match, array $context) {
+  // Append the current page title to the breadcrumb for non-admin routes.
+  if (!\Drupal::service('router.admin_context')->isAdminRoute()) {
+    $title = \Drupal::service('title_resolver')->getTitle(\Drupal::request(), $route_match->getRouteObject());
+    if (!empty($title)) {
+      $breadcrumb->addLink(Link::createFromRoute($title, '<none>'));
+      $breadcrumb->addCacheContexts(['url.path']);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function html_title_test_form_node_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  $form['actions']['submit']['#submit'][] = '_html_title_test_add_status_message';
+}
+
+/**
+ * Add extra status messages after a node is saved.
+ *
+ * This makes it possible to test that only the node confirmation messages are
+ * overridden.
+ */
+function _html_title_test_add_status_message(array &$form, FormStateInterface $form_state) {
+  if (\Drupal::state()->get('html_title_test.set_node_confirmation_messages', FALSE)) {
+    \Drupal::messenger()->addStatus('Test status message');
+    \Drupal::messenger()->addStatus('Test status message with <p>HTML</p>');
+    \Drupal::messenger()->addError('Test error message');
+  }
+}

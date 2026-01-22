@@ -1,0 +1,43 @@
+uuid: d56b9ba4-0387-4159-a1ec-55ff758dded2
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.payments_accepted
+    - field.field.block_content.payments_accepted.field_hide_label
+    - field.field.block_content.payments_accepted.field_label
+    - field.field.block_content.payments_accepted.field_payment_types
+  module:
+    - options
+id: block_content.payments_accepted.default
+targetEntityType: block_content
+bundle: payments_accepted
+mode: default
+content:
+  field_hide_label:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_payment_types:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true

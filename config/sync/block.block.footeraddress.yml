@@ -1,0 +1,25 @@
+uuid: 5dd16668-a15e-4900-bbab-fbdf7811d769
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:city_page_main_branch:fc2db14f-63c7-42df-aea8-0118e3623429'
+  module:
+    - block_content
+  theme:
+    - s3_subtheme
+id: footeraddress
+theme: s3_subtheme
+region: disabled
+weight: -6
+provider: null
+plugin: 'block_content:fc2db14f-63c7-42df-aea8-0118e3623429'
+settings:
+  id: 'block_content:fc2db14f-63c7-42df-aea8-0118e3623429'
+  label: 'Footer Address'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,11 @@
+uuid: 48cf68de-c810-444e-af95-46e4079f33d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - webform
+id: webform_submission_delete_action
+label: 'Delete submission'
+type: webform_submission
+plugin: webform_submission_delete_action
+configuration: {  }

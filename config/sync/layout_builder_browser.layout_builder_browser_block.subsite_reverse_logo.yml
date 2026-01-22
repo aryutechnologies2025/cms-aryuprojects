@@ -1,0 +1,11 @@
+uuid: 8920c1fd-e8a8-41d3-b6d0-c6de90cd1304
+langcode: en
+status: true
+dependencies: {  }
+id: subsite_reverse_logo
+block_id: sprowt_subsite_logo_reverse_block
+category: header_footer
+label: 'Subsite Footer Logo'
+image_path: ''
+image_alt: ''
+weight: -93

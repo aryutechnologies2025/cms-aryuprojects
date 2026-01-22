@@ -1,0 +1,27 @@
+uuid: e0b5af8a-4ead-4c79-bda3-14781e46c702
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.sector
+  module:
+    - text
+id: taxonomy_term.sector.default
+targetEntityType: taxonomy_term
+bundle: sector
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  show_title:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

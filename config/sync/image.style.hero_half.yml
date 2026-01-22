@@ -1,0 +1,17 @@
+uuid: 3d49f4de-c22c-48a0-9fc8-b1e86e1e2157
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_half
+label: 'Hero Half (800 x 520)'
+effects:
+  6625763a-4da6-48e6-95d7-c97a63820982:
+    uuid: 6625763a-4da6-48e6-95d7-c97a63820982
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 520
+      crop_type: focal_point

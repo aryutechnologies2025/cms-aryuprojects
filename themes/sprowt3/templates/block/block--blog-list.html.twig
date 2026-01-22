@@ -1,0 +1,43 @@
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ configuration.label|replace({' ': '-'})|lower,
+    attributes.id,
+    'block-' ~ plugin_id|clean_class,
+    'display-' ~ content.field_display_blog_posts.0['#markup'],
+    'slick-count-' ~ content.field_count_blog_posts.0['#markup']
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    <div class="blog-list-wrap">
+      {{ content|without('field_branch','field_category_filter','field_count_blog_posts','field_display_blog_posts','field_industry','field_view_all') }}
+
+      {% set which_branch = content.field_branch[0] ? content.field_branch[0]['#plain_text']  : 'all' %}
+      {% set which_industry = content.field_industry[0] ? content.field_industry[0]['#plain_text']  : 'all' %}
+
+      {% if content.field_count_blog_posts[0]['#markup'] == 'all' or content.field_count_blog_posts.0['#markup'] is empty %}
+        {{ drupal_view((subsite == '_main' ? 'blog' : 'blog_subsite'), 'block_blog_list', content.field_display_blog_posts.0['#markup'], which_branch, which_industry, content.field_category_filter[0]['#plain_text'], content.field_category_filter[1]['#plain_text'], content.field_category_filter[2]['#plain_text'], content.field_category_filter[3]['#plain_text'], content.field_category_filter[4]['#plain_text']) }}
+      {% else %}
+        {{ drupal_view((subsite == '_main' ? 'blog' : 'blog_subsite'), 'block_teasers', content.field_display_blog_posts.0['#markup'], content.field_count_blog_posts.0['#markup'], which_branch, which_industry, content.field_category_filter[0]['#plain_text'], content.field_category_filter[1]['#plain_text'], content.field_category_filter[2]['#plain_text'], content.field_category_filter[3]['#plain_text'], content.field_category_filter[4]['#plain_text']) }}
+        {% if content.field_view_all[0]['#url'] is not empty %}
+          {% if content.field_view_all[0]['#url'].options.attributes is not empty %}
+            {% set view_all_attributes = create_attribute(content.field_view_all[0]['#url'].options.attributes) %}
+          {% else %}
+            {% set view_all_attributes = create_attribute() %}
+          {% endif %}
+          <div class="view-all-blog-posts">
+            <a href="{{ content.field_view_all.0['#url'] }}" {{view_all_attributes.addClass(['button'])}}>
+              {{ content.field_view_all.0['#title'] }}
+            </a>
+          </div>
+        {% endif %}
+      {% endif %}
+
+    </div>
+  {% endblock %}
+</div>

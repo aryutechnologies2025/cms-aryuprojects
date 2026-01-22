@@ -1,0 +1,20 @@
+uuid: c7ac9ab5-02fd-463b-be97-effc405e0e61
+langcode: en
+status: true
+dependencies:
+  theme:
+    - s3_subtheme
+id: s3_subtheme_tabs
+theme: s3_subtheme
+region: admin_links
+weight: -10
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

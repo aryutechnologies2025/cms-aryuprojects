@@ -1,0 +1,52 @@
+[class*="view-blog"] {
+  margin: 0 30px;
+
+  .pager {
+    margin-top: 30px;
+  }
+
+  .slick-dots {
+    bottom: -10px;
+  }
+}
+
+//Teaser View
+.block-inline-blockblog-list[class*="display-secondary_teaser"] [class*="view-blog"],
+.block-inline-blockblog-list[class*="display-tertiary_teaser"] [class*="view-blog"],
+.block-inline-blockblog-list[class*="display-quaternary_teaser"] [class*="view-blog"],
+.block-inline-blockblog-list[class*="display-quinary_teaser"] [class*="view-blog"],
+.block-inline-blockblog-list[class*="display-alt"] [class*="view-blog"],
+[class*="view-blog"][class*="block_secondary_teaser"] {
+  @extend %viewcolumns;
+}
+
+.view-all-blog-posts {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.layout__region {
+  .block-inline-blockblog-list {
+    padding-top: $margin;
+    padding-bottom: $margin;
+  }
+}
+
+.layout__region {
+  .block-inline-blockblog-list {
+    .field--name-field-heading,
+    .field--name-field-subheading,
+    .field--name-field-subheading-tag,
+    .field--name-field-label,
+    .field--name-field-label tag {
+      margin-left: $margin;
+      margin-right: $margin;
+    }
+
+    .field--name-field-text {
+      margin-left: $margin;
+      margin-right: $margin;
+      margin-bottom: 20px;
+    }
+  }
+}

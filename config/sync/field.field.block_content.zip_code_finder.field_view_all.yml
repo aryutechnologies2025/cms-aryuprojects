@@ -1,0 +1,23 @@
+uuid: 2a0aaf89-7c7d-472d-8f8d-ab6fcce8fc9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.zip_code_finder
+    - field.storage.block_content.field_view_all
+  module:
+    - link
+id: block_content.zip_code_finder.field_view_all
+field_name: field_view_all
+entity_type: block_content
+bundle: zip_code_finder
+label: 'View All Link'
+description: 'If your link text is vague (e.g. "View More" or "Check it out!"), please add a thorough description of the link destination to ensure the site is ADA compliant.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

@@ -1,0 +1,15 @@
+uuid: c89d166e-24fb-45c1-880b-c57bedb6a269
+langcode: en
+status: true
+dependencies: {  }
+name: brand_450x250_
+label: 'Brand (450x300)'
+effects:
+  9e104d56-3985-4ce5-86e3-03bab8f8ab8f:
+    uuid: 9e104d56-3985-4ce5-86e3-03bab8f8ab8f
+    id: image_scale
+    weight: 1
+    data:
+      width: 450
+      height: 300
+      upscale: false

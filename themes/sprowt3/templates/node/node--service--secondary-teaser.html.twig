@@ -1,0 +1,44 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div{{content_attributes.addClass('node__content')}}>
+    {% if content.field_disable_link['#items'].value != '1' %}<a href="{{ url }}">{% endif %}
+      {{ content.field_icon_service }}
+    {% if content.field_disable_link['#items'].value != '1' %}</a>{% endif %}
+    <div class="service-copy-wrap">
+      <div class="service-copy">
+        {% if content.field_disable_link['#items'].value != '1' %}<a class="service-link service-overlay-link overlay-link" href="{{ url }}"></a>{% endif %}
+        <h2>{{ label }}</h2>
+        {{ content|without('field_image_service','field_icon_service','field_disable_link') }}
+        {% if content.field_disable_link['#items'].value != '1' %}
+          <a href="{{ url }}" class="learn-more desktop-only">
+              <span>Learn More</span>
+          </a>
+          <a href="{{ url }}" class="learn-more-mobile mobile-only button-arrow">
+              <span>Learn More</span>
+          </a>
+        {% endif %}
+      </div>
+      <div class="service-special-offer desktop-only">
+        {{ drupal_view('special_offers', 'block_service_token', node.id()) }}
+      </div>
+      <div class="service-special-offer mobile-only">
+        {{ drupal_view('special_offers', 'block_service_title', node.id()) }}
+      </div>
+    </div>
+  </div>
+
+</article>

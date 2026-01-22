@@ -1,0 +1,29 @@
+uuid: 7b8502f2-deba-4944-abc9-e53c3b1b9db8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city_ref
+    - node.type.city_page
+    - node.type.standalone_landing_page
+id: node.standalone_landing_page.field_city_ref
+field_name: field_city_ref
+entity_type: node
+bundle: standalone_landing_page
+label: City
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      city_page: city_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

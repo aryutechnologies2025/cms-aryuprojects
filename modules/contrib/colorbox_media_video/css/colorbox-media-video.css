@@ -1,0 +1,25 @@
+.colorbox-media-video{
+  cursor: pointer;
+}
+
+.colorbox-media-video-responsive {
+  position: relative;
+  height: 100%;
+}
+
+.colorbox-media-video-responsive:after {
+  content: '';
+  display: block;
+  padding-bottom: 56.25%;
+}
+
+.colorbox-media-video-responsive iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}

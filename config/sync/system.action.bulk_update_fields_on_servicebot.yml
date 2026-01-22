@@ -1,0 +1,11 @@
+uuid: ca70a135-9974-4760-9520-f0a835cf492a
+langcode: en
+status: true
+dependencies:
+  module:
+    - bulk_update_fields
+id: bulk_update_fields_on_servicebot
+label: 'Bulk Update ServiceBot Fields'
+type: servicebot
+plugin: bulk_update_fields_action_base
+configuration: {  }

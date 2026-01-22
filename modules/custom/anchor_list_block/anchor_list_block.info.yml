@@ -1,0 +1,8 @@
+name: 'Anchor List Block'
+type: module
+description: 'Creates a block type for anchor lists on layout builder'
+core_version_requirement: ^9 || ^10
+package: 'Coalmarch'
+
+dependencies:
+    - hook_event_dispatcher:hook_event_dispatcher

@@ -1,0 +1,21 @@
+uuid: 820184ff-7e16-4539-a57e-8c922904a2af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_package_level
+    - node.type.solution_page_packages
+  module:
+    - options
+id: node.solution_page_packages.field_package_level
+field_name: field_package_level
+entity_type: node
+bundle: solution_page_packages
+label: 'Package Level'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

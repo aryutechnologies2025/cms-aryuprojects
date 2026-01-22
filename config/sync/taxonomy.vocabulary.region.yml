@@ -1,0 +1,9 @@
+uuid: 33c3e76b-9255-43c7-86c1-22323a181834
+langcode: en
+status: true
+dependencies: {  }
+name: Region
+vid: region
+description: 'Category to group Locations (Branches) by State, Region or other classification.'
+weight: 0
+new_revision: false

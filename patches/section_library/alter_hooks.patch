@@ -1,0 +1,24 @@
+diff --git a/src/Controller/ImportSectionFromLibraryController.php b/src/Controller/ImportSectionFromLibraryController.php
+index e32cd9b790..8e1828c375 100644
+--- a/src/Controller/ImportSectionFromLibraryController.php
++++ b/src/Controller/ImportSectionFromLibraryController.php
+@@ -104,6 +104,7 @@ public function build($section_library_id, SectionStorageInterface $section_stor
+
+         // Replace section components with new instances.
+         $deep_cloned_section = $this->cloneAndReplaceSectionComponents($cloned_section);
++        \Drupal::moduleHandler()->alter('section_library_import', $deep_cloned_section, $current_section);
+
+         // Create a new section.
+         $section_storage->insertSection($delta, $deep_cloned_section);
+diff --git a/src/DeepCloningTrait.php b/src/DeepCloningTrait.php
+index 3dc7329ade..6840c205d1 100644
+--- a/src/DeepCloningTrait.php
++++ b/src/DeepCloningTrait.php
+@@ -64,6 +64,7 @@ protected function deepCloneSection($section) {
+
+     // Replace section components with new instances.
+     $deep_cloned_section = $this->cloneAndReplaceSectionComponents($cloned_section);
++    \Drupal::moduleHandler()->alter('section_library_deep_clone', $deep_cloned_section, $section);
+
+     return $deep_cloned_section;
+   }

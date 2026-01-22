@@ -1,0 +1,23 @@
+uuid: 2811bc36-3645-4220-aa96-b4eb1d430c72
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.recommended_solution
+    - field.field.block_content.recommended_solution.field_heading
+  module:
+    - tag_text_field
+id: block_content.recommended_solution.default
+targetEntityType: block_content
+bundle: recommended_solution
+mode: default
+content:
+  field_heading:
+    type: html_tag_text_field_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

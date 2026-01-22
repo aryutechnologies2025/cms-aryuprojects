@@ -1,0 +1,220 @@
+////
+/// Typographic styles
+/// @group Base
+////
+
+// Fonts
+// Import the Work Sans webfont from Google CDN
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap");
+
+// Typography
+html {
+  font-size: $global-font-size;
+  background-color: $color-body;
+}
+
+body {
+  color: $base-font-color;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  letter-spacing: $base-letter-spacing;
+
+  @include breakpoint($medium) {
+    line-height: 1.375;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+%h1,
+%h2,
+%h3,
+%h4,
+%h5,
+%h6 {
+  font-family: $heading-font-family;
+  line-height: $heading-line-height;
+  margin: 0 0 1rem 0;
+
+  @include breakpoint($medium) {
+    margin: 0 0 1.8rem 0;
+  }
+
+  @include breakpoint($large) {
+    margin: 0 0 2.4rem 0;
+  }
+}
+
+h1,
+%h1,
+.h1 {
+  font-weight: 800;
+}
+
+h2,
+h3,
+h4,
+%h2,
+%h3,
+%h4,
+.h2,
+.h3,
+.h4 {
+  font-weight: 700;
+}
+
+h5,
+h6,
+.h5,
+.h6,
+%h5,
+%h6 {
+  font-weight: 600;
+}
+
+h1,
+.h1,
+%h1 {
+  font-size: 3.2rem;
+
+  @include breakpoint($medium) {
+    font-size: 4rem;
+  }
+  @include breakpoint($large) {
+    font-size: 4.2rem;
+  }
+}
+
+h2,
+.h2,
+%h2 {
+  font-size: 2.6rem;
+
+  @include breakpoint($medium) {
+    font-size: 3rem;
+  }
+  @include breakpoint($large) {
+    font-size: 3.2rem;
+  }
+}
+
+h3,
+.h3,
+%h3 {
+  font-size: 2.2rem;
+
+  @include breakpoint($medium) {
+    font-size: 2.2rem;
+  }
+  @include breakpoint($large) {
+    font-size: 2.4rem;
+  }
+
+  .block-inline-blockbasic & {
+    font-weight: 600;
+  }
+}
+
+h4,
+.h4,
+%h4 {
+  font-size: 1.8rem;
+}
+
+h5,
+.h5,
+%h5 {
+  font-size: 1.6rem;
+}
+
+h6,
+.h6,
+%h6 {
+  font-size: 1.6rem;
+}
+
+.heading-label {
+  margin-bottom: 5px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+
+  @include breakpoint($large) {
+    margin-bottom: 15px;
+  }
+}
+
+p,
+%p {
+  margin: 0 0 20px 0;
+  font-size: $base-font-size;
+  font-weight: normal;
+  line-height: $base-line-height;
+}
+
+.text-formatted p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote {
+  padding: 10px 20px;
+  margin: 0 0 $base-spacing 0;
+  font-size: 2.8rem;
+  border-left: 5px solid;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  footer {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.76rem;
+  }
+}
+
+hr {
+  border-bottom: $base-border;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  margin: $base-spacing 0;
+}
+
+small,
+.small {
+  font-size: 1.36rem;
+}
+
+mark,
+.mark {
+  padding: 0.32rem;
+  background-color: $color-highlight;
+}
+
+// Code
+pre,
+code,
+tt {
+  font: 1em "andale mono", "lucida console", monospace;
+  line-height: 1.5;
+}
+
+// Abbreviation
+abbr {
+  border-bottom: 1px dotted;
+  cursor: help;
+  white-space: nowrap;
+}

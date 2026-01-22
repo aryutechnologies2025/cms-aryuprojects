@@ -1,0 +1,27 @@
+// Slick Slider overrides
+.slick__arrow {
+  .slick-prev,
+  .slick-next {
+    // padding: 20px;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: palette(primary);
+    &::before {
+      margin: 0;
+      color: palette(white);
+    }
+  }
+  .slick-prev {
+    &::before {
+      margin-right: 5px;
+    }
+  }
+  .slick-next {
+    &::before {
+      margin-left: 5px;
+    }
+  }
+}

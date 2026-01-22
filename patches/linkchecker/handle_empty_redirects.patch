@@ -1,0 +1,15 @@
+diff --git a/modules/contrib/linkchecker/linkchecker.redirect.inc b/modules/contrib/linkchecker/linkchecker.redirect.inc
+index cc2a386ad..b2ed33622 100644
+--- a/modules/contrib/linkchecker/linkchecker.redirect.inc
++++ b/modules/contrib/linkchecker/linkchecker.redirect.inc
+@@ -18,6 +18,10 @@ function linkchecker_redirect_insert($redirect) {
+  * Implements hook_redirect_update().
+  */
+ function linkchecker_redirect_update($redirect) {
++  //handle empty sources
++  if(empty($redirect->get('redirect_source')->get(0))) {
++    return;
++  }
+   // Get Source URL.
+   $source = $redirect->getSourceUrl();
+ 

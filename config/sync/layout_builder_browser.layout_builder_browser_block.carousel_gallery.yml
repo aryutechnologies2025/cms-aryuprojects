@@ -1,0 +1,11 @@
+uuid: 9d5ed337-36f6-43b9-95ae-42d36b3476df
+langcode: en
+status: true
+dependencies: {  }
+id: carousel_gallery
+block_id: 'inline_block:gallery'
+category: custom_blocks
+label: 'Carousel Gallery'
+image_path: ''
+image_alt: ''
+weight: -75

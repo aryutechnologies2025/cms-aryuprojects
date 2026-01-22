@@ -1,0 +1,13 @@
+# Custom module library for general purposes.
+cookie_banner:
+    js:
+        js/cookie-banner.js: { }
+    css:
+        component:
+            css/cookie-banner.css: { }
+    dependencies:
+        - core/drupalSettings
+        - core/js-cookie
+        - core/once
+        - core/jQuery
+

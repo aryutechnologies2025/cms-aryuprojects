@@ -1,0 +1,23 @@
+{%
+  set classes = [
+    'node',
+    'node-' ~ node.id,
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+
+<div class="field field--name-field-subheading-tag address-override">
+{% apply spaceless %}
+  <span>{{ content.field_street|render|striptags }}</span>
+  <span>  {{ content.field_city|render|striptags|spaceless }}</span>
+  <span>, {{ content.field_state['#items'].getValue() | first.value }}</span>
+  <span> {{ content.field_zip|render|striptags }}</span>
+  {{ content.field_phone }}
+{% endapply %}
+</div>
+

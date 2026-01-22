@@ -1,0 +1,43 @@
+body.path-user:not(.user-logged-in) {
+  .admin_links {
+    display: none;
+
+    .region-admin-links {
+      position: inherit;
+    }
+  }
+}
+
+.user-login-form,
+.user-pass {
+  max-width: 100%;
+  margin: 30px auto;
+  padding: 20px 30px 30px;
+
+  .button {
+    display: block;
+    min-width: 250px;
+    text-align: center;
+    margin: 0 auto 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include breakpoint($small) {
+    max-width: 550px;
+    margin: 65px auto 30px;
+    padding: 20px 50px 30px;
+  }
+}
+
+.password-reset {
+  margin: 0 20px 30px 20px;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.google-submit-button {
+  border-radius: 0 !important;
+}
